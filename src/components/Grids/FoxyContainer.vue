@@ -38,7 +38,8 @@
     return [
       'foxy-container',
       {
-        'foxy-container--fluid': props.fluid
+        'foxy-container--fluid': props.fluid,
+        'foxy-container--fullscreen': props.fullscreen
       },
       borderClasses.value,
       paddingClasses.value,
@@ -52,6 +53,8 @@
 <style lang="scss" scoped>
   .foxy-container {
     box-sizing: var(--foxy-container---box-sizing);
+    align-items: var(--foxy-container---align-items);
+    display: var(--foxy-container---display);
     
     width: var(--foxy-container---width);
     max-width: var(--foxy-container---max-width);
@@ -98,6 +101,13 @@
     &--fluid {
       --foxy-container---max-width: 100%;
     }
+
+    &--fullscreen {
+      --foxy-container---max-width: 100%;
+      --foxy-container---height: 100%;
+      --foxy-container---align-items: center;
+      --foxy-container---display: flex;
+    }
   }
 </style>
 
@@ -121,5 +131,8 @@
     --foxy-container---margin-block-end: 0;
     --foxy-container---margin-inline-end: auto;
     --foxy-container---margin-inline-start: auto;
+
+    --foxy-container---align-items: auto;
+    --foxy-container---display: block;
   }
 </style>

@@ -27,3 +27,14 @@
     return [layoutClasses.value, props.class]
   })
 </script>
+
+<style lang="scss" scoped>
+  .foxy-layout {
+    &__wrapper {
+      width: 100vw;
+      height: 100vh;
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+</style>

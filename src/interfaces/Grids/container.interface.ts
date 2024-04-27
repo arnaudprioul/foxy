@@ -9,4 +9,5 @@ import {
 
 export interface IContainerProps extends ICommonsComponentProps, ITagProps, IDimensionProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IColorProps {
   fluid?: boolean
+  fullscreen?: boolean
 }

@@ -58,11 +58,11 @@
           </template>
 
           <template #default>
-            <slot name="content:default"/>
+            <slot name="content"/>
             <div ref="endText" v-intersect="handleIntersect"></div>
           </template>
 
-          <template #footer>
+          <template v-if="hasSlot('footer')" #footer>
             <slot name="footer"/>
           </template>
         </foxy-card>
