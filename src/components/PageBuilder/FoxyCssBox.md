@@ -1,0 +1,4 @@
+# Foxyeditorcssbox
+
+## Usage
+    <FoxyEditorCssBox />

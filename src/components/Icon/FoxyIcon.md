@@ -1,0 +1,4 @@
+# Foxyicon
+
+## Usage
+    <FoxyIcon />

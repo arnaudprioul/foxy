@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "allowTsInNodeModules": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "baseUrl": "",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "paths": {
+      "@foxy": [
+        "src"
+      ],
+      "@foxy/*": [
+        "src/*"
+      ],
+      "@stories": [
+        "stories"
+      ],
+      "@stories/*": [
+        "stories/*"
+      ]
+    },
+    "files": ["node_modules/ts-transformer-keys/index.d.ts"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "stories/**/*.ts", "stories/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "files": ["node_modules/ts-transformer-keys/index.d.ts"]
+}

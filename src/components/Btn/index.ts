@@ -1,0 +1,1 @@
+export { default as FoxyBtn } from './FoxyBtn.vue'

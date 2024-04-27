@@ -1,0 +1,4 @@
+# Foxyprogress
+
+## Usage
+    <FoxyProgress />

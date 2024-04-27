@@ -1,0 +1,4 @@
+# Foxyimg
+
+## Usage
+    <FoxyImg />

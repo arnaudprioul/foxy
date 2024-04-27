@@ -1,0 +1,1 @@
+export { default as FoxyLoader } from './FoxyLoader.vue'

@@ -1,0 +1,1 @@
+export { default as FoxySheet } from './FoxySheet.vue'

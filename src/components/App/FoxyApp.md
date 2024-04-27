@@ -1,0 +1,4 @@
+# Foxypagebuilder
+
+## Usage
+    <FoxyPageBuilder />

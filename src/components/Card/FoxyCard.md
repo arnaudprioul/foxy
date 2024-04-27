@@ -1,0 +1,4 @@
+# Foxycard
+
+## Usage
+    <FoxyCard />

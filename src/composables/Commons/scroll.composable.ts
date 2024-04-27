@@ -1,0 +1,119 @@
+import { IN_BROWSER, SCROLL_STRATEGIES } from '@foxy/consts'
+
+import { IScrollArguments, IScrollProps, IScrollStrategyData, IScrollStrategyProps } from '@foxy/interfaces'
+
+import { clamp, consoleWarn } from '@foxy/utils'
+
+import {
+  computed,
+  effectScope,
+  EffectScope, nextTick,
+  onBeforeUnmount,
+  onMounted, onScopeDispose,
+  ref,
+  shallowRef,
+  watch,
+  watchEffect
+} from 'vue'
+
+export function useScroll (
+    props: IScrollProps,
+    args: IScrollArguments = {},
+) {
+  const { canScroll } = args
+  let previousScroll = 0
+  const target = ref<Element | Window | null>(null)
+  const currentScroll = shallowRef(0)
+  const savedScroll = shallowRef(0)
+  const currentThreshold = shallowRef(0)
+  const isScrollActive = shallowRef(false)
+  const isScrollingUp = shallowRef(false)
+
+  const scrollThreshold = computed(() => {
+    return Number(props.scrollThreshold)
+  })
+  const scrollRatio = computed(() => {
+    return clamp(((scrollThreshold.value - currentScroll.value) / scrollThreshold.value) || 0)
+  })
+
+  const onScroll = () => {
+    const targetEl = target.value
+
+    if (!targetEl || (canScroll && !canScroll.value)) return
+
+    previousScroll = currentScroll.value
+    currentScroll.value = ('window' in targetEl) ? targetEl.pageYOffset : targetEl.scrollTop
+
+    isScrollingUp.value = currentScroll.value < previousScroll
+    currentThreshold.value = Math.abs(currentScroll.value - scrollThreshold.value)
+  }
+
+  watch(isScrollingUp, () => {
+    savedScroll.value = savedScroll.value || currentScroll.value
+  })
+
+  watch(isScrollActive, () => {
+    savedScroll.value = 0
+  })
+
+  onMounted(() => {
+    watch(() => props.scrollTarget, scrollTarget => {
+      const newTarget = scrollTarget ? document.querySelector(scrollTarget) : window
+
+      if (!newTarget) {
+        consoleWarn(`Unable to locate element with identifier ${scrollTarget}`)
+        return
+      }
+
+      if (newTarget === target.value) return
+
+      target.value?.removeEventListener('scroll', onScroll)
+      target.value = newTarget
+      target.value.addEventListener('scroll', onScroll, { passive: true })
+    }, { immediate: true })
+  })
+
+  onBeforeUnmount(() => {
+    target.value?.removeEventListener('scroll', onScroll)
+  })
+
+  canScroll && watch(canScroll, onScroll, { immediate: true })
+
+  return {
+    scrollThreshold,
+    currentScroll,
+    currentThreshold,
+    isScrollActive,
+    scrollRatio,
+    isScrollingUp,
+    savedScroll,
+  }
+}
+
+export function useScrollStrategies (
+    props: IScrollStrategyProps,
+    data: IScrollStrategyData
+) {
+  if (!IN_BROWSER) return
+
+  let scope: EffectScope | undefined
+  watchEffect(async () => {
+    scope?.stop()
+
+    if (!(data.isActive.value && props.scrollStrategy)) return
+
+    scope = effectScope()
+    await nextTick()
+    scope.active && scope.run(() => {
+      if (typeof props.scrollStrategy === 'function') {
+        props.scrollStrategy(data, props, scope!)
+      } else {
+        SCROLL_STRATEGIES[props.scrollStrategy]?.(data, props, scope!)
+      }
+    })
+  })
+
+  onScopeDispose(() => {
+    scope?.stop()
+  })
+}

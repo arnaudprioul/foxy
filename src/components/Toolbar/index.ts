@@ -1,0 +1,1 @@
+export { default as FoxyToolbar } from './FoxyToolbar.vue'

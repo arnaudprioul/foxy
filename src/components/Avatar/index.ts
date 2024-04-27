@@ -1,0 +1,1 @@
+export { default as FoxyAvatar } from './FoxyAvatar.vue'

@@ -1,0 +1,4 @@
+# FoxyTranslateScale
+
+## Usage
+    <FoxyTranslateScale />
