@@ -20,7 +20,7 @@
         image: {
           alt: 'Toolkit',
           width: 36,
-          src: new URL('/stories/assets/img/logo.png', import.meta.url).href
+          src: new URL('/public/logo.svg', import.meta.url).href
         }
       }
     }

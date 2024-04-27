@@ -60,13 +60,11 @@ export function useCssTransition (props: ITransitionProps) {
 
   const events = computed(() => {
     return {
-      onBeforeEnter: handleBeforeEnter,
-      onLeave: handleLeave,
-      onAfterLeave: handleAfterLeave
+
     }
   })
 
-  const bind = computed(() => {
+  const transitionProps = computed(() => {
     const bind: { [key: string]: any } = {
       css: !isDisabled.value
     }
@@ -75,12 +73,14 @@ export function useCssTransition (props: ITransitionProps) {
       bind.mode = props.mode
     }
 
-    if (!isDisabled.value) {
-      Object.assign(bind, events)
+    if (isDisabled.value) {
+      bind.onBeforeEnter = handleBeforeEnter
+      bind.onLeave = handleLeave
+      bind.onAfterLeave = handleAfterLeave
     }
 
     return bind
   })
 
-  return { events, tag, name, isDisabled, bind }
+  return { events, tag, name, isDisabled, transitionProps }
 }

@@ -26,6 +26,7 @@ export function useProgress (props: IProgressTypeProps) {
 
   const progressClasses = computed(() => {
     return [
+      'foxy-progress',
       {
         'foxy-progress--indeterminate': props.indeterminate,
         'foxy-progress--visible': isIntersecting.value,

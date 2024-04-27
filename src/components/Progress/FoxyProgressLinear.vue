@@ -13,7 +13,12 @@
         <template v-if="indeterminate">
           <div v-for="bar in ['long', 'short']"
                :key="bar"
-               :class="`foxy-progress__${bar}`"/>
+               :class="`foxy-progress__bar--${bar}`"
+               :style="loaderStyles"
+               class="foxy-progress__bar"/>
+        </template>
+        <template v-else>
+          <div :style="loaderStyles" class="foxy-progress__bar"/>
         </template>
       </div>
     </foxy-transition>
@@ -25,14 +30,15 @@
 </template>
 
 <script lang="ts" setup>
-  import { FoxyFade } from '@foxy/components'
-  import { useIntersectionObserver, useLocation, useProgress, useRounded } from '@foxy/composables'
+  import { FoxyFade, FoxySlideX, FoxyTransition } from '@foxy/components'
+
+  import { useBackgroundColor, useIntersectionObserver, useLocation, useProgress, useRounded, } from '@foxy/composables'
 
   import { IProgressLinearProps } from '@foxy/interfaces'
 
   import { convertToUnit } from '@foxy/utils'
 
-  import { computed, StyleValue } from 'vue'
+  import { computed, StyleValue, toRef } from 'vue'
 
   const props = withDefaults(defineProps<IProgressLinearProps>(), {
     tag: 'div',
@@ -45,6 +51,8 @@
   const { progressClasses, progressStyles, normalizedValue, thickness, progress, max, hasContent } = useProgress(props)
   const { roundedClasses } = useRounded(props)
   const { intersectionRef } = useIntersectionObserver()
+  const { backgroundColorStyles } = useBackgroundColor(toRef(props, 'bgColor'))
+  const { backgroundColorStyles: loaderColorStyles } = useBackgroundColor(toRef(props, 'color'))
 
   const normalizedBuffer = computed(() => parseFloat(props.bufferValue as string) / max.value * 100)
   const transition = computed(() => props.indeterminate ? { component: FoxyFade } : { component: FoxySlideX })
@@ -65,7 +73,7 @@
       {
         'bottom': props.location === 'bottom' ? 0 : undefined,
         'top': props.location === 'top' ? 0 : undefined,
-        'height': props.active ? convertToUnit(thickness.value) : 0,
+        'height': convertToUnit(thickness.value),
         'line-height': convertToUnit(thickness.value)
       },
       locationStyles.value,
@@ -98,7 +106,18 @@
   })
   const backgroundStyles = computed(() => {
     return [
-      `width: ${convertToUnit((!props.stream ? 100 : normalizedBuffer.value), '%')}`
+      backgroundColorStyles.value,
+      {
+        width: `${convertToUnit((!props.stream ? 100 : normalizedBuffer.value), '%')}`
+      }
+    ]
+  })
+  const loaderStyles = computed(() => {
+    return [
+      {
+        width: props.indeterminate ? undefined : convertToUnit(progress.value, '%')
+      },
+      loaderColorStyles.value
     ]
   })
 </script>
@@ -143,37 +162,31 @@
         }
       }
 
-      &#{$this}--determinate {
-        #{$this}__loader {
-          height: inherit;
-          left: 0;
-          position: absolute;
-          transition: inherit;
-          transition-property: width, left, right;
-        }
+      #{$this}__bar {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        transition: inherit;
+        transition-property: width, left, right;
       }
 
       &#{$this}--indeterminate {
-        #{$this}__long,
-        #{$this}__short {
+        #{$this}__bar {
           animation-play-state: paused;
           animation-duration: 2.2s;
           animation-iteration-count: infinite;
           bottom: 0;
-          height: inherit;
-          left: 0;
-          position: absolute;
           right: auto;
           top: 0;
           width: auto;
-        }
 
-        #{$this}__long {
-          animation-name: indeterminate-ltr;
-        }
+          &--long {
+            animation-name: indeterminate-ltr;
+          }
 
-        #{$this}__short {
-          animation-name: indeterminate-short-ltr;
+          &--short {
+            animation-name: indeterminate-short-ltr;
+          }
         }
       }
 
@@ -254,8 +267,7 @@
 
       &#{$this}--active {
         &#{$this}--indeterminate {
-          #{$this}__long,
-          #{$this}__short {
+          #{$this}__bar {
             animation-play-state: running;
           }
         }

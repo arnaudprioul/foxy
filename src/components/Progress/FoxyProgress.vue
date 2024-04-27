@@ -19,22 +19,21 @@
   import { FoxyProgressCircular, FoxyProgressLinear } from '@foxy/components'
 
   import {
-    useBothColor,
     useProgress,
     useSize
   } from '@foxy/composables'
+  import { PROGRESS_CIRCULAR_PROPS, PROGRESS_LINEAR_PROPS } from '@foxy/consts'
 
   import { PROGRESS_TYPE, SIZES } from '@foxy/enums'
 
-  import { IProgressProps } from '@foxy/interfaces'
+  import { IProgressCircularProps, IProgressLinearProps, IProgressProps } from '@foxy/interfaces'
 
-  import { omit } from '@foxy/utils'
+  import { pick } from '@foxy/utils'
 
-  import { computed, StyleValue, toRef } from 'vue'
+  import { computed, StyleValue } from 'vue'
 
   const props = withDefaults(defineProps<IProgressProps>(), { tag: 'div', modelValue: 0, max: 100, thickness: 4, size: SIZES.DEFAULT })
 
-  const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { sizeClasses, sizeStyles } = useSize(props)
   const { normalizedValue, hasContent } = useProgress(props)
 
@@ -45,8 +44,7 @@
     return isCircular.value ? FoxyProgressCircular : FoxyProgressLinear
   })
   const progressProps = computed(() => {
-    // TODO REFACTO TO USE CONSTANT PROPS
-    return isCircular.value ? omit(props, ['type', 'bufferValue', 'clickable', 'reverse', 'stream']) : omit(props, ['type', 'rotate'])
+    return isCircular.value ? pick(props, Object.keys(PROGRESS_CIRCULAR_PROPS) as Array<keyof IProgressCircularProps>) : pick(props, Object.keys(PROGRESS_LINEAR_PROPS) as Array<keyof IProgressLinearProps>)
   })
 
   // CLASS & STYLES
@@ -54,13 +52,11 @@
   const progressStyles = computed(() => {
     return [
       sizeStyles.value,
-      colorStyles.value,
       props.style
     ] as StyleValue
   })
   const progressClasses = computed(() => {
     return [
-      'foxy-progress',
       sizeClasses.value,
       props.class,
     ]

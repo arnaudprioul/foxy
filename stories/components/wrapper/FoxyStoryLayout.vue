@@ -1,7 +1,9 @@
 <script lang="ts" setup>
-  import { FoxyApp } from '@foxy/components'
+  import { FoxyApp, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
+  import { ALIGN, JUSTIFY } from '@foxy/enums'
 
   import { Story, Variant } from 'histoire'
+  import { computed } from 'vue'
 
   const props = defineProps<{
     story: Story

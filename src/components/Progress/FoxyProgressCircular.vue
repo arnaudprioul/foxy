@@ -18,6 +18,7 @@
           cy="50%"
           fill="transparent"
           stroke-dashoffset="0"
+          :style="backgroundStyles"
       />
 
       <circle
@@ -29,6 +30,7 @@
           cx="50%"
           cy="50%"
           fill="transparent"
+          :style="loaderStyles"
       />
     </svg>
 
@@ -39,7 +41,12 @@
 </template>
 
 <script lang="ts" setup>
-  import { useIntersectionObserver, useProgress, useResizeObserver, useSize } from '@foxy/composables'
+  import {
+    useIntersectionObserver,
+    useProgress,
+    useResizeObserver,
+    useSize, useTextColor
+  } from '@foxy/composables'
 
   import { CIRCUMFERENCE, MAGIC_RADIUS } from '@foxy/consts'
 
@@ -47,7 +54,7 @@
 
   import { convertToUnit } from '@foxy/utils'
 
-  import { computed, ref, StyleValue, watchEffect } from 'vue'
+  import { computed, ref, StyleValue, toRef, watchEffect } from 'vue'
 
   const props = withDefaults(defineProps<IProgressCircularProps>(), {
     tag: 'div',
@@ -60,6 +67,8 @@
   const { resizeRef, contentRect } = useResizeObserver()
   const { intersectionRef } = useIntersectionObserver()
   const { sizeStyles } = useSize(props)
+  const { textColorStyles: backgroundColorStyles } = useTextColor(toRef(props, 'bgColor'))
+  const { textColorStyles: loaderColorStyles } = useTextColor(toRef(props, 'color'))
 
   const root = ref<HTMLElement>()
 
@@ -110,6 +119,16 @@
   })
   const svgStyles = computed(() => {
     return [`transform: rotate(calc(-90deg + ${Number(props.rotate)}deg))`]
+  })
+  const backgroundStyles = computed(() => {
+    return [
+      backgroundColorStyles.value,
+    ]
+  })
+  const loaderStyles = computed(() => {
+    return [
+      loaderColorStyles.value
+    ]
   })
 </script>
 

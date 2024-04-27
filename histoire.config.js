@@ -15,9 +15,9 @@ export default defineConfig({
         title: 'Foxy Page Builder',
         favicon: 'favicon.ico',
         logo: {
-            square: './stories/assets/img/logo.png',
-            light: './stories/assets/img/logo.png',
-            dark: './stories/assets/img/logo.png'
+            square: './public/logo.svg',
+            light: './public/logo.svg',
+            dark: './public/logo.svg'
         }
     },
     defaultStoryProps: {
