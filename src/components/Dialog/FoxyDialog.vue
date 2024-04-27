@@ -8,60 +8,66 @@
       aria-modal="true"
       role="dialog"
       v-bind="{...overlayProps, ...scopeId}">
-    <slot name="default">
-      <foxy-card v-bind="cardProps">
-        <template v-if="hasSlot('loader')" #loader>
-          <slot name="loader"/>
-        </template>
+    <template v-if="hasSlot('activator')" #activator="{props}">
+      <slot name="activator" v-bind="{props}"/>
+    </template>
 
-        <template v-if="hasSlot('header')">
-          <slot name="header"/>
-        </template>
+    <template #default="{isActive}">
+      <slot name="default" v-bind="{isActive}">
+        <foxy-card v-bind="cardProps">
+          <template v-if="hasSlot('loader')" #loader>
+            <slot name="loader"/>
+          </template>
 
-        <template #header:append>
-          <slot name="header:append">
-            <foxy-btn
-                :icon="MDI_ICONS.CLOSE"
-                @click="handleClose"/>
-          </slot>
-        </template>
+          <template v-if="hasSlot('header')" #header>
+            <slot name="header"/>
+          </template>
 
-        <template v-if="hasPrepend" #header:prepend>
-          <slot name="header:prepend">
-            <foxy-icon v-if="hasIcon" key="prepend-icon" :icon="icon as TIcon" :size="28"/>
-          </slot>
-        </template>
+          <template #header:append>
+            <slot name="header:append">
+              <foxy-btn
+                  :icon="MDI_ICONS.CLOSE"
+                  @click="handleClose"/>
+            </slot>
+          </template>
 
-        <template v-if="hasSlot('header:title')" #header:title>
-          <slot name="header:title"/>
-        </template>
+          <template v-if="hasPrepend" #header:prepend>
+            <slot name="header:prepend">
+              <foxy-icon v-if="hasIcon" key="prepend-icon" :icon="icon as TIcon" :size="28"/>
+            </slot>
+          </template>
 
-        <template v-if="hasSlot('header:subtitle')" #header:subtitle>
-          <slot name="header:subtitle"/>
-        </template>
+          <template v-if="hasSlot('header:title')" #header:title>
+            <slot name="header:title"/>
+          </template>
 
-        <template v-if="hasSlot('header:content')" #header:content>
-          <slot name="header:content"/>
-        </template>
+          <template v-if="hasSlot('header:subtitle')" #header:subtitle>
+            <slot name="header:subtitle"/>
+          </template>
 
-        <template v-if="hasSlot('asset')" #asset>
-          <slot name="asset"/>
-        </template>
+          <template v-if="hasSlot('header:content')" #header:content>
+            <slot name="header:content"/>
+          </template>
 
-        <template v-if="hasSlot('text')" #text>
-          <slot name="text"/>
-        </template>
+          <template v-if="hasSlot('asset')" #asset>
+            <slot name="asset"/>
+          </template>
 
-        <template v-if="hasSlot('content:default')" #default>
-          <slot name="content:default"/>
-          <div ref="endText" v-intersect="handleIntersect"></div>
-        </template>
+          <template v-if="hasSlot('text')" #text>
+            <slot name="text"/>
+          </template>
 
-        <template #footer>
-          <slot name="footer"/>
-        </template>
-      </foxy-card>
-    </slot>
+          <template #default>
+            <slot name="content:default"/>
+            <div ref="endText" v-intersect="handleIntersect"></div>
+          </template>
+
+          <template #footer>
+            <slot name="footer"/>
+          </template>
+        </foxy-card>
+      </slot>
+    </template>
   </foxy-overlay>
 </template>
 
@@ -179,7 +185,7 @@
     return !!(hasSlot('header:prepend') || icon.value)
   })
   const hasIcon = computed(() => {
-    return !!(props.icon && props.status)
+    return !!(props.icon || props.status)
   })
 
   // CLASS & STYLES

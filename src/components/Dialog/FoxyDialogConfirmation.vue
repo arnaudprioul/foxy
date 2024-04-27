@@ -5,24 +5,30 @@
       @is-read="handleIsRead">
     <template #footer>
       <slot name="footer">
-        <foxy-btn v-if="cancellable" text="Cancel" @click="handleCancel"/>
+        <foxy-container fluid>
+          <foxy-row :justify="JUSTIFY.SPACE_BETWEEN">
+            <foxy-col cols="auto">
+              <foxy-btn v-if="cancellable" text="Cancel" @click="handleCancel"/>
+            </foxy-col>
 
-        <foxy-spacer/>
-
-        <foxy-btn
-            text="Validate"
-            :disabled="!validatable"
-            :loading="!validatable"
-            @click="handleValidate"/>
+            <foxy-col cols="auto">
+              <foxy-btn
+                  text="Validate"
+                  :disabled="!validatable"
+                  @click="handleValidate"/>
+            </foxy-col>
+          </foxy-row>
+        </foxy-container>
       </slot>
     </template>
   </foxy-dialog>
 </template>
 
 <script lang="ts" setup>
-  import { FoxyBtn, FoxyDialog, FoxySpacer } from '@foxy/components'
+  import { FoxyBtn, FoxyCol, FoxyContainer, FoxyDialog, FoxyRow } from '@foxy/components'
 
   import { DIALOG_PROPS } from '@foxy/consts'
+  import { JUSTIFY } from '@foxy/enums'
 
   import { IDialogConfirmationProps, IDialogProps } from '@foxy/interfaces'
 
@@ -44,6 +50,7 @@
   })
 
   const handleIsRead = (value: boolean) => {
+    console.log('is readed', value)
     validatable.value = value
   }
 

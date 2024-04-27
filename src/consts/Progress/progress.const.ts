@@ -7,5 +7,7 @@ export const CIRCUMFERENCE = 2 * Math.PI * MAGIC_RADIUS
 
 export const PROGRESS_PROPS: IProgressProps = {
   ...PROGRESS_LINEAR_PROPS as IProgressLinearProps,
-  ...PROGRESS_CIRCULAR_PROPS as IProgressCircularProps
+  ...PROGRESS_CIRCULAR_PROPS as IProgressCircularProps,
+
+  type: undefined
 }

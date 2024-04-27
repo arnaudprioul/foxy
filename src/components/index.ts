@@ -1,5 +1,6 @@
 
 export * from './App'
+export * from './Alert'
 export * from './Avatar'
 export * from './Toolbar'
 export * from './Btn'

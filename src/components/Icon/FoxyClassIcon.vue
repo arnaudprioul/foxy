@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { convertToUnit } from '@foxy/utils'
   import { computed, StyleValue } from 'vue'
 
   import { IIconProps } from '@foxy/interfaces'
@@ -13,6 +14,10 @@
 
   const iconStyles = computed(() => {
     return [
+      {
+        'font-size': props.size ? convertToUnit(props.size) : undefined,
+        'line-height': props.size ? convertToUnit(props.size) : undefined
+      },
       props.style
     ] as StyleValue
   })

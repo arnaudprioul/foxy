@@ -51,5 +51,5 @@ export const ALERT_PROPS: IAlertProps  = {
   prominent: undefined,
   title: undefined,
   text: undefined,
-  type: undefined
+  status: undefined
 }

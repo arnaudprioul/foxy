@@ -4,6 +4,7 @@
       :icon="iconData.icon"
       :aria-hidden="!attrs.onClick"
       :class="iconClasses"
+      :size="size"
       :role="attrs.onClick ? 'button' : undefined"
       :style="iconStyles"
       :tag="tag">

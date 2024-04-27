@@ -13,10 +13,12 @@
     <span key="underlay" class="foxy-btn__underlay"/>
 
     <slot name="wrapper">
-      <foxy-loader :color="color" :loading="loading">
+      <foxy-loader :loading="loading">
         <template v-if="hasLoader" #loader>
           <span key="loader" class="foxy-btn__loader">
-            <slot name="loader"/>
+            <slot name="loader" v-bind="progressProps">
+              <foxy-progress-circular v-bind="progressProps"/>
+            </slot>
           </span>
         </template>
 
@@ -59,7 +61,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { FoxyIcon, FoxyLoader } from '@foxy/components'
+  import { FoxyIcon, FoxyLoader, FoxyProgressCircular } from '@foxy/components'
 
   import {
     useBorder,
@@ -80,18 +82,25 @@
     useSlots
   } from '@foxy/composables'
 
-  import { FOXY_BTN_TOGGLE_KEY } from '@foxy/consts'
+  import { COLOR_PROPS, FOXY_BTN_TOGGLE_KEY, PROGRESS_PROPS } from '@foxy/consts'
 
   import { vRipple } from '@foxy/directives'
   import { DENSITY, SIZES } from '@foxy/enums'
 
-  import { IBtnProps } from '@foxy/interfaces'
+  import { IBtnProps, IColorProps } from '@foxy/interfaces'
+  import { pick } from '@foxy/utils'
 
   import { computed, StyleValue, toRef, useAttrs } from 'vue'
 
   const attrs = useAttrs()
 
-  const props = withDefaults(defineProps<IBtnProps>(), { tag: 'button', symbol: FOXY_BTN_TOGGLE_KEY, ripple: true, size: SIZES.DEFAULT, density: DENSITY.DEFAULT })
+  const props = withDefaults(defineProps<IBtnProps>(), {
+    tag: 'button',
+    symbol: FOXY_BTN_TOGGLE_KEY,
+    ripple: true,
+    size: SIZES.DEFAULT,
+    density: DENSITY.DEFAULT
+  })
 
   const emits = defineEmits(['group:selected'])
 
@@ -170,7 +179,15 @@
     return !!(props.icon && props.icon !== true)
   })
   const hasLoader = computed(() => {
-    return hasSlot('loader')
+    return hasSlot('loader') || props.loading
+  })
+
+  const progressProps = computed(() => {
+    return Object.assign({
+          size: '23',
+          indeterminate: true
+        },
+        pick(props, Object.keys(COLOR_PROPS) as Array<keyof IColorProps>))
   })
 
   // CLASS & STYLES
@@ -246,6 +263,7 @@
     border-style: solid;
     border-width: 0;
     height: var(--foxy-btn---height, 36px);
+    cursor: pointer;
 
     &--size-x-small {
       --foxy-btn---height: 20px;
@@ -305,21 +323,21 @@
 
     &:hover,
     &:focus-visible,
-    &:focus{
+    &:focus {
       > #{$this}__overlay {
         opacity: 0.5;
       }
     }
 
     &--active,
-    [aria-haspopup=menu][aria-expanded=true]{
+    [aria-haspopup=menu][aria-expanded=true] {
       > #{$this}__overlay {
         opacity: 0.5;
       }
 
       &:hover,
       &:focus-visible,
-      &:focus{
+      &:focus {
         > #{$this}__overlay {
           opacity: 0.7;
         }
@@ -469,6 +487,11 @@
       position: absolute;
       top: 0;
       width: 100%;
+
+      :deep(.foxy-progress--circular) {
+        width: 1.5em;
+        height: 1.5em;
+      }
     }
 
     &__content,

@@ -13,14 +13,14 @@ import {
   ICommonsComponentProps,
   IDimensionProps,
   ILazyProps,
-  ILocationStrategyProps,
+  ILocationStrategyProps, IOverlayCommonsProps,
   IOverlayProps,
   IScrimProps,
   IScrollStrategyProps,
   ITransitionComponentProps
 } from '@foxy/interfaces'
 
-export const OVERLAY_PROPS: IOverlayProps = {
+export const OVERLAY_COMMONS_PROPS: IOverlayProps = {
   ...COMMONS_COMPONENT_PROPS as ICommonsComponentProps,
   ...DIMENSIONS_PROPS as IDimensionProps,
   ...ACTIVATOR_PROPS as IActivatorProps,
@@ -30,7 +30,6 @@ export const OVERLAY_PROPS: IOverlayProps = {
   ...TRANSITION_PROPS as ITransitionComponentProps,
   ...SCRIM_PROPS as IScrimProps,
 
-  absolute: undefined,
   attach: undefined,
   closeOnBack: undefined,
   contentClass: undefined,
@@ -38,7 +37,13 @@ export const OVERLAY_PROPS: IOverlayProps = {
   disabled: undefined,
   noClickAnimation: undefined,
   modelValue: undefined,
-  persistent: undefined,
   zIndex: undefined,
-  disableGlobalStack: undefined,
+  disableGlobalStack: undefined
+}
+
+export const OVERLAY_PROPS: IOverlayProps = {
+  ...OVERLAY_COMMONS_PROPS as IOverlayCommonsProps,
+
+  absolute: undefined,
+  persistent: undefined
 }

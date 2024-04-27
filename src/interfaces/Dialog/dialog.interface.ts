@@ -7,5 +7,5 @@ export interface IDialogProps extends ICommonsComponentProps, IOverlayProps, ICa
   retainFocus?: boolean
   scrollable?: boolean
   status?: TContextualType
-  icon?: boolean | TIcon
+  icon?: TIcon
 }
