@@ -9,7 +9,7 @@
 
         <foxy-list-group value="Users" @click:activator="logEvent('click:activator - Users', $event)">
 
-          <template #activator="{isOpen, props, events,  toggleIcon}">
+          <template #activator="{isOpen, props, events, toggleIcon}">
             <foxy-list-item
                 :active="isOpen"
                 :append-icon="toggleIcon"

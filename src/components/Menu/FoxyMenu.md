@@ -1,0 +1,4 @@
+# Foxymenu
+
+## Usage
+    <FoxyMenu />

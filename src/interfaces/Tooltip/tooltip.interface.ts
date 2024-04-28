@@ -3,13 +3,14 @@ import {
   ICommonsComponentProps,
   IDimensionProps,
   ILazyProps,
-  ILocationStrategyProps, IOverlayCommonsProps,
+  ILocationStrategyProps,
+  IOverlayProps,
   IScrimProps,
   IScrollStrategyProps,
   ITransitionComponentProps
 } from '@foxy/interfaces'
 
-export interface ITooltipProps extends ICommonsComponentProps, IOverlayCommonsProps, IDimensionProps, IActivatorProps, ILocationStrategyProps, IScrollStrategyProps, ILazyProps, ITransitionComponentProps, IScrimProps{
+export interface ITooltipProps extends ICommonsComponentProps, IOverlayProps, IDimensionProps, IActivatorProps, ILocationStrategyProps, IScrollStrategyProps, ILazyProps, ITransitionComponentProps, IScrimProps{
   id?: string
   text?: string
 }

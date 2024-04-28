@@ -31,11 +31,11 @@
 
   import { useScopeId } from '@foxy/composables'
 
-  import { OVERLAY_COMMONS_PROPS } from '@foxy/consts'
+  import { OVERLAY_PROPS } from '@foxy/consts'
 
   import { INLINE, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@foxy/enums'
 
-  import { IOverlayCommonsProps, ITooltipProps } from '@foxy/interfaces'
+  import { IOverlayProps, ITooltipProps } from '@foxy/interfaces'
 
   import { TAnchor } from '@foxy/types'
 
@@ -96,9 +96,9 @@
   )
 
   const overlayProps = computed(() => {
-    const overlayProps = pick(props, Object.keys(OVERLAY_COMMONS_PROPS) as Array<keyof IOverlayCommonsProps>)
+    const overlayProps = pick(props, Object.keys(OVERLAY_PROPS) as Array<keyof IOverlayProps>)
 
-    return omit(overlayProps, ['activatorProps', 'class', 'style', 'modelValue', 'location', 'origin', 'transition', 'disableGlobalStack'])
+    return omit(overlayProps, ['activatorProps', 'class', 'style', 'modelValue', 'location', 'origin', 'transition', 'disableGlobalStack', 'absolute', 'persistent'])
   })
 
   // CLASS & STYLES

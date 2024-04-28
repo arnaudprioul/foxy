@@ -28,9 +28,10 @@
 </template>
 
 <script lang="ts" setup>
-  import { FoxyBtn, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
-  import FoxyTooltip from '@foxy/components/Tooltip/FoxyTooltip.vue'
+  import { FoxyTooltip, FoxyBtn, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
+
   import { ALIGN, JUSTIFY } from '@foxy/enums'
+
   import { ITooltipProps } from '@foxy/interfaces'
 
   import { reactive } from 'vue'
@@ -38,7 +39,7 @@
   const state: ITooltipProps = reactive({
     modelValue: true,
     text: 'this is a tooltip',
-    location: 'left'
+    location: 'right'
   })
 </script>
 

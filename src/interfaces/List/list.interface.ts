@@ -15,7 +15,7 @@ export interface IListProps extends ITagProps, ICommonsComponentProps, IElevatio
   disabled?: boolean
   expandIcon?: string
   collapseIcon?: string
-  lines?: TLines | false
+  lines?: TLines
   slim?: boolean
   nav?: boolean
   itemType?: string

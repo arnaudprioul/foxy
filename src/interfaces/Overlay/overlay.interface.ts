@@ -9,12 +9,8 @@ import {
   ITransitionComponentProps
 } from '@foxy/interfaces'
 
-export interface IOverlayProps extends IOverlayCommonsProps {
+export interface IOverlayProps extends ICommonsComponentProps, IDimensionProps, IActivatorProps, ILocationStrategyProps, IScrollStrategyProps, ILazyProps, ITransitionComponentProps, IScrimProps {
   absolute?: boolean
-  persistent?: boolean
-}
-
-export interface IOverlayCommonsProps extends ICommonsComponentProps, IDimensionProps, IActivatorProps, ILocationStrategyProps, IScrollStrategyProps, ILazyProps, ITransitionComponentProps, IScrimProps{
   attach?: boolean | string | Element
   closeOnBack?: boolean
   contentClass?: any
@@ -24,4 +20,5 @@ export interface IOverlayCommonsProps extends ICommonsComponentProps, IDimension
   modelValue?: boolean
   zIndex?: number | string
   disableGlobalStack?: boolean
+  persistent?: boolean
 }

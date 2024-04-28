@@ -26,7 +26,7 @@ export interface IListItemProps extends IBorderProps, ICommonsComponentProps, ID
   nav?: boolean
   prependAvatar?: string
   prependIcon?: TIcon
-  slim?: string
+  slim?: boolean
   subtitle?: string | number
   title?: string | number
   value?: any
