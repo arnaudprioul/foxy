@@ -96,3 +96,88 @@
     ]
   })
 </script>
+
+<style lang="scss" scoped>
+  .foxy-bottom-nav {
+    $this: &;
+
+    display: flex;
+    max-width: 100%;
+    overflow: hidden;
+    position: absolute;
+    transition: transform, color, 0.2s, 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    border-color: currentColor;
+    border-style: solid;
+    border-width: 0;
+    border-radius: 0;
+
+    &--bordered {
+      border-width: thin;
+      box-shadow: none;
+    }
+
+    &--active {
+      box-shadow: 0px 2px 4px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 4px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 10px 0px var(--v-shadow-key-ambient-opacity, rgba(0, 0, 0, 0.12));
+    }
+
+    &--grow {
+      #{$this}__content {
+        > :deep(.foxy-btn) {
+          flex-grow: 1;
+        }
+      }
+    }
+
+    &--shift {
+      &__content {
+        > :deep(.foxy-btn) {
+          &:not(.foxy-btn--selected) {
+            .foxy-btn__content {
+              transform: translateY(0.5rem);
+
+              > span {
+                transition: inherit;
+                opacity: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex: none;
+      font-size: 0.75rem;
+      justify-content: center;
+      transition: inherit;
+      width: 100%;
+
+      > :deep(.foxy-btn) {
+        font-size: inherit;
+        height: 100%;
+        max-width: 168px;
+        min-width: 80px;
+        text-transform: none;
+        transition: inherit;
+        width: auto;
+        border-radius: 0;
+
+        .foxy-btn__content,
+        .foxy-btn__icon {
+          transition: inherit;
+        }
+
+        .foxy-btn__icon {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+</style>
+
+<style>
+  :root {
+
+  }
+</style>
