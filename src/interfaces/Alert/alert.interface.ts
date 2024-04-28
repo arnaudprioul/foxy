@@ -8,19 +8,18 @@ import {
   IPaddingProps,
   IPositionProps,
   IRoundedProps,
-  ITagProps
+  ITagProps,
+  IStatusProps
 } from '@foxy/interfaces'
 
-import { TContextualType, TIcon } from '@foxy/types'
+import { TIcon } from '@foxy/types'
 
-export interface IAlertProps extends ICommonsComponentProps, ITagProps, IColorProps, IBorderProps, IDimensionProps, IPaddingProps, IMarginProps, IDensityProps, IElevationProps, ILocationProps, IPositionProps, IRoundedProps {
+export interface IAlertProps extends ICommonsComponentProps, ITagProps, IColorProps, IBorderProps, IDimensionProps, IPaddingProps, IMarginProps, IDensityProps, IElevationProps, ILocationProps, IPositionProps, IRoundedProps, IStatusProps {
   closable?: boolean
   closeIcon?: TIcon
   closeLabel?: string
-  icon?: TIcon
   modelValue?: boolean
   prominent?: boolean
   title?: string
   text?: string
-  status?: TContextualType
 }

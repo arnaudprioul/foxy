@@ -8,29 +8,31 @@
 </template>
 
 <script lang="ts" setup>
-import { Ref, ref } from 'vue'
+  import { TIcon } from '@foxy/types'
 
-import { iconList } from '@stories/const/icon.const'
+  import useTitle from '@stories/composables/title.composable'
 
-import { TTitleProp } from '@stories/types/title.type'
+  import { iconList } from '@stories/const/icon.const'
 
-import useTitle from '@stories/composables/title.composable'
+  import { TTitleProp } from '@stories/types/title.type'
 
-const props = defineProps<{
-  modelValue?: string,
-} & TTitleProp>()
+  import { Ref, ref } from 'vue'
 
-const emit = defineEmits(['update:modelValue'])
+  const props = defineProps<{
+    modelValue?: string,
+  } & TTitleProp>()
 
-const { getTitle } = useTitle(props.title, 'Icon')
+  const emit = defineEmits(['update:modelValue'])
 
-const icon: Ref<string> = ref('')
+  const { getTitle } = useTitle(props.title, 'Icon')
 
-if (props.modelValue) {
-  icon.value = props.modelValue
-}
+  const icon: Ref<TIcon> = ref('')
 
-const handleChange = (value: string) => {
-  emit('update:modelValue', value || undefined)
-}
+  if (props.modelValue) {
+    icon.value = props.modelValue
+  }
+
+  const handleChange = (value: string) => {
+    emit('update:modelValue', value || undefined)
+  }
 </script>

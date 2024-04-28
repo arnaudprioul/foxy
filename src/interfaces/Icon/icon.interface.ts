@@ -10,9 +10,11 @@ import {
 
 import { TIcon, TIconComponent } from '@foxy/types'
 
-
-export interface IIconProps extends IColorProps, ICommonsComponentProps, ITagProps, ISizeProps, IPaddingProps, IMarginProps, IBorderProps {
+export interface IIconProps {
   icon?: TIcon
+}
+
+export interface IIconComponentProps extends IIconProps, IColorProps, ICommonsComponentProps, ITagProps, ISizeProps, IPaddingProps, IMarginProps, IBorderProps {
   disabled?: Boolean
 }
 

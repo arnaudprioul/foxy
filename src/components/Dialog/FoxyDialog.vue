@@ -26,6 +26,8 @@
           <template #header:append>
             <slot name="header:append">
               <foxy-btn
+                  :rounded="0"
+                  bg-color="transparent"
                   :icon="MDI_ICONS.CLOSE"
                   @click="handleClose"/>
             </slot>
@@ -74,7 +76,7 @@
 <script lang="ts" setup>
   import { FoxyBtn, FoxyCard, FoxyIcon, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
 
-  import { useScopeId, useSlots } from '@foxy/composables'
+  import { useScopeId, useSlots, useStatus } from '@foxy/composables'
 
   import { CARD_PROPS, IN_BROWSER, OVERLAY_PROPS } from '@foxy/consts'
 
@@ -102,6 +104,7 @@
   const isActive = useProxiedModel(props, 'modelValue')
   const { scopeId } = useScopeId()
   const { hasSlot } = useSlots()
+  const { icon, statusClasses } = useStatus(props)
 
   const overlay = ref()
   const handleFocusin = (e: FocusEvent) => {
@@ -175,12 +178,6 @@
     }
   }
 
-  const icon = computed(() => {
-    if (props.icon === false) return undefined
-    if (!props.status) return props.icon
-
-    return typeof props.icon === 'string' ? props.icon : `$${props.status}`
-  })
   const hasPrepend = computed(() => {
     return !!(hasSlot('header:prepend') || icon.value)
   })
@@ -202,6 +199,7 @@
         'foxy-dialog--fullscreen': props.fullscreen,
         'foxy-dialog--scrollable': props.scrollable,
       },
+      statusClasses.value,
       props.class,
     ]
   })

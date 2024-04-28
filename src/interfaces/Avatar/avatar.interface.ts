@@ -7,16 +7,13 @@ import {
   IPaddingProps,
   IRoundedProps,
   ISizeProps,
-  ITagProps
+  ITagProps,
+  IStatusProps
 } from '@foxy/interfaces'
 
-import { TIcon } from '@foxy/types'
-
-
-export interface IAvatarProps extends ICommonsComponentProps, IDensityProps, IRoundedProps, ISizeProps, ITagProps, IColorProps, IPaddingProps, IMarginProps, IBorderProps {
+export interface IAvatarProps extends ICommonsComponentProps, IDensityProps, IRoundedProps, ISizeProps, ITagProps, IColorProps, IPaddingProps, IMarginProps, IBorderProps, IStatusProps {
   start?: boolean,
   end?: boolean,
-  icon?: TIcon,
   image?: string,
   text?: string,
 }

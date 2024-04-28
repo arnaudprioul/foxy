@@ -4,7 +4,7 @@ import { ISizeProps } from '@foxy/interfaces'
 
 import { TSize } from '@foxy/types'
 
-export const PREDIFINED_SIZES: TSize[] = [
+export const SIZES_ARRAY: TSize[] = [
   SIZES.X_SMALL,
   SIZES.SMALL,
   SIZES.DEFAULT,

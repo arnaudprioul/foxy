@@ -52,37 +52,37 @@ export function blockScrollStrategy (data: IScrollStrategyData, props: IScrollSt
   const scrollElements = [...new Set([
     ...getScrollParents(data.targetEl.value, props.contained ? offsetParent : undefined),
     ...getScrollParents(data.contentEl.value, props.contained ? offsetParent : undefined),
-  ])].filter(el => !el.classList.contains('v-overlay-scroll-blocked'))
+  ])].filter(el => !el.classList.contains('foxy-overlay-scroll-blocked'))
   const scrollbarWidth = window.innerWidth - document.documentElement.offsetWidth
 
   const scrollableParent = (el => hasScrollbar(el) && el)(offsetParent || document.documentElement)
   if (scrollableParent) {
-    data.root.value!.classList.add('v-overlay--scroll-blocked')
+    data.root.value!.classList.add('foxy-overlay--scroll-blocked')
   }
 
   scrollElements.forEach((el, i) => {
-    el.style.setProperty('--v-body-scroll-x', convertToUnit(-el.scrollLeft))
-    el.style.setProperty('--v-body-scroll-y', convertToUnit(-el.scrollTop))
+    el.style.setProperty('--foxy-body-scroll-x', convertToUnit(-el.scrollLeft))
+    el.style.setProperty('--foxy-body-scroll-y', convertToUnit(-el.scrollTop))
 
     if (el !== document.documentElement) {
-      el.style.setProperty('--v-scrollbar-offset', convertToUnit(scrollbarWidth))
+      el.style.setProperty('--foxy-scrollbar-offset', convertToUnit(scrollbarWidth))
     }
 
-    el.classList.add('v-overlay-scroll-blocked')
+    el.classList.add('foxy-overlay-scroll-blocked')
   })
 
   onScopeDispose(() => {
     scrollElements.forEach((el, i) => {
-      const x = parseFloat(el.style.getPropertyValue('--v-body-scroll-x'))
-      const y = parseFloat(el.style.getPropertyValue('--v-body-scroll-y'))
+      const x = parseFloat(el.style.getPropertyValue('--foxy-body-scroll-x'))
+      const y = parseFloat(el.style.getPropertyValue('--foxy-body-scroll-y'))
 
       const scrollBehavior = el.style.scrollBehavior
 
       el.style.scrollBehavior = 'auto'
-      el.style.removeProperty('--v-body-scroll-x')
-      el.style.removeProperty('--v-body-scroll-y')
-      el.style.removeProperty('--v-scrollbar-offset')
-      el.classList.remove('v-overlay-scroll-blocked')
+      el.style.removeProperty('--foxy-body-scroll-x')
+      el.style.removeProperty('--foxy-body-scroll-y')
+      el.style.removeProperty('--foxy-scrollbar-offset')
+      el.classList.remove('foxy-overlay-scroll-blocked')
 
       el.scrollLeft = -x
       el.scrollTop = -y
@@ -90,7 +90,7 @@ export function blockScrollStrategy (data: IScrollStrategyData, props: IScrollSt
       el.style.scrollBehavior = scrollBehavior
     })
     if (scrollableParent) {
-      data.root.value!.classList.remove('v-overlay--scroll-blocked')
+      data.root.value!.classList.remove('foxy-overlay--scroll-blocked')
     }
   })
 }

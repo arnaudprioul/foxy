@@ -6,12 +6,6 @@
         title="Rounded"
         @update:model-value="handleRoundedChange"
     />
-    <hst-checkbox
-        v-if="!hideTile"
-        v-model="tile"
-        title="Tile"
-        @update:model-value="handleTileChange"
-    />
   </div>
 </template>
 

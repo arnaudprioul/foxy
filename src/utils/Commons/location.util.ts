@@ -109,8 +109,8 @@ export function connectedLocationStrategy (data: ILocationStrategyData, props: I
     if (!scrollParents.length) {
       scrollParents.push(document.documentElement)
       if (!(data.contentEl.value.style.top && data.contentEl.value.style.left)) {
-        contentBox.x -= parseFloat(document.documentElement.style.getPropertyValue('--v-body-scroll-x') || 0)
-        contentBox.y -= parseFloat(document.documentElement.style.getPropertyValue('--v-body-scroll-y') || 0)
+        contentBox.x -= parseFloat(document.documentElement.style.getPropertyValue('--foxy-body-scroll-x') || 0)
+        contentBox.y -= parseFloat(document.documentElement.style.getPropertyValue('--foxy-body-scroll-y') || 0)
       }
     }
 
@@ -262,7 +262,7 @@ export function connectedLocationStrategy (data: ILocationStrategyData, props: I
     const axis = getAxis(placement.anchor)
 
     Object.assign(contentStyles.value, {
-      '--v-overlay-anchor-origin': `${placement.anchor.side} ${placement.anchor.align}`,
+      '--foxy-overlay-anchor-origin': `${placement.anchor.side} ${placement.anchor.align}`,
       transformOrigin: `${placement.origin.side} ${placement.origin.align}`,
       // transform: `translate(${pixelRound(x)}px, ${pixelRound(y)}px)`,
       top: convertToUnit(pixelRound(y)),

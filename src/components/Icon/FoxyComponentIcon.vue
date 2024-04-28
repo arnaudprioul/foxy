@@ -10,9 +10,9 @@
   import type { Component } from 'vue'
   import { computed, StyleValue } from 'vue'
 
-  import { IIconProps } from '@foxy/interfaces'
+  import { IIconComponentProps } from '@foxy/interfaces'
 
-  const props = withDefaults(defineProps<IIconProps>(), { tag: 'div' })
+  const props = withDefaults(defineProps<IIconComponentProps>(), { tag: 'div' })
 
   const hasIcon = computed(() => {
     return !!props.icon

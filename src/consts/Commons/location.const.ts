@@ -10,6 +10,8 @@ export const OPPOSITE_MAP = {
   bottom: 'top',
   left: 'right',
   right: 'left',
+  start: 'right',
+  end: 'left',
 }
 
 export const LOCATION_STRATEGIES = {

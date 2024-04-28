@@ -17,13 +17,13 @@
 
   import { useBothColor, useSize, useSlots, useIcon, useBorder, usePadding, useMargin } from '@foxy/composables'
 
-  import { IIconProps } from '@foxy/interfaces'
+  import { IIconComponentProps } from '@foxy/interfaces'
 
   import { flattenFragments } from '@foxy/utils'
 
   const attrs = useAttrs()
 
-  const props = withDefaults(defineProps<IIconProps>(), { tag: 'i' })
+  const props = withDefaults(defineProps<IIconComponentProps>(), { tag: 'i' })
 
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { borderClasses, borderStyles } = useBorder(props)
@@ -67,3 +67,33 @@
     ]
   })
 </script>
+
+<style lang="scss" scoped>
+  .foxy-icon {
+    &--size-x-small {
+      font-size: 1em;
+    }
+
+    &--size-small {
+      font-size: 1.25em;
+    }
+
+    &--size-default {
+      font-size: 1.5em;
+    }
+
+    &--size-large {
+      font-size: 1.75em;
+    }
+
+    &--size-x-large {
+      font-size: 2em;
+    }
+  }
+</style>
+
+<style>
+  :root {
+
+  }
+</style>

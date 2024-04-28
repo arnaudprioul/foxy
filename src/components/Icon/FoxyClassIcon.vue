@@ -3,20 +3,21 @@
 </template>
 
 <script lang="ts" setup>
+  import { IIconComponentProps } from '@foxy/interfaces'
+
   import { convertToUnit } from '@foxy/utils'
+
   import { computed, StyleValue } from 'vue'
 
-  import { IIconProps } from '@foxy/interfaces'
-
-  const props = withDefaults(defineProps<IIconProps>(), { tag: 'i' })
+  const props = withDefaults(defineProps<IIconComponentProps>(), { tag: 'i' })
 
   // CLASS & STYLES
 
   const iconStyles = computed(() => {
     return [
       {
-        'font-size': props.size ? convertToUnit(props.size) : undefined,
-        'line-height': props.size ? convertToUnit(props.size) : undefined
+        'font-size': props.size && typeof props.size === 'number' ? convertToUnit(props.size) : undefined,
+        'line-height': props.size && typeof props.size === 'number' ? convertToUnit(props.size) : undefined
       },
       props.style
     ] as StyleValue

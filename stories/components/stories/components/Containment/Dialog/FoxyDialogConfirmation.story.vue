@@ -2,14 +2,15 @@
   <Story
       auto-props-disabled
       group="components"
-      title="Containment/Dialog/Standard">
+      title="Containment/Dialog/Confirmation">
     <Variant title="Default">
       <template #default>
-        <foxy-dialog
+        <foxy-dialog-confirmation
             v-model="state.modelValue"
             v-bind="state"
             @update:model-value="logEvent('update:model-value', $event)"
-            @is-read="logEvent('is-read', $event)"/>
+            @is-read="logEvent('is-read', $event)">
+        </foxy-dialog-confirmation>
       </template>
 
       <template #controls>
@@ -33,27 +34,26 @@
 
         <hst-text v-model="state.text" title="Text message"/>
 
-        <hst-icon v-model="state.icon" title="Prepend Icon"/>
+        <hst-checkbox v-model="state.icon" title="Hide/Show Icon"/>
 
-        <hst-checkbox v-model="state.fullscreen" title="Fullscreen"/>
+        <hst-checkbox v-model="state.cancellable" title="Hide/Show Cancel button"/>
       </template>
     </Variant>
   </Story>
 </template>
 
 <script lang="ts" setup>
-  import { FoxyDialog } from '@foxy/components'
+  import { FoxyDialogConfirmation } from '@foxy/components'
 
-  import { IDialogProps } from '@foxy/interfaces'
-
-  import { HstIcon } from '@stories/components/controls'
+  import { IDialogConfirmationProps } from '@foxy/interfaces'
 
   import { logEvent } from 'histoire/client'
   import { reactive } from 'vue'
 
-  const state = reactive<IDialogProps>({
+  const state = reactive<IDialogConfirmationProps>({
     modelValue: true,
     maxHeight: '300px',
+    cancellable: true,
     title: 'My dialog Title',
     subtitle: 'My dialog Subtitle',
     text: 'Deserunt nihil nam qui. :cat2: Accusamus ea a voluptatem. Vel veniam non temporibus pariatur cumque aperiam tempora\n' +

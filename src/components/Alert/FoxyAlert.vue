@@ -56,7 +56,8 @@
     usePadding,
     usePosition,
     useRounded,
-    useSlots
+    useSlots,
+    useStatus
   } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
@@ -85,15 +86,11 @@
   const { locationStyles } = useLocation(props)
   const { positionClasses } = usePosition(props)
   const { roundedClasses, roundedStyles } = useRounded(props)
+  const { icon, statusClasses } = useStatus(props)
   const { hasSlot } = useSlots()
 
   const isActive = useProxiedModel(props, 'modelValue')
 
-  const icon = computed(() => {
-    if (!props.status) return props.icon
-
-    return typeof props.icon === 'string' ? props.icon : `$${props.status}`
-  })
   const closeEvent = computed(() => {
     return {
       click (e: MouseEvent) {
@@ -143,9 +140,9 @@
     return [
       'foxy-alert',
       {
-        [`foxy-alert--${props.status}`]: !!props.status,
         'foxy-alert--prominent': props.prominent,
       },
+      statusClasses.value,
       densityClasses.value,
       borderClasses.value,
       paddingClasses.value,

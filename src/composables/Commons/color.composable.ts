@@ -9,6 +9,10 @@ export function useColor (colors: Ref<{ background?: TColor, text?: TColor }>) {
     const styles = []
 
     if (colors.value.background) {
+      if (colors.value.background === 'transparent') {
+        styles.push(`background-color: ${colors.value.background}`)
+      }
+
       if (isCssColor(colors.value.background)) {
         styles.push(`background-color: ${colors.value.background}`)
 

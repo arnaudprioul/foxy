@@ -1,11 +1,7 @@
-import { ICardProps, ICommonsComponentProps, IOverlayProps } from '@foxy/interfaces'
+import { ICardProps, ICommonsComponentProps, IOverlayProps, IStatusProps } from '@foxy/interfaces'
 
-import { TContextualType, TIcon } from '@foxy/types'
-
-export interface IDialogProps extends ICommonsComponentProps, IOverlayProps, ICardProps {
+export interface IDialogProps extends ICommonsComponentProps, IOverlayProps, ICardProps, IStatusProps {
   fullscreen?: boolean
   retainFocus?: boolean
   scrollable?: boolean
-  status?: TContextualType
-  icon?: TIcon
 }

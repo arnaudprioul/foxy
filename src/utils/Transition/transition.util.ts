@@ -2,7 +2,7 @@ import { getTargetBox, nullifyTransforms } from '@foxy/utils'
 
 /** Animatable children (card, sheet, list) */
 export function getChildren (el: Element) {
-  const els = el.querySelector(':scope > .v-card, :scope > .v-sheet, :scope > .v-list')?.children
+  const els = el.querySelector(':scope > .foxy-card, :scope > .foxy-sheet, :scope > .foxy-list')?.children
   return els && [...els]
 }
 
@@ -11,7 +11,7 @@ export function getDimensions (target: HTMLElement | [x: number, y: number], el:
   const elBox = nullifyTransforms(el)
   const [originX, originY] = getComputedStyle(el).transformOrigin.split(' ').map(v => parseFloat(v))
 
-  const [anchorSide, anchorOffset] = getComputedStyle(el).getPropertyValue('--v-overlay-anchor-origin').split(' ')
+  const [anchorSide, anchorOffset] = getComputedStyle(el).getPropertyValue('--foxy-overlay-anchor-origin').split(' ')
 
   let offsetX = targetBox.left + targetBox.width / 2
   if (anchorSide === 'left' || anchorOffset === 'left') {

@@ -2,7 +2,7 @@
   <component
       :is="tag"
       :name="name"
-      v-bind="bind">
+      v-bind="transitionProps">
     <slot name="default"/>
   </component>
 </template>
@@ -16,7 +16,7 @@
     name: 'foxy-transition--translate-bottom'
   })
 
-  const { name, tag, bind } = useCssTransition(props)
+  const { name, tag, transitionProps } = useCssTransition(props)
 </script>
 
 <style lang="scss">

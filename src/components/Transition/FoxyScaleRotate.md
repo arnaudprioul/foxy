@@ -1,0 +1,4 @@
+# Foxyscalerotate
+
+## Usage
+    <FoxyScaleRotate />
