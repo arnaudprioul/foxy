@@ -6,7 +6,7 @@
     <slot name="default">
       <foxy-list-group-activator class="foxy-list-group__activator">
         <slot name="activator"
-              v-bind="{ events: activatorEvents, props: activatorProps, isOpen: isOpen, toggleIcon: toggleIcon }">
+              v-bind="{ events: activatorEvents, props: activatorProps, isOpen, toggleIcon }">
           <foxy-list-item
               :active="isOpen"
               :appendIcon="appendActivatorIcon"
