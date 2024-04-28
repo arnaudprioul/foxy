@@ -102,7 +102,6 @@
   })
 
   const handleIsRead = (value: boolean) => {
-    console.log('is readed', value)
     validatable.value = value
   }
 

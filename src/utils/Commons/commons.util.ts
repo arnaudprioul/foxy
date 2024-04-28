@@ -3,6 +3,7 @@ import { FOCUS_LOCATION } from '@foxy/enums'
 
 
 import { TFocusLocation, TMaybePick, TNotAUnion, TSelectItemKey } from '@foxy/types'
+import { IfAny } from '@vue/shared'
 
 import {
   capitalize,
@@ -383,10 +384,13 @@ export function eventName (propName: string) {
   return propName[2].toLowerCase() + propName.slice(3)
 }
 
-
-export function keys<T extends Record<string, any>, U extends Record<string, any>>(
-    obj: T,
-    targetInterface: U
-): Array<keyof U> {
-  return Object.keys(obj).filter((key) => key in targetInterface) as Array<keyof U>;
+export function wrapInArray<T> (
+    v: T | null | undefined
+): T extends readonly any[]
+    ? IfAny<T, T[], T>
+    : NonNullable<T>[] {
+  return v == null
+      ? []
+      : Array.isArray(v)
+          ? v as any : [v]
 }

@@ -1,0 +1,1 @@
+export { default as FoxyBottomNav } from './FoxyBottomNav.vue'
