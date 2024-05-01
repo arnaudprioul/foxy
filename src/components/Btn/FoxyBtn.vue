@@ -82,7 +82,7 @@
     useSlots
   } from '@foxy/composables'
 
-  import { COLOR_PROPS, FOXY_BTN_TOGGLE_KEY, PROGRESS_PROPS } from '@foxy/consts'
+  import { COLOR_PROPS, FOXY_BTN_TOGGLE_KEY } from '@foxy/consts'
 
   import { vRipple } from '@foxy/directives'
   import { DENSITY, SIZES } from '@foxy/enums'
@@ -96,8 +96,8 @@
 
   const props = withDefaults(defineProps<IBtnProps>(), {
     tag: 'button',
-    symbol: FOXY_BTN_TOGGLE_KEY,
     ripple: true,
+    active: undefined,
     size: SIZES.DEFAULT,
     density: DENSITY.DEFAULT
   })
@@ -117,7 +117,7 @@
   const { marginClasses, marginStyles } = useMargin(props)
   const { sizeClasses, sizeStyles } = useSize(props)
 
-  const group = useGroupItem(props, props.symbol, false)
+  const group = useGroupItem(props, FOXY_BTN_TOGGLE_KEY, false)
   const link = useLink(props, attrs)
   const { hasSlot } = useSlots()
 

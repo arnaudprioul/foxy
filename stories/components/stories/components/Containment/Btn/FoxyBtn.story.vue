@@ -1,7 +1,7 @@
 <template>
   <Story
       group="components"
-      title="Containment/Btn"
+      title="Containment/Btn/Default"
       :init-state="initState">
     <template #default="{ state }">
       <foxy-btn v-bind="state.props"/>

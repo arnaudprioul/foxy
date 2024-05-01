@@ -22,7 +22,6 @@ import { TIcon } from '@foxy/types'
 
 export interface IBtnProps extends ICommonsComponentProps, IColorProps, IBorderProps, IDensityProps, IDimensionProps, IElevationProps, IRoundedProps, ITagProps, ISizeProps, ILinkProps, IRippleProps, ILoaderProps, IPositionProps, ILocationProps, IGroupItemProps, IPaddingProps, IMarginProps {
   active?: boolean
-  symbol?: any
   flat?: boolean,
   icon?: boolean | TIcon
   prependIcon?: TIcon

@@ -1,5 +1,3 @@
-import { TEventProp } from '@foxy/types'
-
 import { ComponentInternalInstance, ComputedRef, Ref } from 'vue'
 
 export interface IGroupProvide {
@@ -33,7 +31,6 @@ export interface IGroupProps {
   mandatory?: boolean | undefined
   max?: number | undefined
   selectedClass?: string | undefined
-  'onUpdate:modelValue'?: TEventProp<[unknown]> | undefined
 }
 
 export interface IGroupItemProps {

@@ -1,0 +1,4 @@
+# Foxybreadcrumbitem
+
+## Usage
+    <FoxyBreadcrumbItem />

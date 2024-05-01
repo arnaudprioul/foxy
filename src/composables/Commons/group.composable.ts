@@ -92,12 +92,12 @@ export function useGroup (
       props,
       'modelValue',
       [],
-      v => {
+      (v) => {
         if (v == null) return []
 
         return getIds(items, wrapInArray(v))
       },
-      v => {
+      (v) => {
         const arr = getValues(items, v)
 
         return props.multiple ? arr : arr[0]
