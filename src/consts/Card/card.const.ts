@@ -16,41 +16,24 @@ import {
   TAG_PROPS
 } from '@foxy/consts'
 
-import {
-  IBorderProps,
-  ICardProps,
-  IColorProps,
-  ICommonsComponentProps,
-  IDensityProps,
-  IDimensionProps,
-  IElevationProps,
-  ILinkProps,
-  ILoaderProps,
-  ILocationProps,
-  IMarginProps,
-  IPaddingProps,
-  IPositionProps,
-  IRippleProps,
-  IRoundedProps,
-  ITagProps
-} from '@foxy/interfaces'
+import { ICardProps } from '@foxy/interfaces'
 
 export const CARD_PROPS:ICardProps = {
-  ...COMMONS_COMPONENT_PROPS as ICommonsComponentProps,
-  ...TAG_PROPS as ITagProps,
-  ...COLOR_PROPS as IColorProps,
-  ...BORDER_PROPS as IBorderProps,
-  ...PADDING_PROPS as IPaddingProps,
-  ...MARGIN_PROPS as IMarginProps,
-  ...DIMENSIONS_PROPS as IDimensionProps,
-  ...DENSITY_PROPS as IDensityProps,
-  ...ELEVATION_PROPS as IElevationProps,
-  ...LOCATION_PROPS as ILocationProps,
-  ...POSITION_PROPS as IPositionProps,
-  ...ROUNDED_PROPS as IRoundedProps,
-  ...LOADER_PROPS as ILoaderProps,
-  ...LINK_PROPS as ILinkProps,
-  ...RIPPLE_PROPS as IRippleProps,
+  ...COMMONS_COMPONENT_PROPS,
+  ...TAG_PROPS,
+  ...COLOR_PROPS,
+  ...BORDER_PROPS,
+  ...PADDING_PROPS,
+  ...MARGIN_PROPS,
+  ...DIMENSIONS_PROPS,
+  ...DENSITY_PROPS,
+  ...ELEVATION_PROPS,
+  ...LOCATION_PROPS,
+  ...POSITION_PROPS,
+  ...ROUNDED_PROPS,
+  ...LOADER_PROPS,
+  ...LINK_PROPS,
+  ...RIPPLE_PROPS,
 
   appendAvatar: undefined,
   appendIcon: undefined,

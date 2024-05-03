@@ -23,7 +23,7 @@
   const { isDisabled } = useTransition(props)
 
   const component = computed(() => {
-    return typeof props.transition === 'object' ? props.transition.component : Transition
+    return typeof props.transition === 'object' && props.transition.component ? props.transition.component : Transition
   })
   const customProps = computed(() => {
     return typeof props.transition === 'object' ? omit(props.transition, ['component']) : {}

@@ -12,6 +12,7 @@
   import { ITranslateScaleProps } from '@foxy/interfaces'
 
   import { animate, getChildren, getDimensions } from '@foxy/utils'
+
   import { computed } from 'vue'
 
   const props = withDefaults(defineProps<ITranslateScaleProps>(), {

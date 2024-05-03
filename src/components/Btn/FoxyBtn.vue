@@ -527,7 +527,7 @@
     }
 
     &__overlay {
-      background-color: currentColor;
+      background-color: #000;
       border-radius: inherit;
       opacity: 0;
       transition: opacity 0.2s ease-in-out;

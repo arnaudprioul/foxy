@@ -1,3 +1,4 @@
+import { IWindowProvide } from '@foxy/interfaces'
 import { TTransitionMode, TTransitionProps } from '@foxy/types'
 
 export interface ITransitionComponentProps {
@@ -15,6 +16,10 @@ export interface ITransitionProps {
   origin?: string
 }
 
-export interface ITranslateScaleProps extends ITransitionProps{
+export interface ITranslateScaleProps extends ITransitionProps {
   target?: HTMLElement | [x: number, y: number]
+}
+
+export interface ITransitionWindowProps extends ITransitionProps {
+  window?: IWindowProvide
 }

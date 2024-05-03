@@ -13,7 +13,7 @@ export interface IOverlayProps extends ICommonsComponentProps, IDimensionProps, 
   absolute?: boolean
   attach?: boolean | string | Element
   closeOnBack?: boolean
-  contentClass?: any
+  contentClass?: string | Array<string>,
   contentProps?: any
   disabled?: boolean
   noClickAnimation?: boolean

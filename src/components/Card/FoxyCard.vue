@@ -445,7 +445,7 @@
 
     --foxy-card---opacity: 1;
 
-    --foxy-card__overlay---background-color: currentColor;
+    --foxy-card__overlay---background-color: #000;
     --foxy-card__overlay---border-radius: inherit;
     --foxy-card__overlay---opacity: 0;
     --foxy-card__overlay---pointer-events: none;

@@ -1,6 +1,6 @@
 import { DIMENSIONS_PROPS } from '@foxy/consts'
 
-import { IDimensionProps, ILocationProps, ILocationStrategyProps } from '@foxy/interfaces'
+import { ILocationProps, ILocationStrategyProps } from '@foxy/interfaces'
 
 import { connectedLocationStrategy, staticLocationStrategy } from '@foxy/utils'
 
@@ -24,7 +24,7 @@ export const LOCATION_PROPS: ILocationProps = {
 }
 
 export const LOCATION_STRATEGIES_PROPS: ILocationStrategyProps = {
-  ...DIMENSIONS_PROPS as IDimensionProps,
+  ...DIMENSIONS_PROPS,
 
   location: undefined,
   locationStrategy: undefined,

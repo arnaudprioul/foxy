@@ -1,6 +1,8 @@
+import { FOXY_WINDOW_KEY } from '@foxy/consts'
 import { ITransitionProps } from '@foxy/interfaces'
+import { convertToUnit } from '@foxy/utils'
 
-import { Component, computed, ShallowRef, shallowRef, Transition, TransitionGroup } from 'vue'
+import { Component, computed, inject, nextTick, ShallowRef, shallowRef, Transition, TransitionGroup } from 'vue'
 
 export function useTransition (props: ITransitionProps) {
 
@@ -58,12 +60,6 @@ export function useCssTransition (props: ITransitionProps) {
     }
   }
 
-  const events = computed(() => {
-    return {
-
-    }
-  })
-
   const transitionProps = computed(() => {
     const bind: { [key: string]: any } = {
       css: !isDisabled.value
@@ -82,5 +78,93 @@ export function useCssTransition (props: ITransitionProps) {
     return bind
   })
 
-  return { events, tag, name, isDisabled, transitionProps }
+  return { tag, name, isDisabled, transitionProps }
+}
+
+export function useWindowTransition (props: ITransitionProps) {
+
+  const { name, isDisabled } = useTransition(props)
+
+  const tag: ShallowRef<Component> = props.group ? shallowRef(TransitionGroup) : shallowRef(Transition)
+
+  const window = inject(FOXY_WINDOW_KEY)
+
+  const isTransitioning = shallowRef(false)
+
+  const handleAfterTransition = () => {
+    if (!isTransitioning.value || !window) {
+      return
+    }
+
+    // Finalize transition state.
+    isTransitioning.value = false
+    if (window.transitionCount.value > 0) {
+      window.transitionCount.value -= 1
+
+      // Remove container height if we are out of transition.
+      if (window.transitionCount.value === 0) {
+        window.transitionHeight.value = undefined
+      }
+    }
+  }
+
+  const handleBeforeTransition = () => {
+    if (isTransitioning.value || !window) {
+      return
+    }
+
+    // Initialize transition state here.
+    isTransitioning.value = true
+
+    if (window.transitionCount.value === 0) {
+      // Set initial height for height transition.
+      window.transitionHeight.value = convertToUnit(window.rootRef.value?.clientHeight)
+    }
+
+    window.transitionCount.value += 1
+  }
+
+  const handleTransitionCancelled = () => {
+    handleAfterTransition() // This should have the same path as normal transition end.
+  }
+
+  const handleEnterTransition = (el: Element) => {
+    if (!isTransitioning.value) {
+      return
+    }
+
+    nextTick(() => {
+      // Do not set height if no transition or cancelled.
+      if (!isTransitioning.value || !window) {
+        return
+      }
+
+      // Set transition target height.
+      window.transitionHeight.value = convertToUnit(el.clientHeight)
+    })
+  }
+
+  const transitionProps = computed(() => {
+    const bind: { [key: string]: any } = {
+      css: !isDisabled.value
+    }
+
+    if (props.group) {
+      bind.mode = props.mode
+    }
+
+    if (isDisabled.value) {
+      bind.onBeforeEnter = handleBeforeTransition
+      bind.onAfterEnter = handleAfterTransition
+      bind.onEnterCancelled = handleTransitionCancelled
+      bind.onBeforeLeave = handleBeforeTransition
+      bind.onAfterLeave = handleAfterTransition
+      bind.onLeaveCancelled = handleTransitionCancelled
+      bind.onEnter = handleEnterTransition
+    }
+
+    return bind
+  })
+
+  return { tag, name, isDisabled, transitionProps }
 }

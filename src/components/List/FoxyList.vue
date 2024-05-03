@@ -310,7 +310,7 @@
     --foxy-list---box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
     --foxy-list---background: rgb(255, 255, 255);
 
-    --foxy-list__overlay---background-color: currentColor;
+    --foxy-list__overlay---background-color: #000;
     --foxy-list__overlay---border-radius: inherit;
     --foxy-list__overlay---opacity: 0;
     --foxy-list__overlay---pointer-events: none;

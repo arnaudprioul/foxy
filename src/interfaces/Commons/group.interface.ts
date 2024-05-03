@@ -34,9 +34,9 @@ export interface IGroupProps {
 }
 
 export interface IGroupItemProps {
-  value?: any,
-  disabled?: boolean,
-  selectedClass?: string,
+  value?: any
+  disabled?: boolean
+  selectedClass?: string
 }
 
 export interface IGroupItemProvide {

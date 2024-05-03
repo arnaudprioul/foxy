@@ -491,7 +491,7 @@
     --foxy-list-item---cursor: pointer;
 
     --foxy-list-item__overlay---opacity: 0.2;
-    --foxy-list-item__overlay---background-color: currentColor;
+    --foxy-list-item__overlay---background-color: #000;
     --foxy-list-item__overlay---border-radius: inherit;
     --foxy-list-item__overlay---pointer-events: none;
     --foxy-list-item__overlay---position: absolute;

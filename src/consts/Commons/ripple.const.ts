@@ -4,7 +4,7 @@ import { TRippleEvent } from '@foxy/types'
 
 import { calculate, rippleTransform } from '@foxy/utils'
 
-export const FOXY_RIPPLE_STOP_KEY = Symbol('rippleStop')
+export const FOXY_RIPPLE_STOP_KEY = Symbol('foxy:rippleStop')
 
 export const DELAY_RIPPLE = 80
 

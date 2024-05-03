@@ -1,22 +1,17 @@
 import {
   IColorProps,
-  ICommonsComponentProps,
   IIntersectionObserverInit,
+  ILazyProps,
   IResponsiveProps,
-  IRoundedProps,
   ITransitionComponentProps
 } from '@foxy/interfaces'
 
 import { TCrossOrigin, TReferrerPolicy } from '@foxy/types'
 
-
-
-
-export interface IImgProps extends IColorProps, ICommonsComponentProps, IRoundedProps, IResponsiveProps, ITransitionComponentProps {
+export interface IImgProps extends IColorProps, IResponsiveProps, ITransitionComponentProps, ILazyProps {
   alt?: string
   cover?: boolean,
   draggable?: boolean
-  eager?: boolean
   gradient?: string
   lazySrc?: string
   options?: IIntersectionObserverInit

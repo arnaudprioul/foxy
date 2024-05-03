@@ -1,7 +1,7 @@
-import { PropType } from 'vue'
+import { ICommonsComponentProps, ITagProps } from '@foxy/interfaces'
 
 import { TEventProp } from '@foxy/types'
-import { ICommonsComponentProps, ITagProps } from '@foxy/interfaces'
+import { PropType } from 'vue'
 
 export const IN_BROWSER = typeof window !== 'undefined'
 
@@ -16,11 +16,11 @@ export const ON_REGEX = /^on[^a-z]/
 
 export const SUPPORTS_TOUCH = IN_BROWSER && ('ontouchstart' in window || window.navigator.maxTouchPoints > 0)
 
-export const COMMONS_COMPONENT_PROPS :ICommonsComponentProps = {
+export const COMMONS_COMPONENT_PROPS: ICommonsComponentProps = {
   class: undefined,
   style: undefined
 }
 
-export const TAG_PROPS:ITagProps = {
+export const TAG_PROPS: ITagProps = {
   tag: undefined
 }
