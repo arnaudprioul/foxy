@@ -67,18 +67,8 @@
 
   const props = withDefaults(defineProps<ICardHeaderProps>(), { tag: 'FoxyToolbar' })
 
-  const emits = defineEmits(['click:append', 'click:prepend'])
-
   const { hasSlot } = useSlots()
   const { densityClasses } = useDensity(props)
-
-  const handleClickPrepend = (e: Event) => {
-    emits('click:prepend', e)
-  }
-
-  const handleClickAppend = (e: Event) => {
-    emits('click:append', e)
-  }
 
   // SLOTS
 

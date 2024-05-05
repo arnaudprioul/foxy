@@ -36,7 +36,7 @@ export type TInferPropType<T> = [T] extends [null]
                 ? boolean
                 : [T] extends [DateConstructor | { type: DateConstructor }]
                     ? Date
-                    : [T] extends [(infer U)[] | { type: (infer U)[] }]
+                    : [T] extends [Array<(infer U)> | { type: Array<(infer U)> }]
                         ? U extends DateConstructor
                             ? Date | TInferPropType<U>
                             : TInferPropType<U>

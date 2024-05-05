@@ -62,7 +62,7 @@ toKebabCase.cache = new Map<string, string>()
 export function findChildrenWithProvide (
     key: InjectionKey<any> | symbol,
     vnode?: VNodeChild,
-): ComponentInternalInstance[] {
+): Array<ComponentInternalInstance> {
   if (!vnode || typeof vnode !== 'object') return []
 
   if (Array.isArray(vnode)) {
@@ -105,7 +105,7 @@ export function clamp (value: number, min = 0, max = 1) {
 }
 
 export function chunk (str: string, size = 1) {
-  const chunked: string[] = []
+  const chunked: Array<string> = []
   let index = 0
   while (index < str.length) {
     chunked.push(str.substr(index, size))
@@ -114,7 +114,7 @@ export function chunk (str: string, size = 1) {
   return chunked
 }
 
-export function has<T extends string> (obj: object, key: T[]): obj is Record<T, unknown> {
+export function has<T extends string> (obj: object, key: Array<T>): obj is Record<T, unknown> {
   return key.every(k => obj.hasOwnProperty(k))
 }
 
@@ -134,7 +134,7 @@ export class CircularBuffer<T = never> {
     this.#pointer = (this.#pointer + 1) % this.size
   }
 
-  values (): T[] {
+  values (): Array<T> {
     return this.#arr.slice(this.#pointer).concat(this.#arr.slice(0, this.#pointer))
   }
 }
@@ -198,7 +198,7 @@ export function getObjectValueByPath (obj: any, path?: string | null, fallback?:
   return getNestedValue(obj, path.split('.'), fallback)
 }
 
-export function getNestedValue (obj: any, path: (string | number)[], fallback?: any): any {
+export function getNestedValue (obj: any, path: Array<(string | number)>, fallback?: any): any {
   const last = path.length - 1
 
   if (last < 0) return obj === undefined ? fallback : obj
@@ -218,7 +218,7 @@ export function getNestedValue (obj: any, path: (string | number)[], fallback?: 
 export function omit<
     T extends object,
     U extends Extract<keyof T, string>
-> (obj: T, exclude: U[]): Omit<T, U> {
+> (obj: T, exclude: Array<U>): Omit<T, U> {
   const clone = { ...obj }
 
   exclude.forEach(prop => delete clone[prop])
@@ -229,7 +229,7 @@ export function omit<
 export function only<
     T extends object,
     U extends Extract<keyof T, string>
-> (obj: T, include: U[]): Pick<T, U> {
+> (obj: T, include: Array<U>): Pick<T, U> {
   const clone = {} as T
 
   include.forEach(prop => clone[prop] = obj[prop])
@@ -240,7 +240,7 @@ export function only<
 export function pick<
     T extends object,
     U extends Extract<keyof T, string>
-> (obj: T, paths: U[]): TMaybePick<T, U> {
+> (obj: T, paths: Array<U>): TMaybePick<T, U> {
   const found: any = {}
 
   const keys = new Set(Object.keys(obj))
@@ -277,10 +277,10 @@ export function focusableChildren (el: Element, filterByTabIndex = true) {
   const targets = ['button', '[href]', 'input:not([type="hidden"])', 'select', 'textarea', '[tabindex]']
       .map(s => `${s}${filterByTabIndex ? ':not([tabindex="-1"])' : ''}:not([disabled])`)
       .join(', ')
-  return [...el.querySelectorAll(targets)] as HTMLElement[]
+  return [...el.querySelectorAll(targets)] as Array<HTMLElement>
 }
 
-export function getNextElement (elements: HTMLElement[], location?: 'next' | 'prev', condition?: (el: HTMLElement) => boolean) {
+export function getNextElement (elements: Array<HTMLElement>, location?: 'next' | 'prev', condition?: (el: HTMLElement) => boolean) {
   let _el
   let idx = elements.indexOf(document.activeElement as HTMLElement)
   const inc = location === FOCUS_LOCATION.NEXT ? 1 : -1
@@ -296,10 +296,10 @@ export function hasEvent (props: Record<string, any>, name: string) {
   return !!(props[name] || props[`${name}Once`] || props[`${name}Capture`] || props[`${name}OnceCapture`] || props[`${name}CaptureOnce`])
 }
 
-export function flattenFragments (nodes: VNode[]): VNode[] {
+export function flattenFragments (nodes: Array<VNode>): Array<VNode> {
   return nodes?.map((node) => {
     if (node.type === Fragment) {
-      return flattenFragments(node.children as VNode[])
+      return flattenFragments(node.children as Array<VNode>)
     } else {
       return node
     }
@@ -313,7 +313,7 @@ export function isObject (obj: any): obj is object {
 export function mergeDeep (
     source: Record<string, any> = {},
     target: Record<string, any> = {},
-    arrayFn?: (a: unknown[], b: unknown[]) => unknown[],
+    arrayFn?: (a: Array<unknown>, b: Array<unknown>) => Array<unknown>,
 ) {
   const out: Record<string, any> = {}
 
@@ -386,9 +386,9 @@ export function eventName (propName: string) {
 
 export function wrapInArray<T> (
     v: T | null | undefined
-): T extends readonly any[]
-    ? IfAny<T, T[], T>
-    : NonNullable<T>[] {
+): T extends Readonly<Array<any>>
+    ? IfAny<T, Array<T>, T>
+    : Array<NonNullable<T>> {
   return v == null
       ? []
       : Array.isArray(v)

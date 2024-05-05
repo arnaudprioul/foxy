@@ -28,8 +28,8 @@ export function useVelocity () {
     }
 
     const newest = samples[0]
-    const x: ISample[] = []
-    const y: ISample[] = []
+    const x: Array<ISample> = []
+    const y: Array<ISample> = []
     for (const val of samples) {
       if (newest[0] - val[0] > HORIZON) break
 

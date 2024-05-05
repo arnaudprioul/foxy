@@ -4,7 +4,7 @@ import { IDensityProps } from '@foxy/interfaces'
 
 import { TDensity } from '@foxy/types'
 
-export const PREDIFINED_DENSITY: TDensity[] = [
+export const PREDIFINED_DENSITY: Array<TDensity> = [
   DENSITY.DEFAULT,
   DENSITY.COMPACT
 ]

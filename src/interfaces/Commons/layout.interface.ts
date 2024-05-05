@@ -26,7 +26,7 @@ export interface ILayoutProvide {
   mainRect: Ref<ILayer>
   mainStyles: Ref<CSSProperties>
   getLayoutItem: (id: string) => ILayerItem  | undefined
-  items: Ref<ILayerItem []>
+  items: Ref<Array<ILayerItem>>
   layoutRect: Ref<DOMRectReadOnly | undefined>
   rootZIndex: Ref<number>
 }

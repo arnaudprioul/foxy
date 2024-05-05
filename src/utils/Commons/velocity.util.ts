@@ -1,6 +1,6 @@
 import { ISample } from '@foxy/interfaces'
 
-export function calculateImpulseVelocity (samples: ISample[]) {
+export function calculateImpulseVelocity (samples: Array<ISample>) {
   // The input should be in reversed time order (most recent sample at index i=0)
   if (samples.length < 2) {
     // if 0 or 1 points, velocity is zero

@@ -13,7 +13,7 @@ export const Intersect = {
         : { handler: value, options: {} }
 
     const observer = new IntersectionObserver((
-        entries: IntersectionObserverEntry[] = [],
+        entries: Array<IntersectionObserverEntry> = [],
         observer: IntersectionObserver
     ) => {
       const _observe = el._observe?.[binding.instance!.$.uid]

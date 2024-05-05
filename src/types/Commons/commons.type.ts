@@ -3,14 +3,14 @@ import { FOCUS_LOCATION } from '@foxy/enums'
 export type TNotAUnion <T> = [T] extends [infer U] ? _TNotAUnion <U, U> : never
 export type _TNotAUnion <T, U> = U extends any ? [T] extends [U] ? unknown : never : never
 
-export type TEventProp<T extends any[] = any[], F = (...args: T) => void> = F
+export type TEventProp<T extends Array<any> = Array<any>, F = (...args: T) => void> = F
 
-export type TInnerVal<T> = T extends any[] ? Readonly<T> : T
+export type TInnerVal<T> = T extends Array<any> ? Readonly<T> : T
 
 export type TSelectItemKey<T = Record<string, any>> =
     | boolean | null | undefined // Ignored
     | string // Lookup by key, can use dot notation for nested objects
-    | readonly (string | number)[] // Nested lookup by key, each array item is a key in the next level
+    | Readonly<Array<(string | number)>> // Nested lookup by key, each array item is a key in the next level
     | ((item: T, fallback?: any) => any)
 
 export type TMaybePick<

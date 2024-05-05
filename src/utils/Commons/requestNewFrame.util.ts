@@ -1,5 +1,5 @@
 let clean = true
-const frames = [] as any[]
+const frames = [] as Array<any>
 
 /**
  * Schedule a task to run in an animation frame on its own

@@ -22,7 +22,7 @@
   const vnodes = hasSlot(props.slotName) ? slots[props.slotName]() : undefined
 
   if (slots[props.slotName] && props.autoDetectProps && vnodes) {
-    const propsTypes: IAutoPropComponentDefinition[] = scanForAutoProps(vnodes)
+    const propsTypes: Array<IAutoPropComponentDefinition> = scanForAutoProps(vnodes)
   }
 
   // CLASS & STYLES

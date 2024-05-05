@@ -70,11 +70,11 @@ export function useLayoutItem (options: {
   return { layoutItemStyles, layoutRect: layout.layoutRect, layoutItemScrimStyles }
 }
 
-export function useCreateLayout (props: { overlaps?: string[], fullHeight?: boolean }) {
+export function useCreateLayout (props: { overlaps?: Array<string>, fullHeight?: boolean }) {
   const parentLayout = inject(FOXY_LAYOUT_KEY, null)
 
   const rootZIndex = computed(() => parentLayout ? parentLayout.rootZIndex.value - 100 : ROOT_ZINDEX)
-  const registered = ref<string[]>([])
+  const registered = ref<Array<string>>([])
   const positions = reactive(new Map<string, Ref<TLayoutPosition>>())
   const layoutSizes = reactive(new Map<string, Ref<number | string>>())
   const priorities = reactive(new Map<string, Ref<number>>())

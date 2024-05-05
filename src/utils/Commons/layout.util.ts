@@ -5,11 +5,11 @@ import { ILayer } from '@foxy/interfaces'
 import { TLayoutPosition } from '@foxy/types'
 
 export function generateLayers (
-    layout: string[],
+    layout: Array<string>,
     positions: Map<string, Ref<TLayoutPosition>>,
     layoutSizes: Map<string, Ref<number | string>>,
     activeItems: Map<string, Ref<boolean>>,
-): { id: string, layer: ILayer }[] {
+): Array<{ id: string, layer: ILayer }> {
   let previousLayer: ILayer = { top: 0, left: 0, right: 0, bottom: 0 }
   const layers = [{ id: '', layer: { ...previousLayer } }]
 

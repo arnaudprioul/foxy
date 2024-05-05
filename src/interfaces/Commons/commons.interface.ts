@@ -15,6 +15,7 @@ export interface IFoxyOptions {
 export interface IBlueprint extends Omit<IFoxyOptions, 'blueprint'> {}
 
 export interface ICommonsComponentProps {
+  id?: string,
   class?: string | Array<string>,
   style?: string | Array<string> | Object
 }
@@ -31,7 +32,7 @@ export interface ISample {
 export interface IIntersectionObserverInit {
   root?: Element | Document | null;
   rootMargin?: string;
-  threshold?: number | number[];
+  threshold?: number | Array<number>;
 }
 
 

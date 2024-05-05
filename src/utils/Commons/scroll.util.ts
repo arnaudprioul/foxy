@@ -12,7 +12,7 @@ export function getScrollParent (el?: HTMLElement, includeHidden = false) {
 }
 
 export function getScrollParents (el?: Element | null, stopAt?: Element | null) {
-  const elements: HTMLElement[] = []
+  const elements: Array<HTMLElement> = []
 
   if (stopAt && el && !stopAt.contains(el)) return elements
 

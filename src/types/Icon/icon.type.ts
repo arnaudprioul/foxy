@@ -4,7 +4,7 @@ import { IIconAliases, IIconProps, IIconSet } from '@foxy/interfaces'
 
 export type TIcon =
     | string
-    | (string | [path: string, opacity: number])[]
+    | Array<(string | [path: string, opacity: number])>
     | Component
 
 export type TIconOptions = {

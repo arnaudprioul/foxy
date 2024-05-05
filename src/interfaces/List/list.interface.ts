@@ -22,7 +22,7 @@ export interface IListProps extends ITagProps, ICommonsComponentProps, IElevatio
 }
 
 export interface IItemProps {
-  items?: any[]
+  items?: Array<any>
   itemTitle?: TSelectItemKey
   itemValue?: TSelectItemKey
   itemChildren?: TSelectItemKey

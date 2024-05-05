@@ -8,7 +8,7 @@ import { computed, isRef } from 'vue'
 export function useBorder (props: IBorderProps, name = getCurrentInstanceName()) {
   const borderClasses = computed(() => {
     const border = isRef(props) ? props.value : props.border
-    const classes: string[] = []
+    const classes: Array<string> = []
 
     if (border === true || border === '') {
       classes.push(`${name}--bordered`)
@@ -19,7 +19,7 @@ export function useBorder (props: IBorderProps, name = getCurrentInstanceName())
 
   const borderStyles = computed(() => {
     const border = isRef(props) ? props.value : props.border
-    const styles: string[] = []
+    const styles: Array<string> = []
 
     if (typeof border === 'string' && border !== '') {
       const match = BORDER_REGEX.exec(border)?.groups

@@ -1,7 +1,7 @@
 import { TListItemType } from '@foxy/types'
 
 export interface IListItemChildren {
-  items: readonly IInternalListItemChildren[]
+  items: Readonly<Array<IInternalListItemChildren>>
   returnObject?: boolean
 }
 
@@ -16,7 +16,7 @@ export interface IInternalListItem<T = any> extends IInternalItem<T> {
     title?: string
     value?: any
   }
-  children?: IInternalListItem<T>[]
+  children?: Array<IInternalListItem<T>>
 }
 
 export interface IInternalItem<T = any> {

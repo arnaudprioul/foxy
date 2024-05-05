@@ -50,7 +50,7 @@ export const LIST_OPEN_STRATEGY: TStrategyOpen = {
   select: ({ id, value, opened, parents }) => {
     if (!value) return opened
 
-    const path: unknown[] = []
+    const path: Array<unknown> = []
 
     let parent = parents.get(id)
 

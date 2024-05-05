@@ -8,7 +8,7 @@ import { computed } from 'vue'
 
 export function useDimension (props: IDimensionProps) {
   const dimensionStyles = computed(() => {
-    const dimensions: string[] = []
+    const dimensions: Array<string> = []
 
     DIMENSIONS_ARRAY.forEach((dimension) => {
       if (props[dimension]) {

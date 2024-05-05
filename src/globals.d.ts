@@ -55,7 +55,7 @@ declare global {
   }
 
   interface WheelEvent {
-    path?: EventTarget[]
+    path?: Array<EventTarget>
   }
 
   interface UIEvent {

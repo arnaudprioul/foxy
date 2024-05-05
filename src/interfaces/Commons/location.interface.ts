@@ -13,7 +13,7 @@ export interface ILocationStrategyProps extends IDimensionProps{
   locationStrategy?: TLocationStrategy | TLocationStrategyFn
   location?: TAnchor
   origin?: TAnchor | 'auto' | 'overlap'
-  offset?: number | string | number[]
+  offset?: number | string | Array<number>
 }
 
 export interface ILocationStrategyData {

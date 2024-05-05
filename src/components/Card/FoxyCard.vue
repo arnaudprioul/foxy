@@ -100,6 +100,7 @@
   import { FoxyCardHeader, FoxyCardText, FoxyImg, FoxyProgress } from '@foxy/components'
 
   import {
+    useAdjacent,
     useBorder,
     useDensity,
     useDimension,
@@ -124,8 +125,6 @@
 
   const props = withDefaults(defineProps<ICardProps>(), { ripple: true, density: DENSITY.DEFAULT, tag: 'div' })
 
-  const emits = defineEmits(['click:prepend', 'click:append'])
-
   const attrs = useAttrs()
 
   const { borderClasses, borderStyles } = useBorder(props)
@@ -138,6 +137,8 @@
   const { roundedClasses, roundedStyles } = useRounded(props)
   const { marginClasses, marginStyles } = useMargin(props)
   const { paddingStyles, paddingClasses } = usePadding(props)
+
+  const {handleClickPrepend, handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props)
   const link = useLink(props, attrs)
 
   const isClickable = computed(() => {
@@ -146,15 +147,6 @@
 
   const { hasSlot } = useSlots()
 
-  // HEADER
-
-  const handleClickPrepend = (e: Event) => {
-    emits('click:prepend', e)
-  }
-
-  const handleClickAppend = (e: Event) => {
-    emits('click:append', e)
-  }
 
   // SLOTS
 
@@ -163,12 +155,6 @@
   })
   const hasSubtitle = computed(() => {
     return hasSlot('header:subtitle') || props.subtitle != null
-  })
-  const hasAppend = computed(() => {
-    return !!(hasSlot('header:append') || props.appendAvatar || props.appendIcon)
-  })
-  const hasPrepend = computed(() => {
-    return !!(hasSlot('header:prepend') || props.prependAvatar || props.prependIcon)
   })
   const hasAsset = computed(() => {
     return !!(hasSlot('asset') || props.image)

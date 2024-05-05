@@ -10,7 +10,7 @@ export function usePadding (props: IPaddingProps, name = getCurrentInstanceName(
 
   const paddingClasses = computed(() => {
     const padding = props.padding
-    const classes: string[] = []
+    const classes: Array<string> = []
 
     if (padding === true || padding === '') {
       classes.push(`${name}--padded`)
@@ -21,7 +21,7 @@ export function usePadding (props: IPaddingProps, name = getCurrentInstanceName(
 
   const paddingStyles = computed(() => {
     const padding = props.padding
-    const styles: string[] = []
+    const styles: Array<string> = []
 
     if (typeof padding === 'string' && padding !== '') {
       const match = PADDING_REGEX.exec(padding)?.groups

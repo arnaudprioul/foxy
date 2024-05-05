@@ -266,7 +266,7 @@ export function classToHex (
     colors: Record<string, Record<string, string>>
 ): string {
   const [colorName, colorModifier] = color
-      .toString().trim().replace('-', '').split(' ', 2) as (string | undefined)[]
+      .toString().trim().replace('-', '').split(' ', 2) as Array<(string | undefined)>
 
   let hexColor = ''
   if (colorName && colorName in colors) {

@@ -4,7 +4,7 @@ import { deepEqual } from '@foxy/utils'
 
 import { UnwrapRef } from 'vue'
 
-export function getItemIndex (items: UnwrapRef<IGroupItem[]>, value: unknown) {
+export function getItemIndex (items: UnwrapRef<Array<IGroupItem>>, value: unknown) {
   const ids = getIds(items, [value])
 
   if (!ids.length) return -1
@@ -12,8 +12,8 @@ export function getItemIndex (items: UnwrapRef<IGroupItem[]>, value: unknown) {
   return items.findIndex(item => item.id === ids[0])
 }
 
-export function getIds (items: UnwrapRef<IGroupItem[]>, modelValue: any[]) {
-  const ids: number[] = []
+export function getIds (items: UnwrapRef<Array<IGroupItem>>, modelValue: Array<any>) {
+  const ids: Array<number> = []
 
   modelValue.forEach(value => {
     const item = items.find(item => deepEqual(value, item.value))
@@ -29,8 +29,8 @@ export function getIds (items: UnwrapRef<IGroupItem[]>, modelValue: any[]) {
   return ids
 }
 
-export function getValues (items: UnwrapRef<IGroupItem[]>, ids: any[]) {
-  const values: unknown[] = []
+export function getValues (items: UnwrapRef<Array<IGroupItem>>, ids: Array<any>) {
+  const values: Array<unknown> = []
 
   ids.forEach(id => {
     const itemIndex = items.findIndex(item => item.id === id)

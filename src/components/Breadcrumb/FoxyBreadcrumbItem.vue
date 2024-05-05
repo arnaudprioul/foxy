@@ -7,22 +7,20 @@
       :style="breadcrumbItemStyles"
       @click="link.navigate">
     <template v-if="hasPrepend">
-         <span key="prepend" class="foxy-breadcrumbs__prepend">
-           <slot name="prepend">
-             <foxy-avatar
-                 v-if="prependAvatar"
-                 key="prepend-avatar"
-                 :density="density"
-                 :image="prependAvatar"
-             />
-             <foxy-icon
-                 v-if="prependIcon"
-                 key="prepend-icon"
-                 :density="density"
-                 :icon="prependIcon"
-             />
-           </slot>>
-         </span>
+      <span key="prepend" class="foxy-breadcrumbs__prepend" @click="handleClickPrepend">
+        <slot name="prepend">
+          <foxy-avatar
+              v-if="prependAvatar"
+              key="prepend-avatar"
+              :density="density"
+              :image="prependAvatar"/>
+          <foxy-icon
+              v-if="prependIcon"
+              key="prepend-icon"
+              :density="density"
+              :icon="prependIcon"/>
+        </slot>
+      </span>
     </template>
 
     <slot name="default">
@@ -30,22 +28,20 @@
     </slot>
 
     <template v-if="hasAppend">
-         <span key="append" class="foxy-breadcrumbs__append">
-           <slot name="append">
-             <foxy-avatar
-                 v-if="appendAvatar"
-                 key="append-avatar"
-                 :density="density"
-                 :image="appendAvatar"
-             />
-             <foxy-icon
-                 v-if="appendIcon"
-                 key="append-icon"
-                 :density="density"
-                 :icon="appendIcon"
-             />
-           </slot>>
-         </span>
+      <span key="append" class="foxy-breadcrumbs__append" @click="handleClickAppend">
+       <slot name="append">
+         <foxy-avatar
+             v-if="appendAvatar"
+             key="append-avatar"
+             :density="density"
+             :image="appendAvatar"/>
+         <foxy-icon
+             v-if="appendIcon"
+             key="append-icon"
+             :density="density"
+             :icon="appendIcon"/>
+       </slot>
+      </span>
     </template>
   </component>
 </template>
@@ -54,14 +50,14 @@
   import { FoxyAvatar, FoxyIcon } from '@foxy/components'
 
   import {
+    useAdjacent,
     useBorder,
     useBothColor,
     useDensity,
     useLink,
     useMargin,
     usePadding,
-    useRounded,
-    useSlots
+    useRounded
   } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
@@ -81,24 +77,11 @@
   const { paddingClasses, paddingStyles } = usePadding(props)
   const { marginClasses, marginStyles } = useMargin(props)
 
+  const {hasAppend, hasPrepend, handleClickPrepend, handleClickAppend} = useAdjacent(props)
   const link = useLink(props, attrs)
 
   const isActive = computed(() => props.active || link.isActive?.value)
 
-  const { hasSlot } = useSlots()
-
-  const hasPrependMedia = computed(() => {
-    return !!(props.prependAvatar || props.prependIcon)
-  })
-  const hasPrepend = computed(() => {
-    return hasSlot('prepend') || hasPrependMedia.value
-  })
-  const hasAppendMedia = computed(() => {
-    return !!(props.appendAvatar || props.appendIcon)
-  })
-  const hasAppend = computed(() => {
-    return hasSlot('append') || hasAppendMedia.value
-  })
 
   // CLASS & STYLES
 

@@ -4,16 +4,16 @@ export interface IGroupProvide {
   register: (item: IGroupItem, cmp: ComponentInternalInstance) => void
   unregister: (id: number) => void
   select: (id: number, value: boolean) => void
-  selected: Ref<Readonly<number[]>>
+  selected: Ref<Readonly<Array<number>>>
   isSelected: (id: number) => boolean
   prev: () => void
   next: () => void
   selectedClass: Ref<string | undefined>
-  items: ComputedRef<{
+  items: ComputedRef<Array<{
     id: number
     value: unknown
     disabled: boolean | undefined
-  }[]>
+  }>>
   disabled: Ref<boolean | undefined>
   getItemIndex: (value: unknown) => number
 }
@@ -44,7 +44,7 @@ export interface IGroupItemProvide {
   isSelected: Ref<boolean>
   toggle: () => void
   select: (value: boolean) => void
-  selectedClass: Ref<(string | undefined)[] | false>
+  selectedClass: Ref<Array<(string | undefined)> | false>
   value: Ref<unknown>
   disabled: Ref<boolean | undefined>
   group: IGroupProvide

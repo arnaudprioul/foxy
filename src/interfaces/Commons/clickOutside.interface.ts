@@ -7,5 +7,5 @@ export interface IClickOutsideDirectiveBinding extends DirectiveBinding {
 export interface IClickOutsideBindingArgs {
   handler: (e: MouseEvent) => void
   closeConditional?: (e: Event) => boolean
-  include?: () => HTMLElement[]
+  include?: () => Array<HTMLElement>
 }

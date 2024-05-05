@@ -38,7 +38,7 @@ export function nullifyTransforms (el: HTMLElement): IBox {
 
 export function animate (
     el: Element,
-    keyframes: Keyframe[] | PropertyIndexedKeyframes | null,
+    keyframes: Array<Keyframe> | PropertyIndexedKeyframes | null,
     options?: number | KeyframeAnimationOptions
 ) {
   if (typeof el.animate === 'undefined') return { finished: Promise.resolve() }

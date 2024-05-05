@@ -10,7 +10,7 @@ export function useMargin (props: IMarginProps, name = getCurrentInstanceName())
 
   const marginClasses = computed(() => {
     const margin = props.margin
-    const classes: string[] = []
+    const classes: Array<string> = []
 
     if (margin === true || margin === '') {
       classes.push(`${name}--marged`)
@@ -21,7 +21,7 @@ export function useMargin (props: IMarginProps, name = getCurrentInstanceName())
 
   const marginStyles = computed(() => {
     const margin = props.margin
-    const styles: string[] = []
+    const styles: Array<string> = []
 
     if (typeof margin === 'string' && margin !== '') {
       const match = MARGIN_REGEX.exec(margin)?.groups

@@ -10,7 +10,7 @@ export function useRounded (props: IRoundedProps, name = getCurrentInstanceName(
 
   const roundedClasses = computed(() => {
     const rounded = props.rounded
-    const classes: string[] = []
+    const classes: Array<string> = []
 
     if (rounded === true || rounded === '') {
       classes.push(`${name}--rounded`)
@@ -21,7 +21,7 @@ export function useRounded (props: IRoundedProps, name = getCurrentInstanceName(
 
   const roundedStyles = computed(() => {
     const rounded = props.rounded
-    const styles: string[] = []
+    const styles: Array<string> = []
 
     if (typeof rounded === 'string' && rounded !== '') {
       const match = BORDER_RADIUS_REGEX.exec(rounded)?.groups

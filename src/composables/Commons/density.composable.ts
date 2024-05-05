@@ -11,7 +11,7 @@ import { getCurrentInstanceName } from '@foxy/utils'
 export function useDensity (props: IDensityProps | Ref<number | string | undefined>, name = getCurrentInstanceName()) {
   const densityClasses = computed(() => {
     const density = isRef(props) ? props.value : props.density
-    const classes: string[] = []
+    const classes: Array<string> = []
 
     if (density == null) return classes
 

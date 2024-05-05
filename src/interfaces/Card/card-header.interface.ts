@@ -5,15 +5,11 @@ import {
   IMarginProps,
   IPaddingProps,
   IRoundedProps,
-  ITagProps
+  ITagProps,
+  IAdjacentProps
 } from '@foxy/interfaces'
-import { TIcon } from '@foxy/types'
 
-export interface ICardHeaderProps extends ITagProps, ICommonsComponentProps, IBorderProps, IRoundedProps, IPaddingProps, IMarginProps, IDensityProps {
-  appendAvatar?: string
-  appendIcon?: TIcon
-  prependAvatar?: string
-  prependIcon?: TIcon
+export interface ICardHeaderProps extends ITagProps, ICommonsComponentProps, IBorderProps, IRoundedProps, IPaddingProps, IMarginProps, IDensityProps, IAdjacentProps {
   subtitle?: string | number
   title?: string | number
 }

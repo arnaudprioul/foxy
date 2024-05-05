@@ -7,7 +7,7 @@ export function useIntersectionObserver (callback?: IntersectionObserverCallback
   const isIntersecting = shallowRef(false)
 
   if (SUPPORTS_INTERSECTION) {
-    const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
+    const observer = new IntersectionObserver((entries: Array<IntersectionObserverEntry>) => {
       callback?.(entries, observer)
 
       isIntersecting.value = !!entries.find(entry => entry.isIntersecting)

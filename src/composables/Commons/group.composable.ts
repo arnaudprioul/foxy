@@ -87,7 +87,7 @@ export function useGroup (
     injectKey: InjectionKey<IGroupProvide>
 ) {
   let isUnmounted = false
-  const items = reactive<IGroupItem[]>([])
+  const items = reactive<Array<IGroupItem>>([])
   const selected = useProxiedModel(
       props,
       'modelValue',

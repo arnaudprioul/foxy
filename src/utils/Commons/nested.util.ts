@@ -10,7 +10,7 @@ export function independentSelectStrategy (mandatory?: boolean): TStrategySelect
       // When mandatory and we're trying to deselect when id
       // is the only currently selected item then do nothing
       if (mandatory && !value) {
-        const on = Array.from(selected.entries()).reduce((arr, [key, value]) => value === 'on' ? [...arr, key] : arr, [] as unknown[])
+        const on = Array.from(selected.entries()).reduce((arr, [key, value]) => value === 'on' ? [...arr, key] : arr, [] as Array<unknown>)
         if (on.length === 1 && on[0] === id) return selected
       }
 
@@ -140,7 +140,7 @@ export function classicSelectStrategy (mandatory?: boolean): TStrategySelect {
       // If mandatory and planned deselect results in no selected
       // items then we can't do it, so return original state
       if (mandatory && !value) {
-        const on = Array.from(selected.entries()).reduce((arr, [key, value]) => value === 'on' ? [...arr, key] : arr, [] as unknown[])
+        const on = Array.from(selected.entries()).reduce((arr, [key, value]) => value === 'on' ? [...arr, key] : arr, [] as Array<unknown>)
         if (on.length === 0) return original
       }
 

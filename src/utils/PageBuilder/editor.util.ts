@@ -3,14 +3,14 @@ import { getTagName } from '@histoire/plugin-vue/src/client/codegen.ts'
 import type { AutoPropComponentDefinition, PropDefinition } from '@histoire/shared'
 import { PropType } from 'vue'
 
-export function scanForAutoProps(vnodes: any[]) {
-  const result: AutoPropComponentDefinition[] = []
+export function scanForAutoProps(vnodes: Array<any>) {
+  const result: Array<AutoPropComponentDefinition> = []
   let index = 0
 
   for (const vnode of vnodes) {
     if (typeof vnode.type === 'object') {
 
-      const propDefs: PropDefinition[] = []
+      const propDefs: Array<PropDefinition> = []
 
       for (const key in vnode.type.props) {
 

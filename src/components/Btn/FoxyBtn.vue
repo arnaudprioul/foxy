@@ -23,12 +23,18 @@
         </template>
 
         <template #default>
-          <span v-if="hasPrepend" key="prepend" class="foxy-btn__prepend">
+          <span v-if="hasPrepend" key="prepend" class="foxy-btn__prepend" @click="handleClickPrepend">
             <slot name="prepend">
-              <foxy-Icon
+              <foxy-avatar
+                  v-if="prependAvatar"
+                  key="prepend-avatar"
+                  :density="density"
+                  :image="prependAvatar"/>
+              <foxy-icon
+                  v-if="prependIcon"
                   key="prepend-icon"
-                  :icon="prependIcon"
-              />
+                  :density="density"
+                  :icon="prependIcon"/>
             </slot>
           </span>
 
@@ -46,13 +52,19 @@
             </slot>
           </span>
 
-          <span v-if="hasAppend" key="append" class="foxy-btn__append">
+          <span v-if="hasAppend" key="append" class="foxy-btn__append" @click="handleClickAppend">
             <slot name="append">
-              <foxy-Icon
-                  key="append-icon"
-                  :icon="appendIcon"
-              />
-            </slot>
+             <foxy-avatar
+                 v-if="appendAvatar"
+                 key="append-avatar"
+                 :density="density"
+                 :image="appendAvatar"/>
+             <foxy-icon
+                 v-if="appendIcon"
+                 key="append-icon"
+                 :density="density"
+                 :icon="appendIcon"/>
+           </slot>
           </span>
         </template>
       </foxy-loader>
@@ -61,9 +73,10 @@
 </template>
 
 <script lang="ts" setup>
-  import { FoxyIcon, FoxyLoader, FoxyProgressCircular } from '@foxy/components'
+  import { FoxyAvatar, FoxyIcon, FoxyLoader, FoxyProgressCircular } from '@foxy/components'
 
   import {
+    useAdjacent,
     useBorder,
     useBothColor,
     useDensity,
@@ -117,6 +130,7 @@
   const { marginClasses, marginStyles } = useMargin(props)
   const { sizeClasses, sizeStyles } = useSize(props)
 
+  const {handleClickPrepend, handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props)
   const group = useGroupItem(props, FOXY_BTN_TOGGLE_KEY, false)
   const link = useLink(props, attrs)
   const { hasSlot } = useSlots()
@@ -169,12 +183,6 @@
     group?.toggle()
   }
 
-  const hasPrepend = computed(() => {
-    return !!(props.prependIcon || hasSlot('prepend')) && !hasIcon.value
-  })
-  const hasAppend = computed(() => {
-    return !!(props.appendIcon || hasSlot('append'))
-  })
   const hasIcon = computed(() => {
     return !!(props.icon && props.icon !== true)
   })

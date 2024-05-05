@@ -9,5 +9,5 @@ export interface IEditWrapperProps extends ICommonsComponentProps {
 export interface IAutoPropComponentDefinition {
   name: string
   index: number
-  props: PropDefinition[]
+  props: Array<PropDefinition>
 }

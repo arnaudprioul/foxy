@@ -5,7 +5,7 @@ import { PropType } from 'vue'
 
 export const IN_BROWSER = typeof window !== 'undefined'
 
-export const EVENT_PROP = <T extends any[] = any[]> () => [Function, Array] as PropType<TEventProp<T>>
+export const EVENT_PROP = <T extends Array<any> = Array<any>> () => [Function, Array] as PropType<TEventProp<T>>
 
 export const HISTORY = 20
 export const HORIZON = 100

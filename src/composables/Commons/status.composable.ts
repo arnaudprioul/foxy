@@ -12,7 +12,7 @@ export function useStatus (props: IStatusProps, name = getCurrentInstanceName())
 
   const statusClasses = computed(() => {
     const status = isRef(props) ? props.value : props.status
-    const classes: string[] = []
+    const classes: Array<string> = []
 
     if(!!status) {
       classes.push(`${name}--${status}`)

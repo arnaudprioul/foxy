@@ -4,16 +4,11 @@ import {
   IMarginProps,
   IPaddingProps,
   IRoundedProps,
-  ITagProps
+  ITagProps,
+  IAdjacentProps
 } from '@foxy/interfaces'
 
-import { TIcon } from '@foxy/types'
-
-export interface IBreadcrumbItemProps extends ICommonsComponentProps, ITagProps, IBorderProps, IPaddingProps, IMarginProps, IRoundedProps, ILinkProps, IColorProps, IDensityProps {
-  appendAvatar?: string
-  appendIcon?: TIcon
-  prependAvatar?: string
-  prependIcon?: TIcon
+export interface IBreadcrumbItemProps extends ICommonsComponentProps, ITagProps, IBorderProps, IPaddingProps, IMarginProps, IRoundedProps, ILinkProps, IColorProps, IDensityProps, IAdjacentProps {
   title: string
   disabled?: boolean
   active?: boolean

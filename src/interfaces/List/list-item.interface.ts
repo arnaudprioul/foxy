@@ -1,4 +1,5 @@
 import {
+  IAdjacentProps,
   IBorderProps,
   IColorProps,
   ICommonsComponentProps,
@@ -13,19 +14,15 @@ import {
   ITagProps
 } from '@foxy/interfaces'
 
-import { TIcon, TLines } from '@foxy/types'
+import { TLines } from '@foxy/types'
 
-export interface IListItemProps extends IBorderProps, ICommonsComponentProps, IDensityProps, IDimensionProps, IElevationProps, IRoundedProps, ITagProps, ILinkProps, IColorProps, IRippleProps, IPaddingProps, IMarginProps {
+export interface IListItemProps extends IBorderProps, ICommonsComponentProps, IDensityProps, IDimensionProps, IElevationProps, IRoundedProps, ITagProps, ILinkProps, IColorProps, IRippleProps, IPaddingProps, IMarginProps, IAdjacentProps {
   active?: boolean
   activeClass?: string
-  appendAvatar?: string
-  appendIcon?: TIcon
   disabled?: boolean
   lines?: TLines
   link?: boolean
   nav?: boolean
-  prependAvatar?: string
-  prependIcon?: TIcon
   slim?: boolean
   subtitle?: string | number
   title?: string | number

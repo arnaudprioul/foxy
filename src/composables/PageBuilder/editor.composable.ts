@@ -8,7 +8,7 @@ import { computed, inject, provide, ref } from 'vue'
 
 export function useCreateEditor (props: any, name = getCurrentInstanceName()) {
 
-  const children = ref(new Map<unknown, unknown[]>())
+  const children = ref(new Map<unknown, Array<unknown>>())
   const parents = ref(new Map<unknown, unknown>())
 
   const edit = useProxiedModel(props, 'edit', props.edit, v => new Set(v), v => [...v.values()])

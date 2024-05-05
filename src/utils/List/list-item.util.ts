@@ -2,8 +2,8 @@ import { IItemProps, IInternalListItem, IInternalListItemChildren } from '@foxy/
 
 import { getPropertyFromItem, omit } from '@foxy/utils'
 
-export function transformItems (props: IItemProps & { itemType?: string }, items: (string | object)[]) {
-  const array: IInternalListItemChildren[] = []
+export function transformItems (props: IItemProps & { itemType?: string }, items: Array<(string | object)>) {
+  const array: Array<IInternalListItemChildren> = []
 
   for (const item of items) {
     array.push(transformItem(props, item))

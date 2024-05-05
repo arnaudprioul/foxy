@@ -4,7 +4,7 @@ import { IDimensionProps } from '@foxy/interfaces'
 
 import { TDimensions } from '@foxy/types'
 
-export const DIMENSIONS_ARRAY: TDimensions[] = [
+export const DIMENSIONS_ARRAY: Array<TDimensions> = [
     DIMENSIONS.HEIGHT,
     DIMENSIONS.MAX_HEIGHT,
     DIMENSIONS.MAX_WIDTH,

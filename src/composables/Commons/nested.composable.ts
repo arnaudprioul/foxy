@@ -26,7 +26,7 @@ import { computed, inject, onBeforeUnmount, provide, Ref, ref, shallowRef, toRaw
 
 export const useNested = (props: INestedProps) => {
   let isUnmounted = false
-  const children = ref(new Map<unknown, unknown[]>())
+  const children = ref(new Map<unknown, Array<unknown>>())
   const parents = ref(new Map<unknown, unknown>())
 
   const opened = ref(new Set(props.opened))
@@ -76,7 +76,7 @@ export const useNested = (props: INestedProps) => {
   })
 
   const getPath = (id: unknown) => {
-    const path: unknown[] = []
+    const path: Array<unknown> = []
     let parent: unknown = id
 
     while (parent != null) {

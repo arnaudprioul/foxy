@@ -1,4 +1,5 @@
 import { OPEN_STRATEGY, SELECT_STRATEGY, SELECTED } from '@foxy/enums'
+
 import { Ref } from 'vue'
 
 export type TSelectStrategy = `${SELECT_STRATEGY}` | TSelectStrategyFn
@@ -7,7 +8,7 @@ export type TSelectStrategyFn = (data: {
   id: unknown
   value: boolean
   selected: Map<unknown, `${SELECTED}`>
-  children: Map<unknown, unknown[]>
+  children: Map<unknown, Array<unknown>>
   parents: Map<unknown, unknown>
   event?: Event
 }) => Map<unknown, `${SELECTED}`>
@@ -23,7 +24,7 @@ export type TOpenStrategyFn = (data: {
   id: unknown
   value: boolean
   opened: Set<unknown>
-  children: Map<unknown, unknown[]>
+  children: Map<unknown, Array<unknown>>
   parents: Map<unknown, unknown>
   event?: Event
 }) => Set<unknown>
@@ -33,7 +34,7 @@ export type TOpenSelectStrategyFn = (data: {
   value: boolean
   opened: Set<unknown>
   selected: Map<unknown, `${SELECTED}`>
-  children: Map<unknown, unknown[]>
+  children: Map<unknown, Array<unknown>>
   parents: Map<unknown, unknown>
   event?: Event
 }) => Set<unknown> | null
@@ -45,16 +46,16 @@ export type TStrategySelect = {
 }
 
 export type TSelectStrategyTransformInFn = (
-    v: readonly unknown[] | undefined,
-    children: Map<unknown, unknown[]>,
+    v: Readonly<Array<unknown> | undefined>,
+    children: Map<unknown, Array<unknown>>,
     parents: Map<unknown, unknown>,
 ) => Map<unknown, `${SELECTED}`>
 
 export type TSelectStrategyTransformOutFn = (
     v: Map<unknown, `${SELECTED}`>,
-    children: Map<unknown, unknown[]>,
+    children: Map<unknown, Array<unknown>>,
     parents: Map<unknown, unknown>,
-) => unknown[]
+) => Array<unknown>
 
 export type TStrategyOpen = {
   open: TOpenStrategyFn
@@ -65,11 +66,11 @@ export type TNestedProvide = {
   id: Ref<unknown>
   isGroupActivator?: boolean
   root: {
-    children: Ref<Map<unknown, unknown[]>>
+    children: Ref<Map<unknown, Array<unknown>>>
     parents: Ref<Map<unknown, unknown>>
     opened: Ref<Set<unknown>>
     selected: Ref<Map<unknown, `${SELECTED}`>>
-    selectedValues: Ref<unknown[]>
+    selectedValues: Ref<Array<unknown>>
     register: (id: unknown, parentId: unknown, isGroup?: boolean) => void
     unregister: (id: unknown) => void
     open: (id: unknown, value: boolean, event?: Event) => void

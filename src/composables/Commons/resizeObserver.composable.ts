@@ -11,7 +11,7 @@ export function useResizeObserver (callback?: ResizeObserverCallback, box: 'cont
   const contentRect = ref<DOMRectReadOnly>()
 
   if (IN_BROWSER) {
-    const observer = new ResizeObserver((entries: ResizeObserverEntry[]) => {
+    const observer = new ResizeObserver((entries: Array<ResizeObserverEntry>) => {
       callback?.(entries, observer)
 
       if (!entries.length) return

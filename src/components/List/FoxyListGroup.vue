@@ -41,7 +41,7 @@
     useSsrBoot
   } from '@foxy/composables'
 
-  import { IListActivatorEvents, IListActivatorProps, IListGroupProps } from '@foxy/interfaces'
+  import { IListActivatorProps, IListGroupProps } from '@foxy/interfaces'
 
   import { computed, ref, StyleValue, toRef } from 'vue'
 
@@ -58,6 +58,7 @@
   const { borderClasses, borderStyles } = useBorder(props)
   const { paddingClasses, paddingStyles } = usePadding(props)
   const { marginClasses, marginStyles } = useMargin(props)
+
   const { isOpen, open, id: _id } = useNestedItem(toRef(props, 'value'), true)
   const id = computed(() => `foxy-list-group--id-${String(_id.value)}`)
   const list = useList()
@@ -71,15 +72,15 @@
 
     return props.expandIcon
   })
-  const activatorProps = computed<IListActivatorProps>(() => {
+  const activatorProps = computed(() => {
     return {
       class: 'foxy-list-group__header',
       id: id.value
     } as IListActivatorProps
   })
-  const activatorEvents = computed<IListActivatorEvents>(() => {
+  const activatorEvents = computed(() => {
     return {
-      'click': handleClick,
+      'onClick': handleClick,
     }
   })
   const prependActivatorIcon = computed(() => {

@@ -12,7 +12,7 @@
     <span key="underlay" class="foxy-list-item__underlay"/>
 
     <slot name="wrapper">
-      <div v-if="hasPrepend" key="prepend" class="foxy-list-item__prepend">
+      <div v-if="hasPrepend" key="prepend" class="foxy-list-item__prepend" @click="handleClickPrepend">
         <slot name="prepend">
           <foxy-avatar
               v-if="prependAvatar"
@@ -41,7 +41,7 @@
         <slot name="default" v-bind="slotProps"></slot>
       </div>
 
-      <div v-if="hasAppend" key="append" class="foxy-list-item__append">
+      <div v-if="hasAppend" key="append" class="foxy-list-item__append" @click="handleClickAppend">
         <slot name="append">
           <foxy-avatar
               v-if="appendAvatar"
@@ -65,6 +65,7 @@
   import { FoxyAvatar, FoxyIcon } from '@foxy/components'
 
   import {
+    useAdjacent,
     useBackgroundColor,
     useBorder,
     useDensity,
@@ -114,6 +115,8 @@
   const { dimensionStyles } = useDimension(props)
   const { elevationClasses } = useElevation(props)
   const { roundedClasses, roundedStyles } = useRounded({ rounded: props.rounded || props.nav })
+
+  const {handleClickPrepend, handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props)
 
   const isActive = computed(() => {
     return props.active !== false && (props.active || link.isActive?.value || isSelected.value)
@@ -168,18 +171,6 @@
       isSelected: isSelected.value,
       isIndeterminate: isIndeterminate.value,
     } satisfies TListItemSlot)
-  })
-  const hasPrependMedia = computed(() => {
-    return !!(props.prependAvatar || props.prependIcon)
-  })
-  const hasPrepend = computed(() => {
-    return hasSlot('prepend') || hasPrependMedia.value
-  })
-  const hasAppendMedia = computed(() => {
-    return !!(props.appendAvatar || props.appendIcon)
-  })
-  const hasAppend = computed(() => {
-    return hasSlot('append') || hasAppendMedia.value
   })
   const hasTitle = computed(() => {
     return hasSlot('title') || props.title != null

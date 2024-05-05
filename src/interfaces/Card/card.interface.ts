@@ -11,21 +11,18 @@ import {
   IPaddingProps,
   IPositionProps, IRippleProps,
   IRoundedProps,
-  ITagProps
+  ITagProps,
+  IAdjacentProps
 } from '@foxy/interfaces'
 
-import { TCardType, TIcon } from '@foxy/types'
+import { TCardType } from '@foxy/types'
 
-export interface ICardProps extends ICommonsComponentProps, ITagProps, IBorderProps, IDensityProps, IDimensionProps, IElevationProps, ILoaderProps, ILocationProps, IPositionProps, IRoundedProps, IMarginProps, IPaddingProps, ILinkProps, IRippleProps{
-  appendAvatar?: string
-  appendIcon?: TIcon
+export interface ICardProps extends ICommonsComponentProps, ITagProps, IBorderProps, IDensityProps, IDimensionProps, IElevationProps, ILoaderProps, ILocationProps, IPositionProps, IRoundedProps, IMarginProps, IPaddingProps, ILinkProps, IRippleProps, IAdjacentProps {
   disabled?: boolean
   flat?: boolean
   hover?: boolean
   image?: string
   link?: boolean
-  prependAvatar?: string
-  prependIcon?: TIcon
   subtitle?: string | number
   text?: string | number
   title?: string | number

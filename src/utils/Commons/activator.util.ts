@@ -51,7 +51,7 @@ export function activator (
 export function getTarget<T extends 'parent' | string | Element | ComponentPublicInstance | [x: number, y: number] | undefined> (
     selector: T,
     vm: ComponentInternalInstance
-): HTMLElement | undefined | (T extends any[] ? [x: number, y: number] : never) {
+): HTMLElement | undefined | (T extends Array<any> ? [x: number, y: number] : never) {
   if (!selector) return
 
   let target
