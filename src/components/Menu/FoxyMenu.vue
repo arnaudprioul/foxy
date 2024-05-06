@@ -55,7 +55,7 @@
 
   import { IItemProps, IMenuProps, IOverlayProps } from '@foxy/interfaces'
 
-  import { focusableChildren, focusChild, getNextElement, getUid, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { focusableChildren, focusChild, getNextElement, getUid, keys, omit, pick, useProxiedModel } from '@foxy/utils'
 
   import { computed, inject, mergeProps, nextTick, provide, ref, shallowRef, StyleValue, watch } from 'vue'
 
@@ -183,7 +183,7 @@
   })
 
   const overlayProps = computed(() => {
-    const overlayProps = pick(props, Object.keys(OVERLAY_PROPS) as Array<keyof IOverlayProps>)
+    const overlayProps = pick(props, keys(OVERLAY_PROPS))
 
     return omit(overlayProps, ['activatorProps', 'class', 'style', 'modelValue', 'absolute'])
   })

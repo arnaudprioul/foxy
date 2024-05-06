@@ -82,7 +82,7 @@
   import { IDialogConfirmationProps, IDialogProps } from '@foxy/interfaces'
   import { TIcon } from '@foxy/types'
 
-  import { omit, pick, useProxiedModel } from '@foxy/utils'
+  import { keys, omit, pick, useProxiedModel } from '@foxy/utils'
 
   import { computed, ref } from 'vue'
 
@@ -98,7 +98,7 @@
   const { hasSlot } = useSlots()
 
   const dialogProps = computed(() => {
-    return omit(pick(props, Object.keys(DIALOG_PROPS) as Array<keyof IDialogProps>), ['modelValue'])
+    return omit(pick(props, keys(DIALOG_PROPS)), ['modelValue'])
   })
 
   const handleIsRead = (value: boolean) => {

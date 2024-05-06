@@ -35,4 +35,3 @@ export interface IIntersectionObserverInit {
   threshold?: number | Array<number>;
 }
 
-

@@ -1,0 +1,4 @@
+# Foxycheckbox
+
+## Usage
+    <FoxyCheckbox />

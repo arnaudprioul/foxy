@@ -215,6 +215,10 @@ export function getNestedValue (obj: any, path: Array<(string | number)>, fallba
   return obj[path[last]] === undefined ? fallback : obj[path[last]]
 }
 
+export function keys<O extends {}> (o: O) {
+  return Object.keys(o) as (keyof O)[]
+}
+
 export function omit<
     T extends object,
     U extends Extract<keyof T, string>
@@ -251,6 +255,42 @@ export function pick<
   }
 
   return found
+}
+
+// Array of keys
+export function pickWithRest<
+    T extends object,
+    U extends Extract<keyof T, string>,
+    E extends Extract<keyof T, string>
+> (obj: T, paths: U[], exclude?: E[]): [yes: TMaybePick<T, Exclude<U, E>>, no: Omit<T, Exclude<U, E>>]
+// Array of keys or RegExp to test keys against
+export function pickWithRest<
+    T extends object,
+    U extends Extract<keyof T, string>,
+    E extends Extract<keyof T, string>
+> (obj: T, paths: (U | RegExp)[], exclude?: E[]): [yes: Partial<T>, no: Partial<T>]
+export function pickWithRest<
+    T extends object,
+    U extends Extract<keyof T, string>,
+    E extends Extract<keyof T, string>
+> (obj: T, paths: (U | RegExp)[], exclude?: E[]): [yes: Partial<T>, no: Partial<T>] {
+  const found = Object.create(null)
+  const rest = Object.create(null)
+
+  for (const key in obj) {
+    if (
+        paths.some(path => path instanceof RegExp
+            ? path.test(key)
+            : path === key
+        ) && !exclude?.some(path => path === key)
+    ) {
+      found[key] = obj[key]
+    } else {
+      rest[key] = obj[key]
+    }
+  }
+
+  return [found, rest]
 }
 
 export function focusChild (el: Element, location?: TFocusLocation) {

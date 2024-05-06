@@ -87,7 +87,7 @@
   import { ICardProps, IDialogProps, IOverlayProps } from '@foxy/interfaces'
   import { TIcon } from '@foxy/types'
 
-  import { focusableChildren, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { focusableChildren, keys, omit, pick, useProxiedModel } from '@foxy/utils'
 
   import { Component, computed, mergeProps, nextTick, ref, StyleValue, watch } from 'vue'
 
@@ -160,12 +160,12 @@
     }, props.activatorProps)
   })
   const overlayProps = computed(() => {
-    const overlayProps = pick(props, Object.keys(OVERLAY_PROPS) as Array<keyof IOverlayProps>)
+    const overlayProps = pick(props, keys(OVERLAY_PROPS))
 
     return omit(overlayProps, ['activatorProps', 'class', 'style', 'modelValue'])
   })
   const cardProps = computed(() => {
-    return pick(props, Object.keys(CARD_PROPS) as Array<keyof ICardProps>)
+    return pick(props, keys(CARD_PROPS))
   })
 
   const handleClose = () => {

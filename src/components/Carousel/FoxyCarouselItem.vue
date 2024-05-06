@@ -31,7 +31,7 @@
 
   import { ICarouselItemProps, IImgProps, IWindowItemProps } from '@foxy/interfaces'
 
-  import { omit, pick } from '@foxy/utils'
+  import { keys, omit, pick } from '@foxy/utils'
 
   import { computed, StyleValue, useAttrs } from 'vue'
 
@@ -43,12 +43,12 @@
   const attrs = useAttrs()
 
   const windowItemProps = computed(() => {
-    const windowItemProp = pick(props, Object.keys(WINDOW_ITEM_PROPS) as Array<keyof IWindowItemProps>)
+    const windowItemProp = pick(props, keys(WINDOW_ITEM_PROPS))
 
     return omit(windowItemProp, ['class', 'style'])
   })
   const imgProps = computed(() => {
-    const imgProp = pick(props, Object.keys(IMG_PROPS) as Array<keyof IImgProps>)
+    const imgProp = pick(props, keys(IMG_PROPS))
 
     return omit(imgProp, ['class', 'style'])
   })

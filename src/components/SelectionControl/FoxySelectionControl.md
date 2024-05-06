@@ -1,0 +1,4 @@
+# Foxyselectioncontrol
+
+## Usage
+    <FoxySelectionControl />

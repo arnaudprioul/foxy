@@ -1,8 +1,8 @@
 <template>
   <component
       :is="progressComponent"
-      :aria-valuemax="max"
       :aria-hidden="!props.active"
+      :aria-valuemax="max"
       :aria-valuenow="indeterminate ? undefined : normalizedValue"
       :class="progressClasses"
       :style="progressStyles"
@@ -18,21 +18,24 @@
 <script lang="ts" setup>
   import { FoxyProgressCircular, FoxyProgressLinear } from '@foxy/components'
 
-  import {
-    useProgress,
-    useSize
-  } from '@foxy/composables'
+  import { useProgress, useSize } from '@foxy/composables'
   import { PROGRESS_CIRCULAR_PROPS, PROGRESS_LINEAR_PROPS } from '@foxy/consts'
 
   import { PROGRESS_TYPE, SIZES } from '@foxy/enums'
 
-  import { IProgressCircularProps, IProgressLinearProps, IProgressProps } from '@foxy/interfaces'
+  import { IProgressProps } from '@foxy/interfaces'
 
-  import { pick } from '@foxy/utils'
+  import { keys, pick } from '@foxy/utils'
 
   import { computed, StyleValue } from 'vue'
 
-  const props = withDefaults(defineProps<IProgressProps>(), { tag: 'div', modelValue: 0, max: 100, thickness: 4, size: SIZES.DEFAULT })
+  const props = withDefaults(defineProps<IProgressProps>(), {
+    tag: 'div',
+    modelValue: 0,
+    max: 100,
+    thickness: 4,
+    size: SIZES.DEFAULT
+  })
 
   const { sizeClasses, sizeStyles } = useSize(props)
   const { normalizedValue, hasContent } = useProgress(props)
@@ -44,7 +47,7 @@
     return isCircular.value ? FoxyProgressCircular : FoxyProgressLinear
   })
   const progressProps = computed(() => {
-    return isCircular.value ? pick(props, Object.keys(PROGRESS_CIRCULAR_PROPS) as Array<keyof IProgressCircularProps>) : pick(props, Object.keys(PROGRESS_LINEAR_PROPS) as Array<keyof IProgressLinearProps>)
+    return isCircular.value ? pick(props, keys(PROGRESS_CIRCULAR_PROPS)) : pick(props, keys(PROGRESS_LINEAR_PROPS))
   })
 
   // CLASS & STYLES

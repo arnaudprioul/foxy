@@ -1,0 +1,1 @@
+export { default as FoxyLabel } from './FoxyLabel.vue'

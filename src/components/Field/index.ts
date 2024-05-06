@@ -1,0 +1,1 @@
+export { default as FoxyField } from '../Field/FoxyField.vue'

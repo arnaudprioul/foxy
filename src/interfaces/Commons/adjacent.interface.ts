@@ -12,9 +12,9 @@ export interface IAdjacentProps {
 
 export interface IAdjacentInnerProps {
   appendInnerAvatar?: string
-  appendInnerIcon: TIcon
+  appendInnerIcon?: TIcon
   prependInnerAvatar?: string
-  prependInnerIcon: TIcon
+  prependInnerIcon?: TIcon
   clearIcon?: TIcon
   clearable?: boolean
 

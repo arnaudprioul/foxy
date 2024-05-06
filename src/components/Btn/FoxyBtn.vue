@@ -101,7 +101,7 @@
   import { DENSITY, SIZES } from '@foxy/enums'
 
   import { IBtnProps, IColorProps } from '@foxy/interfaces'
-  import { pick } from '@foxy/utils'
+  import { keys, pick } from '@foxy/utils'
 
   import { computed, StyleValue, toRef, useAttrs } from 'vue'
 
@@ -195,7 +195,7 @@
           size: '23',
           indeterminate: true
         },
-        pick(props, Object.keys(COLOR_PROPS) as Array<keyof IColorProps>))
+        pick(props, keys(COLOR_PROPS)))
   })
 
   // CLASS & STYLES

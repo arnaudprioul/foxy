@@ -24,7 +24,7 @@
 
   import { IBtnGroupProps, IBtnToggleProps } from '@foxy/interfaces'
 
-  import { omit, pick } from '@foxy/utils'
+  import { keys, omit, pick } from '@foxy/utils'
 
   import { computed, StyleValue } from 'vue'
 
@@ -37,7 +37,7 @@
   const { hasSlot } = useSlots()
 
   const btnGroupProps = computed(() => {
-    const btnGroup = pick(props, Object.keys(BTN_GROUP_PROPS) as Array<keyof IBtnGroupProps>)
+    const btnGroup = pick(props, keys(BTN_GROUP_PROPS))
 
     return omit(btnGroup, ['class', 'style'])
   })

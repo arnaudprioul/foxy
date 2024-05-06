@@ -55,7 +55,7 @@
 
   import { ICarouselProps, IColorProps, IGroupProvide, IWindowProps } from '@foxy/interfaces'
 
-  import { convertToUnit, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { convertToUnit, keys, omit, pick, useProxiedModel } from '@foxy/utils'
 
   import { computed, onMounted, ref, StyleValue, watch } from 'vue'
 
@@ -96,7 +96,7 @@
   onMounted(startTimeout)
 
   const windowProps = computed(() => {
-    const windowProp = pick(props, Object.keys(WINDOW_PROPS) as Array<keyof IWindowProps>)
+    const windowProp = pick(props, keys(WINDOW_PROPS))
 
     return omit(windowProp, ['modelValue'])
   })
@@ -117,7 +117,7 @@
       icon: props.delimiterIcon,
       size: SIZES.SMALL,
       density: DENSITY.COMPACT
-    }, pick(props, Object.keys(COLOR_PROPS) as Array<keyof IColorProps>))
+    }, pick(props, keys(COLOR_PROPS)))
   }
 
   const { hasSlot } = useSlots()

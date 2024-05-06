@@ -39,7 +39,7 @@
 
   import { TAnchor } from '@foxy/types'
 
-  import { getUid, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { getUid, keys, omit, pick, useProxiedModel } from '@foxy/utils'
 
   import { computed, mergeProps, ref, StyleValue } from 'vue'
 
@@ -96,7 +96,7 @@
   )
 
   const overlayProps = computed(() => {
-    const overlayProps = pick(props, Object.keys(OVERLAY_PROPS) as Array<keyof IOverlayProps>)
+    const overlayProps = pick(props, keys(OVERLAY_PROPS))
 
     return omit(overlayProps, ['activatorProps', 'class', 'style', 'modelValue', 'location', 'origin', 'transition', 'disableGlobalStack', 'absolute', 'persistent'])
   })
