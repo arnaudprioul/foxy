@@ -1,5 +1,6 @@
 import { useSlots } from '@foxy/composables'
-import { IAdjacentProps } from '@foxy/interfaces'
+
+import { IAdjacentInnerProps, IAdjacentProps } from '@foxy/interfaces'
 
 import { computed } from 'vue'
 
@@ -35,5 +36,48 @@ export function useAdjacent (props: IAdjacentProps) {
     hasAppend,
     handleClickPrepend,
     handleClickAppend
+  }
+}
+
+export function useAdjacentInner (props: IAdjacentInnerProps) {
+  const { hasSlot } = useSlots()
+
+  const emits = defineEmits(['click:appendInner', 'click:prependInner', 'click:clear'])
+
+  const hasPrependInnerMedia = computed(() => {
+    return !!(props.prependInnerAvatar || props.prependInnerIcon)
+  })
+  const hasPrependInner = computed(() => {
+    return hasSlot('prependInner') || hasPrependInnerMedia.value
+  })
+  const hasAppendInnerMedia = computed(() => {
+    return !!(props.appendInnerAvatar || props.appendInnerIcon)
+  })
+  const hasAppendInner = computed(() => {
+    return hasSlot('appendInner') || hasAppendInnerMedia.value
+  })
+  const hasClear = computed(() => {
+    return !!(props.clearable || hasSlot('clear'))
+  })
+
+  const handleClickPrependInner = (e: Event) => {
+    emits('click:prependInner', e)
+  }
+  const handleClickAppendInner = (e: Event) => {
+    emits('click:appendInner', e)
+  }
+  const handleClickClear = (e: Event) => {
+    emits('click:clear', e)
+  }
+
+  return {
+    hasPrependInnerMedia,
+    hasPrependInner,
+    hasAppendInnerMedia,
+    hasAppendInner,
+    hasClear,
+    handleClickPrependInner,
+    handleClickAppendInner,
+    handleClickClear
   }
 }

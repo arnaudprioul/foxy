@@ -65,7 +65,7 @@
     useValidation
   } from '@foxy/composables'
 
-  import { DIRECTION } from '@foxy/enums'
+  import { DENSITY, DIRECTION } from '@foxy/enums'
 
   import { IInputProps } from '@foxy/interfaces'
 
@@ -75,7 +75,8 @@
 
   const props = withDefaults(defineProps<IInputProps>(), {
     direction: DIRECTION.HORIZONTAL,
-    centerAffix: true
+    centerAffix: true,
+    density: DENSITY.DEFAULT
   })
 
   const emits = defineEmits(['update:modelValue'])
@@ -177,7 +178,171 @@
       elevationClasses.value,
       validationClasses.value,
       props.class,
-      props.class,
     ]
   })
 </script>
+
+<style lang="scss" scoped>
+  .foxy-input {
+    $this: &;
+
+    display: grid;
+    flex: 1 1 auto;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+
+    &__details {
+      align-items: flex-end;
+      display: flex;
+      font-size: 0.75rem;
+      font-weight: 400;
+      grid-area: messages;
+      letter-spacing: 0.0333333333em;
+      line-height: normal;
+      min-height: 22px;
+      padding-top: 6px;
+      overflow: hidden;
+      justify-content: space-between;
+    }
+
+    &__details,
+    &__prepend,
+    &__append {
+      > .foxy-icon {
+        opacity: 0.7;
+      }
+    }
+
+    &__prepend,
+    &__append {
+      display: flex;
+      align-items: flex-start;
+      padding-top: 8px;
+    }
+
+    &__prepend {
+      grid-area: prepend;
+    }
+
+    &__append {
+      grid-area: append;
+    }
+
+    &__control {
+      display: flex;
+      grid-area: control;
+    }
+
+    &--disabled {
+      pointer-events: none;
+    }
+
+    &--density-default {
+      --foxy-input---density: 0;
+    }
+
+    &--density-compact {
+      --foxy-input---density: -8px;
+    }
+
+    &--vertical {
+      grid-template-areas: "append" "control" "prepend";
+      grid-template-rows: max-content auto max-content;
+      grid-template-columns: min-content;
+
+      #{$this}__prepend {
+        margin-block-start: 16px;
+      }
+
+      #{$this}__append {
+        margin-block-end: 16px;
+      }
+    }
+
+    &--horizontal {
+      grid-template-areas: "prepend control append" "a messages b";
+      grid-template-columns: max-content minmax(0, 1fr) max-content;
+      grid-template-rows: auto auto;
+
+      #{$this}__prepend {
+        margin-inline-end: 16px;
+      }
+
+      #{$this}__append {
+        margin-inline-start: 16px;
+      }
+    }
+
+    &--disabled,
+    &--error {
+      #{$this}__details {
+        > .foxy-messages {
+          opacity: 1;
+        }
+      }
+
+      #{$this}__details,
+      #{$this}__prepend,
+      #{$this}__append{
+        > .foxy-icon {
+          opacity: 1;
+        }
+      }
+    }
+
+    &--disabled {
+      #{$this}__details,
+      #{$this}__prepend,
+      #{$this}__append {
+        opacity: 0.5;
+      }
+    }
+
+    &--error {
+      &:not(#{$this}--disabled) {
+        #{$this}__details {
+          > .foxy-messages {
+            color: rgba(255, 0, 0, 1);
+          }
+        }
+
+        #{$this}__details,
+        #{$this}__prepend,
+        #{$this}__append{
+          > .foxy-icon {
+            color: rgba(255, 0, 0, 1);
+          }
+        }
+      }
+    }
+
+    &--center-affix {
+      #{$this}__prepend,
+      #{$this}__append {
+        align-items: center;
+        padding-top: 0;
+      }
+    }
+
+    &--hide-spin-buttons {
+      :deep(input) {
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        &[type=number] {
+          -moz-appearance: textfield;
+        }
+      }
+    }
+  }
+</style>
+
+<style>
+  :root {
+
+  }
+</style>

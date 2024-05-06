@@ -10,6 +10,15 @@ export interface IAdjacentProps {
   'onClick:append'?: TEventProp<[MouseEvent]>
 }
 
-export interface IAdjacentInputProps extends IAdjacentProps {
+export interface IAdjacentInnerProps {
+  appendInnerAvatar?: string
+  appendInnerIcon: TIcon
+  prependInnerAvatar?: string
+  prependInnerIcon: TIcon
+  clearIcon?: TIcon
+  clearable?: boolean
 
+  'onClick:clear'?: TEventProp<[MouseEvent]>
+  'onClick:appendInner'?: TEventProp<[MouseEvent]>
+  'onClick:prependInner'?: TEventProp<[MouseEvent]>
 }
