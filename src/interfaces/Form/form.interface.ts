@@ -11,7 +11,7 @@ export interface IFormProvide {
     resetValidation: () => Promise<void>
   }) => void
   unregister: (id: number | string) => void
-  update: (id: number | string, isValid: boolean | null, errorMessages: Array<string>) => void
+  update: (id: number | string, isValid: boolean | undefined, errorMessages: Array<string>) => void
   items?: Ref<Array<IFormField>>
   isDisabled: ComputedRef<boolean>
   isReadonly: ComputedRef<boolean>
@@ -35,6 +35,6 @@ export interface IFormField {
   reset: () => Promise<void>
   resetValidation: () => Promise<void>
   vm: Raw<ComponentInternalInstance>
-  isValid: boolean | null
+  isValid: boolean | undefined
   errorMessages: Array<string>
 }

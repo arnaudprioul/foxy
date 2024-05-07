@@ -125,14 +125,14 @@
 
   const inputProps = computed(() => {
     return {
-      id,
-      messagesId,
-      isDirty,
-      isDisabled,
-      isReadonly,
-      isPristine,
-      isValid,
-      isValidating,
+      id: id.value,
+      messagesId: messagesId.value,
+      isDirty: isDirty.value,
+      isDisabled: isDisabled.value,
+      isReadonly: isReadonly.value,
+      isPristine: isPristine.value,
+      isValid: isValid.value,
+      isValidating: isValidating.value,
       reset,
       resetValidation,
       validate
