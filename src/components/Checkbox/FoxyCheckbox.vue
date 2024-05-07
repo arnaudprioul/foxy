@@ -73,3 +73,21 @@
     ]
   })
 </script>
+
+<style lang="scss" scoped>
+  .foxy-checkbox{
+    &.foxy-input {
+      flex: 0 1 auto;
+    }
+
+    .foxy-selection-control {
+      min-height: calc(56px + (2 * var(--foxy-input---density)));
+    }
+  }
+</style>
+
+<style>
+  :root {
+
+  }
+</style>

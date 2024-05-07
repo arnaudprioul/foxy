@@ -142,3 +142,146 @@
     ]
   })
 </script>
+
+<style lang="scss" scoped>
+  .foxy-selection-control {
+    $this: &;
+
+    align-items: center;
+    contain: layout;
+    display: flex;
+    flex: 1 0;
+    grid-area: control;
+    position: relative;
+    user-select: none;
+
+    .foxy-label {
+      white-space: normal;
+      word-break: break-word;
+      height: 100%;
+    }
+
+    &__wrapper {
+      width: calc(40px + (1.5 * var(--foxy-selection-control--density)));
+      height: calc(40px + (1.5 * var(--foxy-selection-control--density)));
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      justify-content: center;
+      flex: none;
+    }
+
+    &__input {
+      width: calc(40px + (1.5 * var(--foxy-selection-control--density)));
+      height: calc(40px + (1.5 * var(--foxy-selection-control--density)));
+      align-items: center;
+      display: flex;
+      flex: none;
+      justify-content: center;
+      position: relative;
+      border-radius: 50%;
+
+      > .foxy-icon {
+        opacity: 0.7;
+      }
+
+      input {
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background-color: currentColor;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover {
+        &:before {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    &--disabled,
+    &--dirty,
+    &--error {
+      #{$this}__input {
+        > .foxy-icon {
+          opacity: 1;
+        }
+      }
+    }
+
+    &--error,
+    &--disabled {
+      .foxy-label {
+        opacity: 1;
+      }
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    &--error {
+      :not(#{$this}--disabled) {
+        .foxy-label {
+          color: rgba(255, 0, 0, 1);
+        }
+
+        #{$this}__input {
+          > .foxy-icon {
+            color: rgba(255, 0, 0, 1);
+          }
+        }
+      }
+    }
+
+    &--inline {
+      display: inline-flex;
+      flex: 0 0 auto;
+      min-width: 0;
+      max-width: 100%;
+
+      .foxy-label {
+        width: auto;
+      }
+    }
+
+    &--focus-visible {
+      #{$this}__input {
+        &:before {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    &--density-default {
+      --foxy-selection-control--density: 0px;
+    }
+
+    &--density-compact {
+      --foxy-selection-control--density: -8px;
+    }
+  }
+</style>
+
+<style>
+  :root {
+
+  }
+</style>
