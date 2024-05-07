@@ -140,7 +140,7 @@
   const { marginClasses, marginStyles } = useMargin(props)
   const { paddingStyles, paddingClasses } = usePadding(props)
 
-  const {handleClickPrepend, handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
+  const {clickPrepend: handleClickPrepend, clickAppend: handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
   const link = useLink(props, attrs)
 
   const isClickable = computed(() => {

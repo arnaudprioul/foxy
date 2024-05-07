@@ -112,7 +112,7 @@
     validationClasses,
   } = useValidation(props, 'foxy-input', id)
 
-  const { hasPrepend, hasAppend, handleClickAppend, handleClickPrepend } = useAdjacent(props, emits)
+  const { hasPrepend, hasAppend, clickPrepend: handleClickPrepend, clickAppend: handleClickAppend } = useAdjacent(props, emits)
 
   const messages = computed(() => {
     if (props.errorMessages?.length || (!isPristine.value && errorMessages.value.length)) {

@@ -1,0 +1,4 @@
+# Foxychip
+
+## Usage
+    <FoxyChip />

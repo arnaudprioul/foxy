@@ -59,7 +59,7 @@
 <script lang="ts" setup>
   import { FoxyAvatar, FoxyIcon } from '@foxy/components'
 
-  import { useDensity, useSlots } from '@foxy/composables'
+  import { useAdjacent, useDensity, useSlots } from '@foxy/composables'
 
   import { ICardHeaderProps } from '@foxy/interfaces'
 
@@ -67,23 +67,18 @@
 
   const props = withDefaults(defineProps<ICardHeaderProps>(), { tag: 'FoxyToolbar' })
 
+  const emits = defineEmits(['click:prepend', 'click:append'])
+
   const { hasSlot } = useSlots()
   const { densityClasses } = useDensity(props)
 
-  // SLOTS
+  const {
+    clickPrepend: handleClickPrepend,
+    clickAppend: handleClickAppend,
+    hasPrepend,
+    hasAppend
+  } = useAdjacent(props, emits)
 
-  const hasPrependMedia = computed(() => {
-    return !!(props.prependAvatar || props.prependIcon)
-  })
-  const hasPrepend = computed(() => {
-    return hasSlot('prepend') || hasPrependMedia.value
-  })
-  const hasAppendMedia = computed(() => {
-    return !!(props.appendAvatar || props.appendIcon)
-  })
-  const hasAppend = computed(() => {
-    return hasSlot('append') || hasAppendMedia.value
-  })
   const hasTitle = computed(() => {
     return hasSlot('title') || props.title != null
   })

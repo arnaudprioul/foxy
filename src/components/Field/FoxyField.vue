@@ -129,9 +129,9 @@
   const { focusClasses, isFocused, focus: handleFocus, blur: handleBlur } = useFocus(props)
   const {
     hasAppendInner,
-    handleClickAppendInner,
-    handleClickPrependInner,
-    handleClickClear,
+    clickAppendInner: handleClickAppendInner,
+    clickPrependInner: handleClickPrependInner,
+    clickClear: handleClickClear,
     hasPrependInner,
     hasClear
   } = useAdjacentInner(props, emits)
