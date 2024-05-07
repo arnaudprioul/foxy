@@ -4,13 +4,13 @@
       :style="selectionControlStyles"
       v-bind="rootAttrs">
     <div :style="textColorStyles" class="foxy-selection-control__wrapper">
-      <slot name="default">
+      <slot name="default" v-bind="{ model, textColorStyles, backgroundColorStyles, icon, props: { onFocus: handleFocus, onBlur: handleBlur, id } }">
         <div v-ripple="rippleProp" class="foxy-selection-control__input">
-          <slot name="input"
-                v-bind="{model,textColorStyles,backgroundColorStyles,icon,props: {onFocus: handleFocus,onBlur: handleBlur,id}}">
+          <slot name="input" v-bind="{ model, textColorStyles, backgroundColorStyles, icon, props: { onFocus: handleFocus, onBlur: handleBlur, id } }">
             <template v-if="icon">
               <foxy-icon key="icon" :icon="icon"/>
             </template>
+
             <input
                 :id="id"
                 ref="input"
@@ -32,7 +32,7 @@
 
         <div class="foxy-selection-control__label">
           <slot name="label">
-            <foxy-label :label="label" for="id" @click="handleClickLabel"/>
+            <foxy-label :text="label" :for="id" @click="handleClickLabel"/>
           </slot>
         </div>
       </slot>
@@ -55,9 +55,10 @@
 
   const props = withDefaults(defineProps<ISelectionControlProps>(), {})
 
-  const emits = defineEmits(['update:modelValue'])
+  const emits = defineEmits(['update:modelValue', 'click:label'])
 
   const attrs = useAttrs()
+
   const {
     group,
     densityClasses,
@@ -96,7 +97,7 @@
     isFocusVisible.value = false
   }
   const handleClickLabel = (e: Event) => {
-    e.stopPropagation()
+    emits('click:label', e)
   }
   const handleInput = (e: Event) => {
     if (!isInteractive.value) return
@@ -162,8 +163,7 @@
     }
 
     &__wrapper {
-      width: calc(40px + (1.5 * var(--foxy-selection-control--density)));
-      height: calc(40px + (1.5 * var(--foxy-selection-control--density)));
+      height: calc(40px + 1.5 * var(--foxy-selection-control--density));
       display: inline-flex;
       align-items: center;
       position: relative;
@@ -172,8 +172,8 @@
     }
 
     &__input {
-      width: calc(40px + (1.5 * var(--foxy-selection-control--density)));
-      height: calc(40px + (1.5 * var(--foxy-selection-control--density)));
+      width: calc(40px + 1.5 * var(--foxy-selection-control--density));
+      height: calc(40px + 1.5 * var(--foxy-selection-control--density));
       align-items: center;
       display: flex;
       flex: none;
@@ -210,7 +210,7 @@
 
       &:hover {
         &:before {
-          opacity: 0.7;
+          opacity: 0.04;
         }
       }
     }

@@ -125,6 +125,8 @@
 
   const props = withDefaults(defineProps<ICardProps>(), { ripple: true, density: DENSITY.DEFAULT, tag: 'div' })
 
+  const emits = defineEmits(['click:append', 'click:prepend'])
+
   const attrs = useAttrs()
 
   const { borderClasses, borderStyles } = useBorder(props)
@@ -138,7 +140,7 @@
   const { marginClasses, marginStyles } = useMargin(props)
   const { paddingStyles, paddingClasses } = usePadding(props)
 
-  const {handleClickPrepend, handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props)
+  const {handleClickPrepend, handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
   const link = useLink(props, attrs)
 
   const isClickable = computed(() => {

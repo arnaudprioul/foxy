@@ -68,6 +68,8 @@
 
   const props = withDefaults(defineProps<IBreadcrumbItemProps>(), { tag: 'span', density: DENSITY.DEFAULT })
 
+  const emits = defineEmits(['click:append', 'click:prepend'])
+
   const attrs = useAttrs()
 
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
@@ -77,7 +79,7 @@
   const { paddingClasses, paddingStyles } = usePadding(props)
   const { marginClasses, marginStyles } = useMargin(props)
 
-  const {hasAppend, hasPrepend, handleClickPrepend, handleClickAppend} = useAdjacent(props)
+  const {hasAppend, hasPrepend, handleClickPrepend, handleClickAppend} = useAdjacent(props, emits)
   const link = useLink(props, attrs)
 
   const isActive = computed(() => props.active || link.isActive?.value)

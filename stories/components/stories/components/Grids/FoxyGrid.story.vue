@@ -1,7 +1,7 @@
 <template>
   <Story
       group="components"
-      title="Grids"
+      title="Grids/Columns"
   >
     <Variant title="Default">
       <template #default>

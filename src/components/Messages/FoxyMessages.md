@@ -1,0 +1,4 @@
+# Foxymessages
+
+## Usage
+    <FoxyMessages />

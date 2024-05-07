@@ -2,10 +2,10 @@
   <label
       :class="labelClasses"
       :style="labelStyles"
-      @click="props.onClick"
+      @click="handleClick"
   >
-    <slot name="default">
-      {{ props.text }}
+    <slot name="default" v-bind="{text}">
+      {{ text }}
     </slot>
   </label>
 </template>
@@ -19,11 +19,17 @@
 
   const props = withDefaults(defineProps<ILabelProps>(), {})
 
+  const emits = defineEmits(['click'])
+
   const { roundedClasses, roundedStyles } = useRounded(props)
   const { borderClasses, borderStyles } = useBorder(props)
   const { paddingClasses, paddingStyles } = usePadding(props)
   const { marginClasses, marginStyles } = useMargin(props)
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
+
+  const handleClick = (e: MouseEvent) => {
+    emits('click', e)
+  }
 
   // CLASS & STYLES
 

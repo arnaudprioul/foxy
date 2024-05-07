@@ -4,10 +4,8 @@ import { IAdjacentInnerProps, IAdjacentProps } from '@foxy/interfaces'
 
 import { computed } from 'vue'
 
-export function useAdjacent (props: IAdjacentProps) {
+export function useAdjacent (props: IAdjacentProps, emits: any) {
   const { hasSlot } = useSlots()
-
-  const emits = defineEmits(['click:append', 'click:prepend'])
 
   const hasPrependMedia = computed(() => {
     return !!(props.prependAvatar || props.prependIcon)
@@ -39,10 +37,8 @@ export function useAdjacent (props: IAdjacentProps) {
   }
 }
 
-export function useAdjacentInner (props: IAdjacentInnerProps) {
+export function useAdjacentInner (props: IAdjacentInnerProps, emits: any) {
   const { hasSlot } = useSlots()
-
-  const emits = defineEmits(['click:appendInner', 'click:prependInner', 'click:clear'])
 
   const hasPrependInnerMedia = computed(() => {
     return !!(props.prependInnerAvatar || props.prependInnerIcon)

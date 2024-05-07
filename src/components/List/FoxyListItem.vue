@@ -92,7 +92,7 @@
 
   const props = withDefaults(defineProps<IListItemProps>(), { tag: 'div' })
 
-  const emits = defineEmits(['click'])
+  const emits = defineEmits(['click', 'click:append', 'click:prepend'])
 
   const { hasSlot } = useSlots()
   const link = useLink(props, attrs)
@@ -116,7 +116,7 @@
   const { elevationClasses } = useElevation(props)
   const { roundedClasses, roundedStyles } = useRounded({ rounded: props.rounded || props.nav })
 
-  const {handleClickPrepend, handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props)
+  const {handleClickPrepend, handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
 
   const isActive = computed(() => {
     return props.active !== false && (props.active || link.isActive?.value || isSelected.value)

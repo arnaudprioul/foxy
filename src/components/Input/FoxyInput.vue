@@ -35,13 +35,13 @@
     </span>
 
     <div v-if="hasDetails" class="v-input__details">
-      <slot name="details" v-bind="inputProps">
+      <slot name="details" v-bind="{...inputProps, hasMessages, messages}">
         <foxy-messages
             :id="messagesId"
             :active="hasMessages"
             :messages="messages">
-          <template #default="message">
-            <slot name="messages" v-bind="message"/>
+          <template v-if="hasSlot('message')" #default="{message}">
+            <slot name="message" v-bind="{message}"/>
           </template>
         </foxy-messages>
       </slot>
@@ -51,6 +51,7 @@
 
 <script lang="ts" setup>
   import { FoxyAvatar, FoxyIcon } from '@foxy/components'
+  import { FoxyMessages } from '@foxy/components/Messages'
 
   import {
     useAdjacent,
@@ -79,7 +80,7 @@
     density: DENSITY.DEFAULT
   })
 
-  const emits = defineEmits(['update:modelValue'])
+  const emits = defineEmits(['update:modelValue', 'click:append', 'click:prepend'])
 
   const { densityClasses } = useDensity(props)
   const { dimensionStyles } = useDimension(props)
@@ -111,7 +112,7 @@
     validationClasses,
   } = useValidation(props, 'foxy-input', id)
 
-  const { hasPrepend, hasAppend, handleClickAppend, handleClickPrepend } = useAdjacent(props)
+  const { hasPrepend, hasAppend, handleClickAppend, handleClickPrepend } = useAdjacent(props, emits)
 
   const messages = computed(() => {
     if (props.errorMessages?.length || (!isPristine.value && errorMessages.value.length)) {
@@ -284,7 +285,7 @@
 
       #{$this}__details,
       #{$this}__prepend,
-      #{$this}__append{
+      #{$this}__append {
         > .foxy-icon {
           opacity: 1;
         }
@@ -309,7 +310,7 @@
 
         #{$this}__details,
         #{$this}__prepend,
-        #{$this}__append{
+        #{$this}__append {
           > .foxy-icon {
             color: rgba(255, 0, 0, 1);
           }

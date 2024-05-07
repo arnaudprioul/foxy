@@ -13,12 +13,24 @@
             v-model="model"
             :aria-describedby="messagesId"
             :disabled="isDisabled"
-            :error="isValid"
+            :error="!isValid"
             :readonly="isReadonly"
             v-bind="{ ...checkboxBtnProps, ...controlAttrs }"
-            @blur="blur"
-            @focus="focus"
-        />
+            @click:label="handleClickLabel"
+            @blur="handleBlur"
+            @focus="handleFocus">
+          <template v-if="hasSlot('default')" #default>
+            <slot name="default"/>
+          </template>
+
+          <template v-if="hasSlot('input')" #input="{props, icon, textColorStyles, backgroundColorStyles, model}">
+            <slot name="input" v-bind="{props, icon, textColorStyles, backgroundColorStyles, model}"/>
+          </template>
+
+          <template v-if="hasSlot('label')" #label>
+            <slot name="label"/>
+          </template>
+        </foxy-checkbox-btn>
       </slot>
     </template>
   </foxy-input>
@@ -27,7 +39,7 @@
 <script lang="ts" setup>
   import { FoxyCheckboxBtn, FoxyInput } from '@foxy/components'
 
-  import { useFocus } from '@foxy/composables'
+  import { useFocus, useSlots } from '@foxy/composables'
 
   import { CHECKBOX_BTN_PROPS, INPUT_PROPS } from '@foxy/consts'
 
@@ -41,14 +53,19 @@
 
   const props = withDefaults(defineProps<ICheckboxProps>(), { density: DENSITY.DEFAULT })
 
-  const emits = defineEmits(['update:modelValue', 'update:focused'])
+  const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])
 
   const model = useProxiedModel(props, 'modelValue')
-  const { isFocused, focus, blur } = useFocus(props)
+  const { isFocused, focus: handleFocus, blur: handleBlur } = useFocus(props)
   const attrs = useAttrs()
+  const { hasSlot } = useSlots()
 
   const uid = getUid()
   const id = computed(() => props.id || `checkbox-${uid}`)
+
+  const handleClickLabel = (e: Event) => {
+    emits('click:label', e)
+  }
 
   const [rootAttrs, controlAttrs] = filterInputAttrs(attrs)
 
@@ -75,13 +92,13 @@
 </script>
 
 <style lang="scss" scoped>
-  .foxy-checkbox{
+  .foxy-checkbox {
     &.foxy-input {
       flex: 0 1 auto;
     }
 
     .foxy-selection-control {
-      min-height: calc(56px + (2 * var(--foxy-input---density)));
+      min-height: calc(56px + 2 * var(--foxy-input---density));
     }
   }
 </style>

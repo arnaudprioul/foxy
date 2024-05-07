@@ -115,7 +115,7 @@
     density: DENSITY.DEFAULT
   })
 
-  const emits = defineEmits(['group:selected'])
+  const emits = defineEmits(['group:selected', 'click:append', 'click:prepend'])
 
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { densityClasses } = useDensity(props)
@@ -130,7 +130,7 @@
   const { marginClasses, marginStyles } = useMargin(props)
   const { sizeClasses, sizeStyles } = useSize(props)
 
-  const {handleClickPrepend, handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props)
+  const {handleClickPrepend, handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
   const group = useGroupItem(props, FOXY_BTN_TOGGLE_KEY, false)
   const link = useLink(props, attrs)
   const { hasSlot } = useSlots()

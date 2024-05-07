@@ -117,7 +117,7 @@
 
   const props = withDefaults(defineProps<IFieldProps>(), {})
 
-  export const emits = defineEmits(['update:focused', 'update:modelValue']);
+  const emits = defineEmits(['update:focused', 'update:modelValue', 'click:appendInner', 'click:prependInner', 'click:clear']);
 
   const { loaderClasses } = useLoader(props)
   const { roundedClasses, roundedStyles } = useRounded(props)
@@ -134,7 +134,7 @@
     handleClickClear,
     hasPrependInner,
     hasClear
-  } = useAdjacentInner(props)
+  } = useAdjacentInner(props, emits)
 
   const uid = getUid()
   const id = computed(() => props.id || `input-${uid}`)

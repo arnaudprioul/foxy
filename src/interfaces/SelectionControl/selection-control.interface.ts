@@ -1,6 +1,7 @@
 import { IColorProps, ICommonsComponentProps, IDensityProps, IRippleProps } from '@foxy/interfaces'
 
-import { TIcon } from '@foxy/types'
+import { TEventProp, TIcon } from '@foxy/types'
+
 import { Ref } from 'vue'
 
 export interface ISelectionControlProps extends ICommonsComponentProps, ISelectionControlGroupProps, IColorProps {
@@ -8,6 +9,8 @@ export interface ISelectionControlProps extends ICommonsComponentProps, ISelecti
   trueValue?: any
   falseValue?: any
   value?: any
+
+  'onClick:label'?: TEventProp
 }
 
 export interface ISelectionControlGroupProps extends ICommonsComponentProps, IColorProps, IDensityProps, IRippleProps{
