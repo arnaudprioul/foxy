@@ -1,0 +1,4 @@
+# Foxyslidegroup
+
+## Usage
+    <FoxySlideGroup />

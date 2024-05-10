@@ -2,7 +2,7 @@ import { IN_BROWSER, ON_REGEX } from '@foxy/consts'
 import { FOCUS_LOCATION } from '@foxy/enums'
 
 
-import { TFocusLocation, TMaybePick, TNotAUnion, TSelectItemKey } from '@foxy/types'
+import { TFocusLocation, TMaybePick, TNotAUnion, TSelectItemKey, TTemplateRef } from '@foxy/types'
 import { IfAny } from '@vue/shared'
 
 import {
@@ -13,7 +13,7 @@ import {
   ComputedGetter,
   Fragment,
   InjectionKey,
-  reactive,
+  reactive, shallowRef,
   ToRefs,
   toRefs,
   VNode,
@@ -433,4 +433,22 @@ export function wrapInArray<T> (
       ? []
       : Array.isArray(v)
           ? v as any : [v]
+}
+
+export function templateRef () {
+  const el = shallowRef<HTMLElement | ComponentPublicInstance | null>()
+  const fn = (target: HTMLElement | ComponentPublicInstance | null) => {
+    el.value = target
+  }
+  Object.defineProperty(fn, 'value', {
+    enumerable: true,
+    get: () => el.value,
+    set: val => el.value = val,
+  })
+  Object.defineProperty(fn, 'el', {
+    enumerable: true,
+    get: () => refElement(el.value),
+  })
+
+  return fn as TTemplateRef
 }

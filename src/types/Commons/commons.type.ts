@@ -1,4 +1,5 @@
 import { FOCUS_LOCATION } from '@foxy/enums'
+import { ComponentPublicInstance } from "vue"
 
 export type TNotAUnion <T> = [T] extends [infer U] ? _TNotAUnion <U, U> : never
 export type _TNotAUnion <T, U> = U extends any ? [T] extends [U] ? unknown : never : never
@@ -19,3 +20,9 @@ export type TMaybePick<
 > = Record<string, unknown> extends T ? Partial<Pick<T, U>> : Pick<T, U>
 
 export type TFocusLocation = `${FOCUS_LOCATION}` | number
+
+export type TTemplateRef = {
+    (target: Element | ComponentPublicInstance | null): void
+    value: HTMLElement | ComponentPublicInstance | null | undefined
+    readonly el: HTMLElement | undefined
+}

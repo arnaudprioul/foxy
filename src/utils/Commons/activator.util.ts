@@ -28,18 +28,20 @@ export function activator (
 
   const bindActivatorProps = (el = getActivator(), _props = props.activatorProps) => {
     if (!el) return
+    if (!_props) return
 
     bindProps(el, mergeProps(activatorEvents.value, _props))
   }
 
   const unbindActivatorProps = (el = getActivator(), _props = props.activatorProps) => {
     if (!el) return
+    if (!_props) return
 
     unbindProps(el, mergeProps(activatorEvents.value, _props))
   }
 
   const getActivator = (selector = props.activator): HTMLElement | undefined => {
-    const activator = getTarget(selector, vm)
+    const activator = getTargetActivator(selector, vm)
 
     // The activator should only be a valid element (Ignore comments and text nodes)
     activatorEl.value = activator?.nodeType === Node.ELEMENT_NODE ? activator : undefined
@@ -48,7 +50,7 @@ export function activator (
   }
 }
 
-export function getTarget<T extends 'parent' | string | Element | ComponentPublicInstance | [x: number, y: number] | undefined> (
+export function getTargetActivator<T extends 'parent' | string | Element | ComponentPublicInstance | [x: number, y: number] | undefined> (
     selector: T,
     vm: ComponentInternalInstance
 ): HTMLElement | undefined | (T extends Array<any> ? [x: number, y: number] : never) {

@@ -1,4 +1,4 @@
-import { IDisplayOptions } from '@foxy/interfaces'
+import { IDisplayOptions, IGoToOptions } from '@foxy/interfaces'
 
 import { TIconOptions, TSSROptions } from '@foxy/types'
 
@@ -10,6 +10,7 @@ export interface IFoxyOptions {
   icons?: TIconOptions
   display?: IDisplayOptions
   ssr?: TSSROptions
+  goTo?: IGoToOptions
 }
 
 export interface IBlueprint extends Omit<IFoxyOptions, 'blueprint'> {}

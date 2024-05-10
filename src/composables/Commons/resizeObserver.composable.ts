@@ -4,10 +4,10 @@ import { IN_BROWSER } from '@foxy/consts'
 
 import { IResizeState } from '@foxy/interfaces'
 
-import { refElement } from '@foxy/utils'
+import { refElement, templateRef } from '@foxy/utils'
 
 export function useResizeObserver (callback?: ResizeObserverCallback, box: 'content' | 'border' = 'content'): IResizeState {
-  const resizeRef = ref<HTMLElement>()
+  const resizeRef = templateRef()
   const contentRect = ref<DOMRectReadOnly>()
 
   if (IN_BROWSER) {

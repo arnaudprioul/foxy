@@ -4,7 +4,7 @@ import { FOXY_MENU_KEY, IN_BROWSER } from '@foxy/consts'
 
 import { IActivatorProps } from '@foxy/interfaces'
 
-import { activator, getCurrentInstance, getTarget, matchesSelector, refElement } from '@foxy/utils'
+import { activator, getCurrentInstance, getTargetActivator, matchesSelector, refElement } from '@foxy/utils'
 
 import { computed, effectScope, EffectScope, inject, nextTick, onScopeDispose, ref, Ref, watch, watchEffect } from 'vue'
 
@@ -57,7 +57,7 @@ export function useActivator (props: IActivatorProps, { isActive, isTop }: {
     activatorEl.value = (e.currentTarget || e.target) as HTMLElement
     runOpenDelay()
   }
-  const handleMouseLeave = (e: MouseEvent) => {
+  const handleMouseLeave = () => {
     isHovered = false
     runCloseDelay()
   }
@@ -189,7 +189,7 @@ export function useActivator (props: IActivatorProps, { isActive, isTop }: {
   const target = computed(() => {
     if (props.target === 'cursor' && cursorTarget.value) return cursorTarget.value
     if (targetRef.value) return refElement(targetRef.value)
-    return getTarget(props.target, vm) || activatorEl.value
+    return getTargetActivator(props.target, vm) || activatorEl.value
   })
   const targetEl = computed(() => {
     return Array.isArray(target.value)

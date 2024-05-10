@@ -28,9 +28,9 @@ export interface IGroupProps {
   disabled?: boolean
   modelValue?: unknown
   multiple?: boolean
-  mandatory?: boolean | undefined
-  max?: number | undefined
-  selectedClass?: string | undefined
+  mandatory?: boolean
+  max?: number
+  selectedClass?: string
 }
 
 export interface IGroupItemProps {
