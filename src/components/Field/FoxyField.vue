@@ -22,8 +22,8 @@
       </slot>
     </template>
 
-    <div v-if="hasPrependInner" key="prepend" class="foxy-field__prepend-inner" @click="handleClickPrependInner">
-      <slot name="prepend">
+    <div v-if="hasPrependInner" key="prependInner" class="foxy-field__prepend-inner" @click="handleClickPrependInner">
+      <slot name="prependInner">
         <foxy-avatar
             v-if="prependInnerAvatar"
             key="prepend-avatar"
@@ -68,8 +68,8 @@
       </div>
     </foxy-expand-x>
 
-    <div v-if="hasAppendInner" key="append" class="foxy-field__append-inner" @click="handleClickAppendInner">
-      <slot name="append">
+    <div v-if="hasAppendInner" key="appendInner" class="foxy-field__append-inner" @click="handleClickAppendInner">
+      <slot name="appendInner">
         <foxy-avatar
             v-if="appendInnerAvatar"
             key="append-avatar"

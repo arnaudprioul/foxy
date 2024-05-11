@@ -2,15 +2,15 @@ import {
   IBorderProps,
   IColorProps,
   ICommonsComponentProps,
-  IDensityProps,
+  IDensityProps, IElevationProps,
   IMarginProps,
   IPaddingProps,
   IRoundedProps,
   ITagProps,
-  ITransitionComponentProps,
+  ITransitionComponentProps
 } from '@foxy/interfaces'
 
-export interface IMessagesProps extends ICommonsComponentProps, ITagProps, ITransitionComponentProps, IColorProps, IBorderProps, IPaddingProps, IMarginProps, IRoundedProps, IDensityProps {
+export interface IMessagesProps extends ICommonsComponentProps, ITagProps, ITransitionComponentProps, IColorProps, IBorderProps, IPaddingProps, IMarginProps, IRoundedProps, IDensityProps, IElevationProps {
   active?: boolean
   messages?: Array<string> | string
 }
