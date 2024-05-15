@@ -19,9 +19,6 @@ export interface IListGroupProps extends ITagProps, ICommonsComponentProps, ICol
 }
 
 export interface IListActivatorProps extends ICommonsComponentProps, ITagProps {
-}
-
-export interface IListActivatorEvents {
   onClick?: TEventProp | undefined
   'onClick:once'?: TEventProp | undefined
 }

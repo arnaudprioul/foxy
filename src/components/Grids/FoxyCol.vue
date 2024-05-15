@@ -90,7 +90,6 @@
     $this: &;
 
     @extend %default;
-
     flex-grow: var(--foxy-col---flex-grow);
     flex-shrink: var(--foxy-col---flex-shrink);
     flex-basis: var(--foxy-col---flex-basis);
@@ -105,6 +104,7 @@
     &--auto {
       @extend %default;
 
+      --foxy-col---flex-grow: 0;
       --foxy-col---flex-basis: auto;
       --foxy-col---width: auto;
       --foxy-col---max-width: 100%;
@@ -188,7 +188,7 @@
 
     --foxy-col---flex-basis: 0;
     --foxy-col---flex-shrink: 0;
-    --foxy-col---flex-grow: 0;
+    --foxy-col---flex-grow: 1;
     --foxy-col---max-width: 100%;
 
     --foxy-col---background-color: transparent;

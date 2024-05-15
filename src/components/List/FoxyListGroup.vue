@@ -75,13 +75,9 @@
   const activatorProps = computed(() => {
     return {
       class: 'foxy-list-group__header',
-      id: id.value
+      id: id.value,
+      'onClick': handleClick
     } as IListActivatorProps
-  })
-  const activatorEvents = computed(() => {
-    return {
-      'onClick': handleClick,
-    }
   })
   const prependActivatorIcon = computed(() => {
     return props.prependIcon
