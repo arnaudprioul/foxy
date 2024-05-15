@@ -13,13 +13,11 @@
     <span key="underlay" class="foxy-btn__underlay"/>
 
     <slot name="wrapper">
-      <foxy-loader :loading="loading">
+      <foxy-loader :loading="loading" class="foxy-btn__loader">
         <template v-if="hasLoader" #loader>
-          <span key="loader" class="foxy-btn__loader">
-            <slot name="loader" v-bind="progressProps">
-              <foxy-progress-circular v-bind="progressProps"/>
-            </slot>
-          </span>
+          <slot name="loader" v-bind="progressProps">
+            <foxy-progress-circular v-bind="progressProps"/>
+          </slot>
         </template>
 
         <template #default>
@@ -130,7 +128,7 @@
   const { marginClasses, marginStyles } = useMargin(props)
   const { sizeClasses, sizeStyles } = useSize(props)
 
-  const {handleClickPrepend, handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
+  const {clickPrepend: handleClickPrepend, clickAppend: handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
   const group = useGroupItem(props, FOXY_BTN_TOGGLE_KEY, false)
   const link = useLink(props, attrs)
   const { hasSlot } = useSlots()
@@ -491,9 +489,6 @@
       display: flex;
       height: 100%;
       justify-content: center;
-      left: 0;
-      position: absolute;
-      top: 0;
       width: 100%;
 
       :deep(.foxy-progress--circular) {

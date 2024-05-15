@@ -2,12 +2,12 @@
   <Story
       auto-props-disabled
       group="components"
-      title="Containment/Btn/Toggle"
+      title="Containment/Btn Toggle"
   >
     <Variant title="Default">
       <template #default>
         <foxy-container fullscreen>
-          <foxy-row :alignt="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
             <foxy-col cols="auto">
               <foxy-btn-toggle v-bind="state" v-model="state.modelValue" @update:model-value="logEvent('update:modelValue', $event)">
                 <template #item="{item}">

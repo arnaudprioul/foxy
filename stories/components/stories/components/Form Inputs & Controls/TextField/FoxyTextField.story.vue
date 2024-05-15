@@ -49,7 +49,7 @@
   import { ALIGN, JUSTIFY } from '@foxy/enums'
 
 import { logEvent } from 'histoire/client'
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 
 import { HstIcon } from '@stories/components/controls'
 
