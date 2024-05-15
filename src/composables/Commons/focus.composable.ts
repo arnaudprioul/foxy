@@ -10,12 +10,12 @@ export function useFocus (props: IFocusProps, name = getCurrentInstanceName()) {
     })
   })
 
-  const focus = () => {
+  const onFocus = () => {
     isFocused.value = true
   }
-  const blur = () => {
+  const onBlur = () => {
     isFocused.value = false
   }
 
-  return { focusClasses, isFocused, focus, blur }
+  return { focusClasses, isFocused, onFocus, onBlur }
 }

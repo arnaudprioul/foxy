@@ -48,6 +48,7 @@
       'foxy-label',
       {
         'foxy-label--clickable': !!props.onClick,
+        'foxy-label--floating': props.floating
       },
       roundedClasses.value,
       borderClasses.value,

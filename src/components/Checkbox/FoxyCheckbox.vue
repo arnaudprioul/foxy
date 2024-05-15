@@ -56,7 +56,7 @@
   const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])
 
   const model = useProxiedModel(props, 'modelValue')
-  const { isFocused, focus: handleFocus, blur: handleBlur } = useFocus(props)
+  const { isFocused, onFocus: handleFocus, onBlur: handleBlur } = useFocus(props)
   const attrs = useAttrs()
   const { hasSlot } = useSlots()
 

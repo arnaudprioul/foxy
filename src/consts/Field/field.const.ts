@@ -34,6 +34,8 @@ export const FIELD_PROPS: IFieldProps = {
   error: undefined,
   flat: undefined,
   label: undefined,
+  prefix: undefined,
+  suffix: undefined,
   persistentClear: undefined,
   reverse: undefined,
   singleLine: undefined,

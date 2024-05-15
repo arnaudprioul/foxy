@@ -13,11 +13,9 @@ export interface ITextFieldProps extends ICommonsComponentProps, IColorProps, ID
     autofocus?: boolean
     counter?: boolean | number | string
     counterValue?: number | Function
-    prefix?: string
     placeholder?: string
     persistentPlaceholder?: boolean
     persistentCounter?: boolean
-    suffix?: string
     role?: string
     type?: TTextFieldType
     modelModifiers?: string | boolean

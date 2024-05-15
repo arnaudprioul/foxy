@@ -2,7 +2,7 @@
   <Story
       auto-props-disabled
       group="components"
-      title="Containment/Dialog/Confirmation">
+      title="Containment/Dialog Confirmation">
     <Variant title="Default">
       <template #default>
         <foxy-dialog-confirmation

@@ -38,20 +38,55 @@
     </div>
 
     <div class="foxy-field__field" data-no-activator="">
-      <foxy-label
-          v-if="hasLabel"
-          key="floating-label"
-          ref="floatingLabelRef"
-          :for="id"
-          :style="colorStyles"
-          floating>
-        {{ label }}
-      </foxy-label>
+      <template v-if="hasFloatingLabel">
+        <slot name="floatingLabel">
+          <foxy-label
+              key="floating-label"
+              ref="floatingLabelRef"
+              :for="id"
+              :style="colorStyles"
+              :text="label"
+              class="foxy-field__label"
+              floating>
+            <template #default>
+              {{ label }}
+            </template>
+          </foxy-label>
+        </slot>
+      </template>
 
-      <div class="foxy-field__input">
-        <slot name="default"
-              v-bind="slotProps"/>
-      </div>
+      <template v-if="hasLabel">
+        <slot name="label">
+          <foxy-label
+              ref="labelRef"
+              :for="id"
+              :style="colorStyles"
+              :text="label"
+              class="foxy-field__label">
+            <template #default>
+              {{ label }}
+            </template>
+          </foxy-label>
+        </slot>
+      </template>
+
+      <span v-if="hasPrefix" class="foxy-field__prefix">
+         <slot name="prefix">
+          <span>
+            {{ prefix }}
+          </span>
+         </slot>
+      </span>
+
+      <slot name="default" v-bind="slotProps"/>
+
+      <span v-if="hasSuffix" class="foxy-field__suffix">
+        <slot name="suffix">
+          <span>
+            {{ suffix }}
+          </span>
+        </slot>
+      </span>
     </div>
 
     <foxy-expand-x v-if="hasClear" key="clear">
@@ -96,14 +131,10 @@
 
   import {
     useAdjacentInner,
-    useBorder,
     useBothColor,
     useDensity,
     useFocus,
     useLoader,
-    useMargin,
-    usePadding,
-    useRounded,
     useSlots
   } from '@foxy/composables'
 
@@ -117,16 +148,12 @@
 
   const props = withDefaults(defineProps<IFieldProps>(), {})
 
-  const emits = defineEmits(['update:focused', 'update:modelValue', 'click:appendInner', 'click:prependInner', 'click:clear']);
+  const emits = defineEmits(['update:focused', 'update:modelValue', 'click:appendInner', 'click:prependInner', 'click:clear'])
 
   const { loaderClasses } = useLoader(props)
-  const { roundedClasses, roundedStyles } = useRounded(props)
-  const { borderClasses, borderStyles } = useBorder(props)
-  const { paddingClasses, paddingStyles } = usePadding(props)
-  const { marginClasses, marginStyles } = useMargin(props)
   const { densityClasses } = useDensity(props)
 
-  const { focusClasses, isFocused, focus: handleFocus, blur: handleBlur } = useFocus(props)
+  const { focusClasses, isFocused, onFocus: handleFocus, onBlur: handleBlur } = useFocus(props)
   const {
     hasAppendInner,
     clickAppendInner: handleClickAppendInner,
@@ -179,22 +206,32 @@
 
   const slotProps = computed(() => {
     return {
+      class: 'foxy-field__input',
       id: id.value,
       'aria-describedby': messagesId.value,
       isActive: isActive.value,
       isFocused: isFocused.value,
       controlRef: controlRef.value,
-      blur,
-      focus,
+      onBlur: handleBlur,
+      onFocus: handleFocus,
     }
   })
 
   const { hasSlot } = useSlots()
+  const hasFloatingLabel = computed(() => {
+    return !props.singleLine && !!(props.label || hasSlot('floatingLabel'))
+  })
   const hasLabel = computed(() => {
     return !props.singleLine && !!(props.label || hasSlot('label'))
   })
   const hasLoading = computed(() => {
     return hasSlot('loader') || !!props.loading
+  })
+  const hasPrefix = computed(() => {
+    return !!props.prefix
+  })
+  const hasSuffix = computed(() => {
+    return !!props.suffix
   })
 
   const isActive = computed(() => {
@@ -220,7 +257,7 @@
         const style = getComputedStyle(el)
         const targetStyle = getComputedStyle(targetEl)
         const duration = parseFloat(style.transitionDuration) * 1000 || 150
-        const scale = parseFloat(targetStyle.getPropertyValue('--v-field-label-scale'))
+        const scale = parseFloat(targetStyle.getPropertyValue('--foxy-field__label---font-size'))
         const color = targetStyle.getPropertyValue('color')
 
         el.style.visibility = 'visible'
@@ -246,10 +283,6 @@
 
   const fieldStyles = computed(() => {
     return [
-      roundedStyles.value,
-      borderStyles.value,
-      paddingStyles.value,
-      marginStyles.value,
       colorStyles.value,
       props.style,
     ] as StyleValue
@@ -271,14 +304,12 @@
         'foxy-field--reverse': props.reverse,
         'foxy-field--single-line': props.singleLine,
         'foxy-field--no-label': !hasLabel.value,
+        'foxy-text-field--prefixed': props.prefix,
+        'foxy-text-field--suffixed': props.suffix
       },
       loaderClasses.value,
       densityClasses.value,
       focusClasses.value,
-      roundedClasses.value,
-      borderClasses.value,
-      paddingClasses.value,
-      marginClasses.value,
       props.class,
     ]
   })
@@ -299,18 +330,20 @@
     flex: 1 0;
     grid-area: control;
     position: relative;
-    --foxy-field-padding-start: 16px;
-    --foxy-field-padding-end: 16px;
-    --foxy-field-padding-top: 8px;
-    --foxy-field-padding-bottom: 4px;
-    --foxy-field-input-padding-top: calc(var(--foxy-field-padding-top, 8px) + var(--foxy-input-padding-top, 0));
-    --foxy-field-input-padding-bottom: var(--foxy-field-padding-bottom, 4px);
+
+    --foxy-field---padding-start: 16px;
+    --foxy-field---padding-end: 16px;
+    --foxy-field---padding-top: 8px;
+    --foxy-field---padding-bottom: 4px;
+
+    --foxy-field__input---padding-top: calc(var(--foxy-field---padding-top, 8px) + var(--foxy-input---padding-top, 0));
+    --foxy-field__input---padding-bottom: var(--foxy-field---padding-bottom, 4px);
 
     .foxy-chip {
-      --foxy-chip-height: 24px;
+      --foxy-chip---height: 24px;
     }
 
-    &__input {
+    :deep(.foxy-field__input) {
       align-items: center;
       color: inherit;
       column-gap: 2px;
@@ -318,14 +351,15 @@
       flex-wrap: wrap;
       letter-spacing: 0.009375em;
       opacity: 0.7;
-      min-height: max(var(--foxy-input-control-height, 56px), 1.5rem + var(--foxy-field-input-padding-top) + var(--foxy-field-input-padding-bottom));
+      min-height: max(var(--foxy-input__control---height, 56px), 1.5rem + var(--foxy-field__input---padding-top) + var(--foxy-field__input---padding-bottom));
       min-width: 0;
-      padding-inline: var(--foxy-field-padding-start) var(--foxy-field-padding-end);
-      padding-top: var(--foxy-field-input-padding-top);
-      padding-bottom: var(--foxy-field-input-padding-bottom);
+      padding-inline: var(--foxy-field---padding-start) var(--foxy-field---padding-end);
+      padding-top: var(--foxy-field__input---padding-top);
+      padding-bottom: var(--foxy-field__input---padding-bottom);
       position: relative;
       width: 100%;
       row-gap: calc(8px - var(--foxy-input---density, 0));
+      border: none;
 
       :deep(input),
       :deep(textarea) {
@@ -345,6 +379,28 @@
       &:invalid {
         box-shadow: none;
       }
+    }
+
+    &__prefix,
+    &__suffix {
+      align-items: center;
+      color: currentColor;
+      cursor: default;
+      display: flex;
+      opacity: 0;
+      transition: inherit;
+      white-space: nowrap;
+      min-height: max(56px, 1.5rem + var(--foxy-field-input---padding-top, 0) + var(--foxy-field-input---padding-bottom, 0));
+      padding-top: calc(var(--foxy-field---padding-top, 4px) + var(--foxy-input---padding-top, 0));
+      padding-bottom: var(--foxy-field---padding-bottom, 6px);
+    }
+
+    &__prefix {
+      padding-inline-start: var(--foxy-field---padding-start);
+    }
+
+    &__suffix {
+      padding-inline-end: var(--foxy-field---padding-end);
     }
 
     &__field {
@@ -390,6 +446,35 @@
       transition-property: opacity, transform, width;
     }
 
+    &__label {
+      contain: layout paint;
+      display: block;
+      margin-inline-start: var(--foxy-field---padding-start, 0);
+      margin-inline-end: var(--foxy-field---padding-end, 0);
+      max-width: calc(100% - var(--foxy-field---padding-start, 0) - var(--foxy-field---padding-end, 0));
+      pointer-events: none;
+      position: absolute;
+      top: calc(var(--foxy-input---padding-top, 0) + var(--foxy-input---density));
+      transform-origin: left center;
+      transition: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      transition-property: opacity, transform;
+      z-index: 1;
+
+      &.foxy-label--floating {
+        font-size: var(--foxy-field__label---font-size);
+        visibility: hidden;
+        max-width: 100%;
+      }
+    }
+
+    &--prefixed {
+      --foxy-field---padding-start: 6px;
+    }
+
+    &--suffixed {
+      --foxy-field---padding-end: 0;
+    }
+
     &--center-affix {
       #{$this}__append-inner,
       #{$this}__clearable,
@@ -397,11 +482,41 @@
         align-items: center;
         padding-top: 0;
       }
+
+      #{$this}__label {
+        top: 50%;
+        transform: translateY(-50%);
+
+        &.foxy-label--floating {
+          transform: none;
+          top: calc(var(--foxy-input---padding-top, 0) / 2 + var(--foxy-input---density));
+        }
+      }
+    }
+
+    &--active {
+      #{$this}__label {
+        visibility: hidden;
+
+        &.foxy-label--floating {
+          visibility: unset;
+        }
+      }
+
+      #{$this}__prefix,
+      #{$this}__suffix {
+        opacity: 1;
+      }
     }
 
     &--disabled {
       opacity: 0.5;
       pointer-events: none;
+
+      #{$this}__prefix,
+      #{$this}__suffix {
+        color: currentColor;
+      }
     }
 
     &--prepended {
@@ -421,6 +536,10 @@
     &--focused {
       #{$this}__append-inner,
       #{$this}__prepend-inner {
+        opacity: 1;
+      }
+
+      #{$this}__label {
         opacity: 1;
       }
     }
@@ -445,6 +564,10 @@
             color: rgba(255, 0, 0, 1);
           }
         }
+
+        #{$this}__label {
+          color: rgba(255, 0, 0, 1);
+        }
       }
     }
 
@@ -452,6 +575,19 @@
     &--persistent-clear {
       #{$this}__clearable {
         opacity: 1;
+      }
+    }
+
+    &--no-label,
+    &--active {
+      input {
+        opacity: 1;
+      }
+    }
+
+    &--single-line {
+      input {
+        transition: none;
       }
     }
 
@@ -473,6 +609,6 @@
 
 <style>
   :root {
-
+    --foxy-field__label---font-size: 0.75em;
   }
 </style>

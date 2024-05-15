@@ -10,6 +10,8 @@ import {
 import { TEventProp } from '@foxy/types'
 
 export interface ILabelProps extends ICommonsComponentProps, IMarginProps, IPaddingProps, IBorderProps, IRoundedProps, IColorProps {
-  text?: string,
+  text?: string
+  floating?: boolean
+
   onClick?: TEventProp<[MouseEvent]>
 }

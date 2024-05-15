@@ -43,3 +43,18 @@
 		]
 	})
 </script>
+
+<style lang="scss" scoped>
+  .foxy-counter {
+    color: currentColor;
+    flex: 0 1 auto;
+    font-size: 12px;
+    transition-duration: 150ms;
+  }
+</style>
+
+<style>
+  :root {
+
+  }
+</style>

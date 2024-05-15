@@ -2,7 +2,7 @@
   <Story
       auto-props-disabled
       group="components"
-      title="Containment/Dialog/Default">
+      title="Containment/Dialog">
     <Variant title="Default">
       <template #default>
         <foxy-dialog

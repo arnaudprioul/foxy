@@ -188,7 +188,7 @@
 
     --foxy-col---flex-basis: 0;
     --foxy-col---flex-shrink: 0;
-    --foxy-col---flex-grow: 100%;
+    --foxy-col---flex-grow: 1;
     --foxy-col---max-width: 100%;
 
     --foxy-col---background-color: transparent;
