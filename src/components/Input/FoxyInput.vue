@@ -79,9 +79,7 @@
   const props = withDefaults(defineProps<IInputProps>(), {
     direction: DIRECTION.HORIZONTAL,
     centerAffix: true,
-    density: DENSITY.DEFAULT,
-    border: true,
-    rounded: true
+    density: DENSITY.DEFAULT
   })
 
   const emits = defineEmits(['update:modelValue', 'click:append', 'click:prepend'])

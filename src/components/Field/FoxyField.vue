@@ -235,10 +235,10 @@
   })
 
   const isActive = computed(() => {
-    return props.dirty || props.active
+    return !!props.dirty || !!props.active || hasPrefix.value || hasSuffix.value
   })
-  watch(isActive, (val) => {
-    if (hasLabel.value) {
+  watch(isActive, (newVal, oldVal) => {
+    if (hasLabel.value && newVal !== oldVal) {
       const el: HTMLElement = labelRef.value!.$el
       const targetEl: HTMLElement = floatingLabelRef.value!.$el
 
@@ -270,7 +270,7 @@
         }, {
           duration,
           easing: EASING.STANDARD,
-          direction: val ? 'normal' : 'reverse',
+          direction: newVal ? 'normal' : 'reverse',
         }).finished.then(() => {
           el.style.removeProperty('visibility')
           targetEl.style.removeProperty('visibility')
