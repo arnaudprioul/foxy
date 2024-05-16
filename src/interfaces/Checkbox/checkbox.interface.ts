@@ -1,8 +1,16 @@
-import { ICommonsComponentProps, IInputProps, ISelectionControlProps } from '@foxy/interfaces'
+import {
+  IBorderProps,
+  IColorProps,
+  ICommonsComponentProps,
+  IDensityProps, IElevationProps,
+  IInputProps, IMarginProps,
+  IPaddingProps, IRoundedProps,
+  ISelectionControlProps
+} from '@foxy/interfaces'
 
 import { TIcon } from '@foxy/types'
 
-export interface ICheckboxProps extends ICommonsComponentProps, IInputProps, ICheckboxBtnProps {
+export interface ICheckboxProps extends ICommonsComponentProps, IInputProps, ICheckboxBtnProps, IDensityProps, IPaddingProps, IMarginProps, IRoundedProps, IColorProps, IBorderProps, IElevationProps {
 
 }
 

@@ -4,37 +4,39 @@
       :style="selectionControlStyles"
       v-bind="rootAttrs">
     <div :style="textColorStyles" class="foxy-selection-control__wrapper">
-      <slot name="default" v-bind="{ model, textColorStyles, backgroundColorStyles, icon, props: { onFocus: handleFocus, onBlur: handleBlur, id } }">
-        <div v-ripple="rippleProp" class="foxy-selection-control__input">
-          <slot name="input" v-bind="{ model, textColorStyles, backgroundColorStyles, icon, props: { onFocus: handleFocus, onBlur: handleBlur, id } }">
-            <template v-if="icon">
-              <foxy-icon key="icon" :icon="icon"/>
-            </template>
+      <slot name="default"
+            v-bind="{ model, textColorStyles, backgroundColorStyles, icon, props: { onFocus: handleFocus, onBlur: handleBlur, id } }"/>
 
-            <input
-                :id="id"
-                ref="input"
-                :aria-checked="props.type === 'checkbox' ? model : undefined"
-                :aria-disabled="props.disabled"
-                :aria-label="props.label"
-                :checked="model"
-                :disabled="props.disabled"
-                :name="props.name"
-                :type="props.type"
-                :value="trueValue"
-                v-bind="inputAttrs"
-                @blur="handleBlur"
-                @focus="handleFocus"
-                @input="handleInput"
-            />
-          </slot>
-        </div>
+      <div v-ripple="rippleProp" class="foxy-selection-control__input">
+        <slot name="input"
+              v-bind="{ model, textColorStyles, backgroundColorStyles, icon, props: { ...inputAttrs, disabled: props.disabled, label: props.label, name: props.name, type: props.type, value: trueValue, onFocus: handleFocus, onBlur: handleBlur, id, onInput: handleInput } }">
+          <template v-if="icon">
+            <foxy-icon key="icon" :icon="icon"/>
+          </template>
 
-        <div class="foxy-selection-control__label">
-          <slot name="label">
-            <foxy-label :text="label" :for="id" @click="handleClickLabel"/>
-          </slot>
-        </div>
+          <input
+              :id="id"
+              ref="input"
+              :aria-checked="props.type === 'checkbox' ? model : undefined"
+              :aria-disabled="props.disabled"
+              :aria-label="props.label"
+              :checked="model"
+              :disabled="props.disabled"
+              :name="props.name"
+              :type="props.type"
+              :value="trueValue"
+              v-bind="inputAttrs"
+              @blur="handleBlur"
+              @focus="handleFocus"
+              @input="handleInput"
+          />
+        </slot>
+      </div>
+    </div>
+
+    <div class="foxy-selection-control__label">
+      <slot name="label">
+        <foxy-label :required="required" :for="id" :text="label" @click="handleClickLabel"/>
       </slot>
     </div>
   </div>
@@ -163,6 +165,7 @@
     }
 
     &__wrapper {
+      width: calc(40px + 1.5 * var(--foxy-selection-control--density));
       height: calc(40px + 1.5 * var(--foxy-selection-control--density));
       display: inline-flex;
       align-items: center;
@@ -185,7 +188,7 @@
         opacity: 0.7;
       }
 
-      input {
+      :deep(input) {
         cursor: pointer;
         position: absolute;
         left: 0;

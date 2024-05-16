@@ -9,6 +9,7 @@ export interface ISelectionControlProps extends ICommonsComponentProps, ISelecti
   trueValue?: any
   falseValue?: any
   value?: any
+  required?: boolean
 
   'onClick:label'?: TEventProp
 }

@@ -39,4 +39,5 @@ export const FIELD_PROPS: IFieldProps = {
   persistentClear: undefined,
   reverse: undefined,
   singleLine: undefined,
+  required: undefined
 }

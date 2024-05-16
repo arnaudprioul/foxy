@@ -5,7 +5,7 @@
       @click="handleClick"
   >
     <slot name="default" v-bind="{text}">
-      {{ text }}
+      <span>{{ text }}</span><sup v-if="required">*</sup>
     </slot>
   </label>
 </template>
@@ -58,3 +58,13 @@
     ]
   })
 </script>
+
+<style lang="scss" scoped>
+
+</style>
+
+<style>
+  :root {
+
+  }
+</style>

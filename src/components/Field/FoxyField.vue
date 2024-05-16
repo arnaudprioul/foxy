@@ -46,12 +46,9 @@
               :for="id"
               :style="colorStyles"
               :text="label"
+              :required="required"
               class="foxy-field__label"
-              floating>
-            <template #default>
-              {{ label }}
-            </template>
-          </foxy-label>
+              floating/>
         </slot>
       </template>
 
@@ -62,11 +59,8 @@
               :for="id"
               :style="colorStyles"
               :text="label"
-              class="foxy-field__label">
-            <template #default>
-              {{ label }}
-            </template>
-          </foxy-label>
+              :required="required"
+              class="foxy-field__label"/>
         </slot>
       </template>
 

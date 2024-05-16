@@ -33,6 +33,8 @@
 
         <hst-checkbox v-model="state.clearable" title="Clearable" />
 
+        <hst-checkbox v-model="state.required" title="Required"/>
+
         <hst-checkbox v-model="state.counter" title="Counter" />
 
         <hst-text v-model="state.label" title="Label" />

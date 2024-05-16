@@ -20,4 +20,5 @@ export interface IFieldProps extends ICommonsComponentProps, ILoaderProps, IColo
   persistentClear?: boolean
   reverse?: boolean
   singleLine?: boolean
+  required?: boolean
 }

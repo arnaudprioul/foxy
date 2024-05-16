@@ -27,6 +27,7 @@
 
 <script lang="ts" setup>
   import { FoxySelectionControl } from '@foxy/components'
+
   import { useSlots } from '@foxy/composables'
 
   import { SELECTION_CONTROL_PROPS } from '@foxy/consts'
@@ -46,7 +47,7 @@
     indeterminateIcon: '$checkboxIndeterminate'
   })
 
-  const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])
+  const emits = defineEmits(['update:modelValue', 'update:focused', 'update:indeterminate', 'click:label'])
 
   const indeterminate = useProxiedModel(props, 'indeterminate')
   const model = useProxiedModel(props, 'modelValue')
@@ -73,7 +74,9 @@
         : props.trueIcon
   })
 
-  const controlProps = omit(pick(props, keys(SELECTION_CONTROL_PROPS)), ['modelValue', 'falseIcon', 'trueIcon', 'type'])
+  const controlProps = computed(() => {
+    return omit(pick(props, keys(SELECTION_CONTROL_PROPS)), ['modelValue', 'falseIcon', 'trueIcon', 'type'])
+  })
 
   // CLASS & STYLES
 
