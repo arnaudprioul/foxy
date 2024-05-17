@@ -1,4 +1,3 @@
-
 export * from './App'
 export * from './Alert'
 export * from './Avatar'
@@ -42,3 +41,4 @@ export * from './Counter'
 export * from './Switch'
 export * from './Select'
 export * from './VirtualScroll'
+export * from './Autocomplete'

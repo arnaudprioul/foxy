@@ -26,7 +26,6 @@
           :location="BLOCK.BOTTOM"
           :max-height="310"
           :open-on-click="false"
-          :transition="props.transition"
           activator="parent"
           content-class="foxy-select__content"
           v-bind="{ ...computedMenuProps }"
@@ -35,8 +34,7 @@
         <template #default>
           <foxy-list
               v-if="hasList"
-              ref="listRef"
-              :color="color"
+              ref="foxyListRef"
               :select-strategy="multiple ? SELECT_STRATEGY.INDEPENDENT : SELECT_STRATEGY.SINGLE_INDEPENDENT"
               :selected="selectedValues"
               :tabindex="-1"
@@ -65,10 +63,7 @@
                         v-bind="{item, index, props: menuListItemProps(item, itemRef, index)}">
                     <foxy-list-item
                         :key="index"
-                        :ref="itemRef"
-                        role="option"
-                        v-bind="item.props"
-                        @click="handleSelect(item, null)">
+                        v-bind="menuListItemProps(item, itemRef, index)">
                       <template #prepend="{isSelected}">
                         <foxy-checkbox-btn
                             v-if="multiple && !hideSelected"
@@ -198,9 +193,10 @@
   const foxyTextFieldRef = ref<TFoxyTextField>()
   const foxyMenuRef = ref<TFoxyMenu>()
   const foxyVirtualScrollRef = ref<TFoxyVirtualScroll>()
-  const listRef = ref<TFoxyList>()
+  const foxyListRef = ref<TFoxyList>()
 
-  const menuState = useProxiedModel(props, 'menu')
+  const { hasSlot } = useSlots()
+
   const { items, transformIn, transformOut } = useItems(props)
   const model = useProxiedModel(
       props,
@@ -214,7 +210,6 @@
         return props.multiple ? transformed : (transformed[0] ?? null)
       }
   )
-  const { hasSlot } = useSlots()
 
   const modelMapped = computed(() => {
     if (model.value.length) {
@@ -227,6 +222,7 @@
     return model.externalValue
   })
 
+  const menuState = useProxiedModel(props, 'menu')
   const menu = computed({
     get: () => menuState.value,
     set: (v) => {
@@ -276,7 +272,7 @@
     return mergeProps(item.props, { ref: itemRef, key: index, onClick: () => handleSelect(item, null) })
   }
 
-  const { onListScroll: handleListScroll, onListKeydown: handleListKeydown } = useScrolling(listRef, foxyTextFieldRef)
+  const { onListScroll: handleListScroll, onListKeydown: handleListKeydown } = useScrolling(foxyListRef, foxyTextFieldRef)
 
   const handleSelect = (item: IListItem, set: boolean | null = true) => {
     if (item.props.disabled) return
@@ -328,9 +324,9 @@
     }
 
     if (e.key === 'Home') {
-      listRef.value?.focus('first')
+      foxyListRef.value?.focus('first')
     } else if (e.key === 'End') {
-      listRef.value?.focus('last')
+      foxyListRef.value?.focus('last')
     }
 
     // html select hotkeys
@@ -365,7 +361,7 @@
     }
   }
   const handleBlur = (e: FocusEvent) => {
-    if (!listRef.value?.$el.contains(e.relatedTarget as HTMLElement)) {
+    if (!foxyListRef.value?.$el.contains(e.relatedTarget as HTMLElement)) {
       menu.value = false
     }
   }
@@ -396,6 +392,7 @@
 
   const chipSlotProps = (item: IListItem) => {
     return {
+      ...props.chipProps,
       'onClick:close': (e: Event) => handleChipClose(e, item),
       onKeydown: (e: KeyboardEvent) => handleChipKeydown(e, item),
       onMousedown: (e: MouseEvent) => handleChipMousedown(e),
@@ -507,7 +504,7 @@
         }
       }
 
-      .foxy-field--dirty {
+      &.foxy-field--dirty {
         #{$this}__selection {
           margin-inline-end: 2px;
         }

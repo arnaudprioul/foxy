@@ -298,6 +298,15 @@
     &__details {
       padding-inline: 16px;
     }
+
+    :deep(.foxy-field) {
+      &.foxy-field--no-label,
+      &.foxy-field--active{
+        input {
+          opacity: 1;
+        }
+      }
+    }
   }
 </style>
 

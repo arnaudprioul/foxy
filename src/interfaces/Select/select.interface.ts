@@ -1,5 +1,5 @@
 import {
-  IBorderProps,
+  IBorderProps, IChipProps,
   IColorProps,
   ICommonsComponentProps,
   IDensityProps,
@@ -28,6 +28,7 @@ export interface ISelectProps extends ICommonsComponentProps, IColorProps, IText
   menu?: boolean
   menuIcon?: TIcon
   menuProps?: IMenuProps
+  chipProps?: IChipProps
   multiple?: boolean
   noDataText?: string
   openOnClear?: boolean

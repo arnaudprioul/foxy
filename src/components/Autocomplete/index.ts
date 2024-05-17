@@ -1,0 +1,1 @@
+export { default as FoxyAutocomplete } from './FoxyAutocomplete'

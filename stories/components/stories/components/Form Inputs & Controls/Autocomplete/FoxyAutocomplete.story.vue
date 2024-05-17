@@ -2,18 +2,19 @@
   <Story
       auto-props-disabled
       group="components"
-      title="Form Inputs & Controls/Select"
+      title="Form Inputs & Controls/Autocomplete"
   >
     <Variant title="Default">
       <template #default>
         <foxy-container fullscreen>
           <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
             <foxy-col>
-              <foxy-select
+              <foxy-autocomplete
                   v-bind="state"
                   @click:control="logEvent('click control', $event)"
                   @mousedown:control="logEvent('mousedown control', $event)"
                   @update:focused="logEvent('update focused', $event)"
+                  @update:search="logEvent('update search', $event)"
                   @update:model-value="logEvent('update modelValue', $event)"
                   @update:menu="logEvent('update menu', $event)"
                   @click:append="logEvent('click append', $event)"
@@ -26,40 +27,41 @@
         </foxy-container>
       </template>
       <template #controls>
-        <hst-icon v-model="state.prependIcon" title="Prepend Icon"/>
-        <hst-icon v-model="state.appendIcon" title="Append Icon"/>
-        <hst-icon v-model="state.prependInnerIcon" title="Prepend Inner Icon"/>
-        <hst-icon v-model="state.appendInnerIcon" title="Append Inner Icon"/>
-
         <hst-checkbox v-model="state.required" title="Required"/>
-
-        <hst-checkbox v-model="state.counter" title="Counter"/>
-
-        <hst-checkbox v-model="state.chips" title="Chips"/>
 
         <hst-checkbox v-model="state.multiple" title="Multiple"/>
 
+        <hst-checkbox v-model="state.clearable" title="Clearable"/>
+
+        <hst-checkbox v-model="state.chips" title="Chips"/>
+
         <hst-text v-model="state.label" title="Label"/>
-        <hst-text v-model="state.prefix" title="Prefix"/>
-        <hst-text v-model="state.suffix" title="Suffix"/>
       </template>
     </Variant>
   </Story>
 </template>
 
 <script lang="ts" setup>
-  import { FoxyCol, FoxyContainer, FoxyRow, FoxySelect, FoxyTextField } from '@foxy/components'
+  import { FoxyAutocomplete, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
 
   import { ALIGN, JUSTIFY } from '@foxy/enums'
 
-  import { HstIcon } from '@stories/components/controls'
+  import { IAutocompleteProps } from '@foxy/interfaces'
+
   import { logEvent } from 'histoire/client'
+  import { reactive } from 'vue'
 
-  import { reactive, ref } from 'vue'
-
-  const state: { [key: string]: any } = reactive({
-    label: 'Select',
+  const state: { [key: string]: any } = reactive<IAutocompleteProps>({
     items: ['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming'],
+    label: 'Autocomplete',
+    chips: true,
+    closableChips: true,
+    chipProps: {
+      border: true,
+      rounded: true,
+      color:"#ffc529",
+      bgColor:"#7d6fa1"
+    }
   })
 </script>
 

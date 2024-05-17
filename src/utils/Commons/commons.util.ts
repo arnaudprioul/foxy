@@ -122,6 +122,8 @@ export function oops (): never {
   throw new Error()
 }
 
+export function noop () {}
+
 export function debounce (fn: Function, delay: MaybeRef<number>) {
   let timeoutId = 0 as any
   const wrap = (...args: any[]) => {

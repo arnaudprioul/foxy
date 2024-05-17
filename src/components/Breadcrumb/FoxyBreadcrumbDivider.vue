@@ -36,10 +36,6 @@
   const { sizeStyles, sizeClasses } = useSize(props)
 
   const isIcon = computed(() => {
-    console.log(Object.values(MDI_ICONS))
-    console.log(props.divider)
-    console.log(Object.values(MDI_ICONS).includes(props.divider))
-
     return typeof props.divider !== 'string' || Object.values(MDI_ICONS).includes(props.divider)
   })
 
