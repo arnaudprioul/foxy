@@ -18,7 +18,7 @@
 
   const props = withDefaults(defineProps<ILayoutProps>(), {})
 
-  const { layoutClasses, layoutRef } = useCreateLayout(props)
+  const { layoutClasses, layoutRef, getLayoutItem, items } = useCreateLayout(props)
 
   const layStyles = computed(() => {
     return [props.style] as StyleValue
@@ -26,6 +26,8 @@
   const layClasses = computed(() => {
     return [layoutClasses.value, props.class]
   })
+
+  defineExpose({ getLayoutItem, items })
 </script>
 
 <style lang="scss" scoped>

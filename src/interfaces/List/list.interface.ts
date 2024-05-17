@@ -2,7 +2,7 @@ import {
   IBorderProps, IColorProps,
   ICommonsComponentProps,
   IDensityProps, IDimensionProps,
-  IElevationProps, IMarginProps, INestedProps, IPaddingProps,
+  IElevationProps, IInternalItem, IMarginProps, INestedProps, IPaddingProps,
   IRoundedProps,
   ITagProps
 } from '@foxy/interfaces'
@@ -29,4 +29,14 @@ export interface IItemProps {
   itemProps?: TSelectItemKey
   returnObject?: boolean
   valueComparator?: typeof deepEqual
+}
+
+export interface IListItem<T = any> extends IInternalItem<T> {
+  title: string
+  props: {
+    [key: string]: any
+    title: string
+    value: any
+  }
+  children?: IListItem<T>[]
 }

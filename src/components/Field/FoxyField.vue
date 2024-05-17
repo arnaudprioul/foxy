@@ -353,25 +353,25 @@
       position: relative;
       width: 100%;
       row-gap: calc(8px - var(--foxy-input---density, 0));
-      border: none;
 
-      :deep(input),
-      :deep(textarea) {
+      input,
+      textarea {
         letter-spacing: inherit;
+        border: none;
 
         &::placeholder {
           color: currentColor;
           opacity: 0.5;
         }
-      }
 
-      &:focus,
-      &:active {
-        outline: none;
-      }
+        &:focus,
+        &:active {
+          outline: none;
+        }
 
-      &:invalid {
-        box-shadow: none;
+        &:invalid {
+          box-shadow: none;
+        }
       }
     }
 

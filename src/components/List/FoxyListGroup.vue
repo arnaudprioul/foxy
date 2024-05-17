@@ -18,7 +18,7 @@
         </slot>
       </foxy-list-group-activator>
 
-      <foxy-transition :transition="transition" :disabled="!isBooted">
+      <foxy-transition :disabled="!isBooted" :transition="transition">
         <div v-if="isOpen" :aria-labelledby="id" class="foxy-list-group__items" role="group">
           <slot name="items"/>
         </div>
@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { FoxyTransition, FoxyExpandY, FoxyListGroupActivator } from '@foxy/components'
+  import { FoxyExpandY, FoxyListGroupActivator, FoxyTransition } from '@foxy/components'
 
   import {
     useBorder,
@@ -120,6 +120,8 @@
       props.class
     ]
   })
+
+  defineExpose({ isOpen })
 </script>
 
 <style lang="scss" scoped>

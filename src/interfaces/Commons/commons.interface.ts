@@ -35,4 +35,3 @@ export interface IIntersectionObserverInit {
   rootMargin?: string;
   threshold?: number | Array<number>;
 }
-

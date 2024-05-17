@@ -98,7 +98,7 @@
   import { vRipple } from '@foxy/directives'
   import { DENSITY, SIZES } from '@foxy/enums'
 
-  import { IBtnProps, IColorProps } from '@foxy/interfaces'
+  import { IBtnProps } from '@foxy/interfaces'
   import { keys, pick } from '@foxy/utils'
 
   import { computed, StyleValue, toRef, useAttrs } from 'vue'
@@ -128,7 +128,12 @@
   const { marginClasses, marginStyles } = useMargin(props)
   const { sizeClasses, sizeStyles } = useSize(props)
 
-  const {clickPrepend: handleClickPrepend, clickAppend: handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
+  const {
+    clickPrepend: handleClickPrepend,
+    clickAppend: handleClickAppend,
+    hasAppend,
+    hasPrepend
+  } = useAdjacent(props, emits)
   const group = useGroupItem(props, FOXY_BTN_TOGGLE_KEY, false)
   const link = useLink(props, attrs)
   const { hasSlot } = useSlots()
@@ -238,6 +243,8 @@
       props.class,
     ]
   })
+
+  defineExpose({ group })
 </script>
 
 <style lang="scss" scoped>

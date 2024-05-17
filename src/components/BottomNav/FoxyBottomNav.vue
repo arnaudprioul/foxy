@@ -52,7 +52,7 @@
 
   const isActive = useProxiedModel(props, 'active')
 
-  const { layoutItemStyles } = useLayoutItem({
+  const { layoutItemStyles, layoutIsReady } = useLayoutItem({
     id: props.name,
     order: computed(() => parseInt(props.order, 10)),
     position: computed(() => 'bottom'),
@@ -95,6 +95,8 @@
       props.class,
     ]
   })
+
+  defineExpose({layoutIsReady})
 </script>
 
 <style lang="scss" scoped>

@@ -44,6 +44,7 @@
   const { paddingClasses, paddingStyles } = usePadding(props)
   const { marginClasses, marginStyles } = useMargin(props)
   const { densityClasses } = useDensity(props)
+
   const { hasSlot } = useSlots()
 
   const hasPrepend = computed(() => {
@@ -87,6 +88,7 @@
       props.class
     ]
   })
+
 </script>
 
 <style lang="scss" scoped>

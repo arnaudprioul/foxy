@@ -143,7 +143,7 @@
 
   // LAYOUT
 
-  const { layoutItemStyles } = useLayoutItem({
+  const { layoutItemStyles, layoutIsReady } = useLayoutItem({
     id: props.name,
     order: computed(() => parseInt(props.order as string, 10)),
     position: toRef(props, 'location'),
@@ -169,4 +169,6 @@
       props.class
     ]
   })
+
+  defineExpose({layoutIsReady})
 </script>

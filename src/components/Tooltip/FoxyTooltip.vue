@@ -35,11 +35,11 @@
 
   import { INLINE, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@foxy/enums'
 
-  import { IOverlayProps, ITooltipProps } from '@foxy/interfaces'
+  import { ITooltipProps } from '@foxy/interfaces'
 
-  import { TAnchor } from '@foxy/types'
+  import { TAnchor, TFoxyOverlay } from '@foxy/types'
 
-  import { getUid, keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { getUid, keys, omit, pick, useProxiedModel, forwardRefs } from '@foxy/utils'
 
   import { computed, mergeProps, ref, StyleValue } from 'vue'
 
@@ -66,7 +66,7 @@
   const uid = getUid()
   const id = computed(() => props.id || `foxy-tooltip-${uid}`)
 
-  const overlay = ref()
+  const overlay = ref<TFoxyOverlay>()
 
   const location = computed(() => {
     return props.location.split(' ').length > 1
@@ -114,6 +114,8 @@
       props.class,
     ]
   })
+
+  defineExpose(forwardRefs({}, overlay))
 </script>
 
 <style lang="scss" scoped>

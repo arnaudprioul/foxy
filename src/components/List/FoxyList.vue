@@ -97,7 +97,7 @@
   const { borderClasses, borderStyles } = useBorder(props)
   const { paddingClasses, paddingStyles } = usePadding(props)
   const { marginClasses, marginStyles } = useMargin(props)
-  const { open, select } = useNested(props)
+  const { children, open, parents, select } = useNested(props)
   const { hasSlot } = useSlots()
 
   useCreateList()
@@ -199,6 +199,8 @@
       props.class
     ]
   })
+
+  defineExpose({open, select, focus, children, parents})
 </script>
 
 <style lang="scss" scoped>

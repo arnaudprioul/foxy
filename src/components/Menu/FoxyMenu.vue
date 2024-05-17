@@ -54,6 +54,7 @@
   import { INLINE, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@foxy/enums'
 
   import { IItemProps, IMenuProps, IOverlayProps } from '@foxy/interfaces'
+  import { TFoxyOverlay } from '@foxy/types'
 
   import { focusableChildren, focusChild, getNextElement, getUid, keys, omit, pick, useProxiedModel } from '@foxy/utils'
 
@@ -81,7 +82,7 @@
   const uid = getUid()
   const id = computed(() => props.id || `foxy-menu--${uid}`)
 
-  const overlay = ref()
+  const overlay = ref<TFoxyOverlay>()
 
   const parent = inject(FOXY_MENU_KEY, null)
   const openChildren = shallowRef(0)
@@ -137,7 +138,6 @@
   const handleClickOutside = () => {
     parent?.closeParents()
   }
-
   const handleKeydown = (e: KeyboardEvent) => {
     if (props.disabled) return
 
@@ -153,7 +153,6 @@
       }
     }
   }
-
   const handleActivatorKeydown = (e: KeyboardEvent) => {
     if (props.disabled) return
 
@@ -205,6 +204,8 @@
       props.class,
     ]
   })
+
+  defineExpose({openChildren})
 </script>
 
 <style lang="scss" scoped>

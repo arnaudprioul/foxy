@@ -13,7 +13,7 @@
 
     <slot name="wrapper">
       <div v-if="hasPrepend" key="prepend" class="foxy-list-item__prepend" @click="handleClickPrepend">
-        <slot name="prepend">
+        <slot name="prepend" v-bind="slotProps">
           <foxy-avatar
               v-if="prependAvatar"
               key="prepend-avatar"
@@ -42,7 +42,7 @@
       </div>
 
       <div v-if="hasAppend" key="append" class="foxy-list-item__append" @click="handleClickAppend">
-        <slot name="append">
+        <slot name="append" v-bind="slotProps">
           <foxy-avatar
               v-if="appendAvatar"
               key="append-avatar"
@@ -218,6 +218,8 @@
       props.class,
     ]
   })
+
+  defineExpose({isGroupActivator, isSelected, list, select})
 </script>
 
 <style lang="scss" scoped>

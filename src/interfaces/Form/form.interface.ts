@@ -35,6 +35,6 @@ export interface IFormField {
   reset: () => Promise<void>
   resetValidation: () => Promise<void>
   vm: Raw<ComponentInternalInstance>
-  isValid: boolean | undefined
+  isValid?: boolean | null
   errorMessages: Array<string>
 }

@@ -12,10 +12,10 @@ import {
   computed,
   ComputedGetter,
   Fragment,
-  InjectionKey,
+  InjectionKey, MaybeRef,
   reactive, shallowRef,
   ToRefs,
-  toRefs,
+  toRefs, unref,
   VNode,
   VNodeChild,
   watchEffect
@@ -122,21 +122,17 @@ export function oops (): never {
   throw new Error()
 }
 
-export class CircularBuffer<T = never> {
-  readonly #arr: Array<T> = []
-  #pointer = 0
-
-  constructor (public readonly size: number) {
+export function debounce (fn: Function, delay: MaybeRef<number>) {
+  let timeoutId = 0 as any
+  const wrap = (...args: any[]) => {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => fn(...args), unref(delay))
   }
-
-  push (val: T) {
-    this.#arr[this.#pointer] = val
-    this.#pointer = (this.#pointer + 1) % this.size
+  wrap.clear = () => {
+    clearTimeout(timeoutId)
   }
-
-  values (): Array<T> {
-    return this.#arr.slice(this.#pointer).concat(this.#arr.slice(0, this.#pointer))
-  }
+  wrap.immediate = fn
+  return wrap
 }
 
 export function deepEqual (a: any, b: any): boolean {

@@ -84,8 +84,8 @@
 
   import { MDI_ICONS } from '@foxy/enums'
 
-  import { ICardProps, IDialogProps, IOverlayProps } from '@foxy/interfaces'
-  import { TIcon } from '@foxy/types'
+  import { IDialogProps } from '@foxy/interfaces'
+  import { TFoxyOverlay, TIcon } from '@foxy/types'
 
   import { focusableChildren, keys, omit, pick, useProxiedModel } from '@foxy/utils'
 
@@ -106,7 +106,8 @@
   const { hasSlot } = useSlots()
   const { icon, statusClasses } = useStatus(props)
 
-  const overlay = ref()
+  const overlay = ref<TFoxyOverlay>()
+
   const handleFocusin = (e: FocusEvent) => {
     const before = e.relatedTarget as HTMLElement | null
     const after = e.target as HTMLElement | null
@@ -171,7 +172,6 @@
   const handleClose = () => {
     isActive.value = false
   }
-
   const handleIntersect = (isIntersecting: boolean, entries: Array<IntersectionObserverEntry>, observer: IntersectionObserver) => {
     if (entries[entries.length - 1].isIntersecting) {
       emits('isRead', true)

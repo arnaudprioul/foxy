@@ -1,6 +1,7 @@
 import { IN_BROWSER, SCROLL_STRATEGIES } from '@foxy/consts'
 
 import { IScrollArguments, IScrollProps, IScrollStrategyData, IScrollStrategyProps } from '@foxy/interfaces'
+import { TFoxyList, TFoxyTextField } from '@foxy/types'
 
 import { clamp, consoleWarn } from '@foxy/utils'
 
@@ -9,7 +10,7 @@ import {
   effectScope,
   EffectScope, nextTick,
   onBeforeUnmount,
-  onMounted, onScopeDispose,
+  onMounted, onScopeDispose, Ref,
   ref,
   shallowRef,
   watch,
@@ -116,4 +117,72 @@ export function useScrollStrategies (
   onScopeDispose(() => {
     scope?.stop()
   })
+}
+
+export function useScrolling (listRef: Ref<TFoxyList | undefined>, textFieldRef: Ref<TFoxyTextField | undefined>) {
+  const isScrolling = shallowRef(false)
+  let scrollTimeout: number
+
+  const onListScroll = (e: Event) => {
+    cancelAnimationFrame(scrollTimeout)
+    isScrolling.value = true
+    scrollTimeout = requestAnimationFrame(() => {
+      scrollTimeout = requestAnimationFrame(() => {
+        isScrolling.value = false
+      })
+    })
+  }
+  const finishScrolling = async () => {
+    await new Promise(resolve => requestAnimationFrame(resolve))
+    await new Promise(resolve => requestAnimationFrame(resolve))
+    await new Promise(resolve => requestAnimationFrame(resolve))
+    await new Promise<void>(resolve => {
+      if (isScrolling.value) {
+        const stop = watch(isScrolling, () => {
+          stop()
+          resolve()
+        })
+      } else resolve()
+    })
+  }
+  const onListKeydown = async (e: KeyboardEvent) => {
+    if (e.key === 'Tab') {
+      textFieldRef.value?.focus()
+    }
+
+    if (!['PageDown', 'PageUp', 'Home', 'End'].includes(e.key)) return
+    const el: HTMLElement = listRef.value?.$el
+    if (!el) return
+
+    if (e.key === 'Home' || e.key === 'End') {
+      el.scrollTo({
+        top: e.key === 'Home' ? 0 : el.scrollHeight,
+        behavior: 'smooth',
+      })
+    }
+
+    await finishScrolling()
+
+    const children = el.querySelectorAll(':scope > :not(.foxy-virtual-scroll__spacer)')
+
+    if (e.key === 'PageDown' || e.key === 'Home') {
+      const top = el.getBoundingClientRect().top
+      for (const child of children) {
+        if (child.getBoundingClientRect().top >= top) {
+          (child as HTMLElement).focus()
+          break
+        }
+      }
+    } else {
+      const bottom = el.getBoundingClientRect().bottom
+      for (const child of [...children].reverse()) {
+        if (child.getBoundingClientRect().bottom <= bottom) {
+          (child as HTMLElement).focus()
+          break
+        }
+      }
+    }
+  }
+
+  return { onListScroll, onListKeydown }
 }

@@ -55,6 +55,8 @@
       props.class,
     ]
   })
+
+  defineExpose({next, prev, select})
 </script>
 
 <style lang="scss" scoped>

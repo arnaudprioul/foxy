@@ -26,8 +26,8 @@
             @click="handleControlClick"
             @mousedown="handleControlMousedown"
             @click:clear="handleClear"
-            @click:prependInner="handleClickPrependInner"
-            @click:appendInner="handleClickAppendInner">
+            @click:prepend-inner="handleClickPrependInner"
+            @click:append-inner="handleClickAppendInner">
           <template v-if="hasSlot('loader')" #loader>
             <slot name="loader"/>
           </template>
@@ -48,8 +48,9 @@
             <slot name="prefix"/>
           </template>
 
-          <template #default="fieldSlotProps">
-            <slot name="default" v-bind="fieldSlotProps">
+          <template #default="{class: fieldSlotClass, ...fieldSlotProps}">
+            <div :class="fieldSlotClass" data-no-activator="">
+              <slot name="default" v-bind="fieldSlotProps"/>
               <input
                   ref="inputRef"
                   v-intersect="intersect"
@@ -65,7 +66,7 @@
                   @blur="handleBlur"
                   @focus="handleFocus"
                   @input="handleInput">
-            </slot>
+            </div>
           </template>
 
           <template v-if="hasSlot('suffix')" #suffix>
@@ -125,7 +126,7 @@
 
   import { ITextFieldProps } from '@foxy/interfaces'
 
-  import { filterInputAttrs, keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { filterInputAttrs, keys, omit, pick, useProxiedModel, forwardRefs } from '@foxy/utils'
 
   import { computed, nextTick, ref, StyleValue, useAttrs } from 'vue'
 
@@ -269,6 +270,8 @@
       props.class
     ]
   })
+
+  defineExpose(forwardRefs({}, foxyInputRef, foxyFieldRef, inputRef))
 </script>
 
 <style lang="scss" scoped>

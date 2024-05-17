@@ -36,7 +36,7 @@ export function useProxiedModel<
       })
 
   useToggleScope(() => !isControlled.value, () => {
-    watch(() => props[prop], val => {
+    watch(() => props[prop], (val) => {
       internal.value = val
     })
   })
@@ -44,14 +44,25 @@ export function useProxiedModel<
   const model = computed({
     get (): any {
       const externalValue = props[prop]
+
+      if (prop === 'modelValue' || prop === 'model-value') {
+        console.log(transformIn(isControlled.value ? externalValue : internal.value))
+      }
+
       return transformIn(isControlled.value ? externalValue : internal.value)
     },
     set (internalValue) {
       const newValue = transformOut(internalValue)
       const value = toRaw(isControlled.value ? props[prop] : internal.value)
+
+      if (prop === 'modelValue' || prop === 'model-value') {
+        console.log(newValue)
+      }
+
       if (value === newValue || transformIn(value) === internalValue) {
         return
       }
+
       internal.value = newValue
       vm?.emit(`update:${prop}`, newValue)
     },

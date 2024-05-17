@@ -9,17 +9,7 @@
         <foxy-container fullscreen>
           <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
             <foxy-col>
-              <foxy-text-field
-                  v-bind="state"
-                  @click:control="logEvent('click control', $event)"
-                  @mousedown:control="logEvent('mousedown control', $event)"
-                  @update:focused="logEvent('update focused', $event)"
-                  @update:model-value="logEvent('update modelValue', $event)"
-                  @click:append="logEvent('click append', $event)"
-                  @click:prepend="logEvent('click prepend', $event)"
-                  @click:clear="logEvent('click clear', $event)"
-                  @click:append-inner="logEvent('click append inner', $event)"
-                  @click:prepend-inner="logEvent('click prepend inner', $event)" />
+              <foxy-text-field v-bind="state"/>
             </foxy-col>
           </foxy-row>
         </foxy-container>
