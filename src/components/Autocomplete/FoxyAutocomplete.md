@@ -1,4 +1,0 @@
-# Foxyautocomplete
-
-## Usage
-    <FoxyAutocomplete />

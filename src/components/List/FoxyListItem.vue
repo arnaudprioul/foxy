@@ -380,8 +380,8 @@
       align-self: var(--foxy-list-item__prepend---align-self);
       display: var(--foxy-list-item__prepend---display);
       grid-area: var(--foxy-list-item__prepend---grid-area);
-      width: var(--foxy-list-item__prepend---width);
-      height: var(--foxy-list-item__prepend---height);
+      min-width: var(--foxy-list-item__prepend---min-width);
+      min-height: var(--foxy-list-item__prepend---min-height);
     }
 
     &__append {
@@ -389,8 +389,8 @@
       align-self: var(--foxy-list-item__append---align-self);
       display: var(--foxy-list-item__append---display);
       grid-area: var(--foxy-list-item__append---grid-area);
-      width: var(--foxy-list-item__append---width);
-      height: var(--foxy-list-item__append---height);
+      min-width: var(--foxy-list-item__append---min-width);
+      min-height: var(--foxy-list-item__append---min-height);
     }
 
     &__content {
@@ -504,15 +504,15 @@
     --foxy-list-item__prepend---align-self: center;
     --foxy-list-item__prepend---display: flex;
     --foxy-list-item__prepend---grid-area: prepend;
-    --foxy-list-item__prepend---width: 24px;
-    --foxy-list-item__prepend---height: 24px;
+    --foxy-list-item__prepend---min-width: 24px;
+    --foxy-list-item__prepend---min-height: 24px;
 
     --foxy-list-item__append---align-items: center;
     --foxy-list-item__append---align-self: center;
     --foxy-list-item__append---display: flex;
     --foxy-list-item__append---grid-area: append;
-    --foxy-list-item__append---width: 24px;
-    --foxy-list-item__append---height: 24px;
+    --foxy-list-item__append---min-width: 24px;
+    --foxy-list-item__append---min-height: 24px;
 
     --foxy-list-item__content---align-self: center;
     --foxy-list-item__content---grid-area: content;

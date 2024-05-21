@@ -39,6 +39,8 @@
 
         <hst-checkbox v-model="state.multiple" title="Multiple"/>
 
+        <hst-checkbox v-model="state.autocomplete" title="Autocomplete"/>
+
         <hst-text v-model="state.label" title="Label"/>
         <hst-text v-model="state.prefix" title="Prefix"/>
         <hst-text v-model="state.suffix" title="Suffix"/>
@@ -48,14 +50,14 @@
 </template>
 
 <script lang="ts" setup>
-  import { FoxyCol, FoxyContainer, FoxyRow, FoxySelect, FoxyTextField } from '@foxy/components'
+  import { FoxyCol, FoxyContainer, FoxyRow, FoxySelect } from '@foxy/components'
 
   import { ALIGN, JUSTIFY } from '@foxy/enums'
 
   import { HstIcon } from '@stories/components/controls'
   import { logEvent } from 'histoire/client'
 
-  import { reactive, ref } from 'vue'
+  import { reactive } from 'vue'
 
   const state: { [key: string]: any } = reactive({
     label: 'Select',

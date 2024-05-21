@@ -31,9 +31,9 @@ export function anchorToPoint (anchor: TParsedAnchor, box: IBox): TViewportPoint
     const { side, align } = anchor
 
     const x: number =
-        align === 'left' ? 0
+        align === 'left' || 'start' ? 0
             : align === 'center' ? box.width / 2
-                : align === 'right' ? box.width
+                : align === 'right' || 'end' ? box.width
                     : align
     const y: number =
         side === 'top' ? 0

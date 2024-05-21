@@ -4,7 +4,7 @@ import {
   ICommonsComponentProps,
   IDensityProps,
   IElevationProps,
-  IFieldProps,
+  IFieldProps, IFiltersProps,
   IInputProps,
   IItemProps,
   IListProps,
@@ -18,7 +18,7 @@ import {
 
 import { TIcon } from '@foxy/types'
 
-export interface ISelectProps extends ICommonsComponentProps, IColorProps, ITextFieldProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IItemProps, ITransitionComponentProps {
+export interface ISelectProps extends ICommonsComponentProps, IColorProps, ITextFieldProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IItemProps, ITransitionComponentProps, IFiltersProps {
   chips?: boolean
   closableChips?: boolean
   eager?: boolean
@@ -32,4 +32,10 @@ export interface ISelectProps extends ICommonsComponentProps, IColorProps, IText
   multiple?: boolean
   noDataText?: string
   openOnClear?: boolean
+
+  autocomplete?: boolean
+  autoSelectFirst?: boolean | string
+  clearOnSelect?: boolean
+  divider?: string
+  search?: string
 }

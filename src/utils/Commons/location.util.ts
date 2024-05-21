@@ -264,7 +264,6 @@ export function connectedLocationStrategy (data: ILocationStrategyData, props: I
     Object.assign(contentStyles.value, {
       '--foxy-overlay-anchor-origin': `${placement.anchor.side} ${placement.anchor.align}`,
       transformOrigin: `${placement.origin.side} ${placement.origin.align}`,
-      // transform: `translate(${pixelRound(x)}px, ${pixelRound(y)}px)`,
       top: convertToUnit(pixelRound(y)),
       left: convertToUnit(pixelRound(x)),
       right: undefined,

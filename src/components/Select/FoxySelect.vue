@@ -2,16 +2,16 @@
   <foxy-text-field
       ref="foxyTextFieldRef"
       v-model:focused="isFocused"
+      v-model:model-value="search"
       :class="selectClasses"
       :counter-value="counterValue"
       :dirty="isDirty"
-      :model-value="modelMapped"
       :placeholder="placeholder"
       :style="selectStyles"
       :validation-value="validationValue"
-      inputmode="none"
       v-bind="{ ...textFieldProps }"
       @blur="handleBlur"
+      @change="handleChange"
       @keydown="handleKeydown"
       @update:model-value="handleModelUpdate"
       @click:clear="handleClear"
@@ -28,7 +28,7 @@
           :open-on-click="false"
           activator="parent"
           content-class="foxy-select__content"
-          v-bind="{ ...computedMenuProps }"
+          v-bind="{ ...menuProps }"
           @afterLeave="handleAfterLeave">
 
         <template #default>
@@ -41,6 +41,7 @@
               aria-live="polite"
               v-bind="{ ...listProps }"
               @focusin="handleFocusin"
+              @focusout="handleFocusout"
               @keydown="handleListKeydown"
               @mousedown="handleMousedown"
               @scroll-passive="handleListScroll">
@@ -64,9 +65,8 @@
                     <foxy-list-item
                         :key="index"
                         v-bind="menuListItemProps(item, itemRef, index)">
-                      <template #prepend="{isSelected}">
+                      <template v-if="showCheckbox || item.props.prependAvatar || item.props.prependIcon" #prepend="{isSelected}">
                         <foxy-checkbox-btn
-                            v-if="multiple && !hideSelected"
                             :key="item"
                             :model-value="isSelected"
                             :ripple="false"
@@ -77,6 +77,22 @@
                         <foxy-icon v-if="item.props.prependIcon" :icon="item.props.prependIcon"/>
                       </template>
 
+                      <template #title>
+                        <template v-if="isPristine">
+                          <span class="foxy-select__text">{{ item.title }}</span>
+                        </template>
+                        <template v-else>
+                          <span class="foxy-select__unmask">
+                            {{ item.title.substr(0, getMatches(item)?.title) }}
+                          </span>
+                          <span class="foxy-select__mask">
+                            {{ item.title.substr(getMatches(item)?.title, search.length) }}
+                          </span>
+                          <span class="foxy-select__unmask">
+                            {{ item.title.substr(getMatches(item)?.title + search.length) }}
+                          </span>
+                        </template>
+                      </template>
                     </foxy-list-item>
                   </slot>
                 </template>
@@ -89,7 +105,9 @@
       </foxy-menu>
 
       <template v-for="(item, index) in model" :key="index">
-        <div class="foxy-select__selection">
+        <div :class="{'foxy-select__selection--selected' : index === selectionIndex}"
+             :style="[textColorStyles]"
+             class="foxy-select__selection">
           <template v-if="hasChips">
             <slot name="chip" v-bind="{ item, index, props: chipSlotProps(item) }">
               <foxy-chip
@@ -114,7 +132,9 @@
               <slot name="selection">
                 {{ item.title }}
               </slot>
-              <span v-if="multiple && (index < model.length - 1)" class="foxy-select__selection-comma">,</span>
+              <span v-if="multiple && (index < model.length - 1)" class="foxy-select__selection-comma">
+                {{ divider }}
+              </span>
             </span>
           </template>
         </div>
@@ -135,7 +155,9 @@
             :icon="appendInnerIcon"/>
         <foxy-icon
             :icon="menuIcon"
-            class="foxy-select__menu-icon"/>
+            class="foxy-select__menu-icon"
+            @click="noop"
+            @mousedown="handleMousedownMenuIcon"/>
       </slot>
     </template>
   </foxy-text-field>
@@ -154,19 +176,36 @@
     FoxyVirtualScroll
   } from '@foxy/components'
 
-  import { useItems, useScrolling, useSlots } from '@foxy/composables'
+  import { useFilter, useItems, useScrolling, useSlots, useTextColor } from '@foxy/composables'
 
   import { FOXY_FORM_KEY, IN_BROWSER, TEXT_FIELD_PROPS } from '@foxy/consts'
 
-  import { BLOCK, DENSITY, DIRECTION, SELECT_STRATEGY, TEXT_FIELD_TYPE } from '@foxy/enums'
+  import {
+    BLOCK,
+    DENSITY,
+    DIRECTION,
+    FILTERS_MODE,
+    SELECT_STRATEGY,
+    TEXT_FIELD_TYPE
+  } from '@foxy/enums'
 
   import { IListItem, ISelectProps } from '@foxy/interfaces'
 
   import { TFoxyList, TFoxyMenu, TFoxyTextField, TFoxyVirtualScroll } from '@foxy/types'
 
-  import { deepEqual, forwardRefs, keys, matchesSelector, omit, pick, useProxiedModel, wrapInArray } from '@foxy/utils'
+  import {
+    deepEqual,
+    forwardRefs,
+    keys,
+    matchesSelector,
+    noop,
+    omit,
+    pick,
+    useProxiedModel,
+    wrapInArray
+  } from '@foxy/utils'
 
-  import { computed, inject, mergeProps, nextTick, ref, shallowRef, StyleValue, VNodeRef, watch } from 'vue'
+  import { computed, inject, mergeProps, nextTick, ref, shallowRef, StyleValue, toRef, VNodeRef, watch } from 'vue'
 
   const props = withDefaults(defineProps<ISelectProps>(), {
     type: TEXT_FIELD_TYPE.TEXT,
@@ -185,7 +224,10 @@
     itemProps: 'props',
     valueComparator: deepEqual,
     menuIcon: '$dropdown',
-    transition: { component: FoxyTranslateScale }
+    divider: ',',
+    transition: { component: FoxyTranslateScale },
+    filterKeys: ['title'],
+    filterMode: FILTERS_MODE.INTERSECTION
   })
 
   const emits = defineEmits(['click:control', 'mousedown:control', 'update:focused', 'update:modelValue', 'update:menu', 'click:prepend', 'click:prependInner', 'click:append', 'click:appendInner', 'click:clear'])
@@ -196,6 +238,8 @@
   const foxyListRef = ref<TFoxyList>()
 
   const { hasSlot } = useSlots()
+
+  const { textColorStyles } = useTextColor(toRef(props, 'color'))
 
   const { items, transformIn, transformOut } = useItems(props)
   const model = useProxiedModel(
@@ -210,14 +254,8 @@
         return props.multiple ? transformed : (transformed[0] ?? null)
       }
   )
+  const search = useProxiedModel(props, 'search', '')
 
-  const modelMapped = computed(() => {
-    if (model.value.length) {
-      return model.value.map((v) => v.props.value).join(', ')
-    }
-
-    return ''
-  })
   const validationValue = computed(() => {
     return model.externalValue
   })
@@ -241,24 +279,43 @@
   const selectedValues = computed(() => {
     return model.value.map((selection) => selection.value)
   })
+  const highlightFirst = computed(() => {
+    const selectFirst = props.autoSelectFirst === true ||
+        (props.autoSelectFirst === 'exact' && search.value === displayItems.value[0]?.title)
+    return selectFirst &&
+        displayItems.value.length > 0 &&
+        !isPristine.value &&
+        !listHasFocus.value
+  })
+  const showCheckbox = computed(() => {
+    return props.multiple && !props.hideSelected
+  })
 
   const isFocused = shallowRef(false)
   const form = inject(FOXY_FORM_KEY, null)
+  const isPristine = shallowRef(true)
+
+  const { filteredItems, getMatches } = useFilter(props, items, () => isPristine.value ? '' : search.value)
 
   let keyboardLookupPrefix = ''
   let keyboardLookupLastTime: number
 
+  const listHasFocus = shallowRef(false)
+  const selectionIndex = shallowRef(-1)
+  const isSelecting = shallowRef(false)
+
   const displayItems = computed(() => {
     if (props.hideSelected) {
-      return items.value.filter(item => !model.value.some(s => s === item))
+      return filteredItems.value.filter((filteredItem) => !model.value.some(s => s.value === filteredItem.value))
     }
-    return items.value
+
+    return filteredItems.value
   })
 
   const menuDisabled = computed(() => {
     return (props.hideNoData && !displayItems.value.length) || props.readonly || form?.isReadonly.value
   })
-  const computedMenuProps = computed(() => {
+  const menuProps = computed(() => {
     return {
       ...props.menuProps,
       activatorProps: {
@@ -269,10 +326,21 @@
   })
 
   const menuListItemProps = (item: IListItem, itemRef: VNodeRef, index: number) => {
-    return mergeProps(item.props, { ref: itemRef, key: index, onClick: () => handleSelect(item, null) })
+    return mergeProps(item.props, {
+      ref: itemRef,
+      key: index,
+      active: (highlightFirst.value && index === 0) ? true : isSelected(item),
+      onClick: () => handleSelect(item, null)
+    })
+  }
+  const isSelected = (item: IListItem) => {
+    return selectedValues.value.includes(item.value)
   }
 
-  const { onListScroll: handleListScroll, onListKeydown: handleListKeydown } = useScrolling(foxyListRef, foxyTextFieldRef)
+  const {
+    onListScroll: handleListScroll,
+    onListKeydown: handleListKeydown
+  } = useScrolling(foxyListRef, foxyTextFieldRef)
 
   const handleSelect = (item: IListItem, set: boolean | null = true) => {
     if (item.props.disabled) return
@@ -289,18 +357,32 @@
       } else if (add) {
         model.value = [...model.value, item]
       }
+
+      if (props.clearOnSelect && props.autocomplete) {
+        search.value = ''
+      }
     } else {
       const add = set !== false
+
       model.value = add ? [item] : []
+
+      if (props.autocomplete) {
+        search.value = add ? item.title : ''
+      }
 
       nextTick(() => {
         menu.value = false
+        isPristine.value = true
       })
     }
   }
-  const handleClear = (e: MouseEvent) => {
+  const handleClear = (_e: MouseEvent) => {
     if (props.openOnClear) {
       menu.value = true
+    }
+
+    if (props.autocomplete) {
+      search.value = ''
     }
   }
   const handleMousedownControl = () => {
@@ -308,10 +390,22 @@
 
     menu.value = !menu.value
   }
+  const handleMousedownMenuIcon = (e: MouseEvent) => {
+    if (menuDisabled.value) return
+
+    if (isFocused.value) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+    menu.value = !menu.value
+  }
   const handleKeydown = (e: KeyboardEvent) => {
     if (!e.key || props.readonly || form?.isReadonly.value) return
 
-    if (['Enter', ' ', 'ArrowDown', 'ArrowUp', 'Home', 'End'].includes(e.key)) {
+    const selectionStart = foxyTextFieldRef.value?.selectionStart
+    const length = model.value.length
+
+    if ((props.autocomplete && selectionIndex.value > -1) || ['Enter', ' ', 'ArrowDown', 'ArrowUp', 'Home', 'End'].includes(e.key)) {
       e.preventDefault()
     }
 
@@ -329,35 +423,93 @@
       foxyListRef.value?.focus('last')
     }
 
-    // html select hotkeys
-    const KEYBOARD_LOOKUP_THRESHOLD = 1000 // milliseconds
+    if (props.autocomplete) {
+      if (highlightFirst.value && ['Enter', 'Tab'].includes(e.key)) {
+        handleSelect(displayItems.value[0] as IListItem)
+      }
 
-    const checkPrintable = (e: KeyboardEvent) => {
-      const isPrintableChar = e.key.length === 1
-      const noModifier = !e.ctrlKey && !e.metaKey && !e.altKey
-      return isPrintableChar && noModifier
-    }
+      if (e.key === 'ArrowDown' && highlightFirst.value) {
+        foxyListRef.value?.focus('next')
+      }
 
-    if (props.multiple || !checkPrintable(e)) return
+      if (['Backspace', 'Delete'].includes(e.key)) {
+        if (
+            !props.multiple &&
+            model.value.length > 0 &&
+            !search.value
+        ) return handleSelect(model.value[0], false)
 
-    const now = performance.now()
+        if (~selectionIndex.value) {
+          const originalSelectionIndex = selectionIndex.value
+          handleSelect(model.value[selectionIndex.value], false)
 
-    if (now - keyboardLookupLastTime > KEYBOARD_LOOKUP_THRESHOLD) {
-      keyboardLookupPrefix = ''
-    }
+          selectionIndex.value = originalSelectionIndex >= length - 1 ? (length - 2) : originalSelectionIndex
+        } else if (e.key === 'Backspace' && !search.value) {
+          selectionIndex.value = length - 1
+        }
+      }
 
-    keyboardLookupPrefix += e.key.toLowerCase()
-    keyboardLookupLastTime = now
+      if (!props.multiple) return
 
-    const item = items.value.find((item) => item.title?.toLowerCase().startsWith(keyboardLookupPrefix))
+      if (e.key === 'ArrowLeft') {
+        if (selectionIndex.value < 0 && selectionStart > 0) return
 
-    if (item !== undefined) {
-      model.value = [item as IListItem]
-      const index = displayItems.value.indexOf(item)
+        const prev = selectionIndex.value > -1
+            ? selectionIndex.value - 1
+            : length - 1
 
-      IN_BROWSER && window.requestAnimationFrame(() => {
-        index >= 0 && foxyVirtualScrollRef.value?.scrollToIndex(index)
-      })
+        if (model.value[prev]) {
+          selectionIndex.value = prev
+        } else {
+          selectionIndex.value = -1
+          foxyTextFieldRef.value?.setSelectionRange(search.value?.length, search.value?.length)
+        }
+      }
+
+      if (e.key === 'ArrowRight') {
+        if (selectionIndex.value < 0) return
+
+        const next = selectionIndex.value + 1
+
+        if (model.value[next]) {
+          selectionIndex.value = next
+        } else {
+          selectionIndex.value = -1
+          foxyTextFieldRef.value?.setSelectionRange(0, 0)
+        }
+      }
+    } else {
+      // html select hotkeys
+      const KEYBOARD_LOOKUP_THRESHOLD = 1000 // milliseconds
+
+      const checkPrintable = (e: KeyboardEvent) => {
+        const isPrintableChar = e.key.length === 1
+        const noModifier = !e.ctrlKey && !e.metaKey && !e.altKey
+
+        return isPrintableChar && noModifier
+      }
+
+      if (props.multiple || !checkPrintable(e)) return
+
+      const now = performance.now()
+
+      if (now - keyboardLookupLastTime > KEYBOARD_LOOKUP_THRESHOLD) {
+        keyboardLookupPrefix = ''
+      }
+
+      keyboardLookupPrefix += e.key.toLowerCase()
+      keyboardLookupLastTime = now
+
+      const item = items.value.find((item) => item.title?.toLowerCase().startsWith(keyboardLookupPrefix))
+
+      if (item !== undefined) {
+        model.value = [item as IListItem]
+        const index = displayItems.value.indexOf(item)
+
+        IN_BROWSER && window.requestAnimationFrame(() => {
+          index >= 0 && foxyVirtualScrollRef.value?.scrollToIndex(index)
+        })
+      }
     }
   }
   const handleBlur = (e: FocusEvent) => {
@@ -365,24 +517,37 @@
       menu.value = false
     }
   }
-  const handleAfterLeave = () => {
-    if (isFocused.value) {
-      foxyTextFieldRef.value?.focus()
-    }
-  }
-  const handleFocusin = (e: FocusEvent) => {
-    isFocused.value = true
-  }
-  const handleModelUpdate = (v: any) => {
-    if (v == null) {
-      model.value = []
-    } else if (matchesSelector(foxyTextFieldRef.value, ':autofill') || matchesSelector(foxyTextFieldRef.value, ':-webkit-autofill')) {
-      const item = items.value.find((item) => item.title === v)
+  const handleChange = (e: Event) => {
+    if (matchesSelector(foxyTextFieldRef.value, ':autofill') || matchesSelector(foxyTextFieldRef.value, ':-webkit-autofill')) {
+      const item = items.value.find(item => item.title === (e.target as HTMLInputElement).value)
 
       if (item) {
         handleSelect(item as IListItem)
       }
-    } else if (foxyTextFieldRef.value) {
+    }
+  }
+  const handleAfterLeave = () => {
+    if (isFocused.value) {
+      isPristine.value = true
+      foxyTextFieldRef.value?.focus()
+    }
+  }
+  const handleFocusin = (_e: FocusEvent) => {
+    isFocused.value = true
+
+    setTimeout(() => {
+      listHasFocus.value = true
+    })
+  }
+  const handleFocusout = (_e: FocusEvent) => {
+    listHasFocus.value = false
+  }
+  const handleModelUpdate = (v: any) => {
+    if (v == null || (v === '' && !props.multiple)) {
+      model.value = []
+    }
+
+    if (foxyTextFieldRef.value) {
       foxyTextFieldRef.value.value = ''
     }
   }
@@ -418,6 +583,38 @@
     e.preventDefault()
     e.stopPropagation()
   }
+
+  watch(isFocused, (val, oldVal) => {
+    if (val === oldVal) return
+
+    if (val) {
+      isSelecting.value = true
+      search.value = props.multiple ? '' : String(model.value.at(-1)?.props.title ?? '')
+      isPristine.value = true
+
+      nextTick(() => isSelecting.value = false)
+    } else {
+      if (!props.multiple && search.value == null) model.value = []
+      else if (
+          highlightFirst.value &&
+          !listHasFocus.value &&
+          !model.value.some(({ value }) => value === displayItems.value[0].value)
+      ) {
+        handleSelect(displayItems.value[0] as IListItem)
+      }
+      menu.value = false
+      search.value = ''
+      selectionIndex.value = -1
+    }
+  })
+
+  watch(search, val => {
+    if (!isFocused.value || isSelecting.value) return
+
+    if (val) menu.value = true
+
+    isPristine.value = !val
+  })
 
   watch(menu, () => {
     if (!props.hideSelected && menu.value && model.value.length) {
@@ -466,12 +663,12 @@
   const selectClasses = computed(() => {
     return [
       'foxy-select',
+      `foxy-select--${props.multiple ? 'multiple' : 'single'}`,
       {
+        'foxy-select--autocomplete': props.autocomplete,
         'foxy-select--active-menu': menu.value,
         'foxy-select--chips': !!props.chips,
-        [`foxy-select--${props.multiple ? 'multiple' : 'single'}`]: true,
-        'foxy-select--selected': model.value.length,
-        'foxy-select--selection-slot': hasSlot('selection'),
+        'foxy-select--selected': selectionIndex.value > -1
       },
       props.class,
     ]
@@ -493,14 +690,16 @@
 
       .foxy-field__input {
         > input {
-          align-self: flex-start;
-          opacity: 1;
+          opacity: 0;
           flex: 0 0;
           position: absolute;
           width: 100%;
+          align-self: stretch;
+          padding: 0;
           transition: none;
           pointer-events: none;
           caret-color: transparent;
+          font-size: 16px;
         }
       }
 
@@ -528,7 +727,7 @@
       align-items: center;
       letter-spacing: inherit;
       line-height: inherit;
-      max-width: 100%;
+      max-width: calc(100% - 2px - 2px);
 
       &:first-child {
         margin-inline-start: 0;
@@ -544,7 +743,7 @@
       :deep(.foxy-field) {
         .foxy-field__input {
           > input {
-            opacity: 0;
+            caret-color: transparent;
           }
         }
       }
@@ -552,8 +751,90 @@
 
     &--active-menu {
       #{$this}__menu-icon {
-        opacity: var(--v-high-emphasis-opacity);
+        opacity: 1;
         transform: rotate(180deg);
+      }
+    }
+
+    &#{$this}--autocomplete {
+      :deep(.foxy-field) {
+        .foxy-field__prefix,
+        .foxy-field__suffix,
+        .foxy-field__input {
+          cursor: text;
+        }
+
+        .foxy-field__input {
+          > input {
+            flex: 1 1;
+            opacity: 1;
+            pointer-events: auto;
+            caret-color: inherit;
+          }
+        }
+
+        input {
+          min-width: 64px;
+        }
+
+        &:not(.foxy-field--focused) {
+          input {
+            min-width: 0;
+          }
+        }
+      }
+
+      #{$this}__mask {
+        background: rgb(66, 66, 66);
+      }
+
+      &#{$this}--selected {
+        #{$this}__selection {
+          opacity: 0.7;
+
+          &--selected {
+            opacity: 1;
+          }
+        }
+      }
+
+      &#{$this}--multiple {
+        :deep(.foxy-field) {
+          input {
+            position: relative;
+          }
+        }
+      }
+
+      &#{$this}--single {
+        :deep(.foxy-field) {
+          input {
+            left: 0;
+            right: 0;
+            padding-inline: inherit;
+            opacity: 1;
+          }
+
+          &.foxy-field--active {
+            input {
+              transition: none;
+            }
+          }
+
+          &.foxy-field--dirty {
+            &:not(.foxy-field--focused) {
+              input {
+                opacity: 0;
+              }
+            }
+          }
+
+          &.foxy-field--focused {
+            #{$this}__selection {
+              opacity: 0;
+            }
+          }
+        }
       }
     }
   }
