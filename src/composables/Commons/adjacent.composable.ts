@@ -20,10 +20,10 @@ export function useAdjacent (props: IAdjacentProps, emits: any) {
     return hasSlot('append') || hasAppendMedia.value
   })
 
-  const clickPrepend = (e: Event) => {
+  const onClickPrepend = (e: Event) => {
     emits('click:prepend', e)
   }
-  const clickAppend = (e: Event) => {
+  const onClickAppend = (e: Event) => {
     emits('click:append', e)
   }
 
@@ -32,8 +32,8 @@ export function useAdjacent (props: IAdjacentProps, emits: any) {
     hasPrepend,
     hasAppendMedia,
     hasAppend,
-    clickPrepend,
-    clickAppend
+    onClickPrepend,
+    onClickAppend
   }
 }
 
@@ -56,10 +56,10 @@ export function useAdjacentInner (props: IAdjacentInnerProps, emits: any) {
     return !!(props.clearable || hasSlot('clear'))
   })
 
-  const clickPrependInner = (e: Event) => {
+  const onClickPrependInner = (e: Event) => {
     emits('click:prependInner', e)
   }
-  const clickAppendInner = (e: Event) => {
+  const onClickAppendInner = (e: Event) => {
     emits('click:appendInner', e)
   }
   const clickClear = (e: Event) => {
@@ -72,8 +72,8 @@ export function useAdjacentInner (props: IAdjacentInnerProps, emits: any) {
     hasAppendInnerMedia,
     hasAppendInner,
     hasClear,
-    clickPrependInner,
-    clickAppendInner,
+    onClickPrependInner,
+    onClickAppendInner,
     clickClear
   }
 }

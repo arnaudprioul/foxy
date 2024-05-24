@@ -148,8 +148,8 @@
   const model = useProxiedModel(props, 'modelValue')
   const { isFocused, onFocus, onBlur: handleBlur } = useFocus(props)
   const {
-    clickPrependInner: handleClickPrependInner,
-    clickAppendInner: handleClickAppendInner
+    onClickPrependInner: handleClickPrependInner,
+    onClickAppendInner: handleClickAppendInner
   } = useAdjacentInner(props, emits)
 
   const counterValue = computed(() => {

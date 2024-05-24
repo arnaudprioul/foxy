@@ -6,9 +6,9 @@ export function useLazy (props: { eager: boolean }, active: Ref<boolean>) {
 
   watch(active, () => isBooted.value = true)
 
-  const handleAfterLeave = () => {
+  const onAfterLeave = () => {
     if (!props.eager) isBooted.value = false
   }
 
-  return { isBooted, hasContent, handleAfterLeave }
+  return { isBooted, hasContent, onAfterLeave }
 }

@@ -73,8 +73,8 @@
   const { densityClasses } = useDensity(props)
 
   const {
-    clickPrepend: handleClickPrepend,
-    clickAppend: handleClickAppend,
+    onClickPrepend: handleClickPrepend,
+    onClickAppend: handleClickAppend,
     hasPrepend,
     hasAppend
   } = useAdjacent(props, emits)

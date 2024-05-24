@@ -79,7 +79,7 @@
   const { paddingClasses, paddingStyles } = usePadding(props)
   const { marginClasses, marginStyles } = useMargin(props)
 
-  const {hasAppend, hasPrepend, clickPrepend: handleClickPrepend, clickAppend: handleClickAppend} = useAdjacent(props, emits)
+  const {hasAppend, hasPrepend, onClickPrepend: handleClickPrepend, onClickAppend: handleClickAppend} = useAdjacent(props, emits)
   const link = useLink(props, attrs)
 
   const isActive = computed(() => props.active || link.isActive?.value)

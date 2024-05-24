@@ -1,0 +1,4 @@
+# Foxyexpansionpanel
+
+## Usage
+    <FoxyExpansionPanel />

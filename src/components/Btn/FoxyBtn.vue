@@ -129,8 +129,8 @@
   const { sizeClasses, sizeStyles } = useSize(props)
 
   const {
-    clickPrepend: handleClickPrepend,
-    clickAppend: handleClickAppend,
+    onClickPrepend: handleClickPrepend,
+    onClickAppend: handleClickAppend,
     hasAppend,
     hasPrepend
   } = useAdjacent(props, emits)

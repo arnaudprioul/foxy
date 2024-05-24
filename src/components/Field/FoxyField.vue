@@ -150,8 +150,8 @@
   const { focusClasses, isFocused, onFocus: handleFocus, onBlur: handleBlur } = useFocus(props)
   const {
     hasAppendInner,
-    clickAppendInner: handleClickAppendInner,
-    clickPrependInner: handleClickPrependInner,
+    onClickAppendInner: handleClickAppendInner,
+    onClickPrependInner: handleClickPrependInner,
     clickClear: handleClickClear,
     hasPrependInner,
     hasClear

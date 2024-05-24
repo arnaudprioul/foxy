@@ -116,7 +116,7 @@
   const { elevationClasses } = useElevation(props)
   const { roundedClasses, roundedStyles } = useRounded({ rounded: props.rounded || props.nav })
 
-  const {clickPrepend: handleClickPrepend, clickAppend: handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
+  const {onClickPrepend: handleClickPrepend, onClickAppend: handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
 
   const isActive = computed(() => {
     return props.active !== false && (props.active || link.isActive?.value || isSelected.value)

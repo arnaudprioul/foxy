@@ -86,7 +86,7 @@
     },
   })
   const { teleportTarget } = useTeleport(computed(() => props.attach || props.contained))
-  const { hasContent, handleAfterLeave: afterLeave } = useLazy(props, isActive)
+  const { hasContent, onAfterLeave } = useLazy(props, isActive)
   const { globalTop, localTop, stackStyles } = useStack(isActive, toRef(props, 'zIndex'), props.disableGlobalStack)
   const {
     activatorEl,
@@ -213,7 +213,7 @@
   }
 
   const handleAfterLeave = () => {
-    afterLeave()
+    onAfterLeave()
     emits('afterLeave')
   }
 

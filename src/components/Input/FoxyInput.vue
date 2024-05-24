@@ -117,8 +117,8 @@
   const {
     hasPrepend,
     hasAppend,
-    clickPrepend: handleClickPrepend,
-    clickAppend: handleClickAppend
+    onClickPrepend: handleClickPrepend,
+    onClickAppend: handleClickAppend
   } = useAdjacent(props, emits)
 
   const messages = computed(() => {

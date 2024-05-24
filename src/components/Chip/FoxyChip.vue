@@ -131,8 +131,8 @@
   const group = useGroupItem(props, FOXY_CHIP_GROUP_KEY, false)
   const link = useLink(props, attrs)
   const {
-    clickPrepend: handleClickPrepend,
-    clickAppend: handleClickAppend,
+    onClickPrepend: handleClickPrepend,
+    onClickAppend: handleClickAppend,
     hasPrepend,
     hasAppend
   } = useAdjacent(props, emits)
