@@ -1,0 +1,4 @@
+# Foxyalert
+
+## Usage
+    <FoxyAlert />

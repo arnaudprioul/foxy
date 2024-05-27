@@ -1,0 +1,4 @@
+# Foxydivider
+
+## Usage
+    <FoxyDivider />

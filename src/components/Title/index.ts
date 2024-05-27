@@ -1,0 +1,1 @@
+export { default as FoxyTitle } from './FoxyTitle.vue'

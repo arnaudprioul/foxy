@@ -1,0 +1,4 @@
+# Foxyswitch
+
+## Usage
+    <FoxySwitch />

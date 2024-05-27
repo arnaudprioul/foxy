@@ -1,0 +1,4 @@
+# Foxylabel
+
+## Usage
+    <FoxyLabel />

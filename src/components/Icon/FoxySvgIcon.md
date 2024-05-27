@@ -1,0 +1,4 @@
+# Foxysvgicon
+
+## Usage
+    <FoxySvgIcon />

@@ -1,0 +1,4 @@
+# Foxylistgroupactivator
+
+## Usage
+    <FoxyListGroupActivator />

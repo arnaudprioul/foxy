@@ -1,0 +1,4 @@
+# Foxylayout
+
+## Usage
+    <FoxyLayout />

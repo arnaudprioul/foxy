@@ -1,0 +1,4 @@
+# Foxywindowitem
+
+## Usage
+    <FoxyWindowItem />

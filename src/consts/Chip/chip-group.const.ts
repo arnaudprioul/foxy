@@ -1,0 +1,1 @@
+export const FOXY_CHIP_GROUP_KEY = Symbol.for('foxy:chip-group')

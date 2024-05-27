@@ -1,0 +1,4 @@
+# Foxydialogconfirmation
+
+## Usage
+    <FoxyDialogConfirmation />

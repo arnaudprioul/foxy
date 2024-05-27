@@ -1,0 +1,1 @@
+export { default as FoxySwitch } from './FoxySwitch.vue'

@@ -1,0 +1,4 @@
+# Foxyfilefield
+
+## Usage
+    <FoxyFileField />

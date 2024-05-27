@@ -1,0 +1,1 @@
+export const FORWARD_REFS = Symbol('Forwarded refs')

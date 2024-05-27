@@ -1,0 +1,4 @@
+# Foxycontent
+
+## Usage
+    <FoxyContent />

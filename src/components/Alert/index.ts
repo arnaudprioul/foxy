@@ -1,0 +1,1 @@
+export { default as FoxyAlert } from './FoxyAlert.vue'

@@ -1,0 +1,1 @@
+export { default as FoxyLayout } from './FoxyLayout.vue'

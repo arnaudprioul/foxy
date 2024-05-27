@@ -1,0 +1,1 @@
+export { default as FoxyResponsive } from './FoxyResponsive.vue'

@@ -1,0 +1,4 @@
+# Foxybreadcrumbdivider
+
+## Usage
+    <FoxyBreadcrumbDivider />

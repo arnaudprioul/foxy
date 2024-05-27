@@ -1,0 +1,1 @@
+export {default as FoxyMessages} from './FoxyMessages.vue'

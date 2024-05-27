@@ -1,0 +1,1 @@
+export { default as FoxyDrawer } from './FoxyDrawer.vue'

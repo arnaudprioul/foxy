@@ -1,0 +1,1 @@
+export { default as FoxyImg } from './FoxyImg.vue'

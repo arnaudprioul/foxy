@@ -1,0 +1,4 @@
+# Foxywindowytranslate
+
+## Usage
+    <FoxyWindowYTranslate />

@@ -1,0 +1,4 @@
+# Foxyinput
+
+## Usage
+    <FoxyInput />

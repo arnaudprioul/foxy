@@ -1,0 +1,4 @@
+# Foxybadge
+
+## Usage
+    <FoxyBadge />

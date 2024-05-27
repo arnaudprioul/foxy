@@ -1,0 +1,4 @@
+# Foxycounter
+
+## Usage
+    <FoxyCounter />

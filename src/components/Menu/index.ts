@@ -1,0 +1,1 @@
+export { default as FoxyMenu } from './FoxyMenu.vue'
