@@ -272,9 +272,15 @@
     },
   })
   const counterValue = computed(() => {
-    return typeof props.counterValue === 'function' ? props.counterValue(model.value)
-        : typeof props.counterValue === 'number' ? props.counterValue
-            : model.value.length
+    if (typeof props.counterValue === 'function') {
+      return props.counterValue(model.value)
+    }
+
+    if (props.counterValue) {
+      return props.counterValue
+    }
+
+    return model.value.length
   })
   const selectedValues = computed(() => {
     return model.value.map((selection) => selection.value)
@@ -667,7 +673,7 @@
       {
         'foxy-select--autocomplete': props.autocomplete,
         'foxy-select--active-menu': menu.value,
-        'foxy-select--chips': !!props.chips,
+        'foxy-select--chips': props.chips,
         'foxy-select--selected': selectionIndex.value > -1
       },
       props.class,

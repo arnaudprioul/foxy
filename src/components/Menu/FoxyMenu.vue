@@ -53,7 +53,8 @@
 
   import { INLINE, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@foxy/enums'
 
-  import { IItemProps, IMenuProps, IOverlayProps } from '@foxy/interfaces'
+  import { IItemProps, IMenuProps } from '@foxy/interfaces'
+
   import { TFoxyOverlay } from '@foxy/types'
 
   import { focusableChildren, focusChild, getNextElement, getUid, keys, omit, pick, useProxiedModel } from '@foxy/utils'

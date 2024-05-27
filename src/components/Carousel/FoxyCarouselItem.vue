@@ -29,7 +29,7 @@
 
   import { IMG_PROPS, WINDOW_ITEM_PROPS } from '@foxy/consts'
 
-  import { ICarouselItemProps, IImgProps, IWindowItemProps } from '@foxy/interfaces'
+  import { ICarouselItemProps } from '@foxy/interfaces'
 
   import { keys, omit, pick } from '@foxy/utils'
 

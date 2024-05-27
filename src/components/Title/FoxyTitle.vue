@@ -12,7 +12,7 @@
 <script lang="ts" setup>
   import { computed, StyleValue, toRef } from 'vue'
 
-  import { useBorder, useBothColor, useDensity, useMargin, usePadding, useRounded, useSlots } from '@foxy/composables'
+  import { useBorder, useBothColor, useDensity, useMargin, usePadding, useSlots } from '@foxy/composables'
 
   import { ITitleProps } from '@foxy/interfaces'
 
