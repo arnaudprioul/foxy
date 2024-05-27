@@ -82,14 +82,13 @@ export function calculate (
     localY = target.clientY - offset.top
   }
 
-  let radius = 0
+  let radius = Math.sqrt(el.clientWidth ** 2 + el.clientHeight ** 2) / 2
   let scale = 0.3
+
   if (el._ripple?.circle) {
     scale = 0.15
     radius = el.clientWidth / 2
     radius = value.center ? radius : radius + Math.sqrt((localX - radius) ** 2 + (localY - radius) ** 2) / 4
-  } else {
-    radius = Math.sqrt(el.clientWidth ** 2 + el.clientHeight ** 2) / 2
   }
 
   const centerX = `${(el.clientWidth - (radius * 2)) / 2}px`

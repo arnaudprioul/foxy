@@ -116,7 +116,7 @@
     return !!(hasSlot('title') || props.title)
   })
   const hasClose = computed(() => {
-    return !!(hasSlot('close') || props.closable)
+    return hasSlot('close') || props.closable
   })
   const hasIcon = computed(() => {
     return !!(props.icon || props.status)

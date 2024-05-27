@@ -157,7 +157,7 @@
       return props.counterValue(model.value)
     }
 
-    if (typeof props.counterValue === 'number') {
+    if (props.counterValue) {
       return props.counterValue
     }
 

@@ -229,7 +229,7 @@
   })
 
   const isActive = computed(() => {
-    return !!props.dirty || !!props.active || hasPrefix.value || hasSuffix.value
+    return props.dirty || props.active || hasPrefix.value || hasSuffix.value
   })
   watch(isActive, (newVal, oldVal) => {
     if (hasLabel.value && newVal !== oldVal) {

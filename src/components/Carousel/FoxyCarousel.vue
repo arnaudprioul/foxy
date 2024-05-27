@@ -53,7 +53,7 @@
 
   import { DENSITY, SIZES } from '@foxy/enums'
 
-  import { ICarouselProps, IColorProps, IGroupProvide, IWindowProps } from '@foxy/interfaces'
+  import { ICarouselProps, IGroupProvide } from '@foxy/interfaces'
 
   import { convertToUnit, keys, omit, pick, useProxiedModel } from '@foxy/utils'
 

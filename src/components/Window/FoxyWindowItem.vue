@@ -23,11 +23,9 @@
 
   import { IWindowItemProps } from '@foxy/interfaces'
 
-  import { TTransitionProps } from '@foxy/types'
-
   import { convertToUnit } from '@foxy/utils'
 
-  import { computed, inject, nextTick, shallowRef, StyleValue, TransitionProps } from 'vue'
+  import { computed, inject, nextTick, shallowRef, StyleValue } from 'vue'
 
   const props = withDefaults(defineProps<IWindowItemProps>(), {
     transition: undefined,

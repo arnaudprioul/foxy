@@ -119,7 +119,7 @@
   const {onClickPrepend: handleClickPrepend, onClickAppend: handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
 
   const isActive = computed(() => {
-    return props.active !== false && (props.active || link.isActive?.value || isSelected.value)
+    return props.active || link.isActive?.value || isSelected.value
   })
   const isLink = computed(() => {
     return props.link && link.isLink.value

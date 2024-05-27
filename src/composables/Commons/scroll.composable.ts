@@ -123,7 +123,7 @@ export function useScrolling (listRef: Ref<TFoxyList | undefined>, textFieldRef:
   const isScrolling = shallowRef(false)
   let scrollTimeout: number
 
-  const onListScroll = (e: Event) => {
+  const onListScroll = (_e: Event) => {
     cancelAnimationFrame(scrollTimeout)
     isScrolling.value = true
     scrollTimeout = requestAnimationFrame(() => {

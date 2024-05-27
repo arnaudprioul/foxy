@@ -115,10 +115,10 @@
       focus()
     }
   }
-  const handleFocusIn = (e: FocusEvent) => {
+  const handleFocusIn = (_e: FocusEvent) => {
     isFocused.value = true
   }
-  const handleFocusOut = (e: FocusEvent) => {
+  const handleFocusOut = (_e: FocusEvent) => {
     isFocused.value = false
   }
   const handleKeydown = (e: KeyboardEvent) => {
@@ -138,7 +138,7 @@
 
     e.preventDefault()
   }
-  const handleMouseDown = (e: MouseEvent) => {
+  const handleMouseDown = (_e: MouseEvent) => {
     isFocused.value = true
   }
   const focus = (location?: TFocusLocation) => {

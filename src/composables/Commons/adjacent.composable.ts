@@ -53,7 +53,7 @@ export function useAdjacentInner (props: IAdjacentInnerProps, emits: any) {
     return hasSlot('appendInner') || hasAppendInnerMedia.value
   })
   const hasClear = computed(() => {
-    return !!(props.clearable || hasSlot('clear'))
+    return props.clearable || hasSlot('clear')
   })
 
   const onClickPrependInner = (e: Event) => {

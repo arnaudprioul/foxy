@@ -191,8 +191,10 @@ export function getPropertyFromItem (item: any, property: TSelectItemKey, fallba
 export function getObjectValueByPath (obj: any, path?: string | null, fallback?: any): any {
   if (obj == null || !path || typeof path !== 'string') return fallback
   if (obj[path] !== undefined) return obj[path]
+
   path = path.replace(/\[(\w+)\]/g, '.$1') // convert indexes to properties
   path = path.replace(/^\./, '') // strip a leading dot
+
   return getNestedValue(obj, path.split('.'), fallback)
 }
 

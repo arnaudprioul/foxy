@@ -172,7 +172,7 @@
   const handleClose = () => {
     isActive.value = false
   }
-  const handleIntersect = (isIntersecting: boolean, entries: Array<IntersectionObserverEntry>, observer: IntersectionObserver) => {
+  const handleIntersect = (_isIntersecting: boolean, entries: Array<IntersectionObserverEntry>, _observer: IntersectionObserver) => {
     if (entries[entries.length - 1].isIntersecting) {
       emits('isRead', true)
     }

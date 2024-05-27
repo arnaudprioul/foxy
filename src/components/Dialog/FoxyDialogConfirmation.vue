@@ -73,14 +73,13 @@
 </template>
 
 <script lang="ts" setup>
-  import { FoxyBtn, FoxyCol, FoxyContainer, FoxyDialog, FoxyIcon, FoxyRow } from '@foxy/components'
+  import { FoxyBtn, FoxyCol, FoxyContainer, FoxyDialog, FoxyRow } from '@foxy/components'
   import { useSlots } from '@foxy/composables'
 
   import { DIALOG_PROPS } from '@foxy/consts'
-  import { JUSTIFY, MDI_ICONS } from '@foxy/enums'
+  import { JUSTIFY } from '@foxy/enums'
 
-  import { IDialogConfirmationProps, IDialogProps } from '@foxy/interfaces'
-  import { TIcon } from '@foxy/types'
+  import { IDialogConfirmationProps } from '@foxy/interfaces'
 
   import { keys, omit, pick, useProxiedModel } from '@foxy/utils'
 

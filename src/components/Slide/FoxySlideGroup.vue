@@ -151,16 +151,14 @@
 	const isFocused = shallowRef(false)
 
 	const scrollToChildren = (children: HTMLElement, center?: boolean) => {
-		let target = 0
+		let target = calculateUpdatedTarget({
+      containerElement: containerRef.el!,
+      isHorizontal: isHorizontal.value,
+      selectedElement: children
+    })
 
 		if (center) {
 			target = calculateCenteredTarget({
-				containerElement: containerRef.el!,
-				isHorizontal: isHorizontal.value,
-				selectedElement: children
-			})
-		} else {
-			target = calculateUpdatedTarget({
 				containerElement: containerRef.el!,
 				isHorizontal: isHorizontal.value,
 				selectedElement: children
@@ -219,7 +217,7 @@
 		}
 	}
 
-	const handleFocusout = (e: FocusEvent) => {
+	const handleFocusout = (_e: FocusEvent) => {
 		isFocused.value = false
 	}
 

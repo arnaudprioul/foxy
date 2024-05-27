@@ -22,7 +22,7 @@
 
   import { DENSITY } from '@foxy/enums'
 
-  import { IBtnGroupProps, IBtnToggleProps } from '@foxy/interfaces'
+  import { IBtnToggleProps } from '@foxy/interfaces'
 
   import { keys, omit, pick } from '@foxy/utils'
 

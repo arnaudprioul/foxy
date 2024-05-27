@@ -54,7 +54,7 @@
 
   const { hasSlot } = useSlots()
 
-  const handleChange = (v: any) => {
+  const handleChange = (_v: any) => {
     if (indeterminate.value) {
       indeterminate.value = false
     }
