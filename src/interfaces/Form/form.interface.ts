@@ -1,3 +1,4 @@
+import { ICommonsComponentProps } from '@foxy/interfaces'
 import { TEventProp, TValidateOn } from '@foxy/types'
 
 import { ComponentInternalInstance, ComputedRef, Raw, Ref } from 'vue'
@@ -20,7 +21,7 @@ export interface IFormProvide {
   validateOn: Ref<TValidateOn | undefined>
 }
 
-export interface IFormProps {
+export interface IFormProps extends ICommonsComponentProps {
   disabled?: boolean
   fastFail?: boolean
   readonly?: boolean
@@ -37,4 +38,17 @@ export interface IFormField {
   vm: Raw<ComponentInternalInstance>
   isValid?: boolean | null
   errorMessages: Array<string>
+}
+
+export interface ISubmitEventPromise extends SubmitEvent, Promise<IFormValidationResult> {
+}
+
+export interface IFormValidationResult {
+  valid: boolean
+  errors: IFieldValidationResult[]
+}
+
+export interface IFieldValidationResult {
+  id: number | string
+  errorMessages: string[]
 }

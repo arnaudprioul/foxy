@@ -6,7 +6,7 @@ import { consoleWarn, useProxiedModel } from '@foxy/utils'
 
 import { computed, markRaw, provide, ref, shallowRef, toRef, watch } from 'vue'
 
-export function useForm(props: IFormProps) {
+export function useForm (props: IFormProps) {
   const model = useProxiedModel(props, 'modelValue')
 
   const isDisabled = computed(() => {
@@ -126,3 +126,4 @@ export function useForm(props: IFormProps) {
     resetValidation,
   }
 }
+

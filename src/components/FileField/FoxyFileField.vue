@@ -180,6 +180,9 @@
 
   const emits = defineEmits(['click:clear', 'click:control', 'mousedown:control', 'update:focused', 'update:modelValue', 'click:prepend', 'click:append', 'click:prependInner', 'click:appendInner'])
 
+  // TODO - Add drag & drop props & design
+  // TODO - Rework list of download file
+
   const model = useProxiedModel(
       props,
       'modelValue',
