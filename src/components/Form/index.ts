@@ -1,0 +1,1 @@
+export { default as FoxyForm } from './FoxyForm.vue'
