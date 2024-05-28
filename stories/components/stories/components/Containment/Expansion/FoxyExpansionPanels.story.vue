@@ -7,7 +7,7 @@
     <Variant title="Default">
       <template #default>
         <foxy-container fullscreen>
-          <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row :align-content="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
             <foxy-col cols="9">
               <foxy-expansion-panels v-bind="state"/>
             </foxy-col>

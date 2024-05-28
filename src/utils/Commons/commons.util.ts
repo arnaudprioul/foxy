@@ -12,10 +12,13 @@ import {
   computed,
   ComputedGetter,
   Fragment,
-  InjectionKey, MaybeRef,
-  reactive, shallowRef,
+  InjectionKey,
+  MaybeRef,
+  reactive,
+  shallowRef,
   ToRefs,
-  toRefs, unref,
+  toRefs,
+  unref,
   VNode,
   VNodeChild,
   watchEffect
@@ -122,7 +125,8 @@ export function oops (): never {
   throw new Error()
 }
 
-export function noop () {}
+export function noop () {
+}
 
 export function debounce (fn: Function, delay: MaybeRef<number>) {
   let timeoutId = 0 as any
@@ -329,6 +333,20 @@ export function getNextElement (elements: Array<HTMLElement>, location?: 'next' 
     _el = elements[idx]
   } while ((!_el || _el.offsetParent == null || !(condition?.(_el) ?? true)) && idx < elements.length && idx >= 0)
   return _el
+}
+
+export function humanReadableFileSize (bytes: number, base: 1000 | 1024 = 1000): string {
+  if (bytes < base) {
+    return `${bytes} B`
+  }
+
+  const prefix = base === 1024 ? ['Ki', 'Mi', 'Gi'] : ['k', 'M', 'G']
+  let unit = -1
+  while (Math.abs(bytes) >= base && unit < prefix.length - 1) {
+    bytes /= base
+    ++unit
+  }
+  return `${bytes.toFixed(1)} ${prefix[unit]}B`
 }
 
 export function hasEvent (props: Record<string, any>, name: string) {
