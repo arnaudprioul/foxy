@@ -1,7 +1,8 @@
 import {
   IBorderProps,
   IColorProps,
-  ICommonsComponentProps, IDensityProps,
+  ICommonsComponentProps,
+  IDensityProps,
   IExpansionPanelProps,
   IGroupProps,
   ILazyProps,
@@ -12,7 +13,15 @@ import {
   ITagProps
 } from '@foxy/interfaces'
 
+import { TIcon } from '@foxy/types'
+
 export interface IExpansionPanelsProps extends IColorProps, ITagProps, ICommonsComponentProps, IGroupProps, IDensityProps, IRoundedProps, IBorderProps, IPaddingProps, IMarginProps, ILazyProps, ILoaderProps {
   flat?: boolean
   items?: Array<IExpansionPanelProps>
+  accordion?: boolean
+  popout?: boolean
+  inset?: boolean
+  expandIcon?: TIcon
+  collapseIcon?: TIcon
+  hideActions?: boolean
 }

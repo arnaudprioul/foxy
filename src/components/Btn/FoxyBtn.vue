@@ -338,21 +338,21 @@
     &:focus-visible,
     &:focus {
       > #{$this}__overlay {
-        opacity: 0.5;
+        opacity: calc(0.12 * 1);
       }
     }
 
     &--active,
     [aria-haspopup=menu][aria-expanded=true] {
       > #{$this}__overlay {
-        opacity: 0.5;
+        opacity: calc(0.12 * 1);
       }
 
       &:hover,
       &:focus-visible,
       &:focus {
         > #{$this}__overlay {
-          opacity: 0.7;
+          opacity: calc(0.12 * 1);
         }
       }
     }

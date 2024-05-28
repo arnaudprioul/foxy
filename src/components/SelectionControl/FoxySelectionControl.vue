@@ -36,7 +36,7 @@
 
     <div class="foxy-selection-control__label">
       <slot name="label">
-        <foxy-label :required="required" :for="id" :text="label" @click="handleClickLabel"/>
+        <foxy-label :for="id" :required="required" :text="label" @click="handleClickLabel"/>
       </slot>
     </div>
   </div>
@@ -268,7 +268,7 @@
     &--focus-visible {
       #{$this}__input {
         &:before {
-          opacity: 0.7;
+          opacity: calc(0.12 * 1);
         }
       }
     }

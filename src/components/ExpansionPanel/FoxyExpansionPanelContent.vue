@@ -81,3 +81,21 @@
     ]
   })
 </script>
+
+<style lang="scss" scoped>
+  .foxy-expansion-panel-content {
+    display: flex;
+
+    &__wrapper {
+      padding: 8px 24px 16px;
+      flex: 1 1 auto;
+      max-width: 100%;
+    }
+  }
+</style>
+
+<style>
+  :root {
+
+  }
+</style>

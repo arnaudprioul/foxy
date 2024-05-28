@@ -116,7 +116,12 @@
   const { elevationClasses } = useElevation(props)
   const { roundedClasses, roundedStyles } = useRounded({ rounded: props.rounded || props.nav })
 
-  const {onClickPrepend: handleClickPrepend, onClickAppend: handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
+  const {
+    onClickPrepend: handleClickPrepend,
+    onClickAppend: handleClickAppend,
+    hasAppend,
+    hasPrepend
+  } = useAdjacent(props, emits)
 
   const isActive = computed(() => {
     return props.active || link.isActive?.value || isSelected.value
@@ -219,7 +224,7 @@
     ]
   })
 
-  defineExpose({isGroupActivator, isSelected, list, select})
+  defineExpose({ isGroupActivator, isSelected, list, select })
 </script>
 
 <style lang="scss" scoped>
@@ -341,7 +346,7 @@
       &:hover,
       &:focus-visible {
         > #{$this}__overlay {
-          --foxy-list-item__overlay---opacity: 0.2;
+          --foxy-list-item__overlay---opacity: calc(0.12 * 1);
         }
       }
     }

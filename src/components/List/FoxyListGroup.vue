@@ -175,6 +175,6 @@
     --foxy-list-group--fluid---list-indent-size: 0px;
 
     --foxy-list-group__header--active---opacity: 0;
-    --foxy-list-group__header--active--hover---opacity: 0.5;
+    --foxy-list-group__header--active--hover---opacity: calc(0.04 * 1);
   }
 </style>

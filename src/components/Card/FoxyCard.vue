@@ -15,11 +15,11 @@
         <slot name="loader">
           <div class="foxy-card__loader">
             <foxy-progress
-                :type="PROGRESS_TYPE.LINEAR"
                 :active="!!props.loading"
                 :color="props.color"
                 :indeterminate="typeof props.loading !== 'number'"
                 :model-value="typeof props.loading === 'number' ? props.loading : undefined"
+                :type="PROGRESS_TYPE.LINEAR"
                 class="foxy-card__progress foxy-card__progress--linear"
                 thickness="4"
             />
@@ -33,11 +33,11 @@
               key="item"
               :append-avatar="props.appendAvatar"
               :append-icon="props.appendIcon"
+              :density="props.density"
               :prepend-avatar="props.prependAvatar"
               :prepend-icon="props.prependIcon"
               :subtitle="props.subtitle"
               :title="props.title"
-              :density="props.density"
               class="foxy-card__header"
               @click:prepend="handleClickPrepend"
               @click:append="handleClickAppend">
@@ -140,7 +140,12 @@
   const { marginClasses, marginStyles } = useMargin(props)
   const { paddingStyles, paddingClasses } = usePadding(props)
 
-  const {onClickPrepend: handleClickPrepend, onClickAppend: handleClickAppend, hasAppend, hasPrepend} = useAdjacent(props, emits)
+  const {
+    onClickPrepend: handleClickPrepend,
+    onClickAppend: handleClickAppend,
+    hasAppend,
+    hasPrepend
+  } = useAdjacent(props, emits)
   const link = useLink(props, attrs)
 
   const isClickable = computed(() => {
@@ -299,21 +304,21 @@
     &:focus-visible,
     &:focus {
       > #{$this}__overlay {
-        --foxy-card__overlay---opacity: 0.5;
+        --foxy-card__overlay---opacity: calc(0.12 * 1);
       }
     }
 
     &--active,
-    [aria-haspopup=menu][aria-expanded=true]{
+    [aria-haspopup=menu][aria-expanded=true] {
       > #{$this}__overlay {
-        --foxy-card__overlay---opacity: 0.5;
+        --foxy-card__overlay---opacity: calc(0.12 * 1);
       }
 
       &:hover,
       &:focus-visible,
       &:focus {
         > #{$this}__overlay {
-          --foxy-card__overlay---opacity: 0.7;
+          --foxy-card__overlay---opacity: calc(0.12 * 1);
         }
       }
     }

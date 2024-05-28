@@ -8,13 +8,24 @@
       :style="expansionPanelHeaderStyles"
       :tabindex="isDisabled ? -1 : undefined"
       type="button"
-      @click="!props.readonly ? expansionPanel.toggle : undefined"
+      @click="handleExpand"
   >
     <span class="foxy-expansion-panel-header__overlay"/>
 
     <div class="foxy-expansion-panel-header__wrapper">
       <span v-if="hasPrepend" key="prepend" class="foxy-expansion-panel-header__prepend" @click="handleClickPrepend">
-        <slot name="prepend" v-bind="slotProps"/>
+        <slot name="prepend" v-bind="slotProps">
+          <foxy-avatar
+              v-if="prependAvatar"
+              key="prepend-avatar"
+              :density="density"
+              :image="prependAvatar"/>
+          <foxy-icon
+              v-if="prependIcon"
+              key="prepend-icon"
+              :density="density"
+              :icon="prependIcon"/>
+        </slot>
       </span>
 
       <span v-if="hasTitle" class="foxy-expansion-panel-header__title">
@@ -23,10 +34,20 @@
         </slot>
       </span>
 
-      <span v-if="hasAppend && !props.hideActions" key="append" class="foxy-expansion-panel-header__append"
+      <span v-if="hasAppend || !props.hideActions" key="append" class="foxy-expansion-panel-header__append"
             @click="handleClickAppend">
         <slot name="append" v-bind="slotProps">
-          <foxy-icon :icon="isSelected ? props.collapseIcon : props.expandIcon"/>
+          <foxy-avatar
+              v-if="appendAvatar"
+              key="append-avatar"
+              :density="density"
+              :image="appendAvatar"/>
+          <foxy-icon
+              v-if="appendIcon"
+              key="append-icon"
+              :density="density"
+              :icon="appendIcon"/>
+          <foxy-icon v-if="!props.hideActions" :icon="isSelected ? collapseIcon : expandIcon"/>
         </slot>
       </span>
     </div>
@@ -34,7 +55,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { FoxyIcon } from '@foxy/components'
+  import { FoxyAvatar, FoxyIcon } from '@foxy/components'
 
   import {
     useAdjacent,
@@ -79,6 +100,12 @@
   const { densityClasses } = useDensity(props)
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { roundedClasses, roundedStyles } = useRounded(props)
+
+  const handleExpand = (_e: MouseEvent) => {
+    if (!props.readonly) {
+      expansionPanel.toggle()
+    }
+  }
 
   const isSelected = computed(() => {
     return expansionPanel.isSelected.value
@@ -130,3 +157,98 @@
     ]
   })
 </script>
+
+<style lang="scss" scoped>
+  .foxy-expansion-panel-header {
+    $this: &;
+
+    outline: none;
+    border-radius: inherit;
+    font-size: 0.9375rem;
+    line-height: 1;
+    min-height: 48px;
+    width: 100%;
+    border: none;
+
+    &__wrapper {
+      align-items: center;
+      text-align: start;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      padding: 16px 24px;
+      position: relative;
+      transition: 0.3s min-height cubic-bezier(0.4, 0, 0.2, 1);
+      justify-content: space-between;
+    }
+
+    &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: currentColor;
+      border-radius: inherit;
+      opacity: 0;
+    }
+
+    &__append,
+    &__prepend {
+      display: inline-flex;
+      margin-bottom: -4px;
+      margin-top: -4px;
+      user-select: none;
+    }
+
+    &__append {
+      margin-inline-start: auto;
+    }
+
+    &__prepend {
+      margin-inline-end: 8px;
+    }
+
+    &:hover {
+      &__overlay {
+        opacity: calc(0.04 * 1);
+      }
+    }
+
+    &:focus-visible,
+    &:focus {
+      &__overlay {
+        opacity: calc(0.12 * 1);
+      }
+    }
+
+    &--focusable {
+      &#{$this}--active {
+
+        &__overlay {
+          opacity: calc(0.12 * 1);
+        }
+
+        &:hover {
+          &__overlay {
+            opacity: calc((0.12 + 0.04) * 1);
+          }
+        }
+
+        &:focus-visible,
+        &:focus {
+          &__overlay {
+            opacity: calc((0.12 + 0.12) * 1);
+          }
+        }
+      }
+    }
+  }
+
+</style>
+
+<style>
+  :root {
+
+  }
+</style>
