@@ -1,0 +1,4 @@
+# Foxyinfinitescrollintersect
+
+## Usage
+    <FoxyInfiniteScrollIntersect />

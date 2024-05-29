@@ -1,0 +1,4 @@
+# Foxyinfinitescroll
+
+## Usage
+    <FoxyInfiniteScroll />
