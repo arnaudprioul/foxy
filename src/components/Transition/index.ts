@@ -1,6 +1,7 @@
 export { default as FoxyExpandY } from './FoxyExpandY.vue'
 export { default as FoxyExpandX } from './FoxyExpandX.vue'
 export { default as FoxyFade } from './FoxyFade.vue'
+export { default as FoxySnack } from './FoxySnack.vue'
 export { default as FoxySlideX } from './FoxySlideX.vue'
 export { default as FoxySlideY } from './FoxySlideY.vue'
 export { default as FoxyScaleRotate } from './FoxyScaleRotate.vue'

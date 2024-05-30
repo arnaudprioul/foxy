@@ -1,0 +1,5 @@
+# FoxyFade
+
+## Usage
+
+    <FoxySnack />

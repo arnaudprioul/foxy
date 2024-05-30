@@ -54,8 +54,12 @@
   const { backgroundColorStyles } = useBackgroundColor(toRef(props, 'bgColor'))
   const { backgroundColorStyles: loaderColorStyles } = useBackgroundColor(toRef(props, 'color'))
 
-  const normalizedBuffer = computed(() => parseFloat(props.bufferValue as string) / max.value * 100)
-  const transition = computed(() => props.indeterminate ? { component: FoxyFade } : { component: FoxySlideX })
+  const normalizedBuffer = computed(() => {
+    return parseFloat(props.bufferValue as string) / max.value * 100
+  })
+  const transition = computed(() => {
+    return props.indeterminate ? { component: FoxyFade } : { component: FoxySlideX }
+  })
 
   const handleClick = (e: MouseEvent) => {
     if (!intersectionRef.value) return
@@ -115,7 +119,7 @@
   const loaderStyles = computed(() => {
     return [
       {
-        width: props.indeterminate ? undefined : convertToUnit(progress.value, '%')
+        width: props.indeterminate ? undefined : convertToUnit(normalizedValue.value, '%')
       },
       loaderColorStyles.value
     ]
