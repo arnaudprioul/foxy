@@ -7,7 +7,7 @@
         aria-live="polite"
         role="alert">
       <template v-for="(message, index) in messages" :key="`${index}-${messages}`">
-        <div class="v-messages__message">
+        <div class="foxy-messages__message">
           <slot name="default" v-bind="{message}">
             <span>{{ message }}</span>
           </slot>

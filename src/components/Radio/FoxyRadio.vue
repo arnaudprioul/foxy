@@ -2,20 +2,20 @@
   <foxy-input
       :id="id"
       v-model="model"
-      :class="checkboxClasses"
+      :class="radioClasses"
       :focused="isFocused"
-      :style="checkboxStyles"
+      :style="radioStyles"
       v-bind="{...rootAttrs, ...inputProps}">
     <template #default="{id,messagesId,isDisabled,isReadonly,isValid}">
       <slot name="default" v-bind="{id,messagesId,isDisabled,isReadonly,isValid}">
-        <foxy-checkbox-btn
+        <foxy-radio-btn
             :id="id"
             v-model="model"
             :aria-describedby="messagesId"
             :disabled="isDisabled"
             :error="!isValid"
             :readonly="isReadonly"
-            v-bind="{ ...checkboxBtnProps, ...controlAttrs }"
+            v-bind="{ ...radioBtnProps, ...controlAttrs }"
             @blur="handleBlur"
             @focus="handleFocus"
             @click:label="handleClickLabel">
@@ -30,31 +30,31 @@
           <template v-if="hasSlot('label')" #label>
             <slot name="label"/>
           </template>
-        </foxy-checkbox-btn>
+        </foxy-radio-btn>
       </slot>
     </template>
   </foxy-input>
 </template>
 
 <script lang="ts" setup>
-  import { FoxyCheckboxBtn, FoxyInput } from '@foxy/components'
+  import { FoxyInput, FoxyRadioBtn } from '@foxy/components'
 
   import { useFocus, useSlots } from '@foxy/composables'
 
-  import { CHECKBOX_BTN_PROPS, INPUT_PROPS } from '@foxy/consts'
+  import { INPUT_PROPS, RADIO_BTN_PROPS } from '@foxy/consts'
 
   import { DENSITY } from '@foxy/enums'
 
-  import { ICheckboxProps } from '@foxy/interfaces'
+  import { IRadioProps } from '@foxy/interfaces'
 
   import { filterInputAttrs, getUid, keys, omit, pick, useProxiedModel } from '@foxy/utils'
 
   import { computed, StyleValue, useAttrs } from 'vue'
 
-  const props = withDefaults(defineProps<ICheckboxProps>(), {
+  const props = withDefaults(defineProps<IRadioProps>(), {
     density: DENSITY.DEFAULT,
-    trueIcon: '$checkboxOn',
-    falseIcon: '$checkboxOff',
+    trueIcon: '$radioOn',
+    falseIcon: '$radioOff',
   })
 
   const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])
@@ -65,7 +65,7 @@
   const { hasSlot } = useSlots()
 
   const uid = getUid()
-  const id = computed(() => props.id || `checkbox-${uid}`)
+  const id = computed(() => props.id || `radio-${uid}`)
 
   const handleClickLabel = (e: Event) => {
     emits('click:label', e)
@@ -76,27 +76,27 @@
   const inputProps = computed(() => {
     return omit(pick(props, keys(INPUT_PROPS)), ['modelValue', 'id', 'focused'])
   })
-  const checkboxBtnProps = computed(() => {
-    return omit(pick(props, keys(CHECKBOX_BTN_PROPS)), ['modelValue', 'id', 'disabled', 'readonly', 'error'])
+  const radioBtnProps = computed(() => {
+    return omit(pick(props, keys(RADIO_BTN_PROPS)), ['modelValue', 'id', 'disabled', 'readonly', 'error'])
   })
 
   // CLASS & STYLES
 
-  const checkboxStyles = computed(() => {
+  const radioStyles = computed(() => {
     return [
       props.style,
     ] as StyleValue
   })
-  const checkboxClasses = computed(() => {
+  const radioClasses = computed(() => {
     return [
-      'foxy-checkbox',
+      'foxy-radio',
       props.class,
     ]
   })
 </script>
 
 <style lang="scss" scoped>
-  .foxy-checkbox {
+  .foxy-radio {
     &.foxy-input {
       flex: 0 1 auto;
     }

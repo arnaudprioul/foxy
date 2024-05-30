@@ -8,15 +8,19 @@
         <ul class="foxy-breadcrumb__items">
           <template v-for="(item, index) in items" :key="index">
             <li class="foxy-breadcrumb__item">
-              <slot name="item" v-bind="{ item, index }">
-                <foxy-breadcrumb-item v-bind="item">
-                  <slot name="title"/>
-                </foxy-breadcrumb-item>
+              <slot :name="`item-${index}`" v-bind="{item, index}">
+                <slot name="item" v-bind="{ item, index }">
+                  <foxy-breadcrumb-item v-bind="item">
+                    <slot name="title"/>
+                  </foxy-breadcrumb-item>
+                </slot>
               </slot>
 
               <template v-if="!isLastItem(index)">
-                <slot name="divider">
-                  <foxy-breadcrumb-divider :divider="divider"/>
+                <slot :name="`divider-${index}`" v-bind="{divider}">
+                  <slot name="divider" v-bind="{divider}">
+                    <foxy-breadcrumb-divider :divider="divider"/>
+                  </slot>
                 </slot>
               </template>
             </li>
