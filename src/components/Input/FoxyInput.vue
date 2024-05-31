@@ -210,8 +210,8 @@
     font-weight: 400;
     line-height: 1.5;
 
-    --foxy-input---padding-top: calc(16px + var(--foxy-input---density, 0));
-    --foxy-input__control---height: calc(56px + var(--foxy-input---density, 0));
+    --foxy-input---padding-top: 16px;
+    --foxy-input__control---height: 56px;
 
     &__details {
       align-items: flex-end;
@@ -220,7 +220,7 @@
       font-weight: 400;
       grid-area: messages;
       letter-spacing: 0.0333333333em;
-      line-height: normal;
+      line-height: 1;;
       min-height: 22px;
       padding-top: 6px;
       overflow: hidden;

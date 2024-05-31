@@ -61,8 +61,8 @@
                         :color="props.color"
                         :indeterminate="typeof props.loading !== 'number'"
                         :model-value="typeof props.loading === 'number' ? props.loading : undefined"
-                        :type="PROGRESS_TYPE.CIRCULAR"
                         :size="SIZES.X_SMALL"
+                        :type="PROGRESS_TYPE.CIRCULAR"
                         class="foxy-switch__progress foxy-switch__progress--circular"
                         thickness="2"
                     />
@@ -185,7 +185,7 @@
     }
 
     .foxy-selection-control {
-      min-height: var(--foxy-input__control---height);
+      min-height: calc(var(--foxy-input__control---height, 56px) + var(--foxy-input---density, 0px));
 
       :deep(.foxy-selection-control__input) {
         border-radius: 50%;

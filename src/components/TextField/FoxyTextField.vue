@@ -5,8 +5,7 @@
       :class="textFieldClasses"
       :focused="isFocused"
       :style="textFieldStyles"
-      v-bind="{...rootAttrs, ...inputProps}"
-  >
+      v-bind="{...rootAttrs, ...inputProps}">
     <template v-if="hasSlot('prepend')" #prepend>
       <slot name="prepend"/>
     </template>
@@ -126,7 +125,7 @@
 
   import { ITextFieldProps } from '@foxy/interfaces'
 
-  import { filterInputAttrs, keys, omit, pick, useProxiedModel, forwardRefs } from '@foxy/utils'
+  import { filterInputAttrs, forwardRefs, keys, omit, pick, useProxiedModel } from '@foxy/utils'
 
   import { computed, nextTick, ref, StyleValue, useAttrs } from 'vue'
 
@@ -301,7 +300,7 @@
 
     :deep(.foxy-field) {
       &.foxy-field--no-label,
-      &.foxy-field--active{
+      &.foxy-field--active {
         input {
           opacity: 1;
         }

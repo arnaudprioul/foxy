@@ -34,13 +34,21 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed, StyleValue, toRef } from 'vue'
+  import { FoxyIcon, FoxyImg } from '@foxy/components'
 
-  import { useBorder, useBothColor, useDensity, useRounded, useSize, useSlots, useMargin, usePadding } from '@foxy/composables'
+  import {
+    useBorder,
+    useBothColor,
+    useDensity,
+    useMargin,
+    usePadding,
+    useRounded,
+    useSize,
+    useSlots
+  } from '@foxy/composables'
 
   import { IAvatarProps } from '@foxy/interfaces'
-
-  import { FoxyIcon, FoxyImg } from '@foxy/components'
+  import { computed, StyleValue, toRef } from 'vue'
 
   const props = withDefaults(defineProps<IAvatarProps>(), { tag: 'div', size: 'default' })
 
@@ -62,7 +70,6 @@
   const hasText = computed(() => {
     return !!props.text || hasSlot('text')
   })
-
 
 
   // CLASS & STYLES
@@ -201,7 +208,7 @@
     --foxy-avatar---font-size: 1.5rem;
     --foxy-avatar---font-weight: 400;
     --foxy-avatar---letter-spacing: 0;
-    --foxy-avatar---line-height: normal;
+    --foxy-avatar---line-height: 1;;
     --foxy-avatar---text-transform: uppercase;
     --foxy-avatar---overflow: hidden;
     --foxy-avatar---position: relative;

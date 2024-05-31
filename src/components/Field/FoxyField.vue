@@ -44,9 +44,9 @@
               key="floating-label"
               ref="floatingLabelRef"
               :for="id"
+              :required="required"
               :style="colorStyles"
               :text="label"
-              :required="required"
               class="foxy-field__label"
               floating/>
         </slot>
@@ -57,9 +57,9 @@
           <foxy-label
               ref="labelRef"
               :for="id"
+              :required="required"
               :style="colorStyles"
               :text="label"
-              :required="required"
               class="foxy-field__label"/>
         </slot>
       </template>
@@ -123,14 +123,7 @@
 <script lang="ts" setup>
   import { FoxyAvatar, FoxyExpandX, FoxyIcon, FoxyLabel, FoxyProgress } from '@foxy/components'
 
-  import {
-    useAdjacentInner,
-    useBothColor,
-    useDensity,
-    useFocus,
-    useLoader,
-    useSlots
-  } from '@foxy/composables'
+  import { useAdjacentInner, useBothColor, useDensity, useFocus, useLoader, useSlots } from '@foxy/composables'
 
   import { EASING, PROGRESS_TYPE } from '@foxy/enums'
 
@@ -330,7 +323,7 @@
     --foxy-field---padding-top: 8px;
     --foxy-field---padding-bottom: 4px;
 
-    --foxy-field__input---padding-top: calc(var(--foxy-field---padding-top, 8px) + var(--foxy-input---padding-top, 0));
+    --foxy-field__input---padding-top: calc(var(--foxy-field---padding-top, 8px) + calc(var(--foxy-input---padding-top, 16px) + var(--foxy-input---density, 0px)));
     --foxy-field__input---padding-bottom: var(--foxy-field---padding-bottom, 4px);
 
     .foxy-chip {
@@ -345,7 +338,7 @@
       flex-wrap: wrap;
       letter-spacing: 0.009375em;
       opacity: 0.7;
-      min-height: max(var(--foxy-input__control---height, 56px), 1.5rem + var(--foxy-field__input---padding-top) + var(--foxy-field__input---padding-bottom));
+      min-height: max(calc(var(--foxy-input__control---height, 56px) + var(--foxy-input---density, 0px)), 1.5rem + var(--foxy-field__input---padding-top) + var(--foxy-field__input---padding-bottom));
       min-width: 0;
       padding-inline: var(--foxy-field---padding-start) var(--foxy-field---padding-end);
       padding-top: var(--foxy-field__input---padding-top);
@@ -384,8 +377,8 @@
       opacity: 0;
       transition: inherit;
       white-space: nowrap;
-      min-height: max(56px, 1.5rem + var(--foxy-field-input---padding-top, 0) + var(--foxy-field-input---padding-bottom, 0));
-      padding-top: calc(var(--foxy-field---padding-top, 4px) + var(--foxy-input---padding-top, 0));
+      min-height: max(56px, 1.5rem + var(--foxy-field-input---padding-top, 0px) + var(--foxy-field-input---padding-bottom, 0px));
+      padding-top: calc(var(--foxy-field---padding-top, 4px) + calc(var(--foxy-input---padding-top, 16px) + var(--foxy-input---density, 0px)));
       padding-bottom: var(--foxy-field---padding-bottom, 6px);
     }
 
@@ -448,7 +441,7 @@
       max-width: calc(100% - var(--foxy-field---padding-start, 0) - var(--foxy-field---padding-end, 0));
       pointer-events: none;
       position: absolute;
-      top: calc(var(--foxy-input---padding-top, 0) + var(--foxy-input---density));
+      top: calc(var(--foxy-input---padding-top, 16px) + var(--foxy-input---density) - 8px);
       transform-origin: left center;
       transition: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
       transition-property: opacity, transform;
@@ -483,7 +476,7 @@
 
         &.foxy-label--floating {
           transform: none;
-          top: calc(var(--foxy-input---padding-top, 0) / 2 + var(--foxy-input---density));
+          top: calc(var(--foxy-input---padding-top, 16px) / 2 + var(--foxy-input---density, 0px));
         }
       }
     }
@@ -515,12 +508,12 @@
 
     &--prepended {
       padding-inline-start: 12px;
-      --foxy-field-padding-start: 6px;
+      --foxy-field---padding-start: 6px;
     }
 
     &--appended {
       padding-inline-end: 12px;
-      --foxy-field-padding-end: 6px;
+      --foxy-field---padding-end: 6px;
     }
 
     &--rounded {

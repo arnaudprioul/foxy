@@ -259,7 +259,7 @@
     font-weight: 500;
     justify-content: center;
     letter-spacing: 0.0892857143em;
-    line-height: normal;
+    line-height: 1;;
     max-width: 100%;
     outline: none;
     position: relative;

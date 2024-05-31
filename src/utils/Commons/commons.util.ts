@@ -1,8 +1,9 @@
 import { IN_BROWSER, ON_REGEX } from '@foxy/consts'
+
 import { FOCUS_LOCATION } from '@foxy/enums'
 
-
 import { TFocusLocation, TMaybePick, TNotAUnion, TSelectItemKey, TTemplateRef } from '@foxy/types'
+
 import { IfAny } from '@vue/shared'
 
 import {
@@ -41,12 +42,15 @@ export function convertToUnit (str: string | number | null | undefined, unit = '
 export function refElement (obj?: ComponentPublicInstance<any> | HTMLElement): HTMLElement | undefined {
   if (obj && '$el' in obj) {
     const el = obj.$el as HTMLElement
+
     if (el?.nodeType === Node.TEXT_NODE) {
       // Multi-root component, use the first element
       return el.nextElementSibling as HTMLElement
     }
+
     return el
   }
+
   return obj as HTMLElement
 }
 
@@ -469,4 +473,17 @@ export function templateRef () {
   })
 
   return fn as TTemplateRef
+}
+
+export function addWindowListener (event: string, listener: EventListenerOrEventListenerObject, onUnmountedCleanupFns: any = []) {
+  window.addEventListener(event, listener)
+
+  const removeListener = () => window.removeEventListener(event, listener)
+
+  onUnmountedCleanupFns.push(removeListener)
+
+  return () => {
+    removeListener()
+    onUnmountedCleanupFns.splice(onUnmountedCleanupFns.indexOf(removeListener), 1)
+  }
 }
