@@ -1,10 +1,10 @@
 import { useEventListener } from '@foxy/composables'
 
-import { AXIS } from '@foxy/enums'
+import { AXIS, CLIENT_POSITION } from '@foxy/enums'
 
 import { TAxis } from '@foxy/types'
 
-import { addWindowListener, clamp } from '@foxy/utils'
+import { addWindowListener, clamp, getPosition } from '@foxy/utils'
 
 import { computed, onUnmounted, Ref, ref } from 'vue'
 
@@ -31,13 +31,14 @@ export function useDragResizer (el: HTMLElement | undefined, value: Ref<number>,
     e.preventDefault()
     e.stopPropagation()
 
-    const start = isHorizontal.value ? e.clientX : e.clientY
+    const start = getPosition(e, isHorizontal.value ? CLIENT_POSITION.X : CLIENT_POSITION.Y)
     const initialStart = value.value
 
     resizing.value = true
 
     const onMouseMove = (e: MouseEvent) => {
-      const delta = (isHorizontal.value ? e.clientX : e.clientY) - start
+      const clickOffset = getPosition(e, isHorizontal.value ? CLIENT_POSITION.X : CLIENT_POSITION.Y)
+      const delta = clickOffset - start
 
       value.value = clamp(initialStart + delta, min, max)
     }
@@ -56,13 +57,14 @@ export function useDragResizer (el: HTMLElement | undefined, value: Ref<number>,
     e.preventDefault()
     e.stopPropagation()
 
-    const start = isHorizontal.value ? e.touches[0].clientX : e.touches[0].clientY
+    const start = getPosition(e, isHorizontal.value ? CLIENT_POSITION.X : CLIENT_POSITION.Y)
     const initialStart = value.value
 
     resizing.value = true
 
     const onTouchMove = (e: TouchEvent) => {
-      const delta = (isHorizontal.value ? e.touches[0].clientX : e.touches[0].clientY) - start
+      const clickOffset = getPosition(e, isHorizontal.value ? CLIENT_POSITION.X : CLIENT_POSITION.Y)
+      const delta = clickOffset - start
 
       value.value = Math.max(min, Math.min(max, initialStart + delta))
     }

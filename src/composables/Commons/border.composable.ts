@@ -3,9 +3,10 @@ import { BORDER_REGEX } from '@foxy/consts'
 import { IBorderProps } from '@foxy/interfaces'
 
 import { convertToUnit, formatBorderStylesVar, getCurrentInstanceName } from '@foxy/utils'
-import { computed, isRef } from 'vue'
+import { computed, isRef, Ref } from 'vue'
 
-export function useBorder (props: IBorderProps, name = getCurrentInstanceName()) {
+// TODO Create composable for border position
+export function useBorder (props: IBorderProps | Ref<boolean | number | string | null | undefined>, name = getCurrentInstanceName()) {
   const borderClasses = computed(() => {
     const border = isRef(props) ? props.value : props.border
     const classes: Array<string> = []

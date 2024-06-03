@@ -81,6 +81,7 @@
   } from '@foxy/composables'
 
   import { vRipple } from '@foxy/directives'
+  import { KEYBOARD_VALUES } from '@foxy/enums'
 
   import { IListItemProps } from '@foxy/interfaces'
 
@@ -161,7 +162,7 @@
     click(e)
   }
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === KEYBOARD_VALUES.ENTER || e.key === ' ') {
       e.preventDefault()
       click(e as any as MouseEvent)
     }

@@ -38,7 +38,7 @@
   const groupItem = useGroupItem(props, FOXY_WINDOW_GROUP_KEY)
   const { isBooted } = useSsrBoot()
 
-  if (!window || !groupItem) throw new Error('[Foxy] window item must be used inside window')
+  if (!window || !groupItem) throw new Error('[Foxy] window-item must be used inside window')
 
   const isTransitioning = shallowRef(false)
   const hasTransition = computed(() => {

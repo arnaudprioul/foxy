@@ -37,8 +37,6 @@
 <script lang="ts" setup>
   import { FoxyFade, FoxyOverlayScrim, FoxyTransition } from '@foxy/components'
 
-  import { vClickOutside } from '@foxy/directives'
-
   import {
     useActivator,
     useBackButton,
@@ -57,7 +55,9 @@
 
   import { IN_BROWSER } from '@foxy/consts'
 
-  import { BLOCK, EASING, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@foxy/enums'
+  import { vClickOutside } from '@foxy/directives'
+
+  import { BLOCK, EASING, KEYBOARD_VALUES, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@foxy/enums'
 
   import { IOverlayProps } from '@foxy/interfaces'
 
@@ -149,7 +149,7 @@
   // KEYDOWN EVENT
 
   const handleKeydown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape' && globalTop.value) {
+    if (e.key === KEYBOARD_VALUES.ESC && globalTop.value) {
       if (!props.persistent) {
         isActive.value = false
         if (contentEl.value?.contains(document.activeElement)) {

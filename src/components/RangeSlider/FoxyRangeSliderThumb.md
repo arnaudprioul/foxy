@@ -1,0 +1,4 @@
+# Foxyrangesliderthumb
+
+## Usage
+    <FoxyRangeSliderThumb />

@@ -2,7 +2,7 @@ import { IN_BROWSER, ON_REGEX } from '@foxy/consts'
 
 import { FOCUS_LOCATION } from '@foxy/enums'
 
-import { TFocusLocation, TMaybePick, TNotAUnion, TSelectItemKey, TTemplateRef } from '@foxy/types'
+import { TClientPosition, TFocusLocation, TMaybePick, TNotAUnion, TSelectItemKey, TTemplateRef } from '@foxy/types'
 
 import { IfAny } from '@vue/shared'
 
@@ -109,6 +109,13 @@ export function padStart (str: string, length: number, char = '0') {
 
 export function clamp (value: number, min = 0, max = 1) {
   return Math.max(min, Math.min(max, value))
+}
+
+export function getDecimals (value: number) {
+  const trimmedStr = value.toString().trim()
+  return trimmedStr.includes('.')
+      ? (trimmedStr.length - trimmedStr.indexOf('.') - 1)
+      : 0
 }
 
 export function chunk (str: string, size = 1) {
@@ -265,23 +272,19 @@ export function pick<
   return found
 }
 
-// Array of keys
+export function pickWithout<
+    T extends object,
+    U extends Extract<keyof T, string>,
+    E extends Extract<keyof T, string>
+> (obj: T, include: Array<U>, exclude: Array<E>): Partial<T> {
+  return omit(pick(obj, include), exclude)
+}
+
 export function pickWithRest<
     T extends object,
     U extends Extract<keyof T, string>,
     E extends Extract<keyof T, string>
-> (obj: T, paths: U[], exclude?: E[]): [yes: TMaybePick<T, Exclude<U, E>>, no: Omit<T, Exclude<U, E>>]
-// Array of keys or RegExp to test keys against
-export function pickWithRest<
-    T extends object,
-    U extends Extract<keyof T, string>,
-    E extends Extract<keyof T, string>
-> (obj: T, paths: (U | RegExp)[], exclude?: E[]): [yes: Partial<T>, no: Partial<T>]
-export function pickWithRest<
-    T extends object,
-    U extends Extract<keyof T, string>,
-    E extends Extract<keyof T, string>
-> (obj: T, paths: (U | RegExp)[], exclude?: E[]): [yes: Partial<T>, no: Partial<T>] {
+> (obj: T, paths: Array<(U | RegExp)>, exclude?: Array<E>): [yes: Partial<T>, no: Partial<T>] {
   const found = Object.create(null)
   const rest = Object.create(null)
 
@@ -473,6 +476,14 @@ export function templateRef () {
   })
 
   return fn as TTemplateRef
+}
+
+export function getPosition (e: MouseEvent | TouchEvent, position: TClientPosition): number {
+  if ('touches' in e && e.touches.length) return e.touches[0][position]
+
+  else if ('changedTouches' in e && e.changedTouches.length) return e.changedTouches[0][position]
+
+  else return (e as MouseEvent)[position]
 }
 
 export function addWindowListener (event: string, listener: EventListenerOrEventListenerObject, onUnmountedCleanupFns: any = []) {

@@ -51,7 +51,7 @@
 
   import { FOXY_MENU_KEY, OVERLAY_PROPS } from '@foxy/consts'
 
-  import { INLINE, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@foxy/enums'
+  import { INLINE, KEYBOARD_VALUES, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@foxy/enums'
 
   import { IItemProps, IMenuProps } from '@foxy/interfaces'
 
@@ -142,7 +142,7 @@
   const handleKeydown = (e: KeyboardEvent) => {
     if (props.disabled) return
 
-    if (e.key === 'Tab') {
+    if (e.key === KEYBOARD_VALUES.TAB) {
       const nextElement = getNextElement(
           focusableChildren(overlay.value?.contentEl as Element, false),
           e.shiftKey ? 'prev' : 'next',
@@ -159,14 +159,14 @@
 
     const el = overlay.value?.contentEl
     if (el && isActive.value) {
-      if (e.key === 'ArrowDown') {
+      if (e.key === KEYBOARD_VALUES.DOWN) {
         e.preventDefault()
         focusChild(el, 'next')
-      } else if (e.key === 'ArrowUp') {
+      } else if (e.key === KEYBOARD_VALUES.UP) {
         e.preventDefault()
         focusChild(el, 'prev')
       }
-    } else if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+    } else if ([KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.UP].includes(e.key)) {
       isActive.value = true
       e.preventDefault()
       setTimeout(() => setTimeout(() => handleActivatorKeydown(e)))
@@ -206,7 +206,7 @@
     ]
   })
 
-  defineExpose({openChildren})
+  defineExpose({ openChildren })
 </script>
 
 <style lang="scss" scoped>

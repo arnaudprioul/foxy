@@ -65,7 +65,8 @@
                     <foxy-list-item
                         :key="index"
                         v-bind="menuListItemProps(item, itemRef, index)">
-                      <template v-if="showCheckbox || item.props.prependAvatar || item.props.prependIcon" #prepend="{isSelected}">
+                      <template v-if="showCheckbox || item.props.prependAvatar || item.props.prependIcon"
+                                #prepend="{isSelected}">
                         <foxy-checkbox-btn
                             :key="item"
                             :model-value="isSelected"
@@ -185,6 +186,7 @@
     DENSITY,
     DIRECTION,
     FILTERS_MODE,
+    KEYBOARD_VALUES,
     SELECT_STRATEGY,
     TEXT_FIELD_TYPE
   } from '@foxy/enums'
@@ -411,34 +413,34 @@
     const selectionStart = foxyTextFieldRef.value?.selectionStart
     const length = model.value.length
 
-    if ((props.autocomplete && selectionIndex.value > -1) || ['Enter', ' ', 'ArrowDown', 'ArrowUp', 'Home', 'End'].includes(e.key)) {
+    if ((props.autocomplete && selectionIndex.value > -1) || [KEYBOARD_VALUES.ENTER, KEYBOARD_VALUES.EMPTY, KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.UP, KEYBOARD_VALUES.HOME, KEYBOARD_VALUES.END].includes(e.key)) {
       e.preventDefault()
     }
 
-    if (['Enter', 'ArrowDown', ' '].includes(e.key)) {
+    if ([KEYBOARD_VALUES.ENTER, KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.EMPTY].includes(e.key)) {
       menu.value = true
     }
 
-    if (['Escape', 'Tab'].includes(e.key)) {
+    if ([KEYBOARD_VALUES.ESC, KEYBOARD_VALUES.TAB].includes(e.key)) {
       menu.value = false
     }
 
-    if (e.key === 'Home') {
+    if (e.key === KEYBOARD_VALUES.HOME) {
       foxyListRef.value?.focus('first')
-    } else if (e.key === 'End') {
+    } else if (e.key === KEYBOARD_VALUES.END) {
       foxyListRef.value?.focus('last')
     }
 
     if (props.autocomplete) {
-      if (highlightFirst.value && ['Enter', 'Tab'].includes(e.key)) {
+      if (highlightFirst.value && [KEYBOARD_VALUES.ENTER, KEYBOARD_VALUES.TAB].includes(e.key)) {
         handleSelect(displayItems.value[0] as IListItem)
       }
 
-      if (e.key === 'ArrowDown' && highlightFirst.value) {
+      if (e.key === KEYBOARD_VALUES.DOWN && highlightFirst.value) {
         foxyListRef.value?.focus('next')
       }
 
-      if (['Backspace', 'Delete'].includes(e.key)) {
+      if ([KEYBOARD_VALUES.BACKSPACE, KEYBOARD_VALUES.DEL].includes(e.key)) {
         if (
             !props.multiple &&
             model.value.length > 0 &&
@@ -450,14 +452,14 @@
           handleSelect(model.value[selectionIndex.value], false)
 
           selectionIndex.value = originalSelectionIndex >= length - 1 ? (length - 2) : originalSelectionIndex
-        } else if (e.key === 'Backspace' && !search.value) {
+        } else if (e.key === KEYBOARD_VALUES.BACKSPACE && !search.value) {
           selectionIndex.value = length - 1
         }
       }
 
       if (!props.multiple) return
 
-      if (e.key === 'ArrowLeft') {
+      if (e.key === KEYBOARD_VALUES.LEFT) {
         if (selectionIndex.value < 0 && selectionStart > 0) return
 
         const prev = selectionIndex.value > -1
@@ -472,7 +474,7 @@
         }
       }
 
-      if (e.key === 'ArrowRight') {
+      if (e.key === KEYBOARD_VALUES.RIGHT) {
         if (selectionIndex.value < 0) return
 
         const next = selectionIndex.value + 1
@@ -578,7 +580,7 @@
     handleSelect(item, false)
   }
   const handleChipKeydown = (e: KeyboardEvent, item: IListItem) => {
-    if (e.key !== 'Enter' && e.key !== ' ') return
+    if (e.key !== KEYBOARD_VALUES.ENTER && e.key !== KEYBOARD_VALUES.EMPTY) return
 
     e.preventDefault()
     e.stopPropagation()

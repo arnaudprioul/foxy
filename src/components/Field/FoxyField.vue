@@ -125,7 +125,7 @@
 
   import { useAdjacentInner, useBothColor, useDensity, useFocus, useLoader, useSlots } from '@foxy/composables'
 
-  import { EASING, PROGRESS_TYPE } from '@foxy/enums'
+  import { EASING, KEYBOARD_VALUES, PROGRESS_TYPE } from '@foxy/enums'
 
   import { IFieldProps } from '@foxy/interfaces'
 
@@ -177,7 +177,7 @@
     }
   }
   const handleKeydownClear = (e: KeyboardEvent) => {
-    if (e.key !== 'Enter' && e.key !== ' ') return
+    if (e.key !== KEYBOARD_VALUES.ENTER && e.key !== ' ') return
 
     e.preventDefault()
     e.stopPropagation()

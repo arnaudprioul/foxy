@@ -4,12 +4,12 @@ import { IRoundedProps } from '@foxy/interfaces'
 
 import { convertToUnit, formatRoundedStylesVar, getCurrentInstanceName } from '@foxy/utils'
 
-import { computed } from 'vue'
+import { computed, isRef, Ref } from 'vue'
 
-export function useRounded (props: IRoundedProps, name = getCurrentInstanceName()) {
+export function useRounded (props: IRoundedProps | Ref<boolean | number | string | null | undefined>, name = getCurrentInstanceName()) {
 
   const roundedClasses = computed(() => {
-    const rounded = props.rounded
+    const rounded = isRef(props) ? props.value : props.rounded
     const classes: Array<string> = []
 
     if (rounded === true || rounded === '') {
@@ -20,7 +20,7 @@ export function useRounded (props: IRoundedProps, name = getCurrentInstanceName(
   })
 
   const roundedStyles = computed(() => {
-    const rounded = props.rounded
+    const rounded = isRef(props) ? props.value : props.rounded
     const styles: Array<string> = []
 
     if (typeof rounded === 'string' && rounded !== '') {

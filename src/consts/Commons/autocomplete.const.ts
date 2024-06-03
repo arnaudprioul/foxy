@@ -1,10 +1,12 @@
+import { KEYBOARD_VALUES } from '@foxy/enums'
+
 export const COMPOSITION_IGNORE_KEYS = [
-  'ArrowUp',
-  'ArrowDown',
-  'ArrowRight',
-  'ArrowLeft',
-  'Enter',
-  'Escape',
-  'Tab',
-  ' ',
+  KEYBOARD_VALUES.UP,
+  KEYBOARD_VALUES.DOWN,
+  KEYBOARD_VALUES.RIGHT,
+  KEYBOARD_VALUES.LEFT,
+  KEYBOARD_VALUES.ENTER,
+  KEYBOARD_VALUES.ESC,
+  KEYBOARD_VALUES.TAB,
+  KEYBOARD_VALUES.EMPTY,
 ]

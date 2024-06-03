@@ -44,10 +44,13 @@ export function useActivator (props: IActivatorProps, { isActive, isTop }: {
 
   const handleClick = (e: MouseEvent) => {
     e.stopPropagation()
+
     activatorEl.value = (e.currentTarget || e.target) as HTMLElement
+
     if (!isActive.value) {
       cursorTarget.value = [e.clientX, e.clientY]
     }
+
     isActive.value = !isActive.value
   }
   const handleMouseEnter = (e: MouseEvent) => {

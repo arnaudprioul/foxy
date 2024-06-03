@@ -61,7 +61,7 @@
     useSlots
   } from '@foxy/composables'
 
-  import { DENSITY, LINES, OPEN_STRATEGY, SELECT_STRATEGY } from '@foxy/enums'
+  import { DENSITY, KEYBOARD_VALUES, LINES, OPEN_STRATEGY, SELECT_STRATEGY } from '@foxy/enums'
 
   import { IListProps } from '@foxy/interfaces'
 
@@ -124,13 +124,13 @@
   const handleKeydown = (e: KeyboardEvent) => {
     if (!contentRef.value) return
 
-    if (e.key === 'ArrowDown') {
+    if (e.key === KEYBOARD_VALUES.DOWN) {
       focus('next')
-    } else if (e.key === 'ArrowUp') {
+    } else if (e.key === KEYBOARD_VALUES.UP) {
       focus('prev')
-    } else if (e.key === 'Home') {
+    } else if (e.key === KEYBOARD_VALUES.HOME) {
       focus('first')
-    } else if (e.key === 'End') {
+    } else if (e.key === KEYBOARD_VALUES.END) {
       focus('last')
     } else {
       return
@@ -200,7 +200,7 @@
     ]
   })
 
-  defineExpose({open, select, focus, children, parents})
+  defineExpose({ open, select, focus, children, parents })
 </script>
 
 <style lang="scss" scoped>

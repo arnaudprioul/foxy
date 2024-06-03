@@ -1,9 +1,10 @@
-import { ILocationStrategyData, ILocationStrategyProps, IBox } from '@foxy/interfaces'
+import { IBox, ILocationStrategyData, ILocationStrategyProps } from '@foxy/interfaces'
 
 import { Box } from '@foxy/services'
 import { TAnchor } from '@foxy/types'
 
 import {
+  anchorToPoint,
   clamp,
   consoleError,
   convertToUnit,
@@ -11,12 +12,14 @@ import {
   flipAlign,
   flipCorner,
   flipSide,
-  parseAnchor,
+  getAxis,
+  getOffset,
+  getOverflow,
+  getScrollParents,
   getTargetBox,
   nullifyTransforms,
-  getScrollParents, getOverflow, getAxis
+  parseAnchor
 } from '@foxy/utils'
-import { anchorToPoint, getOffset } from '@foxy/utils/Commons/point.util.ts'
 
 import { computed, nextTick, onScopeDispose, Ref, watch } from 'vue'
 
@@ -151,17 +154,33 @@ export function connectedLocationStrategy (data: ILocationStrategyData, props: I
       let { x, y } = getOffset(targetPoint, contentPoint)
 
       switch (_placement.anchor.side) {
-        case 'top': y -= offset.value[0]; break
-        case 'bottom': y += offset.value[0]; break
-        case 'left': x -= offset.value[0]; break
-        case 'right': x += offset.value[0]; break
+        case 'top':
+          y -= offset.value[0]
+          break
+        case 'bottom':
+          y += offset.value[0]
+          break
+        case 'left':
+          x -= offset.value[0]
+          break
+        case 'right':
+          x += offset.value[0]
+          break
       }
 
       switch (_placement.anchor.align) {
-        case 'top': y -= offset.value[1]; break
-        case 'bottom': y += offset.value[1]; break
-        case 'left': x -= offset.value[1]; break
-        case 'right': x += offset.value[1]; break
+        case 'top':
+          y -= offset.value[1]
+          break
+        case 'bottom':
+          y += offset.value[1]
+          break
+        case 'left':
+          x -= offset.value[1]
+          break
+        case 'right':
+          x += offset.value[1]
+          break
       }
 
       box.x += x
@@ -175,7 +194,8 @@ export function connectedLocationStrategy (data: ILocationStrategyData, props: I
       return { overflows, x, y }
     }
 
-    let x = 0; let y = 0
+    let x = 0
+    let y = 0
     const available = { x: 0, y: 0 }
     const flipped = { x: false, y: false }
     let resets = -1

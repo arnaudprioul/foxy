@@ -99,6 +99,7 @@
   import { FOXY_CHIP_GROUP_KEY } from '@foxy/consts'
 
   import { vRipple } from '@foxy/directives'
+  import { KEYBOARD_VALUES } from '@foxy/enums'
 
   import { IChipProps } from '@foxy/interfaces'
 
@@ -182,7 +183,7 @@
     onClick(e)
   }
   const handleKeydown = (e: KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === KEYBOARD_VALUES.ENTER || e.key === ' ') {
       e.preventDefault()
       onClick(e as any as MouseEvent)
     }
