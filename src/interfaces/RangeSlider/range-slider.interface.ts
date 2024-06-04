@@ -11,29 +11,33 @@ import {
   IMarginProps,
   IPaddingProps,
   IRangeSliderThumbProps,
-  IRangeSliderTickProps,
   IRangeSliderTrackProps,
   IRippleProps,
   IRoundedProps
 } from '@foxy/interfaces'
 
-import { TAlways, TColor, TFoxyRangeSliderTrack, TSliderData, TTick } from '@foxy/types'
+import { TAlways, TColor, TFoxyRangeSliderThumb, TFoxyRangeSliderTrack, TSize, TSliderData, TTick } from '@foxy/types'
 
 import { Ref } from 'vue'
 
 export interface IRangeSliderProps extends ICommonsComponentProps, IDensityProps, IColorProps, IInputProps, IFocusProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IRippleProps, IDirectionProps {
   disabled?: boolean
+  required?: boolean
+  label?: string
   error?: boolean
   readonly?: boolean
   max?: number | string
   min?: number | string
   step?: number | string
   thumbProps?: IRangeSliderThumbProps
-  ticksProps?: IRangeSliderTickProps
   trackProps?: IRangeSliderTrackProps
   reverse?: boolean
   modelValue?: number | string
-  inset?: boolean
+
+  // TODO - need rework to use tick interface
+  showTicks?: TAlways
+  ticks?: Array<number> | Record<number, string>
+  tickSize?: TSize | number
 }
 
 export interface IRangeSliderProvide {
@@ -66,7 +70,8 @@ export interface IRangeSliderProvide {
   step: Ref<number>
   ticks: Ref<readonly number[] | Record<string, string> | undefined>
   tickSize: Ref<number>
-  trackContainerRef: Ref<TFoxyRangeSliderTrack | undefined>
+  foxyRangeSliderTrackRef: Ref<TFoxyRangeSliderTrack | null | undefined>
+  foxyRangeSliderThumbRef: Ref<TFoxyRangeSliderThumb | null | undefined>
   isVertical: Ref<boolean>
   parsedTicks: Ref<Array<TTick>>
   hasLabels: Ref<boolean>
@@ -75,6 +80,8 @@ export interface IRangeSliderProvide {
 }
 
 export interface IRangeSlider {
+  foxyRangeSliderTrackRef: Ref<TFoxyRangeSliderTrack | null | undefined>
+  foxyRangeSliderThumbRef: Ref<TFoxyRangeSliderThumb | null | undefined>
   props: IRangeSliderProps
   steps: ReturnType<typeof useSteps>
   onSliderEnd: (data: TSliderData) => void

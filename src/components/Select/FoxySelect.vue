@@ -16,6 +16,30 @@
       @update:model-value="handleModelUpdate"
       @click:clear="handleClear"
       @mousedown:control="handleMousedownControl">
+    <template v-if="hasSlot('prepend')" #prepend>
+      <slot name="prepend"/>
+    </template>
+
+    <template v-if="hasSlot('loader')" #loader>
+      <slot name="loader"/>
+    </template>
+
+    <template v-if="hasSlot('prependInner')" #prependInner>
+      <slot name="prependInner"/>
+    </template>
+
+    <template v-if="hasSlot('floatingLabel')" #floatingLabel>
+      <slot name="floatingLabel"/>
+    </template>
+
+    <template v-if="hasSlot('label')" #label>
+      <slot name="label"/>
+    </template>
+
+    <template v-if="hasSlot('prefix')" #prefix>
+      <slot name="prefix"/>
+    </template>
+
     <template #default>
       <foxy-menu
           ref="foxyMenuRef"
@@ -142,6 +166,10 @@
       </template>
     </template>
 
+    <template v-if="hasSlot('suffix')" #suffix>
+      <slot name="suffix"/>
+    </template>
+
     <template #appendInner>
       <slot name="appendInner">
         <foxy-avatar
@@ -160,6 +188,14 @@
             @click="noop"
             @mousedown="handleMousedownMenuIcon"/>
       </slot>
+    </template>
+
+    <template v-if="hasSlot('clear')" #clear>
+      <slot name="clear"/>
+    </template>
+
+    <template v-if="hasSlot('append')" #append>
+      <slot name="append"/>
     </template>
   </foxy-text-field>
 </template>

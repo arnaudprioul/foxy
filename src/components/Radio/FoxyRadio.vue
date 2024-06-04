@@ -6,6 +6,10 @@
       :focused="isFocused"
       :style="radioStyles"
       v-bind="{...rootAttrs, ...inputProps}">
+    <template v-if="hasSlot('prepend')" #prepend>
+      <slot name="prepend"/>
+    </template>
+
     <template #default="{id,messagesId,isDisabled,isReadonly,isValid}">
       <slot name="default" v-bind="{id,messagesId,isDisabled,isReadonly,isValid}">
         <foxy-radio-btn
@@ -32,6 +36,22 @@
           </template>
         </foxy-radio-btn>
       </slot>
+    </template>
+
+    <template v-if="hasSlot('append')" #append>
+      <slot name="append"/>
+    </template>
+
+    <template v-if="hasSlot('details')" #details="detailsSlotProps">
+      <slot name="details" v-bind="detailsSlotProps"/>
+    </template>
+
+    <template v-if="hasSlot('messages')" #messages="{hasMessages, messages}">
+      <slot name="messages" v-bind="{hasMessages, messages}"/>
+    </template>
+
+    <template v-if="hasSlot('message')" #message="{message}">
+      <slot name="message" v-bind="{message}"/>
     </template>
   </foxy-input>
 </template>

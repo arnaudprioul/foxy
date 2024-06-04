@@ -11,7 +11,9 @@
         :style="rangeSliderTrackFillStyles"/>
 
     <div v-if="showTicks" :class="rangeSliderTrackTicksClasses">
-      <template v-for="(tick, index) in ticks" :key="index">
+      <template
+          v-for="(tick, index) in ticks"
+          :key="index">
         <div
             :class="rangeSliderTickClasses"
             :style="rangeSliderTickStyles">
@@ -62,6 +64,7 @@
     disabled,
     rounded: sliderRounded,
     showTicks: sliderShowTicks,
+    tickSize: sliderTickSize,
     parsedTicks,
     min,
     max,
@@ -127,7 +130,7 @@
 
     return [
       {
-        '--foxy-range-slider-track__tick---size': convertToUnit(size.value),
+        '--foxy-range-slider-track__tick---size': convertToUnit(sliderTickSize.value),
         [startDir.value]: directionValue
       },
       props.style
@@ -195,4 +198,92 @@
       },
     ]
   })
+
+  defineExpose({})
 </script>
+
+<style lang="scss" scoped>
+  .foxy-range-slider-track {
+    $this: &;
+
+    border-radius: 9999px;
+
+    @media (forced-colors: active) {
+      border: thin solid buttontext;
+    }
+
+    &__background,
+    &__fill {
+      position: absolute;
+      border-radius: inherit;
+      transition: var(--foxy-range-slider__track---transition, 0.3s cubic-bezier(0.25, 0.8, 0.5, 1));
+
+      @media (forced-colors: active) {
+        background-color: highlight;
+      }
+    }
+
+    &__background {
+      background-color: rgb(148, 148, 148);
+    }
+
+    &__fill {
+      background-color: rgba(84, 84, 84, 1);
+    }
+
+    &__ticks {
+      height: 100%;
+      width: 100%;
+      position: relative;
+
+      #{$this}--always-show {
+        #{$this}__tick {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__tick {
+      background-color: rgba(66, 66, 66, 1);
+      position: absolute;
+      opacity: 0;
+      transition: 0.2s opacity cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 2px;
+      width: var(--foxy-range-slider-track__tick---size, 2);
+      height: var(--foxy-range-slider-track__tick---size, 2);
+      transform: translate(calc(var(--foxy-range-slider-track__tick---size, 2) / -2), calc(var(--foxy-range-slider-track__tick---size, 2) / -2));
+
+      &--filled {
+        background-color: rgba(238, 238, 238, 1);
+      }
+
+      &--first {
+        #{$this}__tick-label {
+          transform: none;
+        }
+      }
+
+      &--last {
+        #{$this}__tick-label {
+          transform: translateX(-100%);
+        }
+      }
+    }
+
+    &__tick-label {
+      position: absolute;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    &__background--opacity {
+      opacity: 0.38;
+    }
+  }
+</style>
+
+<style>
+  :root {
+
+  }
+</style>

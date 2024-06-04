@@ -4,7 +4,7 @@ import { BLOCK, CLIENT_POSITION, DIMENSIONS, DIRECTION, INLINE } from '@foxy/enu
 
 import { IRangeSlider, IRangeSliderProps, IRangeSliderProvide } from '@foxy/interfaces'
 
-import { TFoxyRangeSliderTrack, TTick } from '@foxy/types'
+import { TTick } from '@foxy/types'
 
 import { clamp, createRange, getDecimals, getPosition, getRangeSliderOffset } from '@foxy/utils'
 
@@ -42,6 +42,8 @@ export function useSteps (props: IRangeSliderProps) {
 }
 
 export function useRangeSlider ({
+                                  foxyRangeSliderTrackRef,
+                                  foxyRangeSliderThumbRef,
                                   props,
                                   steps,
                                   onSliderStart,
@@ -60,17 +62,16 @@ export function useRangeSlider ({
 
   const { min, max, step, decimals, roundValue } = steps
 
-  // TODO - need rework to use thumb object | trick object | track object
-
+  // TODO - need rework to use tick object and move it in tick component
   const tickSize = computed(() => {
-    if (typeof props.ticksProps?.size === 'number') {
-      return parseInt(props.ticksProps.size, 10)
+    if (typeof props.tickSize === 'number') {
+      return parseInt(props.tickSize, 10)
     }
 
     return 2
   })
-  const showTicks = ref(props.ticksProps?.show)
-  const ticks = ref(props.ticksProps?.items)
+  const showTicks = ref(props.showTicks)
+  const ticks = ref(props.ticks)
   const numTicks = computed(() => {
     return (max.value - min.value) / step.value
   })
@@ -83,20 +84,20 @@ export function useRangeSlider ({
 
         return {
           value,
-          position: position(value),
+          position: onPosition(value),
         }
       }) : []
     }
 
     if (Array.isArray(ticks.value)) return ticks.value.map((t) => ({
       value: t,
-      position: position(t),
+      position: onPosition(t),
       label: t.toString()
     }))
 
     return Object.keys(ticks.value).map((key) => ({
       value: parseFloat(key),
-      position: position(parseFloat(key)),
+      position: onPosition(parseFloat(key)),
       label: (ticks.value as Record<string, string>)[key],
     }))
   })
@@ -120,7 +121,6 @@ export function useRangeSlider ({
   const border = toRef(props, 'border')
   const ripple = toRef(props, 'ripple')
 
-  const trackContainerRef = ref<TFoxyRangeSliderTrack | undefined>()
   const activeThumbRef = ref<HTMLElement | undefined>()
 
   const mousePressed = shallowRef(false)
@@ -134,23 +134,23 @@ export function useRangeSlider ({
     const {
       [start]: trackStart,
       [length]: trackLength,
-    } = trackContainerRef.value?.$el.getBoundingClientRect()
+    } = foxyRangeSliderTrackRef.value?.$el.getBoundingClientRect()
     const clickOffset = getPosition(e, position)
 
     // It is possible for left to be NaN, force to number
-    let clickPos = Math.min(Math.max((clickOffset - trackStart - startOffset.value) / trackLength, 0), 1) || 0
+    let clickPos = clamp((clickOffset - trackStart - startOffset.value) / trackLength, 0, 1) || 0
 
-    if (isVertical.value ? indexFromEnd.value : !indexFromEnd.value) clickPos = 1 - clickPos
+    if (indexFromEnd.value) clickPos = 1 - clickPos
 
     return roundValue(min.value + clickPos * (max.value - min.value))
   }
-  const handleStop = (e: MouseEvent | TouchEvent) => {
+  const onStop = (e: MouseEvent | TouchEvent) => {
     onSliderEnd({ value: parseMouseMove(e) })
 
     mousePressed.value = false
     startOffset.value = 0
   }
-  const handleStart = (e: MouseEvent | TouchEvent) => {
+  const onStart = (e: MouseEvent | TouchEvent) => {
     activeThumbRef.value = getActiveThumb(e)
 
     if (!activeThumbRef.value) return
@@ -177,32 +177,36 @@ export function useRangeSlider ({
     e.stopPropagation()
     e.preventDefault()
 
-    handleStop(e)
+    onStop(e)
 
     window.removeEventListener('mousemove', onMouseMove, moveListenerOptions)
     window.removeEventListener('mouseup', onSliderMouseUp)
   }
   const onSliderTouchend = (e: TouchEvent) => {
-    handleStop(e)
+    onStop(e)
 
     window.removeEventListener('touchmove', onMouseMove, moveListenerOptions)
     e.target?.removeEventListener('touchend', onSliderTouchend as EventListener)
   }
   const onSliderTouchstart = (e: TouchEvent) => {
-    handleStart(e)
+    if (readonly.value) return
+
+    onStart(e)
 
     window.addEventListener('touchmove', onMouseMove, moveListenerOptions)
     e.target?.addEventListener('touchend', onSliderTouchend as EventListener, { passive: false })
   }
   const onSliderMousedown = (e: MouseEvent) => {
+    if (readonly.value) return
+
     e.preventDefault()
 
-    handleStart(e)
+    onStart(e)
 
     window.addEventListener('mousemove', onMouseMove, moveListenerOptions)
     window.addEventListener('mouseup', onSliderMouseUp, { passive: false })
   }
-  const position = (val: number) => {
+  const onPosition = (val: number) => {
     const percentage = (val - min.value) / (max.value - min.value) * 100
 
     return clamp(isNaN(percentage) ? 0 : percentage, 0, 100)
@@ -235,14 +239,15 @@ export function useRangeSlider ({
     onSliderTouchstart,
     parsedTicks,
     parseMouseMove,
-    position,
+    position: onPosition,
     roundValue,
     showTicks,
     startOffset,
     step,
     ticks,
     tickSize,
-    trackContainerRef,
+    foxyRangeSliderTrackRef,
+    foxyRangeSliderThumbRef,
     isVertical,
   }
 

@@ -12,14 +12,12 @@
       @keydown="!isReadonly ? handleKeydown : undefined">
     <div
         :class="rangeSliderThumbSurfaceClasses"
-        :style="rangeSliderThumbSurfaceStyles"
-    />
+        :style="rangeSliderThumbSurfaceStyles"/>
 
     <div
         v-ripple="rippleProps"
         :style="rangeSliderThumbRippleStyles"
-        class="foxy-range-slider-thumb__ripple"
-    />
+        class="foxy-range-slider-thumb__ripple"/>
 
     <foxy-translate-scale origin="bottom center">
       <div v-show="showLabel"
@@ -174,7 +172,7 @@
   const rangeSliderThumbStyles = computed(() => {
     return [
       {
-        '--foxy-range-slider-thumb---position': positionPercentage,
+        '--foxy-range-slider-thumb---position': positionPercentage.value,
         '--foxy-range-slider-thumb---size': convertToUnit(size.value),
       },
       props.style
@@ -212,4 +210,143 @@
       props.style
     ] as StyleValue
   })
+
+  defineExpose({})
 </script>
+
+<style lang="scss" scoped>
+  .foxy-range-slider-thumb {
+    $this: &;
+
+    touch-action: none;
+    color: rgba(66, 66, 66, 1);
+    outline: none;
+    position: absolute;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+    &__label {
+      background: rgba(66, 66, 66, 0.7);
+      color: rgba(66, 66, 66, 1);
+
+      &:before {
+        color: rgba(66, 66, 66, 0.7);
+      }
+    }
+
+    &__surface {
+      cursor: pointer;
+      width: var(--foxy-range-slider-thumb---size, 20);
+      height: var(--foxy-range-slider-thumb---size, 20);
+      border-radius: 50%;
+      user-select: none;
+      background-color: currentColor;
+
+      @media (forced-colors: active) {
+        background-color: highlight;
+      }
+
+      &:before {
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        content: "";
+        color: inherit;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: currentColor;
+        position: absolute;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &:after {
+        content: "";
+        width: 42px;
+        height: 42px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &__label-container {
+      position: absolute;
+      transition: 0.2s cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    &__label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      min-width: 35px;
+      height: 25px;
+      border-radius: 4px;
+      padding: 6px;
+      position: absolute;
+      user-select: none;
+      transition: 0.2s cubic-bezier(0.4, 0, 1, 1);
+
+      &:before {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+      }
+    }
+
+    &__ripple {
+      position: absolute;
+      left: calc(var(--foxy-range-slider-thumb---size, 20) / -2);
+      top: calc(var(--foxy-range-slider-thumb---size, 20) / -2);
+      width: calc(var(--foxy-range-slider-thumb---size, 20) * 2);
+      height: calc(var(--foxy-range-slider-thumb---size, 20) * 2);
+      background: inherit;
+    }
+
+    &--focused {
+      #{$this}__surface {
+        &:before {
+          transform: scale(2);
+          opacity: 0.12;
+        }
+      }
+    }
+
+    &--pressed {
+      transition: none;
+
+      #{$this}__surface {
+        &:before {
+          opacity: 0.12;
+        }
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        #{$this}__surface {
+          &:before {
+            transform: scale(2);
+          }
+        }
+
+        &:not(#{$this}--focused) {
+          #{$this}__surface {
+            &:before {
+              opacity: 0.04;
+            }
+          }
+        }
+      }
+    }
+  }
+</style>
+
+<style>
+  :root {
+
+  }
+</style>
