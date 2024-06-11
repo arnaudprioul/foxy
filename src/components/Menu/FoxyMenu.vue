@@ -1,16 +1,16 @@
 <template>
   <foxy-overlay
-      :id="id"
-      ref="overlay"
-      v-model="isActive"
-      :activator-props="activatorProps"
-      :class="menuClasses"
-      :style="menuStyles"
-      absolute
-      role="menu"
-      v-bind="{...overlayProps, ...scopeId}"
-      @keydown="handleKeydown"
-      @click:outside="handleClickOutside">
+    :id="id"
+    ref="overlay"
+    v-model="isActive"
+    :activator-props="activatorProps"
+    :class="menuClasses"
+    :style="menuStyles"
+    absolute
+    role="menu"
+    v-bind="{...overlayProps, ...scopeId}"
+    @keydown="handleKeydown"
+    @click:outside="handleClickOutside">
     <template #activator="{props}">
       <slot name="activator" v-bind="{props}"/>
     </template>
@@ -22,18 +22,18 @@
           <foxy-list-group class="foxy-menu__items">
             <template v-for="(item, index) in items" :key="index">
               <foxy-list-item
-                  v-if="!hasChilds(item)"
-                  class="foxy-menu__item"
-                  v-bind="item"/>
+                v-if="!hasChilds(item)"
+                class="foxy-menu__item"
+                v-bind="item"/>
               <foxy-menu
-                  v-else
-                  v-bind="{...item, ...overlayProps, offset:[8, 8]}"
+                v-else
+                v-bind="{...item, ...overlayProps, offset:[8, 8]}"
               >
                 <template #activator="{props}">
                   <foxy-list-item
-                      :append-icon="MDI_ICONS.CHEVRON_RIGHT"
-                      class="foxy-menu__item"
-                      v-bind="{...props, ...item}"/>
+                    :append-icon="MDI_ICONS.CHEVRON_RIGHT"
+                    class="foxy-menu__item"
+                    v-bind="{...props, ...item}"/>
                 </template>
               </foxy-menu>
             </template>
@@ -47,7 +47,7 @@
 <script lang="ts" setup>
   import { FoxyListGroup, FoxyListSubheader, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
 
-  import { useScopeId } from '@foxy/composables'
+  import { useScopeId, useProxiedModel } from '@foxy/composables'
 
   import { FOXY_MENU_KEY, OVERLAY_PROPS } from '@foxy/consts'
 
@@ -57,7 +57,7 @@
 
   import { TFoxyOverlay } from '@foxy/types'
 
-  import { focusableChildren, focusChild, getNextElement, getUid, keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { focusableChildren, focusChild, getNextElement, getUid, keys, omit, pick } from '@foxy/utils'
 
   import { computed, inject, mergeProps, nextTick, provide, ref, shallowRef, StyleValue, watch } from 'vue'
 
@@ -111,15 +111,15 @@
     await nextTick()
 
     if (
-        isActive.value &&
-        before !== after &&
-        overlay.value?.contentEl &&
-        // We're the topmost menu
-        overlay.value?.globalTop &&
-        // It isn't the document or the menu body
-        ![document, overlay.value.contentEl].includes(after!) &&
-        // It isn't inside the menu body
-        !overlay.value.contentEl.contains(after)
+      isActive.value &&
+      before !== after &&
+      overlay.value?.contentEl &&
+      // We're the topmost menu
+      overlay.value?.globalTop &&
+      // It isn't the document or the menu body
+      ![document, overlay.value.contentEl].includes(after!) &&
+      // It isn't inside the menu body
+      !overlay.value.contentEl.contains(after)
     ) {
       const focusable = focusableChildren(overlay.value.contentEl)
       focusable[0]?.focus()
@@ -144,9 +144,9 @@
 
     if (e.key === KEYBOARD_VALUES.TAB) {
       const nextElement = getNextElement(
-          focusableChildren(overlay.value?.contentEl as Element, false),
-          e.shiftKey ? 'prev' : 'next',
-          (el: HTMLElement) => el.tabIndex >= 0
+        focusableChildren(overlay.value?.contentEl as Element, false),
+        e.shiftKey ? 'prev' : 'next',
+        (el: HTMLElement) => el.tabIndex >= 0
       )
       if (!nextElement) {
         isActive.value = false

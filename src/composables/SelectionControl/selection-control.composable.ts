@@ -1,10 +1,10 @@
-import { useBackgroundColor, useDensity, useTextColor } from '@foxy/composables'
+import { useBackgroundColor, useDensity, useTextColor, useProxiedModel } from '@foxy/composables'
 
 import { FOXY_SELECTION_CONTROL_GROUP_KEY } from '@foxy/consts'
 
 import { ISelectionControlProps } from '@foxy/interfaces'
 
-import { deepEqual, useProxiedModel, wrapInArray } from '@foxy/utils'
+import { deepEqual, wrapInArray } from '@foxy/utils'
 
 import { computed, inject } from 'vue'
 

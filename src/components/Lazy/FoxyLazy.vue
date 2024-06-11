@@ -1,9 +1,9 @@
 <template>
   <component
-      :is="tag"
-      v-intersect="intersect"
-      :class="lazyClasses"
-      :style="lazyStyles">
+    :is="tag"
+    v-intersect="intersect"
+    :class="lazyClasses"
+    :style="lazyStyles">
     <template v-if="isActive">
       <foxy-transition :transition="transition" appear>
         <slot name="default"/>
@@ -15,11 +15,9 @@
 <script lang="ts" setup>
   import { FoxyFade, FoxyTransition } from '@foxy/components'
 
-  import { useDimension } from '@foxy/composables'
+  import { useDimension, useProxiedModel } from '@foxy/composables'
 
   import { ILazyComponentProps } from '@foxy/interfaces'
-
-  import { useProxiedModel } from '@foxy/utils'
 
   import { computed, StyleValue } from 'vue'
 

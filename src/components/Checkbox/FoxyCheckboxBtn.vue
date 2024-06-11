@@ -1,22 +1,22 @@
 <template>
   <foxy-selection-control
-      v-model="model"
-      :aria-checked="indeterminate ? 'mixed' : undefined"
-      :class="checkboxBtnClasses"
-      :false-icon="falseIcon"
-      :style="checkboxBtnStyles"
-      :true-icon="trueIcon"
-      type="checkbox"
-      v-bind="controlProps"
-      @update:model-value="handleChange"
-      @click:label="handleClickLabel"
+    v-model="model"
+    :aria-checked="indeterminate ? 'mixed' : undefined"
+    :class="checkboxBtnClasses"
+    :false-icon="falseIcon"
+    :style="checkboxBtnStyles"
+    :true-icon="trueIcon"
+    type="checkbox"
+    v-bind="controlProps"
+    @update:model-value="handleChange"
+    @click:label="handleClickLabel"
   >
     <template v-if="hasSlot('default')" #default>
       <slot name="default"/>
     </template>
 
     <template v-if="hasSlot('input')" #input="{props, icon, textColorStyles, backgroundColorStyles, model}">
-      <slot name="input" v-bind="{props, icon, textColorStyles, backgroundColorStyles, model}" />
+      <slot name="input" v-bind="{props, icon, textColorStyles, backgroundColorStyles, model}"/>
     </template>
 
     <template v-if="hasSlot('label')" #label>
@@ -28,7 +28,7 @@
 <script lang="ts" setup>
   import { FoxySelectionControl } from '@foxy/components'
 
-  import { useSlots } from '@foxy/composables'
+  import { useSlots, useProxiedModel } from '@foxy/composables'
 
   import { SELECTION_CONTROL_PROPS } from '@foxy/consts'
 
@@ -36,7 +36,7 @@
 
   import { ICheckboxBtnProps } from '@foxy/interfaces'
 
-  import { keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { keys, omit, pick } from '@foxy/utils'
 
   import { computed, StyleValue } from 'vue'
 
@@ -65,13 +65,13 @@
 
   const falseIcon = computed(() => {
     return indeterminate.value
-        ? props.indeterminateIcon
-        : props.falseIcon
+      ? props.indeterminateIcon
+      : props.falseIcon
   })
   const trueIcon = computed(() => {
     return indeterminate.value
-        ? props.indeterminateIcon
-        : props.trueIcon
+      ? props.indeterminateIcon
+      : props.trueIcon
   })
 
   const controlProps = computed(() => {

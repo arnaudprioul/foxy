@@ -1,10 +1,10 @@
-import { useToggleScope } from '@foxy/composables'
+import { useToggleScope, useProxiedModel } from '@foxy/composables'
 
 import { FOXY_FORM_KEY } from '@foxy/consts'
 
 import { IValidationProps } from '@foxy/interfaces'
 
-import { getCurrentInstance, getCurrentInstanceName, getUid, useProxiedModel, wrapInArray } from '@foxy/utils'
+import { getCurrentInstance, getCurrentInstanceName, getUid, wrapInArray } from '@foxy/utils'
 
 import {
   computed,

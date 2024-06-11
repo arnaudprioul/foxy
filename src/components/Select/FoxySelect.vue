@@ -1,21 +1,21 @@
 <template>
   <foxy-text-field
-      ref="foxyTextFieldRef"
-      v-model:focused="isFocused"
-      v-model:model-value="search"
-      :class="selectClasses"
-      :counter-value="counterValue"
-      :dirty="isDirty"
-      :placeholder="placeholder"
-      :style="selectStyles"
-      :validation-value="validationValue"
-      v-bind="{ ...textFieldProps }"
-      @blur="handleBlur"
-      @change="handleChange"
-      @keydown="handleKeydown"
-      @update:model-value="handleModelUpdate"
-      @click:clear="handleClear"
-      @mousedown:control="handleMousedownControl">
+    ref="foxyTextFieldRef"
+    v-model:focused="isFocused"
+    v-model:model-value="search"
+    :class="selectClasses"
+    :counter-value="counterValue"
+    :dirty="isDirty"
+    :placeholder="placeholder"
+    :style="selectStyles"
+    :validation-value="validationValue"
+    v-bind="{ ...textFieldProps }"
+    @blur="handleBlur"
+    @change="handleChange"
+    @keydown="handleKeydown"
+    @update:model-value="handleModelUpdate"
+    @click:clear="handleClear"
+    @mousedown:control="handleMousedownControl">
     <template v-if="hasSlot('prepend')" #prepend>
       <slot name="prepend"/>
     </template>
@@ -42,33 +42,33 @@
 
     <template #default>
       <foxy-menu
-          ref="foxyMenuRef"
-          v-model="menu"
-          :close-on-content-click="false"
-          :disabled="menuDisabled"
-          :eager="eager"
-          :location="BLOCK.BOTTOM"
-          :max-height="310"
-          :open-on-click="false"
-          activator="parent"
-          content-class="foxy-select__content"
-          v-bind="{ ...menuProps }"
-          @afterLeave="handleAfterLeave">
+        ref="foxyMenuRef"
+        v-model="menu"
+        :close-on-content-click="false"
+        :disabled="menuDisabled"
+        :eager="eager"
+        :location="BLOCK.BOTTOM"
+        :max-height="310"
+        :open-on-click="false"
+        activator="parent"
+        content-class="foxy-select__content"
+        v-bind="{ ...menuProps }"
+        @afterLeave="handleAfterLeave">
 
         <template #default>
           <foxy-list
-              v-if="hasList"
-              ref="foxyListRef"
-              :select-strategy="multiple ? SELECT_STRATEGY.INDEPENDENT : SELECT_STRATEGY.SINGLE_INDEPENDENT"
-              :selected="selectedValues"
-              :tabindex="-1"
-              aria-live="polite"
-              v-bind="{ ...listProps }"
-              @focusin="handleFocusin"
-              @focusout="handleFocusout"
-              @keydown="handleListKeydown"
-              @mousedown="handleMousedown"
-              @scroll-passive="handleListScroll">
+            v-if="hasList"
+            ref="foxyListRef"
+            :select-strategy="multiple ? SELECT_STRATEGY.INDEPENDENT : SELECT_STRATEGY.SINGLE_INDEPENDENT"
+            :selected="selectedValues"
+            :tabindex="-1"
+            aria-live="polite"
+            v-bind="{ ...listProps }"
+            @focusin="handleFocusin"
+            @focusout="handleFocusout"
+            @keydown="handleListKeydown"
+            @mousedown="handleMousedown"
+            @scroll-passive="handleListScroll">
 
             <template #default>
               <slot name="prependItem"/>
@@ -80,22 +80,22 @@
               </template>
 
               <foxy-virtual-scroll
-                  ref="foxyVirtualScrollRef"
-                  :items="displayItems"
-                  renderless>
+                ref="foxyVirtualScrollRef"
+                :items="displayItems"
+                renderless>
                 <template #renderlessItem="{item, index, itemRef}">
                   <slot name="item"
                         v-bind="{item, index, props: menuListItemProps(item, itemRef, index)}">
                     <foxy-list-item
-                        :key="index"
-                        v-bind="menuListItemProps(item, itemRef, index)">
+                      :key="index"
+                      v-bind="menuListItemProps(item, itemRef, index)">
                       <template v-if="showCheckbox || item.props.prependAvatar || item.props.prependIcon"
                                 #prepend="{isSelected}">
                         <foxy-checkbox-btn
-                            :key="item"
-                            :model-value="isSelected"
-                            :ripple="false"
-                            :tabindex="-1"/>
+                          :key="item"
+                          :model-value="isSelected"
+                          :ripple="false"
+                          :tabindex="-1"/>
 
                         <foxy-avatar v-if="item.props.prependAvatar" :image="item.props.prependAvatar"/>
 
@@ -136,14 +136,14 @@
           <template v-if="hasChips">
             <slot name="chip" v-bind="{ item, index, props: chipSlotProps(item) }">
               <foxy-chip
-                  key="chip"
-                  :closable="closableChips"
-                  :disabled="item.props.disabled"
-                  :model-value="true"
-                  size="small"
-                  @keydown="handleChipKeydown($event, item)"
-                  @mousedown="handleChipMousedown($event)"
-                  @click:close="handleChipClose($event, item)">
+                key="chip"
+                :closable="closableChips"
+                :disabled="item.props.disabled"
+                :model-value="true"
+                size="small"
+                @keydown="handleChipKeydown($event, item)"
+                @mousedown="handleChipMousedown($event)"
+                @click:close="handleChipClose($event, item)">
                 <template #default>
                   <slot name="selection">
                     {{ item.title }}
@@ -173,20 +173,20 @@
     <template #appendInner>
       <slot name="appendInner">
         <foxy-avatar
-            v-if="appendInnerAvatar"
-            key="append-avatar"
-            :density="density"
-            :image="appendInnerAvatar"/>
+          v-if="appendInnerAvatar"
+          key="append-avatar"
+          :density="density"
+          :image="appendInnerAvatar"/>
         <foxy-icon
-            v-if="appendInnerIcon"
-            key="append-icon"
-            :density="density"
-            :icon="appendInnerIcon"/>
+          v-if="appendInnerIcon"
+          key="append-icon"
+          :density="density"
+          :icon="appendInnerIcon"/>
         <foxy-icon
-            :icon="menuIcon"
-            class="foxy-select__menu-icon"
-            @click="noop"
-            @mousedown="handleMousedownMenuIcon"/>
+          :icon="menuIcon"
+          class="foxy-select__menu-icon"
+          @click="noop"
+          @mousedown="handleMousedownMenuIcon"/>
       </slot>
     </template>
 
@@ -213,7 +213,7 @@
     FoxyVirtualScroll
   } from '@foxy/components'
 
-  import { useFilter, useItems, useScrolling, useSlots, useTextColor } from '@foxy/composables'
+  import { useFilter, useItems, useScrolling, useSlots, useTextColor, useProxiedModel } from '@foxy/composables'
 
   import { FOXY_FORM_KEY, IN_BROWSER, TEXT_FIELD_PROPS } from '@foxy/consts'
 
@@ -239,7 +239,6 @@
     noop,
     omit,
     pick,
-    useProxiedModel,
     wrapInArray
   } from '@foxy/utils'
 
@@ -281,16 +280,16 @@
 
   const { items, transformIn, transformOut } = useItems(props)
   const model = useProxiedModel(
-      props,
-      'modelValue',
-      [],
-      (v) => {
-        return transformIn(v === null ? [null] : wrapInArray(v))
-      },
-      (v) => {
-        const transformed = transformOut(v)
-        return props.multiple ? transformed : (transformed[0] ?? null)
-      }
+    props,
+    'modelValue',
+    [],
+    (v) => {
+      return transformIn(v === null ? [null] : wrapInArray(v))
+    },
+    (v) => {
+      const transformed = transformOut(v)
+      return props.multiple ? transformed : (transformed[0] ?? null)
+    }
   )
   const search = useProxiedModel(props, 'search', '')
 
@@ -325,11 +324,11 @@
   })
   const highlightFirst = computed(() => {
     const selectFirst = props.autoSelectFirst === true ||
-        (props.autoSelectFirst === 'exact' && search.value === displayItems.value[0]?.title)
+      (props.autoSelectFirst === 'exact' && search.value === displayItems.value[0]?.title)
     return selectFirst &&
-        displayItems.value.length > 0 &&
-        !isPristine.value &&
-        !listHasFocus.value
+      displayItems.value.length > 0 &&
+      !isPristine.value &&
+      !listHasFocus.value
   })
   const showCheckbox = computed(() => {
     return props.multiple && !props.hideSelected
@@ -478,9 +477,9 @@
 
       if ([KEYBOARD_VALUES.BACKSPACE, KEYBOARD_VALUES.DEL].includes(e.key)) {
         if (
-            !props.multiple &&
-            model.value.length > 0 &&
-            !search.value
+          !props.multiple &&
+          model.value.length > 0 &&
+          !search.value
         ) return handleSelect(model.value[0], false)
 
         if (~selectionIndex.value) {
@@ -499,8 +498,8 @@
         if (selectionIndex.value < 0 && selectionStart > 0) return
 
         const prev = selectionIndex.value > -1
-            ? selectionIndex.value - 1
-            : length - 1
+          ? selectionIndex.value - 1
+          : length - 1
 
         if (model.value[prev]) {
           selectionIndex.value = prev
@@ -640,9 +639,9 @@
     } else {
       if (!props.multiple && search.value == null) model.value = []
       else if (
-          highlightFirst.value &&
-          !listHasFocus.value &&
-          !model.value.some(({ value }) => value === displayItems.value[0].value)
+        highlightFirst.value &&
+        !listHasFocus.value &&
+        !model.value.some(({ value }) => value === displayItems.value[0].value)
       ) {
         handleSelect(displayItems.value[0] as IListItem)
       }
@@ -663,7 +662,7 @@
   watch(menu, () => {
     if (!props.hideSelected && menu.value && model.value.length) {
       const index = displayItems.value.findIndex(
-          item => model.value.some((s) => (props.valueComparator ? props.valueComparator(s.value, item.value) : deepEqual(s.value, item.value)))
+        item => model.value.some((s) => (props.valueComparator ? props.valueComparator(s.value, item.value) : deepEqual(s.value, item.value)))
       )
       IN_BROWSER && window.requestAnimationFrame(() => {
         index >= 0 && foxyVirtualScrollRef.value?.scrollToIndex(index)

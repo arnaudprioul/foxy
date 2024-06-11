@@ -1,13 +1,13 @@
 <template>
   <foxy-selection-control
-      v-model="model"
-      :class="radioBtnClasses"
-      :false-icon="falseIcon"
-      :style="radioBtnStyles"
-      :true-icon="trueIcon"
-      type="radio"
-      v-bind="controlProps"
-      @click:label="handleClickLabel"
+    v-model="model"
+    :class="radioBtnClasses"
+    :false-icon="falseIcon"
+    :style="radioBtnStyles"
+    :true-icon="trueIcon"
+    type="radio"
+    v-bind="controlProps"
+    @click:label="handleClickLabel"
   >
     <template v-if="hasSlot('default')" #default>
       <slot name="default"/>
@@ -26,7 +26,7 @@
 <script lang="ts" setup>
   import { FoxySelectionControl } from '@foxy/components'
 
-  import { useSlots } from '@foxy/composables'
+  import { useSlots, useProxiedModel } from '@foxy/composables'
 
   import { SELECTION_CONTROL_PROPS } from '@foxy/consts'
 
@@ -34,7 +34,7 @@
 
   import { IRadioBtnProps } from '@foxy/interfaces'
 
-  import { keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { keys, omit, pick } from '@foxy/utils'
 
   import { computed, StyleValue } from 'vue'
 

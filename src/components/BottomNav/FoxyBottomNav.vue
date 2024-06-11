@@ -1,8 +1,8 @@
 <template>
   <component
-      :is="tag"
-      :class="bottomNavClasses"
-      :style="bottomNavStyles">
+    :is="tag"
+    :class="bottomNavClasses"
+    :style="bottomNavStyles">
     <div class="foxy-bottom-nav__content">
       <slot name="default"/>
     </div>
@@ -18,14 +18,15 @@
     useGroup,
     useLayoutItem,
     useRounded,
-    useSsrBoot
+    useSsrBoot,
+    useProxiedModel
   } from '@foxy/composables'
 
   import { FOXY_BTN_TOGGLE_KEY } from '@foxy/consts'
 
   import { IBottomNavProps } from '@foxy/interfaces'
 
-  import { convertToUnit, useProxiedModel } from '@foxy/utils'
+  import { convertToUnit } from '@foxy/utils'
 
   import { computed, StyleValue, toRef } from 'vue'
 
@@ -96,7 +97,7 @@
     ]
   })
 
-  defineExpose({layoutIsReady})
+  defineExpose({ layoutIsReady })
 </script>
 
 <style lang="scss" scoped>

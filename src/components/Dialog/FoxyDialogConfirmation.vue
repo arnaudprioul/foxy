@@ -1,8 +1,8 @@
 <template>
   <foxy-dialog
-      v-model="isActive"
-      v-bind="dialogProps"
-      @is-read="handleIsRead">
+    v-model="isActive"
+    v-bind="dialogProps"
+    @is-read="handleIsRead">
     <template v-if="hasSlot('activator')" #activator="{props}">
       <slot name="activator" v-bind="{props}"/>
     </template>
@@ -61,9 +61,9 @@
 
             <foxy-col cols="auto">
               <foxy-btn
-                  text="Validate"
-                  :disabled="!validatable"
-                  @click="handleValidate"/>
+                :disabled="!validatable"
+                text="Validate"
+                @click="handleValidate"/>
             </foxy-col>
           </foxy-row>
         </foxy-container>
@@ -74,14 +74,16 @@
 
 <script lang="ts" setup>
   import { FoxyBtn, FoxyCol, FoxyContainer, FoxyDialog, FoxyRow } from '@foxy/components'
-  import { useSlots } from '@foxy/composables'
+
+  import { useSlots, useProxiedModel } from '@foxy/composables'
 
   import { DIALOG_PROPS } from '@foxy/consts'
+
   import { JUSTIFY } from '@foxy/enums'
 
   import { IDialogConfirmationProps } from '@foxy/interfaces'
 
-  import { keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { keys, omit, pick } from '@foxy/utils'
 
   import { computed, ref } from 'vue'
 

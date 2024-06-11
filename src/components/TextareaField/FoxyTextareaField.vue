@@ -1,33 +1,33 @@
 <template>
   <foxy-input
-      ref="foxyInputRef"
-      v-model="model"
-      :center-affix="isUniqueRow"
-      :class="textareaFieldClasses"
-      :focused="isFocused"
-      :style="textareaFieldStyles"
-      v-bind="{ ...rootAttrs, ...inputProps }">
+    ref="foxyInputRef"
+    v-model="model"
+    :center-affix="isUniqueRow"
+    :class="textareaFieldClasses"
+    :focused="isFocused"
+    :style="textareaFieldStyles"
+    v-bind="{ ...rootAttrs, ...inputProps }">
     <template v-if="hasSlot('prepend')" #prepend>
       <slot name="prepend"/>
     </template>
 
     <template #default="{id, isDisabled, isDirty, isReadonly, isValid}">
       <foxy-field
-          :id="id"
-          ref="foxyFieldRef"
-          :active="isActive || isDirty"
-          :center-affix="isUniqueRow"
-          :dirty="isDirty || dirty"
-          :disabled="isDisabled"
-          :error="isValid === false"
-          :focused="isFocused"
-          :style="textareaFieldFieldStyles"
-          v-bind="{ ...fieldProps }"
-          @click="handleControlClick"
-          @mousedown="handleControlMousedown"
-          @click:clear="handleClear"
-          @click:prependInner="handleClickPrependInner"
-          @click:appendInner="handleClickAppendInner">
+        :id="id"
+        ref="foxyFieldRef"
+        :active="isActive || isDirty"
+        :center-affix="isUniqueRow"
+        :dirty="isDirty || dirty"
+        :disabled="isDisabled"
+        :error="isValid === false"
+        :focused="isFocused"
+        :style="textareaFieldFieldStyles"
+        v-bind="{ ...fieldProps }"
+        @click="handleControlClick"
+        @mousedown="handleControlMousedown"
+        @click:clear="handleClear"
+        @click:prependInner="handleClickPrependInner"
+        @click:appendInner="handleClickAppendInner">
         <template v-if="hasSlot('loader')" #loader>
           <slot name="loader"/>
         </template>
@@ -52,19 +52,19 @@
           <div :class="fieldSlotClass" data-no-activator="">
             <slot name="default" v-bind="fieldSlotProps"/>
             <textarea
-                ref="textareaRef"
-                v-intersect="intersect"
-                :autofocus="autofocus"
-                :disabled="isDisabled"
-                :name="name"
-                :placeholder="placeholder"
-                :readonly="isReadonly"
-                :rows="rows"
-                :value="model"
-                v-bind="{ ...fieldSlotProps, ...inputAttrs }"
-                @blur="handleBlur"
-                @focus="handleFocus"
-                @input="handleInput"/>
+              ref="textareaRef"
+              v-intersect="intersect"
+              :autofocus="autofocus"
+              :disabled="isDisabled"
+              :name="name"
+              :placeholder="placeholder"
+              :readonly="isReadonly"
+              :rows="rows"
+              :value="model"
+              v-bind="{ ...fieldSlotProps, ...inputAttrs }"
+              @blur="handleBlur"
+              @focus="handleFocus"
+              @input="handleInput"/>
           </div>
           <div v-if="!autoGrow" ref="verticalDragger" class="foxy-textarea-field__grip">
             <svg aria-hidden="true" height="1em" preserveAspectRatio="xMidYMid meet"
@@ -96,10 +96,10 @@
     <template v-if="hasDetails" #details="detailsSlotProps">
       <slot name="details" v-bind="detailsSlotProps">
         <foxy-counter
-            :active="props.persistentCounter || isFocused"
-            :disabled="props.disabled"
-            :max="max"
-            :value="counterValue"
+          :active="props.persistentCounter || isFocused"
+          :disabled="props.disabled"
+          :max="max"
+          :value="counterValue"
         >
           <template v-if="hasSlot('counter')" #default="{counter, value, max}">
             <slot name="counter" v-bind="{counter, value, max}"/>
@@ -121,7 +121,7 @@
 <script lang="ts" setup>
   import { FoxyCounter, FoxyField, FoxyInput } from '@foxy/components'
 
-  import { useAdjacentInner, useDragResizer, useFocus, useSlots } from '@foxy/composables'
+  import { useAdjacentInner, useDragResizer, useFocus, useSlots, useProxiedModel } from '@foxy/composables'
 
   import { FIELD_PROPS, INPUT_PROPS } from '@foxy/consts'
 
@@ -133,7 +133,7 @@
 
   import { TFoxyField, TFoxyInput } from '@foxy/types'
 
-  import { clamp, convertToUnit, filterInputAttrs, keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { clamp, convertToUnit, filterInputAttrs, keys, omit, pick } from '@foxy/utils'
 
   import { computed, nextTick, onBeforeUnmount, ref, shallowRef, StyleValue, useAttrs, watch, watchEffect } from 'vue'
 
@@ -159,16 +159,16 @@
 
   const counterValue = computed(() => {
     return typeof props.counterValue === 'function'
-        ? props.counterValue(model.value)
-        : (model.value || '').toString().length
+      ? props.counterValue(model.value)
+      : (model.value || '').toString().length
   })
   const max = computed(() => {
     if (attrs.maxlength) return attrs.maxlength as string | number
 
     if (
-        !props.counter ||
-        (typeof props.counter !== 'number' &&
-            typeof props.counter !== 'string')
+      !props.counter ||
+      (typeof props.counter !== 'number' &&
+        typeof props.counter !== 'string')
     ) return undefined
 
     return props.counter
@@ -256,14 +256,14 @@
     const fieldStyle = getComputedStyle(foxyFieldRef.value.$el)
 
     const padding = parseFloat(style.getPropertyValue('--foxy-field---padding-top')) +
-        parseFloat(style.getPropertyValue('--foxy-input---padding-top')) +
-        parseFloat(style.getPropertyValue('--foxy-field---padding-bottom'))
+      parseFloat(style.getPropertyValue('--foxy-input---padding-top')) +
+      parseFloat(style.getPropertyValue('--foxy-field---padding-bottom'))
 
     const lineHeight = parseFloat(style.lineHeight)
 
     return Math.max(
-        parseFloat(props.rows) * lineHeight + padding,
-        parseFloat(fieldStyle.getPropertyValue('--foxy-input__control---height'))
+      parseFloat(props.rows) * lineHeight + padding,
+      parseFloat(fieldStyle.getPropertyValue('--foxy-input__control---height'))
     )
   })
   const maxHeight = computed(() => {
@@ -272,8 +272,8 @@
     const style = getComputedStyle(textareaRef.value)
 
     const padding = parseFloat(style.getPropertyValue('--foxy-field---padding-top')) +
-        parseFloat(style.getPropertyValue('--foxy-input---padding-top')) +
-        parseFloat(style.getPropertyValue('--foxy-field---padding-bottom'))
+      parseFloat(style.getPropertyValue('--foxy-input---padding-top')) +
+      parseFloat(style.getPropertyValue('--foxy-field---padding-bottom'))
 
     const lineHeight = parseFloat(style.lineHeight)
 
@@ -290,8 +290,8 @@
       const style = getComputedStyle(textareaRef.value)
 
       const padding = parseFloat(style.getPropertyValue('--foxy-field---padding-top')) +
-          parseFloat(style.getPropertyValue('--foxy-input---padding-top')) +
-          parseFloat(style.getPropertyValue('--foxy-field---padding-bottom'))
+        parseFloat(style.getPropertyValue('--foxy-input---padding-top')) +
+        parseFloat(style.getPropertyValue('--foxy-field---padding-bottom'))
 
       controlHeight.value = clamp(textareaRef.value?.scrollHeight + padding ?? 0, minHeight.value, maxHeight.value)
     })
@@ -315,8 +315,8 @@
       const style = getComputedStyle(textareaRef.value)
 
       const padding = parseFloat(style.getPropertyValue('--foxy-field---padding-top')) +
-          parseFloat(style.getPropertyValue('--foxy-input---padding-top')) +
-          parseFloat(style.getPropertyValue('--foxy-field---padding-bottom'))
+        parseFloat(style.getPropertyValue('--foxy-input---padding-top')) +
+        parseFloat(style.getPropertyValue('--foxy-field---padding-bottom'))
       const lineHeight = parseFloat(style.lineHeight)
 
       rows.value = Math.floor((newHeight - padding) / lineHeight)

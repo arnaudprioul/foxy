@@ -1,10 +1,10 @@
 <template>
   <foxy-toolbar
-      :class="toolbarClasses"
-      :collapse="isCollapsed"
-      :flat="isFlat"
-      :style="toolbarStyles"
-      v-bind="props">
+    :class="toolbarClasses"
+    :collapse="isCollapsed"
+    :flat="isFlat"
+    :style="toolbarStyles"
+    v-bind="props">
     <template v-if="hasAppend" #append>
       <slot name="append"></slot>
     </template>
@@ -37,14 +37,13 @@
 <script lang="ts" setup>
   import { computed, shallowRef, StyleValue, toRef, watchEffect } from 'vue'
 
-  import { useSlots, useLayoutItem, useScroll, useSsrBoot, useToggleScope} from '@foxy/composables'
+  import { useSlots, useLayoutItem, useScroll, useSsrBoot, useToggleScope, useProxiedModel } from '@foxy/composables'
 
-  import { DENSITY } from '@foxy/enums'
-  import { LAYOUT_POSITION } from '@foxy/enums'
+  import { DENSITY, LAYOUT_POSITION } from '@foxy/enums'
 
   import { IAppBarProps } from '@foxy/interfaces'
 
-  import { useProxiedModel } from '@foxy/utils'
+  import {} from '@foxy/composables'
 
   import { FoxyImg, FoxyToolbar, FoxyTitle } from '@foxy/components'
 
@@ -98,12 +97,12 @@
     const behavior = scrollBehavior.value
 
     return (
-        behavior.hide ||
-        behavior.inverted ||
-        behavior.collapse ||
-        behavior.elevate ||
-        behavior.fadeImage ||
-        !isActive.value
+      behavior.hide ||
+      behavior.inverted ||
+      behavior.collapse ||
+      behavior.elevate ||
+      behavior.fadeImage ||
+      !isActive.value
     )
   })
 
@@ -128,12 +127,12 @@
   })
 
   const isCollapsed = computed(() => props.collapse || (
-      scrollBehavior.value.collapse &&
-      (scrollBehavior.value.inverted ? scrollRatio.value > 0 : scrollRatio.value === 0)
+    scrollBehavior.value.collapse &&
+    (scrollBehavior.value.inverted ? scrollRatio.value > 0 : scrollRatio.value === 0)
   ))
   const isFlat = computed(() => props.flat || (
-      scrollBehavior.value.elevate &&
-      (scrollBehavior.value.inverted ? currentScroll.value > 0 : currentScroll.value === 0)
+    scrollBehavior.value.elevate &&
+    (scrollBehavior.value.inverted ? currentScroll.value > 0 : currentScroll.value === 0)
   ))
   const height = computed(() => {
     if (scrollBehavior.value.hide && scrollBehavior.value.inverted) return 0
@@ -170,5 +169,5 @@
     ]
   })
 
-  defineExpose({layoutIsReady})
+  defineExpose({ layoutIsReady })
 </script>

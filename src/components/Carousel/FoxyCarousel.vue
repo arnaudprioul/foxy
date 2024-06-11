@@ -1,10 +1,10 @@
 <template>
   <foxy-window
-      ref="windowRef"
-      v-model="model"
-      :class="carouselClasses"
-      :style="carouselStyles"
-      v-bind="windowProps">
+    ref="windowRef"
+    v-model="model"
+    :class="carouselClasses"
+    :style="carouselStyles"
+    v-bind="windowProps">
     <template #default="group">
       <slot name="default" v-bind="group"/>
     </template>
@@ -20,10 +20,11 @@
         </div>
 
         <template v-if="props.progress">
-          <slot name="progress" v-bind="{percent: (group.getItemIndex(model.value) + 1) / group.items.value.length * 100}">
+          <slot name="progress"
+                v-bind="{percent: (group.getItemIndex(model.value) + 1) / group.items.value.length * 100}">
             <foxy-progress-linear
-                :modelValue="(group.getItemIndex(model.value) + 1) / group.items.value.length * 100"
-                class="foxy-carousel__progress"
+              :modelValue="(group.getItemIndex(model.value) + 1) / group.items.value.length * 100"
+              class="foxy-carousel__progress"
             />
           </slot>
         </template>
@@ -47,7 +48,7 @@
 <script lang="ts" setup>
   import { FoxyBtn, FoxyProgressLinear, FoxyWindow } from '@foxy/components'
 
-  import { useSlots } from '@foxy/composables'
+  import { useSlots, useProxiedModel } from '@foxy/composables'
 
   import { COLOR_PROPS, WINDOW_PROPS } from '@foxy/consts'
 
@@ -55,7 +56,7 @@
 
   import { ICarouselProps, IGroupProvide } from '@foxy/interfaces'
 
-  import { convertToUnit, keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { convertToUnit, keys, omit, pick } from '@foxy/utils'
 
   import { computed, onMounted, ref, StyleValue, watch } from 'vue'
 

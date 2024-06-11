@@ -1,5 +1,8 @@
+import { useProxiedModel } from '@foxy/composables'
 import { IFocusProps } from '@foxy/interfaces'
-import { getCurrentInstanceName, useProxiedModel } from '@foxy/utils'
+
+import { getCurrentInstanceName } from '@foxy/utils'
+
 import { computed } from 'vue'
 
 export function useFocus (props: IFocusProps, name = getCurrentInstanceName()) {

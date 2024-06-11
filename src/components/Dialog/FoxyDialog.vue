@@ -1,13 +1,13 @@
 <template>
   <foxy-overlay
-      ref="overlay"
-      v-model="isActive"
-      :activator-props="activatorProps"
-      :class="dialogClasses"
-      :style="dialogStyles"
-      aria-modal="true"
-      role="dialog"
-      v-bind="{...overlayProps, ...scopeId}">
+    ref="overlay"
+    v-model="isActive"
+    :activator-props="activatorProps"
+    :class="dialogClasses"
+    :style="dialogStyles"
+    aria-modal="true"
+    role="dialog"
+    v-bind="{...overlayProps, ...scopeId}">
     <template v-if="hasSlot('activator')" #activator="{props}">
       <slot name="activator" v-bind="{props}"/>
     </template>
@@ -26,10 +26,10 @@
           <template #header:append>
             <slot name="header:append">
               <foxy-btn
-                  :rounded="0"
-                  bg-color="transparent"
-                  :icon="MDI_ICONS.CLOSE"
-                  @click="handleClose"/>
+                :icon="MDI_ICONS.CLOSE"
+                :rounded="0"
+                bg-color="transparent"
+                @click="handleClose"/>
             </slot>
           </template>
 
@@ -76,7 +76,7 @@
 <script lang="ts" setup>
   import { FoxyBtn, FoxyCard, FoxyIcon, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
 
-  import { useScopeId, useSlots, useStatus } from '@foxy/composables'
+  import { useScopeId, useSlots, useStatus, useProxiedModel } from '@foxy/composables'
 
   import { CARD_PROPS, IN_BROWSER, OVERLAY_PROPS } from '@foxy/consts'
 
@@ -85,9 +85,10 @@
   import { MDI_ICONS } from '@foxy/enums'
 
   import { IDialogProps } from '@foxy/interfaces'
+
   import { TFoxyOverlay, TIcon } from '@foxy/types'
 
-  import { focusableChildren, keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { focusableChildren, keys, omit, pick } from '@foxy/utils'
 
   import { Component, computed, mergeProps, nextTick, ref, StyleValue, watch } from 'vue'
 
@@ -113,14 +114,14 @@
     const after = e.target as HTMLElement | null
 
     if (
-        before !== after &&
-        overlay.value?.contentEl &&
-        // We're the topmost dialog
-        overlay.value?.globalTop &&
-        // It isn't the document or the dialog body
-        ![document, overlay.value.contentEl].includes(after!) &&
-        // It isn't inside the dialog body
-        !overlay.value.contentEl.contains(after)
+      before !== after &&
+      overlay.value?.contentEl &&
+      // We're the topmost dialog
+      overlay.value?.globalTop &&
+      // It isn't the document or the dialog body
+      ![document, overlay.value.contentEl].includes(after!) &&
+      // It isn't inside the dialog body
+      !overlay.value.contentEl.contains(after)
     ) {
       const focusable = focusableChildren(overlay.value.contentEl)
 
@@ -140,8 +141,8 @@
   if (IN_BROWSER) {
     watch(() => isActive.value && props.retainFocus, (val) => {
       val
-          ? document.addEventListener('focusin', handleFocusin)
-          : document.removeEventListener('focusin', handleFocusin)
+        ? document.addEventListener('focusin', handleFocusin)
+        : document.removeEventListener('focusin', handleFocusin)
     }, { immediate: true })
   }
 

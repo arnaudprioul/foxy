@@ -4,27 +4,27 @@
     <template v-if="isMounted && hasContent">
       <teleport :disabled="!teleportTarget" :to="teleportTarget">
         <div
-            ref="root"
-            :class="overlayClasses"
-            :style="overlayStyles"
-            v-bind="{ ...scopeId, ...$attrs }">
+          ref="root"
+          :class="overlayClasses"
+          :style="overlayStyles"
+          v-bind="{ ...scopeId, ...$attrs }">
           <foxy-overlay-scrim
-              :active="isActive && !!scrim"
-              :scrim="scrim"
-              v-bind="{...scrimEvents, ...scrimColor}"/>
+            :active="isActive && !!scrim"
+            :scrim="scrim"
+            v-bind="{...scrimEvents, ...scrimColor}"/>
           <foxy-transition
-              :target="target"
-              :transition="transition"
-              appear
-              persisted
-              @after-leave="handleAfterLeave">
+            :target="target"
+            :transition="transition"
+            appear
+            persisted
+            @after-leave="handleAfterLeave">
             <div
-                v-show="isActive"
-                ref="contentEl"
-                v-click-outside="{ handler: handleClickOutside, closeConditional, include: () => [activatorEl] }"
-                :class="overlayContentClasses"
-                :style="overlayContentStyles"
-                v-bind="{ ...contentEvents, ...contentProps }">
+              v-show="isActive"
+              ref="contentEl"
+              v-click-outside="{ handler: handleClickOutside, closeConditional, include: () => [activatorEl] }"
+              :class="overlayContentClasses"
+              :style="overlayContentStyles"
+              v-bind="{ ...contentEvents, ...contentProps }">
               <slot name="default" v-bind="{isActive}"/>
             </div>
           </foxy-transition>
@@ -50,7 +50,8 @@
     useScrollStrategies,
     useStack,
     useTeleport,
-    useToggleScope
+    useToggleScope,
+    useProxiedModel
   } from '@foxy/composables'
 
   import { IN_BROWSER } from '@foxy/consts'
@@ -61,7 +62,7 @@
 
   import { IOverlayProps } from '@foxy/interfaces'
 
-  import { animate, convertToUnit, getScrollParent, useProxiedModel } from '@foxy/utils'
+  import { animate, convertToUnit, getScrollParent } from '@foxy/utils'
 
   import { computed, mergeProps, onBeforeUnmount, ref, StyleValue, toRef, watch } from 'vue'
 

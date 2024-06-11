@@ -1,11 +1,11 @@
 <template>
   <foxy-input
-      ref="foxyInputRef"
-      v-model="model"
-      :class="textFieldClasses"
-      :focused="isFocused"
-      :style="textFieldStyles"
-      v-bind="{...rootAttrs, ...inputProps}">
+    ref="foxyInputRef"
+    v-model="model"
+    :class="textFieldClasses"
+    :focused="isFocused"
+    :style="textFieldStyles"
+    v-bind="{...rootAttrs, ...inputProps}">
     <template v-if="hasSlot('prepend')" #prepend>
       <slot name="prepend"/>
     </template>
@@ -13,20 +13,20 @@
     <template #default="{id, isDisabled, isDirty, isValid, isReadonly}">
       <slot name="field" v-bind="{id, isDisabled, isDirty, isValid, isReadonly}">
         <foxy-field
-            :id="id"
-            ref="foxyFieldRef"
-            :active="isActive || isDirty"
-            :dirty="isDirty || props.dirty"
-            :disabled="isDisabled"
-            :error="isValid === false"
-            :focused="isFocused"
-            :role="props.role"
-            v-bind="{...fieldProps}"
-            @click="handleControlClick"
-            @mousedown="handleControlMousedown"
-            @click:clear="handleClear"
-            @click:prepend-inner="handleClickPrependInner"
-            @click:append-inner="handleClickAppendInner">
+          :id="id"
+          ref="foxyFieldRef"
+          :active="isActive || isDirty"
+          :dirty="isDirty || props.dirty"
+          :disabled="isDisabled"
+          :error="isValid === false"
+          :focused="isFocused"
+          :role="props.role"
+          v-bind="{...fieldProps}"
+          @click="handleControlClick"
+          @mousedown="handleControlMousedown"
+          @click:clear="handleClear"
+          @click:prepend-inner="handleClickPrependInner"
+          @click:append-inner="handleClickAppendInner">
           <template v-if="hasSlot('loader')" #loader>
             <slot name="loader"/>
           </template>
@@ -51,20 +51,20 @@
             <div :class="fieldSlotClass" data-no-activator="">
               <slot name="default" v-bind="fieldSlotProps"/>
               <input
-                  ref="inputRef"
-                  v-intersect="intersect"
-                  :autofocus="props.autofocus"
-                  :disabled="isDisabled"
-                  :name="props.name"
-                  :placeholder="props.placeholder"
-                  :readonly="isReadonly"
-                  :size="1"
-                  :type="props.type"
-                  :value="model"
-                  v-bind="{ ...fieldSlotProps, ...inputAttrs }"
-                  @blur="handleBlur"
-                  @focus="handleFocus"
-                  @input="handleInput">
+                ref="inputRef"
+                v-intersect="intersect"
+                :autofocus="props.autofocus"
+                :disabled="isDisabled"
+                :name="props.name"
+                :placeholder="props.placeholder"
+                :readonly="isReadonly"
+                :size="1"
+                :type="props.type"
+                :value="model"
+                v-bind="{ ...fieldSlotProps, ...inputAttrs }"
+                @blur="handleBlur"
+                @focus="handleFocus"
+                @input="handleInput">
             </div>
           </template>
 
@@ -90,10 +90,10 @@
     <template v-if="hasDetails" #details="detailsSlotProps">
       <slot name="details" v-bind="detailsSlotProps">
         <foxy-counter
-            :active="props.persistentCounter || isFocused"
-            :disabled="props.disabled"
-            :max="max"
-            :value="counterValue"
+          :active="props.persistentCounter || isFocused"
+          :disabled="props.disabled"
+          :max="max"
+          :value="counterValue"
         >
           <template v-if="hasSlot('counter')" #default="{counter, value, max}">
             <slot name="counter" v-bind="{counter, value, max}"/>
@@ -115,7 +115,7 @@
 <script lang="ts" setup>
   import { FoxyCounter, FoxyField, FoxyInput } from '@foxy/components'
 
-  import { useAdjacentInner, useFocus, useSlots } from '@foxy/composables'
+  import { useAdjacentInner, useFocus, useSlots, useProxiedModel } from '@foxy/composables'
 
   import { ACTIVE_TEXT_FIELD_TYPE, FIELD_PROPS, INPUT_PROPS, INPUT_TEXT_FIELD_TYPE } from '@foxy/consts'
 
@@ -125,7 +125,7 @@
 
   import { ITextFieldProps } from '@foxy/interfaces'
 
-  import { filterInputAttrs, forwardRefs, keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { filterInputAttrs, forwardRefs, keys, omit, pick } from '@foxy/utils'
 
   import { computed, nextTick, ref, StyleValue, useAttrs } from 'vue'
 

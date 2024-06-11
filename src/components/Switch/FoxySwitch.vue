@@ -1,30 +1,30 @@
 <template>
   <foxy-input
-      :id="id"
-      v-model="model"
-      :class="switchClasses"
-      :focused="isFocused"
-      :style="switchStyles"
-      v-bind="{ ...rootAttrs, ...inputProps }">
+    :id="id"
+    v-model="model"
+    :class="switchClasses"
+    :focused="isFocused"
+    :style="switchStyles"
+    v-bind="{ ...rootAttrs, ...inputProps }">
     <template #default="{id, messagesId, isDisabled, isReadonly, isValid}">
       <foxy-selection-control
-          :id="id"
-          ref="control"
-          v-model="model"
-          :aria-checked="indeterminate ? 'mixed' : undefined"
-          :aria-describedby="messagesId"
-          :disabled="isDisabled"
-          :readonly="isReadonly"
-          type="checkbox"
-          v-bind="{ ...controlProps, ...controlAttrs }"
-          @blur="handleBlur"
-          @focus="handleFocus"
-          @update:modelValue="handleChange">
+        :id="id"
+        ref="control"
+        v-model="model"
+        :aria-checked="indeterminate ? 'mixed' : undefined"
+        :aria-describedby="messagesId"
+        :disabled="isDisabled"
+        :readonly="isReadonly"
+        type="checkbox"
+        v-bind="{ ...controlProps, ...controlAttrs }"
+        @blur="handleBlur"
+        @focus="handleFocus"
+        @update:modelValue="handleChange">
         <template #default="{backgroundColorStyles, textColorStyles}">
           <div
-              :style="[backgroundColorStyles, textColorStyles]"
-              class="foxy-switch__track"
-              @click="handleTrackClick">
+            :style="[backgroundColorStyles, textColorStyles]"
+            class="foxy-switch__track"
+            @click="handleTrackClick">
             <div v-if="hasSlot('trackTrue')" key="prepend" class="foxy-switch__track-true">
               <slot name="trackTrue" v-bind="{model, isValid}"/>
             </div>
@@ -37,16 +37,16 @@
 
         <template #input="{model, backgroundColorStyles, icon, props: selectionControlProps}">
           <input
-              ref="input"
-              :aria-checked="selectionControlProps.type === 'checkbox' ? model : undefined"
-              :aria-disabled="selectionControlProps.disabled"
-              :aria-label="selectionControlProps.label"
-              :checked="model"
-              v-bind="selectionControlProps"/>
+            ref="input"
+            :aria-checked="selectionControlProps.type === 'checkbox' ? model : undefined"
+            :aria-disabled="selectionControlProps.disabled"
+            :aria-label="selectionControlProps.label"
+            :checked="model"
+            v-bind="selectionControlProps"/>
 
           <div
-              :class="['foxy-switch__thumb', { 'foxy-switch__thumb--filled': !!icon || props.loading }]"
-              :style="props.inset ? undefined : backgroundColorStyles"
+            :class="['foxy-switch__thumb', { 'foxy-switch__thumb--filled': !!icon || props.loading }]"
+            :style="props.inset ? undefined : backgroundColorStyles"
           >
             <foxy-translate-scale>
               <template v-if="!props.loading">
@@ -57,14 +57,14 @@
                 <slot name="loader">
                   <div class="foxy-switch__loader">
                     <foxy-progress
-                        :active="!!props.loading"
-                        :color="props.color"
-                        :indeterminate="typeof props.loading !== 'number'"
-                        :model-value="typeof props.loading === 'number' ? props.loading : undefined"
-                        :size="SIZES.X_SMALL"
-                        :type="PROGRESS_TYPE.CIRCULAR"
-                        class="foxy-switch__progress foxy-switch__progress--circular"
-                        thickness="2"
+                      :active="!!props.loading"
+                      :color="props.color"
+                      :indeterminate="typeof props.loading !== 'number'"
+                      :model-value="typeof props.loading === 'number' ? props.loading : undefined"
+                      :size="SIZES.X_SMALL"
+                      :type="PROGRESS_TYPE.CIRCULAR"
+                      class="foxy-switch__progress foxy-switch__progress--circular"
+                      thickness="2"
                     />
                   </div>
                 </slot>
@@ -80,7 +80,7 @@
 <script lang="ts" setup>
   import { FoxyIcon, FoxyInput, FoxyProgress, FoxySelectionControl, FoxyTranslateScale } from '@foxy/components'
 
-  import { useFocus, useLoader, useSlots } from '@foxy/composables'
+  import { useFocus, useLoader, useSlots, useProxiedModel } from '@foxy/composables'
 
   import { INPUT_PROPS, SELECTION_CONTROL_PROPS } from '@foxy/consts'
 
@@ -88,7 +88,7 @@
 
   import { ISwitchProps } from '@foxy/interfaces'
 
-  import { filterInputAttrs, getUid, keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { filterInputAttrs, getUid, keys, omit, pick } from '@foxy/utils'
 
   import { computed, ref, StyleValue, useAttrs } from 'vue'
 

@@ -1,24 +1,24 @@
 <template>
   <foxy-input
-      :id="id"
-      v-model="model"
-      :class="checkboxClasses"
-      :focused="isFocused"
-      :style="checkboxStyles"
-      v-bind="{...rootAttrs, ...inputProps}">
+    :id="id"
+    v-model="model"
+    :class="checkboxClasses"
+    :focused="isFocused"
+    :style="checkboxStyles"
+    v-bind="{...rootAttrs, ...inputProps}">
     <template #default="{id,messagesId,isDisabled,isReadonly,isValid}">
       <slot name="default" v-bind="{id,messagesId,isDisabled,isReadonly,isValid}">
         <foxy-checkbox-btn
-            :id="id"
-            v-model="model"
-            :aria-describedby="messagesId"
-            :disabled="isDisabled"
-            :error="!isValid"
-            :readonly="isReadonly"
-            v-bind="{ ...checkboxBtnProps, ...controlAttrs }"
-            @blur="handleBlur"
-            @focus="handleFocus"
-            @click:label="handleClickLabel">
+          :id="id"
+          v-model="model"
+          :aria-describedby="messagesId"
+          :disabled="isDisabled"
+          :error="!isValid"
+          :readonly="isReadonly"
+          v-bind="{ ...checkboxBtnProps, ...controlAttrs }"
+          @blur="handleBlur"
+          @focus="handleFocus"
+          @click:label="handleClickLabel">
           <template v-if="hasSlot('default')" #default>
             <slot name="default"/>
           </template>
@@ -39,7 +39,7 @@
 <script lang="ts" setup>
   import { FoxyCheckboxBtn, FoxyInput } from '@foxy/components'
 
-  import { useFocus, useSlots } from '@foxy/composables'
+  import { useFocus, useSlots, useProxiedModel } from '@foxy/composables'
 
   import { CHECKBOX_BTN_PROPS, INPUT_PROPS } from '@foxy/consts'
 
@@ -47,7 +47,7 @@
 
   import { ICheckboxProps } from '@foxy/interfaces'
 
-  import { filterInputAttrs, getUid, keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { filterInputAttrs, getUid, keys, omit, pick } from '@foxy/utils'
 
   import { computed, StyleValue, useAttrs } from 'vue'
 

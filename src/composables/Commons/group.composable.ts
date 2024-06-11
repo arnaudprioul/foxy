@@ -1,3 +1,4 @@
+import { useProxiedModel } from '@foxy/composables'
 import { IGroupItem, IGroupItemProps, IGroupItemProvide, IGroupProps, IGroupProvide } from '@foxy/interfaces'
 
 import {
@@ -7,7 +8,7 @@ import {
   getIds, getItemIndex,
   getUid,
   getValues,
-  useProxiedModel, wrapInArray
+  wrapInArray
 } from '@foxy/utils'
 
 import {

@@ -1,15 +1,15 @@
 <template>
   <component
-      :is="link.tag"
-      v-ripple="rippleProps"
-      :class="chipClasses"
-      :disabled="props.disabled"
-      :draggable="props.draggable"
-      :href="link.href"
-      :style="chipStyles"
-      :tabindex="isClickable ? 0 : undefined"
-      @click="handleClick"
-      @keydown="isClickable && !isLink && handleKeydown">
+    :is="link.tag"
+    v-ripple="rippleProps"
+    :class="chipClasses"
+    :disabled="props.disabled"
+    :draggable="props.draggable"
+    :href="link.href"
+    :style="chipStyles"
+    :tabindex="isClickable ? 0 : undefined"
+    @click="handleClick"
+    @keydown="isClickable && !isLink && handleKeydown">
     <span v-if="isClickable" key="overlay" class="foxy-chip__overlay"/>
     <span key="underlay" class="foxy-chip__underlay"/>
 
@@ -26,16 +26,16 @@
     <div v-if="hasPrepend" key="prepend" class="foxy-chip__prepend" @click="handleClickPrepend">
       <slot name="prepend">
         <foxy-avatar
-            v-if="prependAvatar"
-            key="prepend-avatar"
-            :density="density"
-            :image="prependAvatar"
+          v-if="prependAvatar"
+          key="prepend-avatar"
+          :density="density"
+          :image="prependAvatar"
         />
         <foxy-icon
-            v-if="prependIcon"
-            key="prepend-icon"
-            :density="density"
-            :icon="prependIcon"
+          v-if="prependIcon"
+          key="prepend-icon"
+          :density="density"
+          :icon="prependIcon"
         />
       </slot>
     </div>
@@ -49,16 +49,16 @@
     <div v-if="hasAppend" key="append" class="foxy-chip__append" @click="handleClickAppend">
       <slot name="append">
         <foxy-avatar
-            v-if="appendAvatar"
-            key="append-avatar"
-            :density="density"
-            :image="appendAvatar"
+          v-if="appendAvatar"
+          key="append-avatar"
+          :density="density"
+          :image="appendAvatar"
         />
         <foxy-icon
-            v-if="appendIcon"
-            key="append-icon"
-            :density="density"
-            :icon="appendIcon"
+          v-if="appendIcon"
+          key="append-icon"
+          :density="density"
+          :icon="appendIcon"
         />
       </slot>
     </div>
@@ -66,11 +66,11 @@
     <div v-if="hasClose" key="close" class="foxy-chip__close" @click="handleClickClose">
       <slot name="close" v-bind="{closeIcon}">
         <foxy-icon
-            v-if="closeIcon"
-            key="close-icon"
-            :density="density"
-            :icon="closeIcon"
-            size="x-small"
+          v-if="closeIcon"
+          key="close-icon"
+          :density="density"
+          :icon="closeIcon"
+          size="x-small"
         />
       </slot>
     </div>
@@ -93,17 +93,17 @@
     usePadding,
     useRounded,
     useSize,
-    useSlots
+    useSlots,
+    useProxiedModel
   } from '@foxy/composables'
 
   import { FOXY_CHIP_GROUP_KEY } from '@foxy/consts'
 
   import { vRipple } from '@foxy/directives'
+
   import { KEYBOARD_VALUES } from '@foxy/enums'
 
   import { IChipProps } from '@foxy/interfaces'
-
-  import { useProxiedModel } from '@foxy/utils'
 
   import { computed, StyleValue, toRef, useAttrs } from 'vue'
 

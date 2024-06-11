@@ -1,9 +1,9 @@
 <template>
   <component
-      :is="tag"
-      :class="alertClasses"
-      :style="alertStyles"
-      role="alert">
+    :is="tag"
+    :class="alertClasses"
+    :style="alertStyles"
+    role="alert">
     <span key="underlay" class="foxy-alert__underlay"/>
 
     <slot name="wrapper">
@@ -33,10 +33,10 @@
     <div v-if="hasClose" key="close" class="foxy-alert__close">
       <slot name="close">
         <foxy-btn
-            key="close-btn"
-            :icon="closeIcon"
-            size="x-small"
-            v-on="closeEvent"/>
+          key="close-btn"
+          :icon="closeIcon"
+          size="x-small"
+          v-on="closeEvent"/>
       </slot>
     </div>
   </component>
@@ -57,13 +57,13 @@
     usePosition,
     useRounded,
     useSlots,
-    useStatus
+    useStatus,
+    useProxiedModel
   } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
 
   import { IAlertProps } from '@foxy/interfaces'
-  import { useProxiedModel } from '@foxy/utils'
 
   import { computed, StyleValue, toRef } from 'vue'
 
@@ -255,22 +255,22 @@
     }
 
     &--warning {
-      --foxy-alert---background-color: rgb(251,140,0);
+      --foxy-alert---background-color: rgb(251, 140, 0);
       --foxy-alert---color: #ffffff;
     }
 
     &--success {
-      --foxy-alert---background-color: rgb(76,175,80);
+      --foxy-alert---background-color: rgb(76, 175, 80);
       --foxy-alert---color: #ffffff;
     }
 
     &--info {
-      --foxy-alert---background-color: rgb(33,150,243);
+      --foxy-alert---background-color: rgb(33, 150, 243);
       --foxy-alert---color: #ffffff;
     }
 
     &--error {
-      --foxy-alert---background-color: rgb(207,102,121);
+      --foxy-alert---background-color: rgb(207, 102, 121);
       --foxy-alert---color: #ffffff;
     }
 

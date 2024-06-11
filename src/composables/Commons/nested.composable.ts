@@ -1,3 +1,4 @@
+import { useProxiedModel } from '@foxy/composables'
 import {
   EMPTY_NESTED,
   LIST_OPEN_STRATEGY,
@@ -18,8 +19,7 @@ import {
   independentSelectStrategy,
   independentSingleSelectStrategy,
   leafSelectStrategy,
-  leafSingleSelectStrategy,
-  useProxiedModel
+  leafSingleSelectStrategy
 } from '@foxy/utils'
 
 import { computed, inject, onBeforeUnmount, provide, Ref, ref, shallowRef, toRaw } from 'vue'
@@ -97,7 +97,7 @@ export const useNested = (props: INestedProps) => {
       selectedValues: computed(() => {
         const arr = []
 
-        if(selected.value) {
+        if (selected.value) {
           for (const [key, value] of selected.value?.entries()) {
             if (value === 'on') arr.push(key)
           }

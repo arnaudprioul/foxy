@@ -1,7 +1,7 @@
 <template>
   <div
-      :class="selectionControlGroupClasses"
-      :style="selectionControlGroupStyles">
+    :class="selectionControlGroupClasses"
+    :style="selectionControlGroupStyles">
     <slot name="default" v-bind="{items}">
       <template v-for="(item, index) in items" :key="index">
         <slot :name="`item-${index}`" v-bind="{item}">
@@ -13,13 +13,15 @@
 </template>
 
 <script lang="ts" setup>
+  import { useProxiedModel } from '@foxy/composables'
+
   import { FOXY_SELECTION_CONTROL_GROUP_KEY } from '@foxy/consts'
 
   import { DENSITY } from '@foxy/enums'
 
   import { ISelectionControlGroupProps } from '@foxy/interfaces'
 
-  import { getUid, useProxiedModel } from '@foxy/utils'
+  import { getUid } from '@foxy/utils'
 
   import { computed, onScopeDispose, provide, StyleValue } from 'vue'
 

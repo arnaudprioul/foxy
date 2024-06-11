@@ -1,8 +1,6 @@
-import { useIntersectionObserver, useSlots, useMargin, usePadding } from '@foxy/composables'
+import { useIntersectionObserver, useSlots, useMargin, usePadding, useProxiedModel } from '@foxy/composables'
 
 import { IProgressTypeProps } from '@foxy/interfaces'
-
-import { useProxiedModel } from '@foxy/utils'
 
 import { computed } from 'vue'
 

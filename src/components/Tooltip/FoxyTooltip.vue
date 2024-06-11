@@ -1,19 +1,19 @@
 <template>
   <foxy-overlay
-      :id="id"
-      ref="overlay"
-      v-model="isActive"
-      :activator-props="activatorProps"
-      :class="tooltipClasses"
-      :location="location"
-      :origin="origin"
-      :style="tooltipStyles"
-      :transition="transition"
-      absolute
-      disableGlobalStack
-      persistent
-      role="tooltip"
-      v-bind="{...overlayProps, ...scopeId}">
+    :id="id"
+    ref="overlay"
+    v-model="isActive"
+    :activator-props="activatorProps"
+    :class="tooltipClasses"
+    :location="location"
+    :origin="origin"
+    :style="tooltipStyles"
+    :transition="transition"
+    absolute
+    disableGlobalStack
+    persistent
+    role="tooltip"
+    v-bind="{...overlayProps, ...scopeId}">
     <template #activator="{props}">
       <slot name="activator" v-bind="{props}"/>
     </template>
@@ -29,7 +29,7 @@
 <script lang="ts" setup>
   import { FoxyFade, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
 
-  import { useScopeId } from '@foxy/composables'
+  import { useScopeId, useProxiedModel } from '@foxy/composables'
 
   import { OVERLAY_PROPS } from '@foxy/consts'
 
@@ -39,7 +39,7 @@
 
   import { TAnchor, TFoxyOverlay } from '@foxy/types'
 
-  import { getUid, keys, omit, pick, useProxiedModel, forwardRefs } from '@foxy/utils'
+  import { getUid, keys, omit, pick, forwardRefs } from '@foxy/utils'
 
   import { computed, mergeProps, ref, StyleValue } from 'vue'
 
@@ -70,18 +70,18 @@
 
   const location = computed(() => {
     return props.location.split(' ').length > 1
-        ? props.location
-        : props.location + ' center' as TAnchor
+      ? props.location
+      : props.location + ' center' as TAnchor
   })
 
   const origin = computed(() => {
     return (
-        props.origin === 'auto' ||
-        props.origin === 'overlap' ||
-        props.origin.split(' ').length > 1 ||
-        props.location.split(' ').length > 1
+      props.origin === 'auto' ||
+      props.origin === 'overlap' ||
+      props.origin.split(' ').length > 1 ||
+      props.location.split(' ').length > 1
     ) ? props.origin
-        : props.origin + ' center' as TAnchor | 'auto' | 'overlap'
+      : props.origin + ' center' as TAnchor | 'auto' | 'overlap'
   })
 
   const transition = computed(() => {
@@ -90,9 +90,9 @@
   })
 
   const activatorProps = computed(() =>
-      mergeProps({
-        'aria-describedby': id.value,
-      }, props.activatorProps)
+    mergeProps({
+      'aria-describedby': id.value,
+    }, props.activatorProps)
   )
 
   const overlayProps = computed(() => {

@@ -1,35 +1,35 @@
 <template>
   <foxy-overlay
-      ref="overlay"
-      v-model="isActive"
-      :class="snackbarClasses"
-      :contentProps="contentProps"
-      :scrim="false"
-      :scrollStrategy="SCROLL_STRATEGIES.NONE"
-      :style="snackbarStyles"
-      disableGlobalStack
-      noClickAnimation
-      persistent
-      v-bind="{ ...overlayProps, ...scopeId }"
-      @touchend="handleTouchend"
-      @touchstartPassive="handleTouchstart">
+    ref="overlay"
+    v-model="isActive"
+    :class="snackbarClasses"
+    :contentProps="contentProps"
+    :scrim="false"
+    :scrollStrategy="SCROLL_STRATEGIES.NONE"
+    :style="snackbarStyles"
+    disableGlobalStack
+    noClickAnimation
+    persistent
+    v-bind="{ ...overlayProps, ...scopeId }"
+    @touchend="handleTouchend"
+    @touchstartPassive="handleTouchstart">
     <template #default>
       <span key="underlay" class="foxy-snackbar__underlay"/>
 
       <div v-if="props.timer && !isHovering" key="timer" class="foxy-snackbar__timer">
         <foxy-progress
-            ref="timerRef"
-            :max="props.timeout"
-            :model-value="countdown.time.value"
-            :type="PROGRESS_TYPE.LINEAR"/>
+          ref="timerRef"
+          :max="props.timeout"
+          :model-value="countdown.time.value"
+          :type="PROGRESS_TYPE.LINEAR"/>
       </div>
 
       <div
-          v-if="hasContent"
-          key="content"
-          aria-live="polite"
-          class="foxy-snackbar__content"
-          role="status">
+        v-if="hasContent"
+        key="content"
+        aria-live="polite"
+        class="foxy-snackbar__content"
+        role="status">
         <template v-if="hasPrepend">
           <div class="foxy-snackbar__prepend">
             <slot name="prepend">
@@ -66,7 +66,8 @@
     useScopeId,
     useSlots,
     useStatus,
-    useToggleScope
+    useToggleScope,
+    useProxiedModel
   } from '@foxy/composables'
 
   import { FOXY_LAYOUT_KEY, OVERLAY_PROPS } from '@foxy/consts'
@@ -77,7 +78,7 @@
 
   import { TFoxyOverlay, TFoxyProgress, TIcon } from '@foxy/types'
 
-  import { keys, omit, pick, refElement, useProxiedModel } from '@foxy/utils'
+  import { keys, omit, pick, refElement } from '@foxy/utils'
 
   import { computed, inject, mergeProps, onMounted, ref, shallowRef, StyleValue, toRef, watch, watchEffect } from 'vue'
 

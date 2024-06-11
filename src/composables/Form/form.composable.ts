@@ -1,8 +1,9 @@
+import { useProxiedModel } from '@foxy/composables'
 import { FOXY_FORM_KEY } from '@foxy/consts'
 
 import { IFormField, IFormProps, IValidationFieldResult } from '@foxy/interfaces'
 
-import { consoleWarn, useProxiedModel } from '@foxy/utils'
+import { consoleWarn } from '@foxy/utils'
 
 import { computed, markRaw, provide, ref, shallowRef, toRef, watch } from 'vue'
 

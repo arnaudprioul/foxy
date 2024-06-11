@@ -1,13 +1,13 @@
 <template>
   <foxy-input
-      ref="foxyInputRef"
-      v-model="model"
-      :class="fileFieldClasses"
-      :focused="isFocused"
-      :style="fileFieldStyles"
-      v-bind="{ ...rootAttrs, ...inputProps }"
-      @click:prepend="handleClickPrepend"
-      @clik:append="handleClickAppend">
+    ref="foxyInputRef"
+    v-model="model"
+    :class="fileFieldClasses"
+    :focused="isFocused"
+    :style="fileFieldStyles"
+    v-bind="{ ...rootAttrs, ...inputProps }"
+    @click:prepend="handleClickPrepend"
+    @clik:append="handleClickAppend">
     <template v-if="hasSlot('prepend')" #prepend>
       <slot name="prepend"/>
     </template>
@@ -15,19 +15,19 @@
     <template #default="{id, isDisabled, isDirty, isValid, isReadonly}">
       <slot name="field" v-bind="{id, isDisabled, isDirty, isValid, isReadonly}">
         <foxy-field
-            :id="id"
-            ref="foxyFieldRef"
-            :active="isActive || isDirty"
-            :dirty="isDirty || props.dirty"
-            :disabled="isDisabled"
-            :error="!isValid"
-            :focused="isFocused"
-            v-bind="{ ...fieldProps }"
-            @click="handleControlClick"
-            @mousedown="handleControlMousedown"
-            @click:clear="handleClear"
-            @click:prependInner="handleClickPrependInner"
-            @lick:appendInner="handleClickAppendInner">
+          :id="id"
+          ref="foxyFieldRef"
+          :active="isActive || isDirty"
+          :dirty="isDirty || props.dirty"
+          :disabled="isDisabled"
+          :error="!isValid"
+          :focused="isFocused"
+          v-bind="{ ...fieldProps }"
+          @click="handleControlClick"
+          @mousedown="handleControlMousedown"
+          @click:clear="handleClear"
+          @click:prependInner="handleClickPrependInner"
+          @lick:appendInner="handleClickAppendInner">
           <template v-if="hasSlot('loader')" #loader>
             <slot name="loader"/>
           </template>
@@ -52,18 +52,18 @@
             <div :class="fieldSlotClass" data-no-activator="">
               <slot name="default" v-bind="fieldSlotProps"/>
               <input
-                  ref="inputRef"
-                  :disabled="isDisabled"
-                  :name="props.name"
-                  :placeholder="props.placeholder"
-                  :readonly="isReadonly"
-                  :size="1"
-                  type="file"
-                  v-bind="{ ...fieldSlotProps, ...inputAttrs }"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  @click="handleClick($event, isReadonly)"
-                  @focus="handleFocus">
+                ref="inputRef"
+                :disabled="isDisabled"
+                :name="props.name"
+                :placeholder="props.placeholder"
+                :readonly="isReadonly"
+                :size="1"
+                type="file"
+                v-bind="{ ...fieldSlotProps, ...inputAttrs }"
+                @blur="handleBlur"
+                @change="handleChange"
+                @click="handleClick($event, isReadonly)"
+                @focus="handleFocus">
 
               <template v-for="(filename, index) in fileNames" :key="index">
                 <div class="foxy-file-field__selection">
@@ -71,10 +71,10 @@
                     <slot name="chip"
                           v-bind="{ fileNames: filename, totalBytes: totalBytes, totalBytesReadable: totalBytesReadable, props: chipProps }">
                       <foxy-chip
-                          key="chip"
-                          :model-value="true"
-                          size="small"
-                          v-bind="chipProps">
+                        key="chip"
+                        :model-value="true"
+                        size="small"
+                        v-bind="chipProps">
                         <template #default>
                           <slot name="selection">
                             {{ filename }}
@@ -120,9 +120,9 @@
     <template v-if="hasDetails" #details="detailsSlotProps">
       <slot name="details" v-bind="detailsSlotProps">
         <foxy-counter
-            :active="props.persistentCounter || isFocused"
-            :disabled="props.disabled"
-            :value="counterValue">
+          :active="props.persistentCounter || isFocused"
+          :disabled="props.disabled"
+          :value="counterValue">
           <template v-if="hasSlot('counter')" #default="{counter, value, max}">
             <slot name="counter" v-bind="{counter, value, max}"/>
           </template>
@@ -143,7 +143,7 @@
 <script lang="ts" setup>
   import { FoxyChip, FoxyCounter, FoxyField, FoxyInput } from '@foxy/components'
 
-  import { useAdjacent, useAdjacentInner, useFocus, useSlots } from '@foxy/composables'
+  import { useAdjacent, useAdjacentInner, useFocus, useSlots, useProxiedModel } from '@foxy/composables'
 
   import { FIELD_PROPS, INPUT_PROPS } from '@foxy/consts'
 
@@ -160,7 +160,6 @@
     keys,
     omit,
     pick,
-    useProxiedModel,
     wrapInArray
   } from '@foxy/utils'
 
@@ -184,11 +183,11 @@
   // TODO - Rework list of download file
 
   const model = useProxiedModel(
-      props,
-      'modelValue',
-      props.modelValue,
-      val => wrapInArray(val),
-      val => (props.multiple || Array.isArray(props.modelValue)) ? val : (val[0] ?? null)
+    props,
+    'modelValue',
+    props.modelValue,
+    val => wrapInArray(val),
+    val => (props.multiple || Array.isArray(props.modelValue)) ? val : (val[0] ?? null)
   )
   const { isFocused, onFocus, onBlur: handleBlur } = useFocus(props)
   const { onClickPrepend, onClickAppend: handleClickAppend } = useAdjacent(props, emits)
@@ -213,8 +212,8 @@
       const { name = '', size = 0 } = file
 
       return !props.showSize
-          ? name
-          : `${name} (${humanReadableFileSize(size, base.value)})`
+        ? name
+        : `${name} (${humanReadableFileSize(size, base.value)})`
     })
   })
   const counterValue = computed(() => {

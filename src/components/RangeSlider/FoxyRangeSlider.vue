@@ -1,10 +1,10 @@
 <template>
   <foxy-input
-      ref="foxyInputRef"
-      :class="rangeSliderClasses"
-      :focused="isFocused"
-      :style="rangeSliderStyles"
-      v-bind="{ ...inputProps}">
+    ref="foxyInputRef"
+    :class="rangeSliderClasses"
+    :focused="isFocused"
+    :style="rangeSliderStyles"
+    v-bind="{ ...inputProps}">
     <template v-if="hasPrepend" #prepend>
       <slot name="prepend"/>
     </template>
@@ -18,39 +18,39 @@
         </div>
 
         <div
-            class="foxy-range-slider__container"
-            @mousedown="handleSliderMousedown"
-            @touchstartPassive="handleSliderTouchstart">
+          class="foxy-range-slider__container"
+          @mousedown="handleSliderMousedown"
+          @touchstartPassive="handleSliderTouchstart">
 
           <input
-              :id="id"
-              :disabled="isDisabled"
-              :name="name || id"
-              :readonly="isReadonly"
-              :value="model"
-              tabindex="-1"
+            :id="id"
+            :disabled="isDisabled"
+            :name="name || id"
+            :readonly="isReadonly"
+            :value="model"
+            tabindex="-1"
           />
 
           <foxy-range-slider-track
-              ref="foxyRangeSliderTrackRef"
-              :start="0"
-              :stop="trackStop"
-              class="foxy-range-slider__track"
-              v-bind="{...trackProps}"/>
+            ref="foxyRangeSliderTrackRef"
+            :start="0"
+            :stop="trackStop"
+            class="foxy-range-slider__track"
+            v-bind="{...trackProps}"/>
 
           <foxy-range-slider-thumb
-              ref="foxyRangeSliderThumbRef"
-              :aria-describedby="messagesId"
-              :focused="isFocused"
-              :max="max"
-              :min="min"
-              :model-value="model"
-              :position="trackStop"
-              class="foxy-range-slider__thumb"
-              v-bind="{...thumbProps}"
-              @blur="handleBlur"
-              @focus="handleFocus"
-              @update:model-value="handleUpdateModelValue">
+            ref="foxyRangeSliderThumbRef"
+            :aria-describedby="messagesId"
+            :focused="isFocused"
+            :max="max"
+            :min="min"
+            :model-value="model"
+            :position="trackStop"
+            class="foxy-range-slider__thumb"
+            v-bind="{...thumbProps}"
+            @blur="handleBlur"
+            @focus="handleFocus"
+            @update:model-value="handleUpdateModelValue">
             <template v-if="hasSlot('thumbLabel')" #default>
               <slot name="thumbLabel"/>
             </template>
@@ -80,7 +80,7 @@
 <script lang="ts" setup>
   import { FoxyInput, FoxyLabel, FoxyRangeSliderThumb, FoxyRangeSliderTrack } from '@foxy/components'
 
-  import { useFocus, useRangeSlider, useSlots, useSteps } from '@foxy/composables'
+  import { useFocus, useRangeSlider, useSlots, useSteps, useProxiedModel } from '@foxy/composables'
 
   import { INPUT_PROPS } from '@foxy/consts'
 
@@ -90,7 +90,7 @@
 
   import { TFoxyInput, TFoxyRangeSliderThumb, TFoxyRangeSliderTrack } from '@foxy/types'
 
-  import { keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { keys, omit, pick } from '@foxy/utils'
 
   import { computed, ref, StyleValue } from 'vue'
 
@@ -113,12 +113,12 @@
 
   const steps = useSteps(props)
   const model = useProxiedModel(
-      props,
-      'modelValue',
-      undefined,
-      value => {
-        return steps.roundValue(value == null ? steps.min.value : value)
-      },
+    props,
+    'modelValue',
+    undefined,
+    value => {
+      return steps.roundValue(value == null ? steps.min.value : value)
+    },
   )
   const {
     min,

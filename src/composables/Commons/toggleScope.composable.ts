@@ -4,7 +4,7 @@ import { effectScope, onScopeDispose, watch } from 'vue'
 export function useToggleScope (source: WatchSource<boolean>, fn: (reset: () => void) => void) {
   let scope: EffectScope | undefined
 
-  function start () {
+  const start = () => {
     scope = effectScope()
     scope.run(() => fn.length
         ? fn(() => {

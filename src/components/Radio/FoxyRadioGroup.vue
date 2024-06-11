@@ -1,10 +1,10 @@
 <template>
   <foxy-input
-      :id="id"
-      v-model="model"
-      :class="radioGroupClasses"
-      :style="radioGroupStyles"
-      v-bind="{ ...rootAttrs, ...inputProps }">
+    :id="id"
+    v-model="model"
+    :class="radioGroupClasses"
+    :style="radioGroupStyles"
+    v-bind="{ ...rootAttrs, ...inputProps }">
     <template #default="{id, messagesId, isDisabled, isReadonly, isValid}">
       <slot name="default" v-bind="{id,messagesId,isDisabled,isReadonly,isValid}">
 
@@ -13,23 +13,23 @@
         </slot>
 
         <foxy-selection-control-group
-            :id="id"
-            v-model="model"
-            :aria-describedby="messagesId"
-            :aria-labelledby="label ? id : undefined"
-            :disabled="isDisabled"
-            :items="items"
-            :multiple="false"
-            :readonly="isReadonly"
-            v-bind="{ ...controlProps , ...controlAttrs}">
+          :id="id"
+          v-model="model"
+          :aria-describedby="messagesId"
+          :aria-labelledby="label ? id : undefined"
+          :disabled="isDisabled"
+          :items="items"
+          :multiple="false"
+          :readonly="isReadonly"
+          v-bind="{ ...controlProps , ...controlAttrs}">
           <template #item="{item}">
             <slot name="item" v-bind="{id, messagesId, isDisabled, isReadonly, isValid}">
               <foxy-radio
-                  v-model="model"
-                  :aria-describedby="messagesId"
-                  :disabled="isDisabled"
-                  :readonly="isReadonly"
-                  v-bind="item"/>
+                v-model="model"
+                :aria-describedby="messagesId"
+                :disabled="isDisabled"
+                :readonly="isReadonly"
+                v-bind="item"/>
             </slot>
           </template>
         </foxy-selection-control-group>
@@ -41,13 +41,15 @@
 <script lang="ts" setup>
   import { FoxyInput, FoxyLabel, FoxyRadio, FoxySelectionControlGroup } from '@foxy/components'
 
+  import { useProxiedModel } from '@foxy/composables'
+
   import { INPUT_PROPS, RADIO_PROPS, SELECTION_CONTROL_GROUP_PROPS } from '@foxy/consts'
 
   import { DENSITY } from '@foxy/enums'
 
   import { IRadioGroupProps } from '@foxy/interfaces'
 
-  import { filterInputAttrs, getUid, keys, omit, pick, useProxiedModel } from '@foxy/utils'
+  import { filterInputAttrs, getUid, keys, omit, pick } from '@foxy/utils'
 
   import { computed, StyleValue, useAttrs } from 'vue'
 

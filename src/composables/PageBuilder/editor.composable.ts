@@ -1,8 +1,9 @@
+import { useProxiedModel } from '@foxy/composables'
 import { EMPTY_EDIT, FOXY_EDIT_KEY } from '@foxy/consts'
 
 import { TEditorProvide } from '@foxy/types'
 
-import { getCurrentInstanceName, getUid, useProxiedModel } from '@foxy/utils'
+import { getCurrentInstanceName, getUid } from '@foxy/utils'
 
 import { computed, inject, provide, ref } from 'vue'
 
