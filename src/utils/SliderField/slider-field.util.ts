@@ -1,4 +1,4 @@
-export function getRangeSliderOffset (e: MouseEvent | TouchEvent, el: HTMLElement, direction: string) {
+export function getSliderFieldOffset (e: MouseEvent | TouchEvent, el: HTMLElement, direction: string) {
   const vertical = direction === 'vertical'
   const rect = el.getBoundingClientRect()
   const touch = 'touches' in e ? e.touches[0] : e

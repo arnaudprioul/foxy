@@ -1,28 +1,28 @@
 <template>
   <div
-      :aria-orientation="direction"
-      :aria-readonly="!!readonly"
-      :aria-valuemax="max"
-      :aria-valuemin="min"
-      :aria-valuenow="modelValue"
-      :class="rangeSliderThumbClasses"
-      :style="rangeSliderThumbStyles"
-      :tabindex="isDisabled ? -1 : 0"
-      role="slider"
-      @keydown="!isReadonly ? handleKeydown : undefined">
+    :aria-orientation="direction"
+    :aria-readonly="!!readonly"
+    :aria-valuemax="max"
+    :aria-valuemin="min"
+    :aria-valuenow="modelValue"
+    :class="sliderFieldThumbClasses"
+    :style="sliderFieldThumbStyles"
+    :tabindex="isDisabled ? -1 : 0"
+    role="slider"
+    @keydown="!isReadonly ? handleKeydown : undefined">
     <div
-        :class="rangeSliderThumbSurfaceClasses"
-        :style="rangeSliderThumbSurfaceStyles"/>
+      :class="sliderFieldThumbSurfaceClasses"
+      :style="sliderFieldThumbSurfaceStyles"/>
 
     <div
-        v-ripple="rippleProps"
-        :style="rangeSliderThumbRippleStyles"
-        class="foxy-range-slider-thumb__ripple"/>
+      v-ripple="rippleProps"
+      :style="sliderFieldThumbRippleStyles"
+      class="foxy-slider-field-thumb__ripple"/>
 
     <foxy-translate-scale origin="bottom center">
       <div v-show="showLabel"
-           class="foxy-range-slider-thumb__label-container">
-        <div class="foxy-range-slider-thumb__label">
+           class="foxy-slider-field-thumb__label-container">
+        <div class="foxy-slider-field-thumb__label">
           <slot name="default" v-bind="{ modelValue: props.modelValue }">
             <span>{{ label }}</span>
           </slot>
@@ -43,13 +43,13 @@
 
   import { KEYBOARD_VALUES } from '@foxy/enums'
 
-  import { IRangeSliderThumbProps } from '@foxy/interfaces'
+  import { ISliderFieldThumbProps } from '@foxy/interfaces'
 
   import { clamp, convertToUnit } from '@foxy/utils'
 
   import { computed, inject, StyleValue } from 'vue'
 
-  const props = withDefaults(defineProps<IRangeSliderThumbProps>(), {
+  const props = withDefaults(defineProps<ISliderFieldThumbProps>(), {
     ripple: true,
     size: 20,
     min: 0,
@@ -62,7 +62,7 @@
 
   const slider = inject(FOXY_RANGE_SLIDER_KEY)
 
-  if (!slider) throw new Error('[Foxy] range-slider-thumb must be used inside range-slider')
+  if (!slider) throw new Error('[Foxy] -slider-thumb must be used inside -slider')
 
   const {
     step,
@@ -137,8 +137,8 @@
     const steps = (props.max - props.min) / _step
     if ([KEYBOARD_VALUES.LEFT, KEYBOARD_VALUES.RIGHT, KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.UP].includes(e.key)) {
       const increase = isVertical.value
-          ? [KEYBOARD_VALUES.RIGHT, isReversed.value ? KEYBOARD_VALUES.DOWN : KEYBOARD_VALUES.UP]
-          : [KEYBOARD_VALUES.RIGHT, KEYBOARD_VALUES.UP]
+        ? [KEYBOARD_VALUES.RIGHT, isReversed.value ? KEYBOARD_VALUES.DOWN : KEYBOARD_VALUES.UP]
+        : [KEYBOARD_VALUES.RIGHT, KEYBOARD_VALUES.UP]
       const direction = increase.includes(e.key) ? 1 : -1
       const multiplier = e.shiftKey ? 2 : (e.ctrlKey ? 1 : 0)
 
@@ -169,26 +169,26 @@
 
   // CLASS & STYLES
 
-  const rangeSliderThumbStyles = computed(() => {
+  const sliderFieldThumbStyles = computed(() => {
     return [
       {
-        '--foxy-range-slider-thumb---position': positionPercentage.value,
-        '--foxy-range-slider-thumb---size': convertToUnit(size.value),
+        '--foxy-slider-field-thumb---position': positionPercentage.value,
+        '--foxy-slider-field-thumb---size': convertToUnit(size.value),
       },
       props.style
     ] as StyleValue
   })
-  const rangeSliderThumbClasses = computed(() => {
+  const sliderFieldThumbClasses = computed(() => {
     return [
-      'foxy-range-slider-thumb',
+      'foxy-slider-field-thumb',
       {
-        'foxy-range-slider-thumb--focused': props.focused,
-        'foxy-range-slider-thumb--pressed': props.focused && mousePressed.value,
+        'foxy-slider-field-thumb--focused': props.focused,
+        'foxy-slider-field-thumb--pressed': props.focused && mousePressed.value,
       },
       props.class
     ]
   })
-  const rangeSliderThumbSurfaceStyles = computed(() => {
+  const sliderFieldThumbSurfaceStyles = computed(() => {
     return [
       borderStyles.value,
       roundedStyles.value,
@@ -196,15 +196,15 @@
       props.style
     ] as StyleValue
   })
-  const rangeSliderThumbSurfaceClasses = computed(() => {
+  const sliderFieldThumbSurfaceClasses = computed(() => {
     return [
-      'foxy-range-slider-thumb__surface',
+      'foxy-slider-field-thumb__surface',
       elevationClasses.value,
       borderClasses.value,
       roundedClasses.value,
     ]
   })
-  const rangeSliderThumbRippleStyles = computed(() => {
+  const sliderFieldThumbRippleStyles = computed(() => {
     return [
       textColorStyles.value,
       props.style
@@ -215,7 +215,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .foxy-range-slider-thumb {
+  .foxy-slider-field-thumb {
     $this: &;
 
     touch-action: none;
@@ -235,8 +235,8 @@
 
     &__surface {
       cursor: pointer;
-      width: var(--foxy-range-slider-thumb---size, 20);
-      height: var(--foxy-range-slider-thumb---size, 20);
+      width: var(--foxy-slider-field-thumb---size, 20);
+      height: var(--foxy-slider-field-thumb---size, 20);
       border-radius: 50%;
       user-select: none;
       background-color: currentColor;
@@ -299,7 +299,7 @@
 
     &__ripple {
       position: absolute;
-      left: calc(var(--foxy-range-slider-thumb---size, 20) / -2);
+      left: calc(var(--foxy-slider-field-thumb---size, 20) / -2);
       top: calc(var(--foxy-range-slider-thumb---size, 20) / -2);
       width: calc(var(--foxy-range-slider-thumb---size, 20) * 2);
       height: calc(var(--foxy-range-slider-thumb---size, 20) * 2);

@@ -11,7 +11,7 @@ import {
 
 import { TAlways } from '@foxy/types'
 
-export interface IRangeSliderThumbProps extends ICommonsComponentProps, IColorProps, ISizeProps, IRippleProps, IElevationProps, IRoundedProps, IBorderProps, IDirectionProps {
+export interface ISliderFieldThumbProps extends ICommonsComponentProps, IColorProps, ISizeProps, IRippleProps, IElevationProps, IRoundedProps, IBorderProps, IDirectionProps {
   label?: TAlways
   min?: number
   max?: number

@@ -2,15 +2,15 @@ import { FOXY_RANGE_SLIDER_KEY } from '@foxy/consts'
 
 import { BLOCK, CLIENT_POSITION, DIMENSIONS, DIRECTION, INLINE } from '@foxy/enums'
 
-import { IRangeSlider, IRangeSliderProps, IRangeSliderProvide } from '@foxy/interfaces'
+import { ISliderField, ISliderFieldProps, ISliderFieldProvide } from '@foxy/interfaces'
 
 import { TTick } from '@foxy/types'
 
-import { clamp, createRange, getDecimals, getPosition, getRangeSliderOffset } from '@foxy/utils'
+import { clamp, createRange, getDecimals, getPosition, getSliderFieldOffset } from '@foxy/utils'
 
 import { computed, provide, ref, shallowRef, toRef } from 'vue'
 
-export function useSteps (props: IRangeSliderProps) {
+export function useSteps (props: ISliderFieldProps) {
   const min = computed(() => {
     return parseFloat(props.min ?? 0)
   })
@@ -41,16 +41,18 @@ export function useSteps (props: IRangeSliderProps) {
   return { min, max, step, decimals, roundValue }
 }
 
-export function useRangeSlider ({
-                                  foxyRangeSliderTrackRef,
-                                  foxyRangeSliderThumbRef,
-                                  props,
-                                  steps,
-                                  onSliderStart,
-                                  onSliderMove,
-                                  onSliderEnd,
-                                  getActiveThumb
-                                }: IRangeSlider) {
+export function useSlider ({
+                             foxySliderFieldTrackRef,
+                             foxySliderFieldThumbRef,
+                             foxySliderFieldStartThumbRef,
+                             foxySliderFieldStopThumbRef,
+                             props,
+                             steps,
+                             onSliderStart,
+                             onSliderMove,
+                             onSliderEnd,
+                             getActiveThumb
+                           }: ISliderField) {
   const isReversed = toRef(props, 'reverse')
 
   const isVertical = computed(() => {
@@ -134,7 +136,7 @@ export function useRangeSlider ({
     const {
       [start]: trackStart,
       [length]: trackLength,
-    } = foxyRangeSliderTrackRef.value?.$el.getBoundingClientRect()
+    } = foxySliderFieldTrackRef.value?.$el.getBoundingClientRect()
     const clickOffset = getPosition(e, position)
 
     // It is possible for left to be NaN, force to number
@@ -159,7 +161,7 @@ export function useRangeSlider ({
     mousePressed.value = true
 
     if (activeThumbRef.value.contains(e.target as Node)) {
-      startOffset.value = getRangeSliderOffset(e, activeThumbRef.value, props.direction ?? DIRECTION.VERTICAL)
+      startOffset.value = getSliderFieldOffset(e, activeThumbRef.value, props.direction ?? DIRECTION.VERTICAL)
     } else {
       startOffset.value = 0
       onSliderMove({ value: parseMouseMove(e) })
@@ -212,7 +214,7 @@ export function useRangeSlider ({
     return clamp(isNaN(percentage) ? 0 : percentage, 0, 100)
   }
 
-  const data: IRangeSliderProvide = {
+  const data: ISliderFieldProvide = {
     activeThumbRef,
     decimals,
     disabled,
@@ -246,8 +248,10 @@ export function useRangeSlider ({
     step,
     ticks,
     tickSize,
-    foxyRangeSliderTrackRef,
-    foxyRangeSliderThumbRef,
+    foxySliderFieldTrackRef,
+    foxySliderFieldThumbRef,
+    foxySliderFieldStartThumbRef,
+    foxySliderFieldStopThumbRef,
     isVertical,
   }
 

@@ -1,25 +1,25 @@
 <template>
   <div
-      :class="rangeSliderTrackClasses"
-      :style="rangeSliderTrackStyles">
+    :class="sliderFieldTrackClasses"
+    :style="sliderFieldTrackStyles">
     <div
-        :class="rangeSliderTrackBgClasses"
-        :style="rangeSliderTrackBgStyles"/>
+      :class="sliderFieldTrackBgClasses"
+      :style="sliderFieldTrackBgStyles"/>
 
     <div
-        :class="rangeSliderTrackFillClasses"
-        :style="rangeSliderTrackFillStyles"/>
+      :class="sliderFieldTrackFillClasses"
+      :style="sliderFieldTrackFillStyles"/>
 
-    <div v-if="showTicks" :class="rangeSliderTrackTicksClasses">
+    <div v-if="showTicks" :class="sliderFieldTrackTicksClasses">
       <template
-          v-for="(tick, index) in ticks"
-          :key="index">
+        v-for="(tick, index) in ticks"
+        :key="index">
         <div
-            :class="rangeSliderTickClasses"
-            :style="rangeSliderTickStyles">
+          :class="sliderFieldTickClasses"
+          :style="sliderFieldTickStyles">
           <div
-              v-if="tick.label || hasSlot('item') || hasSlot(`item-${index}`)"
-              class="foxy-range-slider-track__tick-label">
+            v-if="tick.label || hasSlot('item') || hasSlot(`item-${index}`)"
+            class="foxy-slider-field-track__tick-label">
             <slot name="item" v-bind="{ tick, index }">
               <slot :name="`item-${index}`" v-bind="{ tick, index }">
                 {{ tick.label }}
@@ -37,7 +37,7 @@
 
   import { FOXY_RANGE_SLIDER_KEY } from '@foxy/consts'
 
-  import { IRangeSliderTrackProps } from '@foxy/interfaces'
+  import { ISliderFieldTrackProps } from '@foxy/interfaces'
 
   import { TTick } from '@foxy/types'
 
@@ -45,7 +45,7 @@
 
   import { computed, inject, StyleValue } from 'vue'
 
-  const props = withDefaults(defineProps<IRangeSliderTrackProps>(), {
+  const props = withDefaults(defineProps<ISliderFieldTrackProps>(), {
     start: 0,
     stop: 100,
     size: 4
@@ -53,7 +53,7 @@
 
   const slider = inject(FOXY_RANGE_SLIDER_KEY)
 
-  if (!slider) throw new Error('[Foxy] range-slider-track must be inside range-slider')
+  if (!slider) throw new Error('[Foxy] -slider-track must be inside -slider')
 
   const { hasSlot } = useSlots()
 
@@ -125,76 +125,76 @@
     return isVertical.value ? parsedTicks.value.slice().reverse() : parsedTicks.value
   })
 
-  const rangeSliderTickStyles = (tick: TTick) => {
+  const sliderFieldTickStyles = (tick: TTick) => {
     const directionValue = tick.value !== min.value && tick.value !== max.value ? convertToUnit(tick.position, '%') : undefined
 
     return [
       {
-        '--foxy-range-slider-track__tick---size': convertToUnit(sliderTickSize.value),
+        '--foxy-slider-field-track__tick---size': convertToUnit(sliderTickSize.value),
         [startDir.value]: directionValue
       },
       props.style
     ] as StyleValue
   }
-  const rangeSliderTickClasses = (tick: TTick) => {
+  const sliderFieldTickClasses = (tick: TTick) => {
     return [
-      'foxy-range-slider-track__tick',
+      'foxy-slider-field-track__tick',
       {
-        'foxy-range-slider-track__tick--filled': tick.position >= props.start && tick.position <= props.stop,
-        'foxy-range-slider-track__tick--first': tick.value === min.value,
-        'foxy-range-slider-track__tick--last': tick.value === max.value,
+        'foxy-slider-field-track__tick--filled': tick.position >= props.start && tick.position <= props.stop,
+        'foxy-slider-field-track__tick--first': tick.value === min.value,
+        'foxy-slider-field-track__tick--last': tick.value === max.value,
       },
     ]
   }
 
   // CLASS & STYLES
 
-  const rangeSliderTrackStyles = computed(() => {
+  const sliderFieldTrackStyles = computed(() => {
     return [
       {
-        '--foxy-range-slider-track---size': convertToUnit(size.value),
+        '--foxy-slider-field-track---size': convertToUnit(size.value),
       },
       roundedStyles.value,
       props.style
     ] as StyleValue
   })
-  const rangeSliderTrackClasses = computed(() => {
+  const sliderFieldTrackClasses = computed(() => {
     return [
-      'foxy-range-slider-track',
+      'foxy-slider-field-track',
       roundedClasses.value,
       props.class,
     ]
   })
-  const rangeSliderTrackBgStyles = computed(() => {
+  const sliderFieldTrackBgStyles = computed(() => {
     return [
       backgroundStyles.value,
       backgroundColorStyles.value,
     ] as StyleValue
   })
-  const rangeSliderTrackBgClasses = computed(() => {
+  const sliderFieldTrackBgClasses = computed(() => {
     return [
-      'foxy-range-slider-track__background',
+      'foxy-slider-field-track__background',
       {
-        'foxy-range-slider-track__background--opacity': !!color.value,
+        'foxy-slider-field-track__background--opacity': !!color.value,
       },
     ]
   })
-  const rangeSliderTrackFillStyles = computed(() => {
+  const sliderFieldTrackFillStyles = computed(() => {
     return [
       trackFillStyles.value,
       trackFillColorStyles.value,
     ] as StyleValue
   })
-  const rangeSliderTrackFillClasses = computed(() => {
+  const sliderFieldTrackFillClasses = computed(() => {
     return [
-      'foxy-range-slider-track__fill'
+      'foxy-slider-field-track__fill'
     ]
   })
-  const rangeSliderTrackTicksClasses = computed(() => {
+  const sliderFieldTrackTicksClasses = computed(() => {
     return [
-      'foxy-range-slider-track__ticks',
+      'foxy-slider-field-track__ticks',
       {
-        'foxy-range-slider-track__ticks--always-show': sliderShowTicks.value === 'always',
+        'foxy-slider-field-track__ticks--always-show': sliderShowTicks.value === 'always',
       },
     ]
   })
@@ -203,7 +203,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .foxy-range-slider-track {
+  .foxy-slider-field-track {
     $this: &;
 
     border-radius: 9999px;
@@ -216,7 +216,7 @@
     &__fill {
       position: absolute;
       border-radius: inherit;
-      transition: var(--foxy-range-slider__track---transition, 0.3s cubic-bezier(0.25, 0.8, 0.5, 1));
+      transition: var(--foxy-slider-field__track---transition, 0.3s cubic-bezier(0.25, 0.8, 0.5, 1));
 
       @media (forced-colors: active) {
         background-color: highlight;
@@ -249,9 +249,9 @@
       opacity: 0;
       transition: 0.2s opacity cubic-bezier(0.4, 0, 0.2, 1);
       border-radius: 2px;
-      width: var(--foxy-range-slider-track__tick---size, 2);
-      height: var(--foxy-range-slider-track__tick---size, 2);
-      transform: translate(calc(var(--foxy-range-slider-track__tick---size, 2) / -2), calc(var(--foxy-range-slider-track__tick---size, 2) / -2));
+      width: var(--foxy-slider-field-track__tick---size, 2);
+      height: var(--foxy-slider-field-track__tick---size, 2);
+      transform: translate(calc(var(--foxy-slider-field-track__tick---size, 2) / -2), calc(var(--foxy-slider-field-track__tick---size, 2) / -2));
 
       &--filled {
         background-color: rgba(238, 238, 238, 1);

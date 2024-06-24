@@ -1,4 +1,0 @@
-# Foxyrangeslider
-
-## Usage
-    <FoxyRangeSlider />

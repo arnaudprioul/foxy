@@ -1,4 +1,5 @@
 import { useSteps } from '@foxy/composables'
+
 import {
   IBorderProps,
   IColorProps,
@@ -10,17 +11,17 @@ import {
   IInputProps,
   IMarginProps,
   IPaddingProps,
-  IRangeSliderThumbProps,
-  IRangeSliderTrackProps,
   IRippleProps,
-  IRoundedProps
+  IRoundedProps,
+  ISliderFieldThumbProps,
+  ISliderFieldTrackProps
 } from '@foxy/interfaces'
 
-import { TAlways, TColor, TFoxyRangeSliderThumb, TFoxyRangeSliderTrack, TSize, TSliderData, TTick } from '@foxy/types'
+import { TAlways, TColor, TFoxySliderFieldThumb, TFoxySliderFieldTrack, TSize, TSliderData, TTick } from '@foxy/types'
 
 import { Ref } from 'vue'
 
-export interface IRangeSliderProps extends ICommonsComponentProps, IDensityProps, IColorProps, IInputProps, IFocusProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IRippleProps, IDirectionProps {
+export interface ISliderFieldProps extends ICommonsComponentProps, IDensityProps, IColorProps, IInputProps, IFocusProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IRippleProps, IDirectionProps {
   disabled?: boolean
   required?: boolean
   label?: string
@@ -29,10 +30,11 @@ export interface IRangeSliderProps extends ICommonsComponentProps, IDensityProps
   max?: number | string
   min?: number | string
   step?: number | string
-  thumbProps?: IRangeSliderThumbProps
-  trackProps?: IRangeSliderTrackProps
+  thumbProps?: ISliderFieldThumbProps
+  trackProps?: ISliderFieldTrackProps
   reverse?: boolean
-  modelValue?: number | string
+  modelValue?: number | string | Array<number> | Array<string>
+  range?: boolean
 
   // TODO - need rework to use tick interface
   showTicks?: TAlways
@@ -40,7 +42,7 @@ export interface IRangeSliderProps extends ICommonsComponentProps, IDensityProps
   tickSize?: TSize | number
 }
 
-export interface IRangeSliderProvide {
+export interface ISliderFieldProvide {
   activeThumbRef: Ref<HTMLElement | undefined>
   decimals: Ref<number>
   disabled: Ref<boolean | null | undefined>
@@ -70,8 +72,10 @@ export interface IRangeSliderProvide {
   step: Ref<number>
   ticks: Ref<readonly number[] | Record<string, string> | undefined>
   tickSize: Ref<number>
-  foxyRangeSliderTrackRef: Ref<TFoxyRangeSliderTrack | null | undefined>
-  foxyRangeSliderThumbRef: Ref<TFoxyRangeSliderThumb | null | undefined>
+  foxySliderFieldTrackRef: Ref<TFoxySliderFieldTrack | null | undefined>
+  foxySliderFieldThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>
+  foxySliderFieldStartThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>
+  foxySliderFieldStopThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>
   isVertical: Ref<boolean>
   parsedTicks: Ref<Array<TTick>>
   hasLabels: Ref<boolean>
@@ -79,10 +83,12 @@ export interface IRangeSliderProvide {
   indexFromEnd: Ref<boolean>
 }
 
-export interface IRangeSlider {
-  foxyRangeSliderTrackRef: Ref<TFoxyRangeSliderTrack | null | undefined>
-  foxyRangeSliderThumbRef: Ref<TFoxyRangeSliderThumb | null | undefined>
-  props: IRangeSliderProps
+export interface ISliderField {
+  foxySliderFieldTrackRef: Ref<TFoxySliderFieldTrack | null | undefined>
+  foxySliderFieldThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>
+  foxySliderFieldStartThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>
+  foxySliderFieldStopThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>
+  props: ISliderFieldProps
   steps: ReturnType<typeof useSteps>
   onSliderEnd: (data: TSliderData) => void
   onSliderStart: (data: TSliderData) => void

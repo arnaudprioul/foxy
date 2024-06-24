@@ -1,0 +1,5 @@
+# Foxyslider
+
+## Usage
+
+    <FoxySliderField />
