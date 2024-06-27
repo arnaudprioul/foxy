@@ -19,7 +19,7 @@
             <slot v-else-if="hasChildren(item)" name="group" v-bind="{ itemProps: item.props }">
               <foxy-list-group v-bind="item.props">
                 <template v-if="hasGroupActivator" #activator="{props, isOpen, events, toggleIcon}">
-                  <slot name="group-activator" v-bind="{props, isOpen, events, toggleIcon}"/>
+                  <slot name="groupActivator" v-bind="{props, isOpen, events, toggleIcon}"/>
                 </template>
 
                 <template v-if="item.children" #items>

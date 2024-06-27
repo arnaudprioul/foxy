@@ -1,25 +1,24 @@
 <template>
   <component
-      :is="iconData.component"
-      :icon="iconData.icon"
-      :aria-hidden="!attrs.onClick"
-      :class="iconClasses"
-      :size="size"
-      :role="attrs.onClick ? 'button' : undefined"
-      :style="iconStyles"
-      :tag="tag">
-    <slot name="default"></slot>
+    :is="iconData.component"
+    :aria-hidden="!attrs.onClick"
+    :class="iconClasses"
+    :icon="iconData.icon"
+    :role="attrs.onClick ? 'button' : undefined"
+    :size="size"
+    :style="iconStyles"
+    :tag="tag">
+    <slot name="default"/>
   </component>
 </template>
 
 <script lang="ts" setup>
-  import { computed, ref, StyleValue, toRef, useAttrs } from 'vue'
-
-  import { useBothColor, useSize, useSlots, useIcon, useBorder, usePadding, useMargin } from '@foxy/composables'
+  import { useBorder, useBothColor, useIcon, useMargin, usePadding, useSize, useSlots } from '@foxy/composables'
 
   import { IIconComponentProps } from '@foxy/interfaces'
 
   import { flattenFragments } from '@foxy/utils'
+  import { computed, ref, StyleValue, toRef, useAttrs } from 'vue'
 
   const attrs = useAttrs()
 
@@ -37,7 +36,7 @@
 
   if (hasSlot('default') && slots.default?.()) {
     slotIcon.value = flattenFragments(slots.default?.()).filter(node =>
-        node.type === Text && node.children && typeof node.children === 'string'
+      node.type === Text && node.children && typeof node.children === 'string'
     )[0]?.children as string
   }
 

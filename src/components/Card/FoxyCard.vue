@@ -1,12 +1,12 @@
 <template>
   <component
-      :is="link.tag"
-      v-ripple="isClickable && props.ripple"
-      :class="cardClasses"
-      :href="link.href"
-      :style="cardStyles"
-      :tabindex="props.disabled ? -1 : undefined"
-      @click="isClickable && link.navigate">
+    :is="link.tag"
+    v-ripple="isClickable && props.ripple"
+    :class="cardClasses"
+    :href="link.href"
+    :style="cardStyles"
+    :tabindex="props.disabled ? -1 : undefined"
+    @click="isClickable && link.navigate">
     <span v-if="isClickable" key="overlay" class="foxy-card__overlay"/>
     <span key="underlay" class="foxy-card__underlay"/>
 
@@ -15,13 +15,13 @@
         <slot name="loader">
           <div class="foxy-card__loader">
             <foxy-progress
-                :active="!!props.loading"
-                :color="props.color"
-                :indeterminate="typeof props.loading !== 'number'"
-                :model-value="typeof props.loading === 'number' ? props.loading : undefined"
-                :type="PROGRESS_TYPE.LINEAR"
-                class="foxy-card__progress foxy-card__progress--linear"
-                thickness="4"
+              :active="!!props.loading"
+              :color="props.color"
+              :indeterminate="typeof props.loading !== 'number'"
+              :model-value="typeof props.loading === 'number' ? props.loading : undefined"
+              :type="PROGRESS_TYPE.LINEAR"
+              class="foxy-card__progress foxy-card__progress--linear"
+              thickness="4"
             />
           </div>
         </slot>
@@ -30,35 +30,35 @@
       <template v-if="hasHeader">
         <slot name="header">
           <foxy-card-header
-              key="item"
-              :append-avatar="props.appendAvatar"
-              :append-icon="props.appendIcon"
-              :density="props.density"
-              :prepend-avatar="props.prependAvatar"
-              :prepend-icon="props.prependIcon"
-              :subtitle="props.subtitle"
-              :title="props.title"
-              class="foxy-card__header"
-              @click:prepend="handleClickPrepend"
-              @click:append="handleClickAppend">
-            <template v-if="hasSlot('header:append')" #append>
-              <slot name="header:append"/>
+            key="item"
+            :append-avatar="props.appendAvatar"
+            :append-icon="props.appendIcon"
+            :density="props.density"
+            :prepend-avatar="props.prependAvatar"
+            :prepend-icon="props.prependIcon"
+            :subtitle="props.subtitle"
+            :title="props.title"
+            class="foxy-card__header"
+            @click:prepend="handleClickPrepend"
+            @click:append="handleClickAppend">
+            <template v-if="hasSlot('headerAppend')" #append>
+              <slot name="headerAppend"/>
             </template>
 
-            <template v-if="hasSlot('header:prepend')" #prepend>
-              <slot name="header:prepend"/>
+            <template v-if="hasSlot('headerPrepend')" #prepend>
+              <slot name="headerPrepend"/>
             </template>
 
-            <template v-if="hasSlot('header:title')" #title>
-              <slot name="header:title"/>
+            <template v-if="hasSlot('headerTitle')" #title>
+              <slot name="headerTitle"/>
             </template>
 
-            <template v-if="hasSlot('header:subtitle')" #subtitle>
-              <slot name="header:subtitle"/>
+            <template v-if="hasSlot('headerSubtitle')" #subtitle>
+              <slot name="headerSubtitle"/>
             </template>
 
-            <template v-if="hasSlot('header:content')" #default>
-              <slot name="header:content"/>
+            <template v-if="hasSlot('headerContent')" #default>
+              <slot name="headerContent"/>
             </template>
           </foxy-card-header>
         </slot>
@@ -68,10 +68,10 @@
         <div key="image" class="foxy-card__asset">
           <slot name="asset">
             <foxy-img
-                key="image-img"
-                :src="props.image"
-                class="foxy-card__image"
-                cover
+              key="image-img"
+              :src="props.image"
+              class="foxy-card__image"
+              cover
             />
           </slot>
         </div>

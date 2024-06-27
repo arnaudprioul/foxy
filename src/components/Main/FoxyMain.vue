@@ -1,10 +1,10 @@
 <template>
   <component
-      :is="tag"
-      :class="mainClasses"
-      :style="mainStyles">
+    :is="tag"
+    :class="mainClasses"
+    :style="mainStyles">
     <div :class="{'foxy-main__scroller': props.scrollable}" class="foxy-main__wrapper">
-      <slot name="default"></slot>
+      <slot name="default"/>
     </div>
   </component>
 </template>

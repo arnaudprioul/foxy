@@ -1,45 +1,45 @@
 <template>
   <component
-      :is="tag"
-      :class="expansionPanelsClasses"
-      :style="expansionPanelsStyles">
+    :is="tag"
+    :class="expansionPanelsClasses"
+    :style="expansionPanelsStyles">
     <slot name="default">
       <template v-for="(item, index) in items" :key="index">
-        <slot :name="`item-${index}`" v-bind="{collapseIcon, expandIcon, hideActions, item, index}">
+        <slot :name="`item${index}`" v-bind="{collapseIcon, expandIcon, hideActions, item, index}">
           <slot name="item" v-bind="{collapseIcon, expandIcon, hideActions, item, index}">
             <foxy-expansion-panel v-bind="{collapseIcon, expandIcon, hideActions, ...item}">
-              <template v-if="hasSlot(`header-${index}`) || hasSlot('header')" #header="headerSlotProps">
-                <slot :name="`header-${index}`" v-bind="headerSlotProps">
+              <template v-if="hasSlot(`header${index}`) || hasSlot('header')" #header="headerSlotProps">
+                <slot :name="`header${index}`" v-bind="headerSlotProps">
                   <slot name="header" v-bind="headerSlotProps"/>
                 </slot>
               </template>
 
-              <template v-if="hasSlot(`prepend-${index}`) || hasSlot('prepend')" #prepend="prependSlotProps">
-                <slot :name="`prepend-${index}`" v-bind="prependSlotProps">
+              <template v-if="hasSlot(`prepend${index}`) || hasSlot('prepend')" #prepend="prependSlotProps">
+                <slot :name="`prepend${index}`" v-bind="prependSlotProps">
                   <slot name="prepend" v-bind="prependSlotProps"/>
                 </slot>
               </template>
 
-              <template v-if="hasSlot(`title-${index}`) || hasSlot('title')" #title="titleSlotProps">
-                <slot :name="`title-${index}`" v-bind="titleSlotProps">
+              <template v-if="hasSlot(`title${index}`) || hasSlot('title')" #title="titleSlotProps">
+                <slot :name="`title${index}`" v-bind="titleSlotProps">
                   <slot name="title" v-bind="titleSlotProps"/>
                 </slot>
               </template>
 
-              <template v-if="hasSlot(`append-${index}`) || hasSlot('append')" #append="appendSlotProps">
-                <slot :name="`append-${index}`" v-bind="appendSlotProps">
+              <template v-if="hasSlot(`append${index}`) || hasSlot('append')" #append="appendSlotProps">
+                <slot :name="`append${index}`" v-bind="appendSlotProps">
                   <slot name="append" v-bind="appendSlotProps"/>
                 </slot>
               </template>
 
-              <template v-if="hasSlot(`wrapper-${index}`) || hasSlot('wrapper')" #wrapper="wrapperSlotProps">
-                <slot :name="`wrapper-${index}`" v-bind="wrapperSlotProps">
+              <template v-if="hasSlot(`wrapper${index}`) || hasSlot('wrapper')" #wrapper="wrapperSlotProps">
+                <slot :name="`wrapper${index}`" v-bind="wrapperSlotProps">
                   <slot name="wrapper" v-bind="wrapperSlotProps"/>
                 </slot>
               </template>
 
-              <template v-if="hasSlot(`content-${index}`) || hasSlot('content')" #default>
-                <slot :name="`content-${index}`">
+              <template v-if="hasSlot(`content${index}`) || hasSlot('content')" #default>
+                <slot :name="`content${index}`">
                   <slot name="content"/>
                 </slot>
               </template>

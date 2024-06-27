@@ -23,8 +23,8 @@
             <slot name="header"/>
           </template>
 
-          <template #header:append>
-            <slot name="header:append">
+          <template #headerAppend>
+            <slot name="headerAppend">
               <foxy-btn
                 :icon="MDI_ICONS.CLOSE"
                 :rounded="0"
@@ -33,22 +33,22 @@
             </slot>
           </template>
 
-          <template v-if="hasPrepend" #header:prepend>
-            <slot name="header:prepend">
+          <template v-if="hasPrepend" #headerPrepend>
+            <slot name="headerPrepend">
               <foxy-icon v-if="hasIcon" key="prepend-icon" :icon="icon as TIcon" :size="28"/>
             </slot>
           </template>
 
-          <template v-if="hasSlot('header:title')" #header:title>
-            <slot name="header:title"/>
+          <template v-if="hasSlot('headerTitle')" #headerTitle>
+            <slot name="headerTitle"/>
           </template>
 
-          <template v-if="hasSlot('header:subtitle')" #header:subtitle>
-            <slot name="header:subtitle"/>
+          <template v-if="hasSlot('headerSubtitle')" #headerSubtitle>
+            <slot name="headerSubtitle"/>
           </template>
 
-          <template v-if="hasSlot('header:content')" #header:content>
-            <slot name="header:content"/>
+          <template v-if="hasSlot('headerContent')" #headerContent>
+            <slot name="headerContent"/>
           </template>
 
           <template v-if="hasSlot('asset')" #asset>
@@ -76,7 +76,7 @@
 <script lang="ts" setup>
   import { FoxyBtn, FoxyCard, FoxyIcon, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
 
-  import { useScopeId, useSlots, useStatus, useProxiedModel } from '@foxy/composables'
+  import { useProxiedModel, useScopeId, useSlots, useStatus } from '@foxy/composables'
 
   import { CARD_PROPS, IN_BROWSER, OVERLAY_PROPS } from '@foxy/consts'
 
@@ -180,7 +180,7 @@
   }
 
   const hasPrepend = computed(() => {
-    return !!(hasSlot('header:prepend') || icon.value)
+    return !!(hasSlot('headerPrepend') || icon.value)
   })
   const hasIcon = computed(() => {
     return !!(props.icon || props.status)

@@ -15,24 +15,24 @@
       <slot name="header"/>
     </template>
 
-    <template v-if="hasSlot('header:append')" #header:append>
-      <slot name="header:append"/>
+    <template v-if="hasSlot('headerAppend')" #headerAppend>
+      <slot name="headerAppend"/>
     </template>
 
-    <template v-if="hasSlot('header:prepend')" #header:prepend>
-      <slot name="header:prepend"/>
+    <template v-if="hasSlot('headerPrepend')" #headerPrepend>
+      <slot name="headerPrepend"/>
     </template>
 
-    <template v-if="hasSlot('header:title')" #header:title>
-      <slot name="header:title"/>
+    <template v-if="hasSlot('headerTitle')" #headerTitle>
+      <slot name="headerTitle"/>
     </template>
 
-    <template v-if="hasSlot('header:subtitle')" #header:subtitle>
-      <slot name="header:subtitle"/>
+    <template v-if="hasSlot('headerSubtitle')" #headerSubtitle>
+      <slot name="headerSubtitle"/>
     </template>
 
-    <template v-if="hasSlot('header:content')" #header:content>
-      <slot name="header:content"/>
+    <template v-if="hasSlot('headerContent')" #headerContent>
+      <slot name="headerContent"/>
     </template>
 
     <template v-if="hasSlot('asset')" #asset>
@@ -75,7 +75,7 @@
 <script lang="ts" setup>
   import { FoxyBtn, FoxyCol, FoxyContainer, FoxyDialog, FoxyRow } from '@foxy/components'
 
-  import { useSlots, useProxiedModel } from '@foxy/composables'
+  import { useProxiedModel, useSlots } from '@foxy/composables'
 
   import { DIALOG_PROPS } from '@foxy/consts'
 

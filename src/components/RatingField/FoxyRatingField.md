@@ -1,0 +1,4 @@
+# Foxyratingfield
+
+## Usage
+    <FoxyRatingField />

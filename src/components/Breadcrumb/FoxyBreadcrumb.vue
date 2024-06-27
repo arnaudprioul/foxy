@@ -1,8 +1,8 @@
 <template>
   <component
-      :is="tag"
-      :class="breadcrumbClasses"
-      :style="breadcrumbStyles">
+    :is="tag"
+    :class="breadcrumbClasses"
+    :style="breadcrumbStyles">
     <slot name="default">
       <template v-if="hasItems">
         <ul class="foxy-breadcrumb__items">
@@ -17,7 +17,7 @@
               </slot>
 
               <template v-if="!isLastItem(index)">
-                <slot :name="`divider-${index}`" v-bind="{divider}">
+                <slot :name="`divider${index}`" v-bind="{divider}">
                   <slot name="divider" v-bind="{divider}">
                     <foxy-breadcrumb-divider :divider="divider"/>
                   </slot>

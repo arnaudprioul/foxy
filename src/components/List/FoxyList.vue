@@ -1,22 +1,22 @@
 <template>
   <component
-      :is="tag"
-      :class="listClasses"
-      :style="listStyles"
-      :tabindex="tabIndex"
-      role="listbox"
-      @focus="handleFocus"
-      @focusin="handleFocusIn"
-      @focusout="handleFocusOut"
-      @keydown="handleKeydown"
-      @mousedown="handleMouseDown">
+    :is="tag"
+    :class="listClasses"
+    :style="listStyles"
+    :tabindex="tabIndex"
+    role="listbox"
+    @focus="handleFocus"
+    @focusin="handleFocusIn"
+    @focusout="handleFocusOut"
+    @keydown="handleKeydown"
+    @mousedown="handleMouseDown">
     <slot name="default">
       <foxy-list-children
-          v-if="items"
-          :items="items"
-          :returnObject="returnObject">
+        v-if="items"
+        :items="items"
+        :returnObject="returnObject">
         <template v-if="hasChildrenItem" #children="{item, index}">
-          <slot name="children-item" v-bind="{item, index}"/>
+          <slot name="childrenItem" v-bind="{item, index}"/>
         </template>
 
         <template v-if="hasDivider" #divider="{itemProps}">

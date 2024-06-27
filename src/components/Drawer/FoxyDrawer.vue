@@ -1,35 +1,35 @@
 <template>
   <template v-if="true">
     <component
-        :is="tag"
-        :ref="rootEl"
-        :class="drawerClasses"
-        :style="drawerStyles"
-        v-bind="{...scopeId, ...$attrs}"
-        @mouseenter="handleMouseEnter"
-        @mouseleave="handleMouseLeave">
+      :is="tag"
+      :ref="rootEl"
+      :class="drawerClasses"
+      :style="drawerStyles"
+      v-bind="{...scopeId, ...$attrs}"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave">
       <div class="foxy-drawer__wrapper">
         <slot name="wrapper">
           <div v-if="hasPrepend" class="foxy-drawer__prepend">
-            <slot name="prepend"></slot>
+            <slot name="prepend"/>
           </div>
 
           <div v-if="hasContent" class="foxy-drawer__content">
-            <slot name="default"></slot>
+            <slot name="default"/>
           </div>
 
           <div v-if="hasAppend" class="foxy-drawer__append">
-            <slot name="append"></slot>
+            <slot name="append"/>
           </div>
         </slot>
       </div>
     </component>
     <foxy-overlay-scrim
-        :active="isTemporary && (isDragging || isActive && !!scrim)"
-        :scrim="scrim"
-        :style="scrimStyles"
-        v-bind="scopeId"
-        @click="handleClickScrim"/>
+      :active="isTemporary && (isDragging || isActive && !!scrim)"
+      :scrim="scrim"
+      :style="scrimStyles"
+      v-bind="scopeId"
+      @click="handleClickScrim"/>
   </template>
 </template>
 
@@ -91,8 +91,8 @@
 
   const width = computed(() => {
     return (props.rail && props.expandOnHover && isHovering.value)
-        ? Number(props.width)
-        : Number(props.rail ? props.railWidth : props.width)
+      ? Number(props.width)
+      : Number(props.rail ? props.railWidth : props.width)
   })
   const location = computed(() => {
     return props.location as 'left' | 'right' | 'bottom'
@@ -136,8 +136,8 @@
 
   const layoutSize = computed(() => {
     const size = isTemporary.value ? 0
-        : props.rail && props.expandOnHover ? Number(props.railWidth)
-            : width.value
+      : props.rail && props.expandOnHover ? Number(props.railWidth)
+        : width.value
 
     return isDragging.value ? size * dragProgress.value : size
   })
@@ -151,8 +151,8 @@
     active: computed(() => isActive.value || isDragging.value) as ComputedRef<boolean>,
     disableTransitions: computed(() => isDragging.value),
     absolute: computed(() =>
-        // eslint-disable-next-line @typescript-eslint/no-use-before-define
-        props.absolute || (isSticky.value && typeof isStuck.value !== 'string')
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
+      props.absolute || (isSticky.value && typeof isStuck.value !== 'string')
     ),
   })
 

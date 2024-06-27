@@ -1,52 +1,52 @@
 <template>
   <foxy-responsive
-      v-intersect="intersect"
-      :aria-label="props.alt"
-      :aspect-ratio="aspectRatio"
-      :class="imgClasses"
-      :role="props.alt ? 'img' : undefined"
-      :style="imgStyles"
-      v-bind="responsiveProps"
+    v-intersect="intersect"
+    :aria-label="props.alt"
+    :aspect-ratio="aspectRatio"
+    :class="imgClasses"
+    :role="props.alt ? 'img' : undefined"
+    :style="imgStyles"
+    v-bind="responsiveProps"
   >
     <template #additional>
       <foxy-transition :transition="transition" appear>
         <img
-            v-show="isLoaded"
-            ref="image"
-            :alt="alt"
-            :class="imgPictureClasses"
-            :crossorigin="crossorigin"
-            :draggable="draggable"
-            :referrerpolicy="referrerpolicy"
-            :sizes="sizes"
-            :src="normalisedSrc.src"
-            :srcset="normalisedSrc.srcset"
-            :style="imgContentStyles"
-            @error="handleError"
-            @load="handleLoad"
+          v-show="isLoaded"
+          ref="image"
+          :alt="alt"
+          :class="imgPictureClasses"
+          :crossorigin="crossorigin"
+          :draggable="draggable"
+          :referrerpolicy="referrerpolicy"
+          :sizes="sizes"
+          :src="normalisedSrc.src"
+          :srcset="normalisedSrc.srcset"
+          :style="imgContentStyles"
+          @error="handleError"
+          @load="handleLoad"
         />
       </foxy-transition>
       <foxy-transition :transition="transition">
         <img
-            v-if="normalisedSrc.lazySrc && !isLoaded"
-            :alt="alt"
-            :class="imgPictureClasses"
-            :crossorigin="crossorigin"
-            :draggable="draggable"
-            :referrerpolicy="referrerpolicy"
-            :src="normalisedSrc.lazySrc"
-            :style="imgContentStyles"
+          v-if="normalisedSrc.lazySrc && !isLoaded"
+          :alt="alt"
+          :class="imgPictureClasses"
+          :crossorigin="crossorigin"
+          :draggable="draggable"
+          :referrerpolicy="referrerpolicy"
+          :src="normalisedSrc.lazySrc"
+          :style="imgContentStyles"
         />
       </foxy-transition>
       <foxy-transition :transition="transition" appear>
         <div v-if="(isLoading || (isError && !hasSlot('error'))) && hasSlot('placeholder')"
              class="foxy-img__placeholder">
-          <slot name="placeholder"></slot>
+          <slot name="placeholder"/>
         </div>
       </foxy-transition>
       <foxy-transition :transition="transition" appear>
         <div v-if="isError && hasSlot('error')" class="foxy-img__error">
-          <slot name="error"></slot>
+          <slot name="error"/>
         </div>
       </foxy-transition>
       <div v-if="gradient" :style="imgGradientStyles" class="foxy-img__gradient"/>
@@ -59,13 +59,13 @@
 </template>
 
 <script lang="ts" setup>
-  import { FoxyTransition, FoxyResponsive } from '@foxy/components'
-
-  import { vIntersect } from '@foxy/directives'
+  import { FoxyResponsive, FoxyTransition } from '@foxy/components'
 
   import { useBorder, useBothColor, useMargin, usePadding, useRounded, useSlots } from '@foxy/composables'
 
   import { SUPPORTS_INTERSECTION } from '@foxy/consts'
+
+  import { vIntersect } from '@foxy/directives'
 
   import { IMG_STATE } from '@foxy/enums'
 
@@ -97,17 +97,17 @@
 
   const normalisedSrc = computed<ISrcObject>(() => {
     return props.src && typeof props.src === 'object'
-        ? {
-          src: props.src.src,
-          srcset: props.srcset || props.src.srcset,
-          lazySrc: props.lazySrc || props.src.lazySrc,
-          aspect: Number(props.aspectRatio || props.src.aspect || 0),
-        } : {
-          src: props.src,
-          srcset: props.srcset,
-          lazySrc: props.lazySrc,
-          aspect: Number(props.aspectRatio || 0),
-        }
+      ? {
+        src: props.src.src,
+        srcset: props.srcset || props.src.srcset,
+        lazySrc: props.lazySrc || props.src.lazySrc,
+        aspect: Number(props.aspectRatio || props.src.aspect || 0),
+      } : {
+        src: props.src,
+        srcset: props.srcset,
+        lazySrc: props.lazySrc,
+        aspect: Number(props.aspectRatio || 0),
+      }
   })
   const aspectRatio = computed(() => {
     return normalisedSrc.value.aspect || naturalWidth.value! / naturalHeight.value! || 0

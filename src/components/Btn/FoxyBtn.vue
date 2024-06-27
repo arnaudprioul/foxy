@@ -1,14 +1,16 @@
 <template>
   <component
-      :is="link.tag"
-      v-ripple="isRipple"
-      :class="btnClasses"
-      :disabled="isDisabled || undefined"
-      :href="link.href.value"
-      :style="btnStyles"
-      :type="link.tag === 'a' ? undefined : 'button'"
-      :value="valueAttr"
-      @click="handleClick">
+    :is="link.tag"
+    v-ripple="isRipple"
+    :class="btnClasses"
+    :disabled="isDisabled || undefined"
+    :href="link.href.value"
+    :style="btnStyles"
+    :type="link.tag === 'a' ? undefined : 'button'"
+    :value="valueAttr"
+    @click="handleClick"
+    @mouseenter="handleMouseenter"
+    @mouseleave="handleMouseleave">
     <span key="overlay" class="foxy-btn__overlay"/>
     <span key="underlay" class="foxy-btn__underlay"/>
 
@@ -24,15 +26,15 @@
           <span v-if="hasPrepend" key="prepend" class="foxy-btn__prepend" @click="handleClickPrepend">
             <slot name="prepend">
               <foxy-avatar
-                  v-if="prependAvatar"
-                  key="prepend-avatar"
-                  :density="density"
-                  :image="prependAvatar"/>
+                v-if="prependAvatar"
+                key="prepend-avatar"
+                :density="density"
+                :image="prependAvatar"/>
               <foxy-icon
-                  v-if="prependIcon"
-                  key="prepend-icon"
-                  :density="density"
-                  :icon="prependIcon"/>
+                v-if="prependIcon"
+                key="prepend-icon"
+                :density="density"
+                :icon="prependIcon"/>
             </slot>
           </span>
 
@@ -40,8 +42,8 @@
             <slot name="default">
               <template v-if="hasIcon">
                 <foxy-icon
-                    key="content-icon"
-                    :icon="props.icon"
+                  key="content-icon"
+                  :icon="props.icon"
                 />
               </template>
               <template v-else>
@@ -53,15 +55,15 @@
           <span v-if="hasAppend" key="append" class="foxy-btn__append" @click="handleClickAppend">
             <slot name="append">
              <foxy-avatar
-                 v-if="appendAvatar"
-                 key="append-avatar"
-                 :density="density"
-                 :image="appendAvatar"/>
+               v-if="appendAvatar"
+               key="append-avatar"
+               :density="density"
+               :image="appendAvatar"/>
              <foxy-icon
-                 v-if="appendIcon"
-                 key="append-icon"
-                 :density="density"
-                 :icon="appendIcon"/>
+               v-if="appendIcon"
+               key="append-icon"
+               :density="density"
+               :icon="appendIcon"/>
            </slot>
           </span>
         </template>
@@ -101,7 +103,7 @@
   import { IBtnProps } from '@foxy/interfaces'
   import { keys, pick } from '@foxy/utils'
 
-  import { computed, StyleValue, toRef, useAttrs } from 'vue'
+  import { computed, shallowRef, StyleValue, useAttrs } from 'vue'
 
   const attrs = useAttrs()
 
@@ -115,7 +117,6 @@
 
   const emits = defineEmits(['group:selected', 'click:append', 'click:prepend'])
 
-  const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { densityClasses } = useDensity(props)
   const { dimensionStyles } = useDimension(props)
   const { elevationClasses } = useElevation(props)
@@ -159,8 +160,8 @@
     if (props.value === undefined || typeof props.value === 'symbol') return undefined
 
     return Object(props.value) === props.value
-        ? JSON.stringify(props.value, null, 0)
-        : props.value
+      ? JSON.stringify(props.value, null, 0)
+      : props.value
   })
   const isRipple = computed(() => {
     return [
@@ -170,16 +171,46 @@
     ]
   })
 
+  const isHover = shallowRef(false)
+
+  const activeColor = computed(() => {
+    return props.activeColor ?? props.color
+  })
+  const hoverColor = computed(() => {
+    return props.hoverColor ?? props.color
+  })
+  const color = computed(() => {
+    return isHover.value ? hoverColor.value : isActive.value ? activeColor.value : props.color
+  })
+  const activeBgColor = computed(() => {
+    return props.activeBgColor ?? props.color
+  })
+  const hoverBgColor = computed(() => {
+    return props.hoverBgColor ?? props.color
+  })
+  const bgColor = computed(() => {
+    return isHover.value ? hoverBgColor.value : isActive.value ? activeBgColor.value : props.bgColor
+  })
+
+  const { colorStyles } = useBothColor(bgColor, color)
+
+  const handleMouseenter = () => {
+    isHover.value = true
+  }
+  const handleMouseleave = () => {
+    isHover.value = false
+  }
+
   const handleClick = (e: MouseEvent) => {
     if (
-        isDisabled.value ||
-        (link.isLink.value && (
-            e.metaKey ||
-            e.ctrlKey ||
-            e.shiftKey ||
-            (e.button !== 0) ||
-            attrs.target === '_blank'
-        ))
+      isDisabled.value ||
+      (link.isLink.value && (
+        e.metaKey ||
+        e.ctrlKey ||
+        e.shiftKey ||
+        (e.button !== 0) ||
+        attrs.target === '_blank'
+      ))
     ) return
 
     link.navigate?.(e)
@@ -195,10 +226,10 @@
 
   const progressProps = computed(() => {
     return Object.assign({
-          size: '23',
-          indeterminate: true
-        },
-        pick(props, keys(COLOR_PROPS)))
+        size: '23',
+        indeterminate: true
+      },
+      pick(props, keys(COLOR_PROPS)))
   })
 
   // CLASS & STYLES
