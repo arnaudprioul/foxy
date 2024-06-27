@@ -1,12 +1,11 @@
-import { computed, ref, Ref, toRaw, watch } from 'vue'
-
 import { useToggleScope } from '@foxy/composables'
 
 import { TEventProp, TInnerVal } from '@foxy/types'
 
-import { toKebabCase, getCurrentInstance } from '@foxy/utils'
+import { getCurrentInstance, toKebabCase } from '@foxy/utils'
+import { computed, ref, Ref, toRaw, watch } from 'vue'
 
-export function useProxiedModel<
+export function useVModel<
     Props extends object & { [key in Prop as `onUpdate:${Prop}`]?: TEventProp | undefined },
     Prop extends Extract<keyof Props, string>,
     Inner = Props[Prop],
@@ -17,7 +16,7 @@ export function useProxiedModel<
     transformIn: (value?: Props[Prop]) => Inner = (v: any) => v,
     transformOut: (value: Inner) => Props[Prop] = (v: any) => v,
 ) {
-  const vm = getCurrentInstance('useProxiedModel')
+  const vm = getCurrentInstance('useVModel')
   const internal = ref(props[prop] !== undefined ? props[prop] : defaultValue) as Ref<Props[Prop]>
   const kebabProp = toKebabCase(prop)
   const checkKebab = kebabProp !== prop

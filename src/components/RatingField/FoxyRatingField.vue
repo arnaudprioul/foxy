@@ -90,7 +90,7 @@
 <script lang="ts" setup>
   import { FoxyInput, FoxyLabel, FoxyRatingFieldItem } from '@foxy/components'
 
-  import { useProxiedModel, useSlots } from '@foxy/composables'
+  import { useSlots, useVModel } from '@foxy/composables'
 
   import { INPUT_PROPS, RATING_FIELD_ITEM_PROPS } from '@foxy/consts'
 
@@ -117,7 +117,7 @@
 
   const { hasSlot } = useSlots()
 
-  const model = useProxiedModel(props, 'modelValue')
+  const model = useVModel(props, 'modelValue')
   const attrs = useAttrs()
 
   const normalizedValue = computed(() => {

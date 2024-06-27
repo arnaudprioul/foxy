@@ -59,7 +59,7 @@
 <script lang="ts" setup>
   import { FoxyInput, FoxyRadioBtn } from '@foxy/components'
 
-  import { useFocus, useSlots, useProxiedModel } from '@foxy/composables'
+  import { useFocus, useSlots, useVModel } from '@foxy/composables'
 
   import { INPUT_PROPS, RADIO_BTN_PROPS } from '@foxy/consts'
 
@@ -79,7 +79,7 @@
 
   const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])
 
-  const model = useProxiedModel(props, 'modelValue')
+  const model = useVModel(props, 'modelValue')
   const { isFocused, onFocus: handleFocus, onBlur: handleBlur } = useFocus(props)
   const attrs = useAttrs()
   const { hasSlot } = useSlots()

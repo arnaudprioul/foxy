@@ -76,7 +76,7 @@
 <script lang="ts" setup>
   import { FoxyBtn, FoxyCard, FoxyIcon, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
 
-  import { useProxiedModel, useScopeId, useSlots, useStatus } from '@foxy/composables'
+  import { useScopeId, useSlots, useStatus, useVModel } from '@foxy/composables'
 
   import { CARD_PROPS, IN_BROWSER, OVERLAY_PROPS } from '@foxy/consts'
 
@@ -102,7 +102,7 @@
 
   const emits = defineEmits(['update:modelValue', 'isRead', 'click:outside'])
 
-  const isActive = useProxiedModel(props, 'modelValue')
+  const isActive = useVModel(props, 'modelValue')
   const { scopeId } = useScopeId()
   const { hasSlot } = useSlots()
   const { icon, statusClasses } = useStatus(props)

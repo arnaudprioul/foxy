@@ -58,7 +58,7 @@
     useRounded,
     useSlots,
     useStatus,
-    useProxiedModel
+    useVModel
   } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
@@ -89,7 +89,7 @@
   const { icon, statusClasses } = useStatus(props)
   const { hasSlot } = useSlots()
 
-  const isActive = useProxiedModel(props, 'modelValue')
+  const isActive = useVModel(props, 'modelValue')
 
   const closeEvent = computed(() => {
     return {

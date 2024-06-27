@@ -51,7 +51,7 @@
     useStack,
     useTeleport,
     useToggleScope,
-    useProxiedModel
+    useVModel
   } from '@foxy/composables'
 
   import { IN_BROWSER } from '@foxy/consts'
@@ -79,7 +79,7 @@
 
   const emits = defineEmits(['click:outside', 'update:modelValue', 'afterLeave'])
 
-  const model = useProxiedModel(props, 'modelValue')
+  const model = useVModel(props, 'modelValue')
   const isActive = computed({
     get: () => model.value,
     set: v => {

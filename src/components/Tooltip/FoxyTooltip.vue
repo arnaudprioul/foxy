@@ -29,7 +29,7 @@
 <script lang="ts" setup>
   import { FoxyFade, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
 
-  import { useScopeId, useProxiedModel } from '@foxy/composables'
+  import { useScopeId, useVModel } from '@foxy/composables'
 
   import { OVERLAY_PROPS } from '@foxy/consts'
 
@@ -39,7 +39,7 @@
 
   import { TAnchor, TFoxyOverlay } from '@foxy/types'
 
-  import { getUid, keys, omit, pick, forwardRefs } from '@foxy/utils'
+  import { forwardRefs, getUid, keys, omit, pick } from '@foxy/utils'
 
   import { computed, mergeProps, ref, StyleValue } from 'vue'
 
@@ -60,7 +60,7 @@
 
   const emits = defineEmits(['update:modelValue'])
 
-  const isActive = useProxiedModel(props, 'modelValue')
+  const isActive = useVModel(props, 'modelValue')
   const { scopeId } = useScopeId()
 
   const uid = getUid()

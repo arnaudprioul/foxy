@@ -213,7 +213,7 @@
     FoxyVirtualScroll
   } from '@foxy/components'
 
-  import { useFilter, useItems, useScrolling, useSlots, useTextColor, useProxiedModel } from '@foxy/composables'
+  import { useFilter, useItems, useScrolling, useSlots, useTextColor, useVModel } from '@foxy/composables'
 
   import { FOXY_FORM_KEY, IN_BROWSER, TEXT_FIELD_PROPS } from '@foxy/consts'
 
@@ -231,16 +231,7 @@
 
   import { TFoxyList, TFoxyMenu, TFoxyTextField, TFoxyVirtualScroll } from '@foxy/types'
 
-  import {
-    deepEqual,
-    forwardRefs,
-    keys,
-    matchesSelector,
-    noop,
-    omit,
-    pick,
-    wrapInArray
-  } from '@foxy/utils'
+  import { deepEqual, forwardRefs, keys, matchesSelector, noop, omit, pick, wrapInArray } from '@foxy/utils'
 
   import { computed, inject, mergeProps, nextTick, ref, shallowRef, StyleValue, toRef, VNodeRef, watch } from 'vue'
 
@@ -279,7 +270,7 @@
   const { textColorStyles } = useTextColor(toRef(props, 'color'))
 
   const { items, transformIn, transformOut } = useItems(props)
-  const model = useProxiedModel(
+  const model = useVModel(
     props,
     'modelValue',
     [],
@@ -291,13 +282,13 @@
       return props.multiple ? transformed : (transformed[0] ?? null)
     }
   )
-  const search = useProxiedModel(props, 'search', '')
+  const search = useVModel(props, 'search', '')
 
   const validationValue = computed(() => {
     return model.externalValue
   })
 
-  const menuState = useProxiedModel(props, 'menu')
+  const menuState = useVModel(props, 'menu')
   const menu = computed({
     get: () => menuState.value,
     set: (v) => {

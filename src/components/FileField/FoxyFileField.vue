@@ -143,7 +143,7 @@
 <script lang="ts" setup>
   import { FoxyChip, FoxyCounter, FoxyField, FoxyInput } from '@foxy/components'
 
-  import { useAdjacent, useAdjacentInner, useFocus, useSlots, useProxiedModel } from '@foxy/composables'
+  import { useAdjacent, useAdjacentInner, useFocus, useSlots, useVModel } from '@foxy/composables'
 
   import { FIELD_PROPS, INPUT_PROPS } from '@foxy/consts'
 
@@ -153,15 +153,7 @@
 
   import { TFoxyInput } from '@foxy/types'
 
-  import {
-    filterInputAttrs,
-    forwardRefs,
-    humanReadableFileSize,
-    keys,
-    omit,
-    pick,
-    wrapInArray
-  } from '@foxy/utils'
+  import { filterInputAttrs, forwardRefs, humanReadableFileSize, keys, omit, pick, wrapInArray } from '@foxy/utils'
 
   import { computed, nextTick, ref, StyleValue, useAttrs, watch } from 'vue'
 
@@ -182,7 +174,7 @@
   // TODO - Add drag & drop props & design
   // TODO - Rework list of download file
 
-  const model = useProxiedModel(
+  const model = useVModel(
     props,
     'modelValue',
     props.modelValue,

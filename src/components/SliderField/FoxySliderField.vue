@@ -137,7 +137,7 @@
 <script lang="ts" setup>
   import { FoxyInput, FoxyLabel, FoxySliderFieldThumb, FoxySliderFieldTrack } from '@foxy/components'
 
-  import { useFocus, useProxiedModel, useSlider, useSlots, useSteps } from '@foxy/composables'
+  import { useFocus, useSlider, useSlots, useSteps, useVModel } from '@foxy/composables'
 
   import { INPUT_PROPS } from '@foxy/consts'
 
@@ -250,7 +250,7 @@
       }
     }
   })
-  const model = useProxiedModel(
+  const model = useVModel(
     props,
     'modelValue',
     isRange.value ? [min.value, max.value] : min.value,

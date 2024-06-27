@@ -1,9 +1,9 @@
-import { useProxiedModel } from '@foxy/composables'
+import { useVModel } from '@foxy/composables'
 import {
   EMPTY_NESTED,
+  FOXY_NESTED_KEY,
   LIST_OPEN_STRATEGY,
   MULTIPLE_OPEN_STRATEGY,
-  FOXY_NESTED_KEY,
   SINGLE_OPEN_STRATEGY
 } from '@foxy/consts'
 import { OPEN_STRATEGY, SELECT_STRATEGY } from '@foxy/enums'
@@ -63,7 +63,7 @@ export const useNested = (props: INestedProps) => {
     }
   })
 
-  const selected = useProxiedModel(
+  const selected = useVModel(
       props,
       'selected',
       props.selected,

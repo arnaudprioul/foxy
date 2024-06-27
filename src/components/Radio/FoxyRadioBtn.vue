@@ -26,7 +26,7 @@
 <script lang="ts" setup>
   import { FoxySelectionControl } from '@foxy/components'
 
-  import { useSlots, useProxiedModel } from '@foxy/composables'
+  import { useSlots, useVModel } from '@foxy/composables'
 
   import { SELECTION_CONTROL_PROPS } from '@foxy/consts'
 
@@ -46,7 +46,7 @@
 
   const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])
 
-  const model = useProxiedModel(props, 'modelValue')
+  const model = useVModel(props, 'modelValue')
 
   const { hasSlot } = useSlots()
 

@@ -48,7 +48,7 @@
 <script lang="ts" setup>
   import { FoxyBtn, FoxyProgressLinear, FoxyWindow } from '@foxy/components'
 
-  import { useSlots, useProxiedModel } from '@foxy/composables'
+  import { useSlots, useVModel } from '@foxy/composables'
 
   import { COLOR_PROPS, WINDOW_PROPS } from '@foxy/consts'
 
@@ -71,7 +71,7 @@
 
   const emits = defineEmits(['update:modelValue'])
 
-  const model = useProxiedModel(props, 'modelValue')
+  const model = useVModel(props, 'modelValue')
   const windowRef = ref()
 
   let slideTimeout = -1

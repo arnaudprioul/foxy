@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useProxiedModel } from '@foxy/composables'
+  import { useVModel } from '@foxy/composables'
 
   import { FOXY_SELECTION_CONTROL_GROUP_KEY } from '@foxy/consts'
 
@@ -33,7 +33,7 @@
 
   const emits = defineEmits(['update:modelValue'])
 
-  const modelValue = useProxiedModel(props, 'modelValue')
+  const modelValue = useVModel(props, 'modelValue')
   const uid = getUid()
   const id = computed(() => {
     return props.id || `foxy-selection-control-group-${uid}`

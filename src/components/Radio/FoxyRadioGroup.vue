@@ -41,7 +41,7 @@
 <script lang="ts" setup>
   import { FoxyInput, FoxyLabel, FoxyRadio, FoxySelectionControlGroup } from '@foxy/components'
 
-  import { useProxiedModel } from '@foxy/composables'
+  import { useVModel } from '@foxy/composables'
 
   import { INPUT_PROPS, RADIO_PROPS, SELECTION_CONTROL_GROUP_PROPS } from '@foxy/consts'
 
@@ -65,7 +65,7 @@
   const id = computed(() => {
     return props.id || `radio-group-${uid}`
   })
-  const model = useProxiedModel(props, 'modelValue')
+  const model = useVModel(props, 'modelValue')
 
   const [rootAttrs, controlAttrs] = filterInputAttrs(attrs)
   const inputProps = computed(() => {

@@ -94,7 +94,7 @@
     useRounded,
     useSize,
     useSlots,
-    useProxiedModel
+    useVModel
   } from '@foxy/composables'
 
   import { FOXY_CHIP_GROUP_KEY } from '@foxy/consts'
@@ -128,7 +128,7 @@
   const { marginStyles, marginClasses } = useMargin(props)
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
 
-  const isActive = useProxiedModel(props, 'modelValue')
+  const isActive = useVModel(props, 'modelValue')
   const group = useGroupItem(props, FOXY_CHIP_GROUP_KEY, false)
   const link = useLink(props, attrs)
   const {

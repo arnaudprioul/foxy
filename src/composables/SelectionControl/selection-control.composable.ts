@@ -1,4 +1,4 @@
-import { useBackgroundColor, useDensity, useTextColor, useProxiedModel } from '@foxy/composables'
+import { useBackgroundColor, useDensity, useTextColor, useVModel } from '@foxy/composables'
 
 import { FOXY_SELECTION_CONTROL_GROUP_KEY } from '@foxy/consts'
 
@@ -13,7 +13,7 @@ export function useSelectionControl (props: ISelectionControlProps) {
 
   const { densityClasses } = useDensity(props)
 
-  const modelValue = useProxiedModel(props, 'modelValue')
+  const modelValue = useVModel(props, 'modelValue')
 
   const trueValue = computed(() => {
     return props.trueValue !== undefined ? props.trueValue : props.value !== undefined ? props.value : true

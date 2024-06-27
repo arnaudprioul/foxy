@@ -1,4 +1,4 @@
-import { useProxiedModel } from '@foxy/composables'
+import { useVModel } from '@foxy/composables'
 import { FOXY_FORM_KEY } from '@foxy/consts'
 
 import { IFormField, IFormProps, IValidationFieldResult } from '@foxy/interfaces'
@@ -8,7 +8,7 @@ import { consoleWarn } from '@foxy/utils'
 import { computed, markRaw, provide, ref, shallowRef, toRef, watch } from 'vue'
 
 export function useForm (props: IFormProps) {
-  const model = useProxiedModel(props, 'modelValue')
+  const model = useVModel(props, 'modelValue')
 
   const isDisabled = computed(() => {
     return props.disabled ?? false

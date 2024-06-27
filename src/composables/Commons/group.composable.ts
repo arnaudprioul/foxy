@@ -1,11 +1,12 @@
-import { useProxiedModel } from '@foxy/composables'
+import { useVModel } from '@foxy/composables'
 import { IGroupItem, IGroupItemProps, IGroupItemProvide, IGroupProps, IGroupProvide } from '@foxy/interfaces'
 
 import {
   consoleWarn,
   findChildrenWithProvide,
   getCurrentInstance,
-  getIds, getItemIndex,
+  getIds,
+  getItemIndex,
   getUid,
   getValues,
   wrapInArray
@@ -16,10 +17,13 @@ import {
   computed,
   inject,
   InjectionKey,
-  onBeforeUnmount, onMounted,
+  onBeforeUnmount,
+  onMounted,
   provide,
   reactive,
-  toRef, unref, UnwrapRef,
+  toRef,
+  unref,
+  UnwrapRef,
   watch
 } from 'vue'
 
@@ -89,7 +93,7 @@ export function useGroup (
 ) {
   let isUnmounted = false
   const items = reactive<Array<IGroupItem>>([])
-  const selected = useProxiedModel(
+  const selected = useVModel(
       props,
       'modelValue',
       [],

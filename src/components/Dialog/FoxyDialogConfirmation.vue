@@ -75,7 +75,7 @@
 <script lang="ts" setup>
   import { FoxyBtn, FoxyCol, FoxyContainer, FoxyDialog, FoxyRow } from '@foxy/components'
 
-  import { useProxiedModel, useSlots } from '@foxy/composables'
+  import { useSlots, useVModel } from '@foxy/composables'
 
   import { DIALOG_PROPS } from '@foxy/consts'
 
@@ -93,7 +93,7 @@
 
   const emits = defineEmits(['validate', 'cancel'])
 
-  const isActive = useProxiedModel(props, 'modelValue')
+  const isActive = useVModel(props, 'modelValue')
   const validatable = ref(false)
 
   const { hasSlot } = useSlots()

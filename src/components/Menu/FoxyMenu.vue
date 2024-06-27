@@ -47,7 +47,7 @@
 <script lang="ts" setup>
   import { FoxyListGroup, FoxyListSubheader, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
 
-  import { useScopeId, useProxiedModel } from '@foxy/composables'
+  import { useScopeId, useVModel } from '@foxy/composables'
 
   import { FOXY_MENU_KEY, OVERLAY_PROPS } from '@foxy/consts'
 
@@ -77,7 +77,7 @@
 
   const emits = defineEmits(['update:modelValue'])
 
-  const isActive = useProxiedModel(props, 'modelValue')
+  const isActive = useVModel(props, 'modelValue')
   const { scopeId } = useScopeId()
 
   const uid = getUid()

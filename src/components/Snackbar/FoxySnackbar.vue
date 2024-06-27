@@ -67,7 +67,7 @@
     useSlots,
     useStatus,
     useToggleScope,
-    useProxiedModel
+    useVModel
   } from '@foxy/composables'
 
   import { FOXY_LAYOUT_KEY, OVERLAY_PROPS } from '@foxy/consts'
@@ -95,7 +95,7 @@
 
   const { hasSlot } = useSlots()
 
-  const isActive = useProxiedModel(props, 'modelValue')
+  const isActive = useVModel(props, 'modelValue')
   const { positionClasses } = usePosition(props)
   const { scopeId } = useScopeId()
   const countdown = useCountdown(Number(props.timeout))

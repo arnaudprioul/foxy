@@ -19,7 +19,7 @@
     useLayoutItem,
     useRounded,
     useSsrBoot,
-    useProxiedModel
+    useVModel
   } from '@foxy/composables'
 
   import { FOXY_BTN_TOGGLE_KEY } from '@foxy/consts'
@@ -51,7 +51,7 @@
     return Number(props.height) - (props.density === 'compact' ? 16 : 0)
   })
 
-  const isActive = useProxiedModel(props, 'active')
+  const isActive = useVModel(props, 'active')
 
   const { layoutItemStyles, layoutIsReady } = useLayoutItem({
     id: props.name,

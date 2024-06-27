@@ -1,4 +1,4 @@
-import { useToggleScope, useProxiedModel } from '@foxy/composables'
+import { useToggleScope, useVModel } from '@foxy/composables'
 
 import { FOXY_FORM_KEY } from '@foxy/consts'
 
@@ -21,7 +21,7 @@ import {
 } from 'vue'
 
 export function useValidation (props: IValidationProps, name = getCurrentInstanceName(), id: MaybeRef<string | number> = getUid(),) {
-  const model = useProxiedModel(props, 'modelValue')
+  const model = useVModel(props, 'modelValue')
   const validationModel = computed(() => {
     return props.validationValue === undefined ? model.value : props.validationValue
   })

@@ -1,4 +1,4 @@
-import { useProxiedModel } from '@foxy/composables'
+import { useVModel } from '@foxy/composables'
 import { EMPTY_EDIT, FOXY_EDIT_KEY } from '@foxy/consts'
 
 import { TEditorProvide } from '@foxy/types'
@@ -12,8 +12,8 @@ export function useCreateEditor (props: any, name = getCurrentInstanceName()) {
   const children = ref(new Map<unknown, Array<unknown>>())
   const parents = ref(new Map<unknown, unknown>())
 
-  const edit = useProxiedModel(props, 'edit', props.edit, v => new Set(v), v => [...v.values()])
-  const lock = useProxiedModel(props, 'lock', props.lock, v => new Set(v), v => [...v.values()])
+  const edit = useVModel(props, 'edit', props.edit, v => new Set(v), v => [...v.values()])
+  const lock = useVModel(props, 'lock', props.lock, v => new Set(v), v => [...v.values()])
 
   const editor: TEditorProvide = {
     id: ref(name),

@@ -35,17 +35,14 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed, shallowRef, StyleValue, toRef, watchEffect } from 'vue'
+  import { FoxyImg, FoxyTitle, FoxyToolbar } from '@foxy/components'
 
-  import { useSlots, useLayoutItem, useScroll, useSsrBoot, useToggleScope, useProxiedModel } from '@foxy/composables'
+  import { useLayoutItem, useScroll, useSlots, useSsrBoot, useToggleScope, useVModel } from '@foxy/composables'
 
   import { DENSITY, LAYOUT_POSITION } from '@foxy/enums'
 
   import { IAppBarProps } from '@foxy/interfaces'
-
-  import {} from '@foxy/composables'
-
-  import { FoxyImg, FoxyToolbar, FoxyTitle } from '@foxy/components'
+  import { computed, shallowRef, StyleValue, toRef, watchEffect } from 'vue'
 
   const props = withDefaults(defineProps<IAppBarProps>(), {
     tag: 'header',
@@ -77,7 +74,7 @@
     return !!(props.image || hasSlot('img'))
   })
 
-  const isActive = useProxiedModel(props, 'modelValue')
+  const isActive = useVModel(props, 'modelValue')
 
   // SCROLL
   const scrollBehavior = computed(() => {

@@ -15,7 +15,7 @@
 <script lang="ts" setup>
   import { FoxyFade, FoxyTransition } from '@foxy/components'
 
-  import { useDimension, useProxiedModel } from '@foxy/composables'
+  import { useDimension, useVModel } from '@foxy/composables'
 
   import { ILazyComponentProps } from '@foxy/interfaces'
 
@@ -35,7 +35,7 @@
 
   const { dimensionStyles } = useDimension(props)
 
-  const isActive = useProxiedModel(props, 'modelValue')
+  const isActive = useVModel(props, 'modelValue')
 
   const intersect = computed(() => {
     return [

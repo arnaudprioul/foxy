@@ -80,7 +80,7 @@
 <script lang="ts" setup>
   import { FoxyIcon, FoxyInput, FoxyProgress, FoxySelectionControl, FoxyTranslateScale } from '@foxy/components'
 
-  import { useFocus, useLoader, useSlots, useProxiedModel } from '@foxy/composables'
+  import { useFocus, useLoader, useSlots, useVModel } from '@foxy/composables'
 
   import { INPUT_PROPS, SELECTION_CONTROL_PROPS } from '@foxy/consts'
 
@@ -99,8 +99,8 @@
 
   const emits = defineEmits(['update:modelValue', 'update:focused', 'update:indeterminate', 'click:label'])
 
-  const indeterminate = useProxiedModel(props, 'indeterminate')
-  const model = useProxiedModel(props, 'modelValue')
+  const indeterminate = useVModel(props, 'indeterminate')
+  const model = useVModel(props, 'modelValue')
   const { isFocused, onFocus: handleFocus, onBlur: handleBlur } = useFocus(props)
   const attrs = useAttrs()
   const { hasSlot } = useSlots()

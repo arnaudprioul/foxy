@@ -121,7 +121,7 @@
 <script lang="ts" setup>
   import { FoxyCounter, FoxyField, FoxyInput } from '@foxy/components'
 
-  import { useAdjacentInner, useDragResizer, useFocus, useSlots, useProxiedModel } from '@foxy/composables'
+  import { useAdjacentInner, useDragResizer, useFocus, useSlots, useVModel } from '@foxy/composables'
 
   import { FIELD_PROPS, INPUT_PROPS } from '@foxy/consts'
 
@@ -150,7 +150,7 @@
   const attrs = useAttrs()
   const { hasSlot } = useSlots()
 
-  const model = useProxiedModel(props, 'modelValue')
+  const model = useVModel(props, 'modelValue')
   const { isFocused, onFocus, onBlur: handleBlur } = useFocus(props)
   const {
     onClickAppendInner: handleClickAppendInner,
