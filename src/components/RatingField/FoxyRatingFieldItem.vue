@@ -2,14 +2,15 @@
   <component
     :is="tag"
     :class="ratingFieldItemClasses"
-    :style="ratingFieldItemStyles"
-    @click="handleClick"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave">
+    :style="ratingFieldItemStyles">
     <label :for="id">
       <span class="foxy-rating-field-item__hidden">{{ props.label }}</span>
       <slot v-if="showStar" name="item" v-bind="{props: ratingBtnProps, value}">
-        <foxy-btn v-bind="{...ratingBtnProps}"/>
+        <foxy-btn
+          v-bind="{...ratingBtnProps}"
+          @click="handleClick"
+          @mouseenter="handleMouseEnter"
+          @mouseleave="handleMouseLeave"/>
       </slot>
     </label>
 
