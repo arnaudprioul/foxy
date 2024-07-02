@@ -4,14 +4,14 @@ import { ref, shallowRef, watch } from 'vue'
 
 export function useAudio (props: IAudioProps) {
   const analyser = ref<AnalyserNode | null>(null)
-  const audioArray = shallowRef<Uint8Array>([])
+  const audioArray = shallowRef<Uint8Array | null>(null)
   const audioRef = ref()
   const wasPlayed = ref(false)
   const isPlaying = ref(false)
 
   const getSongData = () => {
-    if (isPlaying.value) {
-      analyser.value?.getByteFrequencyData(audioArray.value)// @Todo reactivity issue
+    if (isPlaying.value && audioArray.value) {
+      analyser.value?.getByteFrequencyData(audioArray.value)
 
       requestAnimationFrame(getSongData)
     }
