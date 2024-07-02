@@ -27,7 +27,7 @@ export function getPlatform (ssr?: TSSROptions): IDisplayPlatform {
       ? window.navigator.userAgent
       : 'ssr'
 
-  function match (regexp: RegExp) {
+  const match = (regexp: RegExp) => {
     return Boolean(userAgent.match(regexp))
   }
 

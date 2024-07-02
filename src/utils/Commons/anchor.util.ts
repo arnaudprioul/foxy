@@ -1,5 +1,7 @@
 import { BLOCK_ARRAY, INLINE_ARRAY } from '@foxy/consts'
 
+import { AXIS } from '@foxy/enums'
+
 import { TAnchor, TBlock, TInline, TParsedAnchor } from '@foxy/types'
 
 export function parseAnchor (anchor: TAnchor) {
@@ -7,7 +9,7 @@ export function parseAnchor (anchor: TAnchor) {
 
   if (!align) {
     align =
-        BLOCK_ARRAY.includes(side as TBlock)? 'start'
+        BLOCK_ARRAY.includes(side as TBlock) ? 'start'
             : INLINE_ARRAY.includes(side as TInline) ? 'top'
                 : 'center'
   }
@@ -49,5 +51,5 @@ export function flipCorner (anchor: TParsedAnchor) {
 }
 
 export function getAxis (anchor: TParsedAnchor) {
-  return BLOCK_ARRAY.includes(anchor.side as TBlock) ? 'y' : 'x'
+  return BLOCK_ARRAY.includes(anchor.side as TBlock) ? AXIS.Y : AXIS.X
 }

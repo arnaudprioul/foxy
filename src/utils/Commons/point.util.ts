@@ -62,3 +62,20 @@ export function anchorToPoint (anchor: TParsedAnchor, box: IBox): TViewportPoint
     y: box.height / 2,
   } as TElementPoint, box)
 }
+
+export function inViewport (element: IBox | DOMRect) {
+  const isInViewport = element.bottom >= 0
+      && element.right >= 0
+      && element.top
+      <= (window.innerHeight || document.documentElement.clientHeight)
+      && element.left <= (window.innerWidth || document.documentElement.clientWidth)
+
+  return isInViewport
+}
+
+export function getCenter (element: IBox | DOMRect): TPoint {
+  return {
+    x: element ? element.width / 2 : 0,
+    y: element ? element.height / 2 : 0,
+  }
+}

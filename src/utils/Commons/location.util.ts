@@ -1,6 +1,9 @@
+import { AXIS } from '@foxy/enums'
+
 import { IBox, ILocationStrategyData, ILocationStrategyProps } from '@foxy/interfaces'
 
 import { Box } from '@foxy/services'
+
 import { TAnchor } from '@foxy/types'
 
 import {
@@ -220,15 +223,15 @@ export function connectedLocationStrategy (data: ILocationStrategyData, props: I
         const hasOverflowY = overflows.y.before || overflows.y.after
 
         let reset = false
-        ;['x', 'y'].forEach(key => {
+        ;[AXIS.X, AXIS.Y].forEach(key => {
         if (
-            (key === 'x' && hasOverflowX && !flipped.x) ||
-            (key === 'y' && hasOverflowY && !flipped.y)
+            (key === AXIS.X && hasOverflowX && !flipped.x) ||
+            (key === AXIS.Y && hasOverflowY && !flipped.y)
         ) {
           const newPlacement = { anchor: { ...placement.anchor }, origin: { ...placement.origin } }
-          const flip = key === 'x'
-              ? axis === 'y' ? flipAlign : flipSide
-              : axis === 'y' ? flipSide : flipAlign
+          const flip = key === AXIS.X
+              ? axis === AXIS.Y ? flipAlign : flipSide
+              : axis === AXIS.Y ? flipSide : flipAlign
           newPlacement.anchor = flip(newPlacement.anchor)
           newPlacement.origin = flip(newPlacement.origin)
           const { overflows: newOverflows } = checkOverflow(newPlacement)
@@ -287,7 +290,7 @@ export function connectedLocationStrategy (data: ILocationStrategyData, props: I
       top: convertToUnit(pixelRound(y)),
       left: convertToUnit(pixelRound(x)),
       right: undefined,
-      minWidth: convertToUnit(axis === 'y' ? Math.min(minWidth.value, targetBox.width) : minWidth.value),
+      minWidth: convertToUnit(axis === AXIS.Y ? Math.min(minWidth.value, targetBox.width) : minWidth.value),
       maxWidth: convertToUnit(pixelCeil(clamp(available.x, minWidth.value === Infinity ? 0 : minWidth.value, maxWidth.value))),
       maxHeight: convertToUnit(pixelCeil(clamp(available.y, minHeight.value === Infinity ? 0 : minHeight.value, maxHeight.value))),
     })

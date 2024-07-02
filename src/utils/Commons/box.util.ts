@@ -14,7 +14,7 @@ export function getOverflow (a: IBox, b: IBox) {
   }
 }
 
-export function getTargetBox (target: HTMLElement | [x: number, y: number]) {
+export function getTargetBox (target: HTMLElement | [x: number, y: number]): IBox | DOMRect {
   if (Array.isArray(target)) {
     return new Box({
       x: target[0],

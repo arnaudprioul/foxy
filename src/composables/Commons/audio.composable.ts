@@ -1,0 +1,58 @@
+import { IAudioProps } from '@foxy/interfaces'
+
+import { ref, shallowRef, watch } from 'vue'
+
+export function useAudio (props: IAudioProps) {
+  const analyser = ref<AnalyserNode | null>(null)
+  const audioArray = shallowRef<Uint8Array>([])
+  const audioRef = ref()
+  const wasPlayed = ref(false)
+  const isPlaying = ref(false)
+
+  const getSongData = () => {
+    if (isPlaying.value) {
+      analyser.value?.getByteFrequencyData(audioArray.value)// @Todo reactivity issue
+
+      requestAnimationFrame(getSongData)
+    }
+  }
+  const onPlay = () => {
+    if (!wasPlayed.value) {
+      onAudio()
+      wasPlayed.value = true
+    }
+    isPlaying.value = true
+    audioRef.value.play()
+    getSongData()
+  }
+  const onStop = () => {
+    isPlaying.value = false
+    audioRef.value.pause()
+  }
+  const onAudio = () => {
+    const context = new AudioContext()
+    const src = context.createMediaElementSource(audioRef.value)
+    const analyserNode = context.createAnalyser()
+
+    src.connect(analyserNode)
+    analyserNode.connect(context.destination)
+    analyserNode.fftSize = 256
+
+    audioArray.value = new Uint8Array(analyserNode.frequencyBinCount)
+    analyser.value = analyserNode
+  }
+
+  watch(() => props.audio, () => {
+    wasPlayed.value = false
+    isPlaying.value = false
+  })
+  watch(() => props.playAudio, (play) => {
+    if (play) {
+      onPlay()
+    } else {
+      onStop()
+    }
+  })
+
+  return { audioData: audioArray, analyser, audioRef, wasPlayed, isPlaying, onPlay, onStop }
+}

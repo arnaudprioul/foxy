@@ -1,10 +1,10 @@
 <template>
   <component
-      :is="tag"
-      ref="rootRef"
-      v-touch="touchOptions"
-      :class="windowClasses"
-      :style="windowStyles">
+    :is="tag"
+    ref="rootRef"
+    v-touch="touchOptions"
+    :class="windowClasses"
+    :style="windowStyles">
     <div :style="windowContainerStyles" class="foxy-window__container">
       <slot name="default" v-bind="group"/>
 
@@ -28,10 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-  import {
-    FoxyBtn,
-    FoxySpacer
-  } from '@foxy/components'
+  import { FoxyBtn, FoxySpacer } from '@foxy/components'
 
   import { useGroup } from '@foxy/composables'
 
@@ -39,7 +36,7 @@
 
   import { vTouch } from '@foxy/directives'
 
-  import { DIRECTION } from '@foxy/enums'
+  import { AXIS, DIRECTION } from '@foxy/enums'
 
   import { ITouchHandlers, IWindowProps } from '@foxy/interfaces'
 
@@ -62,7 +59,7 @@
   const rootRef = ref()
   const isReversed = shallowRef(false)
   const transition = computed(() => {
-    const axis = props.direction === DIRECTION.VERTICAL ? 'y' : 'x'
+    const axis = props.direction === DIRECTION.VERTICAL ? AXIS.Y : AXIS.X
     const reverse = props.reverse ? !isReversed.value : isReversed.value
     const direction = reverse ? '-reverse' : ''
 
@@ -123,7 +120,7 @@
   }
 
   const next = () => {
-    if(canMoveForward.value) {
+    if (canMoveForward.value) {
       isReversed.value = false
       group.next()
     }
