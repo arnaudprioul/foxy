@@ -10,7 +10,7 @@ export interface ILayoutProvide {
       options: {
         id: string
         order: Ref<number>
-        position: Ref<TLayoutPosition>
+        position: Ref<Record<string, TLayoutPosition>>
         layoutSize: Ref<number | string>
         elementSize: Ref<number | string | undefined>
         active: Ref<boolean>
@@ -25,7 +25,7 @@ export interface ILayoutProvide {
   unregister: (id: string) => void
   mainRect: Ref<ILayer>
   mainStyles: Ref<CSSProperties>
-  getLayoutItem: (id: string) => ILayerItem  | undefined
+  getLayoutItem: (id: string) => ILayerItem | undefined
   items: Ref<Array<ILayerItem>>
   layoutRect: Ref<DOMRectReadOnly | undefined>
   rootZIndex: Ref<number>
@@ -38,10 +38,10 @@ export interface ILayer {
   right: number
 }
 
-export interface ILayerItem  extends ILayer {
+export interface ILayerItem extends ILayer {
   id: string
   size: number
-  position: TLayoutPosition
+  position: Record<string, TLayoutPosition>
 }
 
 export interface ILayoutProps extends ICommonsComponentProps {
@@ -53,5 +53,5 @@ export interface ILayoutItemProps extends ICommonsComponentProps {
   name?: string
   order: string | number
   absolute?: boolean
-  location?: TLayoutPosition
+  location?: Record<string, TLayoutPosition>
 }

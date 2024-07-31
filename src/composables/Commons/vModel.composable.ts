@@ -1,8 +1,9 @@
 import { useToggleScope } from '@foxy/composables'
 
-import { TEventProp, TInnerVal } from '@foxy/types'
+import { TEventProp, TInnerVal, TVModel } from '@foxy/types'
 
 import { getCurrentInstance, toKebabCase } from '@foxy/utils'
+
 import { computed, ref, Ref, toRaw, watch } from 'vue'
 
 export function useVModel<
@@ -15,7 +16,7 @@ export function useVModel<
     defaultValue?: Props[Prop],
     transformIn: (value?: Props[Prop]) => Inner = (v: any) => v,
     transformOut: (value: Inner) => Props[Prop] = (v: any) => v,
-) {
+): TVModel<Props, Prop, Inner> {
   const vm = getCurrentInstance('useVModel')
   const internal = ref(props[prop] !== undefined ? props[prop] : defaultValue) as Ref<Props[Prop]>
   const kebabProp = toKebabCase(prop)

@@ -1,12 +1,12 @@
 import { TListItemType } from '@foxy/types'
 
 export interface IListItemChildren {
-  items: Readonly<Array<IInternalListItemChildren>>
+  items: Array<IInternalListItemChildren>
   returnObject?: boolean
 }
 
 export interface IInternalListItemChildren<T = any> extends IInternalListItem<T> {
-  type?: TListItemType
+  type?: Record<string, TListItemType>
 }
 
 export interface IInternalListItem<T = any> extends IInternalItem<T> {

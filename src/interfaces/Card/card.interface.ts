@@ -26,5 +26,5 @@ export interface ICardProps extends ICommonsComponentProps, ITagProps, IBorderPr
   subtitle?: string | number
   text?: string | number
   title?: string | number
-  type?: TCardType
+  type?: Record<string, TCardType>
 }

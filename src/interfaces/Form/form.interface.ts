@@ -1,5 +1,5 @@
 import { ICommonsComponentProps } from '@foxy/interfaces'
-import { TEventProp, TValidateOn } from '@foxy/types'
+import { TValidateOn } from '@foxy/types'
 
 import { ComponentInternalInstance, ComputedRef, Raw, Ref } from 'vue'
 
@@ -18,7 +18,7 @@ export interface IFormProvide {
   isReadonly: ComputedRef<boolean>
   isValidating?: Ref<boolean>
   isValid: Ref<boolean | null | undefined>
-  validateOn: Ref<TValidateOn | undefined>
+  validateOn: Ref<Record<string, TValidateOn> | undefined>
 }
 
 export interface IFormProps extends ICommonsComponentProps {
@@ -26,8 +26,7 @@ export interface IFormProps extends ICommonsComponentProps {
   fastFail?: boolean
   readonly?: boolean
   modelValue?: boolean | null
-  'onUpdate:modelValue'?: TEventProp<[boolean | null]> | undefined
-  validateOn?: TValidateOn
+  validateOn?: Record<string, TValidateOn>
 }
 
 export interface IFormField {

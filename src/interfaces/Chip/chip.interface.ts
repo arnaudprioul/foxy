@@ -6,9 +6,10 @@ import {
   IRippleProps, IRoundedProps, ISizeProps,
   ITagProps
 } from '@foxy/interfaces'
-import { TEventProp, TIcon } from '@foxy/types'
 
-export interface IChipProps extends ICommonsComponentProps, IAdjacentProps, ITagProps, IColorProps, IRippleProps, IBorderProps, IRoundedProps, IPaddingProps, IMarginProps, IDensityProps, IGroupItemProps, ILinkProps, ISizeProps, IElevationProps{
+import { TIcon } from '@foxy/types'
+
+export interface IChipProps extends ICommonsComponentProps, IAdjacentProps, ITagProps, IColorProps, IRippleProps, IBorderProps, IRoundedProps, IPaddingProps, IMarginProps, IDensityProps, IGroupItemProps, ILinkProps, ISizeProps, IElevationProps {
   activeClass?: string
   closable?: boolean
   closeIcon?: TIcon
@@ -21,7 +22,4 @@ export interface IChipProps extends ICommonsComponentProps, IAdjacentProps, ITag
   pill?: boolean
   text?: string
   modelValue?: boolean
-
-  onClick?: TEventProp
-  onClickOnce?: TEventProp
 }

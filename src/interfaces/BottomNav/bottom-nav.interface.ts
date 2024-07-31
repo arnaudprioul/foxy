@@ -17,6 +17,6 @@ import { TMode } from '@foxy/types'
 
 export interface IBottomNavProps extends ITagProps, ICommonsComponentProps, IColorProps, IPaddingProps, IBorderProps, IElevationProps, IMarginProps, IDimensionProps, IDensityProps, IRoundedProps, ILayoutItemProps, IGroupProps {
   grow?: boolean
-  mode?: TMode
+  mode?: Record<string, TMode>
   active?: boolean
 }

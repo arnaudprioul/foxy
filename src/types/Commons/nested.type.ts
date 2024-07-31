@@ -2,7 +2,7 @@ import { OPEN_STRATEGY, SELECT_STRATEGY, SELECTED } from '@foxy/enums'
 
 import { Ref } from 'vue'
 
-export type TSelectStrategy = `${SELECT_STRATEGY}` | TSelectStrategyFn
+export type TSelectStrategy = `${SELECT_STRATEGY}`
 
 export type TSelectStrategyFn = (data: {
   id: unknown
@@ -13,7 +13,7 @@ export type TSelectStrategyFn = (data: {
   event?: Event
 }) => Map<unknown, `${SELECTED}`>
 
-export type TOpenStrategy = `${OPEN_STRATEGY}` | TOpenStrategyFns
+export type TOpenStrategy = `${OPEN_STRATEGY}`
 
 export type TOpenStrategyFns = {
   open: TOpenStrategyFn

@@ -12,15 +12,15 @@ import {
 import { TAnchor, TAxis, TParallaxElementType, TParallaxEvent, TPoint } from '@foxy/types'
 
 export interface IParallaxElementTypeProps {
-  type?: TParallaxElementType
+  type?: Record<string, TParallaxElementType>
 }
 
 export interface IParallaxElementProps extends ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IParallaxElementTypeProps {
-  transformOrigin?: TAnchor
+  transformOrigin?: Record<string, TAnchor>
   originX?: number
   originY?: number
   strength?: number
-  axis?: TAxis
+  axis?: Record<string, TAxis>
   maxX?: number
   maxY?: number
   minX?: number
@@ -36,7 +36,7 @@ export interface IParallaxElementMovement {
   originX?: number,
   originY?: number,
   strength: number,
-  event: TParallaxEvent,
+  event: Record<string, TParallaxEvent>,
   minX?: number,
   minY?: number,
   maxX?: number,
@@ -46,7 +46,7 @@ export interface IParallaxElementMovement {
 export interface IParallaxElementCicle {
   referencePosition: TPoint,
   shape: IBox,
-  event: TParallaxEvent,
+  event: Record<string, TParallaxEvent>,
   cycles: number,
   strength: number,
 }

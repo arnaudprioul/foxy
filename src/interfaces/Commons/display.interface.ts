@@ -3,11 +3,11 @@ import { TBreakpoint, TDisplayThresholds } from '@foxy/types'
 import { Ref } from 'vue'
 
 export interface IDisplayProps {
-  mobileBreakpoint?: number | TBreakpoint
+  mobileBreakpoint?: number | Record<string, TBreakpoint>
 }
 
 export interface IDisplayOptions {
-  mobileBreakpoint?: number | TBreakpoint
+  mobileBreakpoint?: number | Record<string, TBreakpoint>
   thresholds?: Partial<TDisplayThresholds>
 }
 
@@ -42,11 +42,11 @@ export interface IDisplayInstance {
   mdAndDown: Ref<boolean>
   lgAndDown: Ref<boolean>
   xlAndDown: Ref<boolean>
-  name: Ref<TBreakpoint>
+  name: Ref<Record<string, TBreakpoint>>
   height: Ref<number>
   width: Ref<number>
   mobile: Ref<boolean>
-  mobileBreakpoint: Ref<number | TBreakpoint>
+  mobileBreakpoint: Ref<number | Record<string, TBreakpoint>>
   platform: Ref<IDisplayPlatform>
   thresholds: Ref<TDisplayThresholds>
 
@@ -57,6 +57,6 @@ export interface IDisplayInstance {
 }
 
 export interface IInternalDisplayOptions {
-  mobileBreakpoint: number | TBreakpoint
+  mobileBreakpoint: number | Record<string, TBreakpoint>
   thresholds: TDisplayThresholds
 }

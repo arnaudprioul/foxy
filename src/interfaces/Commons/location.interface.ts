@@ -6,13 +6,13 @@ import { TLocationStrategyFn } from '@foxy/types'
 import { Ref } from 'vue'
 
 export interface ILocationProps {
-  location?: TAnchor | undefined
+  location?: Record<string, TAnchor>
 }
 
-export interface ILocationStrategyProps extends IDimensionProps{
-  locationStrategy?: TLocationStrategy | TLocationStrategyFn
-  location?: TAnchor
-  origin?: TAnchor | 'auto' | 'overlap'
+export interface ILocationStrategyProps extends IDimensionProps {
+  locationStrategy?: Record<string, TLocationStrategy> | TLocationStrategyFn
+  location?: Record<string, TAnchor>
+  origin?: Record<string, TAnchor | 'auto' | 'overlap'>
   offset?: number | string | Array<number>
 }
 

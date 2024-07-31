@@ -17,8 +17,8 @@ export interface IImgProps extends IColorProps, IResponsiveProps, ITransitionCom
   options?: IIntersectionObserverInit
   sizes?: string
   src?: string | ISrcObject
-  crossorigin?: TCrossOrigin,
-  referrerpolicy?: TReferrerPolicy
+  crossorigin?: Record<string, TCrossOrigin>,
+  referrerpolicy?: Record<string, TReferrerPolicy>
   srcset?: string
   position?: string
 }

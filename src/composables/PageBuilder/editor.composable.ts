@@ -7,7 +7,7 @@ import { getCurrentInstanceName, getUid } from '@foxy/utils'
 
 import { computed, inject, provide, ref } from 'vue'
 
-export function useCreateEditor (props: any, name = getCurrentInstanceName()) {
+export function createEditor (props: any, name = getCurrentInstanceName()) {
 
   const children = ref(new Map<unknown, Array<unknown>>())
   const parents = ref(new Map<unknown, unknown>())

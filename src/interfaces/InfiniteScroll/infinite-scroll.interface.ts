@@ -3,15 +3,15 @@ import { IColorProps, ICommonsComponentProps, IDimensionProps, IDirectionProps, 
 import { TInfiniteScrollMode, TInfiniteScrollSide } from '@foxy/types'
 
 export interface IInfiniteScrollProps extends ICommonsComponentProps, IColorProps, IDimensionProps, ITagProps, IDirectionProps {
-  side?: TInfiniteScrollSide
-  mode?: TInfiniteScrollMode
+  side?: Record<string, TInfiniteScrollSide>
+  mode?: Record<string, TInfiniteScrollMode>
   loadMoreText?: string
   emptyText?: string
   margin?: string
 }
 
 export interface IInfiniteScrollIntersectProps extends ICommonsComponentProps {
-  side?: TInfiniteScrollSide
+  side?: Record<string, TInfiniteScrollSide>
   rootRef: HTMLElement
   margin?: string
 }

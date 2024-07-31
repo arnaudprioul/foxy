@@ -498,3 +498,7 @@ export function addWindowListener (event: string, listener: EventListenerOrEvent
     onUnmountedCleanupFns.splice(onUnmountedCleanupFns.indexOf(removeListener), 1)
   }
 }
+
+export function isEmpty (val: any): boolean {
+  return val === null || val === undefined || (typeof val === 'string' && val.trim() === '')
+}

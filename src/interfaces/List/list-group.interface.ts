@@ -8,7 +8,7 @@ import {
   IRoundedProps, IAdjacentProps
 } from '@foxy/interfaces'
 
-import { TEventProp, TIcon } from '@foxy/types'
+import { TIcon } from '@foxy/types'
 
 export interface IListGroupProps extends ITagProps, ICommonsComponentProps, IColorProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IAdjacentProps {
   collapseIcon?: TIcon
@@ -19,6 +19,5 @@ export interface IListGroupProps extends ITagProps, ICommonsComponentProps, ICol
 }
 
 export interface IListActivatorProps extends ICommonsComponentProps, ITagProps {
-  onClick?: TEventProp | undefined
-  'onClick:once'?: TEventProp | undefined
+
 }

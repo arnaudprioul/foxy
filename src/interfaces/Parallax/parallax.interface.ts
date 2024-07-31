@@ -19,7 +19,7 @@ export interface IParallaxProps extends ICommonsComponentProps, ITagProps, IPadd
   animationDuration?: number
   easing?: string
   perspective?: number
-  event?: TParallaxEvent
+  event?: Record<string, TParallaxEvent>
   active?: boolean
   duration?: number
 }
@@ -29,7 +29,7 @@ export interface IParallaxProvide {
   eventData: Ref<TPoint>
   movement: Ref<{ x: number, y: number, target?: IBox | DOMRect }>
   isMoving: Ref<boolean>
-  event: Ref<TParallaxEvent>
+  event: Ref<Record<string, TParallaxEvent>>
   duration: Ref<number>
   easing: Ref<string>
   shape: Ref<IBox | null>

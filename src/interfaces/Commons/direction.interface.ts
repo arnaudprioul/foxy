@@ -1,5 +1,5 @@
 import { TDirection } from '@foxy/types'
 
 export interface IDirectionProps {
-  direction?: TDirection
+  direction?: Record<string, TDirection>
 }

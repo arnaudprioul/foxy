@@ -3,7 +3,7 @@ import { Ref } from 'vue'
 import { TScrollBehavior, TScrollStrategy, TScrollStrategyFn } from '@foxy/types'
 
 export interface IScrollProps {
-  scrollBehavior?: TScrollBehavior
+  scrollBehavior?: Record<string, TScrollBehavior>
   scrollTarget?: string
   scrollThreshold?: string | number
 }
@@ -13,7 +13,7 @@ export interface IScrollArguments {
 }
 
 export interface IScrollStrategyProps {
-  scrollStrategy?: TScrollStrategy | TScrollStrategyFn
+  scrollStrategy?: Record<string, TScrollStrategy> | TScrollStrategyFn
   contained?: boolean
 }
 

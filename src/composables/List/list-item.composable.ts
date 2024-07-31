@@ -1,13 +1,12 @@
-import { computed } from 'vue'
-
 import { IItemProps } from '@foxy/interfaces'
 
-import { transformItems } from '@foxy/utils'
+import { transformListItems } from '@foxy/utils'
+import { computed } from 'vue'
 
 export function useListItems (props: IItemProps & { itemType: string }) {
   const items = computed(() => {
     if (props.items) {
-      return transformItems(props, props.items)
+      return transformListItems(props, props.items)
     }
 
     return

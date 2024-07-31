@@ -1,4 +1,5 @@
 import { IWindowProvide } from '@foxy/interfaces'
+
 import { TTransitionMode, TTransitionProps } from '@foxy/types'
 
 export interface ITransitionComponentProps {
@@ -7,7 +8,7 @@ export interface ITransitionComponentProps {
 }
 
 export interface ITransitionProps {
-  mode?: TTransitionMode
+  mode?: Record<string, TTransitionMode>
   disabled?: boolean
   name?: string
   group?: boolean

@@ -21,9 +21,11 @@ export function useSelectionControl (props: ISelectionControlProps) {
   const falseValue = computed(() => {
     return props.falseValue !== undefined ? props.falseValue : false
   })
-
   const isMultiple = computed(() => {
     return !!props.multiple || (props.multiple == null && Array.isArray(modelValue.value))
+  })
+  const valueComparator = computed(() => {
+    return props.valueComparator ?? deepEqual
   })
 
   const model = computed({
@@ -31,8 +33,8 @@ export function useSelectionControl (props: ISelectionControlProps) {
       const val = group ? group.modelValue.value : modelValue.value
 
       return isMultiple.value
-          ? wrapInArray(val).some((v: any) => props.valueComparator ? props.valueComparator(v, trueValue.value) : deepEqual(v, trueValue.value))
-          : props.valueComparator ? props.valueComparator(val, trueValue.value) : deepEqual(val, trueValue.value)
+          ? wrapInArray(val).some((v: any) => valueComparator.value(v, trueValue.value))
+          : valueComparator.value(val, trueValue.value)
     },
     set (val: boolean) {
       if (props.readonly) return
@@ -44,7 +46,7 @@ export function useSelectionControl (props: ISelectionControlProps) {
       if (isMultiple.value) {
         newVal = val
             ? [...wrapInArray(modelValue.value), currentValue]
-            : wrapInArray(modelValue.value).filter((item: any) => props.valueComparator ? !props.valueComparator(item, trueValue.value) : !deepEqual(item, trueValue.value))
+            : wrapInArray(modelValue.value).filter((item: any) => !valueComparator.value(item, trueValue.value))
       }
 
       if (group) {

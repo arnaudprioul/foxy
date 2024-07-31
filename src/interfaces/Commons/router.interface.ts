@@ -1,8 +1,6 @@
 import { ComputedRef, Ref } from 'vue'
 import { RouteLocationRaw, useLink as _useLink } from 'vue-router'
 
-import { TEventProp } from '@foxy/types'
-
 export interface ILinkProps {
   href?: string
   replace?: boolean
@@ -11,8 +9,7 @@ export interface ILinkProps {
 }
 
 export interface ILinkListenersProps {
-  onClick?: TEventProp | undefined
-  onClickOnce?: TEventProp | undefined
+
 }
 
 export interface ILink extends Omit<Partial<ReturnType<typeof _useLink>>, 'href'> {

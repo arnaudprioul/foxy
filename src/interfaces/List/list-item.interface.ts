@@ -20,7 +20,7 @@ export interface IListItemProps extends IBorderProps, ICommonsComponentProps, ID
   active?: boolean
   activeClass?: string
   disabled?: boolean
-  lines?: TLines
+  lines?: Record<string, TLines>
   link?: boolean
   nav?: boolean
   slim?: boolean

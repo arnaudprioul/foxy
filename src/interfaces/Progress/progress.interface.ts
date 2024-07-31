@@ -11,10 +11,10 @@ import {
 import { TProgressType } from '@foxy/types'
 
 export interface IProgressProps extends IProgressLinearProps, IProgressCircularProps {
-  type?: TProgressType
+  type?: Record<string, TProgressType>
 }
 
-export interface IProgressTypeProps extends ITagProps, ICommonsComponentProps, IColorProps, IPaddingProps, IMarginProps{
+export interface IProgressTypeProps extends ITagProps, ICommonsComponentProps, IColorProps, IPaddingProps, IMarginProps {
   indeterminate?: boolean
   modelValue?: string | number
   thickness?: string | number

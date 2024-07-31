@@ -1,13 +1,13 @@
 import { IItemProps, IListItem } from '@foxy/interfaces'
 
-import { deepEqual, transformItem, transformItems } from '@foxy/utils'
+import { deepEqual, transformListItem, transformListItems } from '@foxy/utils'
 
 import { computed } from 'vue'
 
 export function useItems (props: IItemProps) {
   const items = computed(() => {
     if (props.items) {
-      return transformItems(props, props.items)
+      return transformListItems(props, props.items)
     }
 
     return []
@@ -16,6 +16,9 @@ export function useItems (props: IItemProps) {
     return items.value.some((item) => {
       return item.value === null
     })
+  })
+  const valueComparator = computed(() => {
+    return props.valueComparator ?? deepEqual
   })
 
   const transformIn = (value: any[]): IListItem[] => {
@@ -29,12 +32,12 @@ export function useItems (props: IItemProps) {
       if (props.returnObject && typeof v === 'string') {
         // String model value means value is a custom input value from combobox
         // Don't look up existing items if the model value is a string
-        return transformItem(props, v)
+        return transformListItem(props, v)
       }
 
       return items.value.find((item) => {
-        return props.valueComparator ? props.valueComparator(v, item.value) : deepEqual(v, item.value)
-      }) || transformItem(props, v)
+        return valueComparator.value(v, item.value)
+      }) || transformListItem(props, v)
     }) as IListItem[]
   }
 

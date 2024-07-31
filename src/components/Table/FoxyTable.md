@@ -1,0 +1,4 @@
+# Foxytable
+
+## Usage
+    <FoxyTable />
