@@ -1,0 +1,4 @@
+# Foxydatatablecolumn
+
+## Usage
+    <FoxyDataTableColumn />

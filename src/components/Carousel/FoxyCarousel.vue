@@ -13,8 +13,10 @@
       <slot name="additional" v-bind="group">
         <div v-if="!hideDelimiters" :style="carouselControlsStyles" class="foxy-carousel__controls">
           <template v-for="(item, index) in group.items.value" :key="index">
-            <slot name="item" v-bind="{props: controlProps(item, index, group), item, index}">
-              <foxy-btn v-bind="controlProps(item, index, group)"/>
+            <slot :name="`item.${index}`" v-bind="{props: controlProps(item, index, group), item}">
+              <slot name="item" v-bind="{props: controlProps(item, index, group), item, index}">
+                <foxy-btn v-bind="controlProps(item, index, group)"/>
+              </slot>
             </slot>
           </template>
         </div>

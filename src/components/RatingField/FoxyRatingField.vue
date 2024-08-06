@@ -29,8 +29,8 @@
           v-for="(range, index) in ranges"
           :key="index">
           <div class="foxy-rating-field__wrapper">
-            <template v-if="hasLabels && labelOnTop">
-              <slot :name="`itemLabel${index}`">
+            <template v-if="hasLabels && labelOnTop && hasSlot(`itemLabel.${index}`)">
+              <slot :name="`itemLabel.${index}`">
                 <slot name="itemLabel">
                   <span>{{ itemLabels[index] ?? '&nbsp;' }}</span>
                 </slot>
@@ -57,8 +57,8 @@
                   v-bind="{...itemState[index], ...eventState[index + 1]}"/>
               </template>
             </div>
-            <template v-if="hasLabels && labelOnBottom">
-              <slot :name="`itemLabel${index}`">
+            <template v-if="hasLabels && labelOnBottom && hasSlot(`itemLabel.${index}`)">
+              <slot :name="`itemLabel.${index}`">
                 <slot name="itemLabel">
                   <span>{{ itemLabels[index] ?? '&nbsp;' }}</span>
                 </slot>

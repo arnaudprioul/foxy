@@ -14,7 +14,17 @@
         <template v-if="!props.hideDefaultHeader">
           <thead key="thead">
           <foxy-data-table-headers v-bind="dataTableHeadersProps">
-            <!-- TODO SLOT HEADER-->
+            <template v-if="hasSlot('header')" #default="headerProps">
+              <slot name="header" v-bind="headerProps"/>
+            </template>
+
+            <template v-if="hasSlot('header.mobile')" #mobile="headerProps">
+              <slot name="header.mobile" v-bind="headerProps"/>
+            </template>
+
+            <template v-if="hasSlot('header.loader')" #loader="headerLoaderProps">
+              <slot name="header.loader" v-bind="headerLoaderProps"/>
+            </template>
           </foxy-data-table-headers>
           </thead>
         </template>
@@ -52,7 +62,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { FoxyDivider, FoxyTable } from '@foxy/components'
+  import { FoxyDataTableHeaders, FoxyDivider, FoxyTable } from '@foxy/components'
 
   import {
     createGroupBy,

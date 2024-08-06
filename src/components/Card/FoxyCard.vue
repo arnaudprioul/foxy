@@ -41,24 +41,24 @@
             class="foxy-card__header"
             @click:prepend="handleClickPrepend"
             @click:append="handleClickAppend">
-            <template v-if="hasSlot('headerAppend')" #append>
-              <slot name="headerAppend"/>
+            <template v-if="hasSlot('header.append')" #append>
+              <slot name="header.append"/>
             </template>
 
-            <template v-if="hasSlot('headerPrepend')" #prepend>
-              <slot name="headerPrepend"/>
+            <template v-if="hasSlot('header.prepend')" #prepend>
+              <slot name="header.prepend"/>
             </template>
 
-            <template v-if="hasSlot('headerTitle')" #title>
-              <slot name="headerTitle"/>
+            <template v-if="hasSlot('header.title')" #title>
+              <slot name="header.title"/>
             </template>
 
-            <template v-if="hasSlot('headerSubtitle')" #subtitle>
-              <slot name="headerSubtitle"/>
+            <template v-if="hasSlot('header.subtitle')" #subtitle>
+              <slot name="header.subtitle"/>
             </template>
 
-            <template v-if="hasSlot('headerContent')" #default>
-              <slot name="headerContent"/>
+            <template v-if="hasSlot('header.content')" #default>
+              <slot name="header.content"/>
             </template>
           </foxy-card-header>
         </slot>

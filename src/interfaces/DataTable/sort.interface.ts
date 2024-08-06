@@ -1,5 +1,5 @@
 import { IInternalDataTableHeader } from '@foxy/interfaces'
-import { TDataTableCompareFunction } from '@foxy/types'
+import { TDataTableCompareFunction, TSortDirection } from '@foxy/types'
 import { Ref } from 'vue'
 
 export interface IDataTableSortProps {
@@ -11,7 +11,7 @@ export interface IDataTableSortProps {
 
 export interface IDataTableSortItem {
   key: string,
-  order?: boolean | 'asc' | 'desc'
+  order?: boolean | TSortDirection
 }
 
 export interface IDataTableProvideSort {

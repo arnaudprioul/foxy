@@ -18,10 +18,10 @@
           :class="sliderFieldTickClasses"
           :style="sliderFieldTickStyles">
           <div
-            v-if="tick.label || hasSlot('item') || hasSlot(`item-${index}`)"
+            v-if="tick.label || hasSlot('item') || hasSlot(`item.${index}`)"
             class="foxy-slider-field-track__tick-label">
             <slot name="item" v-bind="{ tick, index }">
-              <slot :name="`item${index}`" v-bind="{ tick, index }">
+              <slot :name="`item.${index}`" v-bind="{ tick, index }">
                 {{ tick.label }}
               </slot>
             </slot>

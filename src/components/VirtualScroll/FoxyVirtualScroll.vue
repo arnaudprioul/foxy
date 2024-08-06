@@ -4,10 +4,14 @@
       <div ref="markerRef" :style="{ 'padding-top': convertToUnit(paddingTop) }" class="foxy-virtual-scroll__spacer"/>
 
       <template v-for="(item, index) in computedItems" :key="index">
-        <foxy-virtual-scroll-item :renderless="renderless" class="foxy-virtual-scroll__item"
-                                  @update:height="handleItemResize(index, $event)">
+        <foxy-virtual-scroll-item
+          :renderless="renderless"
+          class="foxy-virtual-scroll__item"
+          @update:height="handleItemResize(index, $event)">
           <template #renderless="{itemRef}">
-            <slot name="renderlessItem" v-bind="{ item: item.raw, index: item.index, itemRef }"/>
+            <slot :name="`item.renderless.${item.index}`" v-bind="{ item: item.raw, itemRef }">
+              <slot name="item.renderless" v-bind="{ item: item.raw, index: item.index, itemRef }"/>
+            </slot>
           </template>
         </foxy-virtual-scroll-item>
       </template>
@@ -16,23 +20,25 @@
     </template>
     <template v-else>
       <div
-          ref="containerRef"
-          :class="virtualScrollClasses"
-          :style="virtualScrollStyles"
-          @scrollend="handleScrollend"
-          @scroll-passive="handleScroll">
+        ref="containerRef"
+        :class="virtualScrollClasses"
+        :style="virtualScrollStyles"
+        @scrollend="handleScrollend"
+        @scroll-passive="handleScroll">
         <div
-            ref="markerRef"
-            :style="{
+          ref="markerRef"
+          :style="{
               'padding-top': convertToUnit(paddingTop),
               'padding-bottom': convertToUnit(paddingBottom),
             }"
-            class="foxy-virtual-scroll__container">
+          class="foxy-virtual-scroll__container">
           <template v-for="(item, index) in computedItems" :key="index">
             <foxy-virtual-scroll-item :renderless="renderless" class="foxy-virtual-scroll__item"
                                       @update:height="handleItemResize(index, $event)">
               <template #default>
-                <slot name="item" v-bind="{ item: item.raw, index: item.index }"/>
+                <slot :name="`item.${item.index}`" v-bind="{ item: item.raw }">
+                  <slot name="item" v-bind="{ item: item.raw, index: item.index }"/>
+                </slot>
               </template>
             </foxy-virtual-scroll-item>
           </template>

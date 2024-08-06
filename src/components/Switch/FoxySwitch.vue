@@ -25,12 +25,12 @@
             :style="[backgroundColorStyles, textColorStyles]"
             class="foxy-switch__track"
             @click="handleTrackClick">
-            <div v-if="hasSlot('trackTrue')" key="prepend" class="foxy-switch__track-true">
-              <slot name="trackTrue" v-bind="{model, isValid}"/>
+            <div v-if="hasSlot('track.true')" key="prepend" class="foxy-switch__track-true">
+              <slot name="track.true" v-bind="{model, isValid}"/>
             </div>
 
-            <div v-if="hasSlot('trackFalse')" key="append" class="foxy-switch__track-false">
-              <slot name="trackFalse" v-bind="{model, isValid}"/>
+            <div v-if="hasSlot('track.false')" key="append" class="foxy-switch__track-false">
+              <slot name="track.false" v-bind="{model, isValid}"/>
             </div>
           </div>
         </template>

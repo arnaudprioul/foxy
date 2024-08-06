@@ -52,8 +52,8 @@
               @blur="handleBlur"
               @focus="handleFocus"
               @update:model-value="handleUpdateModelValue">
-              <template v-if="hasSlot('thumbLabel')" #default>
-                <slot name="thumbLabel"/>
+              <template v-if="hasSlot('thumb.label')" #default>
+                <slot name="thumb.label"/>
               </template>
             </foxy-slider-field-thumb>
           </template>
@@ -80,8 +80,8 @@
               @blur="handleBlur"
               @focus="handleRangeFocusStart"
               @update:model-value="handleUpdateModelValue">
-              <template v-if="hasSlot('thumbLabelStart')" #default>
-                <slot name="thumbLabelStart"/>
+              <template v-if="hasSlot('thumb.labelStart')" #default>
+                <slot name="thumb.labelStart"/>
               </template>
             </foxy-slider-field-thumb>
 
@@ -107,8 +107,8 @@
               @blur="handleBlur"
               @focus="handleRangeFocusStop"
               @update:model-value="handleUpdateModelValue">
-              <template v-if="hasSlot('thumbLabelStop')" #default>
-                <slot name="thumbLabelStop"/>
+              <template v-if="hasSlot('thumb.labelStop')" #default>
+                <slot name="thumb.labelStop"/>
               </template>
             </foxy-slider-field-thumb>
           </template>

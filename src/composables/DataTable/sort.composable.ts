@@ -1,6 +1,7 @@
 import { useVModel } from '@foxy/composables'
 
 import { FOXY_DATA_TABLE_SORT_KEY } from '@foxy/consts'
+import { SORT_DIRECTION } from '@foxy/enums'
 
 import {
   IDataTableProvideSort,
@@ -12,7 +13,7 @@ import {
 import { TDataTableCompareFunction } from '@foxy/types'
 import { sortItems } from '@foxy/utils'
 
-import { computed, provide, Ref, toRef } from 'vue'
+import { computed, inject, provide, Ref, toRef } from 'vue'
 
 export function createSort (props: IDataTableSortProps) {
   const sortBy = useVModel(props, 'sortBy')
@@ -37,16 +38,16 @@ export function provideSort (options: {
     const item = newSortBy.find(x => x.key === column.key)
 
     if (!item) {
-      if (multiSort.value) newSortBy = [...newSortBy, { key: column.key, order: 'asc' }]
-      else newSortBy = [{ key: column.key, order: 'asc' }]
-    } else if (item.order === 'desc') {
+      if (multiSort.value) newSortBy = [...newSortBy, { key: column.key, order: SORT_DIRECTION.ASC }]
+      else newSortBy = [{ key: column.key, order: SORT_DIRECTION.ASC }]
+    } else if (item.order === SORT_DIRECTION.DESC) {
       if (mustSort.value) {
-        item.order = 'asc'
+        item.order = SORT_DIRECTION.ASC
       } else {
         newSortBy = newSortBy.filter(x => x.key !== column.key)
       }
     } else {
-      item.order = 'desc'
+      item.order = SORT_DIRECTION.DESC
     }
 
     sortBy.value = newSortBy
@@ -60,6 +61,14 @@ export function provideSort (options: {
   const data: IDataTableProvideSort = { sortBy, toggleSort, isSorted }
 
   provide(FOXY_DATA_TABLE_SORT_KEY, data)
+
+  return data
+}
+
+export function useSort () {
+  const data = inject(FOXY_DATA_TABLE_SORT_KEY)
+
+  if (!data) throw new Error('Missing sort!')
 
   return data
 }

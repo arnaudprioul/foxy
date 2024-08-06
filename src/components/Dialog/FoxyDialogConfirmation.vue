@@ -15,24 +15,24 @@
       <slot name="header"/>
     </template>
 
-    <template v-if="hasSlot('headerAppend')" #headerAppend>
-      <slot name="headerAppend"/>
+    <template v-if="hasSlot('header.append')" #header.append>
+      <slot name="header.append"/>
     </template>
 
-    <template v-if="hasSlot('headerPrepend')" #headerPrepend>
-      <slot name="headerPrepend"/>
+    <template v-if="hasSlot('header.prepend')" #header.prepend>
+      <slot name="header.prepend"/>
     </template>
 
-    <template v-if="hasSlot('headerTitle')" #headerTitle>
-      <slot name="headerTitle"/>
+    <template v-if="hasSlot('header.title')" #header.title>
+      <slot name="header.title"/>
     </template>
 
-    <template v-if="hasSlot('headerSubtitle')" #headerSubtitle>
-      <slot name="headerSubtitle"/>
+    <template v-if="hasSlot('header.subtitle')" #header.subtitle>
+      <slot name="header.subtitle"/>
     </template>
 
-    <template v-if="hasSlot('headerContent')" #headerContent>
-      <slot name="headerContent"/>
+    <template v-if="hasSlot('header.content')" #header.content>
+      <slot name="header.content"/>
     </template>
 
     <template v-if="hasSlot('asset')" #asset>

@@ -1,4 +1,12 @@
-import { IColorProps, IDataTableItem, IDisplayProps, ILoaderProps } from '@foxy/interfaces'
+import { ALIGN } from '@foxy/enums'
+import {
+  IColorProps,
+  ICommonsComponentProps,
+  IDataTableItem,
+  IDataTableSortItem,
+  IDisplayProps,
+  ILoaderProps
+} from '@foxy/interfaces'
 
 import {
   TAlign,
@@ -8,14 +16,46 @@ import {
   TIcon,
   TSelectItemKey
 } from '@foxy/types'
+import { ComputedRef, Ref, UnwrapRef } from 'vue'
 
-export interface IDataTableHeadersProps extends IColorProps, IDisplayProps, ILoaderProps {
-  sticky?: boolean,
-  disableSort?: boolean,
-  multiSort?: boolean,
+export interface IHeaderCellProps extends ICommonsComponentProps, IColorProps {
+  disableSort?: boolean
+  headerProps?: Record<string, any>
+  sticky?: boolean
+  multiSort?: boolean
   sortAscIcon?: TIcon
   sortDescIcon?: TIcon
-  headerProps?: Record<string, any>
+}
+
+export interface IDataTableHeadersProps extends ICommonsComponentProps, IColorProps, IDisplayProps, ILoaderProps, IHeaderCellProps {
+
+}
+
+export interface IDataTableHeadersCellMobileProps extends ICommonsComponentProps, IHeaderCellProps, IColorProps {
+  columns: Array<IInternalDataTableHeader>
+  colspan?: number
+}
+
+export interface IDataTableHeadersCellProps extends ICommonsComponentProps, IColorProps, IHeaderCellProps {
+  headers: Array<Array<IInternalDataTableHeader>>
+}
+
+export interface IDataTableHeaderCellProps extends ICommonsComponentProps, IHeaderCellProps, IColorProps {
+  column: IInternalDataTableHeader
+  x: number
+  y: number
+}
+
+export interface IDataTableHeadersSlotProps {
+  headers: Array<Array<IInternalDataTableHeader>>
+  columns: Array<IInternalDataTableHeader>
+  sortBy: UnwrapRef<Ref<Array<IDataTableSortItem>>>
+  someSelected: UnwrapRef<ComputedRef<boolean>>
+  allSelected: UnwrapRef<ComputedRef<boolean>>
+  toggleSort: (column: IInternalDataTableHeader) => void
+  selectAll: (value: boolean) => void
+  getSortIcon: (column: IInternalDataTableHeader) => TIcon
+  isSorted: (column: IInternalDataTableHeader) => boolean
 }
 
 export interface IDataTableHeaderProps {
@@ -29,7 +69,7 @@ export interface IDataTableHeader<T = Record<string, any>> {
   title?: string
 
   fixed?: boolean
-  align?: Record<string, TAlign>
+  align?: Record<string, Omit<TAlign, ALIGN.BASELINE | ALIGN.STRETCH>>
 
   width?: number | string
   minWidth?: string

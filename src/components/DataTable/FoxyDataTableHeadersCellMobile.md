@@ -1,0 +1,4 @@
+# Foxydatatableheaderscellmobile
+
+## Usage
+    <FoxyDataTableHeadersCellMobile />

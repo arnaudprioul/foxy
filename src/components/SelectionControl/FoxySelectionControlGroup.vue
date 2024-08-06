@@ -4,7 +4,7 @@
     :style="selectionControlGroupStyles">
     <slot name="default" v-bind="{items}">
       <template v-for="(item, index) in items" :key="index">
-        <slot :name="`item${index}`" v-bind="{item}">
+        <slot :name="`item.${index}`" v-bind="{item}">
           <slot name="item" v-bind="{item}"/>
         </slot>
       </template>

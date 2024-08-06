@@ -8,7 +8,7 @@ import { IDataTableProvideSelection, IDataTableSelectableItem, IDataTableSelectP
 
 import { deepEqual, wrapInArray } from '@foxy/utils'
 
-import { computed, provide, Ref } from 'vue'
+import { computed, inject, provide, Ref } from 'vue'
 
 export function provideSelection (
     props: IDataTableSelectProps,
@@ -99,6 +99,14 @@ export function provideSelection (
   }
 
   provide(FOXY_DATA_TABLE_SELECT_KEY, data)
+
+  return data
+}
+
+export function useSelection () {
+  const data = inject(FOXY_DATA_TABLE_SELECT_KEY)
+
+  if (!data) throw new Error('Missing selection!')
 
   return data
 }

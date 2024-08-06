@@ -1,3 +1,4 @@
+import { SORT_DIRECTION } from '@foxy/enums'
 import { IDataTableSortItem, IInternalItem } from '@foxy/interfaces'
 import { TDataTableCompareFunction } from '@foxy/types'
 import { isEmpty } from '@foxy/utils'
@@ -19,7 +20,7 @@ export function sortItems<T extends IInternalItem> (
     for (let i = 0; i < sortByItems.length; i++) {
       let hasCustomResult = false
       const sortKey = sortByItems[i].key
-      const sortOrder = sortByItems[i].order ?? 'asc'
+      const sortOrder = sortByItems[i].order ?? SORT_DIRECTION.ASC
 
       if (sortOrder === false) continue
 
@@ -28,7 +29,7 @@ export function sortItems<T extends IInternalItem> (
       let sortARaw = a[0].raw
       let sortBRaw = b[0].raw
 
-      if (sortOrder === 'desc') {
+      if (sortOrder === SORT_DIRECTION.DESC) {
         [sortA, sortB] = [sortB, sortA]
         ;[sortARaw, sortBRaw] = [sortBRaw, sortARaw]
       }

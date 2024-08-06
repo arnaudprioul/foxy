@@ -71,7 +71,7 @@
             @scroll-passive="handleListScroll">
 
             <template #default>
-              <slot name="prependItem"/>
+              <slot name="item.prepend"/>
 
               <template v-if="!displayItems.length && !hideNoData || hasSlot('noData')">
                 <slot name="noData">
@@ -123,7 +123,7 @@
                 </template>
               </foxy-virtual-scroll>
 
-              <slot name="appendItem"/>
+              <slot name="item.append"/>
             </template>
           </foxy-list>
         </template>
