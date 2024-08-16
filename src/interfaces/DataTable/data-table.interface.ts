@@ -12,16 +12,15 @@ import {
   IDataTableProvidePagination,
   IDataTableProvideSelection,
   IDataTableProvideSort,
+  IDataTableRowProps,
   IDataTableSelectProps,
   IDataTableSortProps,
-  IDisplayProps,
   IFiltersProps,
   IInternalDataTableHeader,
-  ILoaderProps,
   ITableProps,
 } from '@foxy/interfaces'
 
-import { TDataTableCell, TDataTableRow, TIcon } from '@foxy/types'
+import { TIcon } from '@foxy/types'
 
 import { UnwrapRef } from 'vue'
 
@@ -45,14 +44,6 @@ export interface IDataTableFooterProps {
   lastPageLabel?: string
   itemsPerPageOptions?: Array<number | { title: string, value: number }>
   showCurrentPage?: boolean
-}
-
-export interface IDataTableRowProps extends IDisplayProps, ILoaderProps {
-  hideNoData?: boolean
-  items?: Array<IDataTableItem>
-  noDataText?: string
-  rowProps?: TDataTableRow<any>
-  cellProps?: TDataTableCell<any>
 }
 
 export interface IDataTableSlotProps<T> {

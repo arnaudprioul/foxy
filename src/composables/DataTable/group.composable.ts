@@ -10,7 +10,7 @@ import {
 } from '@foxy/interfaces'
 import { flattenItems, groupItems } from '@foxy/utils'
 
-import { computed, ComputedRef, provide, ref, Ref } from 'vue'
+import { computed, ComputedRef, inject, provide, ref, Ref } from 'vue'
 
 export function createGroupBy (props: IDataTableGroupProps) {
   const groupBy = useVModel(props, 'groupBy')
@@ -81,4 +81,12 @@ export function useGroupedItems<T extends IDataTableGroupableItem> (
   })
 
   return { flatItems }
+}
+
+export function useGroupBy () {
+  const data = inject(FOXY_DATA_TABLE_GROUP_KEY)
+
+  if (!data) throw new Error('Missing group!')
+
+  return data
 }

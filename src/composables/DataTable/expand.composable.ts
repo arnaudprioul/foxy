@@ -4,7 +4,7 @@ import { FOXY_DATA_TABLE_EXPAND_KEY } from '@foxy/consts'
 
 import { IDataTableExpandProps, IDataTableItem, IDataTableProvideExpanded } from '@foxy/interfaces'
 
-import { provide, toRef } from 'vue'
+import { inject, provide, toRef } from 'vue'
 
 export function provideExpanded (props: IDataTableExpandProps): IDataTableProvideExpanded {
   const expandOnClick = toRef(props, 'expandOnClick')
@@ -35,6 +35,14 @@ export function provideExpanded (props: IDataTableExpandProps): IDataTableProvid
   const data = { expand, expanded, expandOnClick, isExpanded, toggleExpand }
 
   provide(FOXY_DATA_TABLE_EXPAND_KEY, data)
+
+  return data
+}
+
+export function useExpanded () {
+  const data = inject(FOXY_DATA_TABLE_EXPAND_KEY)
+
+  if (!data) throw new Error('Missing expand!')
 
   return data
 }

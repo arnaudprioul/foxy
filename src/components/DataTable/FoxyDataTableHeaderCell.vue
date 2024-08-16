@@ -24,7 +24,7 @@
         </template>
 
         <template v-else>
-          <div class="foxy-data-table-header__content">
+          <div class="foxy-data-table-header-cell__content">
             <span>{{ column.title }}</span>
 
             <template v-if="column.sortable && !props.disableSort">
@@ -39,7 +39,7 @@
               <div
                 key="badge"
                 :style="colorStyles"
-                class="foxy-data-table-header__sort-badge">
+                class="foxy-data-table-header-cell__sort-badge">
                 {{ sortBy.findIndex((x) => x.key === column.key) + 1 }}
               </div>
             </template>
@@ -106,10 +106,11 @@
 
   const dataTableHeaderCellClasses = computed(() => {
     return [
+      'foxy-data-table-header-cell',
       {
-        'foxy-data-table-headers__cell--sortable': props.column.sortable && !props.disableSort,
-        'foxy-data-table-headers__cell--sorted': isSorted(props.column),
-        'foxy-data-table-headers__cell--fixed': props.column.fixed,
+        'foxy-data-table-header-cell--sortable': props.column.sortable && !props.disableSort,
+        'foxy-data-table-header-cell--sorted': isSorted(props.column),
+        'foxy-data-table-header-cell--fixed': props.column.fixed,
       },
       props.class
     ]

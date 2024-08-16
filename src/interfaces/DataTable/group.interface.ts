@@ -1,4 +1,10 @@
-import { IDataTableSortItem } from '@foxy/interfaces'
+import {
+  IDataTableItem,
+  IDataTableItemBase,
+  IDataTableSelectableItem,
+  IDataTableSortItem,
+  IInternalDataTableHeader
+} from '@foxy/interfaces'
 import { ComputedRef, Ref } from 'vue'
 
 export interface IDataTableGroupProps {
@@ -25,5 +31,17 @@ export interface IDataTableProvideGroup {
   opened: Ref<Set<string> & Omit<Set<string>, keyof Set<any>>>
   groupBy: Ref<Array<IDataTableSortItem>>
   extractRows: (items: Array<IDataTableGroupableItem | IDataTableGroup<IDataTableGroupableItem>>) => Array<IDataTableGroupableItem>
+  isGroupOpen: (group: IDataTableGroup) => boolean
+}
+
+export interface IDataTableGroupHeaderSlot<T = IDataTableGroup> extends IDataTableItemBase<T> {
+  index: number
+  item: T
+  columns: IInternalDataTableHeader[]
+  isExpanded: (item: IDataTableItem) => boolean
+  toggleExpand: (item: IDataTableItem) => void
+  isSelected: (items: IDataTableSelectableItem | Array<IDataTableSelectableItem>) => boolean
+  toggleSelect: (item: IDataTableSelectableItem) => void
+  toggleGroup: (group: IDataTableGroup) => void
   isGroupOpen: (group: IDataTableGroup) => boolean
 }
