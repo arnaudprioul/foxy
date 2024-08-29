@@ -1,9 +1,10 @@
 <template>
   <div
       ref="layoutRef"
+      :id="layoutId"
       :class="layClasses"
       :style="layStyles">
-    <div class="foxy-layout__wrapper">
+    <div :id="`${layoutId}-wrapper`" class="foxy-layout__wrapper">
       <slot name="default"/>
     </div>
   </div>
@@ -18,7 +19,7 @@
 
   const props = withDefaults(defineProps<ILayoutProps>(), {})
 
-  const { layoutClasses, layoutRef, getLayoutItem, items } = useCreateLayout(props)
+  const { layoutClasses, layoutRef, getLayoutItem, items, layoutId } = useCreateLayout(props)
 
   const layStyles = computed(() => {
     return [props.style] as StyleValue

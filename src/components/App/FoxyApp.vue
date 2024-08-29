@@ -1,6 +1,7 @@
 <template>
   <foxy-layout
       ref="appRef"
+      :id="id"
       :class="appClasses"
       :style="appStyles">
     <template #default>

@@ -29,6 +29,7 @@ export function useLayout () {
     getLayoutItem: layout.getLayoutItem,
     mainRect: layout.mainRect,
     mainStyles: layout.mainStyles,
+    mainId: layout.layoutId
   }
 }
 
@@ -67,11 +68,14 @@ export function useLayoutItem (options: {
 
   onBeforeUnmount(() => layout.unregister(id))
 
-  return { layoutItemStyles, layoutRect: layout.layoutRect, layoutItemScrimStyles }
+  return { layoutItemStyles, layoutRect: layout.layoutRect, layoutItemScrimStyles, layoutId: layout.layoutId }
 }
 
-export function useCreateLayout (props: { overlaps?: Array<string>, fullHeight?: boolean }) {
+export function useCreateLayout (props: { id?: string, overlaps?: Array<string>, fullHeight?: boolean }) {
   const parentLayout = inject(FOXY_LAYOUT_KEY, null)
+
+  const uid = getUid()
+  const layoutId = computed(() => props.id || `layout-${uid}`)
 
   const rootZIndex = computed(() => parentLayout ? parentLayout.rootZIndex.value - 100 : ROOT_ZINDEX)
   const registered = ref<Array<string>>([])
@@ -249,6 +253,7 @@ export function useCreateLayout (props: { overlaps?: Array<string>, fullHeight?:
     items,
     layoutRect,
     rootZIndex,
+    layoutId
   })
 
   const layoutClasses = computed(() => [
@@ -269,5 +274,6 @@ export function useCreateLayout (props: { overlaps?: Array<string>, fullHeight?:
     items,
     layoutRect,
     layoutRef: resizeRef,
+    layoutId
   }
 }

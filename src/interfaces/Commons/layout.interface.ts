@@ -1,4 +1,4 @@
-import { ComponentInternalInstance, CSSProperties, Ref } from 'vue'
+import { ComponentInternalInstance, ComputedRef, CSSProperties, Ref } from 'vue'
 
 import { TLayoutPosition } from '@foxy/types'
 
@@ -29,6 +29,7 @@ export interface ILayoutProvide {
   items: Ref<Array<ILayerItem>>
   layoutRect: Ref<DOMRectReadOnly | undefined>
   rootZIndex: Ref<number>
+  layoutId: ComputedRef<string>
 }
 
 export interface ILayer {
@@ -53,5 +54,5 @@ export interface ILayoutItemProps extends ICommonsComponentProps {
   name?: string
   order: string | number
   absolute?: boolean
-  location?: Record<string, TLayoutPosition>
+  location?: Record<string, TLayoutPosition> | TLayoutPosition
 }
