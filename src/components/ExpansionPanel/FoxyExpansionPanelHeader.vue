@@ -55,200 +55,200 @@
 </template>
 
 <script lang="ts" setup>
-  import { FoxyAvatar, FoxyIcon } from '@foxy/components'
+import {FoxyAvatar, FoxyIcon} from '@foxy/components'
 
-  import {
-    useAdjacent,
-    useBorder,
-    useBothColor,
-    useDensity,
-    useMargin,
-    usePadding,
-    useRounded,
-    useSlots
-  } from '@foxy/composables'
+import {
+  useAdjacent,
+  useBorder,
+  useBothColor,
+  useDensity,
+  useMargin,
+  usePadding,
+  useRounded,
+  useSlots
+} from '@foxy/composables'
 
-  import { FOXY_EXPANSION_PANEL_KEY } from '@foxy/consts'
+import {FOXY_EXPANSION_PANEL_KEY} from '@foxy/consts'
 
-  import { IExpansionPanelHeaderProps } from '@foxy/interfaces'
+import {IExpansionPanelHeaderProps} from '@foxy/interfaces'
 
-  import { computed, inject, StyleValue, toRef } from 'vue'
+import {computed, inject, StyleValue, toRef} from 'vue'
 
-  const props = withDefaults(defineProps<IExpansionPanelHeaderProps>(), {
-    tag: 'button',
-    expandIcon: '$expand',
-    collapseIcon: '$collapse',
-  })
+const props = withDefaults(defineProps<IExpansionPanelHeaderProps>(), {
+  tag: 'button',
+  expandIcon: '$expand',
+  collapseIcon: '$collapse',
+})
 
-  const emits = defineEmits(['click:append', 'click:prepend'])
+const emits = defineEmits(['click:append', 'click:prepend'])
 
-  const expansionPanel = inject(FOXY_EXPANSION_PANEL_KEY)
+const expansionPanel = inject(FOXY_EXPANSION_PANEL_KEY)
 
-  if (!expansionPanel) throw new Error('[Foxy] expansion-panel-content needs to be placed inside expansion-panel')
+if (!expansionPanel) throw new Error('[Foxy] expansion-panel-content needs to be placed inside expansion-panel')
 
-  const { hasSlot } = useSlots()
+const {hasSlot} = useSlots()
 
-  const {
-    hasAppend,
-    hasPrepend,
-    onClickPrepend: handleClickPrepend,
-    onClickAppend: handleClickAppend
-  } = useAdjacent(props, emits)
-  const { borderClasses, borderStyles } = useBorder(props)
-  const { paddingClasses, paddingStyles } = usePadding(props)
-  const { marginClasses, marginStyles } = useMargin(props)
-  const { densityClasses } = useDensity(props)
-  const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
-  const { roundedClasses, roundedStyles } = useRounded(props)
+const {
+  hasAppend,
+  hasPrepend,
+  onClickPrepend: handleClickPrepend,
+  onClickAppend: handleClickAppend
+} = useAdjacent(props)
+const {borderClasses, borderStyles} = useBorder(props)
+const {paddingClasses, paddingStyles} = usePadding(props)
+const {marginClasses, marginStyles} = useMargin(props)
+const {densityClasses} = useDensity(props)
+const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
+const {roundedClasses, roundedStyles} = useRounded(props)
 
-  const handleExpand = (_e: MouseEvent) => {
-    if (!props.readonly) {
-      expansionPanel.toggle()
-    }
+const handleExpand = (_e: MouseEvent) => {
+  if (!props.readonly) {
+    expansionPanel.toggle()
   }
+}
 
-  const isSelected = computed(() => {
-    return expansionPanel.isSelected.value
-  })
-  const isDisabled = computed(() => {
-    return expansionPanel.disabled.value
-  })
+const isSelected = computed(() => {
+  return expansionPanel.isSelected.value
+})
+const isDisabled = computed(() => {
+  return expansionPanel.disabled.value
+})
 
-  const slotProps = computed(() => {
-    return {
-      collapseIcon: props.collapseIcon,
-      disabled: expansionPanel.disabled.value,
-      expanded: expansionPanel.isSelected.value,
-      expandIcon: props.expandIcon,
-      readonly: props.readonly
-    }
-  })
+const slotProps = computed(() => {
+  return {
+    collapseIcon: props.collapseIcon,
+    disabled: expansionPanel.disabled.value,
+    expanded: expansionPanel.isSelected.value,
+    expandIcon: props.expandIcon,
+    readonly: props.readonly
+  }
+})
 
-  const hasTitle = computed(() => {
-    return hasSlot('default') || props.title
-  })
+const hasTitle = computed(() => {
+  return hasSlot('default') || props.title
+})
 
-  // CLASS & STYLES
+// CLASS & STYLES
 
-  const expansionPanelHeaderStyles = computed(() => {
-    return [
-      colorStyles.value,
-      roundedStyles.value,
-      borderStyles.value,
-      paddingStyles.value,
-      marginStyles.value,
-      props.style
-    ] as StyleValue
-  })
-  const expansionPanelHeaderClasses = computed(() => {
-    return [
-      'foxy-expansion-panel-header',
-      {
-        'foxy-expansion-panel-header--active': expansionPanel.isSelected.value,
-        'foxy-expansion-panel-header--focusable': props.focusable,
-        'foxy-expansion-panel-header--static': props.static,
-      },
-      borderClasses.value,
-      paddingClasses.value,
-      marginClasses.value,
-      densityClasses.value,
-      roundedClasses.value,
-      props.class
-    ]
-  })
+const expansionPanelHeaderStyles = computed(() => {
+  return [
+    colorStyles.value,
+    roundedStyles.value,
+    borderStyles.value,
+    paddingStyles.value,
+    marginStyles.value,
+    props.style
+  ] as StyleValue
+})
+const expansionPanelHeaderClasses = computed(() => {
+  return [
+    'foxy-expansion-panel-header',
+    {
+      'foxy-expansion-panel-header--active': expansionPanel.isSelected.value,
+      'foxy-expansion-panel-header--focusable': props.focusable,
+      'foxy-expansion-panel-header--static': props.static,
+    },
+    borderClasses.value,
+    paddingClasses.value,
+    marginClasses.value,
+    densityClasses.value,
+    roundedClasses.value,
+    props.class
+  ]
+})
 </script>
 
 <style lang="scss" scoped>
-  .foxy-expansion-panel-header {
-    $this: &;
+.foxy-expansion-panel-header {
+  $this: &;
 
-    outline: none;
-    border-radius: inherit;
-    font-size: 0.9375rem;
-    line-height: 1;
-    min-height: 48px;
+  outline: none;
+  border-radius: inherit;
+  font-size: 0.9375rem;
+  line-height: 1;
+  min-height: 48px;
+  width: 100%;
+  border: none;
+
+  &__wrapper {
+    align-items: center;
+    text-align: start;
+    display: flex;
     width: 100%;
-    border: none;
+    height: 100%;
+    padding: 16px 24px;
+    position: relative;
+    transition: 0.3s min-height cubic-bezier(0.4, 0, 0.2, 1);
+    justify-content: space-between;
+  }
 
-    &__wrapper {
-      align-items: center;
-      text-align: start;
-      display: flex;
-      width: 100%;
-      height: 100%;
-      padding: 16px 24px;
-      position: relative;
-      transition: 0.3s min-height cubic-bezier(0.4, 0, 0.2, 1);
-      justify-content: space-between;
-    }
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: currentColor;
+    border-radius: inherit;
+    opacity: 0;
+  }
 
+  &__append,
+  &__prepend {
+    display: inline-flex;
+    margin-bottom: -4px;
+    margin-top: -4px;
+    user-select: none;
+  }
+
+  &__append {
+    margin-inline-start: auto;
+  }
+
+  &__prepend {
+    margin-inline-end: 8px;
+  }
+
+  &:hover {
     &__overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: currentColor;
-      border-radius: inherit;
-      opacity: 0;
+      opacity: calc(0.04 * 1);
     }
+  }
 
-    &__append,
-    &__prepend {
-      display: inline-flex;
-      margin-bottom: -4px;
-      margin-top: -4px;
-      user-select: none;
+  &:focus-visible,
+  &:focus {
+    &__overlay {
+      opacity: calc(0.12 * 1);
     }
+  }
 
-    &__append {
-      margin-inline-start: auto;
-    }
+  &--focusable {
+    &#{$this}--active {
 
-    &__prepend {
-      margin-inline-end: 8px;
-    }
-
-    &:hover {
-      &__overlay {
-        opacity: calc(0.04 * 1);
-      }
-    }
-
-    &:focus-visible,
-    &:focus {
       &__overlay {
         opacity: calc(0.12 * 1);
       }
-    }
 
-    &--focusable {
-      &#{$this}--active {
-
+      &:hover {
         &__overlay {
-          opacity: calc(0.12 * 1);
+          opacity: calc((0.12 + 0.04) * 1);
         }
+      }
 
-        &:hover {
-          &__overlay {
-            opacity: calc((0.12 + 0.04) * 1);
-          }
-        }
-
-        &:focus-visible,
-        &:focus {
-          &__overlay {
-            opacity: calc((0.12 + 0.12) * 1);
-          }
+      &:focus-visible,
+      &:focus {
+        &__overlay {
+          opacity: calc((0.12 + 0.12) * 1);
         }
       }
     }
   }
+}
 
 </style>
 
 <style>
-  :root {
+:root {
 
-  }
+}
 </style>
