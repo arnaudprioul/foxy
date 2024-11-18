@@ -158,10 +158,10 @@ const {hasSlot} = useSlots()
 // SLOTS
 
 const hasTitle = computed(() => {
-  return hasSlot('header:title') || props.title != null
+  return hasSlot('header.title') || props.title != null
 })
 const hasSubtitle = computed(() => {
-  return hasSlot('header:subtitle') || props.subtitle != null
+  return hasSlot('header.subtitle') || props.subtitle != null
 })
 const hasAsset = computed(() => {
   return !!(hasSlot('asset') || props.image)
@@ -199,7 +199,7 @@ const cardClasses = computed(() => {
       'foxy-card--disabled': props.disabled,
       'foxy-card--flat': props.flat,
       'foxy-card--hover': props.hover && !(props.disabled || props.flat),
-      'foxy-card--link': isClickable.value,
+      'foxy-card--link': isClickable.value
     },
     borderClasses.value,
     densityClasses.value,
@@ -209,7 +209,7 @@ const cardClasses = computed(() => {
     roundedClasses.value,
     marginClasses.value,
     paddingClasses.value,
-    props.class,
+    props.class
   ]
 })
 </script>
