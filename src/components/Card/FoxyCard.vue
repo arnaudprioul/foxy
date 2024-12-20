@@ -31,13 +31,13 @@
         <slot name="header">
           <foxy-card-header
               key="item"
-              :append-avatar="props.appendAvatar"
-              :append-icon="props.appendIcon"
-              :density="props.density"
-              :prepend-avatar="props.prependAvatar"
-              :prepend-icon="props.prependIcon"
-              :subtitle="props.subtitle"
-              :title="props.title"
+              :append-avatar="appendAvatar"
+              :append-icon="appendIcon"
+              :density="density"
+              :prepend-avatar="prependAvatar"
+              :prepend-icon="prependIcon"
+              :subtitle="subtitle"
+              :title="title"
               class="foxy-card__header"
               @click:prepend="handleClickPrepend"
               @click:append="handleClickAppend">

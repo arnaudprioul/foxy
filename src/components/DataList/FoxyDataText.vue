@@ -1,5 +1,5 @@
 <template>
-  <dt
+  <dd
       :class="dataTextClasses"
       :style="dataTextStyles">
     <span
@@ -34,20 +34,20 @@
         key="append"
         class="foxy-data-text__append"
         @click="handleClickAppend">
-            <slot name="append">
-             <foxy-avatar
-                 v-if="appendAvatar"
-                 key="append-avatar"
-                 :density="density"
-                 :image="appendAvatar"/>
-             <foxy-icon
-                 v-if="appendIcon"
-                 key="append-icon"
-                 :density="density"
-                 :icon="appendIcon"/>
-           </slot>
-          </span>
-  </dt>
+      <slot name="append">
+        <foxy-avatar
+            v-if="appendAvatar"
+            key="append-avatar"
+            :density="density"
+            :image="appendAvatar"/>
+        <foxy-icon
+            v-if="appendIcon"
+            key="append-icon"
+            :density="density"
+            :icon="appendIcon"/>
+     </slot>
+    </span>
+  </dd>
 </template>
 
 <script lang="ts" setup>

@@ -34,19 +34,19 @@
         key="append"
         class="foxy-data-title__append"
         @click="handleClickAppend">
-            <slot name="append">
-             <foxy-avatar
-                 v-if="appendAvatar"
-                 key="append-avatar"
-                 :density="density"
-                 :image="appendAvatar"/>
-             <foxy-icon
-                 v-if="appendIcon"
-                 key="append-icon"
-                 :density="density"
-                 :icon="appendIcon"/>
-           </slot>
-          </span>
+      <slot name="append">
+       <foxy-avatar
+           v-if="appendAvatar"
+           key="append-avatar"
+           :density="density"
+           :image="appendAvatar"/>
+       <foxy-icon
+           v-if="appendIcon"
+           key="append-icon"
+           :density="density"
+           :icon="appendIcon"/>
+     </slot>
+    </span>
   </dt>
 </template>
 

@@ -1,0 +1,4 @@
+# Foxydatatext
+
+## Usage
+    <FoxyDataText />

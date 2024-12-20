@@ -1,8 +1,10 @@
+import {TColor} from "@foxy/types"
+
 export interface IColorProps {
-  color?: string
-  bgColor?: string
-  activeColor?: string
-  activeBgColor?: string
-  hoverColor?: string
-  hoverBgColor?: string
+    color?: TColor
+    bgColor?: TColor
+    activeColor?: TColor
+    activeBgColor?: TColor
+    hoverColor?: TColor
+    hoverBgColor?: TColor
 }

@@ -1,0 +1,5 @@
+# Foxydatatitle
+
+## Usage
+
+    <FoxyDataTitle />
