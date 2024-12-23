@@ -4,7 +4,7 @@ import { ICommonsComponentProps, IDimensionProps, IPaddingProps, ITagProps } fro
 import { TAlign } from '@foxy/types'
 
 export interface IDataTableColumnProps extends ICommonsComponentProps, ITagProps, IDimensionProps, IPaddingProps {
-  align?: Record<string, Omit<TAlign, ALIGN.BASELINE | ALIGN.STRETCH>>
+  align?: Omit<TAlign, ALIGN.BASELINE | ALIGN.STRETCH>
   fixed?: boolean
   fixedOffset?: number | string
   lastFixed?: boolean

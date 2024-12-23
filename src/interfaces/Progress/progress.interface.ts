@@ -11,7 +11,7 @@ import {
 import { TProgressType } from '@foxy/types'
 
 export interface IProgressProps extends IProgressLinearProps, IProgressCircularProps {
-  type?: Record<string, TProgressType>
+  type?: TProgressType
 }
 
 export interface IProgressTypeProps extends ITagProps, ICommonsComponentProps, IColorProps, IPaddingProps, IMarginProps {

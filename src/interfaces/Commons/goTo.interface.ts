@@ -6,7 +6,7 @@ export interface IGoToOptions {
     layout: boolean
     offset: number
     easing: string | ((t: number) => number)
-    patterns: Record<string, (t: number) => number>
+    patterns: (t: number) => number
 }
 
 export interface IGoToInstance {

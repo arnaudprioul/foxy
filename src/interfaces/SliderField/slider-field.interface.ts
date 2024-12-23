@@ -38,8 +38,8 @@ export interface ISliderFieldProps extends ICommonsComponentProps, IDensityProps
 
   // TODO - need rework to use tick interface
   showTicks?: TAlways
-  ticks?: Array<number> | Record<number, string>
-  tickSize?: Record<string, TSize> | number
+  ticks?: Array<number> | string
+  tickSize?: TSize | number
 }
 
 export interface ISliderFieldProvide {
@@ -70,7 +70,7 @@ export interface ISliderFieldProvide {
   showTicks: Ref<TAlways | undefined>
   startOffset: Ref<number>
   step: Ref<number>
-  ticks: Ref<number[] | Record<string, string> | undefined>
+  ticks: Ref<number[] | string | undefined>
   tickSize: Ref<number>
   foxySliderFieldTrackRef: Ref<TFoxySliderFieldTrack | null | undefined>
   foxySliderFieldThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>

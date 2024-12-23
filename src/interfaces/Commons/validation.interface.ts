@@ -12,7 +12,7 @@ export interface IValidationProps extends IFocusProps {
   readonly?: boolean
   rules?: Array<any>
   modelValue?: any
-  validateOn?: Record<string, TValidateOn>
+  validateOn?: TValidateOn
   validationValue?: any
 }
 

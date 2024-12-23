@@ -6,7 +6,7 @@ export interface IListItemChildren {
 }
 
 export interface IInternalListItemChildren<T = any> extends IInternalListItem<T> {
-  type?: Record<string, TListItemType>
+  type?: TListItemType
 }
 
 export interface IInternalListItem<T = any> extends IInternalItem<T> {

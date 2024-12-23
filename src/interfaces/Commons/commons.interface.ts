@@ -4,10 +4,10 @@ import { TIconOptions, TSSROptions } from '@foxy/types'
 import { StyleValue } from 'vue'
 
 export interface IFoxyOptions {
-  aliases?: Record<string, any>
+  aliases?: any
   blueprint?: IBlueprint
-  components?: Record<string, any>
-  directives?: Record<string, any>
+  components?: any
+  directives?: any
   icons?: TIconOptions
   display?: IDisplayOptions
   ssr?: TSSROptions

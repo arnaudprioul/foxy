@@ -13,7 +13,7 @@ import { flattenItems, groupItems } from '@foxy/utils'
 import { computed, ComputedRef, inject, provide, ref, Ref } from 'vue'
 
 export function createGroupBy (props: IDataTableGroupProps) {
-  const groupBy = useVModel(props, 'groupBy')
+  const groupBy = useVModel(props, 'groupBy', [])
 
   return { groupBy }
 }

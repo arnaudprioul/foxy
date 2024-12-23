@@ -14,5 +14,5 @@ import { TFlexDirection } from '@foxy/types'
 
 export interface IRowProps extends ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IBorderProps, IColorProps, IDensityProps, IAlignProps, IJustifyProps {
   gutters?: string | number
-  direction?: Record<string, TFlexDirection>
+  direction?: TFlexDirection
 }

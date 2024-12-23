@@ -8,7 +8,7 @@ export interface ITransitionComponentProps {
 }
 
 export interface ITransitionProps {
-  mode?: Record<string, TTransitionMode>
+  mode?: TTransitionMode
   disabled?: boolean
   name?: string
   group?: boolean

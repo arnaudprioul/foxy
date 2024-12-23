@@ -4,6 +4,6 @@ export interface IFiltersProps {
   customFilter?: TFilterFunction
   customKeyFilter?: TFilterKeyFunctions
   filterKeys: TFilterKeys
-  filterMode: Record<string, TFilterMode>
+  filterMode: TFilterMode
   noFilter?: boolean,
 }

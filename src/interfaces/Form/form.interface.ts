@@ -18,7 +18,7 @@ export interface IFormProvide {
   isReadonly: ComputedRef<boolean>
   isValidating?: Ref<boolean>
   isValid: Ref<boolean | null | undefined>
-  validateOn: Ref<Record<string, TValidateOn> | undefined>
+  validateOn: Ref<TValidateOn | undefined>
 }
 
 export interface IFormProps extends ICommonsComponentProps {
@@ -26,7 +26,7 @@ export interface IFormProps extends ICommonsComponentProps {
   fastFail?: boolean
   readonly?: boolean
   modelValue?: boolean | null
-  validateOn?: Record<string, TValidateOn>
+  validateOn?: TValidateOn
 }
 
 export interface IFormField {

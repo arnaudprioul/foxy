@@ -6,7 +6,7 @@ import { Ref } from 'vue'
 
 export interface IDataTableSortProps {
   sortBy?: Array<IDataTableSortItem>
-  customKeySort?: Record<string, TDataTableCompareFunction>
+  customKeySort?: TDataTableCompareFunction
   multiSort?: boolean
   mustSort?: boolean
 }

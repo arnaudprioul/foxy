@@ -17,6 +17,6 @@ export interface ITextFieldProps extends ICommonsComponentProps, IColorProps, ID
   persistentPlaceholder?: boolean
   persistentCounter?: boolean
   role?: string
-  type?: Record<string, TTextFieldType>
+  type?: TTextFieldType
   modelModifiers?: string | boolean
 }

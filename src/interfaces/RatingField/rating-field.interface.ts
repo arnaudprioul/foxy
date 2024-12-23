@@ -29,5 +29,5 @@ export interface IRatingFieldProps extends ICommonsComponentProps, IRippleProps,
   readonly?: boolean
   modelValue?: number | string
   itemLabels?: Array<string>
-  itemLabelPosition?: Record<string, TBlock>
+  itemLabelPosition?: TBlock
 }

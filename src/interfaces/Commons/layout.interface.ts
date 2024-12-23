@@ -10,7 +10,7 @@ export interface ILayoutProvide {
       options: {
         id: string
         order: Ref<number>
-        position: Ref<Record<string, TLayoutPosition>>
+        position: Ref<TLayoutPosition>
         layoutSize: Ref<number | string>
         elementSize: Ref<number | string | undefined>
         active: Ref<boolean>
@@ -42,7 +42,7 @@ export interface ILayer {
 export interface ILayerItem extends ILayer {
   id: string
   size: number
-  position: Record<string, TLayoutPosition>
+  position: TLayoutPosition
 }
 
 export interface ILayoutProps extends ICommonsComponentProps {
@@ -54,5 +54,5 @@ export interface ILayoutItemProps extends ICommonsComponentProps {
   name?: string
   order: string | number
   absolute?: boolean
-  location?: Record<string, TLayoutPosition> | TLayoutPosition
+  location?: TLayoutPosition
 }

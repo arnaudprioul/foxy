@@ -16,7 +16,7 @@ import { sortItems } from '@foxy/utils'
 import { computed, inject, provide, Ref, toRef } from 'vue'
 
 export function createSort (props: IDataTableSortProps) {
-  const sortBy = useVModel(props, 'sortBy')
+  const sortBy = useVModel(props, 'sortBy', [])
   const mustSort = toRef(props, 'mustSort')
   const multiSort = toRef(props, 'multiSort')
 

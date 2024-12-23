@@ -20,7 +20,7 @@ import { ComputedRef, Ref, UnwrapRef } from 'vue'
 
 export interface IHeaderCellProps extends ICommonsComponentProps, IColorProps {
   disableSort?: boolean
-  headerProps?: Record<string, any>
+  headerProps?: any
   sticky?: boolean
   multiSort?: boolean
   sortAscIcon?: TIcon
@@ -63,20 +63,20 @@ export interface IDataTableHeaderProps {
   items?: Array<IDataTableItem>
 }
 
-export interface IDataTableHeader<T = Record<string, any>> {
+export interface IDataTableHeader<T = any> {
   key?: 'data-table-group' | 'data-table-select' | 'data-table-expand' | (string & {})
   value?: TSelectItemKey<T>
   title?: string
 
   fixed?: boolean
-  align?: Record<string, Omit<TAlign, ALIGN.BASELINE | ALIGN.STRETCH>>
+  align?: Omit<TAlign, ALIGN.BASELINE | ALIGN.STRETCH>
 
   width?: number | string
   minWidth?: string
   maxWidth?: string
   nowrap?: boolean
 
-  headerProps?: Record<string, any>
+  headerProps?: any
   cellProps?: TDataTableHeaderCell
 
   sortable?: boolean
