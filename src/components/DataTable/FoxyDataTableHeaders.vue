@@ -1,14 +1,13 @@
 <template>
   <template v-if="loading">
-    <tr class="foxy-data-table-headers__row foxy-data-table-headers__row--progress">
-      <th :colspan="columns.length" class="foxy-data-table-headers__cell">
+    <tr class="foxy-data-table-headers foxy-data-table-headers--progress">
+      <th :colspan="columns.length" class="foxy-data-table-header-cell">
         <slot name="loader">
           <foxy-progress
             :color="color"
             :type="PROGRESS_TYPE.LINEAR"
             absolute
             active
-            class="foxy-card__progress foxy-card__progress--linear"
             indeterminate
             thickness="4"
           />
@@ -85,9 +84,9 @@
 
   const dataTableHeadersClasses = computed(() => {
     return [
-      'foxy-data-table-headers__cell',
+      'foxy-data-table-headers',
       {
-        'foxy-data-table-headers__cell--sticky': props.sticky,
+        'foxy-data-table-headers--sticky': props.sticky,
       },
       displayClasses.value,
       loaderClasses.value,
@@ -100,3 +99,25 @@
     ] as StyleValue
   })
 </script>
+
+<style scoped lang="scss">
+	.foxy-data-table-headers {
+		&__progress {
+			> .foxy-data-table-headers-cell {
+				border: none;
+				height: auto;
+				padding: 0;
+			}
+
+			&:deep(.foxy-progress) {
+				position: relative;
+			}
+		}
+	}
+</style>
+
+<style>
+	:root {
+
+	}
+</style>

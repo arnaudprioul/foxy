@@ -13,19 +13,19 @@
 
         <template v-if="!props.hideDefaultHeader">
           <thead key="thead">
-          <foxy-data-table-headers v-bind="dataTableHeadersProps">
-            <template v-if="hasSlot('header')" #default="headerProps">
-              <slot name="header" v-bind="headerProps"/>
-            </template>
+	          <foxy-data-table-headers v-bind="dataTableHeadersProps">
+	            <template v-if="hasSlot('header')" #default="headerProps">
+	              <slot name="header" v-bind="headerProps"/>
+	            </template>
 
-            <template v-if="hasSlot('header.mobile')" #mobile="headerProps">
-              <slot name="header.mobile" v-bind="headerProps"/>
-            </template>
+	            <template v-if="hasSlot('header.mobile')" #mobile="headerProps">
+	              <slot name="header.mobile" v-bind="headerProps"/>
+	            </template>
 
-            <template v-if="hasSlot('header.loader')" #loader="headerLoaderProps">
-              <slot name="header.loader" v-bind="headerLoaderProps"/>
-            </template>
-          </foxy-data-table-headers>
+	            <template v-if="hasSlot('header.loader')" #loader="headerLoaderProps">
+	              <slot name="header.loader" v-bind="headerLoaderProps"/>
+	            </template>
+	          </foxy-data-table-headers>
           </thead>
         </template>
 
@@ -33,15 +33,14 @@
 
         <template v-if="!props.hideDefaultBody">
           <tbody>
-          <slot name="prepend" v-bind="slotProps"/>
-          <slot name="body" v-bind="slotProps">
-            <foxy-data-table-rows
-              :items="paginatedItems"
-              v-bind="{ ...attrs, ...dataTableRowsProps }">
-              <!-- TODO SLOT BODY-->
-            </foxy-data-table-rows>
-          </slot>
-          <slot name="append" v-bind="slotProps"/>
+	          <slot name="prepend" v-bind="slotProps"/>
+	          <slot name="body" v-bind="slotProps">
+	            <foxy-data-table-rows
+	              :items="paginatedItems"
+	              v-bind="{ ...attrs, ...dataTableRowsProps }">
+	            </foxy-data-table-rows>
+	          </slot>
+	          <slot name="append" v-bind="slotProps"/>
           </tbody>
         </template>
       </slot>
@@ -62,7 +61,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { FoxyDataTableHeaders, FoxyDivider, FoxyTable } from '@foxy/components'
+  import { FoxyDataTableHeaders, FoxyDivider, FoxyTable, FoxyDataTableRows } from '@foxy/components'
 
   import {
     createGroupBy,
@@ -83,7 +82,7 @@
     useSortedItems
   } from '@foxy/composables'
 
-  import { TABLE_PROPS } from '@foxy/consts'
+  import { DATA_TABLE_HEADERS_PROPS, DATA_TABLE_ROWS_PROPS, TABLE_PROPS } from '@foxy/consts'
 
   import { DATATABLE_SELECT_STRATEGY, DENSITY, FILTERS_MODE } from '@foxy/enums'
 
@@ -211,6 +210,14 @@
     }
   })
 
+  const dataTableHeadersProps = computed(() => {
+		return omit(pick(props, keys(DATA_TABLE_HEADERS_PROPS)), ['class', 'style'])
+  })
+
+  const dataTableRowsProps = computed(() => {
+		return omit(pick(props, keys(DATA_TABLE_ROWS_PROPS)), ['class', 'style', 'items'])
+  })
+
   // CLASS & STYLES
 
   const dataTableStyles = computed(() => {
@@ -229,3 +236,68 @@
     ]
   })
 </script>
+
+<style lang="scss" scoped>
+	.foxy-data-table {
+		width: 100%;
+
+		&__table {
+			width: 100%;
+			border-collapse: separate;
+			border-spacing: 0
+		}
+
+		&--loading {
+			&:deep(.foxy-data-table-cell) {
+				opacity: var(--foxy-data-table--loading---opacity);
+			}
+		}
+	}
+
+	.v-data-table-group-header-row__column {
+		padding-left: calc(var(--v-data-table-group-header-row-depth) * 16px)!important
+	}
+
+	.v-data-table-footer {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		padding: 8px 4px
+	}
+
+	.v-data-table-footer__items-per-page {
+		align-items: center;
+		display: flex;
+		justify-content: center
+	}
+
+	.v-data-table-footer__items-per-page>span {
+		padding-inline-end:8px}
+
+	.v-data-table-footer__items-per-page>.v-select {
+		width: 90px
+	}
+
+	.v-data-table-footer__info {
+		display: flex;
+		justify-content: flex-end;
+		min-width: 116px;
+		padding: 0 16px
+	}
+
+	.v-data-table-footer__paginationz {
+		align-items: center;
+		display: flex;
+		margin-inline-start:16px}
+
+	.v-data-table-footer__page {
+		padding: 0 8px
+	}
+</style>
+
+<style>
+	:root {
+		--foxy-data-table--loading---opacity: 0.5;
+	}
+</style>

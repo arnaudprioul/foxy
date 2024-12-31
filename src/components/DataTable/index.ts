@@ -4,3 +4,6 @@ export { default as FoxyDataTableHeadersCellMobile } from './FoxyDataTableHeader
 export { default as FoxyDataTableHeadersCell } from './FoxyDataTableHeadersCell.vue'
 export { default as FoxyDataTableHeaderCell } from './FoxyDataTableHeaderCell.vue'
 export { default as FoxyDataTableColumnCell } from './FoxyDataTableColumnCell.vue'
+export { default as FoxyDataTableRows } from './FoxyDataTableRows.vue'
+export { default as FoxyDataTableRow } from './FoxyDataTableRow.vue'
+export { default as FoxyDataTableGroupHeaderRow } from './FoxyDataTableGroupHeaderRow.vue'

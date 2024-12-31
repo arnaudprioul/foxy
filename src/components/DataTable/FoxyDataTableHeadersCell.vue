@@ -1,6 +1,6 @@
 <template>
   <template v-for="(row, y) in headers">
-    <tr class="foxy-data-table-headers__row">
+    <tr class="foxy-data-table-headers">
       <template v-for="(column, x) in row">
         <foxy-data-table-header-cell
           :class="dataTableHeadersCellClasses"

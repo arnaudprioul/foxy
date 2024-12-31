@@ -1,9 +1,9 @@
 import { useSort } from '@foxy/composables'
 import { FOXY_DATA_TABLE_HEADERS_KEY } from '@foxy/consts'
 import { SORT_DIRECTION } from '@foxy/enums'
-import { IDataTableHeader, IDataTableHeaderProps, IHeaderCellProps, IInternalDataTableHeader } from '@foxy/interfaces'
+import { IDataTableHeader, IDataTableHeaderProps, IHeaderCellProps, IInternalDataTableHeader, IDataTableSortItem } from '@foxy/interfaces'
 
-import { TDataTableCompareFunction, TDataTableSortItem, TFilterKeyFunctions } from '@foxy/types'
+import { TDataTableCompareFunction, TFilterKeyFunctions } from '@foxy/types'
 
 import { convertToInternalHeaders, extractKeys, getHeaderDepth, parseFixedColumns, parseHeaderItems } from '@foxy/utils'
 
@@ -12,7 +12,7 @@ import { capitalize, inject, provide, ref, Ref, watchEffect } from 'vue'
 export function createHeaders (
     props: IDataTableHeaderProps,
     options?: {
-      groupBy?: Ref<Array<TDataTableSortItem>> | undefined
+      groupBy?: Ref<Array<IDataTableSortItem>> | undefined
       showSelect?: Ref<boolean>
       showExpand?: Ref<boolean>
     }
@@ -93,8 +93,8 @@ export function useHeadersCell (props: IHeaderCellProps) {
 
   const getSortIcon = (column: IInternalDataTableHeader) => {
     const item = sortBy.value
-        .find((item) => {
-          return item.key === column.key
+        .find((sortByItem) => {
+          return sortByItem.key === column.key
         })
 
     if (!item) return props.sortAscIcon

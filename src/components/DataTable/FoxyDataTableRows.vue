@@ -12,7 +12,7 @@
     </tr>
   </template>
 
-  <template v-else-if="!items.length && !hideNoData">
+  <template v-else-if="!(items && items.length) && !hideNoData">
     <tr
       key="no-data"
       class="foxy-data-table-rows foxy-data-table-rows--no-data"
@@ -38,24 +38,24 @@
       </template>
 
       <template v-else>
-        <fragment :key="itemSlotProps(item, index).props.key">
-          <slot name="item" v-bind="itemSlotProps(item, index)">
-            <foxy-data-table-row :item="item" v-bind="{...itemSlotProps(item, index).props}">
-              <!-- TODO SLOT BODY-->
-            </foxy-data-table-row>
-          </slot>
+        <slot name="item" v-bind="itemSlotProps(item, index)">
+          <foxy-data-table-row
+		          :item="item"
+		          v-bind="{...itemSlotProps(item, index).props}">
+            <!-- TODO SLOT BODY-->
+          </foxy-data-table-row>
+        </slot>
 
-          <template v-if="isExpanded(item)">
-            <slot name="expanded-row" v-bind="slotProps"/>
-          </template>
-        </fragment>
+        <template v-if="isExpanded(item)">
+          <slot name="expanded-row" v-bind="slotProps"/>
+        </template>
       </template>
     </template>
   </template>
 </template>
 
 <script lang="ts" setup>
-  import FoxyDataTableRow from '@foxy/components/DataTable/FoxyDataTableRow.vue'
+  import { FoxyDataTableRow } from '@foxy/components'
 
   import { useDisplay, useExpanded, useGroupBy, useHeaders, useSelection } from '@foxy/composables'
 
@@ -136,3 +136,17 @@
     })
   }
 </script>
+
+<style scoped lang="scss">
+	.foxy-data-table-rows {
+		&--no-data{
+			text-align: center;
+		}
+	}
+</style>
+
+<style>
+	:root{
+
+	}
+</style>

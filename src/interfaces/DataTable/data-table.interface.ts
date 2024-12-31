@@ -1,5 +1,6 @@
 import {
   IDataTableExpandProps,
+  IDataTableFooterProps,
   IDataTableGroup,
   IDataTableGroupProps,
   IDataTableHeaderProps,
@@ -17,10 +18,8 @@ import {
   IDataTableSortProps,
   IFiltersProps,
   IInternalDataTableHeader,
-  ITableProps,
+  ITableProps
 } from '@foxy/interfaces'
-
-import { TIcon } from '@foxy/types'
 
 import { UnwrapRef } from 'vue'
 
@@ -29,21 +28,6 @@ export interface IDataTableProps extends ITableProps, IDataTableRowProps, IDataT
   hideDefaultFooter?: boolean
   hideDefaultHeader?: boolean
   search?: string
-}
-
-export interface IDataTableFooterProps {
-  prevIcon?: TIcon
-  nextIcon?: TIcon
-  firstIcon?: TIcon
-  lastIcon?: TIcon
-  itemsPerPageText?: string
-  pageText?: string
-  firstPageLabel?: string
-  prevPageLabel?: string
-  nextPageLabel?: string
-  lastPageLabel?: string
-  itemsPerPageOptions?: Array<number | { title: string, value: number }>
-  showCurrentPage?: boolean
 }
 
 export interface IDataTableSlotProps<T> {

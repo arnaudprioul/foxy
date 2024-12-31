@@ -1,6 +1,6 @@
-import { COLOR_PROPS, COMMONS_COMPONENT_PROPS } from '@foxy/consts'
+import { COLOR_PROPS, COMMONS_COMPONENT_PROPS, DISPLAY_PROPS, LOADER_PROPS } from '@foxy/consts'
 
-import { IHeaderCellProps, IInternalDataTableHeader } from '@foxy/interfaces'
+import { IDataTableHeadersProps, IHeaderCellProps, IInternalDataTableHeader } from '@foxy/interfaces'
 
 import { InjectionKey, Ref } from 'vue'
 
@@ -22,4 +22,12 @@ export const DATA_TABLE_HEADER_CELL_PROPS: IHeaderCellProps = {
   multiSort: false,
   sortAscIcon: undefined,
   sortDescIcon: undefined
+}
+
+export const DATA_TABLE_HEADERS_PROPS: IDataTableHeadersProps = {
+  ...COMMONS_COMPONENT_PROPS,
+  ...COLOR_PROPS,
+  ...DISPLAY_PROPS,
+  ...LOADER_PROPS,
+  ...DATA_TABLE_HEADER_CELL_PROPS
 }

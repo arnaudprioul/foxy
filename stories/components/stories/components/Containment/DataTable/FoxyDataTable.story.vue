@@ -59,7 +59,7 @@
 		FakeAPI.fetch({page, itemsPerPage, sortBy})
 				.then(({items, total}) => {
 					state.items = items
-					state.totalItems = total
+					state.itemLength = total
 
 				})
 				.finally(() => {

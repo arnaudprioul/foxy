@@ -1,9 +1,11 @@
 import {
+  IColorProps,
+  ICommonsComponentProps,
   IDataTableItem,
   IDataTableItemBase,
   IDataTableSelectableItem,
   IDataTableSortItem,
-  IInternalDataTableHeader
+  IInternalDataTableHeader, IPaddingProps
 } from '@foxy/interfaces'
 import { ComputedRef, Ref } from 'vue'
 
@@ -44,4 +46,16 @@ export interface IDataTableGroupHeaderSlot<T = IDataTableGroup> extends IDataTab
   toggleSelect: (item: IDataTableSelectableItem) => void
   toggleGroup: (group: IDataTableGroup) => void
   isGroupOpen: (group: IDataTableGroup) => boolean
+}
+
+export interface IDataTableGroupHeaderRowProps<T = IDataTableGroup> extends ICommonsComponentProps, IColorProps, IPaddingProps {
+  index: number
+  item: T
+  internalItem: IDataTableItem<T>
+  columns: IInternalDataTableHeader[]
+  isExpanded: (item: IDataTableItem) => boolean
+  toggleExpand: (item: IDataTableItem) => void
+  isSelected: (items: IDataTableSelectableItem | Array<IDataTableSelectableItem>) => boolean
+  toggleSelect: (item: IDataTableSelectableItem) => void
+  toggleGroup: (group: IDataTableGroup) => void
 }

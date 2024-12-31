@@ -97,6 +97,7 @@ export interface IInternalDataTableHeader extends Omit<IDataTableHeader, 'key' |
   fixedOffset?: number
   lastFixed?: boolean
   nowrap?: boolean
+  padding?: string | number
   colspan?: number
   rowspan?: number
 

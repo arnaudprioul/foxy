@@ -11,7 +11,7 @@
         <span
             v-show="modelValue"
             :aria-label="label"
-            :class="badgeContentClasses"
+            class="foxy-badge__badge"
             :style="badgeContentStyles"
             aria-atomic="true"
             aria-live="polite"
@@ -131,11 +131,6 @@
       roundedStyles.value,
       borderStyles.value,
       props.inline ? {} : locationStyles.value,
-    ]
-  })
-  const badgeContentClasses = computed(() => {
-    return [
-      'foxy-badge__badge'
     ]
   })
 </script>
