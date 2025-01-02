@@ -1,6 +1,6 @@
 <template>
 	<foxy-overlay
-			ref="overlayRef"
+			ref="foxyOverlayRef"
 			v-model="isActive"
 			:activator-props="activatorProps"
 			:class="dialogClasses"
@@ -15,7 +15,7 @@
 		<template #default="{isActive}">
 			<slot name="default" v-bind="{isActive}">
 				<foxy-card
-						ref="cardRef"
+						ref="foxyCardRef"
 						v-bind="cardProps">
 					<template v-if="hasSlot('loader')" #loader>
 						<slot name="loader"/>
@@ -115,8 +115,8 @@
 	const {hasSlot} = useSlots()
 	const {icon, statusClasses} = useStatus(props)
 
-	const overlayRef = ref<TFoxyOverlay>()
-	const cardRef = ref<TFoxyCard>()
+	const foxyOverlayRef = ref<TFoxyOverlay>()
+	const foxyCardRef = ref<TFoxyCard>()
 
 	const handleFocusin = (e: FocusEvent) => {
 		const before = e.relatedTarget as HTMLElement | null
@@ -124,15 +124,15 @@
 
 		if (
 				before !== after &&
-				overlayRef.value?.contentEl &&
+				foxyOverlayRef.value?.contentEl &&
 				// We're the topmost dialog
-				overlayRef.value?.globalTop &&
+				foxyOverlayRef.value?.globalTop &&
 				// It isn't the document or the dialog body
-				![document, overlayRef.value.contentEl].includes(after!) &&
+				![document, foxyOverlayRef.value.contentEl].includes(after!) &&
 				// It isn't inside the dialog body
-				!overlayRef.value.contentEl.contains(after)
+				!foxyOverlayRef.value.contentEl.contains(after)
 		) {
-			const focusable = focusableChildren(overlayRef.value.contentEl)
+			const focusable = focusableChildren(foxyOverlayRef.value.contentEl)
 
 			if (!focusable.length) return
 
@@ -158,9 +158,9 @@
 	watch(isActive, async (val) => {
 		await nextTick()
 		if (val) {
-			overlayRef.value!.contentEl?.focus({preventScroll: true})
+			foxyOverlayRef.value!.contentEl?.focus({preventScroll: true})
 		} else {
-			overlayRef.value!.activatorEl?.focus({preventScroll: true})
+			foxyOverlayRef.value!.activatorEl?.focus({preventScroll: true})
 		}
 	})
 
@@ -171,10 +171,10 @@
 		}, props.activatorProps)
 	})
 	const overlayProps = computed(() => {
-		return overlayRef.value?.filterProps(props, ['activatorProps', 'class', 'style', 'modelValue'])
+		return foxyOverlayRef.value?.filterProps(props, ['activatorProps', 'class', 'style', 'modelValue'])
 	})
 	const cardProps = computed(() => {
-		return cardRef.value?.filterProps(props)
+		return foxyCardRef.value?.filterProps(props)
 	})
 
 	const handleClose = () => {
@@ -215,7 +215,7 @@
 	// EXPOSE
 
 	defineExpose({
-		...forwardRefs({}, overlayRef),
+		...forwardRefs({}, foxyOverlayRef),
 		filterProps
 	})
 </script>

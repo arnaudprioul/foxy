@@ -1,6 +1,6 @@
 <template>
 	<foxy-btn-group
-			ref="btnGroupRef"
+			ref="foxyBtnGroupRef"
 			:class="btnToggleClasses"
 			:styles="btnToggleStyles"
 			v-bind="btnGroupProps">
@@ -39,10 +39,10 @@
 
 	const {hasSlot} = useSlots()
 
-	const btnGroupRef = ref<TFoxyBtnGroup>()
+	const foxyBtnGroupRef = ref<TFoxyBtnGroup>()
 
 	const btnGroupProps = computed(() => {
-		return btnGroupRef.value?.filterProps(props)
+		return foxyBtnGroupRef.value?.filterProps(props)
 	})
 
 	// CLASS & STYLES

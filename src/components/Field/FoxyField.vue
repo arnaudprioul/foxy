@@ -42,7 +42,7 @@
         <slot name="floatingLabel">
           <foxy-label
               key="floating-label"
-              ref="floatingLabelRef"
+              ref="foxyFloatingLabelRef"
               :for="id"
               :required="required"
               :style="colorStyles"
@@ -55,7 +55,7 @@
       <template v-if="hasLabel">
         <slot name="label">
           <foxy-label
-              ref="labelRef"
+              ref="foxyLabelRef"
               :for="id"
               :required="required"
               :style="colorStyles"
@@ -128,6 +128,7 @@ import { useAdjacentInner, useBothColor, useDensity, useFocus, useLoader, usePro
 import {EASING, KEYBOARD_VALUES, PROGRESS_TYPE} from '@foxy/enums'
 
 import { IFieldProps } from '@foxy/interfaces'
+import { TFoxyLabel } from "@foxy/types"
 
 import {animate, convertToUnit, getUid, nullifyTransforms} from '@foxy/utils'
 
@@ -156,8 +157,8 @@ const uid = getUid()
 const id = computed(() => props.id || `input-${uid}`)
 const messagesId = computed(() => `${id.value}-messages`)
 
-const labelRef = ref()
-const floatingLabelRef = ref()
+const foxyLabelRef = ref<TFoxyLabel>()
+const foxyFloatingLabelRef = ref<TFoxyLabel>()
 const controlRef = ref<HTMLElement>()
 
 const currentColor = computed(() => {
@@ -228,8 +229,8 @@ const isActive = computed(() => {
 })
 watch(isActive, (newVal, oldVal) => {
   if (hasLabel.value && newVal !== oldVal) {
-    const el: HTMLElement = labelRef.value!.$el
-    const targetEl: HTMLElement = floatingLabelRef.value!.$el
+    const el: HTMLElement = foxyLabelRef.value!.$el
+    const targetEl: HTMLElement = foxyFloatingLabelRef.value!.$el
 
     requestAnimationFrame(() => {
       const rect = nullifyTransforms(el)

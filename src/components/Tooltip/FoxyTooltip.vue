@@ -1,7 +1,7 @@
 <template>
   <foxy-overlay
     :id="id"
-    ref="overlayRef"
+    ref="foxyOverlayRef"
     v-model="isActive"
     :activator-props="activatorProps"
     :class="tooltipClasses"
@@ -66,7 +66,7 @@
   const uid = getUid()
   const id = computed(() => props.id || `foxy-tooltip-${uid}`)
 
-  const overlayRef = ref<TFoxyOverlay>()
+  const foxyOverlayRef = ref<TFoxyOverlay>()
 
   const location = computed(() => {
     return props.location.split(' ').length > 1
@@ -96,7 +96,7 @@
   })
 
   const overlayProps = computed(() => {
-    return overlayRef.value?.filterProps(props, ['activatorProps', 'class', 'style', 'modelValue', 'location', 'origin', 'transition', 'disableGlobalStack', 'absolute', 'persistent', 'id'])
+    return foxyOverlayRef.value?.filterProps(props, ['activatorProps', 'class', 'style', 'modelValue', 'location', 'origin', 'transition', 'disableGlobalStack', 'absolute', 'persistent', 'id'])
   })
 
   // CLASS & STYLES
@@ -116,7 +116,7 @@
   // EXPOSE
 
   defineExpose({
-	  ...forwardRefs({}, overlayRef),
+	  ...forwardRefs({}, foxyOverlayRef),
 	  filterProps
   })
 </script>

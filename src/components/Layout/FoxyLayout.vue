@@ -1,6 +1,6 @@
 <template>
   <div
-      ref="layoutRef"
+      ref="foxyLayoutRef"
       :id="layoutId"
       :class="layClasses"
       :style="layStyles">
@@ -21,7 +21,7 @@
 
   const {filterProps} = useProps<ILayoutProps>(props)
 
-  const { layoutClasses, layoutRef, getLayoutItem, items, layoutId } = useCreateLayout(props)
+  const { layoutClasses, foxyLayoutRef, getLayoutItem, items, layoutId } = useCreateLayout(props)
 
   const layStyles = computed(() => {
     return [props.style] as StyleValue

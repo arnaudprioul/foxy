@@ -1,6 +1,6 @@
 <template>
 	<foxy-dialog
-			ref="dialogRef"
+			ref="foxyDialogRef"
 			v-model="isActive"
 			v-bind="dialogProps"
 			@is-read="handleIsRead">
@@ -94,7 +94,7 @@
 
 	const {filterProps} = useProps<IDialogConfirmationProps>(props)
 
-	const dialogRef = ref<TFoxyDialog>()
+	const foxyDialogRef = ref<TFoxyDialog>()
 
 	const isActive = useVModel(props, 'modelValue')
 	const validatable = ref(false)
@@ -102,7 +102,7 @@
 	const {hasSlot} = useSlots()
 
 	const dialogProps = computed(() => {
-		return dialogRef.value?.filterProps(props, ['class', 'style', 'id', 'modelValue'])
+		return foxyDialogRef.value?.filterProps(props, ['class', 'style', 'id', 'modelValue'])
 	})
 
 	const handleIsRead = (value: boolean) => {

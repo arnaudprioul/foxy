@@ -10,7 +10,7 @@
     <template v-if="hasHeader">
       <slot name="header" v-bind="expansionPanelHeaderProps">
         <foxy-expansion-panel-header
-		        ref="expansionPanelHeaderRef"
+		        ref="foxyExpansionPanelHeaderRef"
             key="header"
             class="foxy-expansion-panel__header"
             v-bind="expansionPanelHeaderProps">
@@ -34,7 +34,7 @@
     <template v-if="hasContent">
       <slot name="wrapper" v-bind="expansionPanelContentProps">
         <foxy-expansion-panel-content
-		        ref="expansionPanelContentRef"
+		        ref="foxyExpansionPanelContentRef"
             key="content"
             class="foxy-expansion-panel__content"
             v-bind="expansionPanelContentProps">
@@ -83,8 +83,8 @@
 
   const {filterProps} = useProps<IExpansionPanelProps>(props)
 
-  const expansionPanelHeaderRef = ref<TFoxyExpansionPanelHeader>()
-  const expansionPanelContentRef = ref<TFoxyExpansionPanelContent>()
+  const foxyExpansionPanelHeaderRef = ref<TFoxyExpansionPanelHeader>()
+  const foxyExpansionPanelContentRef = ref<TFoxyExpansionPanelContent>()
 
   const groupItem = useGroupItem(props, FOXY_EXPANSION_PANEL_KEY)
   const { hasSlot } = useSlots()
@@ -140,10 +140,10 @@
   })
 
   const expansionPanelHeaderProps = computed(() => {
-    return expansionPanelHeaderRef.value?.filterProps(props, ['class', 'id', 'style', 'tag'])
+    return foxyExpansionPanelHeaderRef.value?.filterProps(props, ['class', 'id', 'style', 'tag'])
   })
   const expansionPanelContentProps = computed(() => {
-    return expansionPanelContentRef.value?.filterProps(props, ['class', 'id', 'style', 'tag'])
+    return foxyExpansionPanelContentRef.value?.filterProps(props, ['class', 'id', 'style', 'tag'])
   })
 
   // CLASSES & STYLES

@@ -1,6 +1,6 @@
 <template>
 	<foxy-selection-control
-			ref="selectionControlRef"
+			ref="foxySelectionControlRef"
 			v-model="model"
 			:aria-checked="indeterminate ? 'mixed' : undefined"
 			:class="checkboxBtnClasses"
@@ -49,7 +49,7 @@
 
 	const {filterProps} = useProps<ICheckboxBtnProps>(props)
 
-	const selectionControlRef = ref<TFoxySelectionControl>()
+	const foxySelectionControlRef = ref<TFoxySelectionControl>()
 
 	const indeterminate = useVModel(props, 'indeterminate')
 	const model = useVModel(props, 'modelValue')
@@ -77,7 +77,7 @@
 	})
 
 	const controlProps = computed(() => {
-		return selectionControlRef.value?.filterProps(props, ['modelValue', 'falseIcon', 'trueIcon', 'type', 'class', 'style'])
+		return foxySelectionControlRef.value?.filterProps(props, ['modelValue', 'falseIcon', 'trueIcon', 'type', 'class', 'style'])
 	})
 
 	// CLASS & STYLES

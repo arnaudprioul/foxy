@@ -1,6 +1,6 @@
 <template>
 	<foxy-window
-			ref="windowRef"
+			ref="foxyWindowRef"
 			v-model="model"
 			:class="carouselClasses"
 			:style="carouselStyles"
@@ -76,14 +76,14 @@
 	const {filterProps} = useProps<ICarouselProps>(props)
 
 	const model = useVModel(props, 'modelValue')
-	const windowRef = ref<TFoxyWindow>()
+	const foxyWindowRef = ref<TFoxyWindow>()
 
 	let slideTimeout = -1
 
 	const startTimeout = () => {
-		if (!props.cycle || !windowRef.value) return
+		if (!props.cycle || !foxyWindowRef.value) return
 
-		slideTimeout = window.setTimeout(windowRef.value.group.next, +props.interval > 0 ? +props.interval : 6000)
+		slideTimeout = window.setTimeout(foxyWindowRef.value.group.next, +props.interval > 0 ? +props.interval : 6000)
 	}
 
 	const restartTimeout = () => {
@@ -101,7 +101,7 @@
 	onMounted(startTimeout)
 
 	const windowProps = computed(() => {
-		return windowRef.value?.filterProps(props, ['modelValue'])
+		return foxyWindowRef.value?.filterProps(props, ['modelValue'])
 	})
 
 	const controlProps = (item: {

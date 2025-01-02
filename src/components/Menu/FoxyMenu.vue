@@ -1,7 +1,7 @@
 <template>
 	<foxy-overlay
 			:id="id"
-			ref="overlayRef"
+			ref="foxyOverlayRef"
 			v-model="isActive"
 			:activator-props="activatorProps"
 			:class="menuClasses"
@@ -85,7 +85,7 @@
 	const uid = getUid()
 	const id = computed(() => props.id || `foxy-menu--${uid}`)
 
-	const overlayRef = ref<TFoxyOverlay>()
+	const foxyOverlayRef = ref<TFoxyOverlay>()
 
 	const parent = inject(FOXY_MENU_KEY, null)
 	const openChildren = shallowRef(0)
@@ -147,20 +147,20 @@
 
 		if (e.key === KEYBOARD_VALUES.TAB) {
 			const nextElement = getNextElement(
-					focusableChildren(overlayRef.value?.contentEl as Element, false),
+					focusableChildren(foxyOverlayRef.value?.contentEl as Element, false),
 					e.shiftKey ? 'prev' : 'next',
 					(el: HTMLElement) => el.tabIndex >= 0
 			)
 			if (!nextElement) {
 				isActive.value = false
-				overlayRef.value?.activatorEl?.focus()
+				foxyOverlayRef.value?.activatorEl?.focus()
 			}
 		}
 	}
 	const handleActivatorKeydown = (e: KeyboardEvent) => {
 		if (props.disabled) return
 
-		const el = overlayRef.value?.contentEl
+		const el = foxyOverlayRef.value?.contentEl
 		if (el && isActive.value) {
 			if (e.key === KEYBOARD_VALUES.DOWN) {
 				e.preventDefault()
@@ -186,7 +186,7 @@
 	})
 
 	const overlayProps = computed(() => {
-		return overlayRef.value?.filterProps(props, ['activatorProps', 'id', 'class', 'style', 'modelValue', 'absolute'])
+		return foxyOverlayRef.value?.filterProps(props, ['activatorProps', 'id', 'class', 'style', 'modelValue', 'absolute'])
 	})
 
 	const hasChilds = (item: IItemProps) => {
@@ -210,7 +210,7 @@
 	// EXPOSE
 
 	defineExpose({
-		...forwardRefs({}, overlayRef)
+		...forwardRefs({}, foxyOverlayRef)
 		openChildren,
 		filterProps
 	})

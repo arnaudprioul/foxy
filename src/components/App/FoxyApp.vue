@@ -1,6 +1,6 @@
 <template>
   <foxy-layout
-      ref="appRef"
+      ref="foxyAppRef"
       :id="id"
       :class="appClasses"
       :style="appStyles">
@@ -12,7 +12,8 @@
 
 <script lang="ts" setup>
   import { useProps } from "@foxy/composables"
-  import { computed, StyleValue } from 'vue'
+  import { TFoxyApp } from "@foxy/types"
+  import { computed, ref, StyleValue } from 'vue'
 
   import { ILayoutProps } from '@foxy/interfaces'
 
@@ -21,6 +22,8 @@
   const props = withDefaults(defineProps<ILayoutProps>(), { fullHeight: true })
 
   const {filterProps} = useProps<ILayoutProps>(props)
+
+  const foxyAppRef = ref<TFoxyApp>()
 
   // CLASSES & STYLES
 

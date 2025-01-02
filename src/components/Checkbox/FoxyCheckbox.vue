@@ -1,7 +1,7 @@
 <template>
 	<foxy-input
 			:id="id"
-			ref="inputRef"
+			ref="foxyInputRef"
 			v-model="model"
 			:class="checkboxClasses"
 			:focused="isFocused"
@@ -10,7 +10,7 @@
 		<template #default="{id,messagesId,isDisabled,isReadonly,isValid}">
 			<slot name="default" v-bind="{id,messagesId,isDisabled,isReadonly,isValid}">
 				<foxy-checkbox-btn
-						ref="checkboxBtnRef"
+						ref="foxyCheckboxBtnRef"
 						:id="id"
 						v-model="model"
 						:aria-describedby="messagesId"
@@ -62,8 +62,8 @@
 
 	const {filterProps} = useProps<ICheckboxProps>(props)
 
-	const inputRef = ref<TFoxyInput>()
-	const checkboxBtnRef = ref<TFoxyCheckboxBtn>()
+	const foxyInputRef = ref<TFoxyInput>()
+	const foxyCheckboxBtnRef = ref<TFoxyCheckboxBtn>()
 
 	const model = useVModel(props, 'modelValue')
 	const {isFocused, onFocus: handleFocus, onBlur: handleBlur} = useFocus(props)
@@ -82,10 +82,10 @@
 	const [rootAttrs, controlAttrs] = filterInputAttrs(attrs)
 
 	const inputProps = computed(() => {
-		return inputRef.value?.filterProps(props, ['modelValue', 'class', 'style', 'id', 'focused'])
+		return foxyInputRef.value?.filterProps(props, ['modelValue', 'class', 'style', 'id', 'focused'])
 	})
 	const checkboxBtnProps = computed(() => {
-		return checkboxBtnRef.value?.filterProps(props, ['class', 'style', 'modelValue', 'id', 'disabled', 'readonly', 'error'])
+		return foxyCheckboxBtnRef.value?.filterProps(props, ['class', 'style', 'modelValue', 'id', 'disabled', 'readonly', 'error'])
 	})
 
 	// CLASS & STYLES

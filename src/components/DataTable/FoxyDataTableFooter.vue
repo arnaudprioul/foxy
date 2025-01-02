@@ -24,7 +24,7 @@
 
 			<div class="foxy-data-table-footer__pagination">
 				<foxy-pagination
-						ref="paginationRef"
+						ref="foxyPaginationRef"
 						v-model="page"
 						:density="DENSITY.COMPACT"
 						:first-aria-label="props.firstPageLabel"
@@ -69,7 +69,7 @@
 
 	const {filterProps} = useProps<IDataTableFooterProps>(props)
 
-	const paginationRef = ref<TFoxyPagination>()
+	const foxyPaginationRef = ref<TFoxyPagination>()
 
 	const {page, pageCount, startIndex, stopIndex, itemsLength, itemsPerPage, setItemsPerPage} = usePagination()
 
@@ -96,7 +96,7 @@
 	}
 
 	const paginationProps = computed(() => {
-		return paginationRef.value?.filterProps(props)
+		return foxyPaginationRef.value?.filterProps(props)
 	})
 
 	// CLASSES & STYLES

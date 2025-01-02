@@ -19,7 +19,7 @@
 		<template v-if="mobile">
 			<slot name="mobile" v-bind="slotProps">
 				<foxy-data-table-headers-cell-mobile
-						ref="dataTableHeadersCellMobileRef"
+						ref="foxyDataTableHeadersCellMobileRef"
 						:class="dataTableHeadersClasses"
 						:columns="columns"
 						:style="dataTableHeadersStyles"
@@ -29,7 +29,7 @@
 		<template v-else>
 			<slot name="default" v-bind="slotProps">
 				<foxy-data-table-headers-cell
-						ref="dataTableHeadersCellRef"
+						ref="foxyDataTableHeadersCellRef"
 						:class="dataTableHeadersClasses"
 						:headers="headers"
 						:style="dataTableHeadersStyles"
@@ -55,8 +55,8 @@
 
 	const {filterProps} = useProps<IDataTableHeadersProps>(props)
 
-	const dataTableHeadersCellRef = ref<TFoxyDataTableHeadersCell>()
-	const dataTableHeadersCellMobileRef = ref<TFoxyDataTableHeadersCellMobile>()
+	const foxyDataTableHeadersCellRef = ref<TFoxyDataTableHeadersCell>()
+	const foxyDataTableHeadersCellMobileRef = ref<TFoxyDataTableHeadersCellMobile>()
 
 	const {toggleSort, sortBy, isSorted} = useSort()
 	const {someSelected, allSelected, selectAll} = useSelection()
@@ -81,10 +81,10 @@
 	})
 
 	const dataTableHeadersCellProps = computed(() => {
-		return dataTableHeadersCellRef.value?.filterProps(props)
+		return foxyDataTableHeadersCellRef.value?.filterProps(props)
 	})
 	const dataTableHeadersCellMobileProps = computed(() => {
-		return dataTableHeadersCellMobileRef.value?.filterProps(props)
+		return foxyDataTableHeadersCellMobileRef.value?.filterProps(props)
 	})
 
 	// CLASSES & STYLES

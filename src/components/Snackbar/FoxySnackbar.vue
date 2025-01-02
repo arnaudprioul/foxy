@@ -1,6 +1,6 @@
 <template>
 	<foxy-overlay
-			ref="overlayRef"
+			ref="foxyOverlayRef"
 			v-model="isActive"
 			:class="snackbarClasses"
 			:content-props="contentProps"
@@ -18,7 +18,7 @@
 
 			<div v-if="props.timer && !isHovering" key="timer" class="foxy-snackbar__timer">
 				<foxy-progress
-						ref="timerRef"
+						ref="foxyProgressRef"
 						:max="props.timeout"
 						:model-value="countdown.time.value"
 						:type="PROGRESS_TYPE.LINEAR"/>
@@ -117,8 +117,8 @@
 	const {marginClasses, marginStyles} = useMargin(props)
 	const {elevationClasses} = useElevation(props)
 
-	const overlayRef = ref<TFoxyOverlay>()
-	const timerRef = ref<TFoxyProgress>()
+	const foxyOverlayRef = ref<TFoxyOverlay>()
+	const foxyProgressRef = ref<TFoxyProgress>()
 	const isHovering = shallowRef(false)
 	const startY = shallowRef(0)
 	const mainStyles = ref()
@@ -140,7 +140,7 @@
 
 		if (!isActive.value || timeout === -1) return
 
-		const element = refElement(timerRef.value)
+		const element = refElement(foxyProgressRef.value)
 
 		countdown.start(element)
 
@@ -178,7 +178,7 @@
 	}
 
 	const overlayProps = computed(() => {
-		return overlayRef.value?.filterProps(props, ['class', 'style', 'id', 'contentProps', 'modelValue', 'disableGlobalStack', 'noClickAnimation', 'persistent', 'scrim', 'scrollStrategy'])
+		return foxyOverlayRef.value?.filterProps(props, ['class', 'style', 'id', 'contentProps', 'modelValue', 'disableGlobalStack', 'noClickAnimation', 'persistent', 'scrim', 'scrollStrategy'])
 	})
 	const contentProps = computed(() => {
 		return mergeProps({
@@ -244,7 +244,7 @@
 	// EXPOSE
 
 	defineExpose({
-		...forwardRefs({}, overlayRef),
+		...forwardRefs({}, foxyOverlayRef),
 		filterProps
 	})
 </script>

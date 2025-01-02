@@ -1,6 +1,6 @@
 <template>
   <foxy-slide-group
-		  ref="slideGroupRef"
+		  ref="foxySlideGroupRef"
       :class="chipGroupClasses"
       :style="chipGroupStyles"
       v-bind="{...slideGroupProps}">
@@ -34,12 +34,12 @@
 
   const {filterProps} = useProps<IChipGroupProps>(props)
 
-  const slideGroupRef = ref<TFoxySlideGroup>()
+  const foxySlideGroupRef = ref<TFoxySlideGroup>()
 
   const {isSelected, select, next, prev, selected} = useGroup(props, FOXY_CHIP_GROUP_KEY)
 
   const slideGroupProps = computed(() => {
-    return slideGroupRef.value?.filterProps(props)
+    return foxySlideGroupRef.value?.filterProps(props)
   })
 
   // CLASS & STYLES

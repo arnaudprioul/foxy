@@ -1,6 +1,6 @@
 <template>
   <component
-		  ref="progressRef"
+		  ref="foxyProgressRef"
       :is="progressComponent"
       :aria-hidden="!props.active"
       :aria-valuemax="max"
@@ -40,7 +40,7 @@
 
   const {filterProps} = useProps<IProgressProps>(props)
 
-  const progressRef = ref<TFoxyProgressCircular | TFoxyProgressLinear>()
+  const foxyProgressRef = ref<TFoxyProgressCircular | TFoxyProgressLinear>()
 
   const { sizeClasses, sizeStyles } = useSize(props)
   const { normalizedValue, hasContent } = useProgress(props)
@@ -52,7 +52,7 @@
     return isCircular.value ? FoxyProgressCircular : FoxyProgressLinear
   })
   const progressProps = computed(() => {
-    return progressRef.value?.filterProps(props)
+    return foxyProgressRef.value?.filterProps(props)
   })
 
   // CLASS & STYLES

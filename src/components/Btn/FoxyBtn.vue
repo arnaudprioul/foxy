@@ -19,7 +19,7 @@
 				<template v-if="hasLoader" #loader>
 					<slot name="loader" v-bind="progressProps">
 						<foxy-progress-circular
-								ref="progressRef"
+								ref="foxyProgressRef"
 								v-bind="progressProps"/>
 					</slot>
 				</template>
@@ -134,7 +134,7 @@
 	const {marginClasses, marginStyles} = useMargin(props)
 	const {sizeClasses, sizeStyles} = useSize(props)
 
-	const progressRef = ref<TFoxyProgressCircular>()
+	const foxyProgressRef = ref<TFoxyProgressCircular>()
 
 	const {
 		onClickPrepend: handleClickPrepend,
@@ -236,7 +236,7 @@
 					size: '23',
 					indeterminate: true
 				},
-				progressRef.value?.filterProps(props, ['class', 'style', 'id']))
+				foxyProgressRef.value?.filterProps(props, ['class', 'style', 'id']))
 	})
 
 	// CLASS & STYLES

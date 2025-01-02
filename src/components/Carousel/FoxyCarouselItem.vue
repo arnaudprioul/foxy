@@ -1,13 +1,13 @@
 <template>
   <foxy-window-item
-		  ref="windowItemRef"
+		  ref="foxyWindowItemRef"
       :class="carouselItemClasses"
       :style="carouselItemStyles"
       v-bind="windowItemProps">
     <template #default>
       <slot name="default">
         <foxy-img
-		        ref="imgRef"
+		        ref="foxyImgRef"
 		        v-bind="{...attrs , ...imgProps}">
           <template v-if="hasSlot('content')" #default>
             <slot name="content"/>
@@ -46,14 +46,14 @@
 
   const attrs = useAttrs()
 
-  const windowItemRef = ref<TFoxyWindowItem>()
-  const imgRef = ref<TFoxyImg>()
+  const foxyWindowItemRef = ref<TFoxyWindowItem>()
+  const foxyImgRef = ref<TFoxyImg>()
 
   const windowItemProps = computed(() => {
-    return windowItemRef.value?.filterProps(props)
+    return foxyWindowItemRef.value?.filterProps(props)
   })
   const imgProps = computed(() => {
-    return imgRef.value?.filterProps(props)
+    return foxyImgRef.value?.filterProps(props)
   })
 
   const { hasSlot } = useSlots()

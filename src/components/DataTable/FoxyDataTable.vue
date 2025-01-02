@@ -1,6 +1,6 @@
 <template>
 	<foxy-table
-			ref="tableRef"
+			ref="foxyTableRef"
 			:class="dataTableClasses"
 			:style="dataTableStyles"
 			v-bind="tableProps">
@@ -15,7 +15,7 @@
 				<template v-if="!props.hideDefaultHeader">
 					<thead key="thead">
 						<foxy-data-table-headers
-								ref="dataTableHeadersRef"
+								ref="foxyDataTableHeadersRef"
 								v-bind="dataTableHeadersProps">
 							<template v-if="hasSlot('header')" #default="headerProps">
 								<slot name="header" v-bind="headerProps"/>
@@ -39,7 +39,7 @@
 					<slot name="prepend" v-bind="slotProps"/>
 					<slot name="body" v-bind="slotProps">
 						<foxy-data-table-rows
-								ref="dataTableRowsRef"
+								ref="foxyDataTableRowsRef"
 								:items="paginatedItems"
 								v-bind="{ ...attrs, ...dataTableRowsProps }">
 						</foxy-data-table-rows>
@@ -124,9 +124,9 @@
 
 	const attrs = useAttrs()
 
-	const tableRef = ref<TFoxyTable>()
-	const dataTableHeadersRef = ref<TFoxyDataTableHeaders>()
-	const dataTableRowsRef = ref<TFoxyDataTableRows>()
+	const foxyTableRef = ref<TFoxyTable>()
+	const foxyDataTableHeadersRef = ref<TFoxyDataTableHeaders>()
+	const foxyDataTableRowsRef = ref<TFoxyDataTableRows>()
 
 	const {groupBy} = createGroupBy(props)
 	const {sortBy, multiSort, mustSort} = createSort(props)
@@ -190,7 +190,7 @@
 	})
 
 	const tableProps = computed(() => {
-		return tableRef.value?.filterProps(props)
+		return foxyTableRef.value?.filterProps(props)
 	})
 
 	const slotProps = computed(() => {
@@ -220,11 +220,11 @@
 	})
 
 	const dataTableHeadersProps = computed(() => {
-		return dataTableHeadersRef.value?.filterProps(props)
+		return foxyDataTableHeadersRef.value?.filterProps(props)
 	})
 
 	const dataTableRowsProps = computed(() => {
-		return dataTableRowsRef.value?.filterProps(props, ['class', 'style', 'items'])
+		return foxyDataTableRowsRef.value?.filterProps(props, ['class', 'style', 'items'])
 	})
 
 	// CLASS & STYLES
