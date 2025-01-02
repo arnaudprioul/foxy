@@ -20,16 +20,16 @@
 </template>
 
 <script lang="ts" setup>
-  import {
-    useBorder,
-    useDensity,
-    useDimension,
-    useElevation,
-    useMargin,
-    usePadding,
-    useRounded,
-    useSlots
-  } from '@foxy/composables'
+	import {
+		useBorder,
+		useDensity,
+		useDimension,
+		useElevation,
+		useMargin,
+		usePadding, useProps,
+		useRounded,
+		useSlots
+	} from '@foxy/composables'
   import { DENSITY } from '@foxy/enums'
 
   import { ITableProps } from '@foxy/interfaces'
@@ -40,6 +40,8 @@
     tag: 'div',
     density: DENSITY.DEFAULT
   })
+
+  const {filterProps} = useProps<ITableProps>(props)
 
   const { hasSlot } = useSlots()
 
@@ -92,4 +94,10 @@
       props.class,
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

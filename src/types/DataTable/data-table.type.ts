@@ -1,3 +1,4 @@
+import { FoxyDataTable } from "@foxy/components"
 import { DATATABLE_SELECT_STRATEGY } from '@foxy/enums'
 
 import { IDataTableItemKey } from '@foxy/interfaces'
@@ -17,3 +18,5 @@ export type TDataTableCell<T> =
     | ((data: Pick<IDataTableItemKey<T>, 'index' | 'item' | 'internalItem' | 'value' | 'column'>) => Record<string, any>)
 
 export type TDataTableSelectStrategy = `${DATATABLE_SELECT_STRATEGY}`
+
+export type TFoxyDataTable = InstanceType<typeof FoxyDataTable>

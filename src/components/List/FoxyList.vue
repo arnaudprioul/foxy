@@ -56,7 +56,7 @@
 		useListItems,
 		useMargin,
 		useNested,
-		usePadding,
+		usePadding, useProps,
 		useRounded,
 		useSlots
 	} from '@foxy/composables'
@@ -87,6 +87,8 @@
 	})
 
 	const emit = defineEmits(['update:selected', 'update:opened', 'click:open', 'click:select'])
+
+	const {filterProps} = useProps<IListProps>(props)
 
 	const {items} = useListItems(props)
 	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
@@ -204,7 +206,16 @@
 		]
 	})
 
-	defineExpose({open, select, focus, children, parents})
+	// EXPOSE
+
+	defineExpose({
+		open,
+		select,
+		focus,
+		children,
+		parents,
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>

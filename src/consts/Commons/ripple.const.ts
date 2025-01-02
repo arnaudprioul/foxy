@@ -1,4 +1,4 @@
-import { IRippleElement, IRippleHtmlElement, IRippleOptions, IRippleProps } from '@foxy/interfaces'
+import { IRippleElement, IRippleHtmlElement, IRippleOptions } from '@foxy/interfaces'
 
 import { TRippleEvent } from '@foxy/types'
 
@@ -105,8 +105,4 @@ export const RIPPLES = {
       }, 300)
     }, delay)
   },
-}
-
-export const RIPPLE_PROPS: IRippleProps = {
-  ripple: undefined
 }

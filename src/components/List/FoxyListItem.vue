@@ -75,7 +75,7 @@
 		useList,
 		useMargin,
 		useNestedItem,
-		usePadding,
+		usePadding, useProps,
 		useRounded,
 		useSlots
 	} from '@foxy/composables'
@@ -94,6 +94,8 @@
 	const props = withDefaults(defineProps<IListItemProps>(), {tag: 'div'})
 
 	const emits = defineEmits(['click', 'click:append', 'click:prepend'])
+
+	const {filterProps} = useProps<IListItemProps>(props)
 
 	const {hasSlot} = useSlots()
 	const link = useLink(props, attrs)
@@ -229,7 +231,15 @@
 		]
 	})
 
-	defineExpose({isGroupActivator, isSelected, list, select})
+	// EXPOSE
+
+	defineExpose({
+		isGroupActivator,
+		isSelected,
+		list,
+		select,
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>

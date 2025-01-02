@@ -1,94 +1,102 @@
 <template>
-  <foxy-selection-control
-    v-model="model"
-    :aria-checked="indeterminate ? 'mixed' : undefined"
-    :class="checkboxBtnClasses"
-    :false-icon="falseIcon"
-    :style="checkboxBtnStyles"
-    :true-icon="trueIcon"
-    type="checkbox"
-    v-bind="controlProps"
-    @update:model-value="handleChange"
-    @click:label="handleClickLabel"
-  >
-    <template v-if="hasSlot('default')" #default>
-      <slot name="default"/>
-    </template>
+	<foxy-selection-control
+			ref="selectionControlRef"
+			v-model="model"
+			:aria-checked="indeterminate ? 'mixed' : undefined"
+			:class="checkboxBtnClasses"
+			:false-icon="falseIcon"
+			:style="checkboxBtnStyles"
+			:true-icon="trueIcon"
+			type="checkbox"
+			v-bind="controlProps"
+			@update:model-value="handleChange"
+			@click:label="handleClickLabel"
+	>
+		<template v-if="hasSlot('default')" #default>
+			<slot name="default"/>
+		</template>
 
-    <template v-if="hasSlot('input')" #input="{props, icon, textColorStyles, backgroundColorStyles, model}">
-      <slot name="input" v-bind="{props, icon, textColorStyles, backgroundColorStyles, model}"/>
-    </template>
+		<template v-if="hasSlot('input')" #input="{props, icon, textColorStyles, backgroundColorStyles, model}">
+			<slot name="input" v-bind="{props, icon, textColorStyles, backgroundColorStyles, model}"/>
+		</template>
 
-    <template v-if="hasSlot('label')" #label>
-      <slot name="label"/>
-    </template>
-  </foxy-selection-control>
+		<template v-if="hasSlot('label')" #label>
+			<slot name="label"/>
+		</template>
+	</foxy-selection-control>
 </template>
 
 <script lang="ts" setup>
-  import { FoxySelectionControl } from '@foxy/components'
+	import { FoxySelectionControl } from '@foxy/components'
 
-  import { useSlots, useVModel } from '@foxy/composables'
+	import { useProps, useSlots, useVModel } from '@foxy/composables'
 
-  import { SELECTION_CONTROL_PROPS } from '@foxy/consts'
+	import { DENSITY } from '@foxy/enums'
 
-  import { DENSITY } from '@foxy/enums'
+	import { ICheckboxBtnProps } from '@foxy/interfaces'
+	import { TFoxySelectionControl } from "@foxy/types"
 
-  import { ICheckboxBtnProps } from '@foxy/interfaces'
+	import { computed, ref, StyleValue } from 'vue'
 
-  import { keys, omit, pick } from '@foxy/utils'
+	const props = withDefaults(defineProps<ICheckboxBtnProps>(), {
+		density: DENSITY.DEFAULT,
+		falseIcon: '$checkboxOff',
+		trueIcon: '$checkboxOn',
+		indeterminateIcon: '$checkboxIndeterminate'
+	})
 
-  import { computed, StyleValue } from 'vue'
+	const emits = defineEmits(['update:modelValue', 'update:focused', 'update:indeterminate', 'click:label'])
 
-  const props = withDefaults(defineProps<ICheckboxBtnProps>(), {
-    density: DENSITY.DEFAULT,
-    falseIcon: '$checkboxOff',
-    trueIcon: '$checkboxOn',
-    indeterminateIcon: '$checkboxIndeterminate'
-  })
+	const {filterProps} = useProps<ICheckboxBtnProps>(props)
 
-  const emits = defineEmits(['update:modelValue', 'update:focused', 'update:indeterminate', 'click:label'])
+	const selectionControlRef = ref<TFoxySelectionControl>()
 
-  const indeterminate = useVModel(props, 'indeterminate')
-  const model = useVModel(props, 'modelValue')
+	const indeterminate = useVModel(props, 'indeterminate')
+	const model = useVModel(props, 'modelValue')
 
-  const { hasSlot } = useSlots()
+	const {hasSlot} = useSlots()
 
-  const handleChange = (_v: any) => {
-    if (indeterminate.value) {
-      indeterminate.value = false
-    }
-  }
-  const handleClickLabel = (e: Event) => {
-    emits('click:label', e)
-  }
+	const handleChange = (_v: any) => {
+		if (indeterminate.value) {
+			indeterminate.value = false
+		}
+	}
+	const handleClickLabel = (e: Event) => {
+		emits('click:label', e)
+	}
 
-  const falseIcon = computed(() => {
-    return indeterminate.value
-      ? props.indeterminateIcon
-      : props.falseIcon
-  })
-  const trueIcon = computed(() => {
-    return indeterminate.value
-      ? props.indeterminateIcon
-      : props.trueIcon
-  })
+	const falseIcon = computed(() => {
+		return indeterminate.value
+				? props.indeterminateIcon
+				: props.falseIcon
+	})
+	const trueIcon = computed(() => {
+		return indeterminate.value
+				? props.indeterminateIcon
+				: props.trueIcon
+	})
 
-  const controlProps = computed(() => {
-    return omit(pick(props, keys(SELECTION_CONTROL_PROPS)), ['modelValue', 'falseIcon', 'trueIcon', 'type'])
-  })
+	const controlProps = computed(() => {
+		return selectionControlRef.value?.filterProps(props, ['modelValue', 'falseIcon', 'trueIcon', 'type', 'class', 'style'])
+	})
 
-  // CLASS & STYLES
+	// CLASS & STYLES
 
-  const checkboxBtnStyles = computed(() => {
-    return [
-      props.style,
-    ] as StyleValue
-  })
-  const checkboxBtnClasses = computed(() => {
-    return [
-      'foxy-checkbox-btn',
-      props.class,
-    ]
-  })
+	const checkboxBtnStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const checkboxBtnClasses = computed(() => {
+		return [
+			'foxy-checkbox-btn',
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

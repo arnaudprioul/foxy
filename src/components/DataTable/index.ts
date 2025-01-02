@@ -7,3 +7,4 @@ export { default as FoxyDataTableColumnCell } from './FoxyDataTableColumnCell.vu
 export { default as FoxyDataTableRows } from './FoxyDataTableRows.vue'
 export { default as FoxyDataTableRow } from './FoxyDataTableRow.vue'
 export { default as FoxyDataTableGroupHeaderRow } from './FoxyDataTableGroupHeaderRow.vue'
+export { default as FoxyDataTableFooter } from './FoxyDataTableFooter.vue'

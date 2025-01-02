@@ -1,7 +1,7 @@
 <template>
   <foxy-overlay
     :id="id"
-    ref="overlay"
+    ref="overlayRef"
     v-model="isActive"
     :activator-props="activatorProps"
     :class="tooltipClasses"
@@ -29,9 +29,7 @@
 <script lang="ts" setup>
   import { FoxyFade, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
 
-  import { useScopeId, useVModel } from '@foxy/composables'
-
-  import { OVERLAY_PROPS } from '@foxy/consts'
+  import { useProps, useScopeId, useVModel } from '@foxy/composables'
 
   import { INLINE, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@foxy/enums'
 
@@ -39,7 +37,7 @@
 
   import { TAnchor, TFoxyOverlay } from '@foxy/types'
 
-  import { forwardRefs, getUid, keys, omit, pick } from '@foxy/utils'
+  import { forwardRefs, getUid } from '@foxy/utils'
 
   import { computed, mergeProps, ref, StyleValue } from 'vue'
 
@@ -60,13 +58,15 @@
 
   const emits = defineEmits(['update:modelValue'])
 
+  const {filterProps} = useProps<ITooltipProps>(props)
+
   const isActive = useVModel(props, 'modelValue')
   const { scopeId } = useScopeId()
 
   const uid = getUid()
   const id = computed(() => props.id || `foxy-tooltip-${uid}`)
 
-  const overlay = ref<TFoxyOverlay>()
+  const overlayRef = ref<TFoxyOverlay>()
 
   const location = computed(() => {
     return props.location.split(' ').length > 1
@@ -89,16 +89,14 @@
     return { component: isActive.value ? FoxyTranslateScale : FoxyFade }
   })
 
-  const activatorProps = computed(() =>
-    mergeProps({
-      'aria-describedby': id.value,
-    }, props.activatorProps)
-  )
+  const activatorProps = computed(() => {
+	  return mergeProps({
+		  'aria-describedby': id.value,
+	  }, props.activatorProps)
+  })
 
   const overlayProps = computed(() => {
-    const overlayProps = pick(props, keys(OVERLAY_PROPS))
-
-    return omit(overlayProps, ['activatorProps', 'class', 'style', 'modelValue', 'location', 'origin', 'transition', 'disableGlobalStack', 'absolute', 'persistent'])
+    return overlayRef.value?.filterProps(props, ['activatorProps', 'class', 'style', 'modelValue', 'location', 'origin', 'transition', 'disableGlobalStack', 'absolute', 'persistent', 'id'])
   })
 
   // CLASS & STYLES
@@ -115,7 +113,12 @@
     ]
   })
 
-  defineExpose(forwardRefs({}, overlay))
+  // EXPOSE
+
+  defineExpose({
+	  ...forwardRefs({}, overlayRef),
+	  filterProps
+  })
 </script>
 
 <style lang="scss" scoped>

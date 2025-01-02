@@ -25,11 +25,14 @@
 </template>
 
 <script lang="ts" setup>
+  import { useProps } from "@foxy/composables"
   import { computed, StyleValue } from 'vue'
 
   import { IIconComponentProps } from '@foxy/interfaces'
 
   const props = withDefaults(defineProps<IIconComponentProps>(), { tag: 'div' })
+
+  const {filterProps} = useProps<IIconComponentProps>(props)
 
   const isArray = (data: any) => {
     return Array.isArray(data)
@@ -46,5 +49,11 @@
     return [
       props.class
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>

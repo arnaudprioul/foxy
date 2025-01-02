@@ -8,21 +8,23 @@
 </template>
 
 <script lang="ts" setup>
-  import {
-    useBorder,
-    useBothColor,
-    useDimension,
-    useElevation,
-    useLocation, useMargin, usePadding,
-    usePosition,
-    useRounded
-  } from '@foxy/composables'
+	import {
+		useBorder,
+		useBothColor,
+		useDimension,
+		useElevation,
+		useLocation, useMargin, usePadding,
+		usePosition, useProps,
+		useRounded
+	} from '@foxy/composables'
 
   import { ISheetProps } from '@foxy/interfaces'
 
   import { computed, StyleValue, toRef } from 'vue'
 
   const props = withDefaults(defineProps<ISheetProps>(), { tag: 'div' })
+
+  const {filterProps} = useProps<ISheetProps>(props)
 
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { borderClasses, borderStyles } = useBorder(props)
@@ -60,6 +62,12 @@
       props.class,
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>
@@ -102,19 +110,19 @@
     &--rounded {
       border-radius: var(--foxy-sheet--rounded---border-radius);
     }
-    
+
     &--absolute {
       --foxy-sheet---position: absolute;
     }
-    
+
     &--fixed {
       --foxy-sheet---position: fixed;
     }
-    
+
     &--relative {
       --foxy-sheet---position: relative;
     }
-    
+
     &--sticky {
       --foxy-sheet---position: sticky;
     }
@@ -134,13 +142,13 @@
     --foxy-sheet---border-width: var(--foxy-sheet---border-top-width) var(--foxy-sheet---border-left-width) var(--foxy-sheet---border-bottom-width) var(--foxy-sheet---border-right-width);
     --foxy-sheet---border-color: rgba(0, 0, 0, 0.87);
     --foxy-sheet---border-style: solid;
-    
+
     --foxy-sheet---border-start-start-radius: 0;
     --foxy-sheet---border-start-end-radius: 0;
     --foxy-sheet---border-end-start-radius: 0;
     --foxy-sheet---border-end-end-radius: 0;
     --foxy-sheet---border-radius: var(--foxy-sheet---border-start-start-radius) var(--foxy-sheet---border-start-end-radius) var(--foxy-sheet---border-end-start-radius) var(--foxy-sheet---border-end-end-radius);
-    
+
     --foxy-sheet---color: rgba(0, 0, 0, 0.87);
     --foxy-sheet---box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
     --foxy-sheet---background: rgb(255, 255, 255);

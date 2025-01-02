@@ -10,7 +10,7 @@
 
 <script lang="ts" setup>
 	import { FoxySlideY, FoxyTransition } from "@foxy/components"
-	import { useSsrBoot } from "@foxy/composables"
+	import { useProps, useSsrBoot } from "@foxy/composables"
 	import { ICounterProps } from "@foxy/interfaces"
 	import { computed, StyleValue } from "vue"
 
@@ -19,6 +19,8 @@
 		tag: 'div',
 		transition: {component: FoxySlideY}
 	})
+
+	const {filterProps} = useProps<ICounterProps>(props)
 
 	const {isBooted} = useSsrBoot()
 
@@ -41,6 +43,12 @@
 			},
 			props.class
 		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
 	})
 </script>
 

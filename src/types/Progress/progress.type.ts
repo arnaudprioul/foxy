@@ -1,4 +1,4 @@
-import { FoxyProgress } from '@foxy/components'
+import { FoxyProgress} from '@foxy/components'
 
 import { PROGRESS_TYPE } from '@foxy/enums'
 

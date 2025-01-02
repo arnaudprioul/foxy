@@ -65,7 +65,8 @@
 		usePadding,
 		useRounded,
 		useSlots,
-		useValidation
+		useValidation,
+		useProps
 	} from '@foxy/composables'
 
 	import { DENSITY, DIRECTION } from '@foxy/enums'
@@ -83,6 +84,8 @@
 	})
 
 	const emits = defineEmits(['update:modelValue', 'click:append', 'click:prepend'])
+
+	const {filterProps} = useProps<IInputProps>(props)
 
 	const {densityClasses} = useDensity(props)
 	const {dimensionStyles} = useDimension(props)
@@ -197,6 +200,12 @@
 			'foxy-input__control',
 			elevationClasses.value
 		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
 	})
 </script>
 

@@ -20,7 +20,16 @@
 <script lang="ts" setup>
   import { FoxySlideY, FoxyTransition } from '@foxy/components'
 
-  import { useBorder, useDensity, useMargin, usePadding, useRounded, useSsrBoot, useTextColor } from '@foxy/composables'
+  import {
+	  useBorder,
+	  useDensity,
+	  useMargin,
+	  usePadding,
+	  useProps,
+	  useRounded,
+	  useSsrBoot,
+	  useTextColor
+  } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
 
@@ -35,6 +44,8 @@
     density: DENSITY.DEFAULT,
     transition: { component: FoxySlideY }
   })
+
+  const {filterProps} = useProps<IMessagesProps>(props)
 
   const messages = computed(() => {
     return wrapInArray(props.messages)
@@ -71,5 +82,11 @@
       marginClasses.value,
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>

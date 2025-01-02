@@ -12,13 +12,15 @@
 </template>
 
 <script lang="ts" setup>
-  import { useBorder, useBothColor, useMargin, usePadding, useRounded, useSlots } from '@foxy/composables'
+	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded, useSlots } from '@foxy/composables'
 
   import { IListSubheader } from '@foxy/interfaces'
 
   import { computed, StyleValue, toRef } from 'vue'
 
   const props = withDefaults(defineProps<IListSubheader>(), {tag: 'div'})
+
+  const {filterProps} = useProps<IListSubheader>(props)
 
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { roundedClasses, roundedStyles } = useRounded(props)
@@ -57,6 +59,12 @@
       props.class
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="css" scoped>

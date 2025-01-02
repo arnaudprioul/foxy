@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useParallaxTransform } from '@foxy/composables'
+	import { useParallaxTransform, useProps } from '@foxy/composables'
 
   import { FOXY_PARALLAX_KEY } from '@foxy/consts'
 
@@ -30,6 +30,8 @@
     cycle: 0,
     audioIndex: 50
   })
+
+  const {filterProps} = useProps<IParallaxElementProps>(props)
 
   const parallax = inject(FOXY_PARALLAX_KEY)
 
@@ -154,4 +156,10 @@
       props.class,
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

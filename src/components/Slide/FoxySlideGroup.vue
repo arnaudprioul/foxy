@@ -58,7 +58,7 @@
 		useGoTo,
 		useGroup,
 		useMargin,
-		usePadding,
+		usePadding, useProps,
 		useResizeObserver,
 		useRounded
 	} from "@foxy/composables"
@@ -86,6 +86,8 @@
 	})
 
 	const emits = defineEmits(['update:modelValue'])
+
+	const {filterProps} = useProps<ISlideGroupProps>(props)
 
 	const {roundedClasses, roundedStyles} = useRounded(props)
 	const {borderClasses, borderStyles} = useBorder(props)
@@ -403,5 +405,11 @@
 				'foxy-slide-group__next--disabled': !hasPrev.value
 			}
 		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
 	})
 </script>

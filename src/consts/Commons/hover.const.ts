@@ -1,4 +1,4 @@
-import { IHoverHtmlElement, IHoverOptions, IHoverProps } from '@foxy/interfaces'
+import { IHoverHtmlElement, IHoverOptions } from '@foxy/interfaces'
 
 import { THoverEvent } from '@foxy/types'
 
@@ -23,8 +23,4 @@ export const HOVER = {
 
     el.classList.remove(value.class)
   },
-}
-
-export const HOVER_PROPS: IHoverProps = {
-  hover: undefined
 }

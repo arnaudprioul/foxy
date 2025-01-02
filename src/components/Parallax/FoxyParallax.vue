@@ -21,17 +21,17 @@
 </template>
 
 <script lang="ts" setup>
-  import {
-    useAudio,
-    useBorder,
-    useDimension,
-    useDisplay,
-    useElevation,
-    useMargin,
-    usePadding,
-    useRounded,
-    useThrottleFn
-  } from '@foxy/composables'
+	import {
+		useAudio,
+		useBorder,
+		useDimension,
+		useDisplay,
+		useElevation,
+		useMargin,
+		usePadding, useProps,
+		useRounded,
+		useThrottleFn
+	} from '@foxy/composables'
 
   import { FOXY_PARALLAX_KEY } from '@foxy/consts'
 
@@ -51,6 +51,8 @@
     event: PARALLAX_EVENT.MOVE,
     active: true
   })
+
+  const {filterProps} = useProps<IParallaxProps>(props)
 
   const { audioRef, audioData, onStop: handleStop } = useAudio(props)
   const { platform } = useDisplay()
@@ -243,6 +245,12 @@
       props.class,
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,7 @@
 import { IDisplayOptions, IGoToOptions } from '@foxy/interfaces'
 
 import { TIconOptions, TSSROptions } from '@foxy/types'
-import { StyleValue } from 'vue'
+import { ComponentPropsOptions, ExtractPropTypes, StyleValue } from 'vue'
 
 export interface IFoxyOptions {
   aliases?: any
@@ -36,4 +36,12 @@ export interface IIntersectionObserverInit {
   root?: Element | Document | null;
   rootMargin?: string;
   threshold?: number | Array<number>;
+}
+
+export interface IFilterPropsOptions<PropsOptions extends Readonly<ComponentPropsOptions>, Props = ExtractPropTypes<PropsOptions>> {
+  filterProps<
+      T extends Partial<Props>,
+      U extends Extract<keyof T, string>
+  > (properties: T, excludes?: string[]): Partial<Pick<T, U>>
+  props: PropsOptions
 }

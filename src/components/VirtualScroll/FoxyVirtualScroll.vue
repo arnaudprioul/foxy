@@ -51,7 +51,7 @@
 <script lang="ts" setup>
   import { FoxyVirtualScrollItem } from '@foxy/components'
 
-  import { useDimension, useToggleScope, useVirtual } from '@foxy/composables'
+  import { useDimension, useProps, useToggleScope, useVirtual } from '@foxy/composables'
 
   import { IVirtualScrollProps } from '@foxy/interfaces'
 
@@ -60,6 +60,8 @@
   import { computed, onMounted, onScopeDispose, Ref, StyleValue, toRef } from 'vue'
 
   const props = withDefaults(defineProps<IVirtualScrollProps>(), {})
+
+  const {filterProps} = useProps<IVirtualScrollProps>(props)
 
   const vm = getCurrentInstance('FoxyVirtualScroll')
   const { dimensionStyles } = useDimension(props)
@@ -111,5 +113,10 @@
     ]
   })
 
-  defineExpose({ scrollToIndex })
+  // EXPOSE
+
+  defineExpose({
+	  scrollToIndex,
+	  filterProps
+  })
 </script>

@@ -83,7 +83,7 @@
 <script lang="ts" setup>
   import { FoxyBtn, FoxyInfiniteScrollIntersect, FoxyProgress } from '@foxy/components'
 
-  import { useBothColor, useDimension, } from '@foxy/composables'
+  import { useBothColor, useDimension, useProps } from '@foxy/composables'
 
   import {
     DIRECTION,
@@ -107,6 +107,8 @@
   })
 
   const emits = defineEmits(['load'])
+
+  const {filterProps} = useProps<IInfiniteScrollProps>(props)
 
   const { dimensionStyles } = useDimension(props)
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
@@ -251,5 +253,11 @@
       },
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>

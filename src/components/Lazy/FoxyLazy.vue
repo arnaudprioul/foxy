@@ -15,7 +15,7 @@
 <script lang="ts" setup>
   import { FoxyFade, FoxyTransition } from '@foxy/components'
 
-  import { useDimension, useVModel } from '@foxy/composables'
+  import { useDimension, useProps, useVModel } from '@foxy/composables'
 
   import { ILazyComponentProps } from '@foxy/interfaces'
 
@@ -32,6 +32,8 @@
   })
 
   const emits = defineEmits(['update:modelValue'])
+
+  const {filterProps} = useProps<ILazyComponentProps>(props)
 
   const { dimensionStyles } = useDimension(props)
 
@@ -64,5 +66,11 @@
       'foxy-lazy',
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>

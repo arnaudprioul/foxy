@@ -10,6 +10,7 @@
     <template v-if="hasHeader">
       <slot name="header" v-bind="expansionPanelHeaderProps">
         <foxy-expansion-panel-header
+		        ref="expansionPanelHeaderRef"
             key="header"
             class="foxy-expansion-panel__header"
             v-bind="expansionPanelHeaderProps">
@@ -33,6 +34,7 @@
     <template v-if="hasContent">
       <slot name="wrapper" v-bind="expansionPanelContentProps">
         <foxy-expansion-panel-content
+		        ref="expansionPanelContentRef"
             key="content"
             class="foxy-expansion-panel__content"
             v-bind="expansionPanelContentProps">
@@ -49,24 +51,27 @@
 
 <script lang="ts" setup>
   import { FoxyExpansionPanelContent, FoxyExpansionPanelHeader } from '@foxy/components'
+
   import {
-    useBorder,
-    useBothColor,
-    useDensity,
-    useElevation,
-    useGroupItem,
-    useMargin,
-    usePadding,
-    useRounded,
-    useSlots
+	  useBorder,
+	  useBothColor,
+	  useDensity,
+	  useElevation,
+	  useGroupItem,
+	  useMargin,
+	  usePadding, useProps,
+	  useRounded,
+	  useSlots
   } from '@foxy/composables'
 
-  import { EXPANSION_PANEL_CONTENT_PROPS, EXPANSION_PANEL_HEADER_PROPS, FOXY_EXPANSION_PANEL_KEY } from '@foxy/consts'
+  import { FOXY_EXPANSION_PANEL_KEY } from '@foxy/consts'
 
   import { IExpansionPanelProps } from '@foxy/interfaces'
+  import { TFoxyExpansionPanelContent, TFoxyExpansionPanelHeader } from "@foxy/types"
+
   import { keys, omit, pick } from '@foxy/utils'
 
-  import { computed, provide, StyleValue, toRef } from 'vue'
+  import { computed, provide, ref, StyleValue, toRef } from 'vue'
 
   const props = withDefaults(defineProps<IExpansionPanelProps>(), {
     expandIcon: '$expand',
@@ -75,6 +80,11 @@
   })
 
   const emits = defineEmits(['group:selected'])
+
+  const {filterProps} = useProps<IExpansionPanelProps>(props)
+
+  const expansionPanelHeaderRef = ref<TFoxyExpansionPanelHeader>()
+  const expansionPanelContentRef = ref<TFoxyExpansionPanelContent>()
 
   const groupItem = useGroupItem(props, FOXY_EXPANSION_PANEL_KEY)
   const { hasSlot } = useSlots()
@@ -130,13 +140,13 @@
   })
 
   const expansionPanelHeaderProps = computed(() => {
-    return omit(pick(props, keys(EXPANSION_PANEL_HEADER_PROPS)), ['class', 'id', 'style', 'tag'])
+    return expansionPanelHeaderRef.value?.filterProps(props, ['class', 'id', 'style', 'tag'])
   })
   const expansionPanelContentProps = computed(() => {
-    return omit(pick(props, keys(EXPANSION_PANEL_CONTENT_PROPS)), ['class', 'id', 'style', 'tag'])
+    return expansionPanelContentRef.value?.filterProps(props, ['class', 'id', 'style', 'tag'])
   })
 
-  // CLASS & STYLES
+  // CLASSES & STYLES
 
   const expansionPanelStyles = computed(() => {
     return [
@@ -165,6 +175,12 @@
       roundedClasses.value,
       props.class
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

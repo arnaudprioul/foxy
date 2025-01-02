@@ -8,7 +8,7 @@ export const EMPTY_EDIT: TEditorProvide = {
   root: {
     parents: ref(new Map()),
     children: ref(new Map()),
-    edited: ref(new Set()),
-    locked: ref(new Set()),
+    edit: ref(new Set()),
+    lock: ref(new Set()),
   },
 }

@@ -3,6 +3,7 @@
     <tr class="foxy-data-table-headers">
       <template v-for="(column, x) in row">
         <foxy-data-table-header-cell
+		        ref="dataTableHeaderCellRef"
           :class="dataTableHeadersCellClasses"
           :column="column"
           :style="dataTableHeadersCellStyles"
@@ -18,21 +19,24 @@
 <script lang="ts" setup>
   import { FoxyDataTableHeaderCell } from '@foxy/components'
 
-  import { DATA_TABLE_HEADER_CELL_PROPS } from '@foxy/consts'
+  import { useProps } from "@foxy/composables"
 
   import { IDataTableHeadersCellProps } from '@foxy/interfaces'
+  import { TFoxyDataTableHeaderCell } from "@foxy/types"
 
-  import { keys, omit, pick } from '@foxy/utils'
-
-  import { computed, StyleValue } from 'vue'
+  import { computed, ref, StyleValue } from 'vue'
 
   const props = withDefaults(defineProps<IDataTableHeadersCellProps>(), {})
 
+  const {filterProps} = useProps<IDataTableHeadersCellProps>(props)
+
+  const dataTableHeaderCellRef = ref<TFoxyDataTableHeaderCell>()
+
   const dataTableHeaderCellProps = computed(() => {
-    return omit(pick(props, keys(DATA_TABLE_HEADER_CELL_PROPS)), ['class', 'id'])
+    return dataTableHeaderCellRef.value?.filterProps(props)
   })
 
-  // CLASS & STYLES
+  // CLASSES & STYLES
 
   const dataTableHeadersCellClasses = computed(() => {
     return [
@@ -43,5 +47,11 @@
     return [
       props.style
     ] as StyleValue
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>

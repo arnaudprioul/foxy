@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useMargin } from '@foxy/composables'
+	import { useMargin, useProps } from '@foxy/composables'
   import { DIRECTION } from '@foxy/enums'
 
   import { IDividerProps } from '@foxy/interfaces'
@@ -22,6 +22,8 @@
     direction: DIRECTION.HORIZONTAL
   })
 
+  const {filterProps} = useProps<IDividerProps>(props)
+
   const dividerOrientation = computed(() => {
     return !attrs.role || attrs.role === 'separator'
         ? props.direction
@@ -32,6 +34,8 @@
   })
 
   const { marginClasses, marginStyles } = useMargin(props)
+
+	// CLASSES & STYLES
 
   const dividerClasses = computed(() => {
     return [
@@ -60,4 +64,10 @@
 
     return styles as StyleValue
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

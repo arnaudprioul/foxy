@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useBorder, useBothColor, useMargin, usePadding, useRounded } from '@foxy/composables'
+	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '@foxy/composables'
 
   import { IContainerProps } from '@foxy/interfaces'
 
@@ -16,13 +16,15 @@
 
   const props = withDefaults(defineProps<IContainerProps>(), { tag: 'div', fluid: false })
 
+  const {filterProps} = useProps<IContainerProps>(props)
+
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { roundedClasses, roundedStyles } = useRounded(props)
   const { borderClasses, borderStyles } = useBorder(props)
   const { paddingClasses, paddingStyles } = usePadding(props)
   const { marginClasses, marginStyles } = useMargin(props)
 
-  // CLASS & STYLES
+  // CLASSES & STYLES
 
   const containerStyles = computed(() => {
     return [
@@ -48,6 +50,12 @@
       props.class,
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>
@@ -55,7 +63,7 @@
     box-sizing: var(--foxy-container---box-sizing);
     align-items: var(--foxy-container---align-items);
     display: var(--foxy-container---display);
-    
+
     width: var(--foxy-container---width);
     max-width: var(--foxy-container---max-width);
     min-width: var(--foxy-container---min-width);
@@ -114,7 +122,7 @@
 <style>
   :root {
     --foxy-container---box-sizing: border-box;
-    
+
     --foxy-container---width: auto;
     --foxy-container---max-width: 100%;
     --foxy-container---min-width: 0;

@@ -18,10 +18,10 @@
 <script lang="ts" setup>
   import { FoxyBtn } from '@foxy/components'
   import {
-    useBorder,
-    useDensity,
-    useElevation,
-    useRounded, useSlots
+	  useBorder,
+	  useDensity,
+	  useElevation, useProps,
+	  useRounded, useSlots
   } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
@@ -31,6 +31,8 @@
   import { computed, StyleValue } from 'vue'
 
   const props = withDefaults(defineProps<IBtnGroupProps>(), { tag: 'div', density: DENSITY.DEFAULT, items: [] })
+
+  const {filterProps} = useProps<IBtnGroupProps>(props)
 
   const { densityClasses } = useDensity(props)
   const { elevationClasses } = useElevation(props)
@@ -78,6 +80,12 @@
       roundedClasses.value,
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

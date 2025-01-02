@@ -41,12 +41,12 @@
 </template>
 
 <script lang="ts" setup>
-  import {
-    useIntersectionObserver,
-    useProgress,
-    useResizeObserver,
-    useSize, useTextColor
-  } from '@foxy/composables'
+	import {
+		useIntersectionObserver,
+		useProgress, useProps,
+		useResizeObserver,
+		useSize, useTextColor
+	} from '@foxy/composables'
 
   import { CIRCUMFERENCE, MAGIC_RADIUS } from '@foxy/consts'
 
@@ -62,6 +62,8 @@
     max: 100,
     thickness: 4
   })
+
+  const {filterProps} = useProps<IProgressCircularProps>(props)
 
   const { progressClasses, progressStyles, normalizedValue, thickness, hasContent } = useProgress(props)
   const { resizeRef, contentRect } = useResizeObserver()
@@ -130,6 +132,12 @@
       loaderColorStyles.value
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>

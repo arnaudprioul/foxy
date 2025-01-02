@@ -1,6 +1,6 @@
 <template>
 	<foxy-overlay
-			ref="overlay"
+			ref="overlayRef"
 			v-model="isActive"
 			:class="snackbarClasses"
 			:content-props="contentProps"
@@ -68,7 +68,7 @@
 		useLayout,
 		useMargin,
 		usePadding,
-		usePosition,
+		usePosition, useProps,
 		useRounded,
 		useScopeId,
 		useSlots,
@@ -77,7 +77,7 @@
 		useVModel
 	} from '@foxy/composables'
 
-	import { FOXY_LAYOUT_KEY, OVERLAY_PROPS } from '@foxy/consts'
+	import { FOXY_LAYOUT_KEY } from '@foxy/consts'
 
 	import { PROGRESS_TYPE, SCROLL_STRATEGIES } from '@foxy/enums'
 
@@ -85,7 +85,7 @@
 
 	import { TFoxyOverlay, TFoxyProgress, TIcon } from '@foxy/types'
 
-	import { keys, omit, pick, refElement } from '@foxy/utils'
+	import { forwardRefs, refElement } from '@foxy/utils'
 
 	import { computed, inject, mergeProps, onMounted, ref, shallowRef, StyleValue, toRef, watch, watchEffect } from 'vue'
 
@@ -99,6 +99,8 @@
 			component: FoxySnack
 		}
 	})
+
+	const {filterProps} = useProps<ISnackbarProps>(props)
 
 	const {hasSlot} = useSlots()
 
@@ -115,7 +117,7 @@
 	const {marginClasses, marginStyles} = useMargin(props)
 	const {elevationClasses} = useElevation(props)
 
-	const overlay = ref<TFoxyOverlay>()
+	const overlayRef = ref<TFoxyOverlay>()
 	const timerRef = ref<TFoxyProgress>()
 	const isHovering = shallowRef(false)
 	const startY = shallowRef(0)
@@ -176,9 +178,7 @@
 	}
 
 	const overlayProps = computed(() => {
-		const overlayProps = pick(props, keys(OVERLAY_PROPS))
-
-		return omit(overlayProps, ['class', 'style', 'contentProps', 'modelValue', 'disableGlobalStack', 'noClickAnimation', 'persistent', 'scrim', 'scrollStrategy'])
+		return overlayRef.value?.filterProps(props, ['class', 'style', 'id', 'contentProps', 'modelValue', 'disableGlobalStack', 'noClickAnimation', 'persistent', 'scrim', 'scrollStrategy'])
 	})
 	const contentProps = computed(() => {
 		return mergeProps({
@@ -239,6 +239,13 @@
 			statusClasses.value,
 			props.class
 		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		...forwardRefs({}, overlayRef),
+		filterProps
 	})
 </script>
 

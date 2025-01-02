@@ -10,13 +10,15 @@
 </template>
 
 <script lang="ts" setup>
-  import { useBorder, useLayout, useMargin, usePadding, useRounded, useSsrBoot } from '@foxy/composables'
+	import { useBorder, useLayout, useMargin, usePadding, useProps, useRounded, useSsrBoot } from '@foxy/composables'
 
   import { IMainProps } from '@foxy/interfaces'
 
   import { computed, StyleValue } from 'vue'
 
   const props = withDefaults(defineProps<IMainProps>(), { tag: 'main' })
+
+  const {filterProps} = useProps<IMainProps>(props)
 
   const { mainStyles: mainLayoutStyles } = useLayout()
   const { ssrBootStyles } = useSsrBoot()
@@ -51,6 +53,12 @@
       props.class
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>

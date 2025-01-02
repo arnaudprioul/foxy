@@ -122,7 +122,7 @@
 <script lang="ts" setup>
   import { FoxyChip, FoxyDataTableColumnCell, FoxySelect } from '@foxy/components'
 
-  import { useHeadersCell, useSelection, useSlots, useSort } from '@foxy/composables'
+  import { useHeadersCell, useProps, useSelection, useSlots, useSort } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
 
@@ -132,7 +132,9 @@
 
   const props = withDefaults(defineProps<IDataTableHeadersCellMobileProps>(), {})
 
-  const emits = defineEmits(['click:clear', 'click:append'])
+  const emits = defineEmits(['click:clear', 'click:prepend', 'click:append'])
+
+  const {filterProps} = useProps<IDataTableHeadersCellMobileProps>(props)
 
   const { hasSlot } = useSlots()
 
@@ -190,5 +192,11 @@
     return [
       props.style
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>

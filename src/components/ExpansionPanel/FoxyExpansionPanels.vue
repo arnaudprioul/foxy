@@ -55,14 +55,14 @@
   import { FoxyExpansionPanel } from '@foxy/components'
 
   import {
-    useBorder,
-    useBothColor,
-    useDensity,
-    useGroup,
-    useMargin,
-    usePadding,
-    useRounded,
-    useSlots
+	  useBorder,
+	  useBothColor,
+	  useDensity,
+	  useGroup,
+	  useMargin,
+	  usePadding, useProps,
+	  useRounded,
+	  useSlots
   } from '@foxy/composables'
 
   import { FOXY_EXPANSION_PANEL_KEY } from '@foxy/consts'
@@ -77,6 +77,8 @@
 
   const emits = defineEmits(['update:modelValue'])
 
+  const {filterProps} = useProps<IExpansionPanelsProps>(props)
+
   useGroup(props, FOXY_EXPANSION_PANEL_KEY)
 
   const { hasSlot } = useSlots()
@@ -88,7 +90,7 @@
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { roundedClasses, roundedStyles } = useRounded(props)
 
-  // CLASS & STYLES
+  // CLASSES & STYLES
 
   const expansionPanelsStyles = computed(() => {
     return [
@@ -116,6 +118,12 @@
       roundedClasses.value,
       props.class
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

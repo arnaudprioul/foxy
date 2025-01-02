@@ -35,9 +35,9 @@
 <script lang="ts" setup>
   import { FoxyTranslateScale } from '@foxy/components'
 
-  import { useBorder, useElevation, useRounded, useTextColor } from '@foxy/composables'
+  import { useBorder, useElevation, useProps, useRounded, useTextColor } from '@foxy/composables'
 
-  import { FOXY_RANGE_SLIDER_KEY } from '@foxy/consts'
+  import { FOXY_SLIDER_FIELD_KEY } from '@foxy/consts'
 
   import { vRipple } from '@foxy/directives'
 
@@ -60,7 +60,9 @@
 
   const emits = defineEmits(['update:modelValue'])
 
-  const slider = inject(FOXY_RANGE_SLIDER_KEY)
+  const {filterProps} = useProps<ISliderFieldThumbProps>(props)
+
+  const slider = inject(FOXY_SLIDER_FIELD_KEY)
 
   if (!slider) throw new Error('[Foxy] -slider-thumb must be used inside -slider')
 
@@ -211,7 +213,11 @@
     ] as StyleValue
   })
 
-  defineExpose({})
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
+  })
 </script>
 
 <style lang="scss" scoped>

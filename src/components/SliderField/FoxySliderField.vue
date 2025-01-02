@@ -137,9 +137,7 @@
 <script lang="ts" setup>
   import { FoxyInput, FoxyLabel, FoxySliderFieldThumb, FoxySliderFieldTrack } from '@foxy/components'
 
-  import { useFocus, useSlider, useSlots, useSteps, useVModel } from '@foxy/composables'
-
-  import { INPUT_PROPS } from '@foxy/consts'
+  import { useFocus, useProps, useSlider, useSlots, useSteps, useVModel } from '@foxy/composables'
 
   import { DENSITY, DIRECTION } from '@foxy/enums'
 
@@ -161,6 +159,8 @@
   })
 
   const emits = defineEmits(['update:focused', 'update:modelValue', 'start', 'end'])
+
+  const {filterProps} = useProps<ISliderFieldProps>(props)
 
   const foxyInputRef = ref<TFoxyInput>()
   const foxySliderFieldThumbRef = ref<TFoxySliderFieldThumb>()
@@ -336,7 +336,7 @@
   }
 
   const inputProps = computed(() => {
-    return omit(pick(props, keys(INPUT_PROPS)), ['modelValue', 'class', 'focused', 'centerAffix'])
+    return foxyInputRef.value?.filterProps(props, ['modelValue', 'class', 'style', 'id', 'focused', 'centerAffix'])
   })
   const thumbProps = computed(() => {
     return omit(props.thumbProps ?? {}, ['modelValue', 'class', 'focused', 'min', 'max', 'position'])
@@ -370,7 +370,11 @@
     ]
   })
 
-  defineExpose({})
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
+  })
 </script>
 
 <style lang="scss" scoped>

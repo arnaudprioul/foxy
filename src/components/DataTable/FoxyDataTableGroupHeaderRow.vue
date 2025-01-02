@@ -44,13 +44,15 @@
 <script lang="ts" setup>
 	import { FoxyBtn, FoxyCheckboxBtn, FoxyDataTableColumnCell } from "@foxy/components"
 
-	import { useGroupBy, useHeaders, useSelection } from "@foxy/composables"
+	import { useGroupBy, useHeaders, useProps, useSelection } from "@foxy/composables"
 
 	import { IDataTableGroupHeaderRowProps } from "@foxy/interfaces"
 
 	import { computed, StyleValue } from "vue"
 
 	const props = withDefaults(defineProps<IDataTableGroupHeaderRowProps>(), {})
+
+	const {filterProps} = useProps<IDataTableGroupHeaderRowProps>(props)
 
 	const {isGroupOpen, toggleGroup, extractRows} = useGroupBy()
 	const {isSelected, isSomeSelected, select} = useSelection()
@@ -94,6 +96,8 @@
 		}
 	})
 
+	// CLASSES & STYLES
+
 	const dataTableGroupHeaderRowClasses = computed(() => {
 		return [
 			'foxy-data-table-group-header-row',
@@ -107,6 +111,12 @@
 			},
 			props.style
 		] as StyleValue
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
 	})
 </script>
 

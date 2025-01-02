@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useBorder, useBothColor, useMargin, usePadding, useRounded } from '@foxy/composables'
+	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '@foxy/composables'
 
   import { ILabelProps } from '@foxy/interfaces'
 
@@ -20,6 +20,8 @@
   const props = withDefaults(defineProps<ILabelProps>(), {})
 
   const emits = defineEmits(['click'])
+
+  const {filterProps} = useProps<ILabelProps>(props)
 
   const { roundedClasses, roundedStyles } = useRounded(props)
   const { borderClasses, borderStyles } = useBorder(props)
@@ -47,7 +49,6 @@
     return [
       'foxy-label',
       {
-        'foxy-label--clickable': !!props.onClick,
         'foxy-label--floating': props.floating
       },
       roundedClasses.value,
@@ -57,6 +58,12 @@
       props.class,
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>

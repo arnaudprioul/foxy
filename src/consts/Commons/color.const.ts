@@ -1,5 +1,3 @@
-import { IColorProps } from '@foxy/interfaces'
-
 import { HSLtoRGB, HSVtoRGB } from '@foxy/utils'
 
 export const CSS_COLOR_REGEX = /^(?<fn>(?:rgb|hsl)a?)\((?<values>.+)\)/
@@ -64,12 +62,3 @@ export const LO_CON_THRESH = 0.078
 export const LO_CON_FACTOR = 12.82051282051282
 export const LO_CON_OFFSET = 0.06
 export const LO_CLIP = 0.001
-
-export const COLOR_PROPS: IColorProps = {
-  color: undefined,
-  bgColor: undefined,
-  activeColor: undefined,
-  activeBgColor: undefined,
-  hoverColor: undefined,
-  hoverBgColor: undefined
-}

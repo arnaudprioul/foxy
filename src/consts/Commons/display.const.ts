@@ -1,6 +1,6 @@
 import { BREAKPOINTS } from '@foxy/enums'
 
-import {IDisplayInstance, IDisplayOptions, IDisplayProps} from '@foxy/interfaces'
+import {IDisplayInstance, IDisplayOptions} from '@foxy/interfaces'
 
 import { TBreakpoint } from '@foxy/types'
 
@@ -21,7 +21,3 @@ export const DEFAULT_DISPLAY_OPTIONS: IDisplayOptions = {
 }
 
 export const BREAKPOINTS_ARRAY: Array<TBreakpoint> = [BREAKPOINTS.SM, BREAKPOINTS.MD, BREAKPOINTS.LG, BREAKPOINTS.XL, BREAKPOINTS.XXL]
-
-export const DISPLAY_PROPS: IDisplayProps = {
-  mobileBreakpoint: undefined
-}

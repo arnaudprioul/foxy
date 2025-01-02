@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-	import { useDimension, usePadding } from '@foxy/composables'
+	import { useDimension, usePadding, useProps } from '@foxy/composables'
 
 	import { ALIGN } from '@foxy/enums'
 
@@ -22,6 +22,8 @@
 		align: ALIGN.START,
 		tag: 'td'
 	})
+
+	const {filterProps} = useProps<IDataTableColumnProps>(props)
 
 	const {dimensionStyles} = useDimension(props)
 	const {paddingStyles, paddingClasses} = usePadding(props)
@@ -50,6 +52,12 @@
 			},
 			props.style
 		] as StyleValue
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
 	})
 </script>
 

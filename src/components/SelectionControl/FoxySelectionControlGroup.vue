@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useVModel } from '@foxy/composables'
+	import { useProps, useVModel } from '@foxy/composables'
 
   import { FOXY_SELECTION_CONTROL_GROUP_KEY } from '@foxy/consts'
 
@@ -32,6 +32,8 @@
   })
 
   const emits = defineEmits(['update:modelValue'])
+
+  const {filterProps} = useProps<ISelectionControlGroupProps>(props)
 
   const modelValue = useVModel(props, 'modelValue')
   const uid = getUid()
@@ -72,4 +74,10 @@
       props.class,
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

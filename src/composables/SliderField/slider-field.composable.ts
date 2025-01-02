@@ -1,4 +1,4 @@
-import { FOXY_RANGE_SLIDER_KEY } from '@foxy/consts'
+import { FOXY_SLIDER_FIELD_KEY } from '@foxy/consts'
 
 import { BLOCK, CLIENT_POSITION, DIMENSIONS, DIRECTION, INLINE } from '@foxy/enums'
 
@@ -255,7 +255,7 @@ export function useSlider ({
     isVertical,
   }
 
-  provide(FOXY_RANGE_SLIDER_KEY, data)
+  provide(FOXY_SLIDER_FIELD_KEY, data)
 
   return data
 }

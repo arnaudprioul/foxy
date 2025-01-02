@@ -1,5 +1,6 @@
 <template>
   <foxy-slide-group
+		  ref="slideGroupRef"
       :class="chipGroupClasses"
       :style="chipGroupStyles"
       v-bind="{...slideGroupProps}">
@@ -14,13 +15,13 @@
 
   import {DIRECTION} from '@foxy/enums'
 
-  import {FOXY_CHIP_GROUP_KEY, SLIDE_GROUP_PROPS} from "@foxy/consts";
+  import {FOXY_CHIP_GROUP_KEY} from "@foxy/consts"
 
-  import {useGroup} from "@foxy/composables";
+  import { useGroup, useProps } from "@foxy/composables"
 
-  import {keys, omit, pick} from "@foxy/utils";
+  import { TFoxySlideGroup } from "@foxy/types"
 
-  import {computed, StyleValue} from "vue";
+  import { computed, ref, StyleValue } from "vue";
 
   const props = withDefaults(defineProps<IChipGroupProps>(), {
     direction: DIRECTION.HORIZONTAL,
@@ -31,10 +32,14 @@
 
   const emits = defineEmits(['update:modelValue'])
 
+  const {filterProps} = useProps<IChipGroupProps>(props)
+
+  const slideGroupRef = ref<TFoxySlideGroup>()
+
   const {isSelected, select, next, prev, selected} = useGroup(props, FOXY_CHIP_GROUP_KEY)
 
   const slideGroupProps = computed(() => {
-    return omit(pick(props, keys(SLIDE_GROUP_PROPS)), ['class', 'style'])
+    return slideGroupRef.value?.filterProps(props)
   })
 
   // CLASS & STYLES
@@ -52,5 +57,11 @@
       },
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>

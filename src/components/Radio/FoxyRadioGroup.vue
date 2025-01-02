@@ -1,103 +1,120 @@
 <template>
-  <foxy-input
-    :id="id"
-    v-model="model"
-    :class="radioGroupClasses"
-    :style="radioGroupStyles"
-    v-bind="{ ...rootAttrs, ...inputProps }">
-    <template #default="{id, messagesId, isDisabled, isReadonly, isValid}">
-      <slot name="default" v-bind="{id,messagesId,isDisabled,isReadonly,isValid}">
+	<foxy-input
+			:id="id"
+			ref="foxyInputRef"
+			v-model="model"
+			:class="radioGroupClasses"
+			:style="radioGroupStyles"
+			v-bind="{ ...rootAttrs, ...inputProps }">
+		<template #default="{id, messagesId, isDisabled, isReadonly, isValid}">
+			<slot name="default" v-bind="{id, messagesId, isDisabled, isReadonly, isValid}">
 
-        <slot name="label" v-bind="{label, required}">
-          <foxy-label :id="id" :required="required" :text="label"/>
-        </slot>
+				<slot name="label" v-bind="{label, required}">
+					<foxy-label
+							:id="id"
+							:required="required"
+							:text="label"/>
+				</slot>
 
-        <foxy-selection-control-group
-          :id="id"
-          v-model="model"
-          :aria-describedby="messagesId"
-          :aria-labelledby="label ? id : undefined"
-          :disabled="isDisabled"
-          :items="items"
-          :multiple="false"
-          :readonly="isReadonly"
-          v-bind="{ ...controlProps , ...controlAttrs}">
-          <template #item="{item}">
-            <slot name="item" v-bind="{id, messagesId, isDisabled, isReadonly, isValid}">
-              <foxy-radio
-                v-model="model"
-                :aria-describedby="messagesId"
-                :disabled="isDisabled"
-                :readonly="isReadonly"
-                v-bind="item"/>
-            </slot>
-          </template>
-        </foxy-selection-control-group>
-      </slot>
-    </template>
-  </foxy-input>
+				<foxy-selection-control-group
+						ref="foxySelectionControlGroupRef"
+						:id="id"
+						v-model="model"
+						:aria-describedby="messagesId"
+						:aria-labelledby="label ? id : undefined"
+						:disabled="isDisabled"
+						:items="items"
+						:multiple="false"
+						:readonly="isReadonly"
+						v-bind="{ ...controlProps , ...controlAttrs}">
+					<template #item="{item}">
+						<slot name="item" v-bind="{id, messagesId, isDisabled, isReadonly, isValid}">
+							<foxy-radio
+									ref="foxyRadioRef"
+									v-model="model"
+									:aria-describedby="messagesId"
+									:disabled="isDisabled"
+									:readonly="isReadonly"
+									v-bind="item"/>
+						</slot>
+					</template>
+				</foxy-selection-control-group>
+			</slot>
+		</template>
+	</foxy-input>
 </template>
 
 <script lang="ts" setup>
-  import { FoxyInput, FoxyLabel, FoxyRadio, FoxySelectionControlGroup } from '@foxy/components'
+	import { FoxyInput, FoxyLabel, FoxyRadio, FoxySelectionControlGroup } from '@foxy/components'
 
-  import { useVModel } from '@foxy/composables'
+	import { useProps, useVModel } from '@foxy/composables'
 
-  import { INPUT_PROPS, RADIO_PROPS, SELECTION_CONTROL_GROUP_PROPS } from '@foxy/consts'
+	import { DENSITY } from '@foxy/enums'
 
-  import { DENSITY } from '@foxy/enums'
+	import { IRadioGroupProps } from '@foxy/interfaces'
+	import { TFoxyInput, TFoxyRadio, TFoxySelectionControlGroup } from "@foxy/types"
 
-  import { IRadioGroupProps } from '@foxy/interfaces'
+	import { filterInputAttrs, getUid, keys, omit, pick } from '@foxy/utils'
 
-  import { filterInputAttrs, getUid, keys, omit, pick } from '@foxy/utils'
+	import { computed, ref, StyleValue, useAttrs } from 'vue'
 
-  import { computed, StyleValue, useAttrs } from 'vue'
+	const props = withDefaults(defineProps<IRadioGroupProps>(), {
+		density: DENSITY.DEFAULT,
+		trueIcon: '$radioOn',
+		falseIcon: '$radioOff'
+	})
 
-  const props = withDefaults(defineProps<IRadioGroupProps>(), {
-    density: DENSITY.DEFAULT,
-    trueIcon: '$radioOn',
-    falseIcon: '$radioOff',
-  })
+	const {filterProps} = useProps<IRadioGroupProps>(props)
 
-  const attrs = useAttrs()
+	const foxySelectionControlGroupRef = ref<TFoxySelectionControlGroup>()
+	const foxyInputRef = ref<TFoxyInput>()
+	const foxyRadioRef = ref<TFoxyRadio>()
 
-  const uid = getUid()
-  const id = computed(() => {
-    return props.id || `radio-group-${uid}`
-  })
-  const model = useVModel(props, 'modelValue')
+	const attrs = useAttrs()
 
-  const [rootAttrs, controlAttrs] = filterInputAttrs(attrs)
-  const inputProps = computed(() => {
-    return omit(pick(props, keys(INPUT_PROPS)), ['modelValue', 'id', 'focused'])
-  })
-  const controlProps = computed(() => {
-    return omit(pick(props, keys(SELECTION_CONTROL_GROUP_PROPS)), ['modelValue', 'id', 'readonly', 'disabled', 'type', 'multiple', 'items'])
-  })
-  const radioProps = computed(() => {
-    return pick(props, keys(RADIO_PROPS))
-  })
+	const uid = getUid()
+	const id = computed(() => {
+		return props.id || `radio-group-${uid}`
+	})
+	const model = useVModel(props, 'modelValue')
 
-  const items = computed(() => {
-    return props.items?.map((item) => {
-      return {
-        ...radioProps.value,
-        ...item
-      }
-    })
-  })
+	const [rootAttrs, controlAttrs] = filterInputAttrs(attrs)
+	const inputProps = computed(() => {
+		return foxyInputRef.value?.filterProps(props, ['modelValue', 'id', 'focused', 'style', 'class'])
+	})
+	const controlProps = computed(() => {
+		return foxySelectionControlGroupRef.value?.filterProps(props, ['modelValue', 'id', 'style', 'class', 'readonly', 'disabled', 'type', 'multiple', 'items'])
+	})
+	const radioProps = computed(() => {
+		return foxyRadioRef.value.filterProps(props)
+	})
 
-  // CLASS & STYLES
+	const items = computed(() => {
+		return props.items?.map((item) => {
+			return {
+				...radioProps.value,
+				...item
+			}
+		})
+	})
 
-  const radioGroupStyles = computed(() => {
-    return [
-      props.style,
-    ] as StyleValue
-  })
-  const radioGroupClasses = computed(() => {
-    return [
-      'foxy-radio-group',
-      props.class,
-    ]
-  })
+	// CLASS & STYLES
+
+	const radioGroupStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const radioGroupClasses = computed(() => {
+		return [
+			'foxy-radio-group',
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

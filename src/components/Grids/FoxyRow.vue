@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useBorder, useBothColor, useDensity, useMargin, usePadding } from '@foxy/composables'
+	import { useBorder, useBothColor, useDensity, useMargin, usePadding, useProps } from '@foxy/composables'
   import { DENSITY } from '@foxy/enums'
 
   import { IRowProps } from '@foxy/interfaces'
@@ -19,13 +19,15 @@
 
   const props = withDefaults(defineProps<IRowProps>(), { tag: 'div', density: DENSITY.DEFAULT })
 
+  const {filterProps} = useProps<IRowProps>(props)
+
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { densityClasses } = useDensity(props)
   const { borderClasses, borderStyles } = useBorder(props)
   const { paddingClasses, paddingStyles } = usePadding(props)
   const { marginClasses, marginStyles } = useMargin(props)
 
-  // CLASS & STYLES
+  // CLASSES & STYLES
 
   const rowStyles = computed(() => {
     return [
@@ -62,6 +64,12 @@
 
     return classes
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>

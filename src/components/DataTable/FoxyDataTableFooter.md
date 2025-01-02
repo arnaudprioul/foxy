@@ -1,0 +1,4 @@
+# Foxydatatablefooter
+
+## Usage
+    <FoxyDataTableFooter />

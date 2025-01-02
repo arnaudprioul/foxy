@@ -9,21 +9,23 @@
 </template>
 
 <script lang="ts" setup>
-  import {
-    useAspectRatio,
-    useBorder,
-    useDimension,
-    useMargin,
-    usePadding,
-    useRounded,
-    useSlots
-  } from '@foxy/composables'
+	import {
+		useAspectRatio,
+		useBorder,
+		useDimension,
+		useMargin,
+		usePadding, useProps,
+		useRounded,
+		useSlots
+	} from '@foxy/composables'
 
   import { IResponsiveProps } from '@foxy/interfaces'
 
   import { computed, StyleValue } from 'vue'
 
   const props = withDefaults(defineProps<IResponsiveProps>(), {})
+
+  const {filterProps} = useProps<IResponsiveProps>(props)
 
   const { aspectStyles } = useAspectRatio(props)
   const { dimensionStyles } = useDimension(props)
@@ -62,6 +64,12 @@
       props.contentClass
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>

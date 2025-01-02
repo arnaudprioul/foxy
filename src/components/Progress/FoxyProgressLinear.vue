@@ -32,7 +32,14 @@
 <script lang="ts" setup>
   import { FoxyFade, FoxySlideX, FoxyTransition } from '@foxy/components'
 
-  import { useBackgroundColor, useIntersectionObserver, useLocation, useProgress, useRounded, } from '@foxy/composables'
+  import {
+	  useBackgroundColor,
+	  useIntersectionObserver,
+	  useLocation,
+	  useProgress,
+	  useProps,
+	  useRounded
+  } from '@foxy/composables'
 
   import { IProgressLinearProps } from '@foxy/interfaces'
 
@@ -46,6 +53,8 @@
     max: 100,
     thickness: 4
   })
+
+  const {filterProps} = useProps<IProgressLinearProps>(props)
 
   const { locationStyles } = useLocation(props)
   const { progressClasses, progressStyles, normalizedValue, thickness, progress, max, hasContent } = useProgress(props)
@@ -123,6 +132,12 @@
       },
       loaderColorStyles.value
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

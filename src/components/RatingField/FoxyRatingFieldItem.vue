@@ -7,6 +7,7 @@
       <span class="foxy-rating-field-item__hidden">{{ props.label }}</span>
       <slot v-if="showStar" name="item" v-bind="{props: ratingBtnProps, value}">
         <foxy-btn
+		        ref="foxyBtnRef"
           v-bind="{...ratingBtnProps}"
           @click="handleClick"
           @mouseenter="handleMouseEnter"
@@ -31,13 +32,13 @@
 <script lang="ts" setup>
   import { FoxyBtn } from '@foxy/components'
 
-  import { BTN_PROPS } from '@foxy/consts'
+  import { useProps } from "@foxy/composables"
 
   import { IRatingFieldItemProps } from '@foxy/interfaces'
 
-  import { keys, omit, pick } from '@foxy/utils'
+  import { TFoxyBtn } from "@foxy/types"
 
-  import { computed, StyleValue } from 'vue'
+  import { computed, ref, StyleValue } from 'vue'
 
   const props = withDefaults(defineProps<IRatingFieldItemProps>(), {
     index: -1,
@@ -49,6 +50,10 @@
 
   const emits = defineEmits(['mouseenter', 'mouseleave', 'click'])
 
+  const {filterProps} = useProps<IRatingFieldItemProps>(props)
+
+  const foxyBtnRef = ref<TFoxyBtn>()
+
   const id = computed(() => {
     return `${props.name}-${String(props.value).replace('.', '-')}`
   })
@@ -56,7 +61,7 @@
   const ratingBtnProps = computed(() => {
     const isFullIcon = props.isHovering ? props.isHovered : props.isFilled
     const icon = isFullIcon ? props.fullIcon : props.emptyIcon
-    const btnProps = omit(pick(props, keys(BTN_PROPS)), ['bgColor', 'activeBgColor', 'hoverBgColor'])
+    const btnProps = foxyBtnRef.value?.filterProps(props, ['class', 'style', 'id', 'bgColor', 'activeBgColor', 'hoverBgColor'])
 
     return { ...btnProps, icon }
   })
@@ -87,6 +92,12 @@
       },
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

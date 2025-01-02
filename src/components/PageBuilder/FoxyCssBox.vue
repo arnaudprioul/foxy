@@ -89,14 +89,19 @@
 
 <script lang="ts" setup>
   import { FoxyLabel, FoxyTitle } from '@foxy/components'
+  import { useProps } from "@foxy/composables"
 
   import { ICssBoxProps } from '@foxy/interfaces'
 
   import { shallowRef, watch } from 'vue'
 
+  // TODO - WIP
+
   const props = withDefaults(defineProps<ICssBoxProps>(), {})
 
   const emits = defineEmits(['update:padding', 'update:margin', 'update:border'])
+
+  const {filterProps} = useProps<ICssBoxProps>(props)
 
   const margin = shallowRef({
     top: '',
@@ -119,6 +124,12 @@
 
   watch(() => props, () => {
 
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

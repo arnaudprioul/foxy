@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useSlots } from '@foxy/composables'
+	import { useProps, useSlots } from '@foxy/composables'
 
   import { IAutoPropComponentDefinition, IEditWrapperProps } from '@foxy/interfaces'
 
@@ -15,7 +15,11 @@
 
   import { computed, StyleValue } from 'vue'
 
+	// TODO - WIP
+
   const props = withDefaults(defineProps<IEditWrapperProps>(), { slotName: 'default', autoDetectProps: true })
+
+  const {filterProps} = useProps<IEditWrapperProps>(props)
 
   const { hasSlot, slots } = useSlots()
 
@@ -38,6 +42,13 @@
       props.class,
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
+
 </script>
 
 <style lang="scss" scoped>

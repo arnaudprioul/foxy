@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useWindowTransition } from '@foxy/composables'
+	import { useProps, useWindowTransition } from '@foxy/composables'
 
   import { ITransitionProps } from '@foxy/interfaces'
 
@@ -16,7 +16,15 @@
     name: 'foxy-transition--window-y-reverse-translate'
   })
 
+  const {filterProps} = useProps<ITransitionProps>(props)
+
   const { name, tag, transitionProps } = useWindowTransition(props)
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="scss">

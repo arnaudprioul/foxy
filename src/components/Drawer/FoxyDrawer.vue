@@ -45,7 +45,7 @@
 		useElevation,
 		useLayoutItem,
 		useMargin,
-		usePadding,
+		usePadding, useProps,
 		useRounded,
 		useRouter,
 		useScopeId,
@@ -75,6 +75,8 @@
 	})
 
 	const emits = defineEmits(['update:rail'])
+
+	const {filterProps} = useProps<IDrawerProps>(props)
 
 	const {backgroundColorStyles} = useBackgroundColor(toRef(props, 'bgColor'))
 	const {elevationClasses} = useElevation(props)
@@ -199,7 +201,7 @@
 		return hasSlot('append')
 	})
 
-	// CLASS & STYLES
+	// CLASSES & STYLES
 
 	const drawerStyles = computed(() => {
 		return [
@@ -236,6 +238,12 @@
 			roundedClasses.value,
 			props.class
 		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
 	})
 </script>
 

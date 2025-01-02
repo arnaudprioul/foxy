@@ -10,17 +10,17 @@
 </template>
 
 <script lang="ts" setup>
-  import {
-    useBorder,
-    useBothColor,
-    useDensity,
-    useElevation,
-    useGroup,
-    useLayoutItem,
-    useRounded,
-    useSsrBoot,
-    useVModel
-  } from '@foxy/composables'
+	import {
+		useBorder,
+		useBothColor,
+		useDensity,
+		useElevation,
+		useGroup,
+		useLayoutItem, useProps,
+		useRounded,
+		useSsrBoot,
+		useVModel
+	} from '@foxy/composables'
 
   import { FOXY_BTN_TOGGLE_KEY } from '@foxy/consts'
 
@@ -41,12 +41,15 @@
 
   const emits = defineEmits(['update:modelValue', 'update:active'])
 
+  const {filterProps} = useProps<IBottomNavProps>(props)
+
   const { borderClasses, borderStyles } = useBorder(props)
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { densityClasses } = useDensity(props)
   const { elevationClasses } = useElevation(props)
   const { roundedClasses, roundedStyles } = useRounded(props)
   const { ssrBootStyles } = useSsrBoot()
+
   const height = computed(() => {
     return Number(props.height) - (props.density === 'compact' ? 16 : 0)
   })
@@ -97,7 +100,12 @@
     ]
   })
 
-  defineExpose({ layoutIsReady })
+	// EXPOSE
+
+  defineExpose({
+	  layoutIsReady,
+	  filterProps
+	})
 </script>
 
 <style lang="scss" scoped>

@@ -15,7 +15,7 @@
 <script lang="ts" setup>
   import { FoxyFade, FoxyTransition } from '@foxy/components'
 
- import { useBackgroundColor } from '@foxy/composables'
+  import { useBackgroundColor, useProps } from '@foxy/composables'
 
  import { IOverlayScrimProps } from '@foxy/interfaces'
 
@@ -26,6 +26,8 @@
  })
 
  const emits = defineEmits(['click', 'mouseenter', 'mouseleave'])
+
+  const {filterProps} = useProps<IOverlayScrimProps>(props)
 
  const {backgroundColorStyles} = useBackgroundColor(computed(() => {
    return typeof props.scrim === 'string' ? props.scrim : null
@@ -55,4 +57,10 @@
      props.class
    ]
  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
+  })
 </script>

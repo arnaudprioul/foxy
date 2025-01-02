@@ -22,6 +22,7 @@
 
 <script lang="ts" setup>
   import { FoxyProgress } from '@foxy/components'
+  import { useProps } from "@foxy/composables"
 
   import { PROGRESS_TYPE } from '@foxy/enums'
 
@@ -30,6 +31,8 @@
   import { computed, StyleValue } from 'vue'
 
   const props = withDefaults(defineProps<ILoaderProps>(), { tag: 'span' })
+
+  const {filterProps} = useProps<ILoaderProps>(props)
 
   const isLoading = computed(() => {
     return !!props.loading
@@ -47,5 +50,11 @@
       'foxy-loader',
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>

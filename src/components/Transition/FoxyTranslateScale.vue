@@ -7,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { useProps } from "@foxy/composables"
   import { EASING, TRANSITION_MODE } from '@foxy/enums'
 
   import { ITranslateScaleProps } from '@foxy/interfaces'
@@ -19,6 +20,8 @@
     name: 'foxy-transition--transform-scale',
     mode: TRANSITION_MODE.IN_OUT
   })
+
+  const {filterProps} = useProps<ITransitionScaleProps>(props)
 
   const hasTarget = computed(() => {
     return !!props.target
@@ -101,6 +104,12 @@
     }
 
     return {}
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

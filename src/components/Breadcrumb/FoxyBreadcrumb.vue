@@ -34,7 +34,16 @@
 <script lang="ts" setup>
   import { FoxyBreadcrumbDivider, FoxyBreadcrumbItem } from '@foxy/components'
 
-  import { useBorder, useBothColor, useDensity, useMargin, usePadding, useRounded, useSlots } from '@foxy/composables'
+  import {
+	  useBorder,
+	  useBothColor,
+	  useDensity,
+	  useMargin,
+	  usePadding,
+	  useProps,
+	  useRounded,
+	  useSlots
+  } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
 
@@ -50,6 +59,8 @@
     tag: 'div',
     density: DENSITY.DEFAULT
   })
+
+  const {filterProps} = useProps<IBreadcrumbProps>(props)
 
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { densityClasses } = useDensity(props)
@@ -98,6 +109,12 @@
       marginClasses.value,
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

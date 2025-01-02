@@ -13,7 +13,16 @@
 </template>
 
 <script lang="ts" setup>
-  import { useBorder, useBothColor, useIcon, useMargin, usePadding, useSize, useSlots } from '@foxy/composables'
+	import {
+		useBorder,
+		useBothColor,
+		useIcon,
+		useMargin,
+		usePadding,
+		useProps,
+		useSize,
+		useSlots
+	} from '@foxy/composables'
 
   import { IIconComponentProps } from '@foxy/interfaces'
 
@@ -23,6 +32,8 @@
   const attrs = useAttrs()
 
   const props = withDefaults(defineProps<IIconComponentProps>(), { tag: 'i' })
+
+  const {filterProps} = useProps<IIconComponentProps>(props)
 
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { borderClasses, borderStyles } = useBorder(props)
@@ -65,6 +76,12 @@
       props.class
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>

@@ -25,7 +25,16 @@
 <script lang="ts" setup>
   import { FoxyExpandY } from '@foxy/components'
 
-  import { useBorder, useBothColor, useDensity, useLazy, useMargin, usePadding, useRounded } from '@foxy/composables'
+  import {
+	  useBorder,
+	  useBothColor,
+	  useDensity,
+	  useLazy,
+	  useMargin,
+	  usePadding,
+	  useProps,
+	  useRounded
+  } from '@foxy/composables'
 
   import { FOXY_EXPANSION_PANEL_KEY } from '@foxy/consts'
 
@@ -36,6 +45,8 @@
   const props = withDefaults(defineProps<IExpansionPanelContentProps>(), {
     tag: 'div'
   })
+
+  const {filterProps} = useProps<IExpansionPanelContentProps>(props)
 
   const expansionPanel = inject(FOXY_EXPANSION_PANEL_KEY)
 
@@ -57,7 +68,7 @@
     return typeof props.content !== 'string'
   })
 
-  // CLASS & STYLES
+  // CLASSES & STYLES
 
   const expansionPanelContentStyles = computed(() => {
     return [
@@ -79,6 +90,12 @@
       roundedClasses.value,
       props.class
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

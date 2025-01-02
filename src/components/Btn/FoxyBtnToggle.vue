@@ -1,62 +1,72 @@
 <template>
-  <foxy-btn-group
-      :class="btnToggleClasses"
-      :styles="btnToggleStyles"
-      v-bind="btnGroupProps">
-    <template v-if="hasSlot('default')" #default>
-      <slot name="default" v-bind="{items, isSelected, next, prev, select, selected }"/>
-    </template>
+	<foxy-btn-group
+			ref="btnGroupRef"
+			:class="btnToggleClasses"
+			:styles="btnToggleStyles"
+			v-bind="btnGroupProps">
+		<template v-if="hasSlot('default')" #default>
+			<slot name="default" v-bind="{items, isSelected, next, prev, select, selected }"/>
+		</template>
 
-    <template v-if="hasSlot('item')" #item="{item, index}">
-      <slot name="item" v-bind="{item, index}"/>
-    </template>
-  </foxy-btn-group>
+		<template v-if="hasSlot('item')" #item="{item, index}">
+			<slot name="item" v-bind="{item, index}"/>
+		</template>
+	</foxy-btn-group>
 </template>
 
 <script lang="ts" setup>
-  import { FoxyBtnGroup } from '@foxy/components'
+	import { FoxyBtnGroup } from '@foxy/components'
 
-  import { useGroup, useSlots } from '@foxy/composables'
+	import { useGroup, useProps, useSlots } from '@foxy/composables'
 
-  import { BTN_GROUP_PROPS, FOXY_BTN_TOGGLE_KEY } from '@foxy/consts'
+	import { FOXY_BTN_TOGGLE_KEY } from '@foxy/consts'
 
-  import { DENSITY } from '@foxy/enums'
+	import { DENSITY } from '@foxy/enums'
 
-  import { IBtnToggleProps } from '@foxy/interfaces'
+	import { IBtnToggleProps } from '@foxy/interfaces'
 
-  import { keys, omit, pick } from '@foxy/utils'
+	import { TFoxyBtnGroup } from "@foxy/types"
 
-  import { computed, StyleValue } from 'vue'
+	import { computed, ref, StyleValue } from 'vue'
 
-  const props = withDefaults(defineProps<IBtnToggleProps>(), { tag: 'div', items: [], density: DENSITY.DEFAULT })
+	const props = withDefaults(defineProps<IBtnToggleProps>(), {tag: 'div', items: [], density: DENSITY.DEFAULT})
 
-  const emits = defineEmits(['update:modelValue'])
+	const emits = defineEmits(['update:modelValue'])
 
-  const { isSelected, next, prev, select, selected } = useGroup(props, FOXY_BTN_TOGGLE_KEY)
+	const {filterProps} = useProps<IBtnToggleProps>(props)
 
-  const { hasSlot } = useSlots()
+	const {isSelected, next, prev, select, selected} = useGroup(props, FOXY_BTN_TOGGLE_KEY)
 
-  const btnGroupProps = computed(() => {
-    const btnGroup = pick(props, keys(BTN_GROUP_PROPS))
+	const {hasSlot} = useSlots()
 
-    return omit(btnGroup, ['class', 'style'])
-  })
+	const btnGroupRef = ref<TFoxyBtnGroup>()
 
-  // CLASS & STYLES
+	const btnGroupProps = computed(() => {
+		return btnGroupRef.value?.filterProps(props)
+	})
 
-  const btnToggleStyles = computed(() => {
-    return [
-      props.style
-    ] as StyleValue
-  })
-  const btnToggleClasses = computed(() => {
-    return [
-      'foxy-btn-toggle',
-      props.class,
-    ]
-  })
+	// CLASS & STYLES
 
-  defineExpose({next, prev, select})
+	const btnToggleStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const btnToggleClasses = computed(() => {
+		return [
+			'foxy-btn-toggle',
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		next,
+		prev,
+		select,
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>
@@ -64,7 +74,7 @@
 </style>
 
 <style>
-  :root {
+	:root {
 
-  }
+	}
 </style>

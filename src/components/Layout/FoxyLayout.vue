@@ -13,11 +13,13 @@
 <script lang="ts" setup>
   import { computed, StyleValue } from 'vue'
 
-  import { useCreateLayout } from '@foxy/composables'
+  import { useCreateLayout, useProps } from '@foxy/composables'
 
   import { ILayoutProps } from '@foxy/interfaces'
 
   const props = withDefaults(defineProps<ILayoutProps>(), {})
+
+  const {filterProps} = useProps<ILayoutProps>(props)
 
   const { layoutClasses, layoutRef, getLayoutItem, items, layoutId } = useCreateLayout(props)
 
@@ -28,7 +30,11 @@
     return [layoutClasses.value, props.class]
   })
 
-  defineExpose({ getLayoutItem, items })
+  defineExpose({
+	  getLayoutItem,
+	  items,
+	  filterProps
+	})
 </script>
 
 <style lang="scss" scoped>

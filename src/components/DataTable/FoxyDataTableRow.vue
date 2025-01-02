@@ -69,7 +69,7 @@
 
 	import { FoxyBtn, FoxyCheckboxBtn, FoxyDataTableColumnCell } from '@foxy/components'
 
-	import { useCell, useDisplay, useExpanded, useHeaders, useSelection, useSort } from '@foxy/composables'
+	import { useCell, useDisplay, useExpanded, useHeaders, useProps, useSelection, useSort } from '@foxy/composables'
 
 	import { SIZES } from '@foxy/enums'
 
@@ -84,6 +84,8 @@
 	const props = withDefaults(defineProps<IDataTableRowProps>(), {})
 
 	const emits = defineEmits(['expand', 'select'])
+
+	const {filterProps} = useProps<IDataTableRowProps>(props)
 
 	const {displayClasses, mobile} = useDisplay(props, 'foxy-data-table-row')
 	const {isSelected, toggleSelect, someSelected, allSelected, selectAll} = useSelection()
@@ -166,6 +168,8 @@
 		]
 	}
 
+	// CLASSES & STYLES
+
 	const dataTableRowClasses = computed(() => {
 		return [
 			'foxy-data-table-row',
@@ -180,6 +184,12 @@
 		return [
 			props.style
 		] as StyleValue
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
 	})
 </script>
 

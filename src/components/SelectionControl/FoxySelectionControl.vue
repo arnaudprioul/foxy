@@ -16,7 +16,7 @@
 
           <input
               :id="id"
-              ref="input"
+              ref="inputRef"
               :aria-checked="props.type === 'checkbox' ? model : undefined"
               :aria-disabled="props.disabled"
               :aria-label="props.label"
@@ -45,19 +45,23 @@
 <script lang="ts" setup>
   import { FoxyIcon, FoxyLabel } from '@foxy/components'
 
-  import { useSelectionControl } from '@foxy/composables'
+  import { useProps, useSelectionControl } from '@foxy/composables'
 
   import { vRipple } from '@foxy/directives'
 
   import { ISelectionControlProps } from '@foxy/interfaces'
 
-  import { filterInputAttrs, getUid, matchesSelector } from '@foxy/utils'
+  import { filterInputAttrs, forwardRefs, getUid, matchesSelector } from '@foxy/utils'
 
   import { computed, nextTick, ref, shallowRef, StyleValue, useAttrs } from 'vue'
 
   const props = withDefaults(defineProps<ISelectionControlProps>(), {})
 
   const emits = defineEmits(['update:modelValue', 'click:label'])
+
+  const {filterProps} = useProps<ISelectionControlProps>(props)
+
+  const inputRef = ref<HTMLInputElement>()
 
   const attrs = useAttrs()
 
@@ -74,15 +78,14 @@
   const uid = getUid()
   const isFocused = shallowRef(false)
   const isFocusVisible = shallowRef(false)
-  const input = ref<HTMLInputElement>()
   const id = computed(() => props.id || `input-${uid}`)
   const isInteractive = computed(() => {
     return !props.disabled && !props.readonly
   })
 
   group?.onForceUpdate(() => {
-    if (input.value) {
-      input.value.checked = model.value
+    if (inputRef.value) {
+	    inputRef.value.checked = model.value
     }
   })
 
@@ -143,6 +146,13 @@
       densityClasses.value,
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  ...forwardRefs({}, inputRef),
+	  filterProps
   })
 </script>
 

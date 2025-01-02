@@ -1,3 +1,4 @@
+import { FoxyIcon } from "@foxy/components"
 import type { Component } from 'vue'
 
 import { IIconAliases, IIconProps, IIconSet } from '@foxy/interfaces'
@@ -19,3 +20,5 @@ export type TIconInstance = {
 }
 
 export type TIconComponent = Component<IIconProps>
+
+export type TFoxyIcon = InstanceType<typeof FoxyIcon>

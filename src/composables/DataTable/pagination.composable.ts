@@ -3,7 +3,7 @@ import { FOXY_DATA_TABLE_PAGINATION_KEY } from '@foxy/consts'
 
 import { IDataTableGroup, IDataTablePaginationProps, IDataTableProvidePagination } from '@foxy/interfaces'
 import { clamp, getCurrentInstance } from '@foxy/utils'
-import { computed, provide, Ref, watch, watchEffect } from 'vue'
+import { computed, inject, provide, Ref, watch, watchEffect } from 'vue'
 
 export function createPagination (props: IDataTablePaginationProps) {
   const page = useVModel(props, 'page', undefined, value => +(value ?? 1))
@@ -69,6 +69,14 @@ export function providePagination (options: {
   }
 
   provide(FOXY_DATA_TABLE_PAGINATION_KEY, data)
+
+  return data
+}
+
+export function usePagination () {
+  const data = inject(FOXY_DATA_TABLE_PAGINATION_KEY)
+
+  if (!data) throw new Error('Missing pagination!')
 
   return data
 }

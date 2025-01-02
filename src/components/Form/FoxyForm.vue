@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useForm } from '@foxy/composables'
+	import { useForm, useProps } from '@foxy/composables'
 
   import { IFormProps, ISubmitEventPromise } from '@foxy/interfaces'
   import { forwardRefs } from '@foxy/utils'
@@ -22,6 +22,8 @@
   const props = withDefaults(defineProps<IFormProps>(), {})
 
   const emits = defineEmits(['submit'])
+
+  const {filterProps} = useProps<IFormProps>(props)
 
   const form = useForm(props)
   const formRef = ref<HTMLFormElement>()
@@ -52,7 +54,7 @@
     e.preventDefault()
   }
 
-  // CLASS & STYLES
+  // CLASSES & STYLES
 
   const formStyles = computed(() => {
     return [
@@ -66,6 +68,8 @@
     ]
   })
 
-
-  defineExpose(forwardRefs(form, formRef))
+  defineExpose({
+	  ...forwardRefs(form, formRef),
+	  filterProps
+  })
 </script>

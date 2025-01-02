@@ -22,7 +22,17 @@
 <script lang="ts" setup>
   import { computed, StyleValue, toRef } from 'vue'
 
-  import { useBorder, useBothColor, useDensity, useElevation, useRounded, useSlots, usePadding, useMargin } from '@foxy/composables'
+  import {
+	  useBorder,
+	  useBothColor,
+	  useDensity,
+	  useElevation,
+	  useRounded,
+	  useSlots,
+	  usePadding,
+	  useMargin,
+	  useProps
+  } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
 
@@ -36,6 +46,8 @@
     density: DENSITY.DEFAULT,
     modelValue: true
   })
+
+  const {filterProps} = useProps<IToolbarProps>(props)
 
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { elevationClasses } = useElevation(props)
@@ -87,6 +99,12 @@
       roundedClasses.value,
       props.class
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 
 </script>

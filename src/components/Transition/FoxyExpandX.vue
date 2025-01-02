@@ -14,6 +14,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { useProps } from "@foxy/composables"
   import { TRANSITION_MODE } from '@foxy/enums'
 
   import { IHTMLExpandElement, ITransitionProps } from '@foxy/interfaces'
@@ -24,6 +25,8 @@
     name: 'foxy-transition--expand-x',
     mode: TRANSITION_MODE.IN_OUT
   })
+
+  const {filterProps} = useProps<ITransitionProps>(props)
 
   const expandedParentClass = ''
   const sizeProperty = 'width' as 'width'
@@ -110,6 +113,12 @@
 
     onAfterLeave(element)
   }
+
+	// EXPOSE
+
+  defineExpose({
+	  filterProps
+  })
 </script>
 
 <style lang="scss">

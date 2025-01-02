@@ -36,7 +36,7 @@
 <script lang="ts" setup>
   import { FoxyIcon, FoxyScaleRotate, FoxyTransition } from '@foxy/components'
 
-  import { useBorder, useBothColor, useLocation, useRounded, useStatus } from '@foxy/composables'
+  import { useBorder, useBothColor, useLocation, useProps, useRounded, useStatus } from '@foxy/composables'
 
   import { IBadgeProps } from '@foxy/interfaces'
 
@@ -49,6 +49,8 @@
     location: 'top end',
     transition: { component: FoxyScaleRotate }
   })
+
+  const {filterProps} = useProps<IBadgeProps>(props)
 
   const attrs = useAttrs()
 
@@ -132,6 +134,12 @@
       borderStyles.value,
       props.inline ? {} : locationStyles.value,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
   import { FoxyFade } from '@foxy/components'
-  import { useTransition } from '@foxy/composables'
+  import { useProps, useTransition } from '@foxy/composables'
   import { ITransitionComponentProps } from '@foxy/interfaces'
 
   import { omit } from '@foxy/utils'
@@ -19,7 +19,9 @@
     transition: { component: FoxyFade }
   })
 
-  const rest = useAttrs()
+  const {filterProps} = useProps<ITransitionComponentProps>(props)
+
+  const attrs = useAttrs()
   const { isDisabled } = useTransition(props)
 
   const component = computed(() => {
@@ -31,8 +33,14 @@
   const transitionProps = computed(() => {
     return mergeProps(
         typeof props.transition === 'string' ? { name: isDisabled.value ? '' : props.transition } : { ...customProps.value },
-        { ...rest },
+        { ...attrs },
         { disabled: isDisabled.value })
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 
 </script>

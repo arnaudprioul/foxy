@@ -54,7 +54,7 @@
 <script lang="ts" setup>
 	import { FoxyCheckboxBtn, FoxyDataTableColumnCell, FoxyIcon } from '@foxy/components'
 
-	import { useBothColor, useCell, useHeadersCell, useSelection, useSort } from '@foxy/composables'
+	import { useBothColor, useCell, useHeadersCell, useProps, useSelection, useSort } from '@foxy/composables'
 
 	import { IDataTableHeaderCellProps, IInternalDataTableHeader } from '@foxy/interfaces'
 
@@ -64,13 +64,15 @@
 
 	const props = withDefaults(defineProps<IDataTableHeaderCellProps>(), {})
 
+	const {filterProps} = useProps<IDataTableHeaderCellProps>(props)
+
 	const {toggleSort, sortBy, isSorted} = useSort()
 	const {someSelected, allSelected, selectAll} = useSelection()
 	const {getSortIcon} = useHeadersCell(props)
 	const {getPadding} = useCell()
 	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
 
-	const headerProps = mergeProps(props.headerProps ?? {} ?? {})
+	const headerProps = mergeProps(props.headerProps ?? {})
 
 	const getFixedStyles = (column: IInternalDataTableHeader, y: number): CSSProperties | undefined => {
 		if (!props.sticky && !column.fixed) return undefined
@@ -127,6 +129,12 @@
 			},
 			props.style
 		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
 	})
 </script>
 

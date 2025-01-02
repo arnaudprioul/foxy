@@ -115,17 +115,18 @@
 <script lang="ts" setup>
 import {FoxyCounter, FoxyField, FoxyInput} from '@foxy/components'
 
-import {useAdjacentInner, useFocus, useSlots, useVModel} from '@foxy/composables'
+import { useAdjacentInner, useFocus, useProps, useSlots, useVModel } from '@foxy/composables'
 
-import {ACTIVE_TEXT_FIELD_TYPE, FIELD_PROPS, INPUT_PROPS, INPUT_TEXT_FIELD_TYPE} from '@foxy/consts'
+import {ACTIVE_TEXT_FIELD_TYPE, INPUT_TEXT_FIELD_TYPE} from '@foxy/consts'
 
 import {vIntersect} from '@foxy/directives'
 
 import {DENSITY, DIRECTION, TEXT_FIELD_TYPE} from '@foxy/enums'
 
 import {ITextFieldProps} from '@foxy/interfaces'
+import { TFoxyField, TFoxyInput } from "@foxy/types"
 
-import {filterInputAttrs, forwardRefs, keys, omit, pick} from '@foxy/utils'
+import {filterInputAttrs, forwardRefs} from '@foxy/utils'
 
 import {computed, nextTick, ref, StyleValue, useAttrs} from 'vue'
 
@@ -140,6 +141,8 @@ const props = withDefaults(defineProps<ITextFieldProps>(), {
 })
 
 const emits = defineEmits(['click:control', 'mousedown:control', 'update:focused', 'update:modelValue', 'click:prepend', 'click:prependInner', 'click:append', 'click:appendInner', 'click:clear'])
+
+const {filterProps} = useProps<ITextFieldProps>(props)
 
 const attrs = useAttrs()
 const {hasSlot} = useSlots()
@@ -183,8 +186,8 @@ const handleIntersect = (isIntersecting: boolean, entries: IntersectionObserverE
   (entries[0].target as HTMLInputElement)?.focus?.()
 }
 
-const foxyInputRef = ref()
-const foxyFieldRef = ref()
+const foxyInputRef = ref<TFoxyInput>()
+const foxyFieldRef = ref<TFoxyField>()
 const inputRef = ref<HTMLInputElement>()
 
 const isActive = computed(() => {
@@ -250,10 +253,10 @@ const hasDetails = computed(() => {
 
 const [rootAttrs, inputAttrs] = filterInputAttrs(attrs)
 const inputProps = computed(() => {
-  return omit(pick(props, keys(INPUT_PROPS)), ['modelValue', 'class', 'focused'])
+  return foxyInputRef.value?.filterProps(props, ['modelValue', 'class', 'style', 'id', 'focused'])
 })
 const fieldProps = computed(() => {
-  return omit(pick(props, keys(FIELD_PROPS)), ['class', 'id', 'active', 'dirty', 'disabled', 'focused', 'error'])
+  return foxyFieldRef.value?.filterProps(props, ['class', 'id', 'active', 'dirty', 'disabled', 'focused', 'error', 'style'])
 })
 
 // CLASS & STYLES
@@ -270,7 +273,10 @@ const textFieldClasses = computed(() => {
   ]
 })
 
-defineExpose(forwardRefs({}, foxyInputRef, foxyFieldRef, inputRef))
+defineExpose({
+	...forwardRefs({}, foxyInputRef, foxyFieldRef, inputRef),
+	filterProps
+})
 </script>
 
 <style lang="scss" scoped>

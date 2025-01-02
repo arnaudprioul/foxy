@@ -10,11 +10,14 @@
 </template>
 
 <script lang="ts" setup>
+  import { useProps } from "@foxy/composables"
   import { ICardTextProps } from '@foxy/interfaces'
 
   import { computed, StyleValue } from 'vue'
 
   const props = withDefaults(defineProps<ICardTextProps>(), { tag: 'div' })
+
+  const {filterProps} = useProps<ICardTextProps>(props)
 
   // CLASS & STYLES
 
@@ -28,6 +31,12 @@
       'foxy-card-text',
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

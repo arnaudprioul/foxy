@@ -11,6 +11,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { useProps } from "@foxy/composables"
   import { computed, StyleValue } from 'vue'
 
   import { ILayoutProps } from '@foxy/interfaces'
@@ -19,10 +20,20 @@
 
   const props = withDefaults(defineProps<ILayoutProps>(), { fullHeight: true })
 
+  const {filterProps} = useProps<ILayoutProps>(props)
+
+  // CLASSES & STYLES
+
   const appStyles = computed(() => {
     return [props.style] as StyleValue
   })
   const appClasses = computed(() => {
     return ['foxy-app', props.class]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>

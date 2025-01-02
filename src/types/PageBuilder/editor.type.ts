@@ -9,3 +9,4 @@ export type TEditorProvide = {
     lock: Ref<Set<unknown>>
   }
 }
+

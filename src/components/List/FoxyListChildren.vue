@@ -41,7 +41,7 @@
 <script lang="ts" setup>
   import { FoxyDivider, FoxyListGroup, FoxyListSubheader } from '@foxy/components'
 
-  import { useCreateList, useSlots } from '@foxy/composables'
+  import { useCreateList, useProps, useSlots } from '@foxy/composables'
 
   import { LIST_ITEM_TYPE } from '@foxy/enums'
 
@@ -50,6 +50,8 @@
   import { computed } from 'vue'
 
   const props = withDefaults(defineProps<IListItemChildren>(), {})
+
+  const {filterProps} = useProps<IListItemChildren>(props)
 
   const { hasSlot } = useSlots()
 
@@ -79,4 +81,10 @@
   const hasChildren = (item: IInternalListItemChildren) => {
     return item.children && item.children.length
   }
+
+	// EXPOSE
+
+  defineExpose({
+	  filterProps
+  })
 </script>

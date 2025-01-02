@@ -37,20 +37,22 @@
   import { FoxyIcon, FoxyImg } from '@foxy/components'
 
   import {
-    useBorder,
-    useBothColor,
-    useDensity,
-    useMargin,
-    usePadding,
-    useRounded,
-    useSize,
-    useSlots
+	  useBorder,
+	  useBothColor,
+	  useDensity,
+	  useMargin,
+	  usePadding, useProps,
+	  useRounded,
+	  useSize,
+	  useSlots
   } from '@foxy/composables'
 
   import { IAvatarProps } from '@foxy/interfaces'
   import { computed, StyleValue, toRef } from 'vue'
 
   const props = withDefaults(defineProps<IAvatarProps>(), { tag: 'div', size: 'default' })
+
+  const {filterProps} = useProps<IAvatarProps>(props)
 
   const { densityClasses } = useDensity(props)
   const { roundedClasses, roundedStyles } = useRounded(props)
@@ -100,6 +102,12 @@
       sizeClasses.value,
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

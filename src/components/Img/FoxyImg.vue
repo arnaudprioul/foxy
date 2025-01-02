@@ -61,7 +61,7 @@
 <script lang="ts" setup>
   import { FoxyResponsive, FoxyTransition } from '@foxy/components'
 
-  import { useBorder, useBothColor, useMargin, usePadding, useRounded, useSlots } from '@foxy/composables'
+  import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded, useSlots } from '@foxy/composables'
 
   import { SUPPORTS_INTERSECTION } from '@foxy/consts'
 
@@ -80,6 +80,8 @@
   const props = withDefaults(defineProps<IImgProps>(), {})
 
   const emits = defineEmits(['loadstart', 'load', 'error'])
+
+  const {filterProps} = useProps<IImgProps>(props)
 
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { roundedClasses, roundedStyles } = useRounded(props)
@@ -300,6 +302,12 @@
     return [
       `backgroundImage: linear-gradient(${props.gradient})`
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

@@ -123,11 +123,11 @@
 <script lang="ts" setup>
 import {FoxyAvatar, FoxyExpandX, FoxyIcon, FoxyLabel, FoxyProgress} from '@foxy/components'
 
-import {useAdjacentInner, useBothColor, useDensity, useFocus, useLoader, useSlots} from '@foxy/composables'
+import { useAdjacentInner, useBothColor, useDensity, useFocus, useLoader, useProps, useSlots } from '@foxy/composables'
 
 import {EASING, KEYBOARD_VALUES, PROGRESS_TYPE} from '@foxy/enums'
 
-import {IFieldProps} from '@foxy/interfaces'
+import { IFieldProps } from '@foxy/interfaces'
 
 import {animate, convertToUnit, getUid, nullifyTransforms} from '@foxy/utils'
 
@@ -136,6 +136,8 @@ import {computed, ref, StyleValue, watch} from 'vue'
 const props = withDefaults(defineProps<IFieldProps>(), {})
 
 const emits = defineEmits(['update:focused', 'update:modelValue', 'click:appendInner', 'click:prependInner', 'click:clear'])
+
+const {filterProps} = useProps<IFieldProps>(props)
 
 const {loaderClasses} = useLoader(props)
 const {densityClasses} = useDensity(props)
@@ -299,6 +301,12 @@ const fieldClasses = computed(() => {
     focusClasses.value,
     props.class,
   ]
+})
+
+// EXPOSE
+
+defineExpose({
+	filterProps
 })
 </script>
 

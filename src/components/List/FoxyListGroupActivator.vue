@@ -8,13 +8,15 @@
 </template>
 
 <script lang="ts" setup>
-  import { useNestedGroupActivator } from '@foxy/composables'
+	import { useNestedGroupActivator, useProps } from '@foxy/composables'
 
   import { IListActivatorProps } from '@foxy/interfaces'
 
   import { computed, StyleValue } from 'vue'
 
   const props = withDefaults(defineProps<IListActivatorProps>(), { tag: 'div' })
+
+  const {filterProps} = useProps<IListActivatorProps>(props)
 
   useNestedGroupActivator()
 
@@ -31,4 +33,10 @@
       props.class
     ]
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

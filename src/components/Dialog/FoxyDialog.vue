@@ -1,276 +1,286 @@
 <template>
-  <foxy-overlay
-      ref="overlay"
-      v-model="isActive"
-      :activator-props="activatorProps"
-      :class="dialogClasses"
-      :style="dialogStyles"
-      aria-modal="true"
-      role="dialog"
-      v-bind="{...overlayProps, ...scopeId}">
-    <template v-if="hasSlot('activator')" #activator="{props}">
-      <slot name="activator" v-bind="{props}"/>
-    </template>
+	<foxy-overlay
+			ref="overlayRef"
+			v-model="isActive"
+			:activator-props="activatorProps"
+			:class="dialogClasses"
+			:style="dialogStyles"
+			aria-modal="true"
+			role="dialog"
+			v-bind="{...overlayProps, ...scopeId}">
+		<template v-if="hasSlot('activator')" #activator="{props}">
+			<slot name="activator" v-bind="{props}"/>
+		</template>
 
-    <template #default="{isActive}">
-      <slot name="default" v-bind="{isActive}">
-        <foxy-card v-bind="cardProps">
-          <template v-if="hasSlot('loader')" #loader>
-            <slot name="loader"/>
-          </template>
+		<template #default="{isActive}">
+			<slot name="default" v-bind="{isActive}">
+				<foxy-card
+						ref="cardRef"
+						v-bind="cardProps">
+					<template v-if="hasSlot('loader')" #loader>
+						<slot name="loader"/>
+					</template>
 
-          <template v-if="hasSlot('header')" #header>
-            <slot name="header"/>
-          </template>
+					<template v-if="hasSlot('header')" #header>
+						<slot name="header"/>
+					</template>
 
-          <template #header.append>
-            <slot name="header.append">
-              <foxy-btn
-                  :icon="MDI_ICONS.CLOSE"
-                  :rounded="0"
-                  bg-color="transparent"
-                  @click="handleClose"/>
-            </slot>
-          </template>
+					<template #header.append>
+						<slot name="header.append">
+							<foxy-btn
+									:icon="MDI_ICONS.CLOSE"
+									:rounded="0"
+									bg-color="transparent"
+									@click="handleClose"/>
+						</slot>
+					</template>
 
-          <template v-if="hasPrepend" #header.prepend>
-            <slot name="header.prepend">
-              <foxy-icon
-                  v-if="hasIcon"
-                  key="prepend-icon"
-                  :icon="icon as TIcon"
-                  :size="28"/>
-            </slot>
-          </template>
+					<template v-if="hasPrepend" #header.prepend>
+						<slot name="header.prepend">
+							<foxy-icon
+									v-if="hasIcon"
+									key="prepend-icon"
+									:icon="icon as TIcon"
+									:size="28"/>
+						</slot>
+					</template>
 
-          <template v-if="hasSlot('header.title')" #header.title>
-            <slot name="header.title"/>
-          </template>
+					<template v-if="hasSlot('header.title')" #header.title>
+						<slot name="header.title"/>
+					</template>
 
-          <template v-if="hasSlot('header.subtitle')" #header.subtitle>
-            <slot name="header.subtitle"/>
-          </template>
+					<template v-if="hasSlot('header.subtitle')" #header.subtitle>
+						<slot name="header.subtitle"/>
+					</template>
 
-          <template v-if="hasSlot('header.content')" #header.content>
-            <slot name="header.content"/>
-          </template>
+					<template v-if="hasSlot('header.content')" #header.content>
+						<slot name="header.content"/>
+					</template>
 
-          <template v-if="hasSlot('asset')" #asset>
-            <slot name="asset"/>
-          </template>
+					<template v-if="hasSlot('asset')" #asset>
+						<slot name="asset"/>
+					</template>
 
-          <template v-if="hasSlot('text')" #text>
-            <slot name="text"/>
-          </template>
+					<template v-if="hasSlot('text')" #text>
+						<slot name="text"/>
+					</template>
 
-          <template #default>
-            <slot name="content"/>
-            <div ref="endText" v-intersect="handleIntersect"></div>
-          </template>
+					<template #default>
+						<slot name="content"/>
+						<div ref="endText" v-intersect="handleIntersect"></div>
+					</template>
 
-          <template v-if="hasSlot('footer')" #footer>
-            <slot name="footer"/>
-          </template>
-        </foxy-card>
-      </slot>
-    </template>
-  </foxy-overlay>
+					<template v-if="hasSlot('footer')" #footer>
+						<slot name="footer"/>
+					</template>
+				</foxy-card>
+			</slot>
+		</template>
+	</foxy-overlay>
 </template>
 
 <script lang="ts" setup>
-import {FoxyBtn, FoxyCard, FoxyIcon, FoxyOverlay, FoxyTranslateScale} from '@foxy/components'
+	import { FoxyBtn, FoxyCard, FoxyIcon, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
 
-import {useScopeId, useSlots, useStatus, useVModel} from '@foxy/composables'
+	import { useProps, useScopeId, useSlots, useStatus, useVModel } from '@foxy/composables'
 
-import {CARD_PROPS, IN_BROWSER, OVERLAY_PROPS} from '@foxy/consts'
+	import { IN_BROWSER } from '@foxy/consts'
 
-import {vIntersect} from '@foxy/directives'
+	import { vIntersect } from '@foxy/directives'
 
-import {MDI_ICONS} from '@foxy/enums'
+	import { MDI_ICONS } from '@foxy/enums'
 
-import {IDialogProps} from '@foxy/interfaces'
+	import { IDialogProps } from '@foxy/interfaces'
 
-import {TFoxyOverlay, TIcon} from '@foxy/types'
+	import { TFoxyCard, TFoxyOverlay, TIcon } from '@foxy/types'
 
-import {focusableChildren, keys, omit, pick} from '@foxy/utils'
+	import { focusableChildren, forwardRefs } from '@foxy/utils'
 
-import {Component, computed, mergeProps, nextTick, ref, StyleValue, watch} from 'vue'
+	import { Component, computed, mergeProps, nextTick, ref, StyleValue, watch } from 'vue'
 
-const props = withDefaults(defineProps<IDialogProps>(), {
-  retainFocus: true,
-  origin: 'center center',
-  scrollStrategy: 'block',
-  transition: {component: FoxyTranslateScale as Component},
-  zIndex: 2400
-})
+	const props = withDefaults(defineProps<IDialogProps>(), {
+		retainFocus: true,
+		origin: 'center center',
+		scrollStrategy: 'block',
+		transition: {component: FoxyTranslateScale as Component},
+		zIndex: 2400
+	})
 
-const emits = defineEmits(['update:modelValue', 'isRead', 'click:outside'])
+	const emits = defineEmits(['update:modelValue', 'isRead', 'click:outside'])
 
-const isActive = useVModel(props, 'modelValue')
-const {scopeId} = useScopeId()
-const {hasSlot} = useSlots()
-const {icon, statusClasses} = useStatus(props)
+	const {filterProps} = useProps<IDialogProps>(props)
 
-const overlay = ref<TFoxyOverlay>()
+	const isActive = useVModel(props, 'modelValue')
+	const {scopeId} = useScopeId()
+	const {hasSlot} = useSlots()
+	const {icon, statusClasses} = useStatus(props)
 
-const handleFocusin = (e: FocusEvent) => {
-  const before = e.relatedTarget as HTMLElement | null
-  const after = e.target as HTMLElement | null
+	const overlayRef = ref<TFoxyOverlay>()
+	const cardRef = ref<TFoxyCard>()
 
-  if (
-      before !== after &&
-      overlay.value?.contentEl &&
-      // We're the topmost dialog
-      overlay.value?.globalTop &&
-      // It isn't the document or the dialog body
-      ![document, overlay.value.contentEl].includes(after!) &&
-      // It isn't inside the dialog body
-      !overlay.value.contentEl.contains(after)
-  ) {
-    const focusable = focusableChildren(overlay.value.contentEl)
+	const handleFocusin = (e: FocusEvent) => {
+		const before = e.relatedTarget as HTMLElement | null
+		const after = e.target as HTMLElement | null
 
-    if (!focusable.length) return
+		if (
+				before !== after &&
+				overlayRef.value?.contentEl &&
+				// We're the topmost dialog
+				overlayRef.value?.globalTop &&
+				// It isn't the document or the dialog body
+				![document, overlayRef.value.contentEl].includes(after!) &&
+				// It isn't inside the dialog body
+				!overlayRef.value.contentEl.contains(after)
+		) {
+			const focusable = focusableChildren(overlayRef.value.contentEl)
 
-    const firstElement = focusable[0]
-    const lastElement = focusable[focusable.length - 1]
+			if (!focusable.length) return
 
-    if (before === firstElement) {
-      lastElement.focus()
-    } else {
-      firstElement.focus()
-    }
-  }
-}
+			const firstElement = focusable[0]
+			const lastElement = focusable[focusable.length - 1]
 
-if (IN_BROWSER) {
-  watch(() => isActive.value && props.retainFocus, (val) => {
-    val
-        ? document.addEventListener('focusin', handleFocusin)
-        : document.removeEventListener('focusin', handleFocusin)
-  }, {immediate: true})
-}
+			if (before === firstElement) {
+				lastElement.focus()
+			} else {
+				firstElement.focus()
+			}
+		}
+	}
 
-watch(isActive, async (val) => {
-  await nextTick()
-  if (val) {
-    overlay.value!.contentEl?.focus({preventScroll: true})
-  } else {
-    overlay.value!.activatorEl?.focus({preventScroll: true})
-  }
-})
+	if (IN_BROWSER) {
+		watch(() => isActive.value && props.retainFocus, (val) => {
+			val
+					? document.addEventListener('focusin', handleFocusin)
+					: document.removeEventListener('focusin', handleFocusin)
+		}, {immediate: true})
+	}
 
-const activatorProps = computed(() => {
-  return mergeProps({
-    'aria-haspopup': 'dialog',
-    'aria-expanded': String(isActive.value)
-  }, props.activatorProps)
-})
-const overlayProps = computed(() => {
-  const overlayProps = pick(props, keys(OVERLAY_PROPS))
+	watch(isActive, async (val) => {
+		await nextTick()
+		if (val) {
+			overlayRef.value!.contentEl?.focus({preventScroll: true})
+		} else {
+			overlayRef.value!.activatorEl?.focus({preventScroll: true})
+		}
+	})
 
-  return omit(overlayProps, ['activatorProps', 'class', 'style', 'modelValue'])
-})
-const cardProps = computed(() => {
-  return pick(props, keys(CARD_PROPS))
-})
+	const activatorProps = computed(() => {
+		return mergeProps({
+			'aria-haspopup': 'dialog',
+			'aria-expanded': String(isActive.value)
+		}, props.activatorProps)
+	})
+	const overlayProps = computed(() => {
+		return overlayRef.value?.filterProps(props, ['activatorProps', 'class', 'style', 'modelValue'])
+	})
+	const cardProps = computed(() => {
+		return cardRef.value?.filterProps(props)
+	})
 
-const handleClose = () => {
-  isActive.value = false
-}
-const handleIntersect = (_isIntersecting: boolean, entries: Array<IntersectionObserverEntry>, _observer: IntersectionObserver) => {
-  if (entries[entries.length - 1].isIntersecting) {
-    emits('isRead', true)
-  }
-}
+	const handleClose = () => {
+		isActive.value = false
+	}
+	const handleIntersect = (_isIntersecting: boolean, entries: Array<IntersectionObserverEntry>, _observer: IntersectionObserver) => {
+		if (entries[entries.length - 1].isIntersecting) {
+			emits('isRead', true)
+		}
+	}
 
-const hasPrepend = computed(() => {
-  return !!(hasSlot('header.prepend') || icon.value)
-})
-const hasIcon = computed(() => {
-  return !!(props.icon || props.status)
-})
+	const hasPrepend = computed(() => {
+		return !!(hasSlot('header.prepend') || icon.value)
+	})
+	const hasIcon = computed(() => {
+		return !!(props.icon || props.status)
+	})
 
-// CLASS & STYLES
+	// CLASSES & STYLES
 
-const dialogStyles = computed(() => {
-  return [
-    props.style
-  ] as StyleValue
-})
-const dialogClasses = computed(() => {
-  return [
-    'foxy-dialog',
-    {
-      'foxy-dialog--fullscreen': props.fullscreen,
-      'foxy-dialog--scrollable': props.scrollable
-    },
-    statusClasses.value,
-    props.class
-  ]
-})
+	const dialogStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const dialogClasses = computed(() => {
+		return [
+			'foxy-dialog',
+			{
+				'foxy-dialog--fullscreen': props.fullscreen,
+				'foxy-dialog--scrollable': props.scrollable
+			},
+			statusClasses.value,
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		...forwardRefs({}, overlayRef),
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>
-.foxy-dialog {
-  $this: &;
+	.foxy-dialog {
+		$this: &;
 
-  align-items: center;
-  justify-content: center;
-  margin: auto;
+		align-items: center;
+		justify-content: center;
+		margin: auto;
 
-  > :deep(.foxy-overlay__content) {
-    max-height: calc(100% - 48px);
-    width: calc(100% - 48px);
-    max-width: calc(100% - 48px);
-    margin: 24px;
+		> :deep(.foxy-overlay__content) {
+			max-height: calc(100% - 48px);
+			width: calc(100% - 48px);
+			max-width: calc(100% - 48px);
+			margin: 24px;
 
-    &,
-    > form {
-      > .foxy-card {
-        display: flex;
-        flex: 1 1 100%;
-        flex-direction: column;
-        max-height: 100%;
-        max-width: 100%;
-        overflow: hidden;
+			&,
+			> form {
+				> .foxy-card {
+					display: flex;
+					flex: 1 1 100%;
+					flex-direction: column;
+					max-height: 100%;
+					max-width: 100%;
+					overflow: hidden;
 
-        .foxy-card__content {
-          display: flex;
-          flex: 1 1 100%;
-          flex-direction: column;
-          max-height: 100%;
-          max-width: 100%;
-          overflow: auto;
-        }
-      }
-    }
-  }
+					.foxy-card__content {
+						display: flex;
+						flex: 1 1 100%;
+						flex-direction: column;
+						max-height: 100%;
+						max-width: 100%;
+						overflow: auto;
+					}
+				}
+			}
+		}
 
-  &--fullscreen {
-    > :deep(.foxy-overlay__content) {
-      border-radius: 0;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      max-width: 100%;
-      max-height: 100%;
-      overflow-y: auto;
-      top: 0;
-      left: 0;
+		&--fullscreen {
+			> :deep(.foxy-overlay__content) {
+				border-radius: 0;
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+				max-width: 100%;
+				max-height: 100%;
+				overflow-y: auto;
+				top: 0;
+				left: 0;
 
-      &,
-      > form {
-        > .foxy-card,
-        > .foxy-sheet {
-          min-height: 100%;
-          min-width: 100%;
-          border-radius: 0;
-        }
-      }
-    }
-  }
-}
+				&,
+				> form {
+					> .foxy-card,
+					> .foxy-sheet {
+						min-height: 100%;
+						min-width: 100%;
+						border-radius: 0;
+					}
+				}
+			}
+		}
+	}
 </style>
 
 <style>

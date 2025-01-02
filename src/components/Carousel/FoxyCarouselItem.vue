@@ -1,11 +1,14 @@
 <template>
   <foxy-window-item
+		  ref="windowItemRef"
       :class="carouselItemClasses"
       :style="carouselItemStyles"
       v-bind="windowItemProps">
     <template #default>
       <slot name="default">
-        <foxy-img v-bind="{ ...attrs , ...imgProps }">
+        <foxy-img
+		        ref="imgRef"
+		        v-bind="{...attrs , ...imgProps}">
           <template v-if="hasSlot('content')" #default>
             <slot name="content"/>
           </template>
@@ -25,32 +28,32 @@
 
 <script lang="ts" setup>
   import { FoxyImg, FoxyWindowItem } from '@foxy/components'
-  import { useSlots } from '@foxy/composables'
 
-  import { IMG_PROPS, WINDOW_ITEM_PROPS } from '@foxy/consts'
+  import { useProps, useSlots } from '@foxy/composables'
 
   import { ICarouselItemProps } from '@foxy/interfaces'
 
-  import { keys, omit, pick } from '@foxy/utils'
+  import { TFoxyImg, TFoxyWindowItem } from "@foxy/types"
 
-  import { computed, StyleValue, useAttrs } from 'vue'
+  import { computed, ref, StyleValue, useAttrs } from 'vue'
 
   const props = withDefaults(defineProps<ICarouselItemProps>(), {
     transition: undefined,
     reverseTransition: undefined
   })
 
+  const {filterProps} = useProps<ICarouselItemProps>(props)
+
   const attrs = useAttrs()
 
-  const windowItemProps = computed(() => {
-    const windowItemProp = pick(props, keys(WINDOW_ITEM_PROPS))
+  const windowItemRef = ref<TFoxyWindowItem>()
+  const imgRef = ref<TFoxyImg>()
 
-    return omit(windowItemProp, ['class', 'style'])
+  const windowItemProps = computed(() => {
+    return windowItemRef.value?.filterProps(props)
   })
   const imgProps = computed(() => {
-    const imgProp = pick(props, keys(IMG_PROPS))
-
-    return omit(imgProp, ['class', 'style'])
+    return imgRef.value?.filterProps(props)
   })
 
   const { hasSlot } = useSlots()
@@ -67,6 +70,12 @@
       'foxy-carousel-item',
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

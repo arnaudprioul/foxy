@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { useProps } from "@foxy/composables"
   import { IIconComponentProps } from '@foxy/interfaces'
 
   import { convertToUnit } from '@foxy/utils'
@@ -10,6 +11,8 @@
   import { computed, StyleValue } from 'vue'
 
   const props = withDefaults(defineProps<IIconComponentProps>(), { tag: 'i' })
+
+  const {filterProps} = useProps<IIconComponentProps>(props)
 
   // CLASS & STYLES
 
@@ -27,5 +30,11 @@
       props.icon,
       props.class
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>

@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useCssTransition } from '@foxy/composables'
+	import { useCssTransition, useProps } from '@foxy/composables'
 
   import { ITransitionProps } from '@foxy/interfaces'
 
@@ -16,7 +16,15 @@
     name: 'foxy-transition--scale-rotate'
   })
 
+  const {filterProps} = useProps<ITransitionProps>(props)
+
   const { name, tag, transitionProps } = useCssTransition(props)
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="scss">

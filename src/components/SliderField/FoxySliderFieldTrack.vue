@@ -33,9 +33,9 @@
 </template>
 
 <script lang="ts" setup>
-  import { useBackgroundColor, useRounded, useSlots } from '@foxy/composables'
+	import { useBackgroundColor, useProps, useRounded, useSlots } from '@foxy/composables'
 
-  import { FOXY_RANGE_SLIDER_KEY } from '@foxy/consts'
+  import { FOXY_SLIDER_FIELD_KEY } from '@foxy/consts'
 
   import { ISliderFieldTrackProps } from '@foxy/interfaces'
 
@@ -51,7 +51,9 @@
     size: 4
   })
 
-  const slider = inject(FOXY_RANGE_SLIDER_KEY)
+  const {filterProps} = useProps<ISliderFieldTrackProps>(props)
+
+  const slider = inject(FOXY_SLIDER_FIELD_KEY)
 
   if (!slider) throw new Error('[Foxy] -slider-track must be inside -slider')
 
@@ -199,7 +201,11 @@
     ]
   })
 
-  defineExpose({})
+	// EXPOSE
+
+  defineExpose({
+	  filterProps
+  })
 </script>
 
 <style lang="scss" scoped>

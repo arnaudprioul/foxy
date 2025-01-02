@@ -17,7 +17,16 @@
 <script lang="ts" setup>
   import { FoxyIcon } from '@foxy/components'
 
-  import { useBorder, useBothColor, useDensity, useMargin, usePadding, useRounded, useSize } from '@foxy/composables'
+  import {
+	  useBorder,
+	  useBothColor,
+	  useDensity,
+	  useMargin,
+	  usePadding,
+	  useProps,
+	  useRounded,
+	  useSize
+  } from '@foxy/composables'
 
   import { MDI_ICONS } from '@foxy/enums'
 
@@ -26,6 +35,8 @@
   import { computed, StyleValue, toRef } from 'vue'
 
   const props = withDefaults(defineProps<IBreadcrumbDividerProps>(), {tag: 'span', divider: '/'})
+
+  const {filterProps} = useProps<IBreadcrumbDividerProps>(props)
 
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { densityClasses } = useDensity(props)
@@ -63,6 +74,12 @@
       marginClasses.value,
       props.class,
     ]
+  })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
   })
 </script>
 

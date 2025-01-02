@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useIntersectionObserver } from '@foxy/composables'
+	import { useIntersectionObserver, useProps } from '@foxy/composables'
 
   import { IInfiniteScrollIntersectProps } from '@foxy/interfaces'
 
@@ -13,10 +13,18 @@
 
   const emits = defineEmits(['intersect'])
 
+  const {filterProps} = useProps<IInfiniteScrollIntersectProps>(props)
+
   const { intersectionRef, isIntersecting } = useIntersectionObserver((entries) => {
   }, props.margin ? { rootMargin: props.margin } : undefined)
 
   watch(isIntersecting, async (val) => {
     emits('intersect', props.side, val)
   })
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
