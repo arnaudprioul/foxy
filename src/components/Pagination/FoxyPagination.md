@@ -1,0 +1,4 @@
+# Foxypagination
+
+## Usage
+    <FoxyPagination />

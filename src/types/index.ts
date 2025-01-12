@@ -139,6 +139,8 @@ export * from './Overlay/overlay.type'
 
 export * from './PageBuilder/editor.type'
 
+export * from './Pagination/pagination.type'
+
 export * from './Parallax/parallax.type'
 export * from './Parallax/parallax-element.type'
 

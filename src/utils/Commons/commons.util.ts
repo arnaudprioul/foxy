@@ -502,3 +502,7 @@ export function addWindowListener (event: string, listener: EventListenerOrEvent
 export function isEmpty (val: any): boolean {
   return val === null || val === undefined || (typeof val === 'string' && val.trim() === '')
 }
+
+export function createRange (length: number, start = 0): number[] {
+  return Array.from({ length }, (v, k) => start + k)
+}
