@@ -14,21 +14,21 @@
 
 				<template v-if="!props.hideDefaultHeader">
 					<thead key="thead">
-						<foxy-data-table-headers
-								ref="foxyDataTableHeadersRef"
-								v-bind="dataTableHeadersProps">
-							<template v-if="hasSlot('header')" #default="headerProps">
-								<slot name="header" v-bind="headerProps"/>
-							</template>
+					<foxy-data-table-headers
+							ref="foxyDataTableHeadersRef"
+							v-bind="dataTableHeadersProps">
+						<template v-if="hasSlot('header')" #default="headerProps">
+							<slot name="header" v-bind="headerProps"/>
+						</template>
 
-							<template v-if="hasSlot('header.mobile')" #mobile="headerProps">
-								<slot name="header.mobile" v-bind="headerProps"/>
-							</template>
+						<template v-if="hasSlot('header.mobile')" #mobile="headerProps">
+							<slot name="header.mobile" v-bind="headerProps"/>
+						</template>
 
-							<template v-if="hasSlot('header.loader')" #loader="headerLoaderProps">
-								<slot name="header.loader" v-bind="headerLoaderProps"/>
-							</template>
-						</foxy-data-table-headers>
+						<template v-if="hasSlot('header.loader')" #loader="headerLoaderProps">
+							<slot name="header.loader" v-bind="headerLoaderProps"/>
+						</template>
+					</foxy-data-table-headers>
 					</thead>
 				</template>
 
@@ -50,12 +50,15 @@
 			</slot>
 		</template>
 
-		<template v-if="hasSlot('bottom')" #bottom>
+		<template #bottom>
 			<slot name="bottom">
-				<template v-if="!props.hideDefaultFooter">
+				<template v-if="!hideDefaultFooter">
 					<foxy-divider/>
 
-					<foxy-data-table-footer v-bind="dataTableFooterProps">
+					<foxy-data-table-footer
+							ref="foxyDataTableFooterRef"
+							v-bind="dataTableFooterProps"
+					>
 						<!-- TODO SLOT FOOTER-->
 					</foxy-data-table-footer>
 				</template>
@@ -65,7 +68,13 @@
 </template>
 
 <script lang="ts" setup>
-	import { FoxyDataTableHeaders, FoxyDataTableRows, FoxyDivider, FoxyTable } from '@foxy/components'
+	import {
+		FoxyDataTableFooter,
+		FoxyDataTableHeaders,
+		FoxyDataTableRows,
+		FoxyDivider,
+		FoxyTable
+	} from '@foxy/components'
 
 	import {
 		createGroupBy,
@@ -91,7 +100,7 @@
 
 	import { IDataTableProps } from '@foxy/interfaces'
 
-	import { TFoxyDataTableHeaders, TFoxyDataTableRows, TFoxyTable } from "@foxy/types"
+	import { TFoxyDataTableFooter, TFoxyDataTableHeaders, TFoxyDataTableRows, TFoxyTable } from "@foxy/types"
 
 	import { computed, ref, StyleValue, toRef, useAttrs } from 'vue'
 
@@ -115,7 +124,8 @@
 			{value: -1, title: 'all'}
 		],
 		tag: 'div',
-		density: DENSITY.DEFAULT
+		density: DENSITY.DEFAULT,
+		hideDefaultFooter: false
 	})
 
 	const emits = defineEmits(['update:modelValue', 'update:page', 'update:itemsPerPage', 'update:sortBy', 'update:options', 'update:groupBy', 'update:expanded', 'update:currentItems'])
@@ -127,6 +137,7 @@
 	const foxyTableRef = ref<TFoxyTable>()
 	const foxyDataTableHeadersRef = ref<TFoxyDataTableHeaders>()
 	const foxyDataTableRowsRef = ref<TFoxyDataTableRows>()
+	const foxyDataTableFooterRef = ref<TFoxyDataTableFooter>()
 
 	const {groupBy} = createGroupBy(props)
 	const {sortBy, multiSort, mustSort} = createSort(props)
@@ -224,7 +235,11 @@
 	})
 
 	const dataTableRowsProps = computed(() => {
-		return foxyDataTableRowsRef.value?.filterProps(props, ['class', 'style', 'items'])
+		return foxyDataTableRowsRef.value?.filterProps(props, ['class', 'style', 'id', 'items'])
+	})
+
+	const dataTableFooterProps = computed(() => {
+		return foxyDataTableFooterRef.value?.filterProps(props, ['class', 'style', 'id'])
 	})
 
 	// CLASS & STYLES

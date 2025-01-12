@@ -7,7 +7,3 @@ export function getSliderFieldOffset (e: MouseEvent | TouchEvent, el: HTMLElemen
       ? touch.clientY - (rect.top + rect.height / 2)
       : touch.clientX - (rect.left + rect.width / 2)
 }
-
-export function createRange (length: number, start = 0): number[] {
-  return Array.from({ length }, (_v, k) => start + k)
-}

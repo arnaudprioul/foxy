@@ -5,11 +5,11 @@
 		:class="paginationClasses"
 		:style="paginationStyles"
 		role="navigation"
-		:aria-label="props.ariaLabel"
+		:aria-label="ariaLabel"
 		@keydown="handleKeydown"
 	>
 		<ul class="foxy-pagination__list">
-			<template v-if="props.showFirstLastPage">
+			<template v-if="showFirstLastPage">
 				<li key="first" class="foxy-pagination__first">
 					<slot name="first" v-bind="{...controls.first}">
 						<foxy-btn v-bind="{...controls.first }" />
@@ -42,7 +42,7 @@
 				</slot>
 			</li>
 
-			<template v-if="props.showFirstLastPage">
+			<template v-if="showFirstLastPage">
 				<li key="last" class="foxy-pagination__last">
 					<slot name="last" v-bind="{...controls.last}">
 						<foxy-btn v-bind="{...controls.last }" />
@@ -66,7 +66,23 @@
 
 	import { ComponentPublicInstance, computed, nextTick, shallowRef, StyleValue } from "vue"
 
-  const props = withDefaults(defineProps<IPaginationProps>(), {})
+  const props = withDefaults(defineProps<IPaginationProps>(), {
+	  prevIcon: '$prev',
+	  nextIcon: '$next',
+	  firstIcon: '$first',
+	  lastIcon: '$last',
+	  tag: 'div',
+	  ellipsis: '...',
+	  length: 1,
+	  start: 1,
+	  ariaLabel: 'Pagination Navigation',
+	  pageAriaLabel: 'Go to page',
+	  currentPageAriaLabel: 'Current page - Page',
+	  firstAriaLabel: 'First page',
+	  previousAriaLabel: 'Previous page',
+	  nextAriaLabel: 'Next page',
+	  lastAriaLabel: 'Last page'
+  })
 
   const emits = defineEmits([
 			'update:modelValue',
@@ -76,9 +92,9 @@
 		  'last'
   ])
 
-  const {filterProps} = useProps(props)
+  const {filterProps} = useProps<IPaginationProps>(props)
 
-  const page = useVModel(props, 'modelValue')
+  const page = useVModel(props, 'modelValue', props.start)
   const { width } = useDisplay()
   const maxButtons = shallowRef(-1)
 
@@ -265,11 +281,47 @@
 </script>
 
 <style lang="scss" scoped>
+	.foxy-pagination {
 
+		&__list {
+			display: inline-flex;
+			list-style-type: none;
+			justify-content: center;
+			width: 100%;
+		}
+
+		&__item {
+			&--is-active {
+				:deep(.foxy-btn__overlay) {
+					opacity: var(--foxy-pagination__item--is-active---border-opacity)
+				}
+			}
+		}
+
+		&__item,
+		&__first,
+		&__prev,
+		&__next,
+		&__last {
+			margin: .3rem;
+		}
+
+		:deep(.foxy-btn) {
+			border-radius: 4px;
+		}
+
+		:deep(.foxy-btn--rounded) {
+			border-radius: 50%;
+		}
+
+		:deep(.foxy-btn__overlay) {
+			transition: none;
+		}
+	}
 </style>
 
 <style>
   :root {
-
+	  --foxy-pagination__item--is-active---border-opacity: 0.12;
   }
 </style>

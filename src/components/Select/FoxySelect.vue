@@ -73,7 +73,7 @@
 						<template #default>
 							<slot name="items.prepend"/>
 
-							<template v-if="!displayItems.length && !hideNoData || hasSlot('noData')">
+							<template v-if="hasNoData">
 								<slot name="noData">
 									<foxy-list-item :title="noDataText"/>
 								</slot>
@@ -84,7 +84,7 @@
 										ref="foxyVirtualScrollRef"
 										:items="displayItems"
 										renderless>
-									<template #renderlessItem="{item, index, itemRef}">
+									<template #item.renderless="{item, index, itemRef}">
 										<slot name="item"
 										      v-bind="{item, index, props: menuListItemProps(item, itemRef, index)}">
 											<foxy-list-item
@@ -327,6 +327,10 @@
 	})
 	const showCheckbox = computed(() => {
 		return props.multiple && !props.hideSelected
+	})
+
+	const hasNoData = computed(() => {
+		return !displayItems.value.length && (!props.hideNoData || hasSlot('noData'))
 	})
 
 	const isFocused = shallowRef(false)
@@ -681,7 +685,7 @@
 	})
 
 	const textFieldProps = computed(() => {
-		return foxyTextField.value?.filterProps(props, ['class', 'id', 'style', 'counterValue', 'dirty', 'modelValue', 'placeholder', 'validationValue', 'focused'])
+		return foxyTextFieldRef.value?.filterProps(props, ['class', 'id', 'style', 'counterValue', 'dirty', 'modelValue', 'placeholder', 'validationValue', 'focused'])
 	})
 
 	const isDirty = computed(() => {
@@ -714,13 +718,12 @@
 
 	// EXPOSE
 
-	defineExpose({
-		...forwardRefs(foxyTextFieldRef),
+	defineExpose(forwardRefs({
 		filterProps,
 		isFocused,
 		menu,
 		handleSelect
-	})
+	}, foxyTextFieldRef))
 </script>
 
 <style lang="scss" scoped>

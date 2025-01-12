@@ -317,10 +317,7 @@
 
 	// EXPOSE
 
-	defineExpose({
-		...forwardRefs({}, foxyInputRef, foxyFieldRef, inputRef),
-		filterProps
-	})
+	defineExpose(forwardRefs({filterProps}, foxyInputRef, foxyFieldRef, inputRef))
 </script>
 
 <style lang="scss" scoped>

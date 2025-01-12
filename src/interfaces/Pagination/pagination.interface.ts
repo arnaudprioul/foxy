@@ -10,22 +10,22 @@ import {
 import { TIcon } from "@foxy/types"
 
 export interface IPaginationProps extends ICommonsComponentProps, ITagProps, IColorProps, IBorderProps, IPaddingProps, IMarginProps, IElevationProps {
-    start: number | string
-    modelValue: number
-    disabled: boolean
-    length: number | string
-    totalVisible: number | string
-    firstIcon: TIcon
-    prevIcon: TIcon
-    nextIcon: TIcon
-    lastIcon: TIcon
-    ariaLabel: string
-    pageAriaLabel: string
-    currentPageAriaLabel: string
-    firstAriaLabel: string
-    previousAriaLabel: string
-    nextAriaLabel: string
-    lastAriaLabel: string
-    ellipsis: string
-    showFirstLastPage: boolean
+    start?: number | string
+    modelValue?: number | string
+    disabled?: boolean
+    length?: number | string
+    totalVisible?: number | string
+    firstIcon?: TIcon
+    prevIcon?: TIcon
+    nextIcon?: TIcon
+    lastIcon?: TIcon
+    ariaLabel?: string
+    pageAriaLabel?: string
+    currentPageAriaLabel?: string
+    firstAriaLabel?: string
+    previousAriaLabel?: string
+    nextAriaLabel?: string
+    lastAriaLabel?: string
+    ellipsis?: string
+    showFirstLastPage?: boolean
 }

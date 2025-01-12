@@ -150,10 +150,7 @@
 
   // EXPOSE
 
-  defineExpose({
-	  ...forwardRefs({}, inputRef),
-	  filterProps
-  })
+  defineExpose(forwardRefs({filterProps}, inputRef))
 </script>
 
 <style lang="scss" scoped>

@@ -27,12 +27,12 @@
 						ref="foxyPaginationRef"
 						v-model="page"
 						:density="DENSITY.COMPACT"
-						:first-aria-label="props.firstPageLabel"
-						:last-aria-label="props.lastPageLabel"
+						:first-aria-label="firstPageLabel"
+						:last-aria-label="lastPageLabel"
 						:length="pageCount"
-						:next-aria-label="props.nextPageLabel"
-						:previous-aria-label="props.prevPageLabel"
-						:total-visible="props.showCurrentPage ? 1 : 0"
+						:next-aria-label="nextPageLabel"
+						:previous-aria-label="prevPageLabel"
+						:total-visible="showCurrentPage ? 1 : 0"
 						rounded
 						show-first-last-page
 						v-bind="{ ...paginationProps }"
@@ -45,15 +45,16 @@
 </template>
 
 <script lang="ts" setup>
-	import { FoxyRow, FoxySelect } from "@foxy/components"
+	import { FoxyPagination, FoxyRow, FoxySelect } from "@foxy/components"
 
 	import { usePagination, useProps } from "@foxy/composables"
 
 	import { DENSITY } from "@foxy/enums"
 
 	import { IDataTableFooterProps } from "@foxy/interfaces"
+	import { TFoxyPagination } from "@foxy/types"
 
-	import { computed, StyleValue } from "vue"
+	import { computed, ref, StyleValue } from "vue"
 
 	// TODO - WIP
 
@@ -64,7 +65,8 @@
 			{value: 50, title: '50'},
 			{value: 100, title: '100'},
 			{value: -1, title: 'All'}
-		]
+		],
+		itemsPerPageText: 'Items per page:'
 	})
 
 	const {filterProps} = useProps<IDataTableFooterProps>(props)
@@ -74,7 +76,7 @@
 	const {page, pageCount, startIndex, stopIndex, itemsLength, itemsPerPage, setItemsPerPage} = usePagination()
 
 	const itemsPerPageOptions = computed(() => (
-			props.itemsPerPageOptions.map(option => {
+			props.itemsPerPageOptions.map((option) => {
 				if (typeof option === 'number') {
 					return {
 						value: option,

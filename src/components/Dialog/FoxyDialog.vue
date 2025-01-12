@@ -214,10 +214,7 @@
 
 	// EXPOSE
 
-	defineExpose({
-		...forwardRefs({}, foxyOverlayRef),
-		filterProps
-	})
+	defineExpose(forwardRefs({filterProps}, foxyOverlayRef))
 </script>
 
 <style lang="scss" scoped>

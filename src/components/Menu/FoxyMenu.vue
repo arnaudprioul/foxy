@@ -57,7 +57,7 @@
 
 	import { TFoxyOverlay } from '@foxy/types'
 
-	import { focusableChildren, focusChild, forwardRefs, getNextElement, getUid, keys, omit, pick } from '@foxy/utils'
+	import { focusableChildren, focusChild, forwardRefs, getNextElement, getUid } from '@foxy/utils'
 
 	import { computed, inject, mergeProps, nextTick, provide, ref, shallowRef, StyleValue, watch } from 'vue'
 
@@ -116,15 +116,15 @@
 		if (
 				isActive.value &&
 				before !== after &&
-				overlay.value?.contentEl &&
+				foxyOverlayRef.value?.contentEl &&
 				// We're the topmost menu
-				overlay.value?.globalTop &&
+				foxyOverlayRef.value?.globalTop &&
 				// It isn't the document or the menu body
-				![document, overlay.value.contentEl].includes(after!) &&
+				![document, foxyOverlayRef.value.contentEl].includes(after!) &&
 				// It isn't inside the menu body
-				!overlay.value.contentEl.contains(after)
+				!foxyOverlayRef.value.contentEl.contains(after)
 		) {
-			const focusable = focusableChildren(overlay.value.contentEl)
+			const focusable = focusableChildren(foxyOverlayRef.value.contentEl)
 			focusable[0]?.focus()
 		}
 	}
@@ -209,11 +209,7 @@
 
 	// EXPOSE
 
-	defineExpose({
-		...forwardRefs({}, foxyOverlayRef)
-		openChildren,
-		filterProps
-	})
+	defineExpose(forwardRefs({openChildren, filterProps}, foxyOverlayRef))
 </script>
 
 <style lang="scss" scoped>

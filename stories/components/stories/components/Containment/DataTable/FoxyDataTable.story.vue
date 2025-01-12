@@ -35,6 +35,13 @@
 	const state: { [key: string]: any } = reactive({
 		items: [],
 		itemsPerPage: 5,
+		itemsPerPageOptions: [
+			{value: 5, title: '5'},
+			{value: 10, title: '10'},
+			{value: 20, title: '20'},
+			{value: 30, title: '30'},
+			{value: -1, title: 'All'}
+		],
 		headers: [
 			{
 				title: 'Dessert (100g serving)',

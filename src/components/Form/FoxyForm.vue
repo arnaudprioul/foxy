@@ -68,8 +68,5 @@
     ]
   })
 
-  defineExpose({
-	  ...forwardRefs(form, formRef),
-	  filterProps
-  })
+  defineExpose(forwardRefs({filterProps, ...form}, formRef))
 </script>

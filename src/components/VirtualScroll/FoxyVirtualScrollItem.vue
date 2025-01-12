@@ -1,17 +1,15 @@
 <template>
-	<template v-if="true">
-		<template v-if="renderless">
-			<slot name="renderless" v-bind="{ itemRef: resizeRef }"/>
-		</template>
-		<template v-else>
-			<div
-					ref="resizeRef"
-					:class="virtualScrollItemClasses"
-					:style="virtualScrollItemStyles"
-					v-bind="{ ...attrs }">
-				<slot name="default"/>
-			</div>
-		</template>
+	<template v-if="renderless">
+		<slot name="renderless" v-bind="{ itemRef: resizeRef }"/>
+	</template>
+	<template v-else>
+		<div
+				ref="resizeRef"
+				:class="virtualScrollItemClasses"
+				:style="virtualScrollItemStyles"
+				v-bind="{ ...attrs }">
+			<slot name="default"/>
+		</div>
 	</template>
 </template>
 

@@ -30,10 +30,12 @@
 
 	const {filterProps} = useProps<IDataTableHeadersCellProps>(props)
 
-	const foxyDataTableHeaderCellRef = ref<TFoxyDataTableHeaderCell>()
+	const foxyDataTableHeaderCellRef = ref<Array<TFoxyDataTableHeaderCell>>()
 
 	const dataTableHeaderCellProps = computed(() => {
-		return foxyDataTableHeaderCellRef.value?.filterProps(props)
+		return foxyDataTableHeaderCellRef.value?.some((headerCell) => {
+			return headerCell?.filterProps(props)
+		})
 	})
 
 	// CLASSES & STYLES

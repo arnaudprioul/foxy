@@ -18,7 +18,7 @@ export function useItems (props: IItemProps) {
     })
   })
   const valueComparator = computed(() => {
-    return props.valueComparator ?? deepEqual
+    return props.valueComparator ? props.valueComparator : deepEqual
   })
 
   const transformIn = (value: any[]): IListItem[] => {
