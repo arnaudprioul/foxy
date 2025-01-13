@@ -87,7 +87,7 @@
 
 	import { TListItemSlot } from '@foxy/types'
 
-	import { computed, StyleValue, toRef, useAttrs, watch } from 'vue'
+	import { computed, onBeforeMount, StyleValue, toRef, useAttrs, watch } from 'vue'
 
 	const attrs = useAttrs()
 
@@ -144,15 +144,20 @@
 		return isClickable.value ? (list ? -2 : 0) : undefined
 	})
 
-	watch(() => link.isActive?.value, (val) => {
-		if (val && parent.value != null) {
+	const setActiveLink = () => {
+		if (parent.value != null) {
 			root.open(parent.value, true)
 		}
+		openOnSelect(true)
+	}
 
-		if (val) {
-			openOnSelect(val)
+	watch(() => link.isActive?.value, val => {
+		if (!val) {
+			return
 		}
-	}, {immediate: true})
+
+		setActiveLink()
+	})
 
 	// EVENTS
 
@@ -193,6 +198,12 @@
 
 	list?.updateHasPrepend(hasPrepend)
 	list?.updateHasAppend(hasAppend)
+
+	onBeforeMount(() => {
+		if (link.isActive?.value) {
+			setActiveLink()
+		}
+	})
 
 	// CLASS & STYLES
 
