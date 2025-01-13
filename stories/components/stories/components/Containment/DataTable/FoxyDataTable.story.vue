@@ -67,7 +67,6 @@
 				.then(({items, total}) => {
 					state.items = items
 					state.itemLength = total
-
 				})
 				.finally(() => {
 					state.loading = false
@@ -175,9 +174,7 @@
 						})
 					}
 
-					const paginated = items.slice(start, end)
-
-					resolve({items: paginated, total: items.length})
+					resolve({items, total: items.length})
 				}, 500)
 			})
 		}
