@@ -24,6 +24,8 @@ export * from './Card/card-text.type'
 export * from './Carousel/carousel.type'
 export * from './Carousel/carousel-item.type'
 
+export * from './Code/code.type'
+
 export * from './Checkbox/checkbox.type'
 export * from './Checkbox/checkbox-btn.type'
 

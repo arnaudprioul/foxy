@@ -1,0 +1,4 @@
+# Foxycode
+
+## Usage
+    <FoxyCode />
