@@ -51,6 +51,12 @@
 				<template #default="{class: fieldSlotClass, ...fieldSlotProps}">
 					<div :class="fieldSlotClass" data-no-activator="">
 						<slot name="default" v-bind="fieldSlotProps"/>
+						<slot name="toolbar" v-bind="{actions}">
+							<foxy-textarea-field-toolbar
+									ref="foxyTextareaFieldToolbarRef"
+									v-bind="textareaFieldToolbarProps"
+							/>
+						</slot>
 						<textarea
 								ref="textareaRef"
 								v-intersect="intersect"
@@ -119,17 +125,17 @@
 </template>
 
 <script lang="ts" setup>
-	import { FoxyCounter, FoxyField, FoxyInput } from '@foxy/components'
+	import { FoxyCounter, FoxyField, FoxyInput, FoxyTextareaFieldToolbar } from '@foxy/components'
 
 	import { useAdjacentInner, useDragResizer, useFocus, useProps, useSlots, useVModel } from '@foxy/composables'
 
 	import { vIntersect } from '@foxy/directives'
 
-	import { AXIS, DENSITY } from '@foxy/enums'
+	import { AXIS, DENSITY, EDITOR_ACTIONS } from '@foxy/enums'
 
 	import { ITextareaFieldProps } from '@foxy/interfaces'
 
-	import { TFoxyField, TFoxyInput } from '@foxy/types'
+	import { TFoxyField, TFoxyInput, TFoxyTextareaFieldToolbar } from '@foxy/types'
 
 	import { clamp, convertToUnit, filterInputAttrs } from '@foxy/utils'
 
@@ -140,7 +146,11 @@
 		clearIcon: '$clear',
 		border: true,
 		rounded: true,
-		rows: 3
+		rows: 3,
+		actions: [
+				EDITOR_ACTIONS.BOLD
+		],
+		separator: 'div'
 	})
 
 	const emits = defineEmits(['click:control', 'mousedown:control', 'update:focused', 'update:modelValue', 'click:clear', 'click:prepend', 'click:append', 'click:appendInner', 'click:prependInner'])
@@ -188,6 +198,7 @@
 
 	const foxyInputRef = ref<TFoxyInput>()
 	const foxyFieldRef = ref<TFoxyField>()
+	const foxyTextareaFieldToolbarRef = ref<TFoxyTextareaFieldToolbar>()
 	const textareaRef = ref<HTMLTextAreaElement>()
 	const verticalDragger = ref<HTMLElement>()
 
@@ -352,6 +363,10 @@
 
 	const fieldProps = computed(() => {
 		return foxyFieldRef.value?.filterProps(props, ['class', 'id', 'style', 'active', 'dirty', 'disabled', 'focused', 'error', 'centerAffix'])
+	})
+
+	const textareaFieldToolbarProps = computed(() => {
+		return foxyTextareaFieldToolbarRef.value?.filterProps(props, ['class', 'id', 'style'])
 	})
 
 	// CLASS & STYLES

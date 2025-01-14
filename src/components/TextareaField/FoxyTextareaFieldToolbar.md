@@ -1,0 +1,4 @@
+# Foxytextareafieldtoolbar
+
+## Usage
+    <FoxyTextareaFieldToolbar />

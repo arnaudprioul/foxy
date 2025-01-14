@@ -9,10 +9,11 @@ import {
   IInputProps,
   IMarginProps,
   IPaddingProps,
-  IRoundedProps
+  IRoundedProps,
+  ITextareaFieldToolbarProps
 } from '@foxy/interfaces'
 
-export interface ITextareaFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IAdjacentInnerProps {
+export interface ITextareaFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IAdjacentInnerProps, ITextareaFieldToolbarProps {
   autoGrow?: boolean
   autofocus?: boolean
   counter?: boolean | number | string
