@@ -1,31 +1,25 @@
 <template>
-	<div
+	<nav
 			:class="textareaFieldToolbarClasses"
 			:style="textareaFieldToolbarStyles"
 	>
-		<foxy-row no-gutters>
-			<template v-for="(action, index) in actions">
-				<foxy-col cols="auto">
-					<template v-if="action.childrens">
-
-					</template>
-					<template v-else>
-						<foxy-btn v-bind="action"/>
-					</template>
-				</foxy-col>
+		<ul class="foxy-textarea-field-toolbar__modules">
+			<template v-for="module in modules">
+				<li :title="module.title" class="foxy-textarea-field-toolbar__module" :class="{highLight: module.moduleInspectResult, forbidden: module.forbidden}" @click="activeModule(module)">
+<!--					TODO-->
+				</li>
 			</template>
-		</foxy-row>
-	</div>
+		</ul>
+	</nav>
 </template>
 
 <script setup lang="ts">
 
-	import { FoxyBtn, FoxyCol, FoxyRow } from "@foxy/components"
 	import { useProps } from "@foxy/composables"
 
-	import { DEFAULT_ACTIONS } from "@foxy/consts"
+	import { ACTIONS } from "@foxy/consts"
 
-	import { EDITOR_ACTIONS } from "@foxy/enums"
+	import { EDITOR_MODULES } from "@foxy/enums"
 
 	import { ITextareaFieldToolbarProps } from "@foxy/interfaces"
 
@@ -33,46 +27,15 @@
 
 	const props = withDefaults(defineProps<ITextareaFieldToolbarProps>(), {
 		actions: [
-				EDITOR_ACTIONS.BOLD
+			EDITOR_MODULES.BOLD
 		]
 	})
 
+	const emits = defineEmits(['exec'])
+
 	const {filterProps} = useProps<ITextareaFieldToolbarProps>(props)
 
-	const actions = computed(() => {
-		return props.actions.map((action) => {
-			return DEFAULT_ACTIONS[action as keyof typeof DEFAULT_ACTIONS]
-		})
-	})
 
-
-	// content.onkeydown = event => {
-	// 	if (event.key === 'Enter' && queryCommandValue(formatBlock) === 'blockquote') {
-	// 		setTimeout(() => exec(formatBlock, `<${defaultParagraphSeparator}>`), 0)
-	// 	}
-	// }
-	// appendChild(settings.element, content)
-
-	// actions.forEach(action => {
-	// 	const button = createElement('button')
-	// 	button.className = classes.button
-	// 	button.innerHTML = action.icon
-	// 	button.title = action.title
-	// 	button.setAttribute('type', 'button')
-	// 	button.onclick = () => action.result() && content.focus()
-	//
-	// 	if (action.state) {
-	// 		const handler = () => button.classList[action.state() ? 'add' : 'remove'](classes.selected)
-	// 		addEventListener(content, 'keyup', handler)
-	// 		addEventListener(content, 'mouseup', handler)
-	// 		addEventListener(button, 'click', handler)
-	// 	}
-	//
-	// 	appendChild(actionbar, button)
-	// })
-	//
-	// if (settings.styleWithCSS) exec('styleWithCSS')
-	// exec(defaultParagraphSeparatorString, defaultParagraphSeparator)
 
 	// CLASSES & STYLES
 

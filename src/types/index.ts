@@ -177,6 +177,7 @@ export * from './Switch/switch.type'
 export * from './Table/table.type'
 
 export * from './TextareaField/textarea-field.type'
+export * from './TextareaField/textarea-field-editor.type'
 export * from './TextareaField/textarea-field-toolbar.type'
 
 export * from './TextField/text-field.type'

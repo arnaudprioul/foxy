@@ -1,4 +1,4 @@
-export enum EDITOR_ACTIONS {
+export enum EDITOR_MODULES {
     BOLD = 'bold',
     ITALIC = 'italic',
     UNDERLINE = 'underline',

@@ -9,9 +9,9 @@ import {
     IRoundedProps
 } from "@foxy/interfaces"
 
-import { TEditorActions } from "@foxy/types"
+import { TEditorModule } from "@foxy/types"
 
 export interface ITextareaFieldToolbarProps extends ICommonsComponentProps, IColorProps, IPaddingProps, IMarginProps, IBorderProps, IElevationProps, IDensityProps, IRoundedProps {
-    actions?: Array<TEditorActions>
-    separator?: string
+    modules?: Array<TEditorModule>
+    zIndex?: number
 }
