@@ -57,6 +57,7 @@ import { HstIcon } from '@stories/components/controls'
 
 const state: { [key: string]: any } = reactive({
   label: 'Textfield',
+	bgColor: '#fff'
 })
 </script>
 

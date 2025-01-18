@@ -163,12 +163,12 @@ const controlRef = ref<HTMLElement>()
 
 const currentColor = computed(() => {
   return props.error || props.disabled ? undefined
-      : isActive.value && isFocused.value ? props.activeColor
+      : isActive.value && isFocused.value && props.activeColor ? props.activeColor
           : props.color
 })
 const currentBgColor = computed(() => {
   return props.error || props.disabled ? undefined
-      : isActive.value && isFocused.value ? props.activeBgColor
+      : isActive.value && isFocused.value && props.activeBgColor ? props.activeBgColor
           : props.bgColor
 })
 

@@ -50,4 +50,6 @@ export const MDI_ALIASES: IIconAliases = {
   minus: 'mdi-minus',
   calendar: 'mdi-calendar',
   eyeDropper: 'mdi-eyedropper',
+  eyeOff: 'mdi-eye-off-outline',
+  eyeOn: 'mdi-eye-outline'
 }

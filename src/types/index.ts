@@ -144,6 +144,8 @@ export * from './Pagination/pagination.type'
 export * from './Parallax/parallax.type'
 export * from './Parallax/parallax-element.type'
 
+export * from './PasswordField/password-field.type'
+
 export * from './Progress/progress.type'
 export * from './Progress/progress-circular.type'
 export * from './Progress/progress-linear.type'
