@@ -41,14 +41,16 @@
 		useSsrBoot
 	} from '@foxy/composables'
 
+	import { MDI_ICONS } from "@foxy/enums"
+
 	import { IListActivatorProps, IListGroupProps } from '@foxy/interfaces'
 
 	import { computed, ref, StyleValue, toRef } from 'vue'
 
 	const props = withDefaults(defineProps<IListGroupProps>(), {
 		tag: 'div',
-		collapseIcon: '$collapse',
-		expandIcon: '$expand'
+		expandIcon: MDI_ICONS.CHEVRON_DOWN,
+		collapseIcon: MDI_ICONS.CHEVRON_UP,
 	})
 
 	const emits = defineEmits(['click:activator'])

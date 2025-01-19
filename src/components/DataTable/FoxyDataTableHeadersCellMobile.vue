@@ -15,6 +15,7 @@
             :items="displayItems"
             :multiple="multiSort"
             chips
+            :label="t('foxy.dataTable.sortBy')"
             class="foxy-data-table-headers-cell__sort-select"
             clearable
             @click:clear="handleClear"
@@ -122,9 +123,9 @@
 <script lang="ts" setup>
   import { FoxyChip, FoxyDataTableColumnCell, FoxySelect } from '@foxy/components'
 
-  import { useHeadersCell, useProps, useSelection, useSlots, useSort } from '@foxy/composables'
+  import { useHeadersCell, useLocale, useProps, useSelection, useSlots, useSort } from '@foxy/composables'
 
-  import { DENSITY } from '@foxy/enums'
+  import { DENSITY, MDI_ICONS } from '@foxy/enums'
 
   import { IDataTableHeadersCellMobileProps, IListItem } from '@foxy/interfaces'
 
@@ -135,6 +136,8 @@
   const emits = defineEmits(['click:clear', 'click:prepend', 'click:append'])
 
   const {filterProps} = useProps<IDataTableHeadersCellMobileProps>(props)
+
+  const {t} = useLocale()
 
   const { hasSlot } = useSlots()
 
@@ -159,7 +162,7 @@
 
     if (showSelectColumn == null) return
 
-    return allSelected.value ? '$checkboxOn' : someSelected.value ? '$checkboxIndeterminate' : '$checkboxOff'
+    return allSelected.value ? MDI_ICONS.CHECKBOX_MARKED_OUTLINE : someSelected.value ? MDI_ICONS.MINUS_BOX : MDI_ICONS.CHECKBOX_BLANK_OUTLINE
   })
 
   const handleClear = (e) => {

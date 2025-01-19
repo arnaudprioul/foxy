@@ -28,6 +28,8 @@ export * from './DataList'
 
 export * from './DataTable'
 
+export * from './DatePicker'
+
 export * from './Dialog'
 
 export * from './Divider'

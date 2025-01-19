@@ -56,9 +56,9 @@
 <script lang="ts" setup>
 	import { FoxyBtn } from "@foxy/components"
 
-	import { useDisplay, useProps, useResizeObserver, useVModel, useRefs } from "@foxy/composables"
+	import { useDisplay, useProps, useResizeObserver, useVModel, useRefs, useLocale } from "@foxy/composables"
 
-	import { KEYBOARD_VALUES } from "@foxy/enums"
+	import { KEYBOARD_VALUES, MDI_ICONS } from "@foxy/enums"
 
   import { IPaginationProps } from "@foxy/interfaces"
 
@@ -67,21 +67,21 @@
 	import { ComponentPublicInstance, computed, nextTick, shallowRef, StyleValue } from "vue"
 
   const props = withDefaults(defineProps<IPaginationProps>(), {
-	  prevIcon: '$prev',
-	  nextIcon: '$next',
-	  firstIcon: '$first',
-	  lastIcon: '$last',
+	  prevIcon: MDI_ICONS.CHEVRON_RIGHT,
+	  nextIcon: MDI_ICONS.CHEVRON_LEFT,
+	  firstIcon: MDI_ICONS.CHEVRON_DOUBLE_RIGHT,
+	  lastIcon: MDI_ICONS.CHEVRON_DOUBLE_LEFT,
 	  tag: 'div',
 	  ellipsis: '...',
 	  length: 1,
 	  start: 1,
-	  ariaLabel: 'Pagination Navigation',
-	  pageAriaLabel: 'Go to page',
-	  currentPageAriaLabel: 'Current page - Page',
-	  firstAriaLabel: 'First page',
-	  previousAriaLabel: 'Previous page',
-	  nextAriaLabel: 'Next page',
-	  lastAriaLabel: 'Last page'
+	  ariaLabel: 'foxy.pagination.ariaLabel.root',
+	  pageAriaLabel: 'foxy.pagination.ariaLabel.page',
+	  currentPageAriaLabel: 'foxy.pagination.ariaLabel.currentPage',
+	  firstAriaLabel: 'foxy.pagination.ariaLabel.first',
+	  previousAriaLabel: 'foxy.pagination.ariaLabel.previous',
+	  nextAriaLabel: 'foxy.pagination.ariaLabel.next',
+	  lastAriaLabel: 'foxy.pagination.ariaLabel.last'
   })
 
   const emits = defineEmits([
@@ -93,6 +93,8 @@
   ])
 
   const {filterProps} = useProps<IPaginationProps>(props)
+
+	const {t} = useLocale()
 
   const page = useVModel(props, 'modelValue', props.start)
   const { width } = useDisplay()
@@ -189,7 +191,7 @@
 						disabled: !!props.disabled || +props.length < 2,
 						color: isActive ? props.activeColor : props.color,
 						'aria-current': isActive,
-						'aria-label': isActive ? props.currentPageAriaLabel : props.pageAriaLabel, item,
+						'aria-label': t(isActive ? props.currentPageAriaLabel : props.pageAriaLabel, item),
 						onClick: (e: Event) => setValue(e, item),
 					},
 				}

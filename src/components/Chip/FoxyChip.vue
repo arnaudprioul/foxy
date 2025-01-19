@@ -70,6 +70,7 @@
 						key="close-icon"
 						:density="density"
 						:icon="closeIcon"
+						:aria-label="t(closeLabel)"
 						size="x-small"
 				/>
 			</slot>
@@ -88,7 +89,7 @@
 		useDensity,
 		useElevation,
 		useGroupItem,
-		useLink,
+		useLink, useLocale,
 		useMargin,
 		usePadding, useProps,
 		useRounded,
@@ -101,7 +102,7 @@
 
 	import { vRipple } from '@foxy/directives'
 
-	import { KEYBOARD_VALUES } from '@foxy/enums'
+	import { KEYBOARD_VALUES, MDI_ICONS } from '@foxy/enums'
 
 	import { IChipProps } from '@foxy/interfaces'
 
@@ -109,14 +110,17 @@
 
 	const props = withDefaults(defineProps<IChipProps>(), {
 		tag: 'span',
-		closeIcon: '$delete',
-		filterIcon: '$complete',
+		closeIcon: MDI_ICONS.CLOSE_CIRCLE_OUTLINE,
+		filterIcon: MDI_ICONS.CHECK,
+		closeLabel: 'foxy.close',
 		modelValue: true
 	})
 
 	const emits = defineEmits(['click:close', 'update:modelValue', 'group:selected', 'click', 'click:prepend', 'click:append'])
 
 	const {filterProps} = useProps<IChipProps>(props)
+
+	const { t } = useLocale()
 
 	const attrs = useAttrs()
 	const {hasSlot} = useSlots()

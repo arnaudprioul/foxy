@@ -31,7 +31,7 @@
 
 	import { useProps, useSlots, useVModel } from '@foxy/composables'
 
-	import { DENSITY } from '@foxy/enums'
+	import { DENSITY, MDI_ICONS } from '@foxy/enums'
 
 	import { ICheckboxBtnProps } from '@foxy/interfaces'
 	import { TFoxySelectionControl } from "@foxy/types"
@@ -40,9 +40,9 @@
 
 	const props = withDefaults(defineProps<ICheckboxBtnProps>(), {
 		density: DENSITY.DEFAULT,
-		falseIcon: '$checkboxOff',
-		trueIcon: '$checkboxOn',
-		indeterminateIcon: '$checkboxIndeterminate'
+		trueIcon: MDI_ICONS.CHECKBOX_MARKED_OUTLINE,
+		falseIcon: MDI_ICONS.CHECKBOX_BLANK_OUTLINE,
+		indeterminateIcon: MDI_ICONS.MINUS_BOX
 	})
 
 	const emits = defineEmits(['update:modelValue', 'update:focused', 'update:indeterminate', 'click:label'])

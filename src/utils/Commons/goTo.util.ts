@@ -37,8 +37,8 @@ export function getTarget (el: ComponentPublicInstance | HTMLElement | string | 
   return (typeof el === 'string') ? document.querySelector<HTMLElement>(el) : refElement(el)
 }
 
-export function getLocationOffset (target: any, horizontal?: boolean): number {
-  if (typeof target === 'number') return target
+export function getLocationOffset (target: any, horizontal?: boolean, rtl?: boolean): number {
+  if (typeof target === 'number') return horizontal && rtl ? -target : target
 
   let el = getTarget(target)
   let totalOffset = 0
@@ -84,6 +84,7 @@ export async function scrollTo (
     horizontal?: boolean,
     goTo?: IGoToInstance
 ) {
+  const rtl = goTo?.rtl.value
   const property = horizontal ? 'scrollLeft' : 'scrollTop'
   const options = mergeDeep(goTo?.options ?? genDefaults(), _options)
   const target = (typeof _target === 'number' ? _target : getTarget(_target)) ?? 0
@@ -96,9 +97,9 @@ export async function scrollTo (
 
   let targetLocation: number
   if (typeof target === 'number') {
-    targetLocation = getLocationOffset(target, horizontal)
+    targetLocation = getLocationOffset(target, horizontal, rtl)
   } else {
-    targetLocation = getLocationOffset(target, horizontal) - getLocationOffset(container, horizontal)
+    targetLocation = getLocationOffset(target, horizontal, rtl) - getLocationOffset(container, horizontal, rtl)
 
     if (options.layout) {
       const styles = window.getComputedStyle(target)

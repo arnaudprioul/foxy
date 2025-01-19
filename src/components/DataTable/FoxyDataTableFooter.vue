@@ -7,7 +7,7 @@
 			<slot name="prepend"/>
 
 			<div class="foxy-data-table-footer__items-per-page">
-				<span>{{ props.itemsPerPageText }}</span>
+				<span>{{ itemsPerPageText }}</span>
 
 				<foxy-select
 						:density="DENSITY.COMPACT"
@@ -19,7 +19,7 @@
 			</div>
 
 			<div class="foxy-data-table-footer__info">
-				<span>{{ props.pageText }}</span>
+				<span>{{ t(props.pageText, !itemsLength.value ? 0 : startIndex.value + 1, stopIndex.value, itemsLength.value) }}</span>
 			</div>
 
 			<div class="foxy-data-table-footer__pagination">
@@ -43,7 +43,7 @@
 <script lang="ts" setup>
 	import { FoxyPagination, FoxyRow, FoxySelect } from "@foxy/components"
 
-	import { usePagination, useProps } from "@foxy/composables"
+	import { useLocale, usePagination, useProps } from "@foxy/composables"
 
 	import { DENSITY } from "@foxy/enums"
 
@@ -58,13 +58,19 @@
 			{value: 25, title: '25'},
 			{value: 50, title: '50'},
 			{value: 100, title: '100'},
-			{value: -1, title: 'All'}
+			{value: -1, title: 'foxy.dataFooter.itemsPerPageAll'}
 		],
-		itemsPerPageText: 'Items per page:',
+		itemsPerPageText: 'foxy.dataFooter.itemsPerPageText',
+		pageText: 'foxy.dataFooter.pageText',
+		firstPageLabel: 'foxy.dataFooter.firstPage',
+		prevPageLabel: 'foxy.dataFooter.prevPage',
+		nextPageLabel: 'foxy.dataFooter.nextPage',
+		lastPageLabel: 'foxy.dataFooter.lastPage',
 		showCurrentPage: true
 	})
 
 	const {filterProps} = useProps<IDataTableFooterProps>(props)
+	const {t} = useLocale()
 
 	const foxyPaginationRef = ref<TFoxyPagination>()
 
@@ -76,14 +82,14 @@
 					return {
 						value: option,
 						title: option === -1
-								? 'All' // TODO - Create translation
+								? t('foxy.dataFooter.itemsPerPageAll')
 								: String(option)
 					}
 				}
 
 				return {
 					...option,
-					title: !isNaN(Number(option.title)) ? option.title : option.title // TODO - Prepare to translation
+					title: !isNaN(Number(option.title)) ? option.title : t(option.title)
 				}
 			})
 	))

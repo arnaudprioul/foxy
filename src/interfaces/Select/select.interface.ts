@@ -42,4 +42,6 @@ export interface ISelectProps extends ICommonsComponentProps, IColorProps, IText
     clearOnSelect?: boolean
     divider?: string
     search?: string
+    closeText?: string
+    openText?: string
 }

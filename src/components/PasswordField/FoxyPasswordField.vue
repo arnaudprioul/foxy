@@ -127,7 +127,7 @@
 
 	import { vIntersect } from '@foxy/directives'
 
-	import { DENSITY, DIRECTION, TEXT_FIELD_TYPE } from '@foxy/enums'
+	import { DENSITY, DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from '@foxy/enums'
 
 	import { IPasswordFieldProps } from '@foxy/interfaces'
 
@@ -141,8 +141,8 @@
 		centerAffix: true,
 		direction: DIRECTION.HORIZONTAL,
 		density: DENSITY.DEFAULT,
-		offIcon: '$eyeOff',
-		onIcon: '$eyeOn',
+		offIcon: MDI_ICONS.EYE_OFF_OUTLINE,
+		onIcon: MDI_ICONS.EYE_OUTLINE,
 		border: true,
 		rounded: true
 	})

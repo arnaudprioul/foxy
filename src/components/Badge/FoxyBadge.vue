@@ -10,7 +10,7 @@
       <foxy-transition :transition="transition">
         <span
             v-show="modelValue"
-            :aria-label="label"
+            :aria-label="t(label, content)"
             class="foxy-badge__badge"
             :style="badgeContentStyles"
             aria-atomic="true"
@@ -36,7 +36,7 @@
 <script lang="ts" setup>
   import { FoxyIcon, FoxyScaleRotate, FoxyTransition } from '@foxy/components'
 
-  import { useBorder, useBothColor, useLocation, useProps, useRounded, useStatus } from '@foxy/composables'
+  import { useBorder, useBothColor, useLocale, useLocation, useProps, useRounded, useStatus } from '@foxy/composables'
 
   import { IBadgeProps } from '@foxy/interfaces'
 
@@ -47,10 +47,12 @@
   const props = withDefaults(defineProps<IBadgeProps>(), {
     tag: 'div',
     location: 'top end',
+	  label: 'foxy.badge',
     transition: { component: FoxyScaleRotate }
   })
 
   const {filterProps} = useProps<IBadgeProps>(props)
+  const { t } = useLocale()
 
   const attrs = useAttrs()
 

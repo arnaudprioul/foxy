@@ -105,24 +105,8 @@
 	import { computed, ref, StyleValue, toRef, useAttrs } from 'vue'
 
 	const props = withDefaults(defineProps<IDataTableProps>(), {
-		itemValue: 'id',
-		selectStrategy: DATATABLE_SELECT_STRATEGY.PAGE,
-		sortAscIcon: '$sortAsc',
-		sortDescIcon: '$sortDesc',
 		page: 1,
 		itemsPerPage: 10,
-		filterMode: FILTERS_MODE.INTERSECTION,
-		prevIcon: '$prev',
-		nextIcon: '$next',
-		firstIcon: '$first',
-		lastIcon: '$last',
-		itemsPerPageOptions: [
-			{value: 10, title: '10'},
-			{value: 25, title: '25'},
-			{value: 50, title: '50'},
-			{value: 100, title: '100'},
-			{value: -1, title: 'all'}
-		],
 		tag: 'div',
 		density: DENSITY.DEFAULT,
 		hideDefaultFooter: false

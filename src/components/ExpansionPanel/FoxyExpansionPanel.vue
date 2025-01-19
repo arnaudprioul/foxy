@@ -74,8 +74,6 @@
   import { computed, provide, ref, StyleValue, toRef } from 'vue'
 
   const props = withDefaults(defineProps<IExpansionPanelProps>(), {
-    expandIcon: '$expand',
-    collapseIcon: '$collapse',
     tag: 'div'
   })
 

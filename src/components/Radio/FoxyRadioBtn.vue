@@ -29,7 +29,7 @@
 
 	import { useProps, useSlots, useVModel } from '@foxy/composables'
 
-	import { DENSITY } from '@foxy/enums'
+	import { DENSITY, MDI_ICONS } from '@foxy/enums'
 
 	import { IRadioBtnProps } from '@foxy/interfaces'
 	import { TFoxySelectionControl } from "@foxy/types"
@@ -38,8 +38,8 @@
 
 	const props = withDefaults(defineProps<IRadioBtnProps>(), {
 		density: DENSITY.DEFAULT,
-		falseIcon: '$radioOff',
-		trueIcon: '$radioOn'
+		trueIcon: MDI_ICONS.RADIOBOX_MARKED,
+		falseIcon: MDI_ICONS.RADIOBOX_BLANK
 	})
 
 	const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])

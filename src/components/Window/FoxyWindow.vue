@@ -30,21 +30,21 @@
 <script lang="ts" setup>
 	import { FoxyBtn, FoxySpacer } from '@foxy/components'
 
-	import { useGroup, useProps } from '@foxy/composables'
+	import { useGroup, useLocale, useProps } from '@foxy/composables'
 
 	import { FOXY_WINDOW_GROUP_KEY, FOXY_WINDOW_KEY } from '@foxy/consts'
 
 	import { vTouch } from '@foxy/directives'
 
-	import { AXIS, DIRECTION } from '@foxy/enums'
+	import { AXIS, DIRECTION, MDI_ICONS } from '@foxy/enums'
 
 	import { ITouchHandlers, IWindowProps } from '@foxy/interfaces'
 
 	import { computed, provide, ref, shallowRef, StyleValue, watch } from 'vue'
 
 	const props = withDefaults(defineProps<IWindowProps>(), {
-		nextIcon: '$next',
-		prevIcon: '$prev',
+		prevIcon: MDI_ICONS.CHEVRON_RIGHT,
+		nextIcon: MDI_ICONS.CHEVRON_LEFT,
 		touch: undefined,
 		direction: DIRECTION.HORIZONTAL,
 		selectedClass: 'foxy-window-item--active',
@@ -55,6 +55,8 @@
 	const emits = defineEmits(['update:modelValue'])
 
 	const {filterProps} = useProps<IWindowProps>(props)
+
+	const {t} = useLocale()
 
 	const group = useGroup(props, FOXY_WINDOW_GROUP_KEY)
 
@@ -104,7 +106,7 @@
 		icon: props.prevIcon,
 		class: `foxy-window__prev`,
 		onClick: group.prev,
-		'aria-label': 'Previous'
+		'aria-label': t('foxy.carousel.prev')
 	}
 
 	const prev = () => {
@@ -118,7 +120,7 @@
 		icon: props.nextIcon,
 		class: `foxy-window__next`,
 		onClick: group.next,
-		'aria-label': 'Next'
+		'aria-label': t('foxy.carousel.next')
 	}
 
 	const next = () => {

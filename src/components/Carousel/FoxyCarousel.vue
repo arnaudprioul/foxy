@@ -6,15 +6,34 @@
 			:style="carouselStyles"
 			v-bind="windowProps">
 		<template #default="group">
-			<slot name="default" v-bind="group"/>
+			<slot
+					name="default"
+					v-bind="group"
+			/>
 		</template>
 
 		<template #additional="group">
-			<slot name="additional" v-bind="group">
-				<div v-if="!hideDelimiters" :style="carouselControlsStyles" class="foxy-carousel__controls">
-					<template v-for="(item, index) in group.items.value" :key="index">
-						<slot :name="`item.${index}`" v-bind="{props: controlProps(item, index, group), item}">
-							<slot name="item" v-bind="{props: controlProps(item, index, group), item, index}">
+			<slot
+					name="additional"
+					v-bind="group"
+			>
+				<div
+						v-if="!hideDelimiters"
+						:style="carouselControlsStyles"
+						class="foxy-carousel__controls"
+				>
+					<template
+							v-for="(item, index) in group.items.value"
+							:key="index"
+					>
+						<slot
+								:name="`item.${index}`"
+								v-bind="{props: controlProps(item, index, group), item}"
+						>
+							<slot
+									name="item"
+									v-bind="{props: controlProps(item, index, group), item, index}"
+							>
 								<foxy-btn v-bind="controlProps(item, index, group)"/>
 							</slot>
 						</slot>
@@ -50,9 +69,9 @@
 <script lang="ts" setup>
 	import { FoxyBtn, FoxyProgressLinear, FoxyWindow } from '@foxy/components'
 
-	import { useProps, useSlots, useVModel } from '@foxy/composables'
+	import { useLocale, useProps, useSlots, useVModel } from '@foxy/composables'
 
-	import { DENSITY, SIZES } from '@foxy/enums'
+	import { DENSITY, MDI_ICONS, SIZES } from '@foxy/enums'
 
 	import { ICarouselProps, IGroupProvide } from '@foxy/interfaces'
 
@@ -63,7 +82,7 @@
 	import { computed, onMounted, ref, StyleValue, watch } from 'vue'
 
 	const props = withDefaults(defineProps<ICarouselProps>(), {
-		delimiterIcon: '$delimiter',
+		delimiterIcon: MDI_ICONS.CIRCLE,
 		height: 500,
 		interval: 6000,
 		continuous: true,
@@ -74,6 +93,7 @@
 	const emits = defineEmits(['update:modelValue'])
 
 	const {filterProps} = useProps<ICarouselProps>(props)
+	const {t} = useLocale()
 
 	const model = useVModel(props, 'modelValue')
 	const foxyWindowRef = ref<TFoxyWindow>()
@@ -113,7 +133,7 @@
 				item,
 				{
 					id: `carousel-item-${item.id}`,
-					'aria-label': `Carousel slide ${index + 1} of ${group.items.value.length}`,
+					'aria-label': t('foxy.carousel.ariaLabel.delimiter', index + 1, group.items.value.length),
 					active: group.isSelected(item.id),
 					class: [
 						'foxy-carousel__controls-item'

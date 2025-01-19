@@ -10,7 +10,7 @@
 </script>
 
 <template>
-  <foxy-app style="min-height: 300px;">
+  <foxy-app style="min-height: 300px; width: 100%;">
     <slot/>
   </foxy-app>
 </template>

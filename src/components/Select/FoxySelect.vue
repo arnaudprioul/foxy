@@ -9,6 +9,8 @@
 			:placeholder="placeholder"
 			:style="selectStyles"
 			:validation-value="validationValue"
+			:aria-label="t(label.value)"
+			:title="t(label.value)"
 			v-bind="{ ...textFieldProps }"
 			@blur="handleBlur"
 			@change="handleChange"
@@ -75,7 +77,7 @@
 
 							<template v-if="hasNoData">
 								<slot name="noData">
-									<foxy-list-item :title="noDataText"/>
+									<foxy-list-item :title="t(noDataText)"/>
 								</slot>
 							</template>
 
@@ -215,7 +217,16 @@
 		FoxyVirtualScroll
 	} from '@foxy/components'
 
-	import { useFilter, useItems, useProps, useScrolling, useSlots, useTextColor, useVModel } from '@foxy/composables'
+	import {
+		useFilter,
+		useItems,
+		useLocale,
+		useProps,
+		useScrolling,
+		useSlots,
+		useTextColor,
+		useVModel
+	} from '@foxy/composables'
 
 	import { FOXY_FORM_KEY, IN_BROWSER } from '@foxy/consts'
 
@@ -224,7 +235,7 @@
 		DENSITY,
 		DIRECTION,
 		FILTERS_MODE,
-		KEYBOARD_VALUES,
+		KEYBOARD_VALUES, MDI_ICONS,
 		SELECT_STRATEGY,
 		TEXT_FIELD_TYPE
 	} from '@foxy/enums'
@@ -253,16 +264,21 @@
 		itemChildren: 'children',
 		itemProps: 'props',
 		valueComparator: deepEqual,
-		menuIcon: '$dropdown',
+		menuIcon: MDI_ICONS.MENU_DOWN_OUTLINE,
 		divider: ',',
 		transition: {component: FoxyTranslateScale},
 		filterKeys: ['title'],
-		filterMode: FILTERS_MODE.INTERSECTION
+		filterMode: FILTERS_MODE.INTERSECTION,
+		closeText:  '$vuetify.close',
+		openText: '$vuetify.open',
+		noDataText:  '$vuetify.noDataText',
 	})
 
 	const emits = defineEmits(['click:control', 'mousedown:control', 'update:focused', 'update:modelValue', 'update:menu', 'click:prepend', 'click:prependInner', 'click:append', 'click:appendInner', 'click:clear'])
 
 	const {filterProps} = useProps<ISelectProps>(props)
+
+	const {t} = useLocale()
 
 	const foxyTextFieldRef = ref<TFoxyTextField>()
 	const foxyMenuRef = ref<TFoxyMenu>()
@@ -693,6 +709,9 @@
 	})
 	const placeholder = computed(() => {
 		return isDirty.value || (!isFocused.value && props.label && !props.persistentPlaceholder) ? undefined : props.placeholder
+	})
+	const label = computed(() => {
+		return menu.value ? props.closeText : props.openText
 	})
 
 	// CLASS & STYLES

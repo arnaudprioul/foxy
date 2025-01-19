@@ -125,7 +125,7 @@
 
 	import { vIntersect } from '@foxy/directives'
 
-	import { AXIS, DENSITY } from '@foxy/enums'
+	import { AXIS, DENSITY, MDI_ICONS } from '@foxy/enums'
 
 	import { ITextareaFieldProps } from '@foxy/interfaces'
 
@@ -137,7 +137,7 @@
 
 	const props = withDefaults(defineProps<ITextareaFieldProps>(), {
 		density: DENSITY.DEFAULT,
-		clearIcon: '$clear',
+		clearIcon: MDI_ICONS.CLOSE_CIRCLE_OUTLINE,
 		border: true,
 		rounded: true,
 		rows: 3

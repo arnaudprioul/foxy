@@ -13,7 +13,7 @@
 
   import {IChipGroupProps} from '@foxy/interfaces'
 
-  import {DIRECTION} from '@foxy/enums'
+  import { DIRECTION, MDI_ICONS } from '@foxy/enums'
 
   import {FOXY_CHIP_GROUP_KEY} from "@foxy/consts"
 
@@ -25,8 +25,8 @@
 
   const props = withDefaults(defineProps<IChipGroupProps>(), {
     direction: DIRECTION.HORIZONTAL,
-    nextIcon: '$next',
-    prevIcon: '$prev',
+    nextIcon: MDI_ICONS.CHEVRON_RIGHT,
+    prevIcon: MDI_ICONS.CHEVRON_LEFT,
     selectedClass: 'foxy-chip--selected'
   })
 

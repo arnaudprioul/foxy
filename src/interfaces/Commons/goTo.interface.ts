@@ -1,4 +1,4 @@
-import { ComponentPublicInstance } from "vue"
+import { ComponentPublicInstance, Ref } from "vue"
 
 export interface IGoToOptions {
     container: ComponentPublicInstance | HTMLElement | string
@@ -10,5 +10,6 @@ export interface IGoToOptions {
 }
 
 export interface IGoToInstance {
+    rtl: Ref<boolean>
     options: IGoToOptions
 }

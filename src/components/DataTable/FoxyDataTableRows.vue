@@ -1,160 +1,163 @@
 <template>
-  <template v-if="loading">
-    <tr
-      key="loading"
-      class="foxy-data-table-rows foxy-data-table-rows--loading"
-    >
-      <td :colspan="columns.length">
-        <slot name="loading">
-          {{ loadingText }}
-        </slot>
-      </td>
-    </tr>
-  </template>
+	<template v-if="loading">
+		<tr
+				key="loading"
+				class="foxy-data-table-rows foxy-data-table-rows--loading"
+		>
+			<td :colspan="columns.length">
+				<slot name="loading">
+					{{ t(loadingText) }}
+				</slot>
+			</td>
+		</tr>
+	</template>
 
-  <template v-else-if="!(items && items.length) && !hideNoData">
-    <tr
-      key="no-data"
-      class="foxy-data-table-rows foxy-data-table-rows--no-data"
-    >
-      <td :colspan="columns.length">
-        <slot name="no-data">
-          {{ noDataText }}
-        </slot>
-      </td>
-    </tr>
-  </template>
+	<template v-else-if="!(items && items.length) && !hideNoData">
+		<tr
+				key="no-data"
+				class="foxy-data-table-rows foxy-data-table-rows--no-data"
+		>
+			<td :colspan="columns.length">
+				<slot name="no-data">
+					{{ t(noDataText) }}
+				</slot>
+			</td>
+		</tr>
+	</template>
 
-  <template v-else>
-    <template v-for="(item, index) in items">
-      <template v-if="item.type === 'group'">
-        <slot name="group-header" v-bind="groupHeaderSlotProps(item, index)">
-          <foxy-data-table-group-header-row
-            :key="`group-header_${item.id}`"
-            v-bind="groupHeaderSlotProps(item, index)">
-            <!-- TODO SLOT BODY-->
-          </foxy-data-table-group-header-row>
-        </slot>
-      </template>
+	<template v-else>
+		<template v-for="(item, index) in items">
+			<template v-if="item.type === 'group'">
+				<slot name="group-header" v-bind="groupHeaderSlotProps(item, index)">
+					<foxy-data-table-group-header-row
+							:key="`group-header_${item.id}`"
+							v-bind="groupHeaderSlotProps(item, index)">
+						<!-- TODO SLOT BODY-->
+					</foxy-data-table-group-header-row>
+				</slot>
+			</template>
 
-      <template v-else>
-        <slot name="item" v-bind="itemSlotProps(item, index)">
-          <foxy-data-table-row
-		          :item="item"
-		          v-bind="{...itemSlotProps(item, index).props}">
-            <!-- TODO SLOT BODY-->
-          </foxy-data-table-row>
-        </slot>
+			<template v-else>
+				<slot name="item" v-bind="itemSlotProps(item, index)">
+					<foxy-data-table-row
+							:item="item"
+							v-bind="{...itemSlotProps(item, index).props}">
+						<!-- TODO SLOT BODY-->
+					</foxy-data-table-row>
+				</slot>
 
-        <template v-if="isExpanded(item)">
-          <slot name="expanded-row" v-bind="slotProps"/>
-        </template>
-      </template>
-    </template>
-  </template>
+				<template v-if="isExpanded(item)">
+					<slot name="expanded-row" v-bind="slotProps"/>
+				</template>
+			</template>
+		</template>
+	</template>
 </template>
 
 <script lang="ts" setup>
-  import { FoxyDataTableRow } from '@foxy/components'
+	import { FoxyDataTableRow } from '@foxy/components'
 
-  import { useDisplay, useExpanded, useGroupBy, useHeaders, useProps, useSelection } from '@foxy/composables'
+	import { useDisplay, useExpanded, useGroupBy, useHeaders, useProps, useSelection } from '@foxy/composables'
 
-  import {
-    IDataTableGroup,
-    IDataTableGroupHeaderSlot,
-    IDataTableItemBaseSlot,
-    IDataTableItemSlot,
-    IDataTableRowsProps
-  } from '@foxy/interfaces'
+	import {
+		IDataTableGroup,
+		IDataTableGroupHeaderSlot,
+		IDataTableItemBaseSlot,
+		IDataTableItemSlot,
+		IDataTableRowsProps
+	} from '@foxy/interfaces'
 
-  import { getPrefixedEventHandlers } from '@foxy/utils'
+	import { getPrefixedEventHandlers } from '@foxy/utils'
 
-  import { mergeProps, useAttrs } from 'vue'
+	import { mergeProps, useAttrs } from 'vue'
 
-  const attrs = useAttrs()
+	const attrs = useAttrs()
 
-  const props = withDefaults(defineProps<IDataTableRowsProps>(), {})
+	const props = withDefaults(defineProps<IDataTableRowsProps>(), {
+		loadingText: 'foxy.dataIterator.loadingText',
+		noDataText: 'foxy.noDataText'
+	})
 
-  const {filterProps} = useProps<IDataTableRowsProps>(props)
+	const {filterProps} = useProps<IDataTableRowsProps>(props)
 
-  const { columns } = useHeaders()
-  const { expandOnClick, toggleExpand, isExpanded } = useExpanded()
-  const { isSelected, toggleSelect } = useSelection()
-  const { toggleGroup, isGroupOpen } = useGroupBy()
-  const { mobile } = useDisplay(props)
+	const {columns} = useHeaders()
+	const {expandOnClick, toggleExpand, isExpanded} = useExpanded()
+	const {isSelected, toggleSelect} = useSelection()
+	const {toggleGroup, isGroupOpen} = useGroupBy()
+	const {mobile} = useDisplay(props)
 
-  const slotProps = (item: any, index: number): IDataTableItemBaseSlot => {
-    return {
-      index,
-      item: item.raw,
-      internalItem: item,
-      columns: columns.value,
-      isExpanded,
-      toggleExpand,
-      isSelected,
-      toggleSelect
-    }
-  }
-  const groupHeaderSlotProps = (item: IDataTableGroup, index: number): IDataTableGroupHeaderSlot => {
-    const slotPropsLocal = slotProps(item, index)
+	const slotProps = (item: any, index: number): IDataTableItemBaseSlot => {
+		return {
+			index,
+			item: item.raw,
+			internalItem: item,
+			columns: columns.value,
+			isExpanded,
+			toggleExpand,
+			isSelected,
+			toggleSelect
+		}
+	}
+	const groupHeaderSlotProps = (item: IDataTableGroup, index: number): IDataTableGroupHeaderSlot => {
+		const slotPropsLocal = slotProps(item, index)
 
-    return Object.assign({}, slotPropsLocal, {
-      index,
-      item,
-      columns: columns.value,
-      ...getPrefixedEventHandlers(attrs, ':group-header', () => slotPropsLocal),
-      isExpanded,
-      toggleExpand,
-      isSelected,
-      toggleSelect,
-      toggleGroup,
-      isGroupOpen
-    })
-  }
-  const itemSlotProps = (item: any, index: number): IDataTableItemSlot => {
-    const slotPropsLocal = slotProps(item, index)
+		return Object.assign({}, slotPropsLocal, {
+			index,
+			item,
+			columns: columns.value,
+			...getPrefixedEventHandlers(attrs, ':group-header', () => slotPropsLocal),
+			isExpanded,
+			toggleExpand,
+			isSelected,
+			toggleSelect,
+			toggleGroup,
+			isGroupOpen
+		})
+	}
+	const itemSlotProps = (item: any, index: number): IDataTableItemSlot => {
+		const slotPropsLocal = slotProps(item, index)
 
-    return Object.assign({}, slotPropsLocal, {
-      props: mergeProps(
-        {
-          key: `item_${item.key ?? item.index}`,
-          onClick: expandOnClick.value ? () => {
-            toggleExpand(item)
-          } : undefined,
-          index,
-          item,
-          cellProps: props.cellProps,
-          mobile: mobile.value,
-        },
-        getPrefixedEventHandlers(attrs, ':row', () => slotPropsLocal),
-        typeof props.rowProps === 'function'
-          ? props.rowProps({
-            item: slotPropsLocal.item,
-            index: slotPropsLocal.index,
-            internalItem: slotPropsLocal.internalItem,
-          })
-          : props.rowProps,
-      ),
-    })
-  }
+		return Object.assign({}, slotPropsLocal, {
+			props: mergeProps(
+					{
+						key: `item_${item.key ?? item.index}`,
+						onClick: expandOnClick.value ? () => {
+							toggleExpand(item)
+						} : undefined,
+						index,
+						item,
+						cellProps: props.cellProps,
+						mobile: mobile.value
+					},
+					getPrefixedEventHandlers(attrs, ':row', () => slotPropsLocal),
+					typeof props.rowProps === 'function'
+							? props.rowProps({
+								item: slotPropsLocal.item,
+								index: slotPropsLocal.index,
+								internalItem: slotPropsLocal.internalItem
+							})
+							: props.rowProps
+			)
+		})
+	}
 
 	// EXPOSE
 
-  defineExpose({
-	  filterProps
-  })
+	defineExpose({
+		filterProps
+	})
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 	.foxy-data-table-rows {
-		&--no-data{
+		&--no-data {
 			text-align: center;
 		}
 	}
 </style>
 
 <style>
-	:root{
+	:root {
 
 	}
 </style>

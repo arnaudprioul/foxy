@@ -60,8 +60,6 @@
 
 	const props = withDefaults(defineProps<IRadioGroupProps>(), {
 		density: DENSITY.DEFAULT,
-		trueIcon: '$radioOn',
-		falseIcon: '$radioOff'
 	})
 
 	const {filterProps} = useProps<IRadioGroupProps>(props)

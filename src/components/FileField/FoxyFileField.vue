@@ -143,9 +143,9 @@
 <script lang="ts" setup>
 	import { FoxyChip, FoxyCounter, FoxyField, FoxyInput } from '@foxy/components'
 
-	import { useAdjacent, useAdjacentInner, useFocus, useProps, useSlots, useVModel } from '@foxy/composables'
+	import { useAdjacent, useAdjacentInner, useFocus, useLocale, useProps, useSlots, useVModel } from '@foxy/composables'
 
-	import { DENSITY } from '@foxy/enums'
+	import { DENSITY, MDI_ICONS } from '@foxy/enums'
 
 	import { IFileFieldProps } from '@foxy/interfaces'
 
@@ -156,7 +156,7 @@
 	import { computed, nextTick, ref, StyleValue, useAttrs, watch } from 'vue'
 
 	const props = withDefaults(defineProps<IFileFieldProps>(), {
-		prependInnerIcon: '$file',
+		prependInnerIcon: MDI_ICONS.PAPERCLIP,
 		showSize: false,
 		modelValue: (props: any) => props.multiple ? [] as Array<File> : null,
 		clearable: true,
@@ -164,12 +164,16 @@
 		density: DENSITY.DEFAULT,
 		border: true,
 		rounded: true,
-		divider: ','
+		divider: ',',
+		counterSizeString: 'foxy.fileInput.counterSize',
+		counterString: 'foxy.fileInput.counter'
 	})
 
 	const emits = defineEmits(['click:clear', 'click:control', 'mousedown:control', 'update:focused', 'update:modelValue', 'click:prepend', 'click:append', 'click:prependInner', 'click:appendInner'])
 
 	const {filterProps} = useProps<IFileFieldProps>(props)
+
+	const {t} = useLocale()
 
 	// TODO - Add drag & drop props & design
 	// TODO - Rework list of download file
@@ -211,9 +215,11 @@
 	const counterValue = computed(() => {
 		const fileCount = model.value?.length ?? 0
 
-		if (props.showSize) return `${fileCount} files (${totalBytesReadable.value} in total)`
+		if (props.showSize) {
+			return t(props.counterSizeString, fileCount, totalBytesReadable.value)
+		}
 
-		else return `${fileCount} files`
+		return t(props.counterString, fileCount)
 	})
 
 	const foxyInputRef = ref<TFoxyInput>()
