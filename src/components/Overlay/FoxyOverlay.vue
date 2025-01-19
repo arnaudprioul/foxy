@@ -48,6 +48,7 @@
 		useLocationStrategies,
 		useProps,
 		useRouter,
+		useRtl,
 		useScopeId,
 		useScrollStrategies,
 		useStack,
@@ -107,6 +108,7 @@
 	const {dimensionStyles} = useDimension(props)
 	const isMounted = useHydration()
 	const {scopeId} = useScopeId()
+	const {rtlClasses} = useRtl()
 
 	watch(() => props.disabled, (v) => {
 		if (v) isActive.value = false
@@ -256,6 +258,7 @@
 				'foxy-overlay--active': isActive.value,
 				'foxy-overlay--contained': props.contained
 			},
+			rtlClasses.value,
 			props.class
 		]
 	})

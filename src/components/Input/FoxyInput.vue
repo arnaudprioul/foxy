@@ -66,6 +66,7 @@
 		usePadding,
 		useProps,
 		useRounded,
+		useRtl,
 		useSlots,
 		useValidation
 	} from '@foxy/composables'
@@ -96,6 +97,7 @@
 	const {marginClasses, marginStyles} = useMargin(props)
 	const {elevationClasses} = useElevation(props)
 	const {colorStyles} = useBothColor(toRef(props.bgColor), toRef(props.color))
+	const {rtlClasses} = useRtl()
 
 	const uid = getUid()
 	const id = computed(() => {
@@ -186,6 +188,7 @@
 			paddingClasses.value,
 			marginClasses.value,
 			validationClasses.value,
+			rtlClasses.value,
 			props.class
 		]
 	})

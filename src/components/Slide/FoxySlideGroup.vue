@@ -60,7 +60,7 @@
 		useMargin,
 		usePadding, useProps,
 		useResizeObserver,
-		useRounded
+		useRounded, useRtl
 	} from "@foxy/composables"
 
 	import { FOXY_SLIDE_GROUP_KEY, IN_BROWSER } from "@foxy/consts"
@@ -104,6 +104,7 @@
 
 	const {resizeRef: containerRef, contentRect: containerRect} = useResizeObserver()
 	const {resizeRef: contentRef, contentRect} = useResizeObserver()
+	const {isRtl} = useRtl()
 
 	const goTo = useGoTo()
 	const goToOptions = computed<Partial<IGoToOptions>>(() => {
@@ -156,6 +157,7 @@
 		let target = calculateUpdatedTarget({
       containerElement: containerRef.el!,
       isHorizontal: isHorizontal.value,
+			isRtl: isRtl.value,
       selectedElement: children
     })
 
