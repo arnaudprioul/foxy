@@ -67,10 +67,10 @@
 	import { ComponentPublicInstance, computed, nextTick, shallowRef, StyleValue } from "vue"
 
   const props = withDefaults(defineProps<IPaginationProps>(), {
-	  prevIcon: MDI_ICONS.CHEVRON_RIGHT,
-	  nextIcon: MDI_ICONS.CHEVRON_LEFT,
-	  firstIcon: MDI_ICONS.CHEVRON_DOUBLE_RIGHT,
-	  lastIcon: MDI_ICONS.CHEVRON_DOUBLE_LEFT,
+	  prevIcon: MDI_ICONS.CHEVRON_LEFT,
+	  nextIcon: MDI_ICONS.CHEVRON_RIGHT,
+	  firstIcon: MDI_ICONS.CHEVRON_DOUBLE_LEFT,
+	  lastIcon: MDI_ICONS.CHEVRON_DOUBLE_RIGHT,
 	  tag: 'div',
 	  ellipsis: '...',
 	  length: 1,

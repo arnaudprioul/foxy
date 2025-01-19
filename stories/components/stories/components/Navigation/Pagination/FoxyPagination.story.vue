@@ -48,21 +48,7 @@
 	import { reactive } from 'vue'
 
 	const state: { [key: string]: any } = reactive({
-		prevIcon: '$prev',
-		nextIcon: '$next',
-		firstIcon: '$first',
-		lastIcon: '$last',
-		ellipsis: '...',
-		length: 5,
-		start: 1,
-		ariaLabel: 'Pagination Navigation',
-		pageAriaLabel: 'Go to page',
-		currentPageAriaLabel: 'Current page - Page',
-		firstAriaLabel: 'First page',
-		previousAriaLabel: 'Previous page',
-		nextAriaLabel: 'Next page',
-		lastAriaLabel: 'Last page',
-		showFirstLastPage: true
+
 	})
 </script>
 <docs lang="md">

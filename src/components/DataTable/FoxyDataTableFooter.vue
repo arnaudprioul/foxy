@@ -7,7 +7,7 @@
 			<slot name="prepend"/>
 
 			<div class="foxy-data-table-footer__items-per-page">
-				<span>{{ itemsPerPageText }}</span>
+				<span>{{ t(itemsPerPageText) }}</span>
 
 				<foxy-select
 						:density="DENSITY.COMPACT"
@@ -19,7 +19,7 @@
 			</div>
 
 			<div class="foxy-data-table-footer__info">
-				<span>{{ t(props.pageText, !itemsLength.value ? 0 : startIndex.value + 1, stopIndex.value, itemsLength.value) }}</span>
+				<span>{{ t(pageText, !itemsLength ? 0 : startIndex + 1, stopIndex, itemsLength) }}</span>
 			</div>
 
 			<div class="foxy-data-table-footer__pagination">

@@ -57,7 +57,7 @@
 <script lang="ts" setup>
 	import { FoxyDataTableRow } from '@foxy/components'
 
-	import { useDisplay, useExpanded, useGroupBy, useHeaders, useProps, useSelection } from '@foxy/composables'
+	import { useDisplay, useExpanded, useGroupBy, useHeaders, useLocale, useProps, useSelection } from '@foxy/composables'
 
 	import {
 		IDataTableGroup,
@@ -79,6 +79,8 @@
 	})
 
 	const {filterProps} = useProps<IDataTableRowsProps>(props)
+
+	const {t} = useLocale()
 
 	const {columns} = useHeaders()
 	const {expandOnClick, toggleExpand, isExpanded} = useExpanded()
