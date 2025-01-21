@@ -1,0 +1,4 @@
+# Foxypicker
+
+## Usage
+    <FoxyPicker />

@@ -81,6 +81,11 @@ export * from './DataTable/data-table-row.type'
 export * from './DataTable/data-table-rows.type'
 
 export * from './DatePicker/date-picker.type'
+export * from './DatePicker/date-picker-controls.type'
+export * from './DatePicker/date-picker-header.type'
+export * from './DatePicker/date-picker-month.type'
+export * from './DatePicker/date-picker-months.type'
+export * from './DatePicker/date-picker-years.type'
 
 export * from './Dialog/dialog.type'
 export * from './Dialog/dialog-confirmation.type'
@@ -149,6 +154,9 @@ export * from './Parallax/parallax.type'
 export * from './Parallax/parallax-element.type'
 
 export * from './PasswordField/password-field.type'
+
+export * from './Picker/picker.type'
+export * from './Picker/picker-title.type'
 
 export * from './Progress/progress.type'
 export * from './Progress/progress-circular.type'

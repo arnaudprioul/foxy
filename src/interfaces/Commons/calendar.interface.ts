@@ -1,7 +1,7 @@
 import { TCalendarStrategy } from "@foxy/types"
 
 export interface ICalendarProps {
-    allowedDates: Array<unknown> | ((date: unknown) => boolean)
+    allowedDates?: Array<unknown> | ((date: unknown) => boolean)
     disabled?: boolean
     displayValue?: unknown
     modelValue?: Array<unknown>

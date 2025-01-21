@@ -80,6 +80,8 @@ export * from './Parallax'
 
 export * from './PasswordField'
 
+export * from './Picker'
+
 export * from './Progress'
 
 export * from './Radio'

@@ -64,7 +64,6 @@ export * from './Commons/locale.interface'
 export * from './Commons/margin.interface'
 export * from './Commons/nested.interface'
 export * from './Commons/padding.interface'
-export * from './Commons/picker.interface'
 export * from './Commons/position.interface'
 export * from './Commons/resizeObserver.interface'
 export * from './Commons/ripple.interface'
@@ -161,6 +160,9 @@ export * from './Parallax/parallax.interface'
 export * from './Parallax/parallax-element.interface'
 
 export * from './PasswordField/password-field.interface'
+
+export * from './Picker/picker.interface'
+export * from './Picker/picker-title.interface'
 
 export * from './Progress/progress.interface'
 export * from './Progress/progress-linear.interface'
