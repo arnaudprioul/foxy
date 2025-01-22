@@ -103,6 +103,8 @@ export * from './DatePicker/date-picker-months.interface'
 export * from './DatePicker/date-picker-month.interface'
 export * from './DatePicker/date-picker-years.interface'
 
+export * from './DatePickerField/date-picker-field.interface'
+
 export * from './Dialog/dialog.interface'
 export * from './Dialog/dialog-confirmation.interface.ts'
 
