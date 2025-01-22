@@ -75,6 +75,8 @@ export * from './Commons/touch.interface'
 export * from './Commons/validation.interface'
 export * from './Commons/virtual.interface'
 
+export * from './ConfirmField/confirm-field.interface'
+
 export * from './Counter/counter.interface'
 
 export * from './DataList/data-list.interface'
