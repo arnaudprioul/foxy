@@ -23,4 +23,5 @@ export interface IDatePickerFieldProps extends ICommonsComponentProps, IColorPro
     openOnClear?: boolean
     closeText?: string
     openText?: string
+    closeOnSelect?: boolean
 }

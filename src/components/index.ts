@@ -30,6 +30,8 @@ export * from './DataTable'
 
 export * from './DatePicker'
 
+export * from './DatePickerField'
+
 export * from './Dialog'
 
 export * from './Divider'
