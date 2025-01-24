@@ -1,322 +1,322 @@
 <template>
-	<div
-			:class="datePickerMonthClasses"
-			:style="datePickerMonthStyles"
-	>
-		<template v-if="showWeek">
-			<div key="weeks" class="foxy-date-picker-month__weeks">
+  <div
+      :class="datePickerMonthClasses"
+      :style="datePickerMonthStyles"
+  >
+    <template v-if="showWeek">
+      <div key="weeks" class="foxy-date-picker-month__weeks">
 
-				<template v-if="!hideWeekdays">
-					<div key="hide-week-days" class="foxy-date-picker-month__day">&nbsp;</div>
-				</template>
+        <template v-if="!hideWeekdays">
+          <div key="hide-week-days" class="foxy-date-picker-month__day">&nbsp;</div>
+        </template>
 
-				<template v-for="(week, indexWeek) in weekNumbers" :key="`week-days-${indexWeek}`">
-					<div class="foxy-date-picker-month__day foxy-date-picker-month__day--adjacent">
-						<span>{{ week }}</span>
-					</div>
-				</template>
+        <template v-for="(week, indexWeek) in weekNumbers" :key="`week-days-${indexWeek}`">
+          <div class="foxy-date-picker-month__day foxy-date-picker-month__day--adjacent">
+            <span>{{ week }}</span>
+          </div>
+        </template>
 
-			</div>
-		</template>
+      </div>
+    </template>
 
-		<foxy-transition :name="transition">
-			<div
-					:key="daysInMonth[0].date?.toString()"
-					ref="daysRef"
-					class="foxy-date-picker-month__days"
-			>
+    <foxy-transition :transition="transition">
+      <div
+          :key="daysInMonth[0].date?.toString()"
+          ref="daysRef"
+          class="foxy-date-picker-month__days"
+      >
 
-				<template v-if="!hideWeekdays">
-					<template v-for="(weekDay, indexWeekDay) in adapter.getWeekdays(firstDayOfWeek)"
-					          :key="indexWeekDay">
-						<div class="foxy-date-picker-month__day foxy-date-picker-month__weekday">
-							<span>{{ weekDay }}</span>
-						</div>
-					</template>
-				</template>
+        <template v-if="!hideWeekdays">
+          <template v-for="(weekDay, indexWeekDay) in adapter.getWeekdays(firstDayOfWeek)"
+                    :key="indexWeekDay">
+            <div class="foxy-date-picker-month__day foxy-date-picker-month__weekday">
+              <span>{{ weekDay }}</span>
+            </div>
+          </template>
+        </template>
 
-				<template v-for="(item, index) in daysInMonth" :key="index">
+        <template v-for="(item, index) in daysInMonth" :key="index">
 
-					<div
-							:class="datePickerMonthDayClasses(item)"
-							:data-v-date="!isDisabled(item) ? item.isoDate : undefined"
-					>
+          <div
+              :class="datePickerMonthDayClasses(item)"
+              :data-v-date="!isDisabled(item) ? item.isoDate : undefined"
+          >
 
-						<template v-if="showAdjacentMonths || !item.isAdjacent">
-							<slot name="days" v-bind="{props: { onClick: () => handleClick(item.date)}, item, index}">
-								<foxy-btn
-										ref="foxyBtnRef"
-										class="foxy-date-picker-month__day-btn"
-										:active="item.isSelected"
-										:text="item.localized"
-										:disabled="item.isDisabled"
-										:icon="true"
-										:ripple="false"
-										:border="item.isToday"
-										@click="handleClick(item.date)"
-								/>
-							</slot>
-						</template>
+            <template v-if="showAdjacentMonths || !item.isAdjacent">
+              <slot name="days" v-bind="{props: { onClick: () => handleClick(item.date)}, item, index}">
+                <foxy-btn
+                    ref="foxyBtnRef"
+                    :active="item.isSelected"
+                    :border="item.isToday"
+                    :disabled="item.isDisabled"
+                    :icon="true"
+                    :ripple="false"
+                    :text="item.localized"
+                    class="foxy-date-picker-month__day-btn"
+                    @click="handleClick(item.date)"
+                />
+              </slot>
+            </template>
 
-					</div>
-				</template>
+          </div>
+        </template>
 
-			</div>
-		</foxy-transition>
-	</div>
+      </div>
+    </foxy-transition>
+  </div>
 </template>
 
 <script lang="ts" setup>
-	import { FoxyBtn, FoxyReverseTranslatePicker, FoxyTransition, FoxyTranslatePicker } from "@foxy/components"
+  import { FoxyBtn, FoxyReverseTranslatePicker, FoxyTransition, FoxyTranslatePicker } from "@foxy/components"
 
-	import { useCalendar, useDate, useProps } from "@foxy/composables"
+  import { useCalendar, useDate, useProps } from "@foxy/composables"
 
-	import { CALENDAR_STRATEGY } from "@foxy/enums"
+  import { CALENDAR_STRATEGY } from "@foxy/enums"
 
-	import { IDatePickerMonthProps } from "@foxy/interfaces"
+  import { IDatePickerMonthProps } from "@foxy/interfaces"
 
-	import { TFoxyBtn } from "@foxy/types"
+  import { TFoxyBtn } from "@foxy/types"
 
-	import { wrapInArray } from "@foxy/utils"
+  import { wrapInArray } from "@foxy/utils"
 
-	import { computed, ref, shallowRef, StyleValue, watch } from "vue"
+  import { computed, ref, shallowRef, StyleValue, watch } from "vue"
 
-	const props = withDefaults(defineProps<IDatePickerMonthProps>(), {
-		weekdays: [0, 1, 2, 3, 4, 5, 6],
-		weeksInMonth: CALENDAR_STRATEGY.DYNAMIC,
-		transition: {component: FoxyTranslatePicker},
-		reverseTransition: {component: FoxyReverseTranslatePicker}
-	})
+  const props = withDefaults(defineProps<IDatePickerMonthProps>(), {
+    weekdays: [0, 1, 2, 3, 4, 5, 6],
+    weeksInMonth: CALENDAR_STRATEGY.DYNAMIC,
+    transition: { component: FoxyTranslatePicker },
+    reverseTransition: { component: FoxyReverseTranslatePicker }
+  })
 
-	const {filterProps} = useProps<IDatePickerMonthProps>(props)
+  const { filterProps } = useProps<IDatePickerMonthProps>(props)
 
-	const daysRef = ref()
+  const daysRef = ref()
 
-	const {daysInMonth, model, weekNumbers} = useCalendar(props)
-	const adapter = useDate()
+  const { daysInMonth, model, weekNumbers } = useCalendar(props)
+  const adapter = useDate()
 
-	const rangeStart = shallowRef()
-	const rangeStop = shallowRef()
-	const isReverse = shallowRef(false)
+  const rangeStart = shallowRef()
+  const rangeStop = shallowRef()
+  const isReverse = shallowRef(false)
 
-	const transition = computed(() => {
-		return !isReverse.value ? props.transition : props.reverseTransition
-	})
+  const transition = computed(() => {
+    return !isReverse.value ? props.transition : props.reverseTransition
+  })
 
-	watch([() => props.multiple, model], () => {
-		if (props.multiple === 'range' && model.value.length > 0) {
-			rangeStart.value = model.value[0]
+  watch([() => props.multiple, model], () => {
+    if (props.multiple === 'range' && model.value.length > 0) {
+      rangeStart.value = model.value[0]
 
-			if (model.value.length > 1) {
-				rangeStop.value = model.value[model.value.length - 1]
-			}
-		}
-	}, {
-		immediate: true,
-		deep: true
-	})
+      if (model.value.length > 1) {
+        rangeStop.value = model.value[model.value.length - 1]
+      }
+    }
+  }, {
+    immediate: true,
+    deep: true
+  })
 
-	const atMax = computed(() => {
-		const max = ['number', 'string'].includes(typeof props.multiple) ? Number(props.multiple) : Infinity
+  const atMax = computed(() => {
+    const max = ['number', 'string'].includes(typeof props.multiple) ? Number(props.multiple) : Infinity
 
-		return model.value.length >= max
-	})
+    return model.value.length >= max
+  })
 
-	watch(daysInMonth, (val, oldVal) => {
-		if (!oldVal) return
+  watch(daysInMonth, (val, oldVal) => {
+    if (!oldVal) return
 
-		isReverse.value = adapter.isBefore(val[0].date, oldVal[0].date)
-	}, {
-		immediate: true,
-		deep: true
-	})
+    isReverse.value = adapter.isBefore(val[0].date, oldVal[0].date)
+  }, {
+    immediate: true,
+    deep: true
+  })
 
-	const handleRangeClick = (value: unknown) => {
-		const startDay = adapter.startOfDay(value)
+  const handleRangeClick = (value: unknown) => {
+    const startDay = adapter.startOfDay(value)
 
-		if (model.value.length === 0) {
-			rangeStart.value = undefined
-		} else if (model.value.length === 1) {
-			rangeStart.value = model.value[0]
-			rangeStop.value = undefined
-		}
+    if (model.value.length === 0) {
+      rangeStart.value = undefined
+    } else if (model.value.length === 1) {
+      rangeStart.value = model.value[0]
+      rangeStop.value = undefined
+    }
 
-		if (!rangeStart.value) {
-			rangeStart.value = startDay
-			model.value = wrapInArray(rangeStart.value)
+    if (!rangeStart.value) {
+      rangeStart.value = startDay
+      model.value = wrapInArray(rangeStart.value)
 
-		} else if (!rangeStop.value) {
-			if (adapter.isSameDay(startDay, rangeStart.value)) {
-				rangeStart.value = undefined
-				model.value = []
+    } else if (!rangeStop.value) {
+      if (adapter.isSameDay(startDay, rangeStart.value)) {
+        rangeStart.value = undefined
+        model.value = []
 
-				return
+        return
 
-			} else if (adapter.isBefore(startDay, rangeStart.value)) {
-				rangeStop.value = adapter.endOfDay(rangeStart.value)
-				rangeStart.value = startDay
+      } else if (adapter.isBefore(startDay, rangeStart.value)) {
+        rangeStop.value = adapter.endOfDay(rangeStart.value)
+        rangeStart.value = startDay
 
-			} else {
-				rangeStop.value = adapter.endOfDay(startDay)
-			}
+      } else {
+        rangeStop.value = adapter.endOfDay(startDay)
+      }
 
-			const diff = adapter.getDiff(rangeStop.value, rangeStart.value, 'days')
-			const datesInRange = wrapInArray(rangeStart.value)
+      const diff = adapter.getDiff(rangeStop.value, rangeStart.value, 'days')
+      const datesInRange = wrapInArray(rangeStart.value)
 
-			for (let i = 1; i < diff; i++) {
-				const nextDate = adapter.addDays(rangeStart.value, i)
-				datesInRange.push(nextDate)
-			}
+      for (let i = 1; i < diff; i++) {
+        const nextDate = adapter.addDays(rangeStart.value, i)
+        datesInRange.push(nextDate)
+      }
 
-			datesInRange.push(rangeStop.value)
+      datesInRange.push(rangeStop.value)
 
-			model.value = datesInRange
+      model.value = datesInRange
 
-		} else {
-			rangeStart.value = value
-			rangeStop.value = undefined
-			model.value = wrapInArray(rangeStart.value)
-		}
-	}
-	const handleMultipleClick = (value: unknown) => {
-		const index = model.value.findIndex((selection) => {
-			return adapter.isSameDay(selection, value)
-		})
+    } else {
+      rangeStart.value = value
+      rangeStop.value = undefined
+      model.value = wrapInArray(rangeStart.value)
+    }
+  }
+  const handleMultipleClick = (value: unknown) => {
+    const index = model.value.findIndex((selection) => {
+      return adapter.isSameDay(selection, value)
+    })
 
-		if (index === -1) {
-			model.value = [...model.value, value]
-		} else {
-			const value = [...model.value]
-			value.splice(index, 1)
-			model.value = value
-		}
-	}
-	const handleClick = (value: unknown) => {
-		if (props.multiple === 'range') {
-			handleRangeClick(value)
+    if (index === -1) {
+      model.value = [...model.value, value]
+    } else {
+      const value = [...model.value]
+      value.splice(index, 1)
+      model.value = value
+    }
+  }
+  const handleClick = (value: unknown) => {
+    if (props.multiple === 'range') {
+      handleRangeClick(value)
 
-		} else if (props.multiple) {
-			handleMultipleClick(value)
+    } else if (props.multiple) {
+      handleMultipleClick(value)
 
-		} else {
-			model.value = [value]
-		}
-	}
+    } else {
+      model.value = [value]
+    }
+  }
 
-	// ITEM
+  // ITEM
 
-	const foxyBtnRef = ref<TFoxyBtn>()
+  const foxyBtnRef = ref<TFoxyBtn>()
 
-	const isDisabled = (item) => {
-		return atMax.value && !item.isSelected
-	}
-	const datePickerMonthDayClasses = (item) => {
-		return [
-			'foxy-date-picker-month__day',
-			{
-				'foxy-date-picker-month__day--adjacent': item.isAdjacent,
-				'foxy-date-picker-month__day--hide-adjacent': item.isHidden,
-				'foxy-date-picker-month__day--selected': item.isSelected,
-				'foxy-date-picker-month__day--today': item.isToday,
-				'foxy-date-picker-month__day--week-end': item.isWeekEnd,
-				'foxy-date-picker-month__day--week-start': item.isWeekStart
-			}
-		]
-	}
+  const isDisabled = (item) => {
+    return atMax.value && !item.isSelected
+  }
+  const datePickerMonthDayClasses = (item) => {
+    return [
+      'foxy-date-picker-month__day',
+      {
+        'foxy-date-picker-month__day--adjacent': item.isAdjacent,
+        'foxy-date-picker-month__day--hide-adjacent': item.isHidden,
+        'foxy-date-picker-month__day--selected': item.isSelected,
+        'foxy-date-picker-month__day--today': item.isToday,
+        'foxy-date-picker-month__day--week-end': item.isWeekEnd,
+        'foxy-date-picker-month__day--week-start': item.isWeekStart
+      }
+    ]
+  }
 
-	// CLASS & STYLES
-	const datePickerMonthStyles = computed(() => {
-		return [
-			props.style
-		] as StyleValue
-	})
-	const datePickerMonthClasses = computed(() => {
-		return [
-			'foxy-date-picker-month',
-			props.class
-		]
-	})
+  // CLASS & STYLES
+  const datePickerMonthStyles = computed(() => {
+    return [
+      props.style
+    ] as StyleValue
+  })
+  const datePickerMonthClasses = computed(() => {
+    return [
+      'foxy-date-picker-month',
+      props.class
+    ]
+  })
 
-	// EXPOSE
+  // EXPOSE
 
-	defineExpose({
-		filterProps
-	})
+  defineExpose({
+    filterProps
+  })
 </script>
 
 <style lang="scss" scoped>
-	.foxy-date-picker-month {
-		$this: &;
+.foxy-date-picker-month {
+  $this: &;
 
-		display: flex;
-		justify-content: center;
-		padding: 0 12px 8px;
-		--foxy-date-picker-month-day-diff: 4px;
+  display: flex;
+  justify-content: center;
+  padding: 0 12px 8px;
+  --foxy-date-picker-month-day-diff: 4px;
 
-		&__weeks {
-			display: grid;
-			grid-template-rows: min-content min-content min-content min-content min-content min-content min-content;
-			column-gap: 4px;
-			font-size: .85rem;
+  &__weeks {
+    display: grid;
+    grid-template-rows: min-content min-content min-content min-content min-content min-content min-content;
+    column-gap: 4px;
+    font-size: .85rem;
 
-			+ #{$this}__days {
-				grid-row-gap: 0;
-			}
-		}
+    + #{$this}__days {
+      grid-row-gap: 0;
+    }
+  }
 
-		&__weekday {
-			font-size: .85rem;
-		}
+  &__weekday {
+    font-size: .85rem;
+  }
 
-		&__days {
-			display: grid;
-			grid-template-columns: min-content min-content min-content min-content min-content min-content min-content;
-			column-gap: 4px;
-			flex: 1 1;
-			justify-content: space-around;
-		}
+  &__days {
+    display: grid;
+    grid-template-columns: min-content min-content min-content min-content min-content min-content min-content;
+    column-gap: 4px;
+    flex: 1 1;
+    justify-content: space-around;
+  }
 
-		&__day {
-			align-items: center;
-			display: flex;
-			justify-content: center;
-			position: relative;
-			height: 40px;
-			width: 40px;
-			background-color: rgb(255, 255, 255);
-			color: rgb(0, 0, 0);
+  &__day {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 
-			:deep(.foxy-btn) {
-				--foxy-btn---height: 24px;
-				--foxy-btn---size: .85rem;
-			}
+    :deep(.foxy-btn) {
+      --foxy-btn---height: 24px;
+      --foxy-btn---size: .85rem;
+    }
 
-			&--selected {
-				:deep(.foxy-btn) {
-					background-color: rgb(163, 163, 163);
-					color: rgb(255, 255, 255);
-				}
+    &--selected {
+      :deep(.foxy-btn) {
+        background-color: rgb(163, 163, 163);
+        color: rgb(255, 255, 255);
+      }
 
-				#{$this}__day-btn {
+      #{$this}__day-btn {
 
-				}
-			}
+      }
+    }
 
-			&--today {
+    &--today {
 
-			}
+    }
 
-			&--week {
-				font-size: var(--foxy-btn---size);
-			}
+    &--week {
+      font-size: var(--foxy-btn---size);
+    }
 
-			&--adjacent {
-				opacity: .5;
-			}
+    &--adjacent {
+      opacity: .5;
+    }
 
-			&--hide-adjacent {
-				opacity: 0;
-			}
-		}
-	}
+    &--hide-adjacent {
+      opacity: 0;
+    }
+  }
+}
 </style>

@@ -2,7 +2,7 @@
   <Story
       auto-props-disabled
       group="components"
-      title="Form Inputs & Controls/TextField"
+      title="Form Inputs & Controls/DatePickerField"
   >
     <Variant title="Default">
       <template #default>

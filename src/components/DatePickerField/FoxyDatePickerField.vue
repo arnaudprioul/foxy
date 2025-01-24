@@ -49,6 +49,7 @@
           :disabled="menuDisabled"
           :location="BLOCK.BOTTOM"
           :max-height="310"
+          :max-width="200"
           :open-on-click="false"
           activator="parent"
           content-class="foxy-select__content"
@@ -126,9 +127,10 @@
     modelValue: null,
     appendInnerIcon: MDI_ICONS.CALENDAR_OUTLINE,
     transition: { component: FoxyTranslateScale },
-    closeText: '$vuetify.close',
-    openText: '$vuetify.open',
-    range: false
+    closeText: 'foxy.close',
+    openText: 'foxy.open',
+    range: false,
+    closeOnSelect: true
   })
 
   const { filterProps } = useProps<IDatePickerFieldProps>(props)
@@ -153,11 +155,11 @@
   const adapter = useDate()
 
   const handleSelectDate = (value) => {
+    model.value = value
+
     if (props.closeOnSelect) {
       menu.value = false
     }
-
-    model.value = value
   }
 
   const menuState = useVModel(props, 'menu')
