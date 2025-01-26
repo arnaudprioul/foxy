@@ -87,6 +87,8 @@ export * from './DatePicker/date-picker-month.type'
 export * from './DatePicker/date-picker-months.type'
 export * from './DatePicker/date-picker-years.type'
 
+export * from './DatePickerField/date-picker-field.type'
+
 export * from './Dialog/dialog.type'
 export * from './Dialog/dialog-confirmation.type'
 
