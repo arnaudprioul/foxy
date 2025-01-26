@@ -29,6 +29,8 @@ export * from './Checkbox/checkbox-btn.interface.ts'
 export * from './Chip/chip.interface'
 export * from './Chip/chip-group.interface'
 
+export * from './ColorPicker/color-picker.interface'
+
 export * from './Commons/activator.interface'
 export * from './Commons/adjacent.interface'
 export * from './Commons/align.interface'

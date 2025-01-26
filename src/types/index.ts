@@ -30,6 +30,8 @@ export * from './Checkbox/checkbox-btn.type'
 export * from './Chip/chip.type'
 export * from './Chip/chip-group.type'
 
+export * from './ColorPicker/color-picker.type'
+
 export * from './Commons/adjacent.type'
 export * from './Commons/align.type'
 export * from './Commons/anchor.type'
