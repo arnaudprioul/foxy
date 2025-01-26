@@ -22,9 +22,9 @@
 
 		<slot name="default">
 			<foxy-date-picker-controls
-					:disabled="disabled"
+					ref="foxyDatePickerControlsRef"
 					:text="text"
-					v-bind="{...datePickerControlsProps}"
+					v-bind="{...datePickerControlsProps, ...disabledControlers}"
 					@click:next="handleClickNext"
 					@click:prev="handleClickPrev"
 					@click:month="handleClickMonth"
@@ -34,31 +34,34 @@
 			<foxy-fade>
 				<template v-if="viewModeIsMonths">
 					<foxy-date-picker-months
+							ref="foxyDatePickerMonthsRef"
 							key="date-picker-months"
-							v-model="month"
+							v-model:month="month"
 							:max="maxDate"
 							:min="minDate"
 							:year="year"
 							v-bind="{ ...datePickerMonthsProps }"
-							@update:modelValue="handleUpdateMonth"
+							@update:month="handleUpdateMonth"
 					/>
 				</template>
 
 				<template v-else-if="viewModeIsYears">
 					<foxy-date-picker-years
+							ref="foxyDatePickerYearsRef"
 							key="date-picker-years"
-							v-model="year"
+							v-model:year="year"
 							:max="maxDate"
 							:min="minDate"
 							v-bind="{ ...datePickerYearsProps }"
-							@update:modelValue="handleUpdateMonth"
+							@update:year="handleUpdateMonth"
 					/>
 				</template>
 
 				<template v-else>
 					<foxy-date-picker-month
+							ref="foxyDatePickerMonthRef"
 							key="date-picker-month"
-							v-model:model-value="model"
+							v-model:date="model"
 							v-model:month="month"
 							v-model:year="year"
 							:max="maxDate"
@@ -106,7 +109,7 @@
 
 	import { wrapInArray } from "@foxy/utils"
 
-	import { computed, ref, shallowRef, StyleValue, watch } from "vue"
+	import { computed, ref, shallowRef, StyleValue, useAttrs, watch } from "vue"
 
 	const props = withDefaults(defineProps<IDatePickerProps>(), {
 		weeksInMonth: CALENDAR_STRATEGY.STATIC,
@@ -128,7 +131,7 @@
 			'modelValue',
 			undefined,
 			(v) => wrapInArray(v),
-			(v) => props.multiple ? v : v[0]
+			(v) => props.multiple || props.range ? v : v[0]
 	)
 
 	const viewMode = useVModel(props, 'viewMode')
@@ -155,7 +158,7 @@
 	const isReversing = shallowRef(false)
 
 	const header = computed(() => {
-		if (props.multiple && model.value?.length > 1) {
+		if ((props.multiple || props.range) && model.value?.length > 1) {
 			return t('foxy.datePicker.itemsSelected', model.value?.length)
 		}
 
@@ -191,13 +194,19 @@
 		return props.max && adapter.isValid(date) ? date : null
 	})
 
-	const disabled = computed(() => {
-		if (props.disabled) return true
+	const disabledControlers = computed(() => {
+		if (props.disabled) return props.disabled
 
-		const targets = []
+		const targets = {
+			disabledMonth: props.disabledMonth,
+			disabledYear: props.disabledYear,
+			disabledNext: props.disabledNext,
+			disabledPrev: props.disabledPrev,
+		}
 
 		if (viewModeIsMonth.value) {
-			targets.push(...['prev', 'next'])
+			targets.disabledNext = true
+			targets.disabledPrev = true
 		} else {
 			let _date = adapter.date()
 
@@ -207,13 +216,17 @@
 			if (minDate.value) {
 				const date = adapter.addDays(adapter.startOfMonth(_date), -1)
 
-				adapter.isAfter(minDate.value, date) && targets.push('prev')
+				if (adapter.isAfter(minDate.value, date)) {
+					targets.disabledPrev = true
+				}
 			}
 
 			if (maxDate.value) {
 				const date = adapter.addDays(adapter.endOfMonth(_date), 1)
 
-				adapter.isAfter(date, maxDate.value) && targets.push('next')
+				if(adapter.isAfter(date, maxDate.value)) {
+					targets.disabledNext = true
+				}
 			}
 		}
 
@@ -301,13 +314,13 @@
 		return foxyDatePickerHeaderRef.value?.filterProps(props)
 	})
 	const datePickerMonthProps = computed(() => {
-		return foxyDatePickerMonthRef.value?.filterProps(props, ['class', 'style', 'id', 'modelValue', 'min', 'max', 'year', 'month'])
+		return foxyDatePickerMonthRef.value?.filterProps(props, ['class', 'style', 'id', 'date', 'min', 'max', 'year', 'month'])
 	})
 	const datePickerMonthsProps = computed(() => {
-		return foxyDatePickerMonthsRef.value?.filterProps(props, ['class', 'style', 'id', 'modelValue', 'min', 'max', 'year'])
+		return foxyDatePickerMonthsRef.value?.filterProps(props, ['class', 'style', 'id', 'month', 'min', 'max', 'year'])
 	})
 	const datePickerYearsProps = computed(() => {
-		return foxyDatePickerYearsRef.value?.filterProps(props, ['class', 'style', 'id', 'modelValue', 'min', 'max'])
+		return foxyDatePickerYearsRef.value?.filterProps(props, ['class', 'style', 'id', 'year', 'min', 'max'])
 	})
 
 	const headerProps = computed(() => {

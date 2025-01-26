@@ -4,7 +4,7 @@ export interface ICalendarProps {
     allowedDates?: Array<unknown> | ((date: unknown) => boolean)
     disabled?: boolean
     displayValue?: unknown
-    modelValue?: Array<unknown>
+    date?: Array<unknown>
     month?: number | string
     max?: unknown
     min?: unknown

@@ -7,7 +7,7 @@ export function useCalendar (props: ICalendarProps) {
     const adapter = useDate()
     const model = useVModel(
         props,
-        'modelValue',
+        'date',
         [],
         (v) => wrapInArray(v)
     )

@@ -26,12 +26,12 @@
 
 	const props = withDefaults(defineProps<IDatePickerMonthsProps>(), {})
 
-	const emits = defineEmits(['update:modelValue'])
+	const emits = defineEmits(['update:month'])
 
 	const {filterProps} = useProps<IDatePickerMonthsProps>(props)
 
 	const adapter = useDate()
-	const model = useVModel(props, 'modelValue')
+	const model = useVModel(props, 'month', adapter.getMonth(adapter.date()), (v) => parseInt(v))
 
 	const months = computed(() => {
 		let date = adapter.startOfYear(adapter.date())
@@ -74,7 +74,7 @@
 	}
 	const handleClick = (i: number) => {
 		if (model.value === i) {
-			emits('update:modelValue', model.value)
+			emits('update:month', model.value)
 			return
 		}
 

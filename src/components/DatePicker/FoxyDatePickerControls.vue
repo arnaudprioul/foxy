@@ -63,24 +63,16 @@
 	const {filterProps} = useProps<IDatePickerControlsProps>(props)
 
 	const disableMonth = computed(() => {
-		return Array.isArray(props.disabled)
-				? props.disabled.includes('text')
-				: !!props.disabled
+		return props.disabled || props.disabledMonth
 	})
 	const disableYear = computed(() => {
-		return Array.isArray(props.disabled)
-				? props.disabled.includes('mode')
-				: !!props.disabled
+		return props.disabled || props.disabledYear
 	})
 	const disablePrev = computed(() => {
-		return Array.isArray(props.disabled)
-				? props.disabled.includes('prev')
-				: !!props.disabled
+		return props.disabled || props.disabledPrev
 	})
 	const disableNext = computed(() => {
-		return Array.isArray(props.disabled)
-				? props.disabled.includes('next')
-				: !!props.disabled
+		return props.disabled || props.disabledNext
 	})
 
 	const handleClickPrev = () => {

@@ -24,12 +24,12 @@
 
 	const props = withDefaults(defineProps<IDatePickerYearsProps>(), {})
 
-	const emits = defineEmits(['update:modelValue'])
+	const emits = defineEmits(['update:year'])
 
 	const {filterProps} = useProps<IDatePickerYearsProps>(props)
 
 	const adapter = useDate()
-	const model = useVModel(props, 'modelValue')
+	const model = useVModel(props, 'year', adapter.getYear(adapter.date()), (v) => parseInt(v))
 
 	const years = computed(() => {
 		const year = adapter.getYear(adapter.date())
@@ -74,16 +74,16 @@
 			rounded: true,
 			text: year.text,
 			key: "year",
-			onClick: () => handleClick(i)
+			onClick: () => handleClick(year.value)
 		}
 	}
-	const handleClick = (i: number) => {
-		if (model.value === i) {
-			emits('update:modelValue', model.value)
+	const handleClick = (year: number) => {
+		if (model.value === year) {
+			emits('update:year', model.value)
 			return
 		}
 
-		model.value = i
+		model.value = year
 	}
 
 	onMounted(async () => {

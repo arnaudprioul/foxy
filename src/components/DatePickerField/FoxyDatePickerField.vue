@@ -2,7 +2,7 @@
   <foxy-text-field
       ref="foxyTextFieldRef"
       v-model:focused="isFocused"
-      v-model:model-value="search"
+      :model-value="selectedValues"
       :aria-label="t(label)"
       :class="selectClasses"
       :counter-value="counterValue"
@@ -14,7 +14,6 @@
       v-bind="{ ...textFieldProps }"
       @blur="handleBlur"
       @change="handleChange"
-      @update:model-value="handleModelUpdate"
       @click:clear="handleClear"
       @mousedown:control="handleMousedownControl">
     <template v-if="hasSlot('prepend')" #prepend>
@@ -58,17 +57,13 @@
 
         <template #default>
           <foxy-date-picker
-              :model-value="modelValue"
+		          ref="foxyDatePickerRef"
+              :model-value="model"
               v-bind="{...datePickerProps}"
               @update:model-value="handleSelectDate"
           />
         </template>
       </foxy-menu>
-
-      <template v-if="selectedValues">
-        {{ selectedValues }}
-      </template>
-
     </template>
 
     <template v-if="hasSlot('suffix')" #suffix>
@@ -150,12 +145,11 @@
       (v) => wrapInArray(v),
       (v) => props.range ? v : v[0]
   )
-  const search = useVModel(props, 'search', '')
 
   const adapter = useDate()
 
   const handleSelectDate = (value) => {
-    model.value = value
+		model.value = wrapInArray(value)
 
     if (props.closeOnSelect) {
       menu.value = false
@@ -191,12 +185,14 @@
       ...props.menuProps,
       activatorProps: {
         ...(props.menuProps?.activatorProps || {}),
-        'aria-haspopup': 'listbox' // Set aria-haspopup to 'listbox'
+        'aria-haspopup': 'datepickerbox' // Set aria-haspopup to 'listbox'
       }
     }
   })
 
   const handleClear = (_e: MouseEvent) => {
+	  model.value = []
+
     if (props.openOnClear) {
       menu.value = true
     }
@@ -220,15 +216,6 @@
   const handleAfterLeave = () => {
     if (isFocused.value) {
       foxyTextFieldRef.value?.focus()
-    }
-  }
-  const handleModelUpdate = (v: any) => {
-    if (v == null || (v === '' && !props.range)) {
-      model.value = []
-    }
-
-    if (foxyTextFieldRef.value) {
-      foxyTextFieldRef.value.value = ''
     }
   }
 
@@ -258,14 +245,6 @@
     } else {
 
     }
-  })
-
-  watch(search, val => {
-    if (!isFocused.value || isSelecting.value) return
-
-    if (val) menu.value = true
-
-    isPristine.value = !val
   })
 
   // CLASS & STYLES
@@ -298,5 +277,3 @@
 <style lang="scss" scoped>
 
 </style>
-<script lang="ts" setup>
-</script>
