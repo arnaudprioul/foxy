@@ -21,5 +21,5 @@ export interface IColorPickerProps extends ICommonsComponentProps, IColorProps, 
     showSwatches?: boolean
     swatches?: Array<Array<TColorType>>
     swatchesMaxHeight?: string | number
-    modelValue?: Record<string, unknown> | string | undefined | null>
+    modelValue?: Record<string, unknown> | string | undefined | null
 }
