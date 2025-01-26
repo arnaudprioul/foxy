@@ -33,8 +33,8 @@
       "lastPage": "Dernière page",
       "pageText": "{0}-{1} de {2}"
     },
-    "dateRangeInput": {
-      "divider": "à"
+    "datePickerRangeField": {
+      "text": "{0} à {1}"
     },
     "datePicker": {
       "itemsSelected": "{0} selected",

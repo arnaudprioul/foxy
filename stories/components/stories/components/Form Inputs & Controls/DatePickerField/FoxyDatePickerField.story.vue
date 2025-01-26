@@ -11,6 +11,7 @@
             <foxy-col>
               <foxy-date-picker-field
                   v-bind="state"
+                  @update:model-value="logEvent('update modelValue', {$event})"
               />
             </foxy-col>
           </foxy-row>
@@ -29,6 +30,7 @@
   import { FoxyCol, FoxyContainer, FoxyDatePickerField, FoxyRow } from '@foxy/components'
 
   import { ALIGN, JUSTIFY } from '@foxy/enums'
+  import { logEvent } from "histoire/client"
 
   import { reactive } from 'vue'
 

@@ -85,40 +85,49 @@
 			</foxy-menu>
 
 			<template v-if="selectedValues">
-				<template
-						v-for="(item, index) in selectedValues"
-						:key="index"
-				>
-					<div
-							:style="[textColorStyles]"
-							class="foxy-date-picker-field__selection-chips"
+				<template v-if="isRange">
+					<span class="foxy-date-picker-field__selection-text">
+            <slot name="rangeSelection">
+              {{ t('foxy.datePickerRangeField.text', selectedValues[0], selectedValues[1]) }}
+            </slot>
+          </span>
+				</template>
+				<template v-else>
+					<template
+							v-for="(item, index) in selectedValues"
+							:key="index"
 					>
-						<template v-if="isMultiple">
-							<slot
-									name="chip"
-									v-bind="{ item, index, props: chipSlotProps(item) }"
-							>
-								<foxy-chip
-										ref="foxyChipsRef"
-										key="chip"
-										v-bind="chipSlotProps(item)"
+						<div
+								:style="[textColorStyles]"
+								class="foxy-date-picker-field__selection-chips"
+						>
+							<template v-if="isMultiple">
+								<slot
+										name="chip"
+										v-bind="{ item, index, props: chipSlotProps(item) }"
 								>
-									<template #default>
-										<slot name="selection">
-											{{ item }}
-										</slot>
-									</template>
-								</foxy-chip>
-							</slot>
-						</template>
-						<template v-else>
-		          <span class="foxy-date-picker-field__selection-text">
-		            <slot name="selection">
-		              {{ item }}
-		            </slot>
-		          </span>
-						</template>
-					</div>
+									<foxy-chip
+											ref="foxyChipsRef"
+											key="chip"
+											v-bind="chipSlotProps(item)"
+									>
+										<template #default>
+											<slot name="selection">
+												{{ item }}
+											</slot>
+										</template>
+									</foxy-chip>
+								</slot>
+							</template>
+							<template v-else>
+			          <span class="foxy-date-picker-field__selection-text">
+			            <slot name="selection">
+			              {{ item }}
+			            </slot>
+			          </span>
+							</template>
+						</div>
+					</template>
 				</template>
 			</template>
 		</template>
@@ -183,7 +192,7 @@
 
 	import { BLOCK, DENSITY, DIRECTION, KEYBOARD_VALUES, MDI_ICONS, TEXT_FIELD_TYPE } from "@foxy/enums"
 
-	import { IDatePickerFieldProps, IListItem } from "@foxy/interfaces"
+	import { IDatePickerFieldProps } from "@foxy/interfaces"
 
 	import { TFoxyDatePicker, TFoxyMenu, TFoxyTextField } from "@foxy/types"
 
@@ -260,8 +269,14 @@
 	})
 
 	const selectedValues = computed(() => {
-		return model.value.map((selection) => {
-			return adapter.format(adapter.date(selection.value), 'keyboardDate')
+		let selectedDates = [...model.value]
+
+		if (isRange.value) {
+			selectedDates = [model.value[0], model.value[model.value.length - 1]]
+		}
+
+		return selectedDates.map((selection) => {
+			return adapter.format(adapter.date(selection), 'keyboardDate')
 		})
 	})
 
