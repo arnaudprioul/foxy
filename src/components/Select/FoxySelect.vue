@@ -140,14 +140,10 @@
           <template v-if="hasChips">
             <slot name="chip" v-bind="{ item, index, props: chipSlotProps(item) }">
               <foxy-chip
+		              ref="foxyChipsRef"
                   key="chip"
-                  :closable="closableChips"
-                  :disabled="item.props.disabled"
-                  :model-value="true"
-                  size="small"
-                  @keydown="handleChipKeydown($event, item)"
-                  @mousedown="handleChipMousedown($event)"
-                  @click:close="handleChipClose($event, item)">
+                  v-bind="chipSlotProps(item)"
+              >
                 <template #default>
                   <slot name="selection">
                     {{ item.title }}
@@ -243,7 +239,7 @@
 
   import { IListItem, ISelectProps } from '@foxy/interfaces'
 
-  import { TFoxyList, TFoxyMenu, TFoxyTextField, TFoxyVirtualScroll } from '@foxy/types'
+  import { TFoxyChip, TFoxyList, TFoxyMenu, TFoxyTextField, TFoxyVirtualScroll } from '@foxy/types'
 
   import { deepEqual, forwardRefs, matchesSelector, noop, wrapInArray } from '@foxy/utils'
 
@@ -285,6 +281,7 @@
   const foxyMenuRef = ref<TFoxyMenu>()
   const foxyVirtualScrollRef = ref<TFoxyVirtualScroll>()
   const foxyListRef = ref<TFoxyList>()
+  const foxyChipsRef = ref<TFoxyChip>()
 
   const { hasSlot } = useSlots()
 
@@ -614,13 +611,26 @@
     e.preventDefault()
   }
 
+	// CHIPS
+
+  const hasChips = computed(() => {
+	  return props.chips || hasSlot('chip')
+  })
+
   const chipSlotProps = (item: IListItem) => {
     return {
-      ...props.chipProps,
+	    closable: props.closableChips,
+	    disabled: item.props.disabled,
+	    bgColor: 'rgba(168, 168, 168, 1)',
+	    color: 'rgb(255, 255, 255)',
+	    border: true,
+	    rounded: true,
       'onClick:close': (e: Event) => handleChipClose(e, item),
       onKeydown: (e: KeyboardEvent) => handleChipKeydown(e, item),
       onMousedown: (e: MouseEvent) => handleChipMousedown(e),
-      modelValue: true
+      modelValue: true,
+	    size: 'small',
+      ...props.chipProps,
     }
   }
 
@@ -694,9 +704,6 @@
     }
   })
 
-  const hasChips = computed(() => {
-    return props.chips || hasSlot('chip')
-  })
   const hasList = computed(() => {
     return !props.hideNoData || displayItems.value.length || hasSlot('prepend-item') || hasSlot('append-item') || hasSlot('no-data')
   })
@@ -755,9 +762,7 @@
     .foxy-field__suffix,
     .foxy-field__input {
       cursor: pointer;
-    }
 
-    .foxy-field__input {
       > input {
         opacity: 0;
         flex: 0 0;
@@ -770,6 +775,14 @@
         caret-color: transparent;
         font-size: 16px;
       }
+
+	    > #{$this}__selection,
+	    > #{$this}__selection-text {
+		    + input {
+			    position: static;
+			    flex: 1 1;
+		    }
+	    }
     }
 
     &.foxy-field--dirty {

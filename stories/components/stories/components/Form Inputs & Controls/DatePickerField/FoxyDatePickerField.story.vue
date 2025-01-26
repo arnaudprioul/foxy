@@ -18,7 +18,8 @@
       </template>
 
       <template #controls>
-
+	      <hst-checkbox v-model="state.range" title="Range"/>
+	      <hst-checkbox v-model="state.multiple" title="Multiple"/>
       </template>
     </Variant>
   </Story>

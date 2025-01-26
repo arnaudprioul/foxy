@@ -1,7 +1,7 @@
 import {
     IAdjacentInnerProps,
     IAdjacentProps,
-    IBorderProps,
+    IBorderProps, IChipProps,
     IColorProps,
     ICommonsComponentProps,
     IDensityProps,
@@ -20,8 +20,11 @@ export interface IDatePickerFieldProps extends ICommonsComponentProps, IColorPro
     menu?: boolean,
     menuProps?: IMenuProps,
     range?: boolean
+    multiple?: boolean
     openOnClear?: boolean
     closeText?: string
     openText?: string
     closeOnSelect?: boolean
+    chipProps?: IChipProps
+    closableChips?: boolean
 }
