@@ -5,12 +5,21 @@
 			:style="datePickerStyles"
 			v-bind="{...pickerProps}"
 	>
-		<template v-if="hasSlot('title')" #title>
+		<template
+				v-if="hasSlot('title')"
+				#title
+		>
 			<slot name="title"/>
 		</template>
 
-		<template v-if="hasSlot('header')" #header>
-			<slot name="header" v-bind="headerProps">
+		<template
+				v-if="hasSlot('header')"
+				#header
+		>
+			<slot
+					name="header"
+					v-bind="headerProps"
+			>
 				<foxy-date-picker-header
 						key="header"
 						ref="foxyDatePickerHeaderRef"
@@ -34,8 +43,8 @@
 			<foxy-fade>
 				<template v-if="viewModeIsMonths">
 					<foxy-date-picker-months
-							ref="foxyDatePickerMonthsRef"
 							key="date-picker-months"
+							ref="foxyDatePickerMonthsRef"
 							v-model:month="month"
 							:max="maxDate"
 							:min="minDate"
@@ -47,8 +56,8 @@
 
 				<template v-else-if="viewModeIsYears">
 					<foxy-date-picker-years
-							ref="foxyDatePickerYearsRef"
 							key="date-picker-years"
+							ref="foxyDatePickerYearsRef"
 							v-model:year="year"
 							:max="maxDate"
 							:min="minDate"
@@ -59,8 +68,8 @@
 
 				<template v-else>
 					<foxy-date-picker-month
-							ref="foxyDatePickerMonthRef"
 							key="date-picker-month"
+							ref="foxyDatePickerMonthRef"
 							v-model:date="model"
 							v-model:month="month"
 							v-model:year="year"
@@ -74,16 +83,23 @@
 			</foxy-fade>
 		</slot>
 
-		<template v-if="hasSlot('actions')" #actions>
+		<template
+				v-if="hasSlot('actions')"
+				#actions
+		>
 			<slot name="actions"/>
 		</template>
 	</foxy-picker>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import {
 		FoxyDatePickerControls,
-		FoxyDatePickerHeader, FoxyDatePickerMonth,
+		FoxyDatePickerHeader,
+		FoxyDatePickerMonth,
 		FoxyDatePickerMonths,
 		FoxyDatePickerYears,
 		FoxyFade,
@@ -109,12 +125,12 @@
 
 	import { wrapInArray } from "@foxy/utils"
 
-	import { computed, ref, shallowRef, StyleValue, useAttrs, watch } from "vue"
+	import { computed, ref, shallowRef, StyleValue, watch } from "vue"
 
 	const props = withDefaults(defineProps<IDatePickerProps>(), {
 		weeksInMonth: CALENDAR_STRATEGY.STATIC,
-		title: 'Select date',
-		header: 'Enter date'
+		title: 'foxy.datePicker.title',
+		header: 'foxy.datePicker.header'
 	})
 
 	const emits = defineEmits(['update:modelValue', 'update:month', 'update:year', 'update:viewMode'])
@@ -195,13 +211,13 @@
 	})
 
 	const disabledControlers = computed(() => {
-		if (props.disabled) return props.disabled
+		if (props.disabled) return {disabled: props.disabled}
 
 		const targets = {
 			disabledMonth: props.disabledMonth,
 			disabledYear: props.disabledYear,
 			disabledNext: props.disabledNext,
-			disabledPrev: props.disabledPrev,
+			disabledPrev: props.disabledPrev
 		}
 
 		if (viewModeIsMonth.value) {
@@ -224,7 +240,7 @@
 			if (maxDate.value) {
 				const date = adapter.addDays(adapter.endOfMonth(_date), 1)
 
-				if(adapter.isAfter(date, maxDate.value)) {
+				if (adapter.isAfter(date, maxDate.value)) {
 					targets.disabledNext = true
 				}
 			}
@@ -355,7 +371,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-date-picker {
 		$this: &;
 
