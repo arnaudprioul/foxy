@@ -22,7 +22,16 @@
 		</template>
 
 		<slot name="default">
-
+			<template v-if="!hideCanvas">
+				<foxy-color-picker-canvas
+						key="canvas"
+						ref="foxyColorPickerCanvasRef"
+						:color-hsv="currentColor"
+						:height="canvasHeight"
+						v-bind="colorPickerCanvasProps"
+						@update:color-hsv="updateColor"
+				/>
+			</template>
 		</slot>
 
 		<template
@@ -120,9 +129,13 @@
 	}
 
 	const foxyPickerRef = ref<TFoxyPicker>()
+	const foxyColorPickerCanvasRef = ref<TFoxyColorPickerCanvas>()
 
 	const pickerProps = computed(() => {
 		return foxyPickerRef.value?.filterProps(props)
+	})
+	const colorPickerCanvasProps = computed(() => {
+		return foxyColorPickerCanvasRef.value?.filterProps(props, ['class', 'style', 'id', 'height'])
 	})
 
 	onBeforeMount(() => {
@@ -134,7 +147,7 @@
 	const colorPickerStyles = computed(() => {
 		return [
 			{
-				'--foxy-color-picker-color-hsv': HSVtoCSS({ ...(currentColor.value ?? COLOR_NULL), a: 1 }),
+				'--foxy-color-picker-color-hsv': HSVtoCSS({...(currentColor.value ?? COLOR_NULL), a: 1})
 			},
 			props.style
 		] as StyleValue

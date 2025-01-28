@@ -1,18 +1,19 @@
 import {
     IBorderProps,
+    IColorPickerCanvasProps,
     IColorProps,
     ICommonsComponentProps,
-    IElevationProps, IMarginProps, IPaddingProps,
+    IElevationProps,
+    IMarginProps,
+    IPaddingProps,
     IPickerProps,
     IRoundedProps
 } from "@foxy/interfaces"
 
-import { TColorType, TColorModes } from "@foxy/types"
+import { TColorModes, TColorType } from "@foxy/types"
 
-export interface IColorPickerProps extends ICommonsComponentProps, IColorProps, IBorderProps, IRoundedProps, IElevationProps, IPaddingProps, IMarginProps, IPickerProps {
+export interface IColorPickerProps extends ICommonsComponentProps, IBorderProps, IRoundedProps, IElevationProps, IPaddingProps, IMarginProps, IPickerProps, IColorProps, IColorPickerCanvasProps {
     canvasHeight?: string | number
-    disabled?: boolean
-    dotSize?: string | number
     hideCanvas?: boolean
     hideSliders?: boolean
     hideInputs?: boolean
