@@ -1,6 +1,9 @@
 import {
     IBorderProps,
     IColorPickerCanvasProps,
+    IColorPickerEditProps,
+    IColorPickerPreviewProps,
+    IColorPickerSwatchesProps,
     IColorProps,
     ICommonsComponentProps,
     IElevationProps,
@@ -10,17 +13,26 @@ import {
     IRoundedProps
 } from "@foxy/interfaces"
 
-import { TColorModes, TColorType } from "@foxy/types"
+import { THSV } from "@foxy/types"
 
-export interface IColorPickerProps extends ICommonsComponentProps, IBorderProps, IRoundedProps, IElevationProps, IPaddingProps, IMarginProps, IPickerProps, IColorProps, IColorPickerCanvasProps {
+export interface IColorPickerProps extends ICommonsComponentProps, IBorderProps, IRoundedProps, IElevationProps, IPaddingProps, IMarginProps, IPickerProps, IColorProps, IColorPickerCanvasProps, IColorPickerPreviewProps, IColorPickerEditProps, IColorPickerSwatchesProps {
     canvasHeight?: string | number
     hideCanvas?: boolean
     hideSliders?: boolean
     hideInputs?: boolean
-    mode?: TColorModes
-    modes: Array<TColorModes>
     showSwatches?: boolean
-    swatches?: Array<Array<TColorType>>
     swatchesMaxHeight?: string | number
     modelValue?: Record<string, unknown> | string | undefined | null
+}
+
+export interface IColorPickerMode {
+    inputProps: Record<string, unknown>
+    inputs: Array<{
+        [key: string]: any
+        label: string
+        getValue: (color: any) => number | string
+        getColor: (color: any, v: string) => any
+    }>
+    from: (color: any) => THSV
+    to: (color: THSV) => any
 }

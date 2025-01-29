@@ -2,8 +2,8 @@ import { ICommonsComponentProps, IDimensionProps } from "@foxy/interfaces"
 
 import { THSV } from "@foxy/types"
 
-export interface IColorPickerCanvasProps extends ICommonsComponentProps, IDimensionProps {
+export interface IColorPickerPreviewProps extends ICommonsComponentProps, IDimensionProps {
     colorHsv?: THSV | null
     disabled?: boolean
-    dotSize?: string | number
+    hideAlpha?: boolean
 }

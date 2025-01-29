@@ -1,0 +1,5 @@
+export { default as FoxyColorPicker } from './FoxyColorPicker.vue'
+export { default as FoxyColorPickerCanvas } from './FoxyColorPickerCanvas.vue'
+export { default as FoxyColorPickerPreview } from './FoxyColorPickerPreview.vue'
+export { default as FoxyColorPickerEdit } from './FoxyColorPickerEdit.vue'
+export { default as FoxyColorPickerSwatches } from './FoxyColorPickerSwatches.vue'

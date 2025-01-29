@@ -31,6 +31,10 @@ export * from './Chip/chip.type'
 export * from './Chip/chip-group.type'
 
 export * from './ColorPicker/color-picker.type'
+export * from './ColorPicker/color-picker-canvas.type'
+export * from './ColorPicker/color-picker-preview.type'
+export * from './ColorPicker/color-picker-edit.type'
+export * from './ColorPicker/color-picker-swatches.type'
 
 export * from './Commons/adjacent.type'
 export * from './Commons/align.type'

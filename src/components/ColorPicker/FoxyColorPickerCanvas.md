@@ -1,0 +1,5 @@
+# FoxyColorPickerCanvas
+
+## Usage
+
+    <FoxyColorPickerCanvas />

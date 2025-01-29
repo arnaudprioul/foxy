@@ -22,6 +22,8 @@ export * from './Checkbox'
 
 export * from './Chip'
 
+export * from './ColorPicker'
+
 export * from './Counter'
 
 export * from './DataList'

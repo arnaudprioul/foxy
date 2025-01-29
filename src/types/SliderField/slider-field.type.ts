@@ -3,13 +3,13 @@ import { FoxySliderField } from '@foxy/components'
 export type TAlways = boolean | 'always'
 
 export type TSliderData = {
-  value: number
+    value: number
 }
 
 export type TTick = {
-  value: number
-  position: number
-  label?: string
+    value: number
+    position: number
+    label?: string
 }
 
-export type TSliderField = InstanceType<typeof FoxySliderField>
+export type TFoxySliderField = InstanceType<typeof FoxySliderField>
