@@ -25,7 +25,8 @@
     lang="ts"
     setup
 >
-  import { useProps, useResizeObserver } from "@foxy/composables"
+	import { useProps, useResizeObserver, useVModel } from "@foxy/composables"
+  import { COLOR_NULL } from "@foxy/consts"
 
   import { IColorPickerCanvasProps } from "@foxy/interfaces"
 
@@ -34,7 +35,9 @@
   import { computed, onMounted, ref, shallowRef, StyleValue, watch } from "vue"
 
   const props = withDefaults(defineProps<IColorPickerCanvasProps>(), {
-    height: 150
+	  colorHsv: COLOR_NULL,
+    height: 150,
+	  width: 300
   })
 
   const emits = defineEmits(['update:colorHsv'])
@@ -149,14 +152,19 @@
     ctx.fillRect(0, 0, canvas.width, canvas.height)
   }
 
-  watch(() => props.colorHsv?.h, updateCanvas, { immediate: true })
+  watch(() => props.colorHsv?.h, () => {
+		updateCanvas()
+  }, { immediate: true })
+
   watch(() => [canvasWidth.value, canvasHeight.value], (newVal, oldVal) => {
     updateCanvas()
+
     _dotPosition.value = {
       x: dotPosition.value.x * newVal[0] / oldVal[0],
       y: dotPosition.value.y * newVal[1] / oldVal[1]
     }
   }, { flush: 'post' })
+
   watch(() => props.colorHsv, () => {
     if (isInteracting.value) {
       isInteracting.value = false
@@ -199,5 +207,34 @@
     lang="scss"
     scoped
 >
+	.foxy-color-picker-canvas {
+		$this: &;
 
+		display: flex;
+		position: relative;
+		overflow: hidden;
+		contain: content;
+		touch-action: none;
+
+		&__dot {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 15px;
+			height: 15px;
+			background: transparent;
+			border-radius: 50%;
+			box-shadow: 0 0 0 1.5px #fff,inset 0 0 1px 1.5px #0000004d;
+
+			&--disabled {
+				box-shadow: 0 0 0 1.5px #ffffffb3,inset 0 0 1px 1.5px #0000004d
+			}
+		}
+
+		&:hover {
+			#{$this}__dot {
+				will-change: transform;
+			}
+		}
+	}
 </style>

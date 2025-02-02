@@ -89,7 +89,13 @@
     lang="ts"
     setup
 >
-  import { FoxyColorPickerCanvas, FoxyColorPickerEdit, FoxyColorPickerPreview, FoxyPicker } from "@foxy/components"
+	import {
+		FoxyColorPickerCanvas,
+		FoxyColorPickerEdit,
+		FoxyColorPickerPreview,
+		FoxyColorPickerSwatches,
+		FoxyPicker
+	} from "@foxy/components"
 
   import { useLocale, useProps, useRtl, useSlots, useVModel } from "@foxy/composables"
 
@@ -116,6 +122,7 @@
     canvasHeight: 150,
     swatchesMaxHeight: 150,
     dotSize: 10,
+	  modelValue: COLOR_NULL,
     mode: COLOR_MODES_NAMES.RGBA,
     modes: [COLOR_MODES_NAMES.RGB, COLOR_MODES_NAMES.RGBA, COLOR_MODES_NAMES.HSL, COLOR_MODES_NAMES.HSLA, COLOR_MODES_NAMES.HEX, COLOR_MODES_NAMES.HEXA]
   })
@@ -190,16 +197,16 @@
     return foxyPickerRef.value?.filterProps(props)
   })
   const colorPickerCanvasProps = computed(() => {
-    return foxyColorPickerCanvasRef.value?.filterProps(props, ['class', 'style', 'id', 'height'])
+    return foxyColorPickerCanvasRef.value?.filterProps(props, ['class', 'style', 'id', 'height', 'colorHsv'])
   })
   const colorPickerPreviewProps = computed(() => {
-    return foxyColorPickerPreviewRef.value?.filterProps(props)
+    return foxyColorPickerPreviewRef.value?.filterProps(props, ['class', 'style', 'id', 'colorHsv'])
   })
   const colorPickerEditProps = computed(() => {
-    return foxyColorPickerEditRef.value?.filterProps(props)
+    return foxyColorPickerEditRef.value?.filterProps(props, ['class', 'style', 'id', 'colorHsv'])
   })
   const colorPickerSwatchesProps = computed(() => {
-    return foxyColorPickerSwatchesRef.value?.filterProps(props, ['class', 'style', 'id', 'maxHeight'])
+    return foxyColorPickerSwatchesRef.value?.filterProps(props, ['class', 'style', 'id', 'maxHeight', 'colorHsv'])
   })
 
   onBeforeMount(() => {
@@ -211,7 +218,7 @@
   const colorPickerStyles = computed(() => {
     return [
       {
-        '--foxy-color-picker-color-hsv': HSVtoCSS({ ...(currentColor.value ?? COLOR_NULL), a: 1 })
+        '--foxy-color-picker-color-hsv': HSVtoCSS({ ...currentColor.value, a: 1 })
       },
       props.style
     ] as StyleValue
@@ -237,5 +244,14 @@
     lang="scss"
     scoped
 >
+	.foxy-color-picker {
+		align-self: flex-start;
+		contain: content;
 
+		&__controls {
+			display: flex;
+			flex-direction: column;
+			padding: 16px;
+		}
+	}
 </style>

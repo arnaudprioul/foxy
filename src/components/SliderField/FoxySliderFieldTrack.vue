@@ -78,10 +78,10 @@
     return props.disabled ?? disabled.value
   })
   const color = computed(() => {
-    return error || isDisabled.value ? undefined : sliderColor.value ?? props.color
+    return error.value || isDisabled.value ? undefined : sliderColor.value ? sliderColor.value : props.color
   })
   const bgColor = computed(() => {
-    return error || isDisabled.value ? undefined : sliderBgColor.value ?? props.bgColor
+    return error.value || isDisabled.value ? undefined : sliderBgColor.value ? sliderBgColor.value : props.bgColor
   })
   const size = computed(() => {
     if (typeof props?.size === 'number') {

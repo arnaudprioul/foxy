@@ -6,5 +6,5 @@ export interface IColorPickerEditProps extends ICommonsComponentProps {
     colorHsv?: THSV | null
     disabled?: boolean
     mode?: TColorModes
-    modes: Array<TColorModes>
+    modes?: Array<TColorModes>
 }
