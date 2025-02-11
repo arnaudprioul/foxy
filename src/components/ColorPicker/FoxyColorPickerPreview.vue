@@ -166,6 +166,10 @@
 		}
 
 		&__alpha {
+			:deep(.foxy-slider-field-track) {
+				background: none;
+			}
+
 			:deep(.foxy-slider-field-track__background) {
 				background-color: transparent;
 				background-image: linear-gradient(to right, transparent, var(--foxy-color-picker-color-hsv));

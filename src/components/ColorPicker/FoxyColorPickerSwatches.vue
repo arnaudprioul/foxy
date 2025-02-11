@@ -10,9 +10,7 @@
               class="foxy-color-picker-swatches__color"
               @click="handleUpdateColor(color)"
           >
-            <div
-                :style="{ 'background-color': background(color)}"
-            >
+            <div :style="{ 'background-color': background(color)}">
               <template v-if="colorHsv && deepEqual(colorHsv, hsva)">
                 <foxy-icon
                     :color="getContrast(color, '#FFFFFF') > 2 ? 'white' : 'black'"

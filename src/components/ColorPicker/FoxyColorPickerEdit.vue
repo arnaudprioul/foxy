@@ -132,13 +132,14 @@
 			#{$this}__input {
 				border-radius: 4px;
 				margin-bottom: 8px;
+				border: 1px solid rgba(163, 163, 163);
 				min-width: 0;
 				outline: none;
 				text-align: center;
 				width: 100%;
 				height: 32px;
-				background: rgba(163, 163, 163, .2);
-				color: rgba(255, 255, 255);
+				background: rgba(255, 255, 255);
+				color: rgba(0, 0, 0, .5);
 			}
 
 			#{$this}__label {

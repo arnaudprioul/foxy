@@ -37,7 +37,7 @@
   const props = withDefaults(defineProps<IColorPickerCanvasProps>(), {
 	  colorHsv: COLOR_NULL,
     height: 150,
-	  width: 300
+	  width: '100%'
   })
 
   const emits = defineEmits(['update:colorHsv'])
@@ -46,8 +46,23 @@
 
   const isInteracting = shallowRef(false)
   const canvasRef = ref<HTMLCanvasElement | null>()
-  const canvasWidth = shallowRef(parseFloat(props.width as string))
   const canvasHeight = shallowRef(parseFloat(props.height as string))
+
+	const _canvasWidth = ref(0)
+	const canvasWidth = computed({
+		get:() => _canvasWidth.value,
+		set: (value: number | string) => {
+			if (value as string === '100%') {
+				_canvasWidth.value = parseFloat(canvasRef.value?.parentElement?.clientWidth)
+			} else {
+				_canvasWidth.value = parseFloat(value as string)
+			}
+		}
+	})
+
+	watch(() => props.width, () => {
+		canvasWidth.value = props.width
+	})
 
   const _dotPosition = ref({ x: 0, y: 0 })
   const dotPosition = computed({
@@ -179,6 +194,7 @@
 
   onMounted(() => {
     updateCanvas()
+	  canvasWidth.value = props.width
   })
 
   // CLASS & STYLES
