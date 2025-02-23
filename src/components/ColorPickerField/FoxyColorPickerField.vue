@@ -31,12 +31,13 @@
 		</template>
 
 		<template
-				v-if="hasSlot('prependInner')"
 				#prependInner
 		>
-			<foxy-responsive min-width="24px">
-				<div :style="{ background: HSVtoCSS(selectedValue ?? COLOR_NULL) }"/>
-			</foxy-responsive>
+			<foxy-sheet
+					:bg-color="selectedValue ?? HSVtoCSS(COLOR_NULL)"
+					height="100%"
+					min-width="24px"
+			/>
 
 			<slot name="prependInner"/>
 		</template>
@@ -102,7 +103,10 @@
 			<slot name="suffix"/>
 		</template>
 
-		<template v-if="hasSlot('appendInner')" #appendInner>
+		<template
+				v-if="hasSlot('appendInner')"
+				#appendInner
+		>
 			<slot name="appendInner"/>
 		</template>
 
@@ -126,13 +130,7 @@
 		lang="ts"
 		setup
 >
-	import {
-		FoxyColorPicker,
-		FoxyMenu,
-		FoxyResponsive,
-		FoxyTextField,
-		FoxyTranslateScale
-	} from "@foxy/components"
+	import { FoxyColorPicker, FoxyMenu, FoxySheet, FoxyTextField, FoxyTranslateScale } from "@foxy/components"
 
 	import { useLocale, useProps, useSlots, useTextColor, useVModel } from "@foxy/composables"
 
@@ -175,7 +173,7 @@
 	const model = useVModel(
 			props,
 			'modelValue',
-			COLOR_NULL,
+			COLOR_NULL
 	)
 
 	const handleSelectColor = (color: TColor) => {
@@ -193,10 +191,10 @@
 	})
 
 	const hasSelectedValue = computed(() => {
-		return !isEmpty(selectedValue.value)
+		return selectedValue.value !== ''
 	})
 
-	const { textColorStyles } = useTextColor(toRef(props, 'color'))
+	const {textColorStyles} = useTextColor(toRef(props, 'color'))
 
 	const menuState = useVModel(props, 'menu')
 	const menu = computed<boolean>({

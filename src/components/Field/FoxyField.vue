@@ -345,6 +345,8 @@
 
 		--foxy-field__input---padding-top: calc(var(--foxy-field---padding-top, 8px) + calc(var(--foxy-input---padding-top, 16px) + var(--foxy-input---density, 0px)));
 		--foxy-field__input---padding-bottom: var(--foxy-field---padding-bottom, 4px);
+		--foxy-field__input---padding-start: var(--foxy-field---padding-bottom, 16px);
+		--foxy-field__input---padding-end: var(--foxy-field---padding-bottom, 16px);
 
 		.foxy-chip {
 			--foxy-chip---height: 24px;
@@ -360,7 +362,7 @@
 			opacity: 0.7;
 			min-height: max(calc(var(--foxy-input__control---height, 56px) + var(--foxy-input---density, 0px)), 1.5rem + var(--foxy-field__input---padding-top) + var(--foxy-field__input---padding-bottom));
 			min-width: 0;
-			padding-inline: var(--foxy-field---padding-start) var(--foxy-field---padding-end);
+			padding-inline: var(--foxy-field__input---padding-start) var(--foxy-field__input---padding-end);
 			padding-top: var(--foxy-field__input---padding-top);
 			padding-bottom: var(--foxy-field__input---padding-bottom);
 			position: relative;
@@ -403,11 +405,11 @@
 		}
 
 		&__prefix {
-			padding-inline-start: var(--foxy-field---padding-start);
+			padding-inline-start: var(--foxy-field---padding-start, 16px);
 		}
 
 		&__suffix {
-			padding-inline-end: var(--foxy-field---padding-end);
+			padding-inline-end: var(--foxy-field---padding-end, 16px);
 		}
 
 		&__field {
@@ -420,7 +422,7 @@
 
 		&__prepend-inner {
 			grid-area: prepend-inner;
-			padding-inline-end: var(--foxy-field-padding-after);
+			padding-inline-end: var(--foxy-field---padding-end);
 		}
 
 		&__clearable {
@@ -429,7 +431,7 @@
 
 		&__append-inner {
 			grid-area: append-inner;
-			padding-inline-start: var(--foxy-field-padding-after);
+			padding-inline-start: var(--foxy-field---padding-start);
 		}
 
 		&__append-inner,
@@ -437,7 +439,7 @@
 		&__prepend-inner {
 			display: flex;
 			align-items: flex-start;
-			padding-top: var(--foxy-input-padding-top, 8px);
+			padding-top: var(--foxy-input---padding-top, 8px);
 
 			> .foxy-icon {
 				opacity: 0.7;
@@ -456,9 +458,9 @@
 		&__label {
 			contain: layout paint;
 			display: block;
-			margin-inline-start: var(--foxy-field---padding-start, 0);
-			margin-inline-end: var(--foxy-field---padding-end, 0);
-			max-width: calc(100% - var(--foxy-field---padding-start, 0) - var(--foxy-field---padding-end, 0));
+			margin-inline-start: var(--foxy-field__input---padding-start, 0);
+			margin-inline-end: var(--foxy-field__input---padding-end, 0);
+			max-width: calc(100% - var(--foxy-field__input---padding-start, 0) - var(--foxy-field__input---padding-end, 0));
 			pointer-events: none;
 			position: absolute;
 			top: calc(var(--foxy-input---padding-top, 16px) + var(--foxy-input---density) - 8px);
@@ -475,11 +477,11 @@
 		}
 
 		&--prefixed {
-			--foxy-field---padding-start: 6px;
+			--foxy-field---padding-end: 6px;
 		}
 
 		&--suffixed {
-			--foxy-field---padding-end: 0;
+			--foxy-field---padding-start: 6px;
 		}
 
 		&--center-affix {
@@ -527,13 +529,11 @@
 		}
 
 		&--prepended {
-			padding-inline-start: 12px;
-			--foxy-field---padding-start: 6px;
+			--foxy-field---padding-end: 6px;
 		}
 
 		&--appended {
-			padding-inline-end: 12px;
-			--foxy-field---padding-end: 6px;
+			--foxy-field---padding-start: 6px;
 		}
 
 		&--rounded {
