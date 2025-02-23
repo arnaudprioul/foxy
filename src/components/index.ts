@@ -24,6 +24,8 @@ export * from './Chip'
 
 export * from './ColorPicker'
 
+export * from './ColorPickerField'
+
 export * from './Counter'
 
 export * from './DataList'

@@ -3,6 +3,7 @@
 			ref="foxyPickerRef"
 			:class="datePickerClasses"
 			:style="datePickerStyles"
+			:title="t(title)"
 			v-bind="{...pickerProps}"
 	>
 		<template
@@ -23,6 +24,7 @@
 				<foxy-date-picker-header
 						key="header"
 						ref="foxyDatePickerHeaderRef"
+						:header="t(header)"
 						v-bind="{ ...datePickerHeaderProps, ...headerProps }"
 						@click="!viewModeIsMonth ? handleClickDate : undefined"
 				/>
@@ -321,13 +323,13 @@
 	const foxyDatePickerYearsRef = ref<TFoxyDatePickerYears>()
 
 	const pickerProps = computed(() => {
-		return foxyPickerRef.value?.filterProps(props)
+		return foxyPickerRef.value?.filterProps(props, ['class', 'style', 'title', 'id'])
 	})
 	const datePickerControlsProps = computed(() => {
 		return foxyDatePickerControlsRef.value?.filterProps(props, ['class', 'style', 'id', 'text', 'disabled'])
 	})
 	const datePickerHeaderProps = computed(() => {
-		return foxyDatePickerHeaderRef.value?.filterProps(props)
+		return foxyDatePickerHeaderRef.value?.filterProps(props, ['class', 'style', 'header', 'id'])
 	})
 	const datePickerMonthProps = computed(() => {
 		return foxyDatePickerMonthRef.value?.filterProps(props, ['class', 'style', 'id', 'date', 'min', 'max', 'year', 'month'])

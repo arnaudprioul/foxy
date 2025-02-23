@@ -1,47 +1,62 @@
 <template>
 	<div
-		:class="datePickerControlsClasses"
-		:style="datePickerControlsStyles"
-		>
-		<foxy-btn
-				class="foxy-date-picker-controls__month-btn"
-				:disabled="disableMonth"
-				:text="text"
-				rounded
-				@click="handleClickMonth"
-		/>
+			:class="datePickerControlsClasses"
+			:style="datePickerControlsStyles"
+	>
 
-		<foxy-btn
-				key="mode-btn"
-				class="foxy-date-picker-controls__mode-btn"
-				:disabled="disableYear"
-				:icon="modeIcon"
-				@click="handleClickYear"
-		/>
+		<foxy-btn-group>
+			<template #default>
+				<foxy-btn
+						:disabled="disableMonth"
+						:text="text"
+						class="foxy-date-picker-controls__month-btn"
+						rounded="0"
+						@click="handleClickMonth"
+				/>
 
-		<foxy-spacer key="mode-spacer" />
+				<foxy-btn
+						key="mode-btn"
+						:disabled="disableYear"
+						:icon="modeIcon"
+						class="foxy-date-picker-controls__mode-btn"
+						rounded="0"
+						@click="handleClickYear"
+				/>
+			</template>
+		</foxy-btn-group>
+
+		<foxy-spacer key="mode-spacer"/>
 
 		<div
 				key="month-buttons"
 				class="foxy-date-picker-controls__month"
 		>
-			<foxy-btn
-					:disabled="disablePrev"
-					:icon="prevIcon"
-					@click="handleClickPrev"
-			/>
+			<foxy-btn-group>
+				<template #default>
+					<foxy-btn
+							:disabled="disablePrev"
+							:icon="prevIcon"
+							:rounded="0"
+							@click="handleClickPrev"
+					/>
 
-			<foxy-btn
-					:disabled="disableNext"
-					:icon="nextIcon"
-					@click="handleClickNext"
-			/>
+					<foxy-btn
+							:disabled="disableNext"
+							:icon="nextIcon"
+							:rounded="0"
+							@click="handleClickNext"
+					/>
+				</template>
+			</foxy-btn-group>
 		</div>
 	</div>
 </template>
 
-<script setup lang="ts">
-	import { FoxyBtn, FoxySpacer } from "@foxy/components"
+<script
+		lang="ts"
+		setup
+>
+	import { FoxyBtn, FoxyBtnGroup, FoxySpacer } from "@foxy/components"
 
 	import { useProps } from "@foxy/composables"
 
@@ -58,7 +73,7 @@
 		viewMode: DATE_MODE.MONTH
 	})
 
-	const emits = defineEmits(['click:year', 'click:month', 'click:prev', 'click:next', 'click:text',])
+	const emits = defineEmits(['click:year', 'click:month', 'click:prev', 'click:next', 'click:text'])
 
 	const {filterProps} = useProps<IDatePickerControlsProps>(props)
 
@@ -109,7 +124,10 @@
 	})
 </script>
 
-<style scoped lang="scss">
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-date-picker-controls {
 		$this: &;
 
@@ -119,11 +137,11 @@
 		font-size: .875rem;
 		padding-top: 4px;
 		padding-bottom: 4px;
-		padding-inline-start:6px;
-		padding-inline-end:12px;
+		padding-inline-start: 6px;
+		padding-inline-end: 12px;
 
 
-		> :deep(.foxy-btn){
+		> :deep(.foxy-btn) {
 			&:first-child {
 				text-transform: none;
 				font-weight: 400;
@@ -132,12 +150,12 @@
 			}
 
 			&:last-child {
-				margin-inline-start:4px;
+				margin-inline-start: 4px;
 			}
 		}
 
 		&__date {
-			margin-inline-end:4px;
+			margin-inline-end: 4px;
 		}
 
 		&__month {

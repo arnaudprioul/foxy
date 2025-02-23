@@ -28,6 +28,7 @@
             ref="foxyColorPickerCanvasRef"
             :color-hsv="currentColor"
             :height="canvasHeight"
+            :width="canvasWidth"
             v-bind="{...colorPickerCanvasProps}"
             @update:color-hsv="handleUpdateColor"
         />
@@ -120,6 +121,7 @@
 
   const props = withDefaults(defineProps<IColorPickerProps>(), {
     canvasHeight: 150,
+	  canvasWidth: '100%',
     swatchesMaxHeight: 150,
     dotSize: 10,
 	  modelValue: COLOR_NULL,

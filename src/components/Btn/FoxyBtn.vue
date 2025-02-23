@@ -308,7 +308,6 @@
 		position: relative;
 		text-decoration: none;
 		text-indent: 0.0892857143em;
-		text-transform: uppercase;
 		transition-property: box-shadow, transform, opacity, background;
 		transition-duration: 0.28s;
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -318,7 +317,7 @@
 		border-color: currentColor;
 		border-style: solid;
 		border-width: 0;
-		height: var(--foxy-btn---height, 36px);
+		min-height: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
 		cursor: pointer;
 
 		&--size-x-small {
@@ -354,6 +353,10 @@
 			font-size: 1.125rem;
 			min-width: 92px;
 			padding: 0 24px;
+		}
+
+		&--density-comfortable {
+			--foxy-btn---density: 8px;
 		}
 
 		&--density-default {
@@ -404,15 +407,15 @@
 			border-radius: 50%;
 			min-width: 0;
 			padding: 0;
+			width: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
+			height: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
 
 			&#{$this}--density-default {
-				width: calc(var(--foxy-btn---height) + 12px);
-				height: calc(var(--foxy-btn---height) + 12px);
+
 			}
 
 			&#{$this}--density-compact {
-				width: calc(var(--foxy-btn---height) + -8px);
-				height: calc(var(--foxy-btn---height) + -8px);
+
 			}
 		}
 

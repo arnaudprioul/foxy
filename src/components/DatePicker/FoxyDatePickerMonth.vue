@@ -51,6 +51,7 @@
 										:disabled="item.isDisabled"
 										:icon="true"
 										:ripple="false"
+										:density="DENSITY.COMFORTABLE"
 										:text="item.localized"
 										class="foxy-date-picker-month__day-btn"
 										@click="handleClick($event, item.date)"
@@ -71,7 +72,7 @@
 
 	import { useCalendar, useDate, useProps } from "@foxy/composables"
 
-	import { CALENDAR_STRATEGY } from "@foxy/enums"
+	import { CALENDAR_STRATEGY, DENSITY } from "@foxy/enums"
 
 	import { IDatePickerMonthProps } from "@foxy/interfaces"
 

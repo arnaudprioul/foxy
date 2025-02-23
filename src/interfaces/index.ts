@@ -35,6 +35,8 @@ export * from './ColorPicker/color-picker-preview.interface'
 export * from './ColorPicker/color-picker-edit.interface'
 export * from './ColorPicker/color-picker-swatches.interface'
 
+export * from './ColorPickerField/color-picker-field.interface'
+
 export * from './Commons/activator.interface'
 export * from './Commons/adjacent.interface'
 export * from './Commons/align.interface'

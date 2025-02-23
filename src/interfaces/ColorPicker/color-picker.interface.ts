@@ -17,6 +17,7 @@ import { THSV } from "@foxy/types"
 
 export interface IColorPickerProps extends ICommonsComponentProps, IBorderProps, IRoundedProps, IElevationProps, IPaddingProps, IMarginProps, IPickerProps, IColorProps, IColorPickerCanvasProps, IColorPickerPreviewProps, IColorPickerEditProps, IColorPickerSwatchesProps {
     canvasHeight?: string | number
+    canvasWidth?: string | number
     hideCanvas?: boolean
     hideSliders?: boolean
     hideInputs?: boolean

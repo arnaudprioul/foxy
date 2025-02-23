@@ -64,7 +64,7 @@
 
 	import { createRange } from "@foxy/utils"
 
-	import { ComponentPublicInstance, computed, nextTick, shallowRef, StyleValue } from "vue"
+	import { ComponentPublicInstance, computed, nextTick, ref, shallowRef, StyleValue } from "vue"
 
   const props = withDefaults(defineProps<IPaginationProps>(), {
 	  prevIcon: MDI_ICONS.CHEVRON_LEFT,
@@ -100,7 +100,9 @@
   const { width } = useDisplay()
   const maxButtons = shallowRef(-1)
 
-	const { resizeRef } = useResizeObserver((entries: ResizeObserverEntry[]) => {
+	const resizeRef = ref<HTMLElement | null>()
+
+	useResizeObserver(resizeRef, (entries: ResizeObserverEntry[]) => {
 		if (!entries.length) return
 
 		const { target, contentRect } = entries[0]

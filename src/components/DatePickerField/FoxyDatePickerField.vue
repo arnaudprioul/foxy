@@ -65,11 +65,9 @@
 					:close-on-content-click="false"
 					:disabled="menuDisabled"
 					:location="BLOCK.BOTTOM"
-					:max-height="310"
-					:max-width="200"
 					:open-on-click="false"
 					activator="parent"
-					content-class="foxy-select__content"
+					content-class="foxy-date-picker-field__content"
 					v-bind="{ ...menuProps }"
 					@afterLeave="handleAfterLeave"
 			>
@@ -196,7 +194,7 @@
 
 	import { TFoxyDatePicker, TFoxyMenu, TFoxyTextField } from "@foxy/types"
 
-	import { forwardRefs, matchesSelector, wrapInArray } from "@foxy/utils"
+	import { forwardRefs, isEmpty, matchesSelector, wrapInArray } from "@foxy/utils"
 
 	import { computed, inject, nextTick, ref, shallowRef, StyleValue, toRef, watch } from "vue"
 
@@ -278,6 +276,10 @@
 		return selectedDates.map((selection) => {
 			return adapter.format(adapter.date(selection), 'keyboardDate')
 		})
+	})
+
+	const hasSelectedValues = computed(() => {
+		return !isEmpty(selectedValues.value)
 	})
 
 	const isMultiple = computed(() => {
@@ -388,9 +390,11 @@
 		return props.closeOnSelect && !(props.multiple || props.range)
 	})
 
-	watch(isFocused, (val, oldVal) => {
-		if (val === oldVal) return
-
+	watch(selectedValues, () => {
+		isFocused.value = hasSelectedValues.value
+	}, {
+		immediate: true,
+		deep: true
 	})
 
 	// CLASS & STYLES
