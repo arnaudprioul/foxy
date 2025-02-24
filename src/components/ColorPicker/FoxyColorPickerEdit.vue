@@ -40,7 +40,6 @@
 	import { computed, StyleValue } from "vue"
 
 	const props = withDefaults(defineProps<IColorPickerEditProps>(), {
-		colorHsv: COLOR_NULL,
 		mode: COLOR_MODES_NAMES.RGBA,
 		modes: [COLOR_MODES_NAMES.RGB, COLOR_MODES_NAMES.RGBA, COLOR_MODES_NAMES.HSL, COLOR_MODES_NAMES.HSLA, COLOR_MODES_NAMES.HEX, COLOR_MODES_NAMES.HEXA]
 	})

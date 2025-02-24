@@ -26,7 +26,6 @@
 		setup
 >
 	import { useProps, useResizeObserver } from "@foxy/composables"
-	import { COLOR_NULL } from "@foxy/consts"
 
 	import { IColorPickerCanvasProps } from "@foxy/interfaces"
 
@@ -35,7 +34,6 @@
 	import { computed, onMounted, ref, shallowRef, StyleValue, watch } from "vue"
 
 	const props = withDefaults(defineProps<IColorPickerCanvasProps>(), {
-		colorHsv: COLOR_NULL,
 		height: 150,
 		width: '100%'
 	})
@@ -177,15 +175,15 @@
 	}, {immediate: true})
 
 	watch(() => [canvasWidth.value, canvasHeight.value], (newVal, oldVal) => {
-		if (newVal && oldVal) {
 			updateCanvas()
 
+		if (newVal[0] && oldVal[0] && newVal[1] && oldVal[1]) {
 			_dotPosition.value = {
 				x: dotPosition.value.x * newVal[0] / oldVal[0],
 				y: dotPosition.value.y * newVal[1] / oldVal[1]
 			}
 		}
-	}, {immediate: true, flush: 'post'})
+	}, {flush: 'post'})
 
 	watch(() => props.colorHsv, () => {
 		if (isInteracting.value) {
@@ -204,6 +202,11 @@
 
 		canvasHeight.value = props.height
 		canvasWidth.value = props.width
+
+		_dotPosition.value = props.colorHsv ? {
+			x: props.colorHsv.s * canvasWidth.value,
+			y: (1 - props.colorHsv.v) * canvasHeight.value
+		} : {x: 0, y: 0}
 	})
 
 	// CLASS & STYLES

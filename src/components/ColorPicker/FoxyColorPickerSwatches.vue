@@ -44,7 +44,6 @@
   import { computed, StyleValue } from "vue"
 
   const props = withDefaults(defineProps<IColorPickerSwatchesProps>(), {
-	  colorHsv: COLOR_NULL,
     maxHeight: 150
   })
 

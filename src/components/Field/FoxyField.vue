@@ -337,6 +337,7 @@
 		flex: 1 0;
 		grid-area: control;
 		position: relative;
+		padding-inline: var(--foxy-field---padding-start) var(--foxy-field---padding-end);
 
 		--foxy-field---padding-start: 16px;
 		--foxy-field---padding-end: 16px;
@@ -422,7 +423,6 @@
 
 		&__prepend-inner {
 			grid-area: prepend-inner;
-			padding-inline-end: var(--foxy-field---padding-end);
 		}
 
 		&__clearable {
@@ -431,7 +431,6 @@
 
 		&__append-inner {
 			grid-area: append-inner;
-			padding-inline-start: var(--foxy-field---padding-start);
 		}
 
 		&__append-inner,
@@ -440,6 +439,7 @@
 			display: flex;
 			align-items: flex-start;
 			padding-top: var(--foxy-input---padding-top, 8px);
+			padding-inline: var(--foxy-field---padding-start) var(--foxy-field---padding-end);
 
 			> .foxy-icon {
 				opacity: 0.7;
@@ -477,11 +477,11 @@
 		}
 
 		&--prefixed {
-			--foxy-field---padding-end: 6px;
+			--foxy-field---padding-start: 6px;
 		}
 
 		&--suffixed {
-			--foxy-field---padding-start: 6px;
+			--foxy-field---padding-end: 6px;
 		}
 
 		&--center-affix {
@@ -529,11 +529,11 @@
 		}
 
 		&--prepended {
-			--foxy-field---padding-end: 6px;
+			--foxy-field---padding-start: 6px;
 		}
 
 		&--appended {
-			--foxy-field---padding-start: 6px;
+			--foxy-field---padding-end: 6px;
 		}
 
 		&--rounded {

@@ -3,11 +3,11 @@
 			ref="foxyTextFieldRef"
 			v-model:focused="isFocused"
 			:aria-label="t(label)"
-			:class="selectClasses"
+			:class="colorPickerFieldClasses"
 			:counter-value="counterValue"
 			:dirty="isDirty"
 			:placeholder="placeholder"
-			:style="selectStyles"
+			:style="colorPickerFieldStyles"
 			:title="t(label)"
 			:validation-value="validationValue"
 			v-bind="{ ...textFieldProps }"
@@ -74,7 +74,7 @@
 					activator="parent"
 					content-class="foxy-color-picker-field__content"
 					v-bind="{ ...menuProps }"
-					@afterLeave="handleAfterLeave"
+					@after-leave="handleAfterLeave"
 			>
 
 				<template #default>
@@ -132,7 +132,7 @@
 >
 	import { FoxyColorPicker, FoxyMenu, FoxySheet, FoxyTextField, FoxyTranslateScale } from "@foxy/components"
 
-	import { useLocale, useProps, useSlots, useTextColor, useVModel } from "@foxy/composables"
+	import { useLocale, useProps, useSlots, useVModel } from "@foxy/composables"
 
 	import { COLOR_NULL, FOXY_FORM_KEY } from "@foxy/consts"
 
@@ -142,9 +142,9 @@
 
 	import { TColor, TFoxyColorPicker, TFoxyMenu, TFoxyTextField } from "@foxy/types"
 
-	import { forwardRefs, HSVtoCSS, isEmpty, matchesSelector } from "@foxy/utils"
+	import { forwardRefs, HexToHSV, HSVtoCSS, matchesSelector } from "@foxy/utils"
 
-	import { computed, inject, nextTick, ref, shallowRef, StyleValue, toRef, watch } from "vue"
+	import { computed, inject, nextTick, ref, shallowRef, StyleValue, watch } from "vue"
 
 	const props = withDefaults(defineProps<IColorPickerFieldProps>(), {
 		type: TEXT_FIELD_TYPE.TEXT,
@@ -191,10 +191,8 @@
 	})
 
 	const hasSelectedValue = computed(() => {
-		return selectedValue.value !== ''
+		return selectedValue.value !== null
 	})
-
-	const {textColorStyles} = useTextColor(toRef(props, 'color'))
 
 	const menuState = useVModel(props, 'menu')
 	const menu = computed<boolean>({
@@ -240,6 +238,10 @@
 		if (!foxyColorPickerRef.value?.$el.contains(e.relatedTarget as HTMLElement)) {
 			menu.value = false
 		}
+
+		if (hasSelectedValue.value) {
+			isFocused.value = true
+		}
 	}
 	const handleChange = (e: Event) => {
 		if (matchesSelector(foxyTextFieldRef.value, ':autofill') || matchesSelector(foxyTextFieldRef.value, ':-webkit-autofill')) {
@@ -280,16 +282,16 @@
 
 	// CLASS & STYLES
 
-	const selectStyles = computed(() => {
+	const colorPickerFieldStyles = computed(() => {
 		return [
 			props.style
 		] as StyleValue
 	})
-	const selectClasses = computed(() => {
+	const colorPickerFieldClasses = computed(() => {
 		return [
-			'foxy-date-picker-field',
+			'foxy-color-picker-field',
 			{
-				'foxy-date-picker-field--active-menu': menu.value
+				'foxy-color-picker-field--active-menu': menu.value
 			},
 			props.class
 		]
@@ -308,5 +310,9 @@
 		lang="scss"
 		scoped
 >
-
+.foxy-color-picker-field {
+	:deep(.foxy-field) {
+		--foxy-field---padding-start: 0;
+	}
+}
 </style>

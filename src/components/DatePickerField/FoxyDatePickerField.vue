@@ -3,11 +3,11 @@
 			ref="foxyTextFieldRef"
 			v-model:focused="isFocused"
 			:aria-label="t(label)"
-			:class="selectClasses"
+			:class="datePickerFieldClasses"
 			:counter-value="counterValue"
 			:dirty="isDirty"
 			:placeholder="placeholder"
-			:style="selectStyles"
+			:style="datePickerFieldStyles"
 			:title="t(label)"
 			:validation-value="validationValue"
 			v-bind="{ ...textFieldProps }"
@@ -69,7 +69,7 @@
 					activator="parent"
 					content-class="foxy-date-picker-field__content"
 					v-bind="{ ...menuProps }"
-					@afterLeave="handleAfterLeave"
+					@after-leave="handleAfterLeave"
 			>
 
 				<template #default>
@@ -321,6 +321,10 @@
 		if (!foxyDatePickerRef.value?.$el.contains(e.relatedTarget as HTMLElement)) {
 			menu.value = false
 		}
+
+		if (hasSelectedValues.value) {
+			isFocused.value = true
+		}
 	}
 	const handleChange = (e: Event) => {
 		if (matchesSelector(foxyTextFieldRef.value, ':autofill') || matchesSelector(foxyTextFieldRef.value, ':-webkit-autofill')) {
@@ -399,12 +403,12 @@
 
 	// CLASS & STYLES
 
-	const selectStyles = computed(() => {
+	const datePickerFieldStyles = computed(() => {
 		return [
 			props.style
 		] as StyleValue
 	})
-	const selectClasses = computed(() => {
+	const datePickerFieldClasses = computed(() => {
 		return [
 			'foxy-date-picker-field',
 			`foxy-date-picker-field--${props.range ? 'range' : 'single'}`,

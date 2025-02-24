@@ -79,7 +79,6 @@
 	import { computed, onUnmounted, StyleValue } from "vue"
 
 	const props = withDefaults(defineProps<IColorPickerPreviewProps>(), {
-		colorHsv: COLOR_NULL
 	})
 
 	const emits = defineEmits(['update:colorHsv'])

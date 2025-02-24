@@ -55,7 +55,7 @@
           activator="parent"
           content-class="foxy-select__content"
           v-bind="{ ...menuProps }"
-          @afterLeave="handleAfterLeave">
+          @after-leave="handleAfterLeave">
 
         <template #default>
           <foxy-list
