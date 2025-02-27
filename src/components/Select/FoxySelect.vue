@@ -17,28 +17,47 @@
       @keydown="handleKeydown"
       @update:model-value="handleModelUpdate"
       @click:clear="handleClear"
-      @mousedown:control="handleMousedownControl">
-    <template v-if="hasSlot('prepend')" #prepend>
+      @mousedown:control="handleMousedownControl"
+  >
+    <template
+        v-if="hasSlot('prepend')"
+        #prepend
+    >
       <slot name="prepend"/>
     </template>
 
-    <template v-if="hasSlot('loader')" #loader>
+    <template
+        v-if="hasSlot('loader')"
+        #loader
+    >
       <slot name="loader"/>
     </template>
 
-    <template v-if="hasSlot('prependInner')" #prependInner>
+    <template
+        v-if="hasSlot('prependInner')"
+        #prependInner
+    >
       <slot name="prependInner"/>
     </template>
 
-    <template v-if="hasSlot('floatingLabel')" #floatingLabel>
+    <template
+        v-if="hasSlot('floatingLabel')"
+        #floatingLabel
+    >
       <slot name="floatingLabel"/>
     </template>
 
-    <template v-if="hasSlot('label')" #label>
+    <template
+        v-if="hasSlot('label')"
+        #label
+    >
       <slot name="label"/>
     </template>
 
-    <template v-if="hasSlot('prefix')" #prefix>
+    <template
+        v-if="hasSlot('prefix')"
+        #prefix
+    >
       <slot name="prefix"/>
     </template>
 
@@ -55,7 +74,8 @@
           activator="parent"
           content-class="foxy-select__content"
           v-bind="{ ...menuProps }"
-          @after-leave="handleAfterLeave">
+          @after-leave="handleAfterLeave"
+      >
 
         <template #default>
           <foxy-list
@@ -70,7 +90,8 @@
               @focusout="handleFocusout"
               @keydown="handleListKeydown"
               @mousedown="handleMousedown"
-              @scroll-passive="handleListScroll">
+              @scroll-passive="handleListScroll"
+          >
 
             <template #default>
               <slot name="items.prepend"/>
@@ -85,24 +106,37 @@
                 <foxy-virtual-scroll
                     ref="foxyVirtualScrollRef"
                     :items="displayItems"
-                    renderless>
+                    renderless
+                >
                   <template #item.renderless="{item, index, itemRef}">
-                    <slot name="item"
-                          v-bind="{item, index, props: menuListItemProps(item, itemRef, index)}">
+                    <slot
+                        name="item"
+                        v-bind="{item, index, props: menuListItemProps(item, itemRef, index)}"
+                    >
                       <foxy-list-item
                           :key="index"
-                          v-bind="menuListItemProps(item, itemRef, index)">
-                        <template v-if="showCheckbox || item.props.prependAvatar || item.props.prependIcon"
-                                  #prepend="{isSelected}">
+                          v-bind="menuListItemProps(item, itemRef, index)"
+                      >
+                        <template
+                            v-if="showCheckbox || item.props.prependAvatar || item.props.prependIcon"
+                            #prepend="{isSelected}"
+                        >
                           <foxy-checkbox-btn
                               :key="item"
                               :model-value="isSelected"
                               :ripple="false"
-                              :tabindex="-1"/>
+                              :tabindex="-1"
+                          />
 
-                          <foxy-avatar v-if="item.props.prependAvatar" :image="item.props.prependAvatar"/>
+                          <foxy-avatar
+                              v-if="item.props.prependAvatar"
+                              :image="item.props.prependAvatar"
+                          />
 
-                          <foxy-icon v-if="item.props.prependIcon" :icon="item.props.prependIcon"/>
+                          <foxy-icon
+                              v-if="item.props.prependIcon"
+                              :icon="item.props.prependIcon"
+                          />
                         </template>
 
                         <template #title>
@@ -133,15 +167,23 @@
         </template>
       </foxy-menu>
 
-      <template v-for="(item, index) in model" :key="index">
-        <div :class="{'foxy-select__selection--selected' : index === selectionIndex}"
-             :style="[textColorStyles]"
-             class="foxy-select__selection">
+      <template
+          v-for="(item, index) in model"
+          :key="index"
+      >
+        <div
+            :class="{'foxy-select__selection--selected' : index === selectionIndex}"
+            :style="[textColorStyles]"
+            class="foxy-select__selection"
+        >
           <template v-if="hasChips">
-            <slot name="chip" v-bind="{ item, index, props: chipSlotProps(item) }">
+            <slot
+                name="chip"
+                v-bind="{ item, index, props: chipSlotProps(item) }"
+            >
               <foxy-chip
-		              ref="foxyChipsRef"
                   key="chip"
+                  ref="foxyChipsRef"
                   v-bind="chipSlotProps(item)"
               >
                 <template #default>
@@ -157,7 +199,10 @@
               <slot name="selection">
                 {{ item.title }}
               </slot>
-              <span v-if="multiple && (index < model.length - 1)" class="foxy-select__selection-comma">
+              <span
+                  v-if="multiple && (index < model.length - 1)"
+                  class="foxy-select__selection-comma"
+              >
                 {{ divider }}
               </span>
             </span>
@@ -166,7 +211,10 @@
       </template>
     </template>
 
-    <template v-if="hasSlot('suffix')" #suffix>
+    <template
+        v-if="hasSlot('suffix')"
+        #suffix
+    >
       <slot name="suffix"/>
     </template>
 
@@ -176,36 +224,49 @@
             v-if="appendInnerAvatar"
             key="append-avatar"
             :density="density"
-            :image="appendInnerAvatar"/>
+            :image="appendInnerAvatar"
+        />
         <foxy-icon
             v-if="appendInnerIcon"
             key="append-icon"
             :density="density"
-            :icon="appendInnerIcon"/>
+            :icon="appendInnerIcon"
+        />
         <foxy-icon
             :icon="menuIcon"
             class="foxy-select__menu-icon"
             @click="noop"
-            @mousedown="handleMousedownMenuIcon"/>
+            @mousedown="handleMousedownMenuIcon"
+        />
       </slot>
     </template>
 
-    <template v-if="hasSlot('clear')" #clear>
+    <template
+        v-if="hasSlot('clear')"
+        #clear
+    >
       <slot name="clear"/>
     </template>
 
-    <template v-if="hasSlot('append')" #append>
+    <template
+        v-if="hasSlot('append')"
+        #append
+    >
       <slot name="append"/>
     </template>
   </foxy-text-field>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import {
     FoxyAvatar,
     FoxyCheckboxBtn,
     FoxyChip,
     FoxyIcon,
+    FoxyList,
     FoxyListItem,
     FoxyMenu,
     FoxyTextField,
@@ -611,26 +672,26 @@
     e.preventDefault()
   }
 
-	// CHIPS
+  // CHIPS
 
   const hasChips = computed(() => {
-	  return props.chips || hasSlot('chip')
+    return props.chips || hasSlot('chip')
   })
 
   const chipSlotProps = (item: IListItem) => {
     return {
-	    closable: props.closableChips,
-	    disabled: item.props.disabled,
-	    bgColor: 'rgba(168, 168, 168, 1)',
-	    color: 'rgb(255, 255, 255)',
-	    border: true,
-	    rounded: true,
+      closable: props.closableChips,
+      disabled: item.props.disabled,
+      bgColor: 'rgba(168, 168, 168, 1)',
+      color: 'rgb(255, 255, 255)',
+      border: true,
+      rounded: true,
       'onClick:close': (e: Event) => handleChipClose(e, item),
       onKeydown: (e: KeyboardEvent) => handleChipKeydown(e, item),
       onMousedown: (e: MouseEvent) => handleChipMousedown(e),
       modelValue: true,
-	    size: 'small',
-      ...props.chipProps,
+      size: 'small',
+      ...props.chipProps
     }
   }
 
@@ -753,7 +814,10 @@
   }, foxyTextFieldRef))
 </script>
 
-<style lang="scss" scoped>
+<style
+    lang="scss"
+    scoped
+>
 .foxy-select {
   $this: &;
 
@@ -776,13 +840,13 @@
         font-size: 16px;
       }
 
-	    > #{$this}__selection,
-	    > #{$this}__selection-text {
-		    + input {
-			    position: static;
-			    flex: 1 1;
-		    }
-	    }
+      > #{$this}__selection,
+      > #{$this}__selection-text {
+        + input {
+          position: static;
+          flex: 1 1;
+        }
+      }
     }
 
     &.foxy-field--dirty {

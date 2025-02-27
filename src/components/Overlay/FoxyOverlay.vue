@@ -1,31 +1,44 @@
 <template>
-  <slot name="activator" v-bind="activatorProps"/>
+  <slot
+      name="activator"
+      v-bind="activatorProps"
+  />
   <template v-if="isMounted && hasContent">
-    <teleport :disabled="!teleportTarget" :to="teleportTarget">
+    <teleport
+        :disabled="!teleportTarget"
+        :to="teleportTarget"
+    >
       <div
           ref="root"
           :class="overlayClasses"
           :style="overlayStyles"
-          v-bind="{ ...scopeId, ...$attrs }">
+          v-bind="{ ...scopeId, ...$attrs }"
+      >
         <foxy-overlay-scrim
             ref="scrimEl"
             :active="isActive && !!scrim"
             :scrim="scrim"
-            v-bind="{...scrimEvents, ...scrimColor}"/>
+            v-bind="{...scrimEvents, ...scrimColor}"
+        />
         <foxy-transition
             :target="target"
             :transition="transition"
             appear
             persisted
-            @after-leave="handleAfterLeave">
+            @after-leave="handleAfterLeave"
+        >
           <div
               v-show="isActive"
               ref="contentEl"
               v-click-outside="{ handler: handleClickOutside, closeConditional, include: () => [activatorEl] }"
               :class="overlayContentClasses"
               :style="overlayContentStyles"
-              v-bind="{ ...contentEvents, ...contentProps }">
-            <slot name="default" v-bind="{isActive}"/>
+              v-bind="{ ...contentEvents, ...contentProps }"
+          >
+            <slot
+                name="default"
+                v-bind="{isActive}"
+            />
           </div>
         </foxy-transition>
       </div>
@@ -33,7 +46,10 @@
   </template>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyFade, FoxyOverlayScrim, FoxyTransition } from '@foxy/components'
 
   import {
@@ -80,7 +96,7 @@
     transition: { component: FoxyFade }
   })
 
-  const emits = defineEmits(['click:outside', 'update:modelValue', 'afterLeave', 'keydown'])
+  const emits = defineEmits(['click:outside', 'update:modelValue', 'after-leave', 'keydown'])
 
   const { filterProps } = useProps<IOverlayProps>(props)
 
@@ -222,7 +238,7 @@
 
   const handleAfterLeave = () => {
     onAfterLeave()
-    emits('afterLeave')
+    emits('after-leave')
   }
 
   // SCRIM
@@ -278,7 +294,10 @@
 
 </script>
 
-<style lang="scss" scoped>
+<style
+    lang="scss"
+    scoped
+>
 .foxy-overlay {
   $this: &;
 
