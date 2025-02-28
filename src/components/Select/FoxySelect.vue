@@ -298,7 +298,7 @@
     TEXT_FIELD_TYPE
   } from '@foxy/enums'
 
-  import { IListItem, ISelectProps } from '@foxy/interfaces'
+  import { IInternalListItem, ISelectProps } from '@foxy/interfaces'
 
   import { TFoxyChip, TFoxyList, TFoxyMenu, TFoxyTextField, TFoxyVirtualScroll } from '@foxy/types'
 
@@ -442,7 +442,7 @@
     }
   })
 
-  const menuListItemProps = (item: IListItem, itemRef: VNodeRef, index: number) => {
+  const menuListItemProps = (item: IInternalListItem, itemRef: VNodeRef, index: number) => {
     return mergeProps(item.props, {
       ref: itemRef,
       key: index,
@@ -450,7 +450,7 @@
       onClick: () => handleSelect(item, null)
     })
   }
-  const isSelected = (item: IListItem) => {
+  const isSelected = (item: IInternalListItem) => {
     return selectedValues.value.includes(item.value)
   }
 
@@ -459,7 +459,7 @@
     onListKeydown: handleListKeydown
   } = useScrolling(foxyListRef, foxyTextFieldRef)
 
-  const handleSelect = (item: IListItem, set: boolean | null = true) => {
+  const handleSelect = (item: IInternalListItem, set: boolean | null = true) => {
     if (item.props.disabled) return
 
     if (props.multiple) {
@@ -542,7 +542,7 @@
 
     if (props.autocomplete) {
       if (highlightFirst.value && [KEYBOARD_VALUES.ENTER, KEYBOARD_VALUES.TAB].includes(e.key)) {
-        handleSelect(displayItems.value[0] as IListItem)
+        handleSelect(displayItems.value[0] as IInternalListItem)
       }
 
       if (e.key === KEYBOARD_VALUES.DOWN && highlightFirst.value) {
@@ -620,7 +620,7 @@
       const item = items.value.find((item) => item.title?.toLowerCase().startsWith(keyboardLookupPrefix))
 
       if (item !== undefined) {
-        model.value = [item as IListItem]
+        model.value = [item as IInternalListItem]
         const index = displayItems.value.indexOf(item)
 
         IN_BROWSER && window.requestAnimationFrame(() => {
@@ -639,7 +639,7 @@
       const item = items.value.find(item => item.title === (e.target as HTMLInputElement).value)
 
       if (item) {
-        handleSelect(item as IListItem)
+        handleSelect(item as IInternalListItem)
       }
     }
   }
@@ -678,7 +678,7 @@
     return props.chips || hasSlot('chip')
   })
 
-  const chipSlotProps = (item: IListItem) => {
+  const chipSlotProps = (item: IInternalListItem) => {
     return {
       closable: props.closableChips,
       disabled: item.props.disabled,
@@ -695,13 +695,13 @@
     }
   }
 
-  const handleChipClose = (e: Event, item: IListItem) => {
+  const handleChipClose = (e: Event, item: IInternalListItem) => {
     e.stopPropagation()
     e.preventDefault()
 
     handleSelect(item, false)
   }
-  const handleChipKeydown = (e: KeyboardEvent, item: IListItem) => {
+  const handleChipKeydown = (e: KeyboardEvent, item: IInternalListItem) => {
     if (e.key !== KEYBOARD_VALUES.ENTER && e.key !== KEYBOARD_VALUES.EMPTY) return
 
     e.preventDefault()
@@ -730,7 +730,7 @@
           !listHasFocus.value &&
           !model.value.some(({ value }) => value === displayItems.value[0].value)
       ) {
-        handleSelect(displayItems.value[0] as IListItem)
+        handleSelect(displayItems.value[0] as IInternalListItem)
       }
       menu.value = false
       search.value = ''
