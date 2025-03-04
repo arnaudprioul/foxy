@@ -20,4 +20,9 @@ export interface IPasswordFieldProps extends ICommonsComponentProps, IColorProps
     placeholder?: string
     role?: string
     autofocus?: boolean
+    counter?: boolean | number | string
+    counterValue?: number | Function
+    persistentPlaceholder?: boolean
+    persistentCounter?: boolean
+    maxlength?: number
 }
