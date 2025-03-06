@@ -1,14 +1,24 @@
 <template>
-  <foxy-transition :disabled="!isBooted" :transition="transition">
+  <foxy-transition
+      :disabled="!isBooted"
+      :transition="transition"
+  >
     <component
         :is="tag"
         :class="messagesClasses"
         :style="messagesStyles"
         aria-live="polite"
-        role="alert">
-      <template v-for="(message, index) in messages" :key="`${index}-${messages}`">
+        role="alert"
+    >
+      <template
+          v-for="(message, index) in messages"
+          :key="`${index}-${messages}`"
+      >
         <div class="foxy-messages__message">
-          <slot name="default" v-bind="{message}">
+          <slot
+              name="default"
+              v-bind="{message}"
+          >
             <span>{{ message }}</span>
           </slot>
         </div>
@@ -17,18 +27,21 @@
   </foxy-transition>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxySlideY, FoxyTransition } from '@foxy/components'
 
   import {
-	  useBorder,
-	  useDensity,
-	  useMargin,
-	  usePadding,
-	  useProps,
-	  useRounded,
-	  useSsrBoot,
-	  useTextColor
+    useBorder,
+    useDensity,
+    useMargin,
+    usePadding,
+    useProps,
+    useRounded,
+    useSsrBoot,
+    useTextColor
   } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
@@ -45,7 +58,7 @@
     transition: { component: FoxySlideY }
   })
 
-  const {filterProps} = useProps<IMessagesProps>(props)
+  const { filterProps } = useProps<IMessagesProps>(props)
 
   const messages = computed(() => {
     return wrapInArray(props.messages)
@@ -69,7 +82,7 @@
       paddingStyles.value,
       marginStyles.value,
       textColorStyles.value,
-      props.style,
+      props.style
     ] as StyleValue
   })
   const messagesClasses = computed(() => {
@@ -80,13 +93,13 @@
       borderClasses.value,
       paddingClasses.value,
       marginClasses.value,
-      props.class,
+      props.class
     ]
   })
 
   // EXPOSE
 
   defineExpose({
-	  filterProps
+    filterProps
   })
 </script>
