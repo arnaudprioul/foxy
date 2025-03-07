@@ -152,6 +152,8 @@ export * from './Menu/menu.type'
 
 export * from './Messages/messages.type'
 
+export * from './OtpInputField/otp-input-field.type'
+
 export * from './Overlay/overlay.type'
 export * from './Overlay/overlay-scrim.type'
 

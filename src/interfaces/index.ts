@@ -158,6 +158,8 @@ export * from './Menu/menu.interface'
 
 export * from './Messages/messages.interface'
 
+export * from './OtpInputField/otp-input-field.interface'
+
 export * from './Overlay/overlay.interface'
 export * from './Overlay/overlay-scrim.interface'
 

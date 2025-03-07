@@ -76,6 +76,8 @@ export * from './Menu'
 
 export * from './Messages'
 
+export * from './OtpInputField'
+
 export * from './Overlay'
 
 export * from './PageBuilder'

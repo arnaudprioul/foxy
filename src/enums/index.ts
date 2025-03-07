@@ -32,6 +32,8 @@ export * from './List/list-item.enum'
 
 export * from './Toolbar/toolbar.enum'
 
+export * from './OtpInputField/otp-input-field.enum'
+
 export * from './Progress/progress.enum'
 
 export * from './Grids/row.enum'
