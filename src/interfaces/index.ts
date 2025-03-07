@@ -23,8 +23,11 @@ export * from './Card/card-text.interface'
 export * from './Carousel/carousel.interface'
 export * from './Carousel/carousel-item.interface'
 
-export * from './Checkbox/checkbox.interface.ts'
-export * from './Checkbox/checkbox-btn.interface.ts'
+export * from './Charts/chart.interface'
+export * from './Charts/chart-line.interface'
+
+export * from './Checkbox/checkbox.interface'
+export * from './Checkbox/checkbox-btn.interface'
 
 export * from './Chip/chip.interface'
 export * from './Chip/chip-group.interface'
@@ -114,7 +117,7 @@ export * from './DatePicker/date-picker-years.interface'
 export * from './DatePickerField/date-picker-field.interface'
 
 export * from './Dialog/dialog.interface'
-export * from './Dialog/dialog-confirmation.interface.ts'
+export * from './Dialog/dialog-confirmation.interface'
 
 export * from './Divider/divider.interface'
 
@@ -125,7 +128,7 @@ export * from './ExpensionPanel/expansion-panel.interface'
 export * from './ExpensionPanel/expansion-panel-header.interface'
 export * from './ExpensionPanel/expansion-panel-content.interface'
 
-export * from './Field/field.interface.ts'
+export * from './Field/field.interface'
 
 export * from './FileField/file-field.interface'
 
@@ -142,9 +145,9 @@ export * from './Img/img.interface'
 
 export * from './InfiniteScroll/infinite-scroll.interface'
 
-export * from './Input/input.interface.ts'
+export * from './Input/input.interface'
 
-export * from './Label/label.interface.ts'
+export * from './Label/label.interface'
 
 export * from './List/list.interface'
 export * from './List/list-children.interface'
@@ -206,7 +209,7 @@ export * from './Snackbar/snackbar.interface'
 
 export * from './Switch/switch.interface'
 
-export * from './Table/table.interface.ts'
+export * from './Table/table.interface'
 
 export * from './TextareaField/textarea-field.interface'
 

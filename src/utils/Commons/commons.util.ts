@@ -7,22 +7,22 @@ import { TClientPosition, TFocusLocation, TMaybePick, TNotAUnion, TSelectItemKey
 import { IfAny } from '@vue/shared'
 
 import {
-  capitalize,
-  ComponentInternalInstance,
-  ComponentPublicInstance,
-  computed,
-  ComputedGetter,
-  Fragment,
-  InjectionKey,
-  MaybeRef,
-  reactive,
-  shallowRef,
-  ToRefs,
-  toRefs,
-  unref,
-  VNode,
-  VNodeChild,
-  watchEffect
+    capitalize,
+    ComponentInternalInstance,
+    ComponentPublicInstance,
+    computed,
+    ComputedGetter,
+    Fragment,
+    InjectionKey,
+    MaybeRef,
+    reactive,
+    shallowRef,
+    ToRefs,
+    toRefs,
+    unref,
+    VNode,
+    VNodeChild,
+    watchEffect
 } from 'vue'
 
 export function convertToUnit (str: number, unit?: string): string
@@ -109,6 +109,10 @@ export function padStart (str: string, length: number, char = '0') {
 
 export function clamp (value: number, min = 0, max = 1) {
     return Math.max(min, Math.min(max, value))
+}
+
+export function int (value: string | number, radix: number = 10): number {
+    return parseInt(value, radix)
 }
 
 export function getDecimals (value: number) {

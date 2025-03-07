@@ -2,6 +2,8 @@ export * from './Icon/mdi.enum'
 
 export * from './Img/img.enum'
 
+export * from './Charts/chart.enum'
+
 export * from './ColorPicker/color-picker.enum'
 
 export * from './Commons/commons.enum'
@@ -11,7 +13,6 @@ export * from './Commons/border.enum'
 export * from './Commons/density.enum'
 export * from './Commons/dimension.enum'
 export * from './Commons/size.enum'
-export * from './Commons/layout.enum'
 export * from './Commons/nested.enum'
 export * from './Commons/position.enum'
 export * from './Commons/anchor.enum'

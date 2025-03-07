@@ -1,27 +1,42 @@
 <template>
   <div
-    :class="sliderFieldTrackClasses"
-    :style="sliderFieldTrackStyles">
+      :class="sliderFieldTrackClasses"
+      :style="sliderFieldTrackStyles"
+  >
     <div
-      :class="sliderFieldTrackBgClasses"
-      :style="sliderFieldTrackBgStyles"/>
+        :class="sliderFieldTrackBgClasses"
+        :style="sliderFieldTrackBgStyles"
+    />
 
     <div
-      :class="sliderFieldTrackFillClasses"
-      :style="sliderFieldTrackFillStyles"/>
+        :class="sliderFieldTrackFillClasses"
+        :style="sliderFieldTrackFillStyles"
+    />
 
-    <div v-if="showTicks" :class="sliderFieldTrackTicksClasses">
+    <div
+        v-if="showTicks"
+        :class="sliderFieldTrackTicksClasses"
+    >
       <template
-        v-for="(tick, index) in ticks"
-        :key="index">
+          v-for="(tick, index) in ticks"
+          :key="index"
+      >
         <div
-          :class="sliderFieldTickClasses"
-          :style="sliderFieldTickStyles">
+            :class="sliderFieldTickClasses"
+            :style="sliderFieldTickStyles"
+        >
           <div
-            v-if="tick.label || hasSlot('item') || hasSlot(`item.${index}`)"
-            class="foxy-slider-field-track__tick-label">
-            <slot name="item" v-bind="{ tick, index }">
-              <slot :name="`item.${index}`" v-bind="{ tick, index }">
+              v-if="tick.label || hasSlot('item') || hasSlot(`item.${index}`)"
+              class="foxy-slider-field-track__tick-label"
+          >
+            <slot
+                name="item"
+                v-bind="{ tick, index }"
+            >
+              <slot
+                  :name="`item.${index}`"
+                  v-bind="{ tick, index }"
+              >
                 {{ tick.label }}
               </slot>
             </slot>
@@ -32,8 +47,11 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-	import { useBackgroundColor, useProps, useRounded, useSlots } from '@foxy/composables'
+<script
+    lang="ts"
+    setup
+>
+  import { useBackgroundColor, useProps, useRounded, useSlots } from '@foxy/composables'
 
   import { FOXY_SLIDER_FIELD_KEY } from '@foxy/consts'
 
@@ -41,7 +59,7 @@
 
   import { TTick } from '@foxy/types'
 
-  import { convertToUnit } from '@foxy/utils'
+  import { convertToUnit, int } from '@foxy/utils'
 
   import { computed, inject, StyleValue } from 'vue'
 
@@ -51,7 +69,7 @@
     size: 4
   })
 
-  const {filterProps} = useProps<ISliderFieldTrackProps>(props)
+  const { filterProps } = useProps<ISliderFieldTrackProps>(props)
 
   const slider = inject(FOXY_SLIDER_FIELD_KEY)
 
@@ -71,7 +89,7 @@
     min,
     max,
     isVertical,
-    indexFromEnd,
+    indexFromEnd
   } = slider
 
   const isDisabled = computed(() => {
@@ -85,7 +103,7 @@
   })
   const size = computed(() => {
     if (typeof props?.size === 'number') {
-      return parseInt(props.size, 10)
+      return int(props.size)
     }
 
     return 4
@@ -100,7 +118,7 @@
   })
 
   const { roundedClasses, roundedStyles } = useRounded(roundedProps)
-  const { backgroundColorStyles: trackFillColorStyles, } = useBackgroundColor(bgColor)
+  const { backgroundColorStyles: trackFillColorStyles } = useBackgroundColor(bgColor)
   const { backgroundColorStyles } = useBackgroundColor(color)
 
   const startDir = computed(() => `inset-${isVertical.value ? 'block' : 'inline'}-${indexFromEnd.value ? 'end' : 'start'}`)
@@ -109,7 +127,7 @@
   const backgroundStyles = computed(() => {
     return {
       [startDir.value]: '0%',
-      [endDir.value]: '100%',
+      [endDir.value]: '100%'
     }
   })
   const trackFillWidth = computed(() => {
@@ -119,7 +137,7 @@
   const trackFillStyles = computed(() => {
     return {
       [startDir.value]: convertToUnit(props.start, '%'),
-      [endDir.value]: convertToUnit(trackFillWidth.value, '%'),
+      [endDir.value]: convertToUnit(trackFillWidth.value, '%')
     }
   })
 
@@ -144,8 +162,8 @@
       {
         'foxy-slider-field-track__tick--filled': tick.position >= props.start && tick.position <= props.stop,
         'foxy-slider-field-track__tick--first': tick.value === min.value,
-        'foxy-slider-field-track__tick--last': tick.value === max.value,
-      },
+        'foxy-slider-field-track__tick--last': tick.value === max.value
+      }
     ]
   }
 
@@ -154,7 +172,7 @@
   const sliderFieldTrackStyles = computed(() => {
     return [
       {
-        '--foxy-slider-field-track---size': convertToUnit(size.value),
+        '--foxy-slider-field-track---size': convertToUnit(size.value)
       },
       roundedStyles.value,
       props.style
@@ -164,27 +182,27 @@
     return [
       'foxy-slider-field-track',
       roundedClasses.value,
-      props.class,
+      props.class
     ]
   })
   const sliderFieldTrackBgStyles = computed(() => {
     return [
       backgroundStyles.value,
-      backgroundColorStyles.value,
+      backgroundColorStyles.value
     ] as StyleValue
   })
   const sliderFieldTrackBgClasses = computed(() => {
     return [
       'foxy-slider-field-track__background',
       {
-        'foxy-slider-field-track__background--opacity': !!color.value,
-      },
+        'foxy-slider-field-track__background--opacity': !!color.value
+      }
     ]
   })
   const sliderFieldTrackFillStyles = computed(() => {
     return [
       trackFillStyles.value,
-      trackFillColorStyles.value,
+      trackFillColorStyles.value
     ] as StyleValue
   })
   const sliderFieldTrackFillClasses = computed(() => {
@@ -196,100 +214,103 @@
     return [
       'foxy-slider-field-track__ticks',
       {
-        'foxy-slider-field-track__ticks--always-show': sliderShowTicks.value === 'always',
-      },
+        'foxy-slider-field-track__ticks--always-show': sliderShowTicks.value === 'always'
+      }
     ]
   })
 
-	// EXPOSE
+  // EXPOSE
 
   defineExpose({
-	  filterProps
+    filterProps
   })
 </script>
 
-<style lang="scss" scoped>
-  .foxy-slider-field-track {
-    $this: &;
+<style
+    lang="scss"
+    scoped
+>
+.foxy-slider-field-track {
+  $this: &;
 
-    border-radius: 9999px;
+  border-radius: 9999px;
+
+  @media (forced-colors: active) {
+    border: thin solid buttontext;
+  }
+
+  &__background,
+  &__fill {
+    position: absolute;
+    border-radius: inherit;
+    transition: var(--foxy-slider-field__track---transition, 0.3s cubic-bezier(0.25, 0.8, 0.5, 1));
 
     @media (forced-colors: active) {
-      border: thin solid buttontext;
-    }
-
-    &__background,
-    &__fill {
-      position: absolute;
-      border-radius: inherit;
-      transition: var(--foxy-slider-field__track---transition, 0.3s cubic-bezier(0.25, 0.8, 0.5, 1));
-
-      @media (forced-colors: active) {
-        background-color: highlight;
-      }
-    }
-
-    &__background {
-      background-color: rgb(148, 148, 148);
-    }
-
-    &__fill {
-      background-color: rgba(84, 84, 84, 1);
-    }
-
-    &__ticks {
-      height: 100%;
-      width: 100%;
-      position: relative;
-
-      #{$this}--always-show {
-        #{$this}__tick {
-          opacity: 1;
-        }
-      }
-    }
-
-    &__tick {
-      background-color: rgba(66, 66, 66, 1);
-      position: absolute;
-      opacity: 0;
-      transition: 0.2s opacity cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: 2px;
-      width: var(--foxy-slider-field-track__tick---size, 2);
-      height: var(--foxy-slider-field-track__tick---size, 2);
-      transform: translate(calc(var(--foxy-slider-field-track__tick---size, 2) / -2), calc(var(--foxy-slider-field-track__tick---size, 2) / -2));
-
-      &--filled {
-        background-color: rgba(238, 238, 238, 1);
-      }
-
-      &--first {
-        #{$this}__tick-label {
-          transform: none;
-        }
-      }
-
-      &--last {
-        #{$this}__tick-label {
-          transform: translateX(-100%);
-        }
-      }
-    }
-
-    &__tick-label {
-      position: absolute;
-      user-select: none;
-      white-space: nowrap;
-    }
-
-    &__background--opacity {
-      opacity: 0.38;
+      background-color: highlight;
     }
   }
+
+  &__background {
+    background-color: rgb(148, 148, 148);
+  }
+
+  &__fill {
+    background-color: rgba(84, 84, 84, 1);
+  }
+
+  &__ticks {
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    #{$this}--always-show {
+      #{$this}__tick {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__tick {
+    background-color: rgba(66, 66, 66, 1);
+    position: absolute;
+    opacity: 0;
+    transition: 0.2s opacity cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+    width: var(--foxy-slider-field-track__tick---size, 2);
+    height: var(--foxy-slider-field-track__tick---size, 2);
+    transform: translate(calc(var(--foxy-slider-field-track__tick---size, 2) / -2), calc(var(--foxy-slider-field-track__tick---size, 2) / -2));
+
+    &--filled {
+      background-color: rgba(238, 238, 238, 1);
+    }
+
+    &--first {
+      #{$this}__tick-label {
+        transform: none;
+      }
+    }
+
+    &--last {
+      #{$this}__tick-label {
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+  &__tick-label {
+    position: absolute;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  &__background--opacity {
+    opacity: 0.38;
+  }
+}
 </style>
 
 <style>
-  :root {
+:root {
 
-  }
+}
 </style>

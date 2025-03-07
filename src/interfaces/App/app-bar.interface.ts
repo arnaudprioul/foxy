@@ -1,7 +1,7 @@
-import { LAYOUT_POSITION } from '@foxy/enums'
+import { ILayoutItemProps, IScrollProps, IToolbarProps } from '@foxy/interfaces'
 
-import { IToolbarProps, ILayoutItemProps, IScrollProps } from '@foxy/interfaces'
+import { TBlock } from "@foxy/types"
 
 export interface IAppBarProps extends IToolbarProps, ILayoutItemProps, IScrollProps {
-  location?: LAYOUT_POSITION.TOP | LAYOUT_POSITION.BOTTOM
+    location?: TBlock
 }

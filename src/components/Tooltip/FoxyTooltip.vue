@@ -1,21 +1,25 @@
 <template>
   <foxy-overlay
-    :id="id"
-    ref="foxyOverlayRef"
-    v-model="isActive"
-    :activator-props="activatorProps"
-    :class="tooltipClasses"
-    :location="location"
-    :origin="origin"
-    :style="tooltipStyles"
-    :transition="transition"
-    absolute
-    disableGlobalStack
-    persistent
-    role="tooltip"
-    v-bind="{...overlayProps, ...scopeId}">
+      :id="id"
+      ref="foxyOverlayRef"
+      v-model="isActive"
+      :activator-props="activatorProps"
+      :class="tooltipClasses"
+      :location="location"
+      :origin="origin"
+      :style="tooltipStyles"
+      :transition="transition"
+      absolute
+      disableGlobalStack
+      persistent
+      role="tooltip"
+      v-bind="{...overlayProps, ...scopeId}"
+  >
     <template #activator="{props}">
-      <slot name="activator" v-bind="{props}"/>
+      <slot
+          name="activator"
+          v-bind="{props}"
+      />
     </template>
 
     <template #default>
@@ -26,7 +30,10 @@
   </foxy-overlay>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyFade, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
 
   import { useProps, useScopeId, useVModel } from '@foxy/composables'
@@ -43,7 +50,7 @@
 
   const props = withDefaults(defineProps<ITooltipProps>(), {
     closeOnBack: false,
-    location: INLINE.END,
+    location: INLINE.RIGHT,
     locationStrategy: LOCATION_STRATEGIES.CONNECTED,
     eager: true,
     minWidth: 0,
@@ -58,7 +65,7 @@
 
   const emits = defineEmits(['update:modelValue'])
 
-  const {filterProps} = useProps<ITooltipProps>(props)
+  const { filterProps } = useProps<ITooltipProps>(props)
 
   const isActive = useVModel(props, 'modelValue')
   const { scopeId } = useScopeId()
@@ -70,18 +77,18 @@
 
   const location = computed(() => {
     return props.location.split(' ').length > 1
-      ? props.location
-      : props.location + ' center' as TAnchor
+        ? props.location
+        : props.location + ' center' as TAnchor
   })
 
   const origin = computed(() => {
     return (
-      props.origin === 'auto' ||
-      props.origin === 'overlap' ||
-      props.origin.split(' ').length > 1 ||
-      props.location.split(' ').length > 1
+        props.origin === 'auto' ||
+        props.origin === 'overlap' ||
+        props.origin.split(' ').length > 1 ||
+        props.location.split(' ').length > 1
     ) ? props.origin
-      : props.origin + ' center' as TAnchor | 'auto' | 'overlap'
+        : props.origin + ' center' as TAnchor | 'auto' | 'overlap'
   })
 
   const transition = computed(() => {
@@ -90,9 +97,9 @@
   })
 
   const activatorProps = computed(() => {
-	  return mergeProps({
-		  'aria-describedby': id.value,
-	  }, props.activatorProps)
+    return mergeProps({
+      'aria-describedby': id.value
+    }, props.activatorProps)
   })
 
   const overlayProps = computed(() => {
@@ -109,21 +116,24 @@
   const tooltipClasses = computed(() => {
     return [
       'foxy-tooltip',
-      props.class,
+      props.class
     ]
   })
 
   // EXPOSE
 
-  defineExpose(forwardRefs({filterProps}, foxyOverlayRef))
+  defineExpose(forwardRefs({ filterProps }, foxyOverlayRef))
 </script>
 
-<style lang="scss" scoped>
+<style
+    lang="scss"
+    scoped
+>
 
 </style>
 
 <style>
-  :root {
+:root {
 
-  }
+}
 </style>
