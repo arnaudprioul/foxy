@@ -1,0 +1,4 @@
+# Foxychart
+
+## Usage
+    <FoxyChart />

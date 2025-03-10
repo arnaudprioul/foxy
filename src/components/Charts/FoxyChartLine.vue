@@ -1,15 +1,15 @@
 <template>
   <svg
-      :stroke-width="parseFloat(props.lineWidth) ?? 4"
+      :stroke-width="parseFloat(lineWidth) ?? 4"
       display="block"
   >
     <defs>
       <linearGradient
           :id="id"
-          :x1="gradientDirection === 'left' ? '100%' : '0'"
-          :x2="gradientDirection === 'right' ? '100%' : '0'"
-          :y1="gradientDirection === 'top' ? '100%' : '0'"
-          :y2="gradientDirection === 'bottom' ? '100%' : '0'"
+          :x1="gradientDirection === INLINE.LEFT ? '100%' : '0'"
+          :x2="gradientDirection === INLINE.RIGHT ? '100%' : '0'"
+          :y1="gradientDirection === BLOCK.TOP ? '100%' : '0'"
+          :y2="gradientDirection === BLOCK.BOTTOM ? '100%' : '0'"
           gradientUnits="userSpaceOnUse"
       >
         <template v-for="(color, index) in gradientData">
@@ -26,17 +26,17 @@
           key="labels"
           :style="{ textAnchor: 'middle', dominantBaseline: 'mathematical', fill: 'currentColor'}"
       >
-        <template v-for="(item, i) in parsedLabels">
+        <template v-for="(label, i) in parsedLabels">
           <text
-              :font-size="Number(props.labelSize) || 7"
-              :x="item.x + (lineWidth / 2) + lineWidth / 2"
-              :y="(int(props.height, 10) - 4) + (int(props.labelSize, 10) || 7 * 0.75)"
+              :font-size="Number(labelSize) || 7"
+              :x="label.x + (lineWidth / 2) + lineWidth / 2"
+              :y="(int(height) - 4) + (int(labelSize) || 7 * 0.75)"
           >
             <slot
                 name="label"
-                v-bind="{ index: i, value: item }"
+                v-bind="{ index: i, value: label }"
             >
-              {{ item }}
+              {{ label }}
             </slot>
           </text>
         </template>
@@ -44,7 +44,7 @@
     </template>
 
     <path
-        :ref="path"
+        ref="pathRef"
         :d="generatePath(fill)"
         :fill="fill ? `url(#${id})` : 'none'"
         :stroke="fill ? 'none' : `url(#${id})`"
@@ -64,11 +64,11 @@
     lang="ts"
     setup
 >
-  import { useSlots } from "@foxy/composables"
+	import { useProps, useSlots } from "@foxy/composables"
 
-  import { BLOCK } from "@foxy/enums"
+  import { BLOCK, INLINE } from "@foxy/enums"
 
-  import { IBoundary, IChartLineProps, IPoint } from "@foxy/interfaces"
+	import { IBoundary, IChartLineProps, IChartProps, IPoint } from "@foxy/interfaces"
 
   import { genPath, getPropertyFromItem, getUid, int } from "@foxy/utils"
 
@@ -83,8 +83,12 @@
     itemValue: 'value',
     padding: 8,
     width: 300,
-    modelValue: []
+    modelValue: [],
+	  gradient: [],
+	  labels: []
   })
+
+  const {filterProps} = useProps<IChartLineProps>(props)
 
   const { hasSlot } = useSlots()
 
@@ -92,17 +96,17 @@
   const id = computed(() => {
     return props.id || `chartLine-${uid}`
   })
-  const autoDrawDuration = computed(() => Number(props.autoDrawDuration) || (props.fill ? 500 : 2000))
+  const autoDrawDuration = computed(() => int(props.autoDrawDuration) || (props.fill ? 500 : 2000))
 
   const lastLength = ref(0)
-  const path = ref<SVGPathElement | null>(null)
+  const pathRef = ref<SVGPathElement | null>(null)
 
   const items = computed(() => {
     return props.modelValue.map((item) => getPropertyFromItem(item, props.itemValue, item))
   })
 
   const totalWidth = computed(() => {
-    return Number(props.width)
+    return int(props.width)
   })
   const lineWidth = computed(() => {
     return parseFloat(props.lineWidth) || 4
@@ -188,34 +192,40 @@
   watch(() => props.modelValue, async () => {
     await nextTick()
 
-    if (!props.autoDraw || !path.value) return
+    if (!props.autoDraw || !pathRef.value) return
 
-    const pathRef = path.value
-    const length = pathRef.getTotalLength()
+    const pathRefElement = pathRef.value
+    const length = pathRefElement.getTotalLength()
 
     if (!props.fill) {
       // Initial setup to "hide" the line by using the stroke dash array
-      pathRef.style.strokeDasharray = `${length}`
-      pathRef.style.strokeDashoffset = `${length}`
+	    pathRefElement.style.strokeDasharray = `${length}`
+	    pathRefElement.style.strokeDashoffset = `${length}`
 
       // Force reflow to ensure the transition starts from this state
-      pathRef.getBoundingClientRect()
+	    pathRefElement.getBoundingClientRect()
 
       // Animate the stroke dash offset to "draw" the line
-      pathRef.style.transition = `stroke-dashoffset ${autoDrawDuration.value}ms ${props.autoDrawEasing}`
-      pathRef.style.strokeDashoffset = '0'
+	    pathRefElement.style.transition = `stroke-dashoffset ${autoDrawDuration.value}ms ${props.autoDrawEasing}`
+	    pathRefElement.style.strokeDashoffset = '0'
     } else {
       // Your existing logic for filled paths remains the same
-      pathRef.style.transformOrigin = 'bottom center'
-      pathRef.style.transition = 'none'
-      pathRef.style.transform = `scaleY(0)`
-      pathRef.getBoundingClientRect()
-      pathRef.style.transition = `transform ${autoDrawDuration.value}ms ${props.autoDrawEasing}`
-      pathRef.style.transform = `scaleY(1)`
+	    pathRefElement.style.transformOrigin = 'bottom center'
+	    pathRefElement.style.transition = 'none'
+	    pathRefElement.style.transform = `scaleY(0)`
+	    pathRefElement.getBoundingClientRect()
+	    pathRefElement.style.transition = `transform ${autoDrawDuration.value}ms ${props.autoDrawEasing}`
+	    pathRefElement.style.transform = `scaleY(1)`
     }
 
     lastLength.value = length
   }, { immediate: true })
+
+  // EXPOSE
+
+  defineExpose({
+	  filterProps
+  })
 </script>
 
 <style

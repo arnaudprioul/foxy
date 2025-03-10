@@ -25,6 +25,9 @@ export * from './Carousel/carousel.type'
 export * from './Carousel/carousel-item.type'
 
 export * from './Charts/chart.type'
+export * from './Charts/chart-grid-axis.type'
+export * from './Charts/chart-line.type'
+export * from './Charts/chart-bar.type'
 
 export * from './Checkbox/checkbox.type'
 export * from './Checkbox/checkbox-btn.type'

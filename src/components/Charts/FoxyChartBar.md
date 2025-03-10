@@ -1,0 +1,5 @@
+# Foxychartbar
+
+## Usage
+
+    <FoxyChartBar />

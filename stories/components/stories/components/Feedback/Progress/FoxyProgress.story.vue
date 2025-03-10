@@ -1,71 +1,87 @@
 <template>
-  <Story
-      auto-props-disabled
-      group="components"
-      title="Feedback/Progress"
-  >
-    <Variant title="Circle" :meta="{centering: true}">
-      <template #default>
-        <foxy-container>
-          <foxy-row :align-content="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
-            <foxy-col cols="auto">
-              <foxy-progress v-bind="stateCircle"/>
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
-      </template>
-    </Variant>
-    <Variant title="Line" :meta="{centering: true}">
-      <template #default>
-        <foxy-container>
-          <foxy-row :align-content="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
-            <foxy-col cols="12">
-              <foxy-progress v-bind="stateLinear"/>
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
-      </template>
-    </Variant>
+	<Story
+			auto-props-disabled
+			group="components"
+			title="Feedback/Progress"
+	>
+		<Variant
+				:meta="{centering: true}"
+				title="Circle"
+		>
+			<template #default>
+				<foxy-container>
+					<foxy-row
+							:align-content="ALIGN.CENTER"
+							:justify="JUSTIFY.CENTER"
+					>
+						<foxy-col cols="auto">
+							<foxy-progress
+									:type="PROGRESS_TYPE.CIRCULAR"
+									v-bind="stateCircle"
+							/>
+						</foxy-col>
+					</foxy-row>
+				</foxy-container>
+			</template>
+		</Variant>
+		<Variant
+				:meta="{centering: true}"
+				title="Line"
+		>
+			<template #default>
+				<foxy-container>
+					<foxy-row
+							:align-content="ALIGN.CENTER"
+							:justify="JUSTIFY.CENTER"
+					>
+						<foxy-col cols="12">
+							<foxy-progress
+									:type="PROGRESS_TYPE.LINEAR"
+									v-bind="stateLinear"
+							/>
+						</foxy-col>
+					</foxy-row>
+				</foxy-container>
+			</template>
+		</Variant>
 
-    <template #controls>
-      <hst-checkbox v-model="state.indeterminate" title="Indeterminate"/>
+		<template #controls>
+			<hst-checkbox
+					v-model="state.indeterminate"
+					title="Indeterminate"
+			/>
 
-      <hst-checkbox v-model="state.active" title="Active"/>
-    </template>
-  </Story>
+			<hst-checkbox
+					v-model="state.active"
+					title="Active"
+			/>
+		</template>
+	</Story>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyCol, FoxyContainer, FoxyProgress, FoxyRow } from '@foxy/components'
+<script
+		lang="ts"
+		setup
+>
+	import { FoxyCol, FoxyContainer, FoxyProgress, FoxyRow } from '@foxy/components'
 
-  import { ALIGN, JUSTIFY, PROGRESS_TYPE } from '@foxy/enums'
+	import { ALIGN, JUSTIFY, PROGRESS_TYPE } from '@foxy/enums'
 
-  import { IProgressCircularProps, IProgressLinearProps } from '@foxy/interfaces'
+	import { reactive } from 'vue'
 
-  import { computed, reactive } from 'vue'
+	const state: { [key: string]: any } = reactive({
+		modelValue: 35,
+		color: '#FFC529',
+		bgColor: '#6A70A3'
+	})
 
-  const state: { [key: string]: any } = reactive({
-    modelValue: 35,
-    color: '#FFC529',
-    bgColor: '#6A70A3'
-  })
+	const stateLinear = reactive({
+		...state
+	})
 
-  const stateLinear = computed(() => {
-    return Object.assign(
-        {
-          type: PROGRESS_TYPE.LINEAR
-        },
-        state) as IProgressLinearProps
-  })
-
-  const stateCircle = computed(() => {
-    return Object.assign(
-        {
-          active: true,
-          type: PROGRESS_TYPE.CIRCULAR
-        },
-        state) as IProgressCircularProps
-  })
+	const stateCircle = reactive({
+		...state,
+	})
 </script>
 <docs lang="md">
 The progress component is used to convey data visually to users. It supports both indeterminate amounts, such as loading

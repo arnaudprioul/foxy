@@ -2,8 +2,6 @@ export * from './Icon/mdi.enum'
 
 export * from './Img/img.enum'
 
-export * from './Charts/chart.enum'
-
 export * from './ColorPicker/color-picker.enum'
 
 export * from './Commons/commons.enum'
@@ -27,6 +25,8 @@ export * from './Commons/display.enum'
 export * from './Commons/filters.enum'
 export * from './Commons/calendar.enum'
 export * from './Commons/sort.enum'
+
+export * from './Charts/chart.enum'
 
 export * from './List/list.enum'
 export * from './List/list-item.enum'

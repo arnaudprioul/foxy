@@ -18,6 +18,8 @@ export * from './Card'
 
 export * from './Carousel'
 
+export * from './Charts'
+
 export * from './Checkbox'
 
 export * from './Chip'
