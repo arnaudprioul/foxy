@@ -7,7 +7,7 @@ import {
     IPaddingProps
 } from "@foxy/interfaces"
 
-import { TChartAxisSide, TChartType, TDirectionBoth } from "@foxy/types"
+import { TAxis, TChartType, TDirectionBoth } from "@foxy/types"
 
 export interface IChartProps extends ICommonsComponentProps, IChartCommonProps {
     type?: TChartType
@@ -15,9 +15,9 @@ export interface IChartProps extends ICommonsComponentProps, IChartCommonProps {
     titleSize?: number | string
     subtitle?: string
     subtitleSize?: number | string
-    showAxisLine?: TChartAxisSide
-    showGrids?: TChartAxisSide
-    showLabels?: TChartAxisSide
+    showAxisLine?: TAxis
+    showGrids?: TAxis
+    showLabels?: TAxis
 }
 
 export interface IChartCommonProps extends ICommonsComponentProps, IColorProps, IDimensionProps, IPaddingProps, IItemProps, IDirectionProps {

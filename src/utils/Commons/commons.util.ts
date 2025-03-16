@@ -367,8 +367,32 @@ export function flattenFragments (nodes: Array<VNode>): Array<VNode> {
     }).flat()
 }
 
+/**
+ * Utility function to check for object type.
+ *
+ * @param {*} obj
+ *          The item to check.
+ *
+ * @return {boolean}
+ *          True if the argument is object.
+ */
 export function isObject (obj: any): obj is object {
     return obj !== null && typeof obj === 'object' && !Array.isArray(obj)
+}
+
+/**
+ * Utility function to check for string type.
+ *
+ * @function isString
+ *
+ * @param {*} s
+ *        The item to check.
+ *
+ * @return {boolean}
+ *         True if the argument is a string.
+ */
+export function isString(s: any): s is string {
+    return typeof s === 'string';
 }
 
 export function mergeDeep (
