@@ -2,19 +2,27 @@
   <Story
       auto-props-disabled
       group="components"
-      title="Feedback/Snackbar">
+      title="Feedback/Snackbar"
+  >
     <Variant title="Default">
       <template #default>
         <foxy-snackbar
             v-model="state.modelValue"
             v-bind="state"
-            @update:model-value="logEvent('update:model-value', $event)"/>
+            @update:model-value="logEvent('update:model-value', $event)"
+        />
       </template>
 
       <template #controls>
-        <hst-checkbox v-model="state.modelValue" title="Hide/Show Snackbar"/>
+        <hst-checkbox
+            v-model="state.modelValue"
+            title="Hide/Show Snackbar"
+        />
 
-        <hst-checkbox v-model="state.timer" title="Hide/Show Timer"/>
+        <hst-checkbox
+            v-model="state.timer"
+            title="Hide/Show Timer"
+        />
 
         <hst-select
             v-model="state.status"
@@ -25,7 +33,8 @@
             { value: 'error', label: 'Error' },
             { value: 'warning', label: 'Warning' },
           ]"
-            title="Status"/>
+            title="Status"
+        />
 
         <hst-select
             v-model="state.location"
@@ -39,15 +48,22 @@
               { value: 'center left', label: 'Left' },
               { value: 'bottom left', label: 'Bottom Left' },
             ]"
-            title="Location"/>
+            title="Location"
+        />
 
-        <hst-text v-model="state.text" title="Text message"/>
+        <hst-text
+            v-model="state.text"
+            title="Text message"
+        />
       </template>
     </Variant>
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxySnackbar } from '@foxy/components'
 
   import { ISnackbarProps } from '@foxy/interfaces'

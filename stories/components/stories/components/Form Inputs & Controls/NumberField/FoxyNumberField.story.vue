@@ -2,7 +2,7 @@
   <Story
       auto-props-disabled
       group="components"
-      title="Form Inputs & Controls/Select"
+      title="Form Inputs & Controls/NumberField"
   >
     <Variant title="Default">
       <template #default>
@@ -12,13 +12,12 @@
               :justify="JUSTIFY.CENTER"
           >
             <foxy-col>
-              <foxy-select
+              <foxy-number-field
                   v-bind="state"
                   @click:control="logEvent('click control', $event)"
                   @mousedown:control="logEvent('mousedown control', $event)"
                   @update:focused="logEvent('update focused', $event)"
                   @update:model-value="logEvent('update modelValue', $event)"
-                  @update:menu="logEvent('update menu', $event)"
                   @click:append="logEvent('click append', $event)"
                   @click:prepend="logEvent('click prepend', $event)"
                   @click:clear="logEvent('click clear', $event)"
@@ -29,6 +28,7 @@
           </foxy-row>
         </foxy-container>
       </template>
+
       <template #controls>
         <hst-icon
             v-model="state.prependIcon"
@@ -47,29 +47,33 @@
             title="Append Inner Icon"
         />
 
+        <hst-icon
+            v-model="state.incrementIcon"
+            title="Increment Icon"
+        />
+        <hst-icon
+            v-model="state.decrementIcon"
+            title="Decrement Icon"
+        />
+
+        <hst-checkbox
+            v-model="state.clearable"
+            title="Clearable"
+        />
+
         <hst-checkbox
             v-model="state.required"
             title="Required"
         />
 
         <hst-checkbox
-            v-model="state.counter"
-            title="Counter"
+            v-model="state.split"
+            title="Split"
         />
 
         <hst-checkbox
-            v-model="state.chips"
-            title="Chips"
-        />
-
-        <hst-checkbox
-            v-model="state.multiple"
-            title="Multiple"
-        />
-
-        <hst-checkbox
-            v-model="state.autocomplete"
-            title="Autocomplete"
+            v-model="state.inset"
+            title="Inset"
         />
 
         <hst-text
@@ -93,18 +97,19 @@
     lang="ts"
     setup
 >
-  import { FoxyCol, FoxyContainer, FoxyRow, FoxySelect } from '@foxy/components'
+  import { FoxyCol, FoxyContainer, FoxyNumberField, FoxyRow } from '@foxy/components'
 
   import { ALIGN, JUSTIFY } from '@foxy/enums'
 
-  import { HstIcon } from '@stories/components/controls'
-  import { logEvent } from 'histoire/client'
+  import { INumberFieldProps } from '@foxy/interfaces'
 
+  import { HstIcon } from '@stories/components/controls'
+
+  import { logEvent } from 'histoire/client'
   import { reactive } from 'vue'
 
-  const state: { [key: string]: any } = reactive({
-    label: 'Select',
-    items: ['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming'],
+  const state: Partial<INumberFieldProps> = reactive({
+    label: 'Numberfield',
     bgColor: '#fff'
   })
 </script>

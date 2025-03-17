@@ -1,82 +1,98 @@
 <template>
-	<foxy-selection-control
-			ref="foxySelectionControlRef"
-			v-model="model"
-			:class="radioBtnClasses"
-			:false-icon="falseIcon"
-			:style="radioBtnStyles"
-			:true-icon="trueIcon"
-			type="radio"
-			v-bind="controlProps"
-			@click:label="handleClickLabel"
-	>
-		<template v-if="hasSlot('default')" #default>
-			<slot name="default"/>
-		</template>
+  <foxy-selection-control
+      ref="foxySelectionControlRef"
+      v-model="model"
+      :class="radioBtnClasses"
+      :false-icon="falseIcon"
+      :style="radioBtnStyles"
+      :true-icon="trueIcon"
+      type="radio"
+      v-bind="controlProps"
+      @click:label="handleClickLabel"
+  >
+    <template
+        v-if="slots.default"
+        #default
+    >
+      <slot name="default"/>
+    </template>
 
-		<template v-if="hasSlot('input')" #input="{props, icon, textColorStyles, backgroundColorStyles, model}">
-			<slot name="input" v-bind="{props, icon, textColorStyles, backgroundColorStyles, model}"/>
-		</template>
+    <template
+        v-if="slots.input"
+        #input="{props, icon, textColorStyles, backgroundColorStyles, model}"
+    >
+      <slot
+          name="input"
+          v-bind="{props, icon, textColorStyles, backgroundColorStyles, model}"
+      />
+    </template>
 
-		<template v-if="hasSlot('label')" #label>
-			<slot name="label"/>
-		</template>
-	</foxy-selection-control>
+    <template
+        v-if="slots.label"
+        #label
+    >
+      <slot name="label"/>
+    </template>
+  </foxy-selection-control>
 </template>
 
-<script lang="ts" setup>
-	import { FoxySelectionControl } from '@foxy/components'
+<script
+    lang="ts"
+    setup
+>
+  import { FoxySelectionControl } from '@foxy/components'
 
-	import { useProps, useSlots, useVModel } from '@foxy/composables'
+  import { useProps, useVModel } from '@foxy/composables'
 
-	import { DENSITY, MDI_ICONS } from '@foxy/enums'
+  import { DENSITY, MDI_ICONS } from '@foxy/enums'
 
-	import { IRadioBtnProps } from '@foxy/interfaces'
-	import { TFoxySelectionControl } from "@foxy/types"
+  import { IRadioBtnProps } from '@foxy/interfaces'
 
-	import { computed, ref, StyleValue } from 'vue'
+  import { TFoxySelectionControl } from "@foxy/types"
 
-	const props = withDefaults(defineProps<IRadioBtnProps>(), {
-		density: DENSITY.DEFAULT,
-		trueIcon: MDI_ICONS.RADIOBOX_MARKED,
-		falseIcon: MDI_ICONS.RADIOBOX_BLANK
-	})
+  import { computed, ref, StyleValue, useSlots } from 'vue'
 
-	const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])
+  const props = withDefaults(defineProps<IRadioBtnProps>(), {
+    density: DENSITY.DEFAULT,
+    trueIcon: MDI_ICONS.RADIOBOX_MARKED,
+    falseIcon: MDI_ICONS.RADIOBOX_BLANK
+  })
 
-	const {filterProps} = useProps<IRadioBtnProps>(props)
+  const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])
 
-	const foxySelectionControlRef = ref<TFoxySelectionControl>()
+  const { filterProps } = useProps<IRadioBtnProps>(props)
 
-	const model = useVModel(props, 'modelValue')
+  const foxySelectionControlRef = ref<TFoxySelectionControl>()
 
-	const {hasSlot} = useSlots()
+  const model = useVModel(props, 'modelValue')
 
-	const handleClickLabel = (e: Event) => {
-		emits('click:label', e)
-	}
+  const slots = useSlots()
 
-	const controlProps = computed(() => {
-		return foxySelectionControlRef.value?.filterProps(props, ['class', 'style', 'id', 'modelValue', 'falseIcon', 'trueIcon', 'type'])
-	})
+  const handleClickLabel = (e: Event) => {
+    emits('click:label', e)
+  }
 
-	// CLASS & STYLES
+  const controlProps = computed(() => {
+    return foxySelectionControlRef.value?.filterProps(props, ['class', 'style', 'id', 'modelValue', 'falseIcon', 'trueIcon', 'type'])
+  })
 
-	const radioBtnStyles = computed(() => {
-		return [
-			props.style
-		] as StyleValue
-	})
-	const radioBtnClasses = computed(() => {
-		return [
-			'foxy-radio-btn',
-			props.class
-		]
-	})
+  // CLASS & STYLES
 
-	// EXPOSE
+  const radioBtnStyles = computed(() => {
+    return [
+      props.style
+    ] as StyleValue
+  })
+  const radioBtnClasses = computed(() => {
+    return [
+      'foxy-radio-btn',
+      props.class
+    ]
+  })
 
-	defineExpose({
-		filterProps
-	})
+  // EXPOSE
+
+  defineExpose({
+    filterProps
+  })
 </script>

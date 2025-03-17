@@ -137,7 +137,6 @@
     useProps,
     useRounded,
     useSize,
-    useSlots,
     useVModel
   } from '@foxy/composables'
 
@@ -149,7 +148,7 @@
 
   import { IChipProps } from '@foxy/interfaces'
 
-  import { computed, StyleValue, toRef, useAttrs } from 'vue'
+  import { computed, StyleValue, toRef, useAttrs, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<IChipProps>(), {
     tag: 'span',
@@ -166,7 +165,7 @@
   const { t } = useLocale()
 
   const attrs = useAttrs()
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const { densityClasses } = useDensity(props)
   const { elevationClasses } = useElevation(props)
@@ -239,10 +238,10 @@
   }
 
   const hasClose = computed(() => {
-    return hasSlot('close') || props.closable
+    return slots.close || props.closable
   })
   const hasFilter = computed(() => {
-    return (hasSlot('filter') || props.filter) && group
+    return (slots.filter || props.filter) && group
   })
 
   // CLASS & STYLES

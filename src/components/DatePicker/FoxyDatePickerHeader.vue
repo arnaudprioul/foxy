@@ -5,25 +5,37 @@
       @click="handleClick"
   >
     <template v-if="hasPrepend">
-      <div key="prepend" class="foxy-date-picker-header__prepend" @click="handleClickPrepend">
+      <div
+          key="prepend"
+          class="foxy-date-picker-header__prepend"
+          @click="handleClickPrepend"
+      >
         <slot name="prepend">
           <foxy-avatar
               v-if="prependAvatar"
               key="prepend-avatar"
               :density="density"
-              :image="prependAvatar"/>
+              :image="prependAvatar"
+          />
           <foxy-icon
               v-if="prependIcon"
               key="prepend-icon"
               :density="density"
-              :icon="prependIcon"/>
+              :icon="prependIcon"
+          />
         </slot>
       </div>
     </template>
 
     <template v-if="hasContent">
-      <foxy-transition key="content" :transition="transition">
-        <div :key="header" class="foxy-date-picker-header__content">
+      <foxy-transition
+          key="content"
+          :transition="transition"
+      >
+        <div
+            :key="header"
+            class="foxy-date-picker-header__content"
+        >
           <slot name="default">
             {{ header }}
           </slot>
@@ -32,32 +44,41 @@
     </template>
 
     <template v-if="hasAppend">
-      <div key="append" class="foxy-date-picker-header__append" @click="handleClickAppend">
+      <div
+          key="append"
+          class="foxy-date-picker-header__append"
+          @click="handleClickAppend"
+      >
         <slot name="append">
           <foxy-avatar
               v-if="appendAvatar"
               key="append-avatar"
               :density="density"
-              :image="appendAvatar"/>
+              :image="appendAvatar"
+          />
           <foxy-icon
               v-if="appendIcon"
               key="append-icon"
               :density="density"
-              :icon="appendIcon"/>
+              :icon="appendIcon"
+          />
         </slot>
       </div>
     </template>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyAvatar, FoxyIcon, FoxyTransition } from "@foxy/components"
 
-  import { useAdjacent, useDensity, useProps, useSlots } from "@foxy/composables"
+  import { useAdjacent, useDensity, useProps } from "@foxy/composables"
 
   import { IDatePickerHeaderProps } from "@foxy/interfaces"
 
-  import { computed, StyleValue } from "vue"
+  import { computed, StyleValue, useSlots } from "vue"
 
   const props = withDefaults(defineProps<IDatePickerHeaderProps>(), {})
 
@@ -65,7 +86,7 @@
 
   const { filterProps } = useProps<IDatePickerHeaderProps>(props)
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const { densityClasses } = useDensity(props)
 
@@ -77,7 +98,7 @@
   } = useAdjacent(props)
 
   const hasContent = computed(() => {
-    return !!(hasSlot('default') || props.header)
+    return !!(slots.default || props.header)
   })
 
   const handleClick = () => {
@@ -106,7 +127,10 @@
   })
 </script>
 
-<style lang="scss" scoped>
+<style
+    lang="scss"
+    scoped
+>
 .foxy-date-picker-header {
   $this: &;
 

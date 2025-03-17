@@ -7,11 +7,17 @@
     <Variant title="Default">
       <template #default>
         <foxy-container fullscreen>
-          <foxy-row :align-content="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align-content="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col cols="auto">
               <foxy-menu v-bind="state">
                 <template #activator="{ props }">
-                  <foxy-btn :icon="MDI_ICONS.MENU" v-bind="props"/>
+                  <foxy-btn
+                      :icon="MDI_ICONS.MENU"
+                      v-bind="props"
+                  />
                 </template>
               </foxy-menu>
             </foxy-col>
@@ -19,17 +25,29 @@
         </foxy-container>
       </template>
       <template #controls>
-        <hst-location v-model="state.location" title="Location"/>
+        <hst-location
+            v-model="state.location"
+            title="Location"
+        />
 
-        <hst-checkbox v-model="state.openOnHover" title="Open On Hover"/>
+        <hst-checkbox
+            v-model="state.openOnHover"
+            title="Open On Hover"
+        />
 
-        <hst-checkbox v-model="state.persistent" title="Persistent"/>
+        <hst-checkbox
+            v-model="state.persistent"
+            title="Persistent"
+        />
       </template>
     </Variant>
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyBtn, FoxyCol, FoxyContainer, FoxyMenu, FoxyRow } from '@foxy/components'
 
   import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxy/enums'
@@ -47,10 +65,10 @@
           { title: 'Create', prependIcon: 'mdi-plus-outline' },
           { title: 'Read', prependIcon: 'mdi-file-outline' },
           { title: 'Update', prependIcon: 'mdi-update' },
-          { title: 'Delete', prependIcon: 'mdi-delete' },
+          { title: 'Delete', prependIcon: 'mdi-delete' }
         ]
       },
-      { title: 'Settings', prependIcon: 'mdi-cog-outline' },
+      { title: 'Settings', prependIcon: 'mdi-cog-outline' }
     ]
   })
 </script>

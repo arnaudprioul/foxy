@@ -7,7 +7,10 @@
     <Variant title="Default">
       <template #default>
         <foxy-container fullscreen>
-          <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col>
               <foxy-color-picker-field
                   v-bind="state"
@@ -25,8 +28,11 @@
   </Story>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyCol, FoxyContainer, FoxyRow, FoxyColorPickerField } from '@foxy/components'
+<script
+    lang="ts"
+    setup
+>
+  import { FoxyCol, FoxyColorPickerField, FoxyContainer, FoxyRow } from '@foxy/components'
 
   import { ALIGN, JUSTIFY } from '@foxy/enums'
   import { logEvent } from "histoire/client"
@@ -35,7 +41,7 @@
 
   const state: { [key: string]: any } = reactive({
     label: 'ColorPickerField',
-	  menu: true,
+    menu: true,
     bgColor: '#fff'
   })
 </script>

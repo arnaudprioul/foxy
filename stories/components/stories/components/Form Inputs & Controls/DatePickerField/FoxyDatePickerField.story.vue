@@ -7,7 +7,10 @@
     <Variant title="Default">
       <template #default>
         <foxy-container fullscreen>
-          <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col>
               <foxy-date-picker-field
                   v-bind="state"
@@ -19,14 +22,23 @@
       </template>
 
       <template #controls>
-	      <hst-checkbox v-model="state.range" title="Range"/>
-	      <hst-checkbox v-model="state.multiple" title="Multiple"/>
+        <hst-checkbox
+            v-model="state.range"
+            title="Range"
+        />
+        <hst-checkbox
+            v-model="state.multiple"
+            title="Multiple"
+        />
       </template>
     </Variant>
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyCol, FoxyContainer, FoxyDatePickerField, FoxyRow } from '@foxy/components'
 
   import { ALIGN, JUSTIFY } from '@foxy/enums'
@@ -36,7 +48,7 @@
 
   const state: { [key: string]: any } = reactive({
     label: 'DatePickerField',
-	  menu: true,
+    menu: true,
     bgColor: '#fff'
   })
 </script>

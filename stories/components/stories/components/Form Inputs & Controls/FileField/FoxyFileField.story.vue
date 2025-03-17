@@ -7,7 +7,10 @@
     <Variant title="Default">
       <template #default>
         <foxy-container fullscreen>
-          <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col>
               <foxy-file-field
                   v-bind="state"
@@ -19,29 +22,54 @@
                   @click:prepend="logEvent('click prepend', $event)"
                   @click:clear="logEvent('click clear', $event)"
                   @click:append-inner="logEvent('click append inner', $event)"
-                  @click:prepend-inner="logEvent('click prepend inner', $event)"/>
+                  @click:prepend-inner="logEvent('click prepend inner', $event)"
+              />
             </foxy-col>
           </foxy-row>
         </foxy-container>
       </template>
       <template #controls>
-        <hst-checkbox v-model="state.clearable" title="Clearable"/>
+        <hst-checkbox
+            v-model="state.clearable"
+            title="Clearable"
+        />
 
-        <hst-icon v-model="state.prependIcon" title="Prepend Icon"/>
-        <hst-icon v-model="state.appendIcon" title="Append Icon"/>
+        <hst-icon
+            v-model="state.prependIcon"
+            title="Prepend Icon"
+        />
+        <hst-icon
+            v-model="state.appendIcon"
+            title="Append Icon"
+        />
 
-        <hst-icon v-model="state.prependInnerIcon" title="Prepend Inner Icon"/>
-        <hst-icon v-model="state.appendInnerIcon" title="Append Inner Icon"/>
+        <hst-icon
+            v-model="state.prependInnerIcon"
+            title="Prepend Inner Icon"
+        />
+        <hst-icon
+            v-model="state.appendInnerIcon"
+            title="Append Inner Icon"
+        />
 
-        <hst-checkbox v-model="state.required" title="Required"/>
+        <hst-checkbox
+            v-model="state.required"
+            title="Required"
+        />
 
-        <hst-text v-model="state.label" title="Label"/>
+        <hst-text
+            v-model="state.label"
+            title="Label"
+        />
       </template>
     </Variant>
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyCol, FoxyContainer, FoxyFileField, FoxyRow } from '@foxy/components'
 
   import { ALIGN, JUSTIFY } from '@foxy/enums'
@@ -54,7 +82,7 @@
   const state: { [key: string]: any } = reactive({
     label: 'File',
     persistentCounter: true,
-	  bgColor: '#fff'
+    bgColor: '#fff'
   })
 </script>
 

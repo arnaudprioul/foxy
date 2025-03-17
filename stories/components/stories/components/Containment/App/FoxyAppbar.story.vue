@@ -1,19 +1,25 @@
 <template>
   <Story
+      :init-state="initState"
       group="components"
       title="Containment/App Bar"
-      :init-state="initState"
   >
     <template #default="{ state }">
-      <foxy-app-bar order="0" v-bind="state.props"/>
+      <foxy-app-bar
+          order="0"
+          v-bind="state.props"
+      />
     </template>
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyAppBar } from '@foxy/components'
 
-  function initState() {
+  function initState () {
     return {
       props: {
         title: 'My Application',

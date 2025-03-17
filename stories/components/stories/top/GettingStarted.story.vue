@@ -1,7 +1,7 @@
 <template>
   <Story
-      group="top"
       docs-only
+      group="top"
       title="Getting started"
   />
 </template>

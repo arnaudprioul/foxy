@@ -49,7 +49,7 @@
     </template>
 
     <template
-        v-if="hasSlot('default')"
+        v-if="slots.default"
         #default
     >
       <slot name="default"></slot>
@@ -67,7 +67,6 @@
     useLayoutItem,
     useProps,
     useScroll,
-    useSlots,
     useSsrBoot,
     useToggleScope,
     useVModel
@@ -76,9 +75,12 @@
   import { BLOCK, DENSITY } from '@foxy/enums'
 
   import { IAppBarProps } from '@foxy/interfaces'
+
   import { TFoxyToolbar } from "@foxy/types"
+
   import { forwardRefs, int } from "@foxy/utils"
-  import { computed, ref, shallowRef, StyleValue, toRef, watchEffect } from 'vue'
+
+  import { computed, ref, shallowRef, StyleValue, toRef, watchEffect, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<IAppBarProps>(), {
     tag: 'header',
@@ -94,7 +96,7 @@
   const { filterProps } = useProps<IAppBarProps>(props)
 
   const { ssrBootStyles } = useSsrBoot()
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const foxyToolbarRef = ref<TFoxyToolbar>()
 
@@ -103,19 +105,19 @@
   })
 
   const hasPrepend = computed(() => {
-    return hasTitle || hasImage || hasSlot('prepend')
+    return hasTitle || hasImage || slots.prepend
   })
   const hasContent = computed(() => {
-    return hasSlot('content')
+    return slots.content
   })
   const hasAppend = computed(() => {
-    return hasSlot('append')
+    return slots.append
   })
   const hasTitle = computed(() => {
-    return !!(props.title || hasSlot('title'))
+    return !!(props.title || slots.title)
   })
   const hasImage = computed(() => {
-    return !!(props.image || hasSlot('img'))
+    return !!(props.image || slots.img)
   })
 
   const isActive = useVModel(props, 'modelValue')

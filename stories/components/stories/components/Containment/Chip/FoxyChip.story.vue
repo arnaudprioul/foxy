@@ -7,7 +7,10 @@
     <Variant title="Default">
       <template #default>
         <foxy-container fullscreen>
-          <foxy-row :align-content="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align-content="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col cols="auto">
               <foxy-chip v-bind="state"/>
             </foxy-col>
@@ -15,18 +18,33 @@
         </foxy-container>
       </template>
       <template #controls>
-        <hst-text v-model="state.text" title="Text"/>
+        <hst-text
+            v-model="state.text"
+            title="Text"
+        />
 
-        <hst-icon v-model="state.prependIcon" title="Prepend Icon"/>
-        <hst-icon v-model="state.appendIcon" title="Append Icon"/>
+        <hst-icon
+            v-model="state.prependIcon"
+            title="Prepend Icon"
+        />
+        <hst-icon
+            v-model="state.appendIcon"
+            title="Append Icon"
+        />
 
-        <hst-checkbox v-model="state.closable" title="Closable"/>
+        <hst-checkbox
+            v-model="state.closable"
+            title="Closable"
+        />
       </template>
     </Variant>
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyChip, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
   import { ALIGN, JUSTIFY } from '@foxy/enums'
 
@@ -35,8 +53,8 @@
 
   const state: { [key: string]: any } = reactive({
     text: 'Chip',
-    color:"#ffc529",
-    bgColor:"#7d6fa1"
+    color: "#ffc529",
+    bgColor: "#7d6fa1"
   })
 </script>
 

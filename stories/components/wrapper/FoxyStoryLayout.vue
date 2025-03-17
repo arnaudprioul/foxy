@@ -1,4 +1,7 @@
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyApp } from '@foxy/components'
 
   import { Story, Variant } from 'histoire'

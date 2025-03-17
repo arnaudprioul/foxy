@@ -2,21 +2,32 @@
   <Story
       auto-props-disabled
       group="components"
-      title="Containment/List">
+      title="Containment/List"
+  >
     <Variant title="Default">
       <template #default>
         <foxy-container fullscreen>
-          <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col cols="auto">
               <foxy-list
                   v-bind="state"
                   @update:selected="logEvent('update:selected', $event)"
                   @update:opened="logEvent('update:opened', $event)"
                   @click:open="logEvent('click:open', $event)"
-                  @click:select="logEvent('click:select', $event)">
-                <foxy-list-item prepend-icon="mdi-home" title="Home"/>
+                  @click:select="logEvent('click:select', $event)"
+              >
+                <foxy-list-item
+                    prepend-icon="mdi-home"
+                    title="Home"
+                />
 
-                <foxy-list-group value="Users" @click:activator="logEvent('click:activator - Users', $event)">
+                <foxy-list-group
+                    value="Users"
+                    @click:activator="logEvent('click:activator - Users', $event)"
+                >
 
                   <template #activator="{isOpen, props, events, toggleIcon}">
                     <foxy-list-item
@@ -26,11 +37,15 @@
                         title="Users"
                         v-bind="props"
                         value="Users"
-                        v-on="events"/>
+                        v-on="events"
+                    />
                   </template>
 
                   <template #items>
-                    <foxy-list-group value="Admin" @click:activator="logEvent('click:activator - Admin', $event)">
+                    <foxy-list-group
+                        value="Admin"
+                        @click:activator="logEvent('click:activator - Admin', $event)"
+                    >
 
                       <template #activator="{isOpen, props, events,  toggleIcon}">
                         <foxy-list-item
@@ -39,7 +54,8 @@
                             title="Admin"
                             v-bind="props"
                             value="Admin"
-                            v-on="events"/>
+                            v-on="events"
+                        />
                       </template>
 
                       <template #items>
@@ -48,14 +64,16 @@
                             :key="i"
                             :prepend-icon="icon"
                             :title="title"
-                            :value="title"/>
+                            :value="title"
+                        />
                       </template>
                     </foxy-list-group>
 
                     <foxy-list-group
                         title="Actions"
                         value="Actions"
-                        @click:activator="logEvent('click:activator - Actions', $event)">
+                        @click:activator="logEvent('click:activator - Actions', $event)"
+                    >
 
                       <template #activator="{isOpen, props, events,  toggleIcon}">
                         <foxy-list-item
@@ -64,7 +82,8 @@
                             title="Actions"
                             v-bind="props"
                             value="Actions"
-                            v-on="events"/>
+                            v-on="events"
+                        />
                       </template>
 
                       <template #items>
@@ -73,7 +92,8 @@
                             :key="i"
                             :prepend-icon="icon"
                             :title="title"
-                            :value="title"/>
+                            :value="title"
+                        />
                       </template>
                     </foxy-list-group>
                   </template>
@@ -84,18 +104,27 @@
         </foxy-container>
       </template>
       <template #controls>
-        <hst-checkbox v-model="state.border" title="Border"/>
+        <hst-checkbox
+            v-model="state.border"
+            title="Border"
+        />
 
         <hst-rounded v-model:rounded="state.rounded"/>
 
-        <hst-elevation v-model="state.elevation" title="Elevated"/>
+        <hst-elevation
+            v-model="state.elevation"
+            title="Elevated"
+        />
       </template>
     </Variant>
 
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyCol, FoxyContainer, FoxyList, FoxyListGroup, FoxyListItem, FoxyRow } from '@foxy/components'
 
   import { ALIGN, JUSTIFY } from '@foxy/enums'
@@ -111,13 +140,13 @@
 
   const admins = [
     ['Management', 'mdi-account-multiple-outline'],
-    ['Settings', 'mdi-cog-outline'],
+    ['Settings', 'mdi-cog-outline']
   ]
   const cruds = [
     ['Create', 'mdi-plus-outline'],
     ['Read', 'mdi-file-outline'],
     ['Update', 'mdi-update'],
-    ['Delete', 'mdi-delete'],
+    ['Delete', 'mdi-delete']
   ]
 </script>
 <docs lang="md">

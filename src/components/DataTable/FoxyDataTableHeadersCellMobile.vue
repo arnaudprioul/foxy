@@ -22,42 +22,42 @@
               @click:append="handleAppendCLick"
           >
             <template
-                v-if="hasSlot('select.prepend')"
+                v-if="slots['select.prepend']"
                 #prepend
             >
               <slot name="select.prepend"/>
             </template>
 
             <template
-                v-if="hasSlot('select.loader')"
+                v-if="slots['select.loader']"
                 #loader
             >
               <slot name="select.loader"/>
             </template>
 
             <template
-                v-if="hasSlot('select.prependInner')"
+                v-if="slots['select.prependInner']"
                 #prependInner
             >
               <slot name="select.prependInner"/>
             </template>
 
             <template
-                v-if="hasSlot('select.floatingLabel')"
+                v-if="slots['select.floatingLabel']"
                 #floatingLabel
             >
               <slot name="select.floatingLabel"/>
             </template>
 
             <template
-                v-if="hasSlot('select.label')"
+                v-if="slots['select.label']"
                 #label
             >
               <slot name="select.label"/>
             </template>
 
             <template
-                v-if="hasSlot('select.prefix')"
+                v-if="slots['select.prefix']"
                 #prefix
             >
               <slot name="select.prefix"/>
@@ -78,35 +78,35 @@
                     @mousedown="handleChipMousedown"
                 >
                   <template
-                      v-if="hasSlot('chip:prepend')"
+                      v-if="slots['chip:prepend']"
                       #prepend
                   >
                     <slot name="chip:prepend"/>
                   </template>
 
                   <template
-                      v-if="hasSlot('chip:default')"
+                      v-if="slots['chip:default']"
                       #default
                   >
                     <slot name="chip:default"/>
                   </template>
 
                   <template
-                      v-if="hasSlot('chip:append')"
+                      v-if="slots['chip:append']"
                       #append
                   >
                     <slot name="chip:append"/>
                   </template>
 
                   <template
-                      v-if="hasSlot('chip:close')"
+                      v-if="slots['chip:close']"
                       #close
                   >
                     <slot name="chip:close"/>
                   </template>
 
                   <template
-                      v-if="hasSlot('chip:filter')"
+                      v-if="slots['chip:filter']"
                       #filter
                   >
                     <slot name="chip:filter"/>
@@ -116,63 +116,63 @@
             </template>
 
             <template
-                v-if="hasSlot('select.selection')"
+                v-if="slots['select.selection']"
                 #selection
             >
               <slot name="select.selection"/>
             </template>
 
             <template
-                v-if="hasSlot('select.noData')"
+                v-if="slots['select.noData']"
                 #noData
             >
               <slot name="select.noData"/>
             </template>
 
             <template
-                v-if="hasSlot('select.prependItem')"
+                v-if="slots['select.prependItem']"
                 #prependItem
             >
               <slot name="select.prependItem"/>
             </template>
 
             <template
-                v-if="hasSlot('select.item')"
+                v-if="slots['select.item']"
                 #item
             >
               <slot name="select.item"/>
             </template>
 
             <template
-                v-if="hasSlot('select.appendItem')"
+                v-if="slots['select.appendItem']"
                 #appendItem
             >
               <slot name="select.appendItem"/>
             </template>
 
             <template
-                v-if="hasSlot('select.suffix')"
+                v-if="slots['select.suffix']"
                 #suffix
             >
               <slot name="select.suffix"/>
             </template>
 
             <template
-                v-if="hasSlot('select.appendInner')"
+                v-if="slots['select.appendInner']"
                 #appendInner
             >
               <slot name="select.appendInner"/>
             </template>
 
             <template
-                v-if="hasSlot('clear')"
+                v-if="slots.clear"
                 #clear
             >
               <slot name="clear"/>
             </template>
 
             <template
-                v-if="hasSlot('select.append')"
+                v-if="slots['select.append']"
                 #append
             >
               <slot name="select.append"/>
@@ -190,13 +190,13 @@
 >
   import { FoxyChip, FoxyDataTableColumnCell, FoxySelect } from '@foxy/components'
 
-  import { useHeadersCell, useLocale, useProps, useSelection, useSlots, useSort } from '@foxy/composables'
+  import { useHeadersCell, useLocale, useProps, useSelection, useSort } from '@foxy/composables'
 
   import { DENSITY, MDI_ICONS } from '@foxy/enums'
 
   import { IDataTableHeadersCellMobileProps, IInternalListItem } from '@foxy/interfaces'
 
-  import { computed, mergeProps } from 'vue'
+  import { computed, mergeProps, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<IDataTableHeadersCellMobileProps>(), {})
 
@@ -206,7 +206,7 @@
 
   const { t } = useLocale()
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const { toggleSort, sortBy, isSorted } = useSort()
   const { someSelected, allSelected, selectAll } = useSelection()

@@ -1,23 +1,28 @@
 <template>
-  <Story group="components" title="Images & Icons/Avatar" :init-state="initState">
+  <Story
+      :init-state="initState"
+      group="components"
+      title="Images & Icons/Avatar"
+  >
     <template #default="{ state }">
       <foxy-avatar v-bind="state.props"/>
     </template>
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
 
   import { FoxyAvatar } from '@foxy/components'
 
-  function initState() {
+  function initState () {
     return {
-      props: {
-
-      }
+      props: {}
     }
   }
 </script>
 <docs lang="md">
-  Avatar Documentation
+Avatar Documentation
 </docs>

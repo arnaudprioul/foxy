@@ -6,7 +6,7 @@
       v-bind="tableProps"
   >
     <template
-        v-if="hasSlot('top')"
+        v-if="slots.top"
         #top
     >
       <slot name="top"/>
@@ -29,7 +29,7 @@
               v-bind="dataTableHeadersProps"
           >
             <template
-                v-if="hasSlot('header')"
+                v-if="slots.header"
                 #default="headerProps"
             >
               <slot
@@ -39,7 +39,7 @@
             </template>
 
             <template
-                v-if="hasSlot('header.mobile')"
+                v-if="slots['header.mobile']"
                 #mobile="headerProps"
             >
               <slot
@@ -49,7 +49,7 @@
             </template>
 
             <template
-                v-if="hasSlot('header.loader')"
+                v-if="slots['header.loader']"
                 #loader="headerLoaderProps"
             >
               <slot
@@ -137,7 +137,6 @@
     useOptions,
     usePaginatedItems,
     useProps,
-    useSlots,
     useSortedItems
   } from '@foxy/composables'
 
@@ -147,7 +146,7 @@
 
   import { TFoxyDataTableFooter, TFoxyDataTableHeaders, TFoxyDataTableRows, TFoxyTable } from "@foxy/types"
 
-  import { computed, ref, StyleValue, toRef, useAttrs } from 'vue'
+  import { computed, ref, StyleValue, toRef, useAttrs, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<IDataTableProps>(), {
     page: 1,
@@ -184,7 +183,7 @@
     showExpand: toRef(props, 'showExpand')
   })
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const { items } = useDataTableItems(props, columns)
 

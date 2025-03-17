@@ -1,24 +1,27 @@
 <template>
   <Story
+      :init-state="initState"
       group="pageBuilder"
       title="CssBox"
-      :init-state="initState">
+  >
     <template #default="{ state }">
       <foxy-css-box v-bind="state.props"/>
     </template>
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyCssBox } from '@foxy/components'
 
-  function initState() {
+  function initState () {
     return {
-      props: {
-      }
+      props: {}
     }
   }
 </script>
 <docs lang="md">
-  Css Box Documentation
+Css Box Documentation
 </docs>

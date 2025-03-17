@@ -1,8 +1,9 @@
 <template>
   <Story
+      :init-state="initState"
       group="pageBuilder"
       title="Edit Wrapper"
-      :init-state="initState">
+  >
     <template #default="{ state }">
       <foxy-main>
         <foxy-edit-wrapper>
@@ -13,16 +14,18 @@
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyBtn, FoxyEditWrapper } from '@foxy/components'
 
-  function initState() {
+  function initState () {
     return {
-      props: {
-      }
+      props: {}
     }
   }
 </script>
 <docs lang="md">
-  Css Box Documentation
+Css Box Documentation
 </docs>

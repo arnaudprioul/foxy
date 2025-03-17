@@ -10,8 +10,8 @@
           <foxy-row>
             <foxy-col cols="12">
               <foxy-color-picker
-		              v-bind="state"
-		              @update:model-value="logEvent('update model value', $event)"
+                  v-bind="state"
+                  @update:model-value="logEvent('update model value', $event)"
               />
             </foxy-col>
           </foxy-row>
@@ -19,21 +19,27 @@
       </template>
 
       <template #controls>
-				<hst-checkbox v-model="state.showSwatches" title="Show Swatches"/>
+        <hst-checkbox
+            v-model="state.showSwatches"
+            title="Show Swatches"
+        />
       </template>
     </Variant>
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
 
-	import { FoxyCol, FoxyColorPicker, FoxyContainer, FoxyRow } from '@foxy/components'
-	import { logEvent } from "histoire/client"
+  import { FoxyCol, FoxyColorPicker, FoxyContainer, FoxyRow } from '@foxy/components'
+  import { logEvent } from "histoire/client"
 
   import { reactive } from 'vue'
 
   const state: { [key: string]: any } = reactive({
-	  showSwatches: true
+    showSwatches: true
   })
 </script>
 <docs lang="md">

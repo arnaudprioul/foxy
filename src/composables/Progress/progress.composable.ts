@@ -1,13 +1,14 @@
-import { useIntersectionObserver, useMargin, usePadding, useSlots, useVModel } from '@foxy/composables'
+import { useIntersectionObserver, useMargin, usePadding, useVModel } from '@foxy/composables'
 
 import { IProgressTypeProps } from '@foxy/interfaces'
+
 import { int } from "@foxy/utils"
 
-import { computed } from 'vue'
+import { computed, useSlots } from 'vue'
 
 export function useProgress (props: IProgressTypeProps) {
     const progress = useVModel(props, 'modelValue')
-    const { hasSlot } = useSlots()
+    const slots = useSlots()
     const { isIntersecting } = useIntersectionObserver()
     const { paddingClasses, paddingStyles } = usePadding(props)
     const { marginClasses, marginStyles } = useMargin(props)
@@ -20,7 +21,7 @@ export function useProgress (props: IProgressTypeProps) {
         return parseFloat(progress.value as string) / max.value * 100
     })
     const hasContent = computed(() => {
-        return hasSlot('default')
+        return slots.default
     })
 
     const progressClasses = computed(() => {

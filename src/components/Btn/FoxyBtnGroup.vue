@@ -27,13 +27,13 @@
     setup
 >
   import { FoxyBtn } from '@foxy/components'
-  import { useBorder, useDensity, useElevation, useProps, useRounded, useSlots } from '@foxy/composables'
+  import { useBorder, useDensity, useElevation, useProps, useRounded } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
 
   import { IBtnGroupProps, IBtnProps } from '@foxy/interfaces'
 
-  import { computed, StyleValue } from 'vue'
+  import { computed, StyleValue, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<IBtnGroupProps>(), { tag: 'div', density: DENSITY.DEFAULT, items: () => [] })
 
@@ -59,9 +59,9 @@
     }) as Array<IBtnProps>
   })
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
   const hasItems = computed(() => {
-    return hasSlot('default') || !!items.value
+    return slots.default || !!items.value
   })
 
   // CLASS & STYLES

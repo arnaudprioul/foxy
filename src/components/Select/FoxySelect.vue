@@ -20,42 +20,42 @@
       @mousedown:control="handleMousedownControl"
   >
     <template
-        v-if="hasSlot('prepend')"
+        v-if="slots.prepend"
         #prepend
     >
       <slot name="prepend"/>
     </template>
 
     <template
-        v-if="hasSlot('loader')"
+        v-if="slots.loader"
         #loader
     >
       <slot name="loader"/>
     </template>
 
     <template
-        v-if="hasSlot('prependInner')"
+        v-if="slots.prependInner"
         #prependInner
     >
       <slot name="prependInner"/>
     </template>
 
     <template
-        v-if="hasSlot('floatingLabel')"
+        v-if="slots.floatingLabel"
         #floatingLabel
     >
       <slot name="floatingLabel"/>
     </template>
 
     <template
-        v-if="hasSlot('label')"
+        v-if="slots.label"
         #label
     >
       <slot name="label"/>
     </template>
 
     <template
-        v-if="hasSlot('prefix')"
+        v-if="slots.prefix"
         #prefix
     >
       <slot name="prefix"/>
@@ -212,7 +212,7 @@
     </template>
 
     <template
-        v-if="hasSlot('suffix')"
+        v-if="slots.suffix"
         #suffix
     >
       <slot name="suffix"/>
@@ -242,14 +242,14 @@
     </template>
 
     <template
-        v-if="hasSlot('clear')"
+        v-if="slots.clear"
         #clear
     >
       <slot name="clear"/>
     </template>
 
     <template
-        v-if="hasSlot('append')"
+        v-if="slots.append"
         #append
     >
       <slot name="append"/>
@@ -280,7 +280,6 @@
     useLocale,
     useProps,
     useScrolling,
-    useSlots,
     useTextColor,
     useVModel
   } from '@foxy/composables'
@@ -304,7 +303,19 @@
 
   import { deepEqual, forwardRefs, matchesSelector, noop, wrapInArray } from '@foxy/utils'
 
-  import { computed, inject, mergeProps, nextTick, ref, shallowRef, StyleValue, toRef, VNodeRef, watch } from 'vue'
+  import {
+    computed,
+    inject,
+    mergeProps,
+    nextTick,
+    ref,
+    shallowRef,
+    StyleValue,
+    toRef,
+    VNodeRef,
+    watch,
+    useSlots
+  } from 'vue'
 
   const props = withDefaults(defineProps<ISelectProps>(), {
     type: TEXT_FIELD_TYPE.TEXT,
@@ -344,7 +355,7 @@
   const foxyListRef = ref<TFoxyList>()
   const foxyChipsRef = ref<TFoxyChip>()
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const { textColorStyles } = useTextColor(toRef(props, 'color'))
 
@@ -405,7 +416,7 @@
   })
 
   const hasNoData = computed(() => {
-    return !displayItems.value.length && (!props.hideNoData || hasSlot('noData'))
+    return !displayItems.value.length && (!props.hideNoData || slots.noData)
   })
 
   const isFocused = shallowRef(false)
@@ -675,7 +686,7 @@
   // CHIPS
 
   const hasChips = computed(() => {
-    return props.chips || hasSlot('chip')
+    return props.chips || slots.chip
   })
 
   const chipSlotProps = (item: IInternalListItem) => {
@@ -766,7 +777,7 @@
   })
 
   const hasList = computed(() => {
-    return !props.hideNoData || displayItems.value.length || hasSlot('prepend-item') || hasSlot('append-item') || hasSlot('no-data')
+    return !props.hideNoData || displayItems.value.length || slots.prependItem || slots.appendItem || slots.noData
   })
 
   const textFieldProps = computed(() => {

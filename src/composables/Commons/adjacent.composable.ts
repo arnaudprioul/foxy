@@ -1,26 +1,25 @@
-import {useSlots} from '@foxy/composables'
+import { IAdjacentInnerProps, IAdjacentProps } from '@foxy/interfaces'
 
-import {IAdjacentInnerProps, IAdjacentProps} from '@foxy/interfaces'
+import { getCurrentInstance } from "@foxy/utils";
 
-import {computed} from 'vue'
-import {getCurrentInstance} from "@foxy/utils";
+import { computed, useSlots } from 'vue'
 
-export function useAdjacent(props: IAdjacentProps) {
+export function useAdjacent (props: IAdjacentProps) {
     const vm = getCurrentInstance('FoxyAdjacent')
 
-    const {hasSlot} = useSlots()
+    const slots = useSlots()
 
     const hasPrependMedia = computed(() => {
         return !!(props.prependAvatar || props.prependIcon)
     })
     const hasPrepend = computed(() => {
-        return hasSlot('prepend') || hasPrependMedia.value
+        return slots.prepend || hasPrependMedia.value
     })
     const hasAppendMedia = computed(() => {
         return !!(props.appendAvatar || props.appendIcon)
     })
     const hasAppend = computed(() => {
-        return hasSlot('append') || hasAppendMedia.value
+        return slots.append || hasAppendMedia.value
     })
 
     const onClickPrepend = (e: Event) => {
@@ -40,25 +39,25 @@ export function useAdjacent(props: IAdjacentProps) {
     }
 }
 
-export function useAdjacentInner(props: IAdjacentInnerProps) {
+export function useAdjacentInner (props: IAdjacentInnerProps) {
     const vm = getCurrentInstance('FoxyAdjacentInner')
 
-    const {hasSlot} = useSlots()
+    const slots = useSlots()
 
     const hasPrependInnerMedia = computed(() => {
         return !!(props.prependInnerAvatar || props.prependInnerIcon)
     })
     const hasPrependInner = computed(() => {
-        return hasSlot('prependInner') || hasPrependInnerMedia.value
+        return slots.prependInner || hasPrependInnerMedia.value
     })
     const hasAppendInnerMedia = computed(() => {
         return !!(props.appendInnerAvatar || props.appendInnerIcon)
     })
     const hasAppendInner = computed(() => {
-        return hasSlot('appendInner') || hasAppendInnerMedia.value
+        return slots.appendInner || hasAppendInnerMedia.value
     })
     const hasClear = computed(() => {
-        return props.clearable || hasSlot('clear')
+        return props.clearable || slots.clear
     })
 
     const onClickPrependInner = (e: Event) => {

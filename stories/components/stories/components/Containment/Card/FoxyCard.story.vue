@@ -1,9 +1,16 @@
 <template>
-  <Story auto-props-disabled group="components" title="Containment/Card">
+  <Story
+      auto-props-disabled
+      group="components"
+      title="Containment/Card"
+  >
     <Variant title="Default">
       <template #default>
         <foxy-container fullscreen>
-          <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col>
               <foxy-card v-bind="state"/>
             </foxy-col>
@@ -12,30 +19,60 @@
       </template>
 
       <template #controls>
-        <hst-checkbox v-model="state.border" title="Border"/>
+        <hst-checkbox
+            v-model="state.border"
+            title="Border"
+        />
 
         <hst-rounded v-model:rounded="state.rounded"/>
 
-        <hst-elevation v-model="state.elevation" title="Elevated"/>
+        <hst-elevation
+            v-model="state.elevation"
+            title="Elevated"
+        />
 
-        <hst-icon v-model="state.prependIcon" title="Prepend Icon" />
-        <hst-icon v-model="state.appendIcon" title="Append Icon" />
+        <hst-icon
+            v-model="state.prependIcon"
+            title="Prepend Icon"
+        />
+        <hst-icon
+            v-model="state.appendIcon"
+            title="Append Icon"
+        />
 
-        <hst-checkbox v-model="state.disabled" title="Disabled"/>
+        <hst-checkbox
+            v-model="state.disabled"
+            title="Disabled"
+        />
 
-        <hst-checkbox v-model="state.loading" title="Loading"/>
+        <hst-checkbox
+            v-model="state.loading"
+            title="Loading"
+        />
 
-        <hst-text v-model="state.title" title="Tile" />
-        <hst-text v-model="state.subtitle" title="Subtitle" />
+        <hst-text
+            v-model="state.title"
+            title="Tile"
+        />
+        <hst-text
+            v-model="state.subtitle"
+            title="Subtitle"
+        />
 
-        <hst-textarea v-model="state.text" title="Text" />
+        <hst-textarea
+            v-model="state.text"
+            title="Text"
+        />
       </template>
     </Variant>
 
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
 
   import { FoxyCard, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
 

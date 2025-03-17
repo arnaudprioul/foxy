@@ -8,7 +8,7 @@
       v-bind="{...rootAttrs, ...inputProps}"
   >
     <template
-        v-if="hasSlot('prepend')"
+        v-if="slots.prepend"
         #prepend
     >
       <slot name="prepend"/>
@@ -36,35 +36,35 @@
             @click:append-inner="handleClickAppendInner"
         >
           <template
-              v-if="hasSlot('loader')"
+              v-if="slots.loader"
               #loader
           >
             <slot name="loader"/>
           </template>
 
           <template
-              v-if="hasSlot('prependInner')"
+              v-if="slots.prependInner"
               #prependInner
           >
             <slot name="prependInner"/>
           </template>
 
           <template
-              v-if="hasSlot('floatingLabel')"
+              v-if="slots.floatingLabel"
               #floatingLabel
           >
             <slot name="floatingLabel"/>
           </template>
 
           <template
-              v-if="hasSlot('label')"
+              v-if="slots.label"
               #label
           >
             <slot name="label"/>
           </template>
 
           <template
-              v-if="hasSlot('prefix')"
+              v-if="slots.prefix"
               #prefix
           >
             <slot name="prefix"/>
@@ -99,7 +99,7 @@
           </template>
 
           <template
-              v-if="hasSlot('suffix')"
+              v-if="slots.suffix"
               #suffix
           >
             <slot name="suffix"/>
@@ -123,7 +123,7 @@
           </template>
 
           <template
-              v-if="hasSlot('clear')"
+              v-if="slots.clear"
               #clear
           >
             <slot name="clear"/>
@@ -133,7 +133,7 @@
     </template>
 
     <template
-        v-if="hasSlot('append')"
+        v-if="slots.append"
         #append
     >
       <slot name="append"/>
@@ -154,7 +154,7 @@
             :value="counterValue"
         >
           <template
-              v-if="hasSlot('counter')"
+              v-if="slots.counter"
               #default="{counter, value, max}"
           >
             <slot
@@ -167,7 +167,7 @@
     </template>
 
     <template
-        v-if="hasSlot('messages')"
+        v-if="slots.messages"
         #messages="{hasMessages, messages}"
     >
       <slot
@@ -177,7 +177,7 @@
     </template>
 
     <template
-        v-if="hasSlot('message')"
+        v-if="slots.message"
         #message="{message}"
     >
       <slot
@@ -194,7 +194,7 @@
 >
   import { FoxyCounter, FoxyField, FoxyIcon, FoxyInput } from '@foxy/components'
 
-  import { useAdjacentInner, useFocus, useProps, useSlots, useVModel } from '@foxy/composables'
+  import { useAdjacentInner, useFocus, useProps, useVModel } from '@foxy/composables'
 
   import { ACTIVE_TEXT_FIELD_TYPE, INPUT_TEXT_FIELD_TYPE } from '@foxy/consts'
 
@@ -208,7 +208,7 @@
 
   import { filterInputAttrs, forwardRefs } from '@foxy/utils'
 
-  import { computed, nextTick, ref, StyleValue, useAttrs } from 'vue'
+  import { computed, nextTick, ref, StyleValue, useAttrs, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<IPasswordFieldProps>(), {
     centerAffix: true,
@@ -225,7 +225,7 @@
   const { filterProps } = useProps<IPasswordFieldProps>(props)
 
   const attrs = useAttrs()
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const model = useVModel(props, 'modelValue')
   const { isFocused, onFocus, onBlur: handleBlur } = useFocus(props)
@@ -336,10 +336,10 @@
   }
 
   const hasCounter = computed(() => {
-    return hasSlot('counter') || (props.counter !== false && props.counter != null)
+    return slots.counter || (props.counter !== false && props.counter != null)
   })
   const hasDetails = computed(() => {
-    return hasCounter.value || hasSlot('details')
+    return hasCounter.value || slots.details
   })
 
   const [rootAttrs, inputAttrs] = filterInputAttrs(attrs)

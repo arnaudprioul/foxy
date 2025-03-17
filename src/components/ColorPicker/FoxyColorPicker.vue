@@ -6,14 +6,14 @@
       v-bind="{...pickerProps}"
   >
     <template
-        v-if="hasSlot('title')"
+        v-if="slots.title"
         #title
     >
       <slot name="title"/>
     </template>
 
     <template
-        v-if="hasSlot('header')"
+        v-if="slots.header"
         #header
     >
       <slot
@@ -78,7 +78,7 @@
     </slot>
 
     <template
-        v-if="hasSlot('actions')"
+        v-if="slots.actions"
         #actions
     >
       <slot name="actions"/>
@@ -98,7 +98,7 @@
     FoxyPicker
   } from "@foxy/components"
 
-  import { useProps, useRtl, useSlots, useVModel } from "@foxy/composables"
+  import { useProps, useRtl, useVModel } from "@foxy/composables"
 
   import { COLOR_MODES_NAMES } from "@foxy/enums"
 
@@ -116,7 +116,7 @@
 
   import { consoleWarn, extractColor, HSVtoCSS, parseColor, RGBtoHSV } from "@foxy/utils"
 
-  import { computed, onBeforeMount, ref, StyleValue, watch } from "vue"
+  import { computed, onBeforeMount, ref, StyleValue, watch, useSlots } from "vue"
 
   const props = withDefaults(defineProps<IColorPickerProps>(), {
     canvasHeight: 150,
@@ -129,7 +129,7 @@
 
   const emits = defineEmits(['update:modelValue', 'update:mode'])
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
   const { filterProps } = useProps<IColorPickerProps>(props)
 
   const { rtlClasses } = useRtl()

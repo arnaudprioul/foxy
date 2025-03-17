@@ -7,13 +7,22 @@
     <Variant title="Default">
       <template #default>
         <foxy-container>
-          <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col cols="6">
               <foxy-window v-bind="state">
-                <foxy-window-item v-for="n in 3" :key="n">
+                <foxy-window-item
+                    v-for="n in 3"
+                    :key="n"
+                >
                   <foxy-sheet height="200px">
                     <foxy-container fullscreen>
-                      <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+                      <foxy-row
+                          :align="ALIGN.CENTER"
+                          :justify="JUSTIFY.CENTER"
+                      >
                         <foxy-col cols="12">
                           <foxy-title tag="h3">Card {{ n }}</foxy-title>
                         </foxy-col>
@@ -33,7 +42,10 @@
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyCol, FoxyContainer, FoxyRow, FoxySheet, FoxyTitle, FoxyWindow, FoxyWindowItem } from '@foxy/components'
 
   import { ALIGN, JUSTIFY } from '@foxy/enums'

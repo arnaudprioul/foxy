@@ -7,32 +7,35 @@
   ></hst-select>
 </template>
 
-<script lang="ts" setup>
-import { Ref, ref } from 'vue'
+<script
+    lang="ts"
+    setup
+>
+  import useTitle from '@stories/composables/title.composable'
 
-import { densityList } from '@stories/const/density.const'
-import { TTitleProp } from '@stories/types/title.type'
-import useTitle from '@stories/composables/title.composable'
+  import { densityList } from '@stories/const/density.const'
+  import { TTitleProp } from '@stories/types/title.type'
+  import { Ref, ref } from 'vue'
 
-const props = defineProps<{
-  modelValue?: string
-} & TTitleProp>()
+  const props = defineProps<{
+    modelValue?: string
+  } & TTitleProp>()
 
-const emit = defineEmits(['update:modelValue'])
+  const emit = defineEmits(['update:modelValue'])
 
-const { getTitle } = useTitle(props.title, 'Density')
+  const { getTitle } = useTitle(props.title, 'Density')
 
-const state: {
-  density?: Ref<string>
-} = {
-  density: ref('default')
-}
+  const state: {
+    density?: Ref<string>
+  } = {
+    density: ref('default')
+  }
 
-if (props.modelValue) {
-  state.density = ref(props.modelValue)
-}
+  if (props.modelValue) {
+    state.density = ref(props.modelValue)
+  }
 
-const handleChange = (value: string) => {
-  emit('update:modelValue', value)
-}
+  const handleChange = (value: string) => {
+    emit('update:modelValue', value)
+  }
 </script>

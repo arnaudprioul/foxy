@@ -60,8 +60,7 @@
     useMargin,
     usePadding,
     useProps,
-    useRounded,
-    useSlots
+    useRounded
   } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
@@ -70,7 +69,7 @@
 
   import { TBreadcrumbItem } from '@foxy/types'
 
-  import { computed, StyleValue, toRef } from 'vue'
+  import { computed, StyleValue, toRef, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<IBreadcrumbProps>(), {
     divider: '/',
@@ -101,9 +100,9 @@
     return index === props.items.length - 1
   }
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
   const hasItems = computed(() => {
-    return hasSlot('default') || items.value
+    return slots.default || items.value
   })
 
   // CLASS & STYLES

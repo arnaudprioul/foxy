@@ -7,7 +7,10 @@
     <Variant title="Default">
       <template #default>
         <foxy-container fullscreen>
-          <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col>
               <foxy-textarea-field
                   v-bind="state"
@@ -19,34 +22,71 @@
                   @click:prepend="logEvent('click prepend', $event)"
                   @click:clear="logEvent('click clear', $event)"
                   @click:append-inner="logEvent('click append inner', $event)"
-                  @click:prepend-inner="logEvent('click prepend inner', $event)"/>
+                  @click:prepend-inner="logEvent('click prepend inner', $event)"
+              />
             </foxy-col>
           </foxy-row>
         </foxy-container>
       </template>
 
       <template #controls>
-        <hst-icon v-model="state.prependIcon" title="Prepend Icon"/>
-        <hst-icon v-model="state.appendIcon" title="Append Icon"/>
-        <hst-icon v-model="state.prependInnerIcon" title="Prepend Inner Icon"/>
-        <hst-icon v-model="state.appendInnerIcon" title="Append Inner Icon"/>
+        <hst-icon
+            v-model="state.prependIcon"
+            title="Prepend Icon"
+        />
+        <hst-icon
+            v-model="state.appendIcon"
+            title="Append Icon"
+        />
+        <hst-icon
+            v-model="state.prependInnerIcon"
+            title="Prepend Inner Icon"
+        />
+        <hst-icon
+            v-model="state.appendInnerIcon"
+            title="Append Inner Icon"
+        />
 
-        <hst-checkbox v-model="state.clearable" title="Clearable"/>
-        <hst-checkbox v-model="state.autoGrow" title="AutoGrow"/>
+        <hst-checkbox
+            v-model="state.clearable"
+            title="Clearable"
+        />
+        <hst-checkbox
+            v-model="state.autoGrow"
+            title="AutoGrow"
+        />
 
-        <hst-checkbox v-model="state.required" title="Required"/>
+        <hst-checkbox
+            v-model="state.required"
+            title="Required"
+        />
 
-        <hst-checkbox v-model="state.counter" title="Counter"/>
+        <hst-checkbox
+            v-model="state.counter"
+            title="Counter"
+        />
 
-        <hst-text v-model="state.label" title="Label"/>
-        <hst-text v-model="state.prefix" title="Prefix"/>
-        <hst-text v-model="state.suffix" title="Suffix"/>
+        <hst-text
+            v-model="state.label"
+            title="Label"
+        />
+        <hst-text
+            v-model="state.prefix"
+            title="Prefix"
+        />
+        <hst-text
+            v-model="state.suffix"
+            title="Suffix"
+        />
       </template>
     </Variant>
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyCol, FoxyContainer, FoxyRow, FoxyTextareaField } from '@foxy/components'
 
   import { ALIGN, JUSTIFY } from '@foxy/enums'
@@ -58,7 +98,7 @@
 
   const state: { [key: string]: any } = reactive({
     label: 'Textfield',
-	  bgColor: '#fff'
+    bgColor: '#fff'
   })
 </script>
 

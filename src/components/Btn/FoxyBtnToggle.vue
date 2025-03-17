@@ -6,7 +6,7 @@
       v-bind="btnGroupProps"
   >
     <template
-        v-if="hasSlot('default')"
+        v-if="slots.default"
         #default
     >
       <slot
@@ -16,7 +16,7 @@
     </template>
 
     <template
-        v-if="hasSlot('item')"
+        v-if="slots.item"
         #item="{item, index}"
     >
       <slot
@@ -33,7 +33,7 @@
 >
   import { FoxyBtnGroup } from '@foxy/components'
 
-  import { useGroup, useProps, useSlots } from '@foxy/composables'
+  import { useGroup, useProps } from '@foxy/composables'
 
   import { FOXY_BTN_TOGGLE_KEY } from '@foxy/consts'
 
@@ -43,7 +43,7 @@
 
   import { TFoxyBtnGroup } from "@foxy/types"
 
-  import { computed, ref, StyleValue } from 'vue'
+  import { computed, ref, StyleValue, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<IBtnToggleProps>(), { tag: 'div', items: () => [], density: DENSITY.DEFAULT })
 
@@ -53,7 +53,7 @@
 
   const { isSelected, next, prev, select, selected } = useGroup(props, FOXY_BTN_TOGGLE_KEY)
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const foxyBtnGroupRef = ref<TFoxyBtnGroup>()
 

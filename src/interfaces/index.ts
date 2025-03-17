@@ -161,7 +161,7 @@ export * from './Menu/menu.interface'
 
 export * from './Messages/messages.interface'
 
-'./NumberField/number-field.interface'
+export * from './NumberField/number-field.interface'
 
 export * from './OtpInputField/otp-input-field.interface'
 

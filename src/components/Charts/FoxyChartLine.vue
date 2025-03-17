@@ -64,15 +64,13 @@
     lang="ts"
     setup
 >
-  import { useSlots } from "@foxy/composables"
-
   import { BLOCK } from "@foxy/enums"
 
   import { IBoundary, IChartLineProps, IPoint } from "@foxy/interfaces"
 
   import { genPath, getPropertyFromItem, getUid, int } from "@foxy/utils"
 
-  import { computed, nextTick, ref, watch } from "vue"
+  import { computed, nextTick, ref, watch, useSlots } from "vue"
 
   const props = withDefaults(defineProps<IChartLineProps>(), {
     autoDrawEasing: "ease",
@@ -86,7 +84,7 @@
     modelValue: () => []
   })
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const uid = getUid()
   const id = computed(() => {
@@ -158,7 +156,7 @@
     return Boolean(
         props.showLabels ||
         props.labels.length > 0 ||
-        hasSlot('label')
+        slots.label
     )
   })
   const parsedLabels = computed(() => {

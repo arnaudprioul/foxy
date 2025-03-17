@@ -3,7 +3,7 @@
       :class="dataListClasses"
       :style="dataListStyles"
   >
-    <template v-if="hasSlot('default') || hasItems">
+    <template v-if="slots.default || hasItems">
       <slot
           name="default"
           v-bind="{items}"
@@ -31,7 +31,7 @@
                     v-bind="{...item.title}"
                 >
                   <template
-                      v-if="hasSlot('item.title.append') || hasSlot(`item-${index}.title.append`)"
+                      v-if="slots['item.title.append'] || slots[`item-${index}.title.append`]"
                       #append
                   >
                     <slot :name="`item-${index}.title.append`">
@@ -40,7 +40,7 @@
                   </template>
 
                   <template
-                      v-if="hasSlot('item.title') || hasSlot(`item-${index}.title`)"
+                      v-if="slots['item.title'] || slots[`item-${index}.title`]"
                       #default="props"
                   >
                     <slot
@@ -55,7 +55,7 @@
                   </template>
 
                   <template
-                      v-if="hasSlot('item.title.prepend') || hasSlot(`item-${index}.title.prepend`)"
+                      v-if="slots['item.title.prepend'] || slots[`item-${index}.title.prepend`]"
                       #prepend
                   >
                     <slot :name="`item-${index}.title.prepend`">
@@ -76,7 +76,7 @@
                       v-bind="{...data}"
                   >
                     <template
-                        v-if="hasSlot('item.text.append') || hasSlot(`item-${index}.text.append`)"
+                        v-if="slots['item.text.append'] || slots[`item-${index}.text.append`]"
                         #append
                     >
                       <slot :name="`item-${index}.text.append`">
@@ -91,7 +91,7 @@
                     </template>
 
                     <template
-                        v-if="hasSlot('item.text.prepend') || hasSlot(`item-${index}.text.prepend`)"
+                        v-if="slots['item.text.prepend'] || slots[`item-${index}.text.prepend`]"
                         #prepend
                     >
                       <slot :name="`item-${index}.text.prepend`">
@@ -124,20 +124,19 @@
     useMargin,
     usePadding,
     useProps,
-    useRounded,
-    useSlots
+    useRounded
   } from "@foxy/composables"
   import { IDataItem, IDataListProps, IDataTextProps } from "@foxy/interfaces"
 
   import { isEmpty } from "@foxy/utils"
 
-  import { computed, StyleValue, toRef } from "vue"
+  import { computed, StyleValue, toRef, useSlots } from "vue"
 
   const props = withDefaults(defineProps<IDataListProps>(), {})
 
   const { filterProps } = useProps<IDataListProps>(props)
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const { densityClasses } = useDensity(props)
   const { elevationClasses } = useElevation(props)

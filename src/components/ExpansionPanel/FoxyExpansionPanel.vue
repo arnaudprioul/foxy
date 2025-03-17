@@ -2,43 +2,74 @@
   <component
       :is="tag"
       :class="expansionPanelClasses"
-      :style="expansionPanelStyles">
+      :style="expansionPanelStyles"
+  >
     <div
         :class="[...elevationClasses]"
-        class="foxy-expansion-panel__shadow"/>
+        class="foxy-expansion-panel__shadow"
+    />
 
     <template v-if="hasHeader">
-      <slot name="header" v-bind="expansionPanelHeaderProps">
+      <slot
+          name="header"
+          v-bind="expansionPanelHeaderProps"
+      >
         <foxy-expansion-panel-header
-		        ref="foxyExpansionPanelHeaderRef"
             key="header"
+            ref="foxyExpansionPanelHeaderRef"
             class="foxy-expansion-panel__header"
-            v-bind="expansionPanelHeaderProps">
-          <template v-if="hasSlot('prepend')" #prepend="prependSlotProps">
-            <slot name="prepend" v-bind="prependSlotProps"/>
+            v-bind="expansionPanelHeaderProps"
+        >
+          <template
+              v-if="slots.prepend"
+              #prepend="prependSlotProps"
+          >
+            <slot
+                name="prepend"
+                v-bind="prependSlotProps"
+            />
           </template>
 
-          <template v-if="hasSlot('title')" #title="titleSlotProps">
-            <slot name="title" v-bind="titleSlotProps">
+          <template
+              v-if="slots.title"
+              #title="titleSlotProps"
+          >
+            <slot
+                name="title"
+                v-bind="titleSlotProps"
+            >
               {{ title }}
             </slot>
           </template>
 
-          <template v-if="hasSlot('append')" #append="appendSlotProps">
-            <slot name="append" v-bind="appendSlotProps"/>
+          <template
+              v-if="slots.append"
+              #append="appendSlotProps"
+          >
+            <slot
+                name="append"
+                v-bind="appendSlotProps"
+            />
           </template>
         </foxy-expansion-panel-header>
       </slot>
     </template>
 
     <template v-if="hasContent">
-      <slot name="wrapper" v-bind="expansionPanelContentProps">
+      <slot
+          name="wrapper"
+          v-bind="expansionPanelContentProps"
+      >
         <foxy-expansion-panel-content
-		        ref="foxyExpansionPanelContentRef"
             key="content"
+            ref="foxyExpansionPanelContentRef"
             class="foxy-expansion-panel__content"
-            v-bind="expansionPanelContentProps">
-          <template v-if="hasSlot('default')" #default>
+            v-bind="expansionPanelContentProps"
+        >
+          <template
+              v-if="slots.default"
+              #default
+          >
             <slot name="default"/>
           </template>
         </foxy-expansion-panel-content>
@@ -49,29 +80,31 @@
   </component>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyExpansionPanelContent, FoxyExpansionPanelHeader } from '@foxy/components'
 
   import {
-	  useBorder,
-	  useBothColor,
-	  useDensity,
-	  useElevation,
-	  useGroupItem,
-	  useMargin,
-	  usePadding, useProps,
-	  useRounded,
-	  useSlots
+    useBorder,
+    useBothColor,
+    useDensity,
+    useElevation,
+    useGroupItem,
+    useMargin,
+    usePadding,
+    useProps,
+    useRounded
   } from '@foxy/composables'
 
   import { FOXY_EXPANSION_PANEL_KEY } from '@foxy/consts'
 
   import { IExpansionPanelProps } from '@foxy/interfaces'
+
   import { TFoxyExpansionPanelContent, TFoxyExpansionPanelHeader } from "@foxy/types"
 
-  import { keys, omit, pick } from '@foxy/utils'
-
-  import { computed, provide, ref, StyleValue, toRef } from 'vue'
+  import { computed, provide, ref, StyleValue, toRef, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<IExpansionPanelProps>(), {
     tag: 'div'
@@ -79,13 +112,13 @@
 
   const emits = defineEmits(['group:selected'])
 
-  const {filterProps} = useProps<IExpansionPanelProps>(props)
+  const { filterProps } = useProps<IExpansionPanelProps>(props)
 
   const foxyExpansionPanelHeaderRef = ref<TFoxyExpansionPanelHeader>()
   const foxyExpansionPanelContentRef = ref<TFoxyExpansionPanelContent>()
 
   const groupItem = useGroupItem(props, FOXY_EXPANSION_PANEL_KEY)
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const { borderClasses, borderStyles } = useBorder(props)
   const { paddingClasses, paddingStyles } = usePadding(props)
@@ -131,10 +164,10 @@
   provide(FOXY_EXPANSION_PANEL_KEY, groupItem)
 
   const hasContent = computed(() => {
-    return hasSlot('content') || !!props.content
+    return slots.content || !!props.content
   })
   const hasHeader = computed(() => {
-    return hasSlot('header') || hasSlot('title') || hasSlot('prepend') || hasSlot('append') || !!props.title
+    return slots.header || slots.title || slots.prepend || slots.append || !!props.title
   })
 
   const expansionPanelHeaderProps = computed(() => {
@@ -163,7 +196,7 @@
         'foxy-expansion-panel--active': groupItem.isSelected.value,
         'foxy-expansion-panel--before-active': isBeforeSelected.value,
         'foxy-expansion-panel--after-active': isAfterSelected.value,
-        'foxy-expansion-panel--disabled': isDisabled.value,
+        'foxy-expansion-panel--disabled': isDisabled.value
       },
       borderClasses.value,
       paddingClasses.value,
@@ -178,80 +211,83 @@
   // EXPOSE
 
   defineExpose({
-	  filterProps
+    filterProps
   })
 </script>
 
-<style lang="scss" scoped>
-  // TODO - Rework with css variables
-  .foxy-expansion-panel {
-    flex: 1 0 100%;
-    max-width: 100%;
-    position: relative;
-    transition: 0.3s all cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: margin-top, border-radius, border, max-width;
-    border-radius: 4px;
+<style
+    lang="scss"
+    scoped
+>
+// TODO - Rework with css variables
+.foxy-expansion-panel {
+  flex: 1 0 100%;
+  max-width: 100%;
+  position: relative;
+  transition: 0.3s all cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: margin-top, border-radius, border, max-width;
+  border-radius: 4px;
 
-    &:not(:first-child) {
-      &:after {
-        border-top-style: solid;
-        border-top-width: thin;
-        border-top-color: rgba(33, 33, 33, 0.12);
-        content: "";
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        transition: 0.3s opacity cubic-bezier(0.4, 0, 0.2, 1);
-      }
-    }
-
-    &--disabled {
-      :deep(.foxy-expansion-panel-header) {
-        color: rgba(0, 0, 0, 0.26);
-        pointer-events: none;
-
-        .foxy-expansion-panel-header__overlay {
-          opacity: 0.4615384615;
-        }
-      }
-    }
-
-    &--active {
-      &:not(:first-child),
-      + .foxy-expansion-panel {
-        margin-top: 16px;
-
-        &:after {
-          opacity: 0;
-        }
-      }
-
-      :deep(.foxy-expansion-panel-header) {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-
-        &:not(.v-expansion-panel-title--static) {
-          min-height: 64px;
-        }
-      }
-    }
-
-    &__shadow {
-      position: absolute;
-      top: 0;
+  &:not(:first-child) {
+    &:after {
+      border-top-style: solid;
+      border-top-width: thin;
+      border-top-color: rgba(33, 33, 33, 0.12);
+      content: "";
       left: 0;
-      width: 100%;
-      height: 100%;
-      box-shadow: 0px 3px 1px -2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 2px 2px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 5px 0px var(--v-shadow-key-ambient-opacity, rgba(0, 0, 0, 0.12));
-      border-radius: inherit;
-      z-index: -1;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: 0.3s opacity cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
+
+  &--disabled {
+    :deep(.foxy-expansion-panel-header) {
+      color: rgba(0, 0, 0, 0.26);
+      pointer-events: none;
+
+      .foxy-expansion-panel-header__overlay {
+        opacity: 0.4615384615;
+      }
+    }
+  }
+
+  &--active {
+    &:not(:first-child),
+    + .foxy-expansion-panel {
+      margin-top: 16px;
+
+      &:after {
+        opacity: 0;
+      }
+    }
+
+    :deep(.foxy-expansion-panel-header) {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+
+      &:not(.v-expansion-panel-title--static) {
+        min-height: 64px;
+      }
+    }
+  }
+
+  &__shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 3px 1px -2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 2px 2px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 5px 0px var(--v-shadow-key-ambient-opacity, rgba(0, 0, 0, 0.12));
+    border-radius: inherit;
+    z-index: -1;
+  }
+}
 </style>
 
 <style>
-  :root {
+:root {
 
-  }
+}
 </style>

@@ -20,28 +20,28 @@
             v-bind="{...fieldProps(i)}"
         >
           <template
-              v-if="hasSlot('prependInner')"
+              v-if="slots.prependInner"
               #prependInner
           >
             <slot name="prependInner"/>
           </template>
 
           <template
-              v-if="hasSlot('floatingLabel')"
+              v-if="slots.floatingLabel"
               #floatingLabel
           >
             <slot name="floatingLabel"/>
           </template>
 
           <template
-              v-if="hasSlot('label')"
+              v-if="slots.label"
               #label
           >
             <slot name="label"/>
           </template>
 
           <template
-              v-if="hasSlot('prefix')"
+              v-if="slots.prefix"
               #prefix
           >
             <slot name="prefix"/>
@@ -70,21 +70,21 @@
           </template>
 
           <template
-              v-if="hasSlot('suffix')"
+              v-if="slots.suffix"
               #suffix
           >
             <slot name="suffix"/>
           </template>
 
           <template
-              v-if="hasSlot('appendInner')"
+              v-if="slots.appendInner"
               #appendInner
           >
             <slot name="appendInner"/>
           </template>
 
           <template
-              v-if="hasSlot('clear')"
+              v-if="slots.clear"
               #clear
           >
             <slot name="clear"/>
@@ -130,16 +130,17 @@
 
   import { FoxyField, FoxyOverlay, FoxyProgress } from "@foxy/components"
 
-  import { useDimension, useFocus, useLocale, useProps, useSlots, useVModel } from "@foxy/composables"
+  import { useDimension, useFocus, useLocale, useProps, useVModel } from "@foxy/composables"
 
   import { OTP_INPUT_FIELD_TYPE, PROGRESS_TYPE } from "@foxy/enums"
 
   import { IOtpInputFieldProps } from "@foxy/interfaces"
+
   import { TFoxyField } from "@foxy/types"
 
   import { filterInputAttrs, focusChild } from "@foxy/utils"
 
-  import { computed, nextTick, ref, StyleValue, useAttrs, watch } from "vue"
+  import { computed, nextTick, ref, StyleValue, useAttrs, watch, useSlots } from "vue"
 
   const props = withDefaults(defineProps<IOtpInputFieldProps>(), {
     type: OTP_INPUT_FIELD_TYPE.NUMBER,
@@ -153,7 +154,7 @@
 
   const { t } = useLocale()
   const attrs = useAttrs()
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const { dimensionStyles } = useDimension(props)
   const { isFocused, onFocus: focus, onBlur: blur } = useFocus(props)

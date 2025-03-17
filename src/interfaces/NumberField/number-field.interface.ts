@@ -2,10 +2,13 @@ import {
     IBorderProps,
     IColorProps,
     ICommonsComponentProps,
-    IDensityProps, IElevationProps,
+    IDensityProps,
+    IElevationProps,
     IFieldProps,
-    IInputProps, IMarginProps,
-    IPaddingProps, IRoundedProps
+    IInputProps,
+    IMarginProps,
+    IPaddingProps,
+    IRoundedProps
 } from "@foxy/interfaces"
 import { TIcon } from "@foxy/types"
 
@@ -27,5 +30,5 @@ export interface INumberFieldProps extends ICommonsComponentProps, IColorProps, 
     holdDelay?: number
     holdRepeat?: number
     split?: boolean
-    hideControls?:boolean
+    hideControls?: boolean
 }

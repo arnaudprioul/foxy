@@ -26,7 +26,7 @@
             :style="sliderFieldTickStyles"
         >
           <div
-              v-if="tick.label || hasSlot('item') || hasSlot(`item.${index}`)"
+              v-if="tick.label || slots.item || slots[`item.${index}`]"
               class="foxy-slider-field-track__tick-label"
           >
             <slot
@@ -51,7 +51,7 @@
     lang="ts"
     setup
 >
-  import { useBackgroundColor, useProps, useRounded, useSlots } from '@foxy/composables'
+  import { useBackgroundColor, useProps, useRounded } from '@foxy/composables'
 
   import { FOXY_SLIDER_FIELD_KEY } from '@foxy/consts'
 
@@ -61,7 +61,7 @@
 
   import { convertToUnit, int } from '@foxy/utils'
 
-  import { computed, inject, StyleValue } from 'vue'
+  import { computed, inject, StyleValue, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<ISliderFieldTrackProps>(), {
     start: 0,
@@ -75,7 +75,7 @@
 
   if (!slider) throw new Error('[Foxy] -slider-track must be inside -slider')
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const {
     color: sliderColor,

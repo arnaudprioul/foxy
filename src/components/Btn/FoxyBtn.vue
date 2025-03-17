@@ -131,19 +131,20 @@
     useProps,
     useRounded,
     useSelectLink,
-    useSize,
-    useSlots
+    useSize
   } from '@foxy/composables'
 
   import { FOXY_BTN_TOGGLE_KEY } from '@foxy/consts'
 
   import { vRipple } from '@foxy/directives'
+
   import { DENSITY, SIZES } from '@foxy/enums'
 
   import { IBtnProps } from '@foxy/interfaces'
+
   import { TFoxyProgressCircular, TIcon } from "@foxy/types"
 
-  import { computed, ref, shallowRef, StyleValue, useAttrs } from 'vue'
+  import { computed, ref, shallowRef, StyleValue, useAttrs, useSlots } from 'vue'
 
   const attrs = useAttrs()
 
@@ -181,7 +182,7 @@
   } = useAdjacent(props)
   const group = useGroupItem(props, FOXY_BTN_TOGGLE_KEY, false)
   const link = useLink(props, attrs)
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   useSelectLink(link, group?.select)
 
@@ -265,7 +266,7 @@
     return !!(props.icon && props.icon !== true)
   })
   const hasLoader = computed(() => {
-    return hasSlot('loader') || props.loading
+    return slots.loader || props.loading
   })
 
   const progressProps = computed(() => {

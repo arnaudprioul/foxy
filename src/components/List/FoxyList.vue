@@ -99,8 +99,7 @@
     useNested,
     usePadding,
     useProps,
-    useRounded,
-    useSlots
+    useRounded
   } from '@foxy/composables'
 
   import { DENSITY, KEYBOARD_VALUES, LINES, OPEN_STRATEGY, SELECT_STRATEGY } from '@foxy/enums'
@@ -111,7 +110,7 @@
 
   import { deepEqual, focusChild } from '@foxy/utils'
 
-  import { computed, ref, shallowRef, StyleValue, toRef } from 'vue'
+  import { computed, ref, shallowRef, StyleValue, toRef, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<IListProps>(), {
     tag: 'div',
@@ -142,7 +141,7 @@
   const { paddingClasses, paddingStyles } = usePadding(props)
   const { marginClasses, marginStyles } = useMargin(props)
   const { children, open, parents, select } = useNested(props)
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   useCreateList()
 
@@ -198,22 +197,22 @@
   // SLOTS
 
   const hasChildrenItem = computed(() => {
-    return hasSlot('children-item')
+    return slots.childrenItem
   })
   const hasDivider = computed(() => {
-    return hasSlot('divider')
+    return slots.divider
   })
   const hasSubheader = computed(() => {
-    return hasSlot('subheader')
+    return slots.subheader
   })
   const hasGroup = computed(() => {
-    return hasSlot('group')
+    return slots.group
   })
   const hasGroupActivator = computed(() => {
-    return hasSlot('group-activator')
+    return slots.groupActivator
   })
   const hasItem = computed(() => {
-    return hasSlot('item')
+    return slots.item
   })
 
   // CLASS & STYLES

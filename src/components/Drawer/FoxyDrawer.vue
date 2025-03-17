@@ -65,7 +65,6 @@
     useRounded,
     useRouter,
     useScopeId,
-    useSlots,
     useSsrBoot,
     useSticky,
     useToggleScope,
@@ -76,9 +75,22 @@
   import { INLINE } from '@foxy/enums'
 
   import { IDrawerProps } from '@foxy/interfaces'
+
   import { getUid, int } from "@foxy/utils"
 
-  import { computed, ComputedRef, nextTick, onBeforeMount, Ref, ref, shallowRef, StyleValue, toRef, watch } from 'vue'
+  import {
+    computed,
+    ComputedRef,
+    nextTick,
+    onBeforeMount,
+    Ref,
+    ref,
+    shallowRef,
+    StyleValue,
+    toRef,
+    watch,
+    useSlots
+  } from 'vue'
 
   const props = withDefaults(defineProps<IDrawerProps>(), {
     tag: 'nav',
@@ -102,7 +114,7 @@
   const { paddingClasses, paddingStyles } = usePadding(props)
   const { marginClasses, marginStyles } = useMargin(props)
   const { densityClasses } = useDensity(props)
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
   const router = useRouter()
   const { ssrBootStyles } = useSsrBoot()
   const { scopeId } = useScopeId()
@@ -209,13 +221,13 @@
   // SLOTS
 
   const hasPrepend = computed(() => {
-    return hasSlot('prepend')
+    return slots.prepend
   })
   const hasContent = computed(() => {
-    return hasSlot('default')
+    return slots.default
   })
   const hasAppend = computed(() => {
-    return hasSlot('append')
+    return slots.append
   })
 
   // CLASSES & STYLES

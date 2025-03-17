@@ -1,7 +1,7 @@
 <template>
   <Story
-      group="stylesAndDesignTokens"
       docs-only
+      group="stylesAndDesignTokens"
       title="Design Token"
   />
 </template>

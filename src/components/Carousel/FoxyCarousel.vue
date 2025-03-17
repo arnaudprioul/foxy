@@ -56,7 +56,7 @@
     </template>
 
     <template
-        v-if="hasSlot('prev')"
+        v-if="slots.prev"
         #prev="{props, canMove}"
     >
       <slot
@@ -66,7 +66,7 @@
     </template>
 
     <template
-        v-if="hasSlot('next')"
+        v-if="slots.next"
         #next="{canMove, props}"
     >
       <slot
@@ -76,7 +76,7 @@
     </template>
 
     <template
-        v-if="hasSlot('arrows')"
+        v-if="slots.arrows"
         #arrows="{canMoveBack, canMoveForward, nextProps, prevProps}"
     >
       <slot
@@ -93,7 +93,7 @@
 >
   import { FoxyBtn, FoxyProgressLinear, FoxyWindow } from '@foxy/components'
 
-  import { useLocale, useProps, useSlots, useVModel } from '@foxy/composables'
+  import { useLocale, useProps, useVModel } from '@foxy/composables'
 
   import { DENSITY, MDI_ICONS, SIZES } from '@foxy/enums'
 
@@ -103,7 +103,7 @@
 
   import { convertToUnit } from '@foxy/utils'
 
-  import { computed, onMounted, ref, StyleValue, watch } from 'vue'
+  import { computed, onMounted, ref, StyleValue, watch, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<ICarouselProps>(), {
     delimiterIcon: MDI_ICONS.CIRCLE,
@@ -169,7 +169,7 @@
         })
   }
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   // CLASS & STYLES
 

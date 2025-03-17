@@ -10,26 +10,48 @@
           <foxy-row>
             <foxy-col cols="12">
               <foxy-alert
-                  v-bind="state"/>
+                  v-bind="state"
+              />
             </foxy-col>
           </foxy-row>
         </foxy-container>
       </template>
 
       <template #controls>
-        <hst-checkbox v-model="state.closable" title="Closable"/>
+        <hst-checkbox
+            v-model="state.closable"
+            title="Closable"
+        />
 
-        <hst-checkbox v-model="state.icon" title="Hide/Show Icon"/>
+        <hst-checkbox
+            v-model="state.icon"
+            title="Hide/Show Icon"
+        />
 
-        <hst-checkbox v-model="state.prominent" title="Prominent"/>
+        <hst-checkbox
+            v-model="state.prominent"
+            title="Prominent"
+        />
 
-        <hst-text v-model="state.title" title="Title"/>
+        <hst-text
+            v-model="state.title"
+            title="Title"
+        />
 
-        <hst-text v-model="state.text" title="Text"/>
+        <hst-text
+            v-model="state.text"
+            title="Text"
+        />
 
-        <hst-icon v-model="state.closeIcon" title="Close Icon"/>
+        <hst-icon
+            v-model="state.closeIcon"
+            title="Close Icon"
+        />
 
-        <hst-icon v-model="state.icon" title="Icon"/>
+        <hst-icon
+            v-model="state.icon"
+            title="Icon"
+        />
 
         <hst-select
             v-model="state.status"
@@ -47,7 +69,10 @@
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
 
   import { FoxyAlert, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
 
