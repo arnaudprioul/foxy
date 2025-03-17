@@ -1,4 +1,4 @@
-import { THSV } from "@foxy/types"
+import { THSVA } from "@foxy/types"
 
 import { has, HSVtoHex, HSVtoHSL, HSVtoRGB } from "@foxy/utils"
 
@@ -12,7 +12,7 @@ export function stripAlpha (color: any, stripAlpha: boolean) {
     return color
 }
 
-export function extractColor (color: THSV, input: any) {
+export function extractColor (color: THSVA, input: any) {
     if (input == null || typeof input === 'string') {
         const hex = HSVtoHex(color)
 

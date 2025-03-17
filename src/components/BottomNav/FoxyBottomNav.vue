@@ -108,7 +108,6 @@
   // EXPOSE
 
   defineExpose({
-    layoutIsReady,
     filterProps
   })
 </script>

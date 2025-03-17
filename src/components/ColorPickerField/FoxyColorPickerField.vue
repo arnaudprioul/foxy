@@ -243,7 +243,7 @@
       isFocused.value = true
     }
   }
-  const handleChange = (e: Event) => {
+  const handleChange = (_e: Event) => {
     if (matchesSelector(foxyTextFieldRef.value, ':autofill') || matchesSelector(foxyTextFieldRef.value, ':-webkit-autofill')) {
       // (e.target as HTMLInputElement).value
       // TODO -  Select date

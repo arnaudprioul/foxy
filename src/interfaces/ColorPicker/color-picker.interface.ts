@@ -13,7 +13,7 @@ import {
     IRoundedProps
 } from "@foxy/interfaces"
 
-import { THSV } from "@foxy/types"
+import { THSVA } from "@foxy/types"
 
 export interface IColorPickerProps extends ICommonsComponentProps, IBorderProps, IRoundedProps, IElevationProps, IPaddingProps, IMarginProps, IPickerProps, IColorProps, IColorPickerCanvasProps, IColorPickerPreviewProps, IColorPickerEditProps, IColorPickerSwatchesProps {
     canvasHeight?: string | number
@@ -34,6 +34,6 @@ export interface IColorPickerMode {
         getValue: (color: any) => number | string
         getColor: (color: any, v: string) => any
     }>
-    from: (color: any) => THSV
-    to: (color: THSV) => any
+    from: (color: any) => THSVA
+    to: (color: THSVA) => any
 }

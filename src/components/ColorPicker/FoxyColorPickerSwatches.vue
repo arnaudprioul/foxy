@@ -33,11 +33,11 @@
   import { FoxyIcon } from "@foxy/components"
 
   import { useProps } from "@foxy/composables"
-  import { COLOR_NULL } from "@foxy/consts"
 
   import { MDI_ICONS } from "@foxy/enums"
 
   import { IColorPickerSwatchesProps } from "@foxy/interfaces"
+  import { TRGBA } from "@foxy/types"
 
   import { convertToUnit, deepEqual, getContrast, parseColor, RGBtoCSS, RGBtoHSV } from "@foxy/utils"
 
@@ -51,21 +51,21 @@
 
   const { filterProps } = useProps<IColorPickerSwatchesProps>(props)
 
-  const rgba = (color) => {
+  const rgba = (color: TRGBA) => {
     return parseColor(color)
   }
-  const hsva = (color) => {
+  const hsva = (color: TRGBA) => {
     return RGBtoHSV(rgba(color))
   }
-  const background = (color) => {
+  const background = (color: TRGBA) => {
     return RGBtoCSS(rgba(color))
   }
 
-  const handleUpdateColor = (color) => {
+  const handleUpdateColor = (color: TRGBA) => {
     const colorUpdate = hsva(color)
 
     if (colorUpdate) {
-      emits('update:color-hsv', colorUpdate)
+      emits('update:colorHsv', colorUpdate)
     }
   }
 
@@ -97,42 +97,42 @@
     lang="scss"
     scoped
 >
-	.foxy-color-picker-swatches {
-		overflow-y: auto;
+.foxy-color-picker-swatches {
+  overflow-y: auto;
 
-		> div {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			padding: 8px;
-		}
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px;
+  }
 
-		&__swatch {
-			display: flex;
-			flex-direction: column;
-			margin-bottom: 10px
-		}
+  &__swatch {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px
+  }
 
-		&__color {
-			position: relative;
-			height: 18px;
-			max-height: 18px;
-			width: 45px;
-			margin: 2px 4px;
-			border-radius: 2px;
-			-webkit-user-select: none;
-			user-select: none;
-			overflow: hidden;
-			background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAACRJREFUKFNjPHTo0H8GJGBnZ8eIzGekgwJk+0BsdCtRHEQbBQBbbh0dIGKknQAAAABJRU5ErkJggg==) repeat;
-			cursor: pointer;
+  &__color {
+    position: relative;
+    height: 18px;
+    max-height: 18px;
+    width: 45px;
+    margin: 2px 4px;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    user-select: none;
+    overflow: hidden;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAACRJREFUKFNjPHTo0H8GJGBnZ8eIzGekgwJk+0BsdCtRHEQbBQBbbh0dIGKknQAAAABJRU5ErkJggg==) repeat;
+    cursor: pointer;
 
-			> div {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				height: 100%;
-			}
-		}
-	}
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
 </style>

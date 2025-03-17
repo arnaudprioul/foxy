@@ -3,7 +3,8 @@
       :is="tag"
       :class="badgeClasses"
       :style="badgeStyles"
-      v-bind="restAttrs">
+      v-bind="restAttrs"
+  >
     <div class="foxy-badge__wrapper">
       <slot name="default"/>
 
@@ -11,12 +12,13 @@
         <span
             v-show="modelValue"
             :aria-label="t(label, content)"
-            class="foxy-badge__badge"
             :style="badgeContentStyles"
             aria-atomic="true"
             aria-live="polite"
+            class="foxy-badge__badge"
             role="status"
-            v-bind="badgeAttrs">
+            v-bind="badgeAttrs"
+        >
           <template v-if="!dot">
             <slot name="badge">
               <template v-if="hasIcon">
@@ -33,7 +35,10 @@
   </component>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyIcon, FoxyScaleRotate, FoxyTransition } from '@foxy/components'
 
   import { useBorder, useBothColor, useLocale, useLocation, useProps, useRounded, useStatus } from '@foxy/composables'
@@ -46,12 +51,12 @@
 
   const props = withDefaults(defineProps<IBadgeProps>(), {
     tag: 'div',
-    location: 'top end',
-	  label: 'foxy.badge',
+    location: 'top right',
+    label: 'foxy.badge',
     transition: { component: FoxyScaleRotate }
   })
 
-  const {filterProps} = useProps<IBadgeProps>(props)
+  const { filterProps } = useProps<IBadgeProps>(props)
   const { t } = useLocale()
 
   const attrs = useAttrs()
@@ -94,7 +99,7 @@
       'aria-label',
       'aria-live',
       'role',
-      'title',
+      'title'
     ])
   })
   const restAttrs = computed(() => {
@@ -103,7 +108,7 @@
       'aria-label',
       'aria-live',
       'role',
-      'title',
+      'title'
     ])
   })
 
@@ -120,12 +125,12 @@
       {
         'foxy-badge--dot': props.dot,
         'foxy-badge--floating': props.floating,
-        'foxy-badge--inline': props.inline,
+        'foxy-badge--inline': props.inline
       },
       roundedClasses.value,
       borderClasses.value,
       statusClasses.value,
-      props.class,
+      props.class
     ]
   })
 
@@ -134,109 +139,112 @@
       colorStyles.value,
       roundedStyles.value,
       borderStyles.value,
-      props.inline ? {} : locationStyles.value,
+      props.inline ? {} : locationStyles.value
     ]
   })
 
   // EXPOSE
 
   defineExpose({
-	  filterProps
+    filterProps
   })
 </script>
 
-<style lang="scss" scoped>
-  .foxy-badge {
-    $this: &;
+<style
+    lang="scss"
+    scoped
+>
+.foxy-badge {
+  $this: &;
 
-    display: inline-block;
-    line-height: 1;
+  display: inline-block;
+  line-height: 1;
 
-    &__wrapper {
-      display: flex;
-      position: relative;
-    }
+  &__wrapper {
+    display: flex;
+    position: relative;
+  }
 
-    &__badge {
-      align-items: center;
-      display: inline-flex;
-      border-radius: 10px;
+  &__badge {
+    align-items: center;
+    display: inline-flex;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    height: 1.25rem;
+    justify-content: center;
+    min-width: 20px;
+    padding: 4px 6px;
+    pointer-events: auto;
+    position: absolute;
+    text-align: center;
+    text-indent: 0;
+    transition: 0.225s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+
+    :deep(.foxy-icon) {
+      color: inherit;
       font-size: 0.75rem;
-      font-weight: 500;
-      height: 1.25rem;
-      justify-content: center;
-      min-width: 20px;
-      padding: 4px 6px;
-      pointer-events: auto;
-      position: absolute;
-      text-align: center;
-      text-indent: 0;
-      transition: 0.225s cubic-bezier(0.4, 0, 0.2, 1);
-      white-space: nowrap;
-
-      :deep(.foxy-icon) {
-        color: inherit;
-        font-size: 0.75rem;
-        margin: 0 -2px;
-      }
-
-      :deep(img),
-      :deep(.foxy-img) {
-        height: 100%;
-        width: 100%;
-      }
+      margin: 0 -2px;
     }
 
-    &--bordered {
-      #{$this}__badge {
-        &:after {
-          border-radius: inherit;
-          border-style: solid;
-          border-width: 2px;
-          bottom: 0;
-          color: rgb(var(--v-theme-background));
-          content: "";
-          left: 0;
-          position: absolute;
-          right: 0;
-          top: 0;
-          transform: scale(1.05);
-        }
-      }
+    :deep(img),
+    :deep(.foxy-img) {
+      height: 100%;
+      width: 100%;
     }
+  }
 
-    &--dot {
-      #{$this}__badge {
-        border-radius: 4.5px;
-        height: 9px;
-        min-width: 0;
-        padding: 0;
-        width: 9px;
-
-        &:after {
-          border-width: 1.5px;
-        }
-      }
-    }
-
-    &--inline {
-      #{$this}__badge {
-        position: relative;
-        vertical-align: middle;
-      }
-
-      #{$this}__wrapper {
-        align-items: center;
-        display: inline-flex;
-        justify-content: center;
-        margin: 0 4px;
+  &--bordered {
+    #{$this}__badge {
+      &:after {
+        border-radius: inherit;
+        border-style: solid;
+        border-width: 2px;
+        bottom: 0;
+        color: rgb(var(--v-theme-background));
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: scale(1.05);
       }
     }
   }
+
+  &--dot {
+    #{$this}__badge {
+      border-radius: 4.5px;
+      height: 9px;
+      min-width: 0;
+      padding: 0;
+      width: 9px;
+
+      &:after {
+        border-width: 1.5px;
+      }
+    }
+  }
+
+  &--inline {
+    #{$this}__badge {
+      position: relative;
+      vertical-align: middle;
+    }
+
+    #{$this}__wrapper {
+      align-items: center;
+      display: inline-flex;
+      justify-content: center;
+      margin: 0 4px;
+    }
+  }
+}
 </style>
 
 <style>
-  :root {
+:root {
 
-  }
+}
 </style>

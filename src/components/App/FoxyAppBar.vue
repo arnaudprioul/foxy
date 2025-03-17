@@ -1,10 +1,11 @@
 <template>
   <foxy-toolbar
+      ref="foxyToolbarRef"
       :class="toolbarClasses"
       :collapse="isCollapsed"
       :flat="isFlat"
       :style="toolbarStyles"
-      v-bind="props"
+      v-bind="toolbarProps"
   >
     <template
         v-if="hasAppend"
@@ -75,8 +76,9 @@
   import { BLOCK, DENSITY } from '@foxy/enums'
 
   import { IAppBarProps } from '@foxy/interfaces'
-  import { int } from "@foxy/utils"
-  import { computed, shallowRef, StyleValue, toRef, watchEffect } from 'vue'
+  import { TFoxyToolbar } from "@foxy/types"
+  import { forwardRefs, int } from "@foxy/utils"
+  import { computed, ref, shallowRef, StyleValue, toRef, watchEffect } from 'vue'
 
   const props = withDefaults(defineProps<IAppBarProps>(), {
     tag: 'header',
@@ -93,6 +95,12 @@
 
   const { ssrBootStyles } = useSsrBoot()
   const { hasSlot } = useSlots()
+
+  const foxyToolbarRef = ref<TFoxyToolbar>()
+
+  const toolbarProps = computed(() => {
+    return foxyToolbarRef.value?.filterProps(props, ['class', 'style', 'collapse', 'flat'])
+  })
 
   const hasPrepend = computed(() => {
     return hasTitle || hasImage || hasSlot('prepend')
@@ -175,7 +183,7 @@
 
   // LAYOUT
 
-  const { layoutItemStyles, layoutIsReady } = useLayoutItem({
+  const { layoutItemStyles } = useLayoutItem({
     id: props.name,
     order: computed(() => int(props.order as string)),
     position: toRef(props, 'location'),
@@ -204,8 +212,7 @@
 
   // EXPOSE
 
-  defineExpose({
-    layoutIsReady,
+  defineExpose(forwardRefs({
     filterProps
-  })
+  }, foxyToolbarRef))
 </script>

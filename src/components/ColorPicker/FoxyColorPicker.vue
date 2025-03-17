@@ -90,29 +90,28 @@
     lang="ts"
     setup
 >
-	import {
-		FoxyColorPickerCanvas,
-		FoxyColorPickerEdit,
-		FoxyColorPickerPreview,
-		FoxyColorPickerSwatches,
-		FoxyPicker
-	} from "@foxy/components"
+  import {
+    FoxyColorPickerCanvas,
+    FoxyColorPickerEdit,
+    FoxyColorPickerPreview,
+    FoxyColorPickerSwatches,
+    FoxyPicker
+  } from "@foxy/components"
 
-  import { useLocale, useProps, useRtl, useSlots, useVModel } from "@foxy/composables"
-
-  import { COLOR_NULL } from "@foxy/consts"
+  import { useProps, useRtl, useSlots, useVModel } from "@foxy/composables"
 
   import { COLOR_MODES_NAMES } from "@foxy/enums"
 
   import { IColorPickerProps } from "@foxy/interfaces"
 
   import {
+    TColorModes,
     TFoxyColorPickerCanvas,
     TFoxyColorPickerEdit,
     TFoxyColorPickerPreview,
     TFoxyColorPickerSwatches,
     TFoxyPicker,
-    THSV
+    THSVA
   } from "@foxy/types"
 
   import { consoleWarn, extractColor, HSVtoCSS, parseColor, RGBtoHSV } from "@foxy/utils"
@@ -121,19 +120,17 @@
 
   const props = withDefaults(defineProps<IColorPickerProps>(), {
     canvasHeight: 150,
-	  canvasWidth: '100%',
+    canvasWidth: '100%',
     swatchesMaxHeight: 150,
     dotSize: 10,
     mode: COLOR_MODES_NAMES.RGBA,
-    modes: [COLOR_MODES_NAMES.RGB, COLOR_MODES_NAMES.RGBA, COLOR_MODES_NAMES.HSL, COLOR_MODES_NAMES.HSLA, COLOR_MODES_NAMES.HEX, COLOR_MODES_NAMES.HEXA]
+    modes: () => [COLOR_MODES_NAMES.RGB, COLOR_MODES_NAMES.RGBA, COLOR_MODES_NAMES.HSL, COLOR_MODES_NAMES.HSLA, COLOR_MODES_NAMES.HEX, COLOR_MODES_NAMES.HEXA]
   })
 
   const emits = defineEmits(['update:modelValue', 'update:mode'])
 
   const { hasSlot } = useSlots()
   const { filterProps } = useProps<IColorPickerProps>(props)
-
-  const { t } = useLocale()
 
   const { rtlClasses } = useRtl()
 
@@ -146,7 +143,7 @@
       (v) => {
         if (v == null || v === '') return null
 
-        let c: THSV
+        let c: THSVA
         try {
           c = RGBtoHSV(parseColor(v as any))
         } catch (err) {
@@ -179,12 +176,12 @@
     hue.value = v.h
   }, { immediate: true })
 
-  const handleUpdateColor = (hsva: THSV) => {
+  const handleUpdateColor = (hsva: THSVA) => {
     externalChange = false
     hue.value = hsva.h
     model.value = hsva
   }
-  const handleUpdateMode = (m) => {
+  const handleUpdateMode = (m: TColorModes) => {
     mode.value = m
   }
 
@@ -219,7 +216,7 @@
   const colorPickerStyles = computed(() => {
     return [
       {
-        '--foxy-color-picker-color-hsv': HSVtoCSS({ ...currentColor.value, a: 1 })
+        '--foxy-color-picker-color-hsv': HSVtoCSS({ ...currentColor.value, a: 1 } as THSVA)
       },
       props.style
     ] as StyleValue
@@ -245,14 +242,14 @@
     lang="scss"
     scoped
 >
-	.foxy-color-picker {
-		align-self: flex-start;
-		contain: content;
+.foxy-color-picker {
+  align-self: flex-start;
+  contain: content;
 
-		&__controls {
-			display: flex;
-			flex-direction: column;
-			padding: 16px;
-		}
-	}
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+  }
+}
 </style>

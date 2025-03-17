@@ -1,32 +1,32 @@
 import {
-  BCO,
-  BLK_CLMP,
-  BLK_THRS,
-  CIELAB_FORWARD_TRANSFORM,
-  CIELAB_REVERSE_TRANSFORM,
-  COLOR_DELTA_Y_MIN,
-  COLOR_MAPPERS,
-  CSS_COLOR_REGEX,
-  GCO,
-  LO_CLIP,
-  LO_CON_FACTOR,
-  LO_CON_OFFSET,
-  LO_CON_THRESH,
-  MAIN_TRC,
-  NORM_BG,
-  NORM_TXT,
-  RCO,
-  REV_BG,
-  REV_TXT,
-  SCALE_B_O_W,
-  SCALE_W_O_B,
-  SRGB_FORWARD_MATRIX,
-  SRGB_FORWARD_TRANSFORM,
-  SRGB_REVERSE_MATRIX,
-  SRGB_REVERSE_TRANSFORM
+    BCO,
+    BLK_CLMP,
+    BLK_THRS,
+    CIELAB_FORWARD_TRANSFORM,
+    CIELAB_REVERSE_TRANSFORM,
+    COLOR_DELTA_Y_MIN,
+    COLOR_MAPPERS,
+    CSS_COLOR_REGEX,
+    GCO,
+    LO_CLIP,
+    LO_CON_FACTOR,
+    LO_CON_OFFSET,
+    LO_CON_THRESH,
+    MAIN_TRC,
+    NORM_BG,
+    NORM_TXT,
+    RCO,
+    REV_BG,
+    REV_TXT,
+    SCALE_B_O_W,
+    SCALE_W_O_B,
+    SRGB_FORWARD_MATRIX,
+    SRGB_FORWARD_TRANSFORM,
+    SRGB_REVERSE_MATRIX,
+    SRGB_REVERSE_TRANSFORM
 } from '@foxy/consts'
 
-import { TColorType, THex, THSL, THSV, TLAB, TRGB, TXYZ } from '@foxy/types'
+import { TColorType, THex, THSLA, THSVA, TLAB, TRGBA, TXYZ } from '@foxy/types'
 
 import { chunk, clamp, consoleWarn, has, int, padEnd } from '@foxy/utils'
 
@@ -38,7 +38,7 @@ export function isParsableColor (color: string): boolean {
     return isCssColor(color) && !/^((rgb|hsl)a?\()?var\(--/.test(color)
 }
 
-export function parseColor (color: TColorType): TRGB {
+export function parseColor (color: TColorType): TRGBA {
     if (typeof color === 'number') {
         if (isNaN(color) || color < 0 || color > 0xFFFFFF) { // int can't have opacity
             consoleWarn(`'${color}' is not a valid hex color`)
@@ -98,11 +98,11 @@ export function getForeground (color: TColorType) {
     return whiteContrast > Math.min(blackContrast, 50) ? '#fff' : '#000'
 }
 
-export function HSLtoRGB (hsla: THSL): TRGB {
+export function HSLtoRGB (hsla: THSLA): TRGBA {
     return HSVtoRGB(HSLtoHSV(hsla))
 }
 
-export function RGBtoHSV (rgba: TRGB): THSV {
+export function RGBtoHSV (rgba: TRGBA): THSVA {
     if (!rgba) return { h: 0, s: 1, v: 1, a: 1 }
 
     const r = rgba.r / 255
@@ -131,7 +131,7 @@ export function RGBtoHSV (rgba: TRGB): THSV {
     return { h: hsv[0], s: hsv[1], v: hsv[2], a: rgba.a }
 }
 
-export function HSVtoHSL (hsva: THSV): THSL {
+export function HSVtoHSL (hsva: THSVA): THSLA {
     const { h, s, v, a } = hsva
 
     const l = v - (v * s / 2)
@@ -141,7 +141,7 @@ export function HSVtoHSL (hsva: THSV): THSL {
     return { h, s: sprime, l, a }
 }
 
-export function HSLtoHSV (hsl: THSL): THSV {
+export function HSLtoHSV (hsl: THSLA): THSVA {
     const { h, s, l, a } = hsl
 
     const v = l + s * Math.min(l, 1 - l)
@@ -151,11 +151,11 @@ export function HSLtoHSV (hsl: THSL): THSV {
     return { h, s: sprime, v, a }
 }
 
-export function RGBtoCSS ({ r, g, b, a }: TRGB): string {
+export function RGBtoCSS ({ r, g, b, a }: TRGBA): string {
     return a === undefined ? `rgb(${r}, ${g}, ${b})` : `rgba(${r}, ${g}, ${b}, ${a})`
 }
 
-export function HSVtoCSS (hsva: THSV): string {
+export function HSVtoCSS (hsva: THSVA): string {
     return RGBtoCSS(HSVtoRGB(hsva))
 }
 
@@ -164,7 +164,7 @@ export function toHex (v: number) {
     return ('00'.substr(0, 2 - h.length) + h).toUpperCase()
 }
 
-export function RGBtoHex ({ r, g, b, a }: TRGB): THex {
+export function RGBtoHex ({ r, g, b, a }: TRGBA): THex {
     return `#${[
         toHex(r),
         toHex(g),
@@ -173,7 +173,7 @@ export function RGBtoHex ({ r, g, b, a }: TRGB): THex {
     ].join('')}` as THex
 }
 
-export function HexToRGB (hex: THex): TRGB {
+export function HexToRGB (hex: THex): TRGBA {
     hex = parseHex(hex)
     let [r, g, b, a] = chunk(hex, 2).map((c: string) => int(c, 16))
     a = a === undefined ? a : (a / 255)
@@ -181,16 +181,16 @@ export function HexToRGB (hex: THex): TRGB {
     return { r, g, b, a }
 }
 
-export function HexToHSV (hex: THex): THSV {
+export function HexToHSV (hex: THex): THSVA {
     const rgb = HexToRGB(hex)
     return RGBtoHSV(rgb)
 }
 
-export function HSVtoHex (hsva: THSV): THex {
+export function HSVtoHex (hsva: THSVA): THex {
     return RGBtoHex(HSVtoRGB(hsva))
 }
 
-export function HSVtoRGB (hsva: THSV): TRGB {
+export function HSVtoRGB (hsva: THSVA): TRGBA {
     const { h, s, v, a } = hsva
     const f = (n: number) => {
         const k = (n + (h / 60)) % 6
@@ -220,14 +220,14 @@ export function parseHex (hex: string): THex {
     return hex as THex
 }
 
-export function lighten (value: TRGB, amount: number): TRGB {
+export function lighten (value: TRGBA, amount: number): TRGBA {
     const lab = XyztoLab(RgbtoXyz(value))
     lab[0] = lab[0] + amount * 10
 
     return XyzToRgb(LabtoXyz(lab))
 }
 
-export function darken (value: TRGB, amount: number): TRGB {
+export function darken (value: TRGBA, amount: number): TRGBA {
     const lab = XyztoLab(RgbtoXyz(value))
     lab[0] = lab[0] - amount * 10
 
@@ -280,7 +280,7 @@ export function classToHex (
     return hexColor
 }
 
-export function XyzToRgb (xyz: TXYZ): TRGB {
+export function XyzToRgb (xyz: TXYZ): TRGBA {
     const rgb = Array(3)
     const transform = SRGB_FORWARD_TRANSFORM
     const matrix = SRGB_FORWARD_MATRIX
@@ -302,7 +302,7 @@ export function XyzToRgb (xyz: TXYZ): TRGB {
     }
 }
 
-export function RgbtoXyz ({ r, g, b }: TRGB): TXYZ {
+export function RgbtoXyz ({ r, g, b }: TRGBA): TXYZ {
     const xyz: TXYZ = [0, 0, 0]
     const transform = SRGB_REVERSE_TRANSFORM
     const matrix = SRGB_REVERSE_MATRIX
@@ -341,7 +341,7 @@ export function LabtoXyz (lab: TLAB): TXYZ {
     ]
 }
 
-export function APCAcontrast (text: TRGB, background: TRGB) {
+export function APCAcontrast (text: TRGBA, background: TRGBA) {
     // Linearize sRGB
     const Rtxt = (text.r / 255) ** MAIN_TRC
     const Gtxt = (text.g / 255) ** MAIN_TRC

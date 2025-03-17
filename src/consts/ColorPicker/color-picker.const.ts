@@ -1,6 +1,6 @@
 import { IColorPickerMode } from "@foxy/interfaces"
 
-import { THSL, TRGB } from "@foxy/types"
+import { THSLA, TRGBA } from "@foxy/types"
 
 import { HexToHSV, HSLtoHSV, HSVtoHex, HSVtoHSL, HSVtoRGB, RGBtoHSV } from "@foxy/utils"
 
@@ -16,29 +16,29 @@ const COLOR_PICKER_MODE_RGBA: IColorPickerMode = {
             label: 'R',
             max: 255,
             step: 1,
-            getValue: (c: TRGB) => Math.round(c.r),
-            getColor: (c: TRGB, v: string): TRGB => ({ ...c, r: Number(v) })
+            getValue: (c: TRGBA) => Math.round(c.r),
+            getColor: (c: TRGBA, v: string): TRGBA => ({ ...c, r: Number(v) })
         },
         {
             label: 'G',
             max: 255,
             step: 1,
-            getValue: (c: TRGB) => Math.round(c.g),
-            getColor: (c: TRGB, v: string): TRGB => ({ ...c, g: Number(v) })
+            getValue: (c: TRGBA) => Math.round(c.g),
+            getColor: (c: TRGBA, v: string): TRGBA => ({ ...c, g: Number(v) })
         },
         {
             label: 'B',
             max: 255,
             step: 1,
-            getValue: (c: TRGB) => Math.round(c.b),
-            getColor: (c: TRGB, v: string): TRGB => ({ ...c, b: Number(v) })
+            getValue: (c: TRGBA) => Math.round(c.b),
+            getColor: (c: TRGBA, v: string): TRGBA => ({ ...c, b: Number(v) })
         },
         {
             label: 'A',
             max: 1,
             step: 0.01,
-            getValue: ({ a }: TRGB) => a != null ? Math.round(a * 100) / 100 : 1,
-            getColor: (c: TRGB, v: string): TRGB => ({ ...c, a: Number(v) })
+            getValue: ({ a }: TRGBA) => a != null ? Math.round(a * 100) / 100 : 1,
+            getColor: (c: TRGBA, v: string): TRGBA => ({ ...c, a: Number(v) })
         }
     ],
     to: HSVtoRGB,
@@ -60,29 +60,29 @@ const COLOR_PICKER_MODE_HSLA: IColorPickerMode = {
             label: 'H',
             max: 360,
             step: 1,
-            getValue: (c: THSL) => Math.round(c.h),
-            getColor: (c: THSL, v: string): THSL => ({ ...c, h: Number(v) })
+            getValue: (c: THSLA) => Math.round(c.h),
+            getColor: (c: THSLA, v: string): THSLA => ({ ...c, h: Number(v) })
         },
         {
             label: 'S',
             max: 1,
             step: 0.01,
-            getValue: (c: THSL) => Math.round(c.s * 100) / 100,
-            getColor: (c: THSL, v: string): THSL => ({ ...c, s: Number(v) })
+            getValue: (c: THSLA) => Math.round(c.s * 100) / 100,
+            getColor: (c: THSLA, v: string): THSLA => ({ ...c, s: Number(v) })
         },
         {
             label: 'L',
             max: 1,
             step: 0.01,
-            getValue: (c: THSL) => Math.round(c.l * 100) / 100,
-            getColor: (c: THSL, v: string): THSL => ({ ...c, l: Number(v) })
+            getValue: (c: THSLA) => Math.round(c.l * 100) / 100,
+            getColor: (c: THSLA, v: string): THSLA => ({ ...c, l: Number(v) })
         },
         {
             label: 'A',
             max: 1,
             step: 0.01,
-            getValue: ({ a }: THSL) => a != null ? Math.round(a * 100) / 100 : 1,
-            getColor: (c: THSL, v: string): THSL => ({ ...c, a: Number(v) })
+            getValue: ({ a }: THSLA) => a != null ? Math.round(a * 100) / 100 : 1,
+            getColor: (c: THSLA, v: string): THSLA => ({ ...c, a: Number(v) })
         }
     ],
     to: HSVtoHSL,

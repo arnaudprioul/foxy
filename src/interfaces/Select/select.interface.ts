@@ -1,31 +1,31 @@
 import {
-  IAdjacentInnerProps,
-  IAdjacentProps,
-  IBorderProps,
-  IChipProps,
-  IColorProps,
-  ICommonsComponentProps,
-  IDensityProps,
-  IElevationProps,
-  IFieldProps,
-  IFiltersProps,
-  IInputProps,
-  IItemProps,
-  IListProps,
-  IMarginProps,
-  IMenuProps,
-  IPaddingProps,
-  IRoundedProps,
-  ITextFieldProps,
-  ITransitionComponentProps
+    IAdjacentInnerProps,
+    IAdjacentProps,
+    IBorderProps,
+    IChipProps,
+    IColorProps,
+    ICommonsComponentProps,
+    IDensityProps,
+    IElevationProps,
+    IFieldProps,
+    IFiltersProps,
+    IInputProps,
+    IItemProps,
+    ILazyProps,
+    IListProps,
+    IMarginProps,
+    IMenuProps,
+    IPaddingProps,
+    IRoundedProps,
+    ITextFieldProps,
+    ITransitionComponentProps
 } from '@foxy/interfaces'
 
-import {TIcon} from '@foxy/types'
+import { TIcon } from '@foxy/types'
 
-export interface ISelectProps extends ICommonsComponentProps, IColorProps, ITextFieldProps, IDensityProps, IAdjacentProps, IAdjacentInnerProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IItemProps, ITransitionComponentProps, IFiltersProps {
+export interface ISelectProps extends ICommonsComponentProps, IColorProps, ITextFieldProps, IDensityProps, IAdjacentProps, IAdjacentInnerProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IItemProps, ITransitionComponentProps, IFiltersProps, ILazyProps {
     chips?: boolean
     closableChips?: boolean
-    eager?: boolean
     hideNoData?: boolean
     hideSelected?: boolean
     listProps?: IListProps

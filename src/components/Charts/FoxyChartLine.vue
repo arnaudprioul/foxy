@@ -44,7 +44,7 @@
     </template>
 
     <path
-        :ref="path"
+        ref="pathRef"
         :d="generatePath(fill)"
         :fill="fill ? `url(#${id})` : 'none'"
         :stroke="fill ? 'none' : `url(#${id})`"
@@ -53,7 +53,7 @@
     <template v-if="fill">
       <path
           :d="generatePath(false)"
-          :stroke="color ?? gradient?.[0]"
+          :stroke="color ? color : gradient?.[0]"
           fill="none"
       />
     </template>
@@ -83,7 +83,7 @@
     itemValue: 'value',
     padding: 8,
     width: 300,
-    modelValue: []
+    modelValue: () => []
   })
 
   const { hasSlot } = useSlots()
@@ -95,7 +95,7 @@
   const autoDrawDuration = computed(() => Number(props.autoDrawDuration) || (props.fill ? 500 : 2000))
 
   const lastLength = ref(0)
-  const path = ref<SVGPathElement | null>(null)
+  const pathRef = ref<SVGPathElement | null>(null)
 
   const items = computed(() => {
     return props.modelValue.map((item) => getPropertyFromItem(item, props.itemValue, item))
@@ -143,7 +143,7 @@
       }
     })
   }
-  const generatePath = (fill: boolean) => {
+  const generatePath = (fill?: boolean) => {
     const smoothValue = typeof props.smooth === 'boolean' ? (props.smooth ? 8 : 0) : Number(props.smooth)
 
     return genPath(

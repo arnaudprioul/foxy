@@ -200,8 +200,8 @@
   onMounted(() => {
     updateCanvas()
 
-    canvasHeight.value = props.height
-    canvasWidth.value = props.width
+    canvasHeight.value = int(props.height)
+    canvasWidth.value = int(props.width)
 
     _dotPosition.value = props.colorHsv ? {
       x: props.colorHsv.s * canvasWidth.value,
