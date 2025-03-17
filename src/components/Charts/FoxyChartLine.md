@@ -1,0 +1,5 @@
+# Foxychartline
+
+## Usage
+
+    <FoxyChartLine />

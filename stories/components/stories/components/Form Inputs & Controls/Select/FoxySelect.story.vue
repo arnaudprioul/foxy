@@ -62,6 +62,7 @@
   const state: { [key: string]: any } = reactive({
     label: 'Select',
     items: ['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming'],
+	  bgColor: '#fff'
   })
 </script>
 

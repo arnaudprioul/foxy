@@ -1,12 +1,19 @@
 <template>
   <component
-    :is="tag"
-    :class="btnGroupClasses"
-    :style="btnGroupStyles">
+      :is="tag"
+      :class="btnGroupClasses"
+      :style="btnGroupStyles"
+  >
     <slot name="default">
       <template v-if="hasItems">
-        <template v-for="(item, index) in items" :key="index">
-          <slot name="item" v-bind="{item, index}">
+        <template
+            v-for="(item, index) in items"
+            :key="index"
+        >
+          <slot
+              name="item"
+              v-bind="{item, index}"
+          >
             <foxy-btn v-bind="item"/>
           </slot>
         </template>
@@ -15,14 +22,12 @@
   </component>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyBtn } from '@foxy/components'
-  import {
-	  useBorder,
-	  useDensity,
-	  useElevation, useProps,
-	  useRounded, useSlots
-  } from '@foxy/composables'
+  import { useBorder, useDensity, useElevation, useProps, useRounded, useSlots } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
 
@@ -30,9 +35,9 @@
 
   import { computed, StyleValue } from 'vue'
 
-  const props = withDefaults(defineProps<IBtnGroupProps>(), { tag: 'div', density: DENSITY.DEFAULT, items: [] })
+  const props = withDefaults(defineProps<IBtnGroupProps>(), { tag: 'div', density: DENSITY.DEFAULT, items: () => [] })
 
-  const {filterProps} = useProps<IBtnGroupProps>(props)
+  const { filterProps } = useProps<IBtnGroupProps>(props)
 
   const { densityClasses } = useDensity(props)
   const { elevationClasses } = useElevation(props)
@@ -49,7 +54,7 @@
         activeColor: props.activeColor ?? item.activeColor,
         activeBgColor: props.activeBgColor ?? item.activeBgColor,
         hoverColor: props.hoverColor ?? item.hoverColor,
-        hoverBgColor: props.hoverBgColor ?? item.hoverBgColor,
+        hoverBgColor: props.hoverBgColor ?? item.hoverBgColor
       }
     }) as Array<IBtnProps>
   })
@@ -72,87 +77,91 @@
     return [
       'foxy-btn-group',
       {
-        'foxy-btn-group--divided': props.divided,
+        'foxy-btn-group--divided': props.divided
       },
       borderClasses.value,
       densityClasses.value,
       elevationClasses.value,
       roundedClasses.value,
-      props.class,
+      props.class
     ]
   })
 
   // EXPOSE
 
   defineExpose({
-	  filterProps
+    filterProps
   })
 </script>
 
-<style lang="scss" scoped>
-  .foxy-btn-group {
-    display: inline-flex;
-    flex-wrap: nowrap;
-    max-width: 100%;
-    min-width: 0;
-    overflow: hidden;
-    vertical-align: middle;
-    border-color: currentColor;
-    border-style: solid;
-    border-width: 0;
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
+<style
+    lang="scss"
+    scoped
+>
+.foxy-btn-group {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  vertical-align: middle;
+  border-color: currentColor;
+  border-style: solid;
+  border-width: 0;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  min-height: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
 
-    &--bordered {
-      border-width: thin;
-      box-shadow: none;
+  &--bordered {
+    border-width: thin;
+    box-shadow: none;
+  }
+
+  &--density-default {
+
+  }
+
+  &--density-compact {
+
+  }
+
+  :deep(.foxy-btn) {
+    border-radius: 0;
+    border-color: inherit;
+
+    &:not(:last-child) {
+      border-inline-end: none;
     }
 
-    &--density-default {
-      height: 48px;
+    &:not(:first-child) {
+      border-inline-start: none;
     }
 
-    &--density-compact {
-      height: 36px;
+    &:first-child {
+      border-start-start-radius: inherit;
+      border-end-start-radius: inherit;
     }
 
+    &:last-child {
+      border-start-end-radius: inherit;
+      border-end-end-radius: inherit;
+    }
+  }
+
+  &--divided {
     :deep(.foxy-btn) {
-      border-radius: 0;
-      border-color: inherit;
-
       &:not(:last-child) {
-        border-inline-end: none;
-      }
-
-      &:not(:first-child) {
-        border-inline-start: none;
-      }
-
-      &:first-child {
-        border-start-start-radius: inherit;
-        border-end-start-radius: inherit;
-      }
-
-      &:last-child {
-        border-start-end-radius: inherit;
-        border-end-end-radius: inherit;
-      }
-    }
-
-    &--divided {
-      :deep(.foxy-btn) {
-        &:not(:last-child) {
-          border-inline-end-width: thin;
-          border-inline-end-style: solid;
-          border-inline-end-color: rgba(var(--v-border-color), var(--v-border-opacity));
-        }
+        border-inline-end-width: thin;
+        border-inline-end-style: solid;
+        border-inline-end-color: rgba(var(--v-border-color), var(--v-border-opacity));
       }
     }
   }
+}
 </style>
 
 <style>
-  :root {
+:root {
 
-  }
+}
 </style>

@@ -10,8 +10,11 @@
 
 <script lang="ts" setup>
 	import { FoxySlideY, FoxyTransition } from "@foxy/components"
+
 	import { useProps, useSsrBoot } from "@foxy/composables"
+
 	import { ICounterProps } from "@foxy/interfaces"
+
 	import { computed, StyleValue } from "vue"
 
 	const props = withDefaults(defineProps<ICounterProps>(), {

@@ -70,14 +70,16 @@
 
 	import { FOXY_EXPANSION_PANEL_KEY } from '@foxy/consts'
 
+	import { MDI_ICONS } from "@foxy/enums"
+
 	import { IExpansionPanelHeaderProps } from '@foxy/interfaces'
 
 	import { computed, inject, StyleValue, toRef } from 'vue'
 
 	const props = withDefaults(defineProps<IExpansionPanelHeaderProps>(), {
 		tag: 'button',
-		expandIcon: '$expand',
-		collapseIcon: '$collapse'
+		expandIcon: MDI_ICONS.CHEVRON_DOWN,
+		collapseIcon: MDI_ICONS.CHEVRON_UP,
 	})
 
 	const emits = defineEmits(['click:append', 'click:prepend'])

@@ -121,7 +121,7 @@
 
 	import { vIntersect } from '@foxy/directives'
 
-	import { DENSITY, DIRECTION, TEXT_FIELD_TYPE } from '@foxy/enums'
+	import { DENSITY, DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from '@foxy/enums'
 
 	import { ITextFieldProps } from '@foxy/interfaces'
 	import { TFoxyField, TFoxyInput } from "@foxy/types"
@@ -135,7 +135,7 @@
 		centerAffix: true,
 		direction: DIRECTION.HORIZONTAL,
 		density: DENSITY.DEFAULT,
-		clearIcon: '$clear',
+		clearIcon: MDI_ICONS.CLOSE_CIRCLE_OUTLINE,
 		border: true,
 		rounded: true
 	})

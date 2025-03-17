@@ -14,3 +14,5 @@ export const SUPPORTS_INTERSECTION = IN_BROWSER && 'IntersectionObserver' in win
 export const ON_REGEX = /^on[^a-z]/
 
 export const SUPPORTS_TOUCH = IN_BROWSER && ('ontouchstart' in window || window.navigator.maxTouchPoints > 0)
+
+export const SUPPORTS_EYE_DROPPER = IN_BROWSER && 'EyeDropper' in window

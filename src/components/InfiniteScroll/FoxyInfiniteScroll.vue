@@ -1,263 +1,271 @@
 <template>
-  <component
-      :is="tag"
-      ref="rootEl"
-      :class="infiniteScrollClasses"
-      :style="infiniteScrollStyles">
-    <div class="foxy-infinite-scroll__side">
-      <template v-if="hasStartIntersect">
-        <slot name="error"
-              v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}"/>
+	<component
+			:is="tag"
+			ref="rootEl"
+			:class="infiniteScrollClasses"
+			:style="infiniteScrollStyles">
+		<div class="foxy-infinite-scroll__side">
+			<template v-if="hasStartIntersect">
+				<slot name="error"
+				      v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}"/>
 
-        <slot name="empty"
-              v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}">
-          <span>No more</span>
-        </slot>
+				<slot name="empty"
+				      v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}">
+					<span>No more</span>
+				</slot>
 
-        <template v-if="isManualMode">
-          <template v-if="isLoading">
-            <slot name="loading"
-                  v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}">
-              <foxy-progress :color="color" :type="PROGRESS_TYPE.CIRCULAR" indeterminate/>
-            </slot>
-          </template>
+				<template v-if="isManualMode">
+					<template v-if="isLoading">
+						<slot name="loading"
+						      v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}">
+							<foxy-progress :color="color" :type="PROGRESS_TYPE.CIRCULAR" indeterminate/>
+						</slot>
+					</template>
 
-          <slot name="loadMore"
-                v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}">
-            <foxy-btn :color="color" text="Load more" @click="intersecting(INFINITE_SCROLL_SIDE.START)"/>
-          </slot>
-        </template>
-      </template>
-    </div>
+					<slot name="loadMore"
+					      v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}">
+						<foxy-btn :color="color" text="Load more" @click="intersecting(INFINITE_SCROLL_SIDE.START)"/>
+					</slot>
+				</template>
+			</template>
+		</div>
 
-    <template v-if="rootEl && hasStartIntersect && isIntersectMode">
-      <foxy-infinite-scroll-intersect
-          :key="INFINITE_SCROLL_SIDE.START"
-          :margin="margin"
-          :rootRef="rootEl"
-          :side="INFINITE_SCROLL_SIDE.START"
-          @intersect="handleIntersect"
-      />
-    </template>
+		<template v-if="rootEl && hasStartIntersect && isIntersectMode">
+			<foxy-infinite-scroll-intersect
+					:key="INFINITE_SCROLL_SIDE.START"
+					:margin="margin"
+					:rootRef="rootEl"
+					:side="INFINITE_SCROLL_SIDE.START"
+					@intersect="handleIntersect"
+			/>
+		</template>
 
-    <slot name="default"/>
+		<slot name="default"/>
 
-    <template v-if="rootEl && hasEndIntersect && isIntersectMode">
-      <foxy-infinite-scroll-intersect
-          :key="INFINITE_SCROLL_SIDE.END"
-          :margin="margin"
-          :rootRef="rootEl"
-          :side="INFINITE_SCROLL_SIDE.END"
-          @intersect="handleIntersect"
-      />
-    </template>
+		<template v-if="rootEl && hasEndIntersect && isIntersectMode">
+			<foxy-infinite-scroll-intersect
+					:key="INFINITE_SCROLL_SIDE.END"
+					:margin="margin"
+					:rootRef="rootEl"
+					:side="INFINITE_SCROLL_SIDE.END"
+					@intersect="handleIntersect"
+			/>
+		</template>
 
-    <div class="foxy-infinite-scroll__side">
-      <template v-if="hasStartIntersect">
-        <slot name="error"
-              v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}"/>
+		<div class="foxy-infinite-scroll__side">
+			<template v-if="hasStartIntersect">
+				<slot name="error"
+				      v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}"/>
 
-        <slot name="empty"
-              v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}">
-          <span>No more</span>
-        </slot>
+				<slot name="empty"
+				      v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}">
+					<span>{{ t(emptyText) }}</span>
+				</slot>
 
-        <template v-if="isManualMode">
-          <template v-if="isLoading">
-            <slot name="loading"
-                  v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}">
-              <foxy-progress :color="color" :type="PROGRESS_TYPE.CIRCULAR" indeterminate/>
-            </slot>
-          </template>
+				<template v-if="isManualMode">
+					<template v-if="isLoading">
+						<slot name="loading"
+						      v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}">
+							<foxy-progress :color="color" :type="PROGRESS_TYPE.CIRCULAR" indeterminate/>
+						</slot>
+					</template>
 
-          <slot name="loadMore"
-                v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}">
-            <foxy-btn :color="color" text="Load more" @click="intersecting(INFINITE_SCROLL_SIDE.END)"/>
-          </slot>
-        </template>
-      </template>
-    </div>
-  </component>
+					<slot name="loadMore"
+					      v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}">
+						<foxy-btn
+								:color="color"
+								:text="t(loadMoreText)"
+								@click="intersecting(INFINITE_SCROLL_SIDE.END)"
+						/>
+					</slot>
+				</template>
+			</template>
+		</div>
+	</component>
 </template>
 
 <script lang="ts" setup>
-  import { FoxyBtn, FoxyInfiniteScrollIntersect, FoxyProgress } from '@foxy/components'
+	import { FoxyBtn, FoxyInfiniteScrollIntersect, FoxyProgress } from '@foxy/components'
 
-  import { useBothColor, useDimension, useProps } from '@foxy/composables'
+	import { useBothColor, useDimension, useLocale, useProps } from '@foxy/composables'
 
-  import {
-    DIRECTION,
-    INFINITE_SCROLL_MODE,
-    INFINITE_SCROLL_SIDE,
-    INFINITE_SCROLL_STATUS,
-    PROGRESS_TYPE
-  } from '@foxy/enums'
+	import {
+		DIRECTION,
+		INFINITE_SCROLL_MODE,
+		INFINITE_SCROLL_SIDE,
+		INFINITE_SCROLL_STATUS,
+		PROGRESS_TYPE
+	} from '@foxy/enums'
 
-  import { IInfiniteScrollProps } from '@foxy/interfaces'
+	import { IInfiniteScrollProps } from '@foxy/interfaces'
 
-  import { TInfiniteScrollSide, TInfiniteScrollStatus } from '@foxy/types'
+	import { TInfiniteScrollSide, TInfiniteScrollStatus } from '@foxy/types'
 
-  import { computed, nextTick, onMounted, ref, shallowRef, StyleValue, toRef } from 'vue'
+	import { computed, nextTick, onMounted, ref, shallowRef, StyleValue, toRef } from 'vue'
 
-  const props = withDefaults(defineProps<IInfiniteScrollProps>(), {
-    direction: DIRECTION.VERTICAL,
-    side: INFINITE_SCROLL_SIDE.END,
-    mode: INFINITE_SCROLL_MODE.INTERSECT,
-    tag: 'div'
-  })
+	const props = withDefaults(defineProps<IInfiniteScrollProps>(), {
+		direction: DIRECTION.VERTICAL,
+		side: INFINITE_SCROLL_SIDE.END,
+		mode: INFINITE_SCROLL_MODE.INTERSECT,
+		tag: 'div',
+		loadMoreText: 'foxy.infiniteScroll.loadMore',
+		emptyText: 'foxy.infiniteScroll.empty'
+	})
 
-  const emits = defineEmits(['load'])
+	const emits = defineEmits(['load'])
 
-  const {filterProps} = useProps<IInfiniteScrollProps>(props)
+	const {filterProps} = useProps<IInfiniteScrollProps>(props)
 
-  const { dimensionStyles } = useDimension(props)
-  const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
+	const {t} = useLocale()
 
-  const rootEl = ref<HTMLDivElement>()
-  const isIntersecting = shallowRef(false)
+	const {dimensionStyles} = useDimension(props)
+	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
 
-  const propertyDirection = computed(() => {
-    return props.direction === DIRECTION.VERTICAL ? 'scrollTop' : 'scrollLeft'
-  })
-  const propertySize = computed(() => {
-    return props.direction === DIRECTION.VERTICAL ? 'scrollHeight' : 'scrollWidth'
-  })
-  const propertyContainerSize = computed(() => {
-    return props.direction === DIRECTION.VERTICAL ? 'clientHeight' : 'clientWidth'
-  })
+	const rootEl = ref<HTMLDivElement>()
+	const isIntersecting = shallowRef(false)
 
-  const getScrollAmount = () => {
-    if (!rootEl.value) return 0
+	const propertyDirection = computed(() => {
+		return props.direction === DIRECTION.VERTICAL ? 'scrollTop' : 'scrollLeft'
+	})
+	const propertySize = computed(() => {
+		return props.direction === DIRECTION.VERTICAL ? 'scrollHeight' : 'scrollWidth'
+	})
+	const propertyContainerSize = computed(() => {
+		return props.direction === DIRECTION.VERTICAL ? 'clientHeight' : 'clientWidth'
+	})
 
-    return rootEl.value[propertyDirection.value]
-  }
-  const setScrollAmount = (amount: number) => {
-    if (!rootEl.value) return
+	const getScrollAmount = () => {
+		if (!rootEl.value) return 0
 
-    rootEl.value[propertyDirection.value] = amount
-  }
+		return rootEl.value[propertyDirection.value]
+	}
+	const setScrollAmount = (amount: number) => {
+		if (!rootEl.value) return
 
-  const getScrollSize = () => {
-    if (!rootEl.value) return 0
+		rootEl.value[propertyDirection.value] = amount
+	}
 
-    return rootEl.value[propertySize.value]
-  }
-  const getContainerSize = () => {
-    if (!rootEl.value) return 0
+	const getScrollSize = () => {
+		if (!rootEl.value) return 0
 
-    return rootEl.value[propertyContainerSize.value]
-  }
+		return rootEl.value[propertySize.value]
+	}
+	const getContainerSize = () => {
+		if (!rootEl.value) return 0
 
-  onMounted(() => {
-    if (!rootEl.value) return
+		return rootEl.value[propertyContainerSize.value]
+	}
 
-    if (props.side === INFINITE_SCROLL_SIDE.START) {
-      setScrollAmount(getScrollSize())
-    } else if (props.side === INFINITE_SCROLL_SIDE.BOTH) {
-      setScrollAmount(getScrollSize() / 2 - getContainerSize() / 2)
-    }
-  })
+	onMounted(() => {
+		if (!rootEl.value) return
 
-  const currentSide = shallowRef<TInfiniteScrollSide>(INFINITE_SCROLL_SIDE.START)
-  const startStatus = shallowRef<TInfiniteScrollStatus>(INFINITE_SCROLL_STATUS.OK)
-  const endStatus = shallowRef<TInfiniteScrollStatus>(INFINITE_SCROLL_STATUS.OK)
-  const status = computed({
-    get () {
-      return currentSide.value === INFINITE_SCROLL_SIDE.START ? startStatus.value : endStatus.value
-    },
-    set (status: TInfiniteScrollStatus) {
-      if (currentSide.value === INFINITE_SCROLL_SIDE.START) {
-        startStatus.value = status
-      } else if (currentSide.value === INFINITE_SCROLL_SIDE.END) {
-        endStatus.value = status
-      }
-    }
-  })
+		if (props.side === INFINITE_SCROLL_SIDE.START) {
+			setScrollAmount(getScrollSize())
+		} else if (props.side === INFINITE_SCROLL_SIDE.BOTH) {
+			setScrollAmount(getScrollSize() / 2 - getContainerSize() / 2)
+		}
+	})
 
-  let previousScrollSize = 0
-  const handleIntersect = (side: TInfiniteScrollSide, _isIntersecting: boolean) => {
-    isIntersecting.value = _isIntersecting
+	const currentSide = shallowRef<TInfiniteScrollSide>(INFINITE_SCROLL_SIDE.START)
+	const startStatus = shallowRef<TInfiniteScrollStatus>(INFINITE_SCROLL_STATUS.OK)
+	const endStatus = shallowRef<TInfiniteScrollStatus>(INFINITE_SCROLL_STATUS.OK)
+	const status = computed({
+		get () {
+			return currentSide.value === INFINITE_SCROLL_SIDE.START ? startStatus.value : endStatus.value
+		},
+		set (status: TInfiniteScrollStatus) {
+			if (currentSide.value === INFINITE_SCROLL_SIDE.START) {
+				startStatus.value = status
+			} else if (currentSide.value === INFINITE_SCROLL_SIDE.END) {
+				endStatus.value = status
+			}
+		}
+	})
 
-    if (isIntersecting.value) {
-      intersecting(side)
-    }
-  }
-  const done = (_status: TInfiniteScrollStatus) => {
-    status.value = _status
+	let previousScrollSize = 0
+	const handleIntersect = (side: TInfiniteScrollSide, _isIntersecting: boolean) => {
+		isIntersecting.value = _isIntersecting
 
-    nextTick(() => {
-      if (status.value === INFINITE_SCROLL_STATUS.EMPTY || status.value === INFINITE_SCROLL_STATUS.ERROR) return
+		if (isIntersecting.value) {
+			intersecting(side)
+		}
+	}
+	const done = (_status: TInfiniteScrollStatus) => {
+		status.value = _status
 
-      if (status.value === INFINITE_SCROLL_STATUS.OK && currentSide.value === INFINITE_SCROLL_SIDE.START) {
-        setScrollAmount(getScrollSize() - previousScrollSize + getScrollAmount())
-      }
+		nextTick(() => {
+			if (status.value === INFINITE_SCROLL_STATUS.EMPTY || status.value === INFINITE_SCROLL_STATUS.ERROR) return
 
-      if (props.mode !== INFINITE_SCROLL_MODE.MANUAL) {
-        nextTick(() => {
-          window.requestAnimationFrame(() => {
-            window.requestAnimationFrame(() => {
-              window.requestAnimationFrame(() => {
-                intersecting()
-              })
-            })
-          })
-        })
-      }
-    })
-  }
-  const intersecting = (side: TInfiniteScrollSide) => {
-    if (props.mode !== 'manual' && !isIntersecting.value) return
+			if (status.value === INFINITE_SCROLL_STATUS.OK && currentSide.value === INFINITE_SCROLL_SIDE.START) {
+				setScrollAmount(getScrollSize() - previousScrollSize + getScrollAmount())
+			}
 
-    currentSide.value = side
+			if (props.mode !== INFINITE_SCROLL_MODE.MANUAL) {
+				nextTick(() => {
+					window.requestAnimationFrame(() => {
+						window.requestAnimationFrame(() => {
+							window.requestAnimationFrame(() => {
+								intersecting()
+							})
+						})
+					})
+				})
+			}
+		})
+	}
+	const intersecting = (side: TInfiniteScrollSide) => {
+		if (props.mode !== 'manual' && !isIntersecting.value) return
 
-    if (!rootEl.value || isLoading.value) return
+		currentSide.value = side
 
-    previousScrollSize = getScrollSize()
-    status.value = INFINITE_SCROLL_STATUS.LOADING
+		if (!rootEl.value || isLoading.value) return
 
-    emits('load', { side: currentSide.value, done })
-  }
+		previousScrollSize = getScrollSize()
+		status.value = INFINITE_SCROLL_STATUS.LOADING
 
-  const hasStartIntersect = computed(() => {
-    return props.side === INFINITE_SCROLL_SIDE.START || props.side === INFINITE_SCROLL_SIDE.BOTH
-  })
-  const hasEndIntersect = computed(() => {
-    return props.side === INFINITE_SCROLL_SIDE.END || INFINITE_SCROLL_SIDE.BOTH
-  })
-  const isIntersectMode = computed(() => {
-    return props.mode === INFINITE_SCROLL_MODE.INTERSECT
-  })
-  const isManualMode = computed(() => {
-    return props.mode === INFINITE_SCROLL_MODE.MANUAL
-  })
-  const isLoading = computed(() => {
-    return status.value === INFINITE_SCROLL_STATUS.LOADING
-  })
+		emits('load', {side: currentSide.value, done})
+	}
 
-  // CLASS & STYLES
+	const hasStartIntersect = computed(() => {
+		return props.side === INFINITE_SCROLL_SIDE.START || props.side === INFINITE_SCROLL_SIDE.BOTH
+	})
+	const hasEndIntersect = computed(() => {
+		return props.side === INFINITE_SCROLL_SIDE.END || INFINITE_SCROLL_SIDE.BOTH
+	})
+	const isIntersectMode = computed(() => {
+		return props.mode === INFINITE_SCROLL_MODE.INTERSECT
+	})
+	const isManualMode = computed(() => {
+		return props.mode === INFINITE_SCROLL_MODE.MANUAL
+	})
+	const isLoading = computed(() => {
+		return status.value === INFINITE_SCROLL_STATUS.LOADING
+	})
 
-  const infiniteScrollStyles = computed(() => {
-    return [
-      colorStyles.value,
-      dimensionStyles.value,
-      props.style
-    ] as StyleValue
-  })
-  const infiniteScrollClasses = computed(() => {
-    return [
-      'foxy-infinite-scroll',
-      `foxy-infinite-scroll--${props.direction}`,
-      {
-        'foxy-infinite-scroll--start': hasStartIntersect.value,
-        'foxy-infinite-scroll--end': hasEndIntersect.value,
-      },
-      props.class,
-    ]
-  })
+	// CLASS & STYLES
 
-  // EXPOSE
+	const infiniteScrollStyles = computed(() => {
+		return [
+			colorStyles.value,
+			dimensionStyles.value,
+			props.style
+		] as StyleValue
+	})
+	const infiniteScrollClasses = computed(() => {
+		return [
+			'foxy-infinite-scroll',
+			`foxy-infinite-scroll--${props.direction}`,
+			{
+				'foxy-infinite-scroll--start': hasStartIntersect.value,
+				'foxy-infinite-scroll--end': hasEndIntersect.value
+			},
+			props.class
+		]
+	})
 
-  defineExpose({
-	  filterProps
-  })
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

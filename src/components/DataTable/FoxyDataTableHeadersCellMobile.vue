@@ -1,115 +1,180 @@
 <template>
   <tr class="foxy-data-table-headers__row">
     <foxy-data-table-column-cell
-      :class="dataTableHeadersCellClasses"
-      :colspan="colspan"
-      :style="dataTableHeadersCellStyles"
-      tag="th"
-      v-bind="{...headerProps}"
+        :class="dataTableHeadersCellClasses"
+        :colspan="colspan"
+        :style="dataTableHeadersCellStyles"
+        tag="th"
+        v-bind="{...headerProps}"
     >
       <template #default>
         <div class="foxy-data-table-headers-cell__content">
           <foxy-select
-            :append-icon="appendIcon"
-            :density="DENSITY.DEFAULT"
-            :items="displayItems"
-            :multiple="multiSort"
-            chips
-            class="foxy-data-table-headers-cell__sort-select"
-            clearable
-            @click:clear="handleClear"
-            @click:append="handleAppendCLick"
+              :append-icon="appendIcon"
+              :density="DENSITY.DEFAULT"
+              :items="displayItems"
+              :label="t('foxy.dataTable.sortBy')"
+              :multiple="multiSort"
+              chips
+              class="foxy-data-table-headers-cell__sort-select"
+              clearable
+              @click:clear="handleClear"
+              @click:append="handleAppendCLick"
           >
-            <template v-if="hasSlot('select.prepend')" #prepend>
+            <template
+                v-if="hasSlot('select.prepend')"
+                #prepend
+            >
               <slot name="select.prepend"/>
             </template>
 
-            <template v-if="hasSlot('select.loader')" #loader>
+            <template
+                v-if="hasSlot('select.loader')"
+                #loader
+            >
               <slot name="select.loader"/>
             </template>
 
-            <template v-if="hasSlot('select.prependInner')" #prependInner>
+            <template
+                v-if="hasSlot('select.prependInner')"
+                #prependInner
+            >
               <slot name="select.prependInner"/>
             </template>
 
-            <template v-if="hasSlot('select.floatingLabel')" #floatingLabel>
+            <template
+                v-if="hasSlot('select.floatingLabel')"
+                #floatingLabel
+            >
               <slot name="select.floatingLabel"/>
             </template>
 
-            <template v-if="hasSlot('select.label')" #label>
+            <template
+                v-if="hasSlot('select.label')"
+                #label
+            >
               <slot name="select.label"/>
             </template>
 
-            <template v-if="hasSlot('select.prefix')" #prefix>
+            <template
+                v-if="hasSlot('select.prefix')"
+                #prefix
+            >
               <slot name="select.prefix"/>
             </template>
 
             <template #chip="{ item, index, props: chipProps }">
-              <slot name="select.chip" v-bind="{ item, index, chipProps: props }">
+              <slot
+                  name="select.chip"
+                  v-bind="{ item, index, chipProps: props }"
+              >
                 <foxy-chip
-                  :append-icon="getSortIcon(item.raw)"
-                  :class="[{'foxy-data-table-headers-cell__sort-chip--active': isSorted(item.raw)}]"
-                  :text="item.title"
-                  class="foxy-data-table-headers-cell__sort-chip"
-                  v-bind="chipProps"
-                  @click="handleChipClick(item)"
-                  @mousedown="handleChipMousedown">
-                  <template v-if="hasSlot('chip:prepend')" #prepend>
+                    :append-icon="getSortIcon(item.raw)"
+                    :class="[{'foxy-data-table-headers-cell__sort-chip--active': isSorted(item.raw)}]"
+                    :text="item.title"
+                    class="foxy-data-table-headers-cell__sort-chip"
+                    v-bind="chipProps"
+                    @click="handleChipClick(item)"
+                    @mousedown="handleChipMousedown"
+                >
+                  <template
+                      v-if="hasSlot('chip:prepend')"
+                      #prepend
+                  >
                     <slot name="chip:prepend"/>
                   </template>
 
-                  <template v-if="hasSlot('chip:default')" #default>
+                  <template
+                      v-if="hasSlot('chip:default')"
+                      #default
+                  >
                     <slot name="chip:default"/>
                   </template>
 
-                  <template v-if="hasSlot('chip:append')" #append>
+                  <template
+                      v-if="hasSlot('chip:append')"
+                      #append
+                  >
                     <slot name="chip:append"/>
                   </template>
 
-                  <template v-if="hasSlot('chip:close')" #close>
+                  <template
+                      v-if="hasSlot('chip:close')"
+                      #close
+                  >
                     <slot name="chip:close"/>
                   </template>
 
-                  <template v-if="hasSlot('chip:filter')" #filter>
+                  <template
+                      v-if="hasSlot('chip:filter')"
+                      #filter
+                  >
                     <slot name="chip:filter"/>
                   </template>
                 </foxy-chip>
               </slot>
             </template>
 
-            <template v-if="hasSlot('select.selection')" #selection>
+            <template
+                v-if="hasSlot('select.selection')"
+                #selection
+            >
               <slot name="select.selection"/>
             </template>
 
-            <template v-if="hasSlot('select.noData')" #noData>
+            <template
+                v-if="hasSlot('select.noData')"
+                #noData
+            >
               <slot name="select.noData"/>
             </template>
 
-            <template v-if="hasSlot('select.prependItem')" #prependItem>
+            <template
+                v-if="hasSlot('select.prependItem')"
+                #prependItem
+            >
               <slot name="select.prependItem"/>
             </template>
 
-            <template v-if="hasSlot('select.item')" #item>
+            <template
+                v-if="hasSlot('select.item')"
+                #item
+            >
               <slot name="select.item"/>
             </template>
 
-            <template v-if="hasSlot('select.appendItem')" #appendItem>
+            <template
+                v-if="hasSlot('select.appendItem')"
+                #appendItem
+            >
               <slot name="select.appendItem"/>
             </template>
 
-            <template v-if="hasSlot('select.suffix')" #suffix>
+            <template
+                v-if="hasSlot('select.suffix')"
+                #suffix
+            >
               <slot name="select.suffix"/>
             </template>
 
-            <template v-if="hasSlot('select.appendInner')" #appendInner>
+            <template
+                v-if="hasSlot('select.appendInner')"
+                #appendInner
+            >
               <slot name="select.appendInner"/>
             </template>
 
-            <template v-if="hasSlot('clear')" #clear>
+            <template
+                v-if="hasSlot('clear')"
+                #clear
+            >
               <slot name="clear"/>
             </template>
 
-            <template v-if="hasSlot('select.append')" #append>
+            <template
+                v-if="hasSlot('select.append')"
+                #append
+            >
               <slot name="select.append"/>
             </template>
           </foxy-select>
@@ -119,14 +184,17 @@
   </tr>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyChip, FoxyDataTableColumnCell, FoxySelect } from '@foxy/components'
 
-  import { useHeadersCell, useProps, useSelection, useSlots, useSort } from '@foxy/composables'
+  import { useHeadersCell, useLocale, useProps, useSelection, useSlots, useSort } from '@foxy/composables'
 
-  import { DENSITY } from '@foxy/enums'
+  import { DENSITY, MDI_ICONS } from '@foxy/enums'
 
-  import { IDataTableHeadersCellMobileProps, IListItem } from '@foxy/interfaces'
+  import { IDataTableHeadersCellMobileProps, IInternalListItem } from '@foxy/interfaces'
 
   import { computed, mergeProps } from 'vue'
 
@@ -134,7 +202,9 @@
 
   const emits = defineEmits(['click:clear', 'click:prepend', 'click:append'])
 
-  const {filterProps} = useProps<IDataTableHeadersCellMobileProps>(props)
+  const { filterProps } = useProps<IDataTableHeadersCellMobileProps>(props)
+
+  const { t } = useLocale()
 
   const { hasSlot } = useSlots()
 
@@ -146,20 +216,20 @@
 
   const displayItems = computed<Array<any>>(() => {
     return props.columns
-      .filter((column) => {
-        return column?.sortable && !props.disableSort
-      })
+        .filter((column) => {
+          return column?.sortable && !props.disableSort
+        })
   })
 
   const appendIcon = computed(() => {
     const showSelectColumn = props.columns
-      .find((column) => {
-        return column.key === 'data-table-select'
-      })
+        .find((column) => {
+          return column.key === 'data-table-select'
+        })
 
     if (showSelectColumn == null) return
 
-    return allSelected.value ? '$checkboxOn' : someSelected.value ? '$checkboxIndeterminate' : '$checkboxOff'
+    return allSelected.value ? MDI_ICONS.CHECKBOX_MARKED_OUTLINE : someSelected.value ? MDI_ICONS.MINUS_BOX : MDI_ICONS.CHECKBOX_BLANK_OUTLINE
   })
 
   const handleClear = (e) => {
@@ -171,7 +241,7 @@
     emits('click:append', e)
   }
 
-  const handleChipClick = (item: IListItem) => {
+  const handleChipClick = (item: IInternalListItem) => {
     if (item.raw?.sortable) {
       toggleSort(item.raw)
     }
@@ -197,6 +267,6 @@
   // EXPOSE
 
   defineExpose({
-	  filterProps
+    filterProps
   })
 </script>

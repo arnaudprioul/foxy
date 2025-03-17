@@ -58,6 +58,7 @@
 
   const state: { [key: string]: any } = reactive({
     label: 'Textfield',
+	  bgColor: '#fff'
   })
 </script>
 

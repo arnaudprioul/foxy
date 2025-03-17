@@ -32,7 +32,7 @@
 						<template v-else-if="column.key === 'data-table-expand'">
 							<slot name="item.data-table-expand" v-bind="slotProps(i, column)">
 								<foxy-btn
-										:icon="isExpanded(item) ? '$collapse' : '$expand'"
+										:icon="isExpanded(item) ? MDI_ICONS.CHEVRON_UP : MDI_ICONS.CHEVRON_DOWN"
 										:size="SIZES.SMALL"
 										@click="handleBtnClick"
 								/>
@@ -71,7 +71,7 @@
 
 	import { useCell, useDisplay, useExpanded, useHeaders, useProps, useSelection, useSort } from '@foxy/composables'
 
-	import { SIZES } from '@foxy/enums'
+	import { MDI_ICONS, SIZES } from '@foxy/enums'
 
 	import { IDataTableHeaderCellColumnSlot, IDataTableItemKey, IDataTableRowProps } from '@foxy/interfaces'
 

@@ -16,6 +16,8 @@ import { TFile, TFileSize } from "@foxy/types"
 export interface IFileFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps {
     chips?: boolean
     counter?: boolean
+    counterSizeString?: string
+    counterString?: string
     placeholder?: string
     persistentPlaceholder?: boolean
     persistentCounter?: boolean

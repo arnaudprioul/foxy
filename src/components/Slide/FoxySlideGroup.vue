@@ -60,12 +60,12 @@
 		useMargin,
 		usePadding, useProps,
 		useResizeObserver,
-		useRounded
+		useRounded, useRtl
 	} from "@foxy/composables"
 
 	import { FOXY_SLIDE_GROUP_KEY, IN_BROWSER } from "@foxy/consts"
 
-	import { DIRECTION } from "@foxy/enums"
+	import { DIRECTION, MDI_ICONS } from "@foxy/enums"
 
 	import { IGoToOptions, ISlideGroupProps } from "@foxy/interfaces"
 	import {
@@ -80,8 +80,8 @@
 
 	const props = withDefaults(defineProps<ISlideGroupProps>(), {
 		direction: DIRECTION.HORIZONTAL,
-		nextIcon: '$next',
-		prevIcon: '$prev',
+		prevIcon: MDI_ICONS.CHEVRON_RIGHT,
+		nextIcon: MDI_ICONS.CHEVRON_LEFT,
 		selectedClass: 'foxy-slide-group-item--active'
 	})
 
@@ -104,6 +104,7 @@
 
 	const {resizeRef: containerRef, contentRect: containerRect} = useResizeObserver()
 	const {resizeRef: contentRef, contentRect} = useResizeObserver()
+	const {isRtl} = useRtl()
 
 	const goTo = useGoTo()
 	const goToOptions = computed<Partial<IGoToOptions>>(() => {
@@ -156,6 +157,7 @@
 		let target = calculateUpdatedTarget({
       containerElement: containerRef.el!,
       isHorizontal: isHorizontal.value,
+			isRtl: isRtl.value,
       selectedElement: children
     })
 

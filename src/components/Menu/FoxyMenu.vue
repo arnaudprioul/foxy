@@ -70,7 +70,6 @@
 		openOnClick: true,
 		location: INLINE.RIGHT,
 		scrollStrategy: SCROLL_STRATEGIES.REPOSITION,
-		width: 200,
 		offset: 8,
 		transition: {component: FoxyTranslateScale}
 	})

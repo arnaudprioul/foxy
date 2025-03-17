@@ -53,9 +53,7 @@
 	import { computed, ref, StyleValue, useAttrs } from 'vue'
 
 	const props = withDefaults(defineProps<ICheckboxProps>(), {
-		density: DENSITY.DEFAULT,
-		trueIcon: '$checkboxOn',
-		falseIcon: '$checkboxOff'
+		density: DENSITY.DEFAULT
 	})
 
 	const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])

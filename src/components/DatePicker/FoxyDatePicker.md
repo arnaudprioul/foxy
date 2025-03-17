@@ -1,0 +1,4 @@
+# Foxydatepicker
+
+## Usage
+    <FoxyDatePicker />

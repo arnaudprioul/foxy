@@ -1,4 +1,5 @@
-import { IDisplayOptions, IGoToOptions } from '@foxy/interfaces'
+import { IDateOptions, IDisplayOptions, IGoToOptions, IRtlOptions } from '@foxy/interfaces'
+import { ILocaleOptions } from "@foxy/interfaces/Commons/locale.interface.ts"
 
 import { TIconOptions, TSSROptions } from '@foxy/types'
 import { ComponentPropsOptions, ExtractPropTypes, StyleValue } from 'vue'
@@ -12,6 +13,8 @@ export interface IFoxyOptions {
   display?: IDisplayOptions
   ssr?: TSSROptions
   goTo?: IGoToOptions
+  date?: IDateOptions
+  locale?: ILocaleOptions & IRtlOptions
 }
 
 export interface IBlueprint extends Omit<IFoxyOptions, 'blueprint'> {

@@ -105,8 +105,6 @@
 	import { computed, ref, shallowRef, StyleValue, useAttrs } from 'vue'
 
 	const props = withDefaults(defineProps<IRatingFieldProps>(), {
-		emptyIcon: '$ratingEmpty',
-		fullIcon: '$ratingFull',
 		length: 5,
 		modelValue: 0,
 		itemLabelPosition: BLOCK.TOP,

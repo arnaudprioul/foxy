@@ -1,5 +1,14 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
+    "allowUnreachableCode": false,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "typeRoots": [
+      "./typings"
+    ],
+    "outFile": "./dist/framework.js",
+    "allowJs": true,
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -8,14 +17,13 @@
       "DOM",
       "DOM.Iterable"
     ],
+    "outDir": "./dist",
     "skipLibCheck": true,
     /* Bundler mode */
-    "allowTsInNodeModules": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "jsx": "preserve",
     "baseUrl": "",
     "declaration": true,
@@ -39,10 +47,7 @@
       "@stories/*": [
         "stories/*"
       ]
-    },
-    "files": [
-      "node_modules/ts-transformer-keys/index.d.ts"
-    ]
+    }
   },
   "include": [
     "src/**/*.ts",
@@ -51,12 +56,15 @@
     "stories/**/*.ts",
     "stories/**/*.vue"
   ],
+  "exclude": [
+    "./plugins/**/*",
+    "./typings/**/*",
+    "./dist/**/*"
+    // This is what fixed it!
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"
     }
-  ],
-  "files": [
-    "node_modules/ts-transformer-keys/index.d.ts"
   ]
 }

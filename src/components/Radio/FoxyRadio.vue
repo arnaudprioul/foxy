@@ -74,8 +74,6 @@
 
 	const props = withDefaults(defineProps<IRadioProps>(), {
 		density: DENSITY.DEFAULT,
-		trueIcon: '$radioOn',
-		falseIcon: '$radioOff'
 	})
 
 	const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])

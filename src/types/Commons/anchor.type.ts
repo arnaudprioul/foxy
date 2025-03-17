@@ -1,8 +1,14 @@
-import { BLOCK, INLINE } from '@foxy/enums'
+import { BLOCK, INLINE, START_END } from '@foxy/enums'
+
+export type TStartEnd = `${START_END}`
 
 export type TBlock = `${BLOCK}`
+export type TBlockStartEnd = TBlock | TStartEnd
 
 export type TInline = `${INLINE}`
+export type TInlineStartEnd = TInline | TStartEnd
+
+export type TDirectionBoth = TBlock | TInline
 
 export type TAnchor =
     | TBlock
@@ -14,5 +20,7 @@ export type TAnchor =
 
 export type TParsedAnchor =
     | { side: 'center', align: 'center' }
-    | { side: TBlock, align: 'left' | 'right' | 'center' }
-    | { side: 'left' | 'right', align: TBlock | 'center' }
+    | { side: TBlock, align: TInline | 'center' }
+    | { side: TInline, align: TBlock | 'center' }
+
+

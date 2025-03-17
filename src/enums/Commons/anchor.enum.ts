@@ -1,11 +1,15 @@
 export enum BLOCK {
-  TOP = 'top',
-  BOTTOM = 'bottom'
+    TOP = 'top',
+    BOTTOM = 'bottom',
 }
 
+// TODO - rework inline
 export enum INLINE {
-  START = 'start',
-  END = 'end',
-  LEFT = 'left',
-  RIGHT = 'right'
+    LEFT = 'left',
+    RIGHT = 'right'
+}
+
+export enum START_END {
+    START = 'start',
+    END = 'end',
 }

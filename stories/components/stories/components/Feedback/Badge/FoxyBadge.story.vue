@@ -7,44 +7,86 @@
     <Variant title="Default">
       <template #default>
         <foxy-container fullscreen>
-          <foxy-row :align-content="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align-content="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col cols="auto">
               <foxy-badge v-bind="state">
-                <foxy-icon :icon="MDI_ICONS.ACCOUNT" size="x-large"/>
+                <foxy-icon
+                    :icon="MDI_ICONS.ACCOUNT"
+                    size="x-large"
+                />
               </foxy-badge>
             </foxy-col>
           </foxy-row>
         </foxy-container>
       </template>
       <template #controls>
-        <hst-checkbox v-model="state.dot" title="Dot"/>
+        <hst-checkbox
+            v-model="state.dot"
+            title="Dot"
+        />
 
-        <hst-checkbox v-model="state.floating" title="Floating"/>
+        <hst-checkbox
+            v-model="state.floating"
+            title="Floating"
+        />
 
-        <hst-checkbox v-model="state.inline" title="Inline"/>
+        <hst-checkbox
+            v-model="state.inline"
+            title="Inline"
+        />
 
         <hst-rounded v-model:rounded="state.rounded"/>
 
-        <hst-location v-model="state.location" multiple title="Location"/>
+        <hst-location
+            v-model="state.location"
+            multiple
+            title="Location"
+        />
 
-        <hst-checkbox v-model="state.bordered" title="Bordered"/>
+        <hst-checkbox
+            v-model="state.border"
+            title="Border"
+        />
 
-        <hst-radio v-model="type" :options="contentTypeList" title="Content Type"/>
+        <hst-radio
+            v-model="type"
+            :options="contentTypeList"
+            title="Content Type"
+        />
 
         <template v-if="isNumberType">
-          <hst-slider v-model="state.content" :max="100" :min="0" title="Number"/>
-          <hst-slider v-model="state.max" :max="20" :min="0" title="Max"/>
+          <hst-slider
+              v-model="state.content"
+              :max="100"
+              :min="0"
+              title="Number"
+          />
+          <hst-slider
+              v-model="state.max"
+              :max="20"
+              :min="0"
+              title="Max"
+          />
         </template>
 
         <template v-if="isStringType">
-          <hst-text v-model="state.content" title="String"/>
+          <hst-text
+              v-model="state.content"
+              title="String"
+          />
         </template>
       </template>
     </Variant>
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyBadge, FoxyCol, FoxyContainer, FoxyIcon, FoxyRow } from '@foxy/components'
 
   import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxy/enums'

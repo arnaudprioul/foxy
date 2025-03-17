@@ -36,6 +36,7 @@
 						key="close-btn"
 						:icon="closeIcon"
 						size="x-small"
+						:aria-label="t(closeLabel)"
 						v-on="closeEvent"/>
 			</slot>
 		</div>
@@ -59,10 +60,11 @@
 		useSlots,
 		useStatus,
 		useVModel,
-		useProps
+		useProps,
+		useLocale
 	} from '@foxy/composables'
 
-	import { DENSITY } from '@foxy/enums'
+	import { DENSITY, MDI_ICONS } from '@foxy/enums'
 
 	import { IAlertProps } from '@foxy/interfaces'
 
@@ -71,13 +73,15 @@
 	const props = withDefaults(defineProps<IAlertProps>(), {
 		tag: 'div',
 		density: DENSITY.DEFAULT,
-		closeIcon: '$close',
+		closeIcon: MDI_ICONS.CLOSE,
+		closeLabel: 'foxy.close',
 		modelValue: true
 	})
 
 	const emits = defineEmits(['click:close', 'update:modelValue'])
 
 	const {filterProps} = useProps<IAlertProps>(props)
+	const { t } = useLocale()
 
 	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
 	const {densityClasses} = useDensity(props)

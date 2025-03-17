@@ -53,7 +53,8 @@
 
   const state: { [key: string]: any } = reactive({
     label: 'File',
-    persistentCounter: true
+    persistentCounter: true,
+	  bgColor: '#fff'
   })
 </script>
 

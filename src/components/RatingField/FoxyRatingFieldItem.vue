@@ -1,147 +1,152 @@
 <template>
-  <component
-    :is="tag"
-    :class="ratingFieldItemClasses"
-    :style="ratingFieldItemStyles">
-    <label :for="id">
-      <span class="foxy-rating-field-item__hidden">{{ props.label }}</span>
-      <slot v-if="showStar" name="item" v-bind="{props: ratingBtnProps, value}">
-        <foxy-btn
-		        ref="foxyBtnRef"
-          v-bind="{...ratingBtnProps}"
-          @click="handleClick"
-          @mouseenter="handleMouseEnter"
-          @mouseleave="handleMouseLeave"/>
-      </slot>
-    </label>
+	<component
+			:is="tag"
+			:class="ratingFieldItemClasses"
+			:style="ratingFieldItemStyles">
+		<label :for="id">
+			<span class="foxy-rating-field-item__hidden">{{ t(itemAriaLabel, value, length) }}</span>
+			<slot v-if="showStar" name="item" v-bind="{props: ratingBtnProps, value}">
+				<foxy-btn
+						ref="foxyBtnRef"
+						v-bind="{...ratingBtnProps}"
+						@click="handleClick"
+						@mouseenter="handleMouseEnter"
+						@mouseleave="handleMouseLeave"/>
+			</slot>
+		</label>
 
-    <input
-      :id="id"
-      :checked="checked"
-      :disabled="disabled"
-      :name="name"
-      :readonly="readonly"
-      :value="value"
-      class="foxy-rating-field-item__hidden"
-      tabindex="-1"
-      type="radio"
-    />
-  </component>
+		<input
+				:id="id"
+				:checked="checked"
+				:disabled="disabled"
+				:name="name"
+				:readonly="readonly"
+				:value="value"
+				class="foxy-rating-field-item__hidden"
+				tabindex="-1"
+				type="radio"
+		/>
+	</component>
 </template>
 
 <script lang="ts" setup>
-  import { FoxyBtn } from '@foxy/components'
+	import { FoxyBtn } from '@foxy/components'
 
-  import { useProps } from "@foxy/composables"
+	import { useLocale, useProps } from "@foxy/composables"
 
-  import { IRatingFieldItemProps } from '@foxy/interfaces'
+	import { MDI_ICONS } from "@foxy/enums"
 
-  import { TFoxyBtn } from "@foxy/types"
+	import { IRatingFieldItemProps } from '@foxy/interfaces'
 
-  import { computed, ref, StyleValue } from 'vue'
+	import { TFoxyBtn } from "@foxy/types"
 
-  const props = withDefaults(defineProps<IRatingFieldItemProps>(), {
-    index: -1,
-    showStar: true,
-    emptyIcon: '$ratingEmpty',
-    fullIcon: '$ratingFull',
-    tag: 'div'
-  })
+	import { computed, ref, StyleValue } from 'vue'
 
-  const emits = defineEmits(['mouseenter', 'mouseleave', 'click'])
+	const props = withDefaults(defineProps<IRatingFieldItemProps>(), {
+		index: -1,
+		showStar: true,
+		emptyIcon: MDI_ICONS.STAR_OUTLINE,
+		fullIcon: MDI_ICONS.STAR,
+		tag: 'div',
+		itemAriaLabel: 'foxy.rating.ariaLabel.item'
+	})
 
-  const {filterProps} = useProps<IRatingFieldItemProps>(props)
+	const emits = defineEmits(['mouseenter', 'mouseleave', 'click'])
 
-  const foxyBtnRef = ref<TFoxyBtn>()
+	const {filterProps} = useProps<IRatingFieldItemProps>(props)
 
-  const id = computed(() => {
-    return `${props.name}-${String(props.value).replace('.', '-')}`
-  })
+	const {t} = useLocale()
 
-  const ratingBtnProps = computed(() => {
-    const isFullIcon = props.isHovering ? props.isHovered : props.isFilled
-    const icon = isFullIcon ? props.fullIcon : props.emptyIcon
-    const btnProps = foxyBtnRef.value?.filterProps(props, ['class', 'style', 'id', 'bgColor', 'activeBgColor', 'hoverBgColor'])
+	const foxyBtnRef = ref<TFoxyBtn>()
 
-    return { ...btnProps, icon }
-  })
+	const id = computed(() => {
+		return `${props.name}-${String(props.value).replace('.', '-')}`
+	})
 
-  const handleMouseEnter = (e: MouseEvent) => {
-    emits('mouseenter', e)
-  }
-  const handleMouseLeave = (e: MouseEvent) => {
-    emits('mouseleave', e)
-  }
-  const handleClick = (e: Event) => {
-    emits('click', e)
-  }
+	const ratingBtnProps = computed(() => {
+		const isFullIcon = props.isHovering ? props.isHovered : props.isFilled
+		const icon = isFullIcon ? props.fullIcon : props.emptyIcon
+		const btnProps = foxyBtnRef.value?.filterProps(props, ['class', 'style', 'id', 'bgColor', 'activeBgColor', 'hoverBgColor'])
 
-  // CLASS & STYLES
+		return {...btnProps, icon}
+	})
 
-  const ratingFieldItemStyles = computed(() => {
-    return [
-      props.style,
-    ] as StyleValue
-  })
-  const ratingFieldItemClasses = computed(() => {
-    return [
-      'foxy-rating-field-item',
-      {
-        'foxy-rating-field-item--half': props.halfIncrements && props.value % 1 > 0,
-        'foxy-rating-field-item--full': props.halfIncrements && props.value % 1 === 0,
-      },
-      props.class,
-    ]
-  })
+	const handleMouseEnter = (e: MouseEvent) => {
+		emits('mouseenter', e)
+	}
+	const handleMouseLeave = (e: MouseEvent) => {
+		emits('mouseleave', e)
+	}
+	const handleClick = (e: Event) => {
+		emits('click', e)
+	}
 
-  // EXPOSE
+	// CLASS & STYLES
 
-  defineExpose({
-	  filterProps
-  })
+	const ratingFieldItemStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const ratingFieldItemClasses = computed(() => {
+		return [
+			'foxy-rating-field-item',
+			{
+				'foxy-rating-field-item--half': props.halfIncrements && props.value % 1 > 0,
+				'foxy-rating-field-item--full': props.halfIncrements && props.value % 1 === 0
+			},
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style lang="scss" scoped>
-  .foxy-rating-field-item {
-    &__label {
-      cursor: pointer;
+	.foxy-rating-field-item {
+		&__label {
+			cursor: pointer;
 
-      .foxy-btn {
-        opacity: 1;
-        transition-property: transform;
+			.foxy-btn {
+				opacity: 1;
+				transition-property: transform;
 
-        :deep(.foxy-icon) {
-          transition: inherit;
-          transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-        }
-      }
-    }
+				:deep(.foxy-icon) {
+					transition: inherit;
+					transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+				}
+			}
+		}
 
-    &__hidden {
-      height: 0;
-      opacity: 0;
-      position: absolute;
-      width: 0;
-    }
+		&__hidden {
+			height: 0;
+			opacity: 0;
+			position: absolute;
+			width: 0;
+		}
 
-    &--full {
+		&--full {
 
-    }
+		}
 
-    &--half {
-      overflow: hidden;
-      position: absolute;
-      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-      z-index: 1;
+		&--half {
+			overflow: hidden;
+			position: absolute;
+			clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+			z-index: 1;
 
-      &,
-      &:hover {
-        :deep(.foxy-btn__overlay) {
-          opacity: 0;
-        }
-      }
-    }
-  }
+			&,
+			&:hover {
+				:deep(.foxy-btn__overlay) {
+					opacity: 0;
+				}
+			}
+		}
+	}
 </style>
 
 <style>

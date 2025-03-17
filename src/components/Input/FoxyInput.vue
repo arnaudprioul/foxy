@@ -58,15 +58,17 @@
 	import {
 		useAdjacent,
 		useBorder,
+		useBothColor,
 		useDensity,
 		useDimension,
 		useElevation,
 		useMargin,
 		usePadding,
+		useProps,
 		useRounded,
+		useRtl,
 		useSlots,
-		useValidation,
-		useProps
+		useValidation
 	} from '@foxy/composables'
 
 	import { DENSITY, DIRECTION } from '@foxy/enums'
@@ -75,7 +77,7 @@
 
 	import { getUid } from '@foxy/utils'
 
-	import { computed, StyleValue } from 'vue'
+	import { computed, StyleValue, toRef } from 'vue'
 
 	const props = withDefaults(defineProps<IInputProps>(), {
 		direction: DIRECTION.HORIZONTAL,
@@ -94,6 +96,8 @@
 	const {paddingClasses, paddingStyles} = usePadding(props)
 	const {marginClasses, marginStyles} = useMargin(props)
 	const {elevationClasses} = useElevation(props)
+	const {colorStyles} = useBothColor(toRef(props.bgColor), toRef(props.color))
+	const {rtlClasses} = useRtl()
 
 	const uid = getUid()
 	const id = computed(() => {
@@ -184,6 +188,7 @@
 			paddingClasses.value,
 			marginClasses.value,
 			validationClasses.value,
+			rtlClasses.value,
 			props.class
 		]
 	})
@@ -192,6 +197,7 @@
 			roundedStyles.value,
 			borderStyles.value,
 			paddingStyles.value,
+			colorStyles.value,
 			props.style
 		] as StyleValue
 	})
