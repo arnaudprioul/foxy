@@ -135,6 +135,8 @@ export * from './Menu/menu.type'
 
 export * from './Messages/messages.type'
 
+export * from './NumberField/number-field.type'
+
 export * from './Overlay/overlay.type'
 
 export * from './PageBuilder/editor.type'
