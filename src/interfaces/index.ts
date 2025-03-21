@@ -211,6 +211,8 @@ export * from './Snackbar/snackbar.interface'
 
 export * from './Switch/switch.interface'
 
+export * from './SystemBar/system-bar.interface'
+
 export * from './Table/table.interface'
 
 export * from './TextareaField/textarea-field.interface'

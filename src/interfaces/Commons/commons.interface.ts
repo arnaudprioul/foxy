@@ -2,7 +2,7 @@ import { IDateOptions, IDisplayOptions, IGoToOptions, IRtlOptions } from '@foxy/
 import { ILocaleOptions } from "@foxy/interfaces/Commons/locale.interface.ts"
 
 import { TIconOptions, TSSROptions } from '@foxy/types'
-import { ComponentPropsOptions, ExtractPropTypes, StyleValue } from 'vue'
+import { ExtractPropTypes, StyleValue } from 'vue'
 
 export interface IFoxyOptions {
   aliases?: any
@@ -41,7 +41,7 @@ export interface IIntersectionObserverInit {
   threshold?: number | Array<number>;
 }
 
-export interface IFilterPropsOptions<PropsOptions extends Readonly<ComponentPropsOptions>, Props = ExtractPropTypes<PropsOptions>> {
+export interface IFilterPropsOptions<PropsOptions extends {[key: string] : any}, Props = ExtractPropTypes<PropsOptions>> {
   filterProps<
       T extends Partial<Props>,
       U extends Extract<keyof T, string>

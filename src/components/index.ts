@@ -116,6 +116,8 @@ export * from './Snackbar'
 
 export * from './Switch'
 
+export * from './SystemBar'
+
 export * from './Table'
 
 export * from './TextareaField'
