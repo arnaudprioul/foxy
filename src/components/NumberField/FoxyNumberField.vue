@@ -41,10 +41,7 @@
       <slot name="loader"/>
     </template>
 
-    <template
-        v-if="hasPrependInner"
-        #prependInner
-    >
+    <template #prependInner>
       <div
           v-if="!hideControls"
           class="foxy-number-field__control"
@@ -313,10 +310,6 @@
     return (model.value ?? 0) as number - props.step >= props.min
   })
 
-  const split = computed(() => {
-    return props.split
-  })
-
   watch(() => props.precision, () => formatInputValue())
 
   onMounted(() => {
@@ -492,7 +485,7 @@
     return slots.appendInner || !props.hideControls
   })
   const hasPrependInner = computed(() => {
-    return slots.prependInner || (split.value && !props.hideControls)
+    return slots.prependInner || (props.split && !props.hideControls)
   })
 
   // CLASS & STYLES
@@ -554,10 +547,6 @@
     }
   }
 
-  :deep(.foxy-field--prepended) {
-    --foxy-field---padding-start: 0;
-  }
-
   :deep(.foxy-field--appended) {
     --foxy-field---padding-end: 0;
   }
@@ -584,6 +573,10 @@
     :deep(.foxy-field__input) {
       text-align: center;
     }
+
+	  :deep(.foxy-field--prepended) {
+		  --foxy-field---padding-start: 0;
+	  }
   }
 
   &--hide-input {
