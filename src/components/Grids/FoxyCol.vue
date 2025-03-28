@@ -83,15 +83,15 @@
   %default {
     width: var(--foxy-col---width);
 
-    padding-block-start: var(--foxy-col---padding-block-start);
-    padding-block-end: var(--foxy-col---padding-block-end);
-    padding-inline-start: var(--foxy-col---padding-inline-start);
-    padding-inline-end: var(--foxy-col---padding-inline-end);
+    padding-block-start: calc(var(--foxy-col---padding-block-start, 12) * var(--foxy-row---gutters, 1));
+    padding-block-end: calc(var(--foxy-col---padding-block-end, 12) * var(--foxy-row---gutters, 1));
+    padding-inline-start: calc(var(--foxy-col---padding-inline-start, 12) * var(--foxy-row---gutters, 1));
+    padding-inline-end: calc(var(--foxy-col---padding-inline-end, 12) * var(--foxy-row---gutters, 1));
 
-    margin-block-start: var(--foxy-col---margin-block-start);
-    margin-block-end: var(--foxy-col---margin-block-end);
-    margin-inline-start: var(--foxy-col---margin-inline-start);
-    margin-inline-end: var(--foxy-col---margin-inline-end);
+    margin-block-start: var(--foxy-col---margin-block-start, 0);
+    margin-block-end: var(--foxy-col---margin-block-end, 0);
+    margin-inline-start: var(--foxy-col---margin-inline-start, 0);
+    margin-inline-end: var(--foxy-col---margin-inline-end, 0);
   }
 
   .foxy-col {

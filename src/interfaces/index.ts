@@ -163,6 +163,10 @@ export * from './Messages/messages.interface'
 
 export * from './NumberField/number-field.interface'
 
+export * from './OrganisationTree/organisation-tree.interface'
+export * from './OrganisationTree/organisation-tree-node.interface'
+export * from './OrganisationTree/organisation-tree-node-connector.interface'
+
 export * from './OtpInputField/otp-input-field.interface'
 
 export * from './Overlay/overlay.interface'

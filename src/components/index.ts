@@ -78,6 +78,8 @@ export * from './Messages'
 
 export * from './NumberField'
 
+export * from './OrganisationTree'
+
 export * from './OtpInputField'
 
 export * from './Overlay'

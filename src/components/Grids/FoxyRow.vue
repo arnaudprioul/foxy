@@ -21,7 +21,7 @@
 
   import { computed, StyleValue, toRef } from 'vue'
 
-  const props = withDefaults(defineProps<IRowProps>(), { tag: 'div', density: DENSITY.DEFAULT })
+  const props = withDefaults(defineProps<IRowProps>(), { tag: 'div', density: DENSITY.DEFAULT, gutters: 1 })
 
   const { filterProps } = useProps<IRowProps>(props)
 
@@ -35,6 +35,9 @@
 
   const rowStyles = computed(() => {
     return [
+	    {
+				'--foxy-row---gutters': props.gutters
+	    },
       borderStyles.value,
       paddingStyles.value,
       marginStyles.value,
@@ -92,15 +95,15 @@ $aligns: ('start': flex-start, 'end': flex-end, 'center': center, 'baseline': ba
   justify-content: var(--foxy-row---justify-content);
   box-sizing: var(--foxy-row---box-sizing);
 
-  padding-block-start: var(--foxy-container---padding-block-start);
-  padding-block-end: var(--foxy-container---padding-block-end);
-  padding-inline-start: var(--foxy-container---padding-inline-start);
-  padding-inline-end: var(--foxy-container---padding-inline-end);
+  padding-block-start: var(--foxy-row---padding-block-start, 0);
+  padding-block-end: var(--foxy-row---padding-block-end, 0);
+  padding-inline-start: var(--foxy-row---padding-inline-start, 0);
+  padding-inline-end: var(--foxy-row---padding-inline-end, 0);
 
-  margin-block-start: calc(var(--foxy-row---margin-block-start) + var(--foxy-row---density));
-  margin-block-end: calc(var(--foxy-row---margin-block-end) + var(--foxy-row---density));
-  margin-inline-start: calc(var(--foxy-row---margin-inline-start) + var(--foxy-row---density));
-  margin-inline-end: calc(var(--foxy-row---margin-inline-end) + var(--foxy-row---density));
+  margin-block-start: calc((var(--foxy-row---margin-block-start) + var(--foxy-row---density)) * var(--foxy-row---gutters, 1));
+  margin-block-end: calc((var(--foxy-row---margin-block-end) + var(--foxy-row---density)) * var(--foxy-row---gutters, 1));
+  margin-inline-start: calc((var(--foxy-row---margin-inline-start) + var(--foxy-row---density)) * var(--foxy-row---gutters, 1));
+  margin-inline-end: calc((var(--foxy-row---margin-inline-end) + var(--foxy-row---density)) * var(--foxy-row---gutters, 1));
 
   + .v-row {
     margin-block-start: calc((var(--foxy-row---margin-block-start) + var(--foxy-row---density)) * -1);
