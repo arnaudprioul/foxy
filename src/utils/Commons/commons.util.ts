@@ -367,8 +367,40 @@ export function flattenFragments (nodes: Array<VNode>): Array<VNode> {
     }).flat()
 }
 
+/**
+ * Determines whether the passed value is a object
+ * @param {*} obj
+ * @returns {boolean}
+ */
 export function isObject (obj: any): obj is object {
     return obj !== null && typeof obj === 'object' && !Array.isArray(obj)
+}
+
+/**
+ * Determines whether the passed value is a function
+ * @param {*} func
+ * @returns {boolean}
+ */
+export function isFunction (func: any): func is Function {
+    return typeof func === 'function'
+}
+
+/**
+ * Determines whether the passed value is a string
+ * @param {*} str
+ * @returns {boolean}
+ */
+export function isString (str: any): str is string {
+    return typeof str === 'string'
+}
+
+/**
+ * Determines whether the passed value is a string
+ * @param {*} regexp
+ * @returns {boolean}
+ */
+export function isRegexp (regexp: any): regexp is RegExp {
+    return regexp instanceof RegExp
 }
 
 export function mergeDeep (
