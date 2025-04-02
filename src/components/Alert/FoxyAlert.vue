@@ -57,6 +57,7 @@
     >
       <slot name="close">
         <foxy-btn
+		        data-cy="close"
             key="close-btn"
             :aria-label="t(closeLabel)"
             :icon="closeIcon"
