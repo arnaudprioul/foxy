@@ -4,14 +4,27 @@
 			:style="datePickerMonthStyles"
 	>
 		<template v-if="showWeek">
-			<div key="weeks" class="foxy-date-picker-month__weeks">
+			<div
+					key="weeks"
+					class="foxy-date-picker-month__weeks"
+			>
 
 				<template v-if="!hideWeekdays">
-					<div key="hide-week-days" class="foxy-date-picker-month__day">&nbsp;</div>
+					<div
+							key="hide-week-days"
+							class="foxy-date-picker-month__day"
+					>&nbsp;
+					</div>
 				</template>
 
-				<template v-for="(week, indexWeek) in weekNumbers" :key="`week-days-${indexWeek}`">
-					<div class="foxy-date-picker-month__day foxy-date-picker-month__day--adjacent">
+				<template
+						v-for="(week, indexWeek) in weekNumbers"
+						:key="`week-days-${indexWeek}`"
+				>
+					<div
+						:id="`week-days-${indexWeek}`"
+						class="foxy-date-picker-month__day foxy-date-picker-month__day--adjacent"
+						>
 						<span>{{ week }}</span>
 					</div>
 				</template>
@@ -27,15 +40,23 @@
 			>
 
 				<template v-if="!hideWeekdays">
-					<template v-for="(weekDay, indexWeekDay) in adapter.getWeekdays(firstDayOfWeek)"
-					          :key="indexWeekDay">
-						<div class="foxy-date-picker-month__day foxy-date-picker-month__weekday">
+					<template
+							v-for="(weekDay, indexWeekDay) in adapter.getWeekdays(firstDayOfWeek)"
+							:key="indexWeekDay"
+					>
+						<div
+							:id="`${indexWeekDay}-weekday`"
+							class="foxy-date-picker-month__day foxy-date-picker-month__weekday"
+							>
 							<span>{{ weekDay }}</span>
 						</div>
 					</template>
 				</template>
 
-				<template v-for="(item, index) in daysInMonth" :key="index">
+				<template
+						v-for="(item, index) in daysInMonth"
+						:key="index"
+				>
 
 					<div
 							:class="datePickerMonthDayClasses(item)"
@@ -43,15 +64,18 @@
 					>
 
 						<template v-if="showAdjacentMonths || !item.isAdjacent">
-							<slot name="days" v-bind="{props: { onClick: () => handleClick(e, item.date)}, item, index}">
+							<slot
+									name="days"
+									v-bind="{props: { onClick: () => handleClick(e, item.date)}, item, index}"
+							>
 								<foxy-btn
 										ref="foxyBtnRef"
 										:active="item.isSelected"
 										:border="item.isToday"
+										:density="DENSITY.COMFORTABLE"
 										:disabled="item.isDisabled"
 										:icon="true"
 										:ripple="false"
-										:density="DENSITY.COMFORTABLE"
 										:text="item.localized"
 										class="foxy-date-picker-month__day-btn"
 										@click="handleClick($event, item.date)"
@@ -67,26 +91,34 @@
 	</div>
 </template>
 
-<script lang="ts" setup>
-	import { FoxyBtn, FoxyReverseTranslatePicker, FoxyTransition, FoxyTranslatePicker } from "@foxy/components"
+<script
+		lang="ts"
+		setup
+>
+	import {
+		FoxyBtn,
+		FoxyReverseTranslatePicker,
+		FoxyTransition,
+		FoxyTranslatePicker
+	} from "@foxy/components"
 
 	import { useCalendar, useDate, useProps } from "@foxy/composables"
 
 	import { CALENDAR_STRATEGY, DENSITY } from "@foxy/enums"
 
-	import { IDatePickerMonthProps } from "@foxy/interfaces"
+	import { IDatePickerMonthProps, IDay } from "@foxy/interfaces"
 
-	import { TFoxyBtn } from "@foxy/types"
+	import { TFoxyBtn, TTransitionProps } from "@foxy/types"
 
 	import { wrapInArray } from "@foxy/utils"
 
 	import { computed, ref, shallowRef, StyleValue, watch } from "vue"
 
 	const props = withDefaults(defineProps<IDatePickerMonthProps>(), {
-		weekdays: [0, 1, 2, 3, 4, 5, 6],
+		weekdays: () => [0, 1, 2, 3, 4, 5, 6],
 		weeksInMonth: CALENDAR_STRATEGY.DYNAMIC,
-		transition: {component: FoxyTranslatePicker},
-		reverseTransition: {component: FoxyReverseTranslatePicker}
+		transition: () => ({component: FoxyTranslatePicker}) as unknown as TTransitionProps,
+		reverseTransition: () => ({component: FoxyReverseTranslatePicker}) as unknown as TTransitionProps,
 	})
 
 	const {filterProps} = useProps<IDatePickerMonthProps>(props)
@@ -218,10 +250,10 @@
 
 	const foxyBtnRef = ref<TFoxyBtn>()
 
-	const isDisabled = (item) => {
+	const isDisabled = (item: IDay) => {
 		return atMax.value && !item.isSelected
 	}
-	const datePickerMonthDayClasses = (item) => {
+	const datePickerMonthDayClasses = (item: IDay) => {
 		return [
 			'foxy-date-picker-month__day',
 			{
@@ -236,6 +268,7 @@
 	}
 
 	// CLASS & STYLES
+
 	const datePickerMonthStyles = computed(() => {
 		return [
 			props.style
@@ -255,7 +288,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-date-picker-month {
 		$this: &;
 
@@ -308,34 +344,34 @@
 					color: rgb(255, 255, 255);
 				}
 
-				 + #{$this}__day--selected{
-					 &:after {
-						 content: '';
-						 display: block;
-						 height: calc(100% - 4px);
-						 position:  absolute;
-						 z-index: 0;
-						 width: 100%;
-						 top: 50%;
-						 left: -2px;
-						 transform: translate(-50%, -50%);
-						 background-color: rgb(143, 143, 143); // TODO make variable for background
-					 }
+				+ #{$this}__day--selected {
+					&:after {
+						content: '';
+						display: block;
+						height: calc(100% - 4px);
+						position: absolute;
+						z-index: 0;
+						width: 100%;
+						top: 50%;
+						left: -2px;
+						transform: translate(-50%, -50%);
+						background-color: rgb(143, 143, 143); // TODO make variable for background
+					}
 
-					 &#{$this}__day--week-end{
-						 &:before {
-							 content: '';
-							 display: block;
-							 height: calc(100% - 4px);
-							 position: absolute;
-							 z-index: 0;
-							 width: 100%;
-							 top: 50%;
-							 left: 2px;
-							 transform: translate(50%, -50%);
-							 background-color: rgb(143, 143, 143);  // TODO make variable for background
-						 }
-					 }
+					&#{$this}__day--week-end {
+						&:before {
+							content: '';
+							display: block;
+							height: calc(100% - 4px);
+							position: absolute;
+							z-index: 0;
+							width: 100%;
+							top: 50%;
+							left: 2px;
+							transform: translate(50%, -50%);
+							background-color: rgb(143, 143, 143); // TODO make variable for background
+						}
+					}
 				}
 
 				#{$this}__day-btn {

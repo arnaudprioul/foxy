@@ -44,7 +44,7 @@
     active: true
   })
 
-  const emits = defineEmits(['update:modelValue', 'update:active'])
+  defineEmits(['update:modelValue', 'update:active'])
 
   const { filterProps } = useProps<IBottomNavProps>(props)
 

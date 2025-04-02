@@ -158,7 +158,7 @@
 
   const props = withDefaults(defineProps<ICardProps>(), { ripple: true, density: DENSITY.DEFAULT, tag: 'div' })
 
-  const emits = defineEmits(['click:append', 'click:prepend'])
+  defineEmits(['click:append', 'click:prepend'])
 
   const { filterProps } = useProps<ICardProps>(props)
 

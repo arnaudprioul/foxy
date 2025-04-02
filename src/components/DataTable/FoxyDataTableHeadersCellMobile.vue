@@ -212,7 +212,7 @@
   const { someSelected, allSelected, selectAll } = useSelection()
   const { getSortIcon } = useHeadersCell(props)
 
-  const headerProps = mergeProps(props.headerProps ?? {} ?? {})
+  const headerProps = mergeProps(props.headerProps ?? {})
 
   const displayItems = computed<Array<any>>(() => {
     return props.columns
@@ -232,11 +232,11 @@
     return allSelected.value ? MDI_ICONS.CHECKBOX_MARKED_OUTLINE : someSelected.value ? MDI_ICONS.MINUS_BOX : MDI_ICONS.CHECKBOX_BLANK_OUTLINE
   })
 
-  const handleClear = (e) => {
+  const handleClear = (e: MouseEvent) => {
     sortBy.value = []
     emits('click:clear', e)
   }
-  const handleAppendCLick = (e) => {
+  const handleAppendCLick = (e: MouseEvent) => {
     selectAll(!allSelected)
     emits('click:append', e)
   }

@@ -1,10 +1,10 @@
-export function useThrottleFn<T extends any[]> (fn: Function, wait: number): (...args: T) => void {
-  let timer: any
+export function useThrottleFn<T extends any[], R = void> (fn: (...args: T) => R, wait: number): (...args: T) => void {
+  let timer: ReturnType<typeof setTimeout> | null = null
   return (...args: T) => {
     if (!timer) {
       fn(...args)
       timer = setTimeout(() => {
-        clearTimeout(timer)
+        clearTimeout(timer!)
         timer = null
       }, wait)
     }

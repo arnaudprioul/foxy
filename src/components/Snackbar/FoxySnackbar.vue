@@ -103,7 +103,7 @@
 
   import { ISnackbarProps } from '@foxy/interfaces'
 
-  import { TFoxyOverlay, TFoxyProgress, TIcon } from '@foxy/types'
+  import { TFoxyOverlay, TFoxyProgress, TIcon, TTransitionProps } from '@foxy/types'
 
   import { forwardRefs, refElement } from '@foxy/utils'
 
@@ -127,9 +127,9 @@
     border: true,
     rounded: true,
     elevation: 1,
-    transition: {
+    transition: () => ({
       component: FoxySnack
-    }
+    }) as unknown as TTransitionProps
   })
 
   const { filterProps } = useProps<ISnackbarProps>(props)

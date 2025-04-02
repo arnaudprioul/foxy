@@ -33,8 +33,8 @@
             @click="handleControlClick"
             @mousedown="handleControlMousedown"
             @click:clear="handleClear"
-            @click:prependInner="handleClickPrependInner"
-            @lick:appendInner="handleClickAppendInner"
+            @click:prepend-inner="handleClickPrependInner"
+            @lick:append-inner="handleClickAppendInner"
         >
           <template
               v-if="slots.loader"
@@ -237,7 +237,6 @@
   const props = withDefaults(defineProps<IFileFieldProps>(), {
     prependInnerIcon: MDI_ICONS.PAPERCLIP,
     showSize: false,
-    modelValue: (props: any) => props.multiple ? [] as Array<File> : null,
     clearable: true,
     centerAffix: true,
     density: DENSITY.DEFAULT,
@@ -260,7 +259,7 @@
   const model = useVModel(
       props,
       'modelValue',
-      props.modelValue,
+		  props.multiple ? [] as Array<File> : null,
       val => wrapInArray(val),
       val => (props.multiple || Array.isArray(props.modelValue)) ? val : (val[0] ?? null)
   )

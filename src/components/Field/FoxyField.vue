@@ -171,7 +171,9 @@
     useRtl
   } from '@foxy/composables'
 
-  import { EASING, KEYBOARD_VALUES, PROGRESS_TYPE } from '@foxy/enums'
+  import { KEYBOARD_VALUES } from '@foxy/consts'
+
+  import { EASING, PROGRESS_TYPE } from '@foxy/enums'
 
   import { IFieldProps } from '@foxy/interfaces'
 
@@ -183,7 +185,7 @@
 
   const props = withDefaults(defineProps<IFieldProps>(), {})
 
-  const emits = defineEmits(['update:focused', 'update:modelValue', 'click:appendInner', 'click:prependInner', 'click:clear'])
+  defineEmits(['update:focused', 'update:modelValue', 'click:appendInner', 'click:prependInner', 'click:clear'])
 
   const { filterProps } = useProps<IFieldProps>(props)
 

@@ -58,7 +58,7 @@ export function createDate (options: IDateOptions | undefined, locale: ILocaleIn
             zhHans: 'zh-CN',
             zhHant: 'zh-TW',
         },
-    }, options) as IDateOptions
+    }, options as unknown as Record<string, unknown>) as unknown as IDateOptions
 
     return {
         options: _options,

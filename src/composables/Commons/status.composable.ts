@@ -14,7 +14,7 @@ export function useStatus (props: IStatusProps, name = getCurrentInstanceName())
     const status = isRef(props) ? props.value : props.status
     const classes: Array<string> = []
 
-    if(!!status) {
+    if(status) {
       classes.push(`${name}--${status}`)
     }
 

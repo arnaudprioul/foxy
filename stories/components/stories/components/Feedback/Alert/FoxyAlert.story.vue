@@ -76,11 +76,13 @@
 
   import { FoxyAlert, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
 
+  import { IAlertProps } from "@foxy/interfaces"
+
   import { HstIcon } from '@stories/components/controls'
 
   import { reactive } from 'vue'
 
-  const state: { [key: string]: any } = reactive({
+  const state: Partial<IAlertProps> = reactive({
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
     closable: false
   })

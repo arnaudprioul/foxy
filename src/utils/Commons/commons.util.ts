@@ -2,9 +2,14 @@ import { IN_BROWSER, ON_REGEX } from '@foxy/consts'
 
 import { FOCUS_LOCATION } from '@foxy/enums'
 
-import { TClientPosition, TFocusLocation, TMaybePick, TNotAUnion, TSelectItemKey, TTemplateRef } from '@foxy/types'
-
-import { IfAny } from '@vue/shared'
+import {
+    TClientPosition,
+    TFocusLocation,
+    TNotAUnion,
+    TSelectItemKey,
+    TTemplateRef,
+    TWrapInArrayResult
+} from '@foxy/types'
 
 import {
     capitalize,
@@ -89,7 +94,7 @@ export function findChildrenWithProvide (
 
 export function destructComputed<T extends object> (getter: ComputedGetter<T & TNotAUnion<T>>): ToRefs<T>
 export function destructComputed<T extends object> (getter: ComputedGetter<T>) {
-    const refs = reactive({}) as T
+    const refs = reactive<Record<string, unknown>>({}) as T
     const base = computed(getter)
     watchEffect(() => {
         for (const key in base.value) {
@@ -133,7 +138,7 @@ export function chunk (str: string, size = 1) {
 }
 
 export function has<T extends string> (obj: object, key: Array<T>): obj is Record<T, unknown> {
-    return key.every(k => obj.hasOwnProperty(k))
+    return key.every(k => Object.prototype.hasOwnProperty.call(obj, k))
 }
 
 export function oops (): never {
@@ -143,7 +148,7 @@ export function oops (): never {
 export function noop () {
 }
 
-export function debounce (fn: Function, delay: MaybeRef<number>) {
+export function debounce (fn: (...args: any[]) => void, delay: MaybeRef<number>) {
     let timeoutId = 0 as any
     const wrap = (...args: any[]) => {
         clearTimeout(timeoutId)
@@ -234,7 +239,7 @@ export function getNestedValue (obj: any, path: Array<(string | number)>, fallba
     return obj[path[last]] === undefined ? fallback : obj[path[last]]
 }
 
-export function keys<O extends {}> (o: O) {
+export function keys<O extends Record<string, unknown>> (o: O) {
     return Object.keys(o) as (keyof O)[]
 }
 
@@ -253,7 +258,7 @@ export function only<
     T extends object,
     U extends Extract<keyof T, string>
 > (obj: T, include: Array<U>): Pick<T, U> {
-    const clone = {} as T
+    const clone = {} as Pick<T, U>
 
     include.forEach(prop => clone[prop] = obj[prop])
 
@@ -263,8 +268,8 @@ export function only<
 export function pick<
     T extends object,
     U extends Extract<keyof T, string>
-> (obj: T, paths: Array<U>): TMaybePick<T, U> {
-    const found: any = {}
+> (obj: T, paths: Array<U>): Pick<T, U> {
+    const found = {} as Pick<T, U>
 
     const keys = new Set(Object.keys(obj))
     for (const path of paths) {
@@ -372,11 +377,11 @@ export function isObject (obj: any): obj is object {
 }
 
 export function mergeDeep (
-    source: Record<string, any> = {},
-    target: Record<string, any> = {},
+    source: Record<string, unknown> = {},
+    target: Record<string, unknown> = {},
     arrayFn?: (a: Array<unknown>, b: Array<unknown>) => Array<unknown>
 ) {
-    const out: Record<string, any> = {}
+    const out: Record<string, unknown> = {}
 
     for (const key in source) {
         out[key] = source[key]
@@ -392,7 +397,7 @@ export function mergeDeep (
             isObject(sourceProperty) &&
             isObject(targetProperty)
         ) {
-            out[key] = mergeDeep(sourceProperty, targetProperty, arrayFn)
+            out[key] = mergeDeep(sourceProperty as Record<string, unknown>, targetProperty as Record<string, unknown>, arrayFn)
 
             continue
         }
@@ -432,7 +437,7 @@ export function matchesSelector (el: Element | undefined, selector: string): boo
 
     try {
         return !!el && el.matches(selector)
-    } catch (err) {
+    } catch {
         return null
     }
 }
@@ -447,13 +452,16 @@ export function eventName (propName: string) {
 
 export function wrapInArray<T> (
     v: T | null | undefined
-): T extends Readonly<Array<any>>
-    ? IfAny<T, Array<T>, T>
-    : Array<NonNullable<T>> {
-    return v == null
-        ? []
-        : Array.isArray(v)
-            ? v as any : [v]
+): TWrapInArrayResult<T> {
+    if (v == null) {
+        return [] as TWrapInArrayResult<T>
+    }
+
+    if (Array.isArray(v)) {
+        return v as TWrapInArrayResult<T>
+    }
+
+    return [v] as TWrapInArrayResult<T>
 }
 
 export function templateRef () {

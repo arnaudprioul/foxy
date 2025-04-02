@@ -53,7 +53,7 @@
 	import { computed, ref, StyleValue } from "vue"
 
 	const props = withDefaults(defineProps<IDataTableFooterProps>(), {
-		itemsPerPageOptions: [
+		itemsPerPageOptions: () => [
 			{value: 10, title: '10'},
 			{value: 25, title: '25'},
 			{value: 50, title: '50'},
@@ -105,7 +105,7 @@
 		}
 	})
 
-	const handleUpdateItemsPerPage = (v) => {
+	const handleUpdateItemsPerPage = (v: number) => {
 		setItemsPerPage(Number(v))
 	}
 

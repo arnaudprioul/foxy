@@ -11,7 +11,7 @@ import { reactive, watch } from "vue"
 export function createInstance (options: IDateOptions, locale: ILocaleInstance) {
     const instance = reactive(
         typeof options.adapter === 'function'
-            // eslint-disable-next-line new-cap
+             
             ? new options.adapter({
                 locale: options.locale[locale.current.value] ?? locale.current.value,
                 formats: options.formats
@@ -189,28 +189,38 @@ export function isSameYear (date: Date, comparing: Date) {
 export function getDiff (date: Date, comparing: Date | string, unit?: string) {
     const d = new Date(date)
     const c = new Date(comparing)
+    let result: number
 
     switch (unit) {
         case 'years':
-            return d.getFullYear() - c.getFullYear()
+            result = d.getFullYear() - c.getFullYear()
+            break
         case 'quarters':
-            return Math.floor((d.getMonth() - c.getMonth() + (d.getFullYear() - c.getFullYear()) * 12) / 4)
+            result = Math.floor((d.getMonth() - c.getMonth() + (d.getFullYear() - c.getFullYear()) * 12) / 4)
+            break
         case 'months':
-            return d.getMonth() - c.getMonth() + (d.getFullYear() - c.getFullYear()) * 12
+            result = d.getMonth() - c.getMonth() + (d.getFullYear() - c.getFullYear()) * 12
+            break
         case 'weeks':
-            return Math.floor((d.getTime() - c.getTime()) / (1000 * 60 * 60 * 24 * 7))
+            result = Math.floor((d.getTime() - c.getTime()) / (1000 * 60 * 60 * 24 * 7))
+            break
         case 'days':
-            return Math.floor((d.getTime() - c.getTime()) / (1000 * 60 * 60 * 24))
+            result = Math.floor((d.getTime() - c.getTime()) / (1000 * 60 * 60 * 24))
+            break
         case 'hours':
-            return Math.floor((d.getTime() - c.getTime()) / (1000 * 60 * 60))
+            result = Math.floor((d.getTime() - c.getTime()) / (1000 * 60 * 60))
+            break
         case 'minutes':
-            return Math.floor((d.getTime() - c.getTime()) / (1000 * 60))
+            result = Math.floor((d.getTime() - c.getTime()) / (1000 * 60))
+            break
         case 'seconds':
-            return Math.floor((d.getTime() - c.getTime()) / 1000)
-        default: {
-            return d.getTime() - c.getTime()
-        }
+            result = Math.floor((d.getTime() - c.getTime()) / 1000)
+            break
+        default:
+            result = d.getTime() - c.getTime()
     }
+
+    return result
 }
 
 export function setHours (date: Date, count: number) {
@@ -340,12 +350,18 @@ export function formatDate (
 ): string {
     const newDate = date(value) ?? new Date()
     const customFormat = formats?.[formatString]
+    let day: number
+    let month: string
 
     if (typeof customFormat === 'function') {
         return customFormat(newDate, formatString, locale)
     }
 
-    let options: Intl.DateTimeFormatOptions = {}
+    let options: Intl.DateTimeFormatOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    }
     switch (formatString) {
         case 'fullDate':
             options = {year: 'numeric', month: 'long', day: 'numeric'}
@@ -354,8 +370,8 @@ export function formatDate (
             options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
             break
         case 'normalDate':
-            const day = newDate.getDate()
-            const month = new Intl.DateTimeFormat(locale, {month: 'long'}).format(newDate)
+            day = newDate.getDate()
+            month = new Intl.DateTimeFormat(locale, {month: 'long'}).format(newDate)
             return `${day} ${month}`
         case 'normalDateWithWeekday':
             options = {weekday: 'short', day: 'numeric', month: 'short'}
@@ -496,7 +512,7 @@ export function getWeekdays (locale: string, firstDayOfWeek?: number) {
         })
 }
 
-export function getWeek (adapter: DateAdapter<any>, value: any) {
+export function getWeek (adapter: DateAdapter, value: any) {
     const date = adapter.toJsDate(value)
     let year = date.getFullYear()
     let d1w1 = new Date(year, 0, 1)

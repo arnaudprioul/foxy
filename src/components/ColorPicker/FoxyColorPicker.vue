@@ -69,7 +69,7 @@
               key="swatches"
               ref="foxyColorPickerSwatchesRef"
               :color-hsv="currentColor"
-              :max-Height="swatchesMaxHeight"
+              :max-height="swatchesMaxHeight"
               v-bind="{...colorPickerSwatchesProps}"
               @update:color-hsv="handleUpdateColor"
           />
@@ -127,7 +127,7 @@
     modes: () => [COLOR_MODES_NAMES.RGB, COLOR_MODES_NAMES.RGBA, COLOR_MODES_NAMES.HSL, COLOR_MODES_NAMES.HSLA, COLOR_MODES_NAMES.HEX, COLOR_MODES_NAMES.HEXA]
   })
 
-  const emits = defineEmits(['update:modelValue', 'update:mode'])
+  defineEmits(['update:modelValue', 'update:mode'])
 
   const slots = useSlots()
   const { filterProps } = useProps<IColorPickerProps>(props)

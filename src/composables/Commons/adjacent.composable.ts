@@ -13,13 +13,13 @@ export function useAdjacent (props: IAdjacentProps) {
         return !!(props.prependAvatar || props.prependIcon)
     })
     const hasPrepend = computed(() => {
-        return slots.prepend || hasPrependMedia.value
+        return !!slots.prepend || hasPrependMedia.value
     })
     const hasAppendMedia = computed(() => {
         return !!(props.appendAvatar || props.appendIcon)
     })
     const hasAppend = computed(() => {
-        return slots.append || hasAppendMedia.value
+        return !!slots.append || hasAppendMedia.value
     })
 
     const onClickPrepend = (e: Event) => {

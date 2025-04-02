@@ -30,8 +30,15 @@ export function sortItems<T extends IInternalItem> (
       let sortBRaw = b[0].raw
 
       if (sortOrder === SORT_DIRECTION.DESC) {
-        [sortA, sortB] = [sortB, sortA]
-        ;[sortARaw, sortBRaw] = [sortBRaw, sortARaw]
+        const tempA = sortA
+        const tempB = sortB
+        sortA = tempB
+        sortB = tempA
+        
+        const tempARaw = sortARaw
+        const tempBRaw = sortBRaw
+        sortARaw = tempBRaw
+        sortBRaw = tempARaw
       }
 
       if (options?.sortRawFunctions?.[sortKey]) {
@@ -57,7 +64,8 @@ export function sortItems<T extends IInternalItem> (
         return sortA.getTime() - sortB.getTime()
       }
 
-      [sortA, sortB] = [sortA, sortB].map(s => s != null ? s.toString().toLocaleLowerCase() : s)
+      sortA = sortA != null ? sortA.toString().toLocaleLowerCase() : sortA
+      sortB = sortB != null ? sortB.toString().toLocaleLowerCase() : sortB
 
       if (sortA !== sortB) {
         if (isEmpty(sortA) && isEmpty(sortB)) return 0

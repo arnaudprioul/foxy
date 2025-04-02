@@ -113,12 +113,12 @@
   })
 
   watch(type, () => {
-    if (isNumberType) {
+    if (isNumberType.value) {
       state.content = 50
       state.max = 0
     }
 
-    if (isStringType) {
+    if (isStringType.value) {
       state.content = ''
     }
   }, { immediate: true })

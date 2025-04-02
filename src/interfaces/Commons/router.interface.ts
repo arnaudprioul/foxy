@@ -8,10 +8,6 @@ export interface ILinkProps {
   exact?: boolean
 }
 
-export interface ILinkListenersProps {
-
-}
-
 export interface ILink extends Omit<Partial<ReturnType<typeof _useLink>>, 'href'> {
   tag: string
   isLink: ComputedRef<boolean>

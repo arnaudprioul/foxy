@@ -318,7 +318,7 @@
   const { isFocused, onFocus, onBlur } = useFocus(props)
   const { rtlClasses } = useRtl()
 
-  const handleFocus = (e: FocusEvent) => {
+  const handleFocus = () => {
     onFocus()
   }
   const handleRangeFocusStart = (e: FocusEvent) => {
@@ -381,7 +381,7 @@
     return position(modelVal[1] as number)
   })
 
-  const handleUpdateModelValue = (v) => {
+  const handleUpdateModelValue = (v: number | [number, number]) => {
     model.value = v
   }
 

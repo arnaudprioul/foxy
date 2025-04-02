@@ -1,7 +1,34 @@
-import { getTagName } from '@histoire/plugin-vue/src/client/codegen.ts'
-
 import type { AutoPropComponentDefinition, PropDefinition } from '@histoire/shared'
-import { PropType } from 'vue'
+import { pascalCase } from "change-case"
+import { PropType, VNode } from 'vue'
+
+export function getNameFromFile(file: string) {
+  const parts = /([^/]+)\.vue$/.exec(file)
+  if (parts) {
+    return pascalCase(parts[1])
+  }
+  return 'Anonymous'
+}
+
+export function getTagName(vnode: VNode) {
+  if (typeof vnode.type === 'string') {
+    return vnode.type
+  }
+
+  else if (vnode.type?.__asyncResolved) {
+    const asyncComp = vnode.type?.__asyncResolved
+    return asyncComp.name ?? getNameFromFile(asyncComp.__file)
+  }
+
+  else if (vnode.type?.name) {
+    return vnode.type.name
+  }
+
+  else if (vnode.type?.__file) {
+    return getNameFromFile(vnode.type.__file)
+  }
+  return 'Anonymous'
+}
 
 export function scanForAutoProps(vnodes: Array<any>) {
   const result: Array<AutoPropComponentDefinition> = []

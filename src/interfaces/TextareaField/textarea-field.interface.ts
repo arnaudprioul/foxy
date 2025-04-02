@@ -16,7 +16,7 @@ export interface ITextareaFieldProps extends ICommonsComponentProps, IColorProps
   autoGrow?: boolean
   autofocus?: boolean
   counter?: boolean | number | string
-  counterValue?: number | Function
+  counterValue?: number | ((e: any) => number)
   prefix?: string
   placeholder?: string
   persistentPlaceholder?: boolean

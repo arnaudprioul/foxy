@@ -85,7 +85,7 @@
 		selectedClass: 'foxy-slide-group-item--active'
 	})
 
-	const emits = defineEmits(['update:modelValue'])
+	defineEmits(['update:modelValue'])
 
 	const {filterProps} = useProps<ISlideGroupProps>(props)
 
@@ -107,12 +107,12 @@
 	const {isRtl} = useRtl()
 
 	const goTo = useGoTo()
-	const goToOptions = computed<Partial<IGoToOptions>>(() => {
+	const goToOptions = computed(() => {
 		return {
-			container: containerRef.el,
+			container: containerRef.value,
 			duration: 200,
 			easing: 'easeOutQuart'
-		}
+		} as Partial<IGoToOptions>
 	})
 
 	const firstSelectedIndex = computed(() => {
@@ -141,9 +141,9 @@
 					isOverflowing.value = containerSize.value + 1 < contentSize.value
 				}
 
-				if (firstSelectedIndex.value >= 0 && contentRef.el) {
+				if (firstSelectedIndex.value >= 0 && contentRef.value) {
 					// TODO: Is this too naive? Should we store element references in group composable?
-					const selectedElement = contentRef.el.children[lastSelectedIndex.value] as HTMLElement
+					const selectedElement = contentRef.value.children[lastSelectedIndex.value] as HTMLElement
 
 					scrollToChildren(selectedElement, props.centerActive)
 				}
@@ -155,7 +155,7 @@
 
 	const scrollToChildren = (children: HTMLElement, center?: boolean) => {
 		let target = calculateUpdatedTarget({
-      containerElement: containerRef.el!,
+      containerElement: containerRef.value!,
       isHorizontal: isHorizontal.value,
 			isRtl: isRtl.value,
       selectedElement: children
@@ -163,7 +163,7 @@
 
 		if (center) {
 			target = calculateCenteredTarget({
-				containerElement: containerRef.el!,
+				containerElement: containerRef.value!,
 				isHorizontal: isHorizontal.value,
 				selectedElement: children
 			})
@@ -173,11 +173,11 @@
 	}
 
 	const scrollToPosition = (newPosition: number) => {
-		if (!IN_BROWSER || !containerRef.el) return
+		if (!IN_BROWSER || !containerRef.value) return
 
-		const offsetSize = getOffsetSize(isHorizontal.value, containerRef.el)
-		const scrollPosition = getScrollPosition(isHorizontal.value, containerRef.el)
-		const scrollSize = getScrollSize(isHorizontal.value, containerRef.el)
+		const offsetSize = getOffsetSize(isHorizontal.value, containerRef.value)
+		const scrollPosition = getScrollPosition(isHorizontal.value, isRtl.value, containerRef.value)
+		const scrollSize = getScrollSize(isHorizontal.value, containerRef.value)
 
 		if (
 				scrollSize <= offsetSize ||
@@ -185,8 +185,8 @@
 				Math.abs(newPosition - scrollPosition) < 16
 		) return
 
-		if (isHorizontal.value && containerRef.el) {
-			const {scrollWidth, offsetWidth: containerWidth} = containerRef.el!
+		if (isHorizontal.value && containerRef.value) {
+			const {scrollWidth, offsetWidth: containerWidth} = containerRef.value!
 
 			newPosition = (scrollWidth - containerWidth) - newPosition
 		}
@@ -207,12 +207,12 @@
 	const handleFocusin = (e: FocusEvent) => {
 		isFocused.value = true
 
-		if (!isOverflowing.value || !contentRef.el) return
+		if (!isOverflowing.value || !contentRef.value) return
 
 		// Focused element is likely to be the root of an item, so a
 		// breadth-first search will probably find it in the first iteration
 		for (const el of e.composedPath()) {
-			for (const item of contentRef.el.children) {
+			for (const item of contentRef.value.children) {
 				if (item === el) {
 					scrollToChildren(item as HTMLElement)
 					return
@@ -221,14 +221,14 @@
 		}
 	}
 
-	const handleFocusout = (_e: FocusEvent) => {
+	const handleFocusout = () => {
 		isFocused.value = false
 	}
 
 	// Affix clicks produce onFocus that we have to ignore to avoid extra scrollToChildren
 	let ignoreFocusEvent = false
 	const handleFocus = (e: FocusEvent) => {
-		if (!ignoreFocusEvent && !isFocused.value && !(e.relatedTarget && contentRef.el?.contains(e.relatedTarget as Node))) focus()
+		if (!ignoreFocusEvent && !isFocused.value && !(e.relatedTarget && contentRef.value?.contains(e.relatedTarget as Node))) focus()
 
 		ignoreFocusEvent = false
 	}
@@ -238,7 +238,7 @@
 	}
 
 	const handleKeydown = (e: KeyboardEvent) => {
-		if (!contentRef.el) return
+		if (!contentRef.value) return
 
 		const toFocus = (location: Parameters<typeof focus>[0]) => {
 			e.preventDefault()
@@ -267,25 +267,25 @@
 	}
 
 	const focus = (location?: 'next' | 'prev' | 'first' | 'last') => {
-		if (!contentRef.el) return
+		if (!contentRef.value) return
 
 		let el: HTMLElement | undefined
 
 		if (!location) {
-			const focusable = focusableChildren(contentRef.el)
+			const focusable = focusableChildren(contentRef.value)
 			el = focusable[0]
 		} else if (location === 'next') {
-			el = contentRef.el.querySelector(':focus')?.nextElementSibling as HTMLElement | undefined
+			el = contentRef.value.querySelector(':focus')?.nextElementSibling as HTMLElement | undefined
 
 			if (!el) return focus('first')
 		} else if (location === 'prev') {
-			el = contentRef.el.querySelector(':focus')?.previousElementSibling as HTMLElement | undefined
+			el = contentRef.value.querySelector(':focus')?.previousElementSibling as HTMLElement | undefined
 
 			if (!el) return focus('last')
 		} else if (location === 'first') {
-			el = (contentRef.el.firstElementChild as HTMLElement)
+			el = (contentRef.value.firstElementChild as HTMLElement)
 		} else if (location === 'last') {
-			el = (contentRef.el.lastElementChild as HTMLElement)
+			el = (contentRef.value.lastElementChild as HTMLElement)
 		}
 
 		if (el) {
@@ -301,8 +301,8 @@
 		let newPosition = scrollOffset.value + offsetStep
 
 		// TODO: improve it
-		if (isHorizontal.value && containerRef.el) {
-			const {scrollWidth, offsetWidth: containerWidth} = containerRef.el!
+		if (isHorizontal.value && containerRef.value) {
+			const {scrollWidth, offsetWidth: containerWidth} = containerRef.value!
 
 			newPosition += scrollWidth - containerWidth
 		}
@@ -356,8 +356,8 @@
 	const hasNext = computed(() => {
 		if (!containerRef.value) return false
 
-		const scrollSize = getScrollSize(isHorizontal.value, containerRef.el)
-		const clientSize = getClientSize(isHorizontal.value, containerRef.el)
+		const scrollSize = getScrollSize(isHorizontal.value, containerRef.value)
+		const clientSize = getClientSize(isHorizontal.value, containerRef.value)
 
 		const scrollSizeMax = scrollSize - clientSize
 

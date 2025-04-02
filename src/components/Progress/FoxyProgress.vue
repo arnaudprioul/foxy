@@ -1,7 +1,7 @@
 <template>
   <component
-		  ref="foxyProgressRef"
-      :is="progressComponent"
+		  :is="progressComponent"
+      ref="foxyProgressRef"
       :aria-hidden="!props.active"
       :aria-valuemax="max"
       :aria-valuenow="indeterminate ? undefined : normalizedValue"

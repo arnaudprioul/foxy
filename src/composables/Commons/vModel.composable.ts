@@ -26,13 +26,13 @@ export function useVModel<
       ? computed(() => {
         void props[prop]
         return !!(
-            (vm.vnode.props?.hasOwnProperty(prop) || vm.vnode.props?.hasOwnProperty(kebabProp)) &&
-            (vm.vnode.props?.hasOwnProperty(`onUpdate:${prop}`) || vm.vnode.props?.hasOwnProperty(`onUpdate:${kebabProp}`))
+            (Object.prototype.hasOwnProperty.call(vm.vnode.props, prop) || Object.prototype.hasOwnProperty.call(vm.vnode.props, kebabProp)) &&
+            (Object.prototype.hasOwnProperty.call(vm.vnode.props, `onUpdate:${prop}`) || Object.prototype.hasOwnProperty.call(vm.vnode.props, `onUpdate:${kebabProp}`))
         )
       })
       : computed(() => {
         void props[prop]
-        return !!(vm.vnode.props?.hasOwnProperty(prop) && vm.vnode.props?.hasOwnProperty(`onUpdate:${prop}`))
+        return !!(Object.prototype.hasOwnProperty.call(vm.vnode.props, prop) && Object.prototype.hasOwnProperty.call(vm.vnode.props, `onUpdate:${prop}`))
       })
 
   useToggleScope(() => !isControlled.value, () => {

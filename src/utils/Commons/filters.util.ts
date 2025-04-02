@@ -10,14 +10,14 @@ import {
 
 import { getPropertyFromItem, wrapInArray } from '@foxy/utils'
 
-export function defaultFilter (value: string | number, query: string | number, _item: any) {
+export function defaultFilter (value: string | number, query: string | number) {
   if (value == null || query == null) return -1
 
   return value.toString().toLocaleLowerCase().indexOf(query.toString().toLocaleLowerCase())
 }
 
 export function filterItems (
-    items: readonly (readonly [item: IInternalItem, transformed: {}])[] | readonly IInternalItem[],
+    items: readonly (readonly [item: IInternalItem, transformed: Record<string, unknown>])[] | readonly IInternalItem[],
     query: string,
     options?: {
       customKeyFilter?: TFilterKeyFunctions
@@ -37,7 +37,7 @@ export function filterItems (
 
   loop:
       for (let i = 0; i < items.length; i++) {
-        const [item, transformed = item] = wrapInArray(items[i]) as readonly [IInternalItem, {}]
+        const [item, transformed = item] = wrapInArray(items[i]) as readonly [IInternalItem, Record<string, unknown>]
         const customMatches: Record<string, TFilterMatch> = {}
         const defaultMatches: Record<string, TFilterMatch> = {}
         let match: TFilterMatch = -1

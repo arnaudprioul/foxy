@@ -47,7 +47,7 @@
               v-bind="{percent: (group.getItemIndex(model.value) + 1) / group.items.value.length * 100}"
           >
             <foxy-progress-linear
-                :modelValue="(group.getItemIndex(model.value) + 1) / group.items.value.length * 100"
+                :model-value="(group.getItemIndex(model.value) + 1) / group.items.value.length * 100"
                 class="foxy-carousel__progress"
             />
           </slot>
@@ -114,7 +114,7 @@
     showArrows: true
   })
 
-  const emits = defineEmits(['update:modelValue'])
+  defineEmits(['update:modelValue'])
 
   const { filterProps } = useProps<ICarouselProps>(props)
   const { t } = useLocale()

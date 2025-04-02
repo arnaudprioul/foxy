@@ -33,7 +33,7 @@
 							size: 8
 						}"
           class="foxy-color-picker-preview__track foxy-color-picker-preview__hue"
-          hideDetails
+          hide-details
           @update:model-value="handleUpdateColorHue"
       />
 
@@ -52,7 +52,7 @@
 							size: 8
 						}"
             class="foxy-color-picker-preview__track foxy-color-picker-preview__alpha"
-            hideDetails
+            hide-details
             @update:model-value="handleUpdateColorAlpha"
         />
       </template>
@@ -74,7 +74,7 @@
 
   import { IColorPickerPreviewProps } from "@foxy/interfaces"
 
-  import { HSVtoCSS, parseColor, RGBtoHSV } from "@foxy/utils"
+  import { consoleWarn, HSVtoCSS, parseColor, RGBtoHSV } from "@foxy/utils"
 
   import { computed, onUnmounted, StyleValue } from "vue"
 
@@ -97,7 +97,8 @@
       const result = await eyeDropper.open({ signal: abortController.signal })
       const colorHexValue = RGBtoHSV(parseColor(result.sRGBHex))
       emits('update:colorHsv', { ...(props.colorHsv ?? COLOR_NULL), ...colorHexValue })
-    } catch (e) {
+    } catch (err) {
+	    consoleWarn(err as any)
     }
   }
 

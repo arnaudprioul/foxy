@@ -129,7 +129,8 @@
   } from '@foxy/composables'
 
   import { vRipple } from '@foxy/directives'
-  import { KEYBOARD_VALUES } from '@foxy/enums'
+
+  import { KEYBOARD_VALUES } from '@foxy/consts'
 
   import { IListItemProps } from '@foxy/interfaces'
 
@@ -215,7 +216,10 @@
     if (isGroupActivator || !isClickable.value) return
 
     link.navigate?.(e)
-    props.value != null && select(!isSelected.value, e)
+
+    if (props.value != null) {
+      select(!isSelected.value, e)
+    }
   }
   const handleClick = (e: MouseEvent) => {
     click(e)

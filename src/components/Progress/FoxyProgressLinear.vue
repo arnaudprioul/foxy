@@ -4,32 +4,55 @@
 			ref="root"
 			:class="progressLinearClasses"
 			:style="progressLinearStyles"
-			@click="clickable && handleClick">
-		<div v-if="stream" key="stream" :style="streamStyles" class="foxy-progress__stream"/>
-		<div :style="backgroundStyles" class="foxy-progress__background"/>
+			@click="clickable && handleClick"
+	>
+		<div
+				v-if="stream"
+				key="stream"
+				:style="streamStyles"
+				class="foxy-progress__stream"
+		/>
+		<div
+				:style="backgroundStyles"
+				class="foxy-progress__background"
+		/>
 
 		<foxy-transition :transition="transition">
 			<div class="foxy-progress__loader">
 				<template v-if="indeterminate">
-					<div v-for="bar in ['long', 'short']"
-					     :key="bar"
-					     :class="`foxy-progress__bar--${bar}`"
-					     :style="loaderStyles"
-					     class="foxy-progress__bar"/>
+					<div
+							v-for="bar in ['long', 'short']"
+							:key="bar"
+							:class="`foxy-progress__bar--${bar}`"
+							:style="loaderStyles"
+							class="foxy-progress__bar"
+					/>
 				</template>
 				<template v-else>
-					<div :style="loaderStyles" class="foxy-progress__bar"/>
+					<div
+							:style="loaderStyles"
+							class="foxy-progress__bar"
+					/>
 				</template>
 			</div>
 		</foxy-transition>
 
-		<div v-if="hasContent" class="foxy-progress__content">
-			<slot name="default" v-bind="{ value: normalizedValue, buffer: normalizedBuffer }"/>
+		<div
+				v-if="hasContent"
+				class="foxy-progress__content"
+		>
+			<slot
+					name="default"
+					v-bind="{ value: normalizedValue, buffer: normalizedBuffer }"
+			/>
 		</div>
 	</component>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyFade, FoxySlideX, FoxyTransition } from '@foxy/components'
 
 	import {
@@ -147,7 +170,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-progress {
 		$this: &;
 

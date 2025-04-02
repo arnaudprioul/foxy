@@ -45,17 +45,10 @@
     setup
 >
   import { FoxyTranslateScale } from '@foxy/components'
-
   import { useBorder, useElevation, useProps, useRounded, useTextColor } from '@foxy/composables'
-
-  import { FOXY_SLIDER_FIELD_KEY } from '@foxy/consts'
-
+  import { FOXY_SLIDER_FIELD_KEY, KEYBOARD_VALUES } from '@foxy/consts'
   import { vRipple } from '@foxy/directives'
-
-  import { KEYBOARD_VALUES } from '@foxy/enums'
-
   import { ISliderFieldThumbProps } from '@foxy/interfaces'
-
   import { clamp, convertToUnit, int } from '@foxy/utils'
 
   import { computed, inject, StyleValue } from 'vue'
@@ -142,17 +135,18 @@
   })
 
   const parseKeydown = (e: KeyboardEvent, value: number) => {
-    if (!relevantKeys.includes(e.key)) return
+    if (!relevantKeys.includes(e.key as typeof relevantKeys[number])) return
 
     e.preventDefault()
 
     const _step = step.value || 0.1
     const steps = (props.max - props.min) / _step
-    if ([KEYBOARD_VALUES.LEFT, KEYBOARD_VALUES.RIGHT, KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.UP].includes(e.key)) {
+    const keyValue = [KEYBOARD_VALUES.LEFT, KEYBOARD_VALUES.RIGHT, KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.UP]
+    if (keyValue.includes(e.key as typeof keyValue[number])) {
       const increase = isVertical.value
           ? [KEYBOARD_VALUES.RIGHT, isReversed.value ? KEYBOARD_VALUES.DOWN : KEYBOARD_VALUES.UP]
           : [KEYBOARD_VALUES.RIGHT, KEYBOARD_VALUES.UP]
-      const direction = increase.includes(e.key) ? 1 : -1
+      const direction = increase.includes(e.key as typeof increase[number]) ? 1 : -1
       const multiplier = e.shiftKey ? 2 : (e.ctrlKey ? 1 : 0)
 
       value = value + (direction * _step * multipliers.value[multiplier])
@@ -169,8 +163,10 @@
   }
   const handleKeydown = (e: KeyboardEvent) => {
     const newValue = parseKeydown(e, props.modelValue)
-
-    newValue != null && emits('update:modelValue', newValue)
+    
+    if (newValue !== null && newValue !== undefined) {
+      emits('update:modelValue', newValue)
+    }
   }
 
   const showLabel = computed(() => {

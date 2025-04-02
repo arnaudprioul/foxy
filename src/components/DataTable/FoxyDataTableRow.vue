@@ -5,7 +5,10 @@
 			v-bind="$attrs"
 	>
 		<template v-if="item">
-			<template v-for="(column, i) in columns">
+			<template
+					v-for="(column, i) in columns"
+					:key="i"
+			>
 				<foxy-data-table-column-cell
 						:align="column.align"
 						:class="dataTableColumnCellClasses(column.key)"
@@ -13,24 +16,30 @@
 						:fixed-offset="column.fixedOffset"
 						:last-fixed="column.lastFixed"
 						:max-width="!mobile ? column.maxWidth : undefined"
-						:padding="getPadding(column)"
 						:nowrap="column.nowrap"
+						:padding="getPadding(column)"
 						:width="!mobile ? column.width : undefined"
 						v-bind="{ ...cellProps , ...columnCellProps }"
 				>
 					<template #default>
 						<template v-if="column.key === 'data-table-select'">
-							<slot name="item.data-table-select" v-bind="slotProps(i, column)">
+							<slot
+									name="item.data-table-select"
+									v-bind="slotProps(i, column)"
+							>
 								<foxy-checkbox-btn
 										:disabled="!item.selectable"
-										:modelValue="isSelected([item])"
+										:model-value="isSelected([item])"
 										@click="handleCheckBoxClick"
 								/>
 							</slot>
 						</template>
 
 						<template v-else-if="column.key === 'data-table-expand'">
-							<slot name="item.data-table-expand" v-bind="slotProps(i, column)">
+							<slot
+									name="item.data-table-expand"
+									v-bind="slotProps(i, column)"
+							>
 								<foxy-btn
 										:icon="isExpanded(item) ? MDI_ICONS.CHEVRON_UP : MDI_ICONS.CHEVRON_DOWN"
 										:size="SIZES.SMALL"
@@ -42,7 +51,10 @@
 						<template v-else>
 							<template v-if="mobile">
 								<div class="foxy-data-table-row__column-title">
-									<slot :name="`header.${column.key}`" v-bind="columnSlotProps(column)">
+									<slot
+											:name="`header.${column.key}`"
+											v-bind="columnSlotProps(column)"
+									>
 										{{ column.title }}
 									</slot>
 								</div>
@@ -65,7 +77,10 @@
 	</tr>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 
 	import { FoxyBtn, FoxyCheckboxBtn, FoxyDataTableColumnCell } from '@foxy/components'
 
@@ -158,9 +173,9 @@
 		emits('expand')
 	}
 
-	const dataTableColumnCellClasses = (key) => {
+	const dataTableColumnCellClasses = (key: string) => {
 		return [
-				'foxy-data-table-row__column',
+			'foxy-data-table-row__column',
 			{
 				'foxy-data-table-row__column--expanded-row': key === 'data-table-expand',
 				'foxy-data-table-row__column--select-row': key === 'data-table-select'
@@ -174,7 +189,7 @@
 		return [
 			'foxy-data-table-row',
 			{
-				'foxy-data-table-row--clickable': !!(vm.vnode.props?.hasOwnProperty(`onClick`) || vm.vnode.props?.hasOwnProperty('onContextmenu') || vm.vnode.props?.hasOwnProperty('onDblclick'))
+				'foxy-data-table-row--clickable': !!(Object.prototype.hasOwnProperty.call(vm.vnode.props, 'onClick') || Object.prototype.hasOwnProperty.call(vm.vnode.props, 'onContextmenu') || Object.prototype.hasOwnProperty.call(vm.vnode.props, 'onDblclick'))
 			},
 			displayClasses.value,
 			props.class
@@ -193,7 +208,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-data-table-row {
 		$this: &;
 
@@ -229,7 +247,7 @@
 				align-items: center;
 				column-gap: 4px;
 				display: grid;
-				grid-template-columns: repeat(2,1fr);
+				grid-template-columns: repeat(2, 1fr);
 				min-height: var(--foxy-data-table-row--mobile__column);
 
 				&:not(:last-child) {

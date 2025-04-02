@@ -224,7 +224,7 @@
 
   import { TFoxyTextField } from "@foxy/types"
 
-  import { clamp, forwardRefs } from "@foxy/utils"
+  import { clamp, forwardRefs, omit } from "@foxy/utils"
 
   import { computed, nextTick, onMounted, ref, shallowRef, StyleValue, watch, watchEffect, useSlots } from "vue"
 
@@ -253,7 +253,7 @@
 
   const foxyTextFieldRef = ref<TFoxyTextField>()
 
-  const form = useForm(props)
+  const form = useForm(omit(props, ['modelValue']))
   const controlsDisabled = computed(() => (
       form.isDisabled.value || form.isReadonly.value
   ))
@@ -483,9 +483,6 @@
 
   const hasAppendInner = computed(() => {
     return slots.appendInner || !props.hideControls
-  })
-  const hasPrependInner = computed(() => {
-    return slots.prependInner || (props.split && !props.hideControls)
   })
 
   // CLASS & STYLES

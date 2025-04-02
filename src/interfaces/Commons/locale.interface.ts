@@ -1,4 +1,4 @@
-import { Ref } from "vue"
+import { ComputedRef, Ref } from "vue"
 import { I18n, useI18n } from "vue-i18n"
 
 export interface ILocaleMessages {
@@ -7,7 +7,7 @@ export interface ILocaleMessages {
 
 export interface ILocaleInstance {
     name: string
-    messages: Ref<ILocaleMessages>
+    messages: ComputedRef<ILocaleMessages>
     current: Ref<string>
     fallback: Ref<string>
     t: (key: string, ...params: unknown[]) => string
@@ -22,7 +22,7 @@ export interface ILocaleOptions {
 }
 
 export interface ILocaleI18n {
-    i18n: I18n<any, {}, {}, string, false>
+    i18n: I18n<Record<string, unknown>, Record<string, unknown>, Record<string, unknown>, string, false>
     useI18n: typeof useI18n
 }
 

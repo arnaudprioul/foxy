@@ -3,7 +3,7 @@ import {
     IAdjacentProps,
     IBorderProps, IChipProps,
     IColorProps,
-    ICommonsComponentProps, IDatePickerProps,
+    ICommonsComponentProps,
     IDensityProps,
     IElevationProps,
     IFieldProps,

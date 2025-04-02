@@ -186,13 +186,13 @@
 
   import { useDate, useLocale, useProps, useTextColor, useVModel } from "@foxy/composables"
 
-  import { FOXY_FORM_KEY } from "@foxy/consts"
+  import { FOXY_FORM_KEY, KEYBOARD_VALUES } from "@foxy/consts"
 
-  import { BLOCK, DENSITY, DIRECTION, KEYBOARD_VALUES, MDI_ICONS, TEXT_FIELD_TYPE } from "@foxy/enums"
+  import { BLOCK, DENSITY, DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from "@foxy/enums"
 
   import { IDatePickerFieldProps } from "@foxy/interfaces"
 
-  import { TFoxyDatePicker, TFoxyMenu, TFoxyTextField } from "@foxy/types"
+  import { TFoxyDatePicker, TFoxyMenu, TFoxyTextField, TTransitionProps } from "@foxy/types"
 
   import { forwardRefs, isEmpty, matchesSelector, wrapInArray } from "@foxy/utils"
 
@@ -207,7 +207,7 @@
     rounded: true,
     modelValue: null,
     appendInnerIcon: MDI_ICONS.CALENDAR_OUTLINE,
-    transition: { component: FoxyTranslateScale },
+	  transition: () => ({component: FoxyTranslateScale}) as unknown as TTransitionProps,
     closeText: 'foxy.close',
     openText: 'foxy.open',
     range: false,
@@ -305,7 +305,7 @@
     }
   })
 
-  const handleClear = (_e: MouseEvent) => {
+  const handleClear = () => {
     model.value = []
 
     if (props.openOnClear) {
@@ -326,7 +326,7 @@
       isFocused.value = true
     }
   }
-  const handleChange = (e: Event) => {
+  const handleChange = () => {
     if (matchesSelector(foxyTextFieldRef.value, ':autofill') || matchesSelector(foxyTextFieldRef.value, ':-webkit-autofill')) {
       // (e.target as HTMLInputElement).value
       // TODO -  Select date

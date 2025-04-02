@@ -1,6 +1,6 @@
-import { IObserveDirectiveBinding } from '@foxy/interfaces'
+import { IIntersectDirectiveBinding, IIntersectHtmlElement } from '@foxy/interfaces'
 
-export function unmountIntersect (el: HTMLElement, binding: IObserveDirectiveBinding) {
+export function unmountIntersect (el: IIntersectHtmlElement, binding: IIntersectDirectiveBinding) {
   const observe = el._observe?.[binding.instance!.$.uid]
   if (!observe) return
 

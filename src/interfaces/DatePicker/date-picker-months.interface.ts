@@ -3,6 +3,6 @@ import { IColorProps, ICommonsComponentProps, IDimensionProps } from "@foxy/inte
 export interface IDatePickerMonthsProps extends ICommonsComponentProps, IColorProps, IDimensionProps {
     min?: unknown
     max?: unknown
-    month?: number | string
-    year?: number | string
+    month: number
+    year: number
 }

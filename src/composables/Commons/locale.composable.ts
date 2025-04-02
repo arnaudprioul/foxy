@@ -7,7 +7,7 @@ import { ILocaleInstance, ILocaleOptions, ILocaleProps, IRtlInstance, IRtlOption
 import { createVueI18nAdapter, getCurrentInstanceName, mergeDeep } from "@foxy/utils"
 
 import { computed, inject, provide, ref } from "vue"
-import { createI18n, useI18n } from "vue-i18n"
+import { createI18n, useI18n, I18n } from "vue-i18n"
 
 export function createLocale (options?: ILocaleOptions & IRtlOptions) {
     const i18nOptions = mergeDeep({
@@ -15,8 +15,8 @@ export function createLocale (options?: ILocaleOptions & IRtlOptions) {
         fallbackLocale: 'en',
         messages: JSON.parse(JSON.stringify(foxyMessages)), // Fix problems with json file imported
         legacy: false
-    }, options)
-    const i18n = createI18n(i18nOptions)
+    }, options as unknown as Record<string, unknown>) as Record<string, unknown>
+    const i18n = createI18n(i18nOptions) as unknown as I18n<Record<string, unknown>, Record<string, unknown>, Record<string, unknown>, string, false>
 
     const locale = createVueI18nAdapter({i18n, useI18n})
     const rtl = createRtl(locale, options)

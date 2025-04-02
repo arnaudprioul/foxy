@@ -6,17 +6,26 @@ export function handleGesture (wrapper: TTouchWrapper) {
   const { touchstartX, touchendX, touchstartY, touchendY } = wrapper
   const dirRatio = 0.5
   const minDistance = 16
+
   wrapper.offsetX = touchendX - touchstartX
   wrapper.offsetY = touchendY - touchstartY
 
   if (Math.abs(wrapper.offsetY) < dirRatio * Math.abs(wrapper.offsetX)) {
-    wrapper.left && (touchendX < touchstartX - minDistance) && wrapper.left(wrapper)
-    wrapper.right && (touchendX > touchstartX + minDistance) && wrapper.right(wrapper)
+    if (wrapper.left && touchendX < touchstartX - minDistance) {
+      wrapper.left(wrapper)
+    }
+    if (wrapper.right && touchendX > touchstartX + minDistance) {
+      wrapper.right(wrapper)
+    }
   }
 
   if (Math.abs(wrapper.offsetX) < dirRatio * Math.abs(wrapper.offsetY)) {
-    wrapper.up && (touchendY < touchstartY - minDistance) && wrapper.up(wrapper)
-    wrapper.down && (touchendY > touchstartY + minDistance) && wrapper.down(wrapper)
+    if (wrapper.up && touchendY < touchstartY - minDistance) {
+      wrapper.up(wrapper)
+    }
+    if (wrapper.down && touchendY > touchstartY + minDistance) {
+      wrapper.down(wrapper)
+    }
   }
 }
 

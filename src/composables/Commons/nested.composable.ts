@@ -98,7 +98,7 @@ export const useNested = (props: INestedProps) => {
         const arr = []
 
         if (selected.value) {
-          for (const [key, value] of selected.value?.entries()) {
+          for (const [key, value] of selected.value.entries()) {
             if (value === 'on') arr.push(key)
           }
         }
@@ -202,24 +202,40 @@ export function useNestedItem (id: Ref<unknown>, isGroup: boolean) {
   const item = {
     ...parent,
     id: computedId,
-    open: (open: boolean, e: Event) => parent?.root.open(computedId.value, open, e),
-    openOnSelect: (open: boolean, e?: Event) => parent?.root.openOnSelect(computedId.value, open, e),
-    isOpen: computed(() => parent?.root.opened.value.has(computedId.value)),
-    parent: computed(() => parent?.root.parents.value.get(computedId.value)),
-    select: (selected: boolean, e?: Event) => parent?.root.select(computedId.value, selected, e),
-    isSelected: computed(() => parent?.root.selected.value.get(toRaw(computedId.value)) === 'on'),
-    isIndeterminate: computed(() => parent?.root.selected.value.get(computedId.value) === 'indeterminate'),
-    isLeaf: computed(() => !parent?.root.children.value.get(computedId.value)),
+    open: (open: boolean, e: Event) => {
+      if (parent?.root) {
+        parent.root.open(computedId.value, open, e)
+      }
+    },
+    openOnSelect: (open: boolean, e?: Event) => {
+      if (parent?.root) {
+        parent.root.openOnSelect(computedId.value, open, e)
+      }
+    },
+    isOpen: computed(() => Boolean(parent?.root?.opened.value.has(computedId.value))),
+    parent: computed(() => parent?.root?.parents.value.get(computedId.value)),
+    select: (selected: boolean, e?: Event) => {
+      if (parent?.root) {
+        parent.root.select(computedId.value, selected, e)
+      }
+    },
+    isSelected: computed(() => Boolean(parent?.root?.selected.value.get(toRaw(computedId.value)) === 'on')),
+    isIndeterminate: computed(() => Boolean(parent?.root?.selected.value.get(computedId.value) === 'indeterminate')),
+    isLeaf: computed(() => Boolean(!parent?.root?.children.value.get(computedId.value))),
     isGroupActivator: parent?.isGroupActivator,
   }
 
   if (!parent?.isGroupActivator) {
-    parent?.root.register(computedId.value, parent?.id.value, isGroup)
+    if (parent?.root) {
+      parent.root.register(computedId.value, parent?.id.value, isGroup)
+    }
   }
 
   onBeforeUnmount(() => {
     if (!parent?.isGroupActivator) {
-      parent?.root.unregister(computedId.value)
+      if (parent?.root) {
+        parent.root.unregister(computedId.value)
+      }
     }
   })
 

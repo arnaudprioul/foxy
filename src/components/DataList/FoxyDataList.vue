@@ -67,10 +67,11 @@
 
               <template v-if="item.text">
                 <template
-                    v-for="(data, _dataIndex) in item.text as Array<IDataTextProps>"
-                    :key="dataIndex"
+                    v-for="(data, i) in item.text as Array<IDataTextProps>"
+                    :key="i"
                 >
                   <foxy-data-text
+                      :id="`${i}-data-text`"
                       :density="density"
                       class="foxy-data-list__text"
                       v-bind="{...data}"

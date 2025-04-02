@@ -4,7 +4,7 @@ import { deepEqual, transformListItem, transformListItems } from '@foxy/utils'
 
 import { computed } from 'vue'
 
-export function useItems (props: IItemProps & { itemType: string }) {
+export function useItems (props: IItemProps & { itemType?: string }) {
     const items = computed(() => {
         if (props.items) {
             return transformListItems(props, props.items)

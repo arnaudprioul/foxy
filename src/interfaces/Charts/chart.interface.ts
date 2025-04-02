@@ -8,7 +8,7 @@ export interface IChartProps extends ICommonsComponentProps, IChartLineProps, IC
 }
 
 export interface IChartCommonProps extends ICommonsComponentProps, IColorProps, IDimensionProps, IPaddingProps {
-    autoDraw?: Boolean,
+    autoDraw?: boolean,
     autoDrawDuration?: number | string
     autoDrawEasing?: string
     gradient?: Array<string>

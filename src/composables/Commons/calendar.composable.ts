@@ -1,5 +1,6 @@
 import { useDate, useVModel } from "@foxy/composables"
-import { ICalendarProps } from "@foxy/interfaces"
+import { ICalendarProps, IDay } from "@foxy/interfaces"
+import { DateAdapter } from "@foxy/services"
 import { getWeek, wrapInArray } from "@foxy/utils"
 import { computed } from "vue"
 
@@ -93,11 +94,11 @@ export function useCalendar (props: ICalendarProps) {
     })
     const weekNumbers = computed(() => {
         return weeksInMonth.value.map(week => {
-            return week.length ? getWeek(adapter, week[0]) : null
+            return week.length ? getWeek(adapter as DateAdapter, week[0]) : null
         })
     })
 
-    const genDays = (days: unknown[], today: unknown) => {
+    const genDays = (days: unknown[], today: unknown): Array<IDay> => {
         return days
             .filter((date) => {
                 return weekDays.value?.includes(adapter.toJsDate(date).getDay())

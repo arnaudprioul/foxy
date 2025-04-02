@@ -156,7 +156,7 @@
     density: DENSITY.DEFAULT
   })
 
-  const emits = defineEmits(['group:selected', 'click:append', 'click:prepend'])
+  defineEmits(['group:selected', 'click:append', 'click:prepend'])
 
   const { filterProps } = useProps<IBtnProps>(props)
 

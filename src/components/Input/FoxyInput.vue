@@ -126,7 +126,7 @@
     density: DENSITY.DEFAULT
   })
 
-  const emits = defineEmits(['update:modelValue', 'click:append', 'click:prepend'])
+  defineEmits(['update:modelValue', 'click:append', 'click:prepend'])
 
   const { filterProps } = useProps<IInputProps>(props)
 
@@ -202,7 +202,7 @@
   const hasDetails = computed(() => {
     return !props.hideDetails || (
         props.hideDetails === 'auto' &&
-        (hasMessages || slots.details)
+        (hasMessages.value || slots.details)
     )
   })
 

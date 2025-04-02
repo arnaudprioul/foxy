@@ -4,9 +4,11 @@ import { has, HSVtoHex, HSVtoHSL, HSVtoRGB } from "@foxy/utils"
 
 export function stripAlpha (color: any, stripAlpha: boolean) {
     if (stripAlpha) {
-        const { a, ...rest } = color
+        const result = { ...color }
 
-        return rest
+        delete result.a
+        
+        return result
     }
 
     return color
@@ -15,9 +17,7 @@ export function stripAlpha (color: any, stripAlpha: boolean) {
 export function extractColor (color: THSVA, input: any) {
     if (input == null || typeof input === 'string') {
         const hex = HSVtoHex(color)
-
-        if (color.a === 1) return hex.slice(0, 7)
-        else return hex
+        return color.a === 1 ? hex.slice(0, 7) : hex
     }
 
     if (typeof input === 'object') {

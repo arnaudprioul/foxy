@@ -97,11 +97,18 @@ export function useSlider ({
             label: t.toString()
         }))
 
-        return Object.keys(ticks.value).map((key) => ({
-            value: parseFloat(key),
-            position: onPosition(parseFloat(key)),
-            label: (ticks.value as Record<string, string>)[key]
-        }))
+        if (typeof ticks.value === 'object' && ticks.value !== null) {
+            return Object.keys(ticks.value)
+                .map((key) => {
+                    return {
+                        value: parseFloat(key),
+                        position: onPosition(parseFloat(key)),
+                        label: (ticks.value as unknown as Record<string, string>)[key]
+                    }
+                })
+        }
+
+        return []
     })
     const hasTicksLabels = computed(() => {
         return parsedTicks.value.some(({ label }) => !!label)
@@ -133,10 +140,12 @@ export function useSlider ({
         const length = isVertical.value ? DIMENSIONS.HEIGHT : DIMENSIONS.WIDTH
         const position = isVertical.value ? CLIENT_POSITION.Y : CLIENT_POSITION.X
 
+        if (!foxySliderFieldTrackRef.value) return 0
+
         const {
             [start]: trackStart,
             [length]: trackLength
-        } = foxySliderFieldTrackRef.value?.$el.getBoundingClientRect()
+        } = foxySliderFieldTrackRef.value.$el.getBoundingClientRect()
         const clickOffset = getPosition(e, position)
 
         // It is possible for left to be NaN, force to number
@@ -196,7 +205,10 @@ export function useSlider ({
         onStart(e)
 
         window.addEventListener('touchmove', onMouseMove, moveListenerOptions)
-        e.target?.addEventListener('touchend', onSliderTouchend as EventListener, { passive: false })
+        
+        if (e.target) {
+            e.target.addEventListener('touchend', onSliderTouchend as EventListener, { passive: false })
+        }
     }
     const onSliderMousedown = (e: MouseEvent) => {
         if (readonly.value) return

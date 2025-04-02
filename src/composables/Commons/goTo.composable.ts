@@ -13,7 +13,7 @@ export function createGoTo (
 ): IGoToInstance {
     return {
         rtl: locale.isRtl,
-        options: mergeDeep(genDefaults(), options) as IGoToOptions,
+        options: mergeDeep(genDefaults(), options as unknown as Record<string, unknown>) as unknown as IGoToOptions,
     }
 }
 

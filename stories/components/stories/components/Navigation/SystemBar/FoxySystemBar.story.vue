@@ -1,6 +1,5 @@
 <template>
 	<Story
-			:init-state="initState"
 			group="components"
 			title="Navigation/System Bar"
 	>
@@ -10,9 +9,9 @@
 						order="0"
 						v-bind="state"
 				>
-					<foxy-icon :icon="MDI_ICONS.WIFI_STRENGTH_4"></foxy-icon>
-					<foxy-icon :icon="MDI_ICONS.SIGNAL"></foxy-icon>
-					<foxy-icon :icon="MDI_ICONS.BATTERY"></foxy-icon>
+					<foxy-icon :icon="MDI_ICONS.WIFI_STRENGTH_4"/>
+					<foxy-icon :icon="MDI_ICONS.SIGNAL"/>
+					<foxy-icon :icon="MDI_ICONS.BATTERY"/>
 
 					<span>3:13PM</span>
 				</foxy-system-bar>

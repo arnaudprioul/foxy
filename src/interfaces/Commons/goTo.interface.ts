@@ -6,7 +6,11 @@ export interface IGoToOptions {
     layout: boolean
     offset: number
     easing: string | ((t: number) => number)
-    patterns: (t: number) => number
+    patterns: IGoToOptionsPatterns
+}
+
+export interface IGoToOptionsPatterns {
+    [key: string] : (t: number) => number
 }
 
 export interface IGoToInstance {

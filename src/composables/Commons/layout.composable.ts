@@ -1,11 +1,12 @@
 import { useResizeObserver } from '@foxy/composables'
 
 import { FOXY_LAYOUT_ITEM_KEY, FOXY_LAYOUT_KEY, ROOT_ZINDEX } from '@foxy/consts'
+
 import { TDirectionBoth } from "@foxy/types"
 
 import { convertToUnit, findChildrenWithProvide, generateLayers, getCurrentInstance, getUid, int } from '@foxy/utils'
 
-import type { ComponentInternalInstance, ComputedRef, CSSProperties, Ref } from 'vue'
+import type { ComponentInternalInstance, ComputedRef, CSSProperties, Ref, StyleValue } from 'vue'
 import {
     computed,
     inject,
@@ -22,7 +23,9 @@ import {
 export function useLayout () {
     const layout = inject(FOXY_LAYOUT_KEY)
 
-    if (!layout) throw new Error('[Foxy] Could not find injected layout')
+    if (!layout) {
+        throw new Error('[Foxy] Could not find injected layout')
+    }
 
     return {
         getLayoutItem: layout.getLayoutItem,
@@ -44,7 +47,9 @@ export function useLayoutItem (options: {
 }) {
     const layout = inject(FOXY_LAYOUT_KEY)
 
-    if (!layout) throw new Error('[Foxy] Could not find injected layout')
+    if (!layout) {
+        throw new Error('[Foxy] Could not find injected layout')
+    }
 
     const id = options.id ?? `layout-item-${getUid()}`
 
@@ -53,8 +58,12 @@ export function useLayoutItem (options: {
     provide(FOXY_LAYOUT_ITEM_KEY, shallowRef({ id }))
 
     const isKeptAlive = shallowRef(false)
-    onDeactivated(() => isKeptAlive.value = true)
-    onActivated(() => isKeptAlive.value = false)
+    onDeactivated(() => {
+        isKeptAlive.value = true
+    })
+    onActivated(() => {
+        isKeptAlive.value = false
+    })
 
     const {
         layoutItemStyles,
@@ -65,9 +74,16 @@ export function useLayoutItem (options: {
         id
     })
 
-    onBeforeUnmount(() => layout.unregister(id))
+    onBeforeUnmount(() => {
+        layout.unregister(id)
+    })
 
-    return { layoutItemStyles, layoutRect: layout.layoutRect, layoutItemScrimStyles, layoutId: layout.layoutId }
+    return {
+        layoutItemStyles,
+        layoutRect: layout.layoutRect,
+        layoutItemScrimStyles,
+        layoutId: layout.layoutId
+    }
 }
 
 export function useCreateLayout (props: { id?: string, overlaps?: Array<string>, fullHeight?: boolean }) {
@@ -180,7 +196,10 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
             positions.set(id, position)
             layoutSizes.set(id, layoutSize)
             activeItems.set(id, active)
-            disableTransitions && disabledTransitions.set(id, disableTransitions)
+            
+            if (disableTransitions) {
+                disabledTransitions.set(id, disableTransitions)
+            }
 
             const instances = findChildrenWithProvide(FOXY_LAYOUT_KEY, rootVm?.vnode)
             const instanceIndex = instances.indexOf(vm)
@@ -255,16 +274,20 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
         layoutId
     })
 
-    const layoutClasses = computed(() => [
-        'foxy-layout',
-        { 'foxy-layout--full-height': props.fullHeight }
-    ])
+    const layoutClasses = computed(() => {
+        return [
+            'foxy-layout',
+            { 'foxy-layout--full-height': props.fullHeight }
+        ]
+    })
 
-    const layoutStyles = computed(() => ({
-        '--foxy-layout---zIndex': parentLayout ? rootZIndex.value : undefined,
-        '--foxy-layout---position': parentLayout ? 'relative' as const : undefined,
-        '--foxy-layout---overflow': parentLayout ? 'hidden' : undefined
-    }))
+    const layoutStyles = computed(() => {
+        return {
+            '--foxy-layout---zIndex': parentLayout ? rootZIndex.value : undefined,
+            '--foxy-layout---position': parentLayout ? 'relative' as const : undefined,
+            '--foxy-layout---overflow': parentLayout ? 'hidden' : undefined
+        } as StyleValue
+    })
 
     return {
         layoutClasses,

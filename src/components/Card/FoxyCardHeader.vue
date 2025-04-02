@@ -103,7 +103,7 @@
 
   const props = withDefaults(defineProps<ICardHeaderProps>(), { tag: 'FoxyToolbar' })
 
-  const emits = defineEmits(['click:prepend', 'click:append'])
+  defineEmits(['click:prepend', 'click:append'])
 
   const { filterProps } = useProps<ICardHeaderProps>(props)
 

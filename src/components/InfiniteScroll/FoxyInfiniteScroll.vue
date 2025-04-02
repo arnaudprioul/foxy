@@ -3,28 +3,45 @@
 			:is="tag"
 			ref="rootEl"
 			:class="infiniteScrollClasses"
-			:style="infiniteScrollStyles">
+			:style="infiniteScrollStyles"
+	>
 		<div class="foxy-infinite-scroll__side">
 			<template v-if="hasStartIntersect">
-				<slot name="error"
-				      v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}"/>
+				<slot
+						name="error"
+						v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}"
+				/>
 
-				<slot name="empty"
-				      v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}">
+				<slot
+						name="empty"
+						v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}"
+				>
 					<span>No more</span>
 				</slot>
 
 				<template v-if="isManualMode">
 					<template v-if="isLoading">
-						<slot name="loading"
-						      v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}">
-							<foxy-progress :color="color" :type="PROGRESS_TYPE.CIRCULAR" indeterminate/>
+						<slot
+								name="loading"
+								v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}"
+						>
+							<foxy-progress
+									:color="color"
+									:type="PROGRESS_TYPE.CIRCULAR"
+									indeterminate
+							/>
 						</slot>
 					</template>
 
-					<slot name="loadMore"
-					      v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}">
-						<foxy-btn :color="color" text="Load more" @click="intersecting(INFINITE_SCROLL_SIDE.START)"/>
+					<slot
+							name="loadMore"
+							v-bind="{side: INFINITE_SCROLL_SIDE.START, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.START), color }}"
+					>
+						<foxy-btn
+								:color="color"
+								text="Load more"
+								@click="intersecting(INFINITE_SCROLL_SIDE.START)"
+						/>
 					</slot>
 				</template>
 			</template>
@@ -34,7 +51,7 @@
 			<foxy-infinite-scroll-intersect
 					:key="INFINITE_SCROLL_SIDE.START"
 					:margin="margin"
-					:rootRef="rootEl"
+					:root-ref="rootEl"
 					:side="INFINITE_SCROLL_SIDE.START"
 					@intersect="handleIntersect"
 			/>
@@ -46,7 +63,7 @@
 			<foxy-infinite-scroll-intersect
 					:key="INFINITE_SCROLL_SIDE.END"
 					:margin="margin"
-					:rootRef="rootEl"
+					:root-ref="rootEl"
 					:side="INFINITE_SCROLL_SIDE.END"
 					@intersect="handleIntersect"
 			/>
@@ -54,24 +71,36 @@
 
 		<div class="foxy-infinite-scroll__side">
 			<template v-if="hasStartIntersect">
-				<slot name="error"
-				      v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}"/>
+				<slot
+						name="error"
+						v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}"
+				/>
 
-				<slot name="empty"
-				      v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}">
+				<slot
+						name="empty"
+						v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}"
+				>
 					<span>{{ t(emptyText) }}</span>
 				</slot>
 
 				<template v-if="isManualMode">
 					<template v-if="isLoading">
-						<slot name="loading"
-						      v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}">
-							<foxy-progress :color="color" :type="PROGRESS_TYPE.CIRCULAR" indeterminate/>
+						<slot
+								name="loading"
+								v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}"
+						>
+							<foxy-progress
+									:color="color"
+									:type="PROGRESS_TYPE.CIRCULAR"
+									indeterminate
+							/>
 						</slot>
 					</template>
 
-					<slot name="loadMore"
-					      v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}">
+					<slot
+							name="loadMore"
+							v-bind="{side: INFINITE_SCROLL_SIDE.END, props: { onClick: () => intersecting(INFINITE_SCROLL_SIDE.END), color }}"
+					>
 						<foxy-btn
 								:color="color"
 								:text="t(loadMoreText)"
@@ -84,7 +113,10 @@
 	</component>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyBtn, FoxyInfiniteScrollIntersect, FoxyProgress } from '@foxy/components'
 
 	import { useBothColor, useDimension, useLocale, useProps } from '@foxy/composables'
@@ -190,6 +222,7 @@
 			intersecting(side)
 		}
 	}
+
 	const done = (_status: TInfiniteScrollStatus) => {
 		status.value = _status
 
@@ -205,7 +238,7 @@
 					window.requestAnimationFrame(() => {
 						window.requestAnimationFrame(() => {
 							window.requestAnimationFrame(() => {
-								intersecting()
+								intersecting(currentSide.value)
 							})
 						})
 					})

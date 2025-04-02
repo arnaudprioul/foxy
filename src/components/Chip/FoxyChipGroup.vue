@@ -30,7 +30,7 @@
     selectedClass: 'foxy-chip--selected'
   })
 
-  const emits = defineEmits(['update:modelValue'])
+  defineEmits(['update:modelValue'])
 
   const {filterProps} = useProps<IChipGroupProps>(props)
 

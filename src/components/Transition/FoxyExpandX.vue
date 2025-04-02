@@ -29,7 +29,7 @@
   const {filterProps} = useProps<ITransitionProps>(props)
 
   const expandedParentClass = ''
-  const sizeProperty = 'width' as 'width'
+  const sizeProperty = 'width' as const
   const offsetProperty = camelize(`offset-${sizeProperty}`) as 'offsetWidth'
 
   const resetStyles = (el: IHTMLExpandElement) => {

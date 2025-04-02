@@ -1,7 +1,7 @@
 import {
     IAdjacentInnerProps,
     IAdjacentProps,
-    IBorderProps, IColorPickerProps,
+    IBorderProps,
     IColorProps,
     ICommonsComponentProps,
     IDensityProps,

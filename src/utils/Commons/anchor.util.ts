@@ -5,14 +5,13 @@ import { AXIS } from '@foxy/enums'
 import { TAnchor, TBlock, TInline, TParsedAnchor } from '@foxy/types'
 
 export function parseAnchor (anchor: TAnchor) {
-    let [side, align] = anchor.split(' ') as [TBlock | TInline | 'center', TBlock | TInline | 'center' | undefined]
+    const [side, initialAlign] = anchor.split(' ') as [TBlock | TInline | 'center', TBlock | TInline | 'center' | undefined]
 
-    if (!align) {
-        align =
-            BLOCK_ARRAY.includes(side as TBlock) ? 'left'
-                : INLINE_ARRAY.includes(side as TInline) ? 'top'
-                    : 'center'
-    }
+    const align = !initialAlign
+        ? BLOCK_ARRAY.includes(side as TBlock) ? 'left'
+            : INLINE_ARRAY.includes(side as TInline) ? 'top'
+                : 'center'
+        : initialAlign
 
     return { side, align } as TParsedAnchor
 }

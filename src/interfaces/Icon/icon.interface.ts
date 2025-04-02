@@ -1,27 +1,27 @@
 import {
-  IBorderProps,
-  IColorProps,
-  ICommonsComponentProps,
-  IMarginProps,
-  IPaddingProps,
-  ISizeProps,
-  ITagProps
+    IBorderProps,
+    IColorProps,
+    ICommonsComponentProps,
+    IMarginProps,
+    IPaddingProps,
+    ISizeProps,
+    ITagProps
 } from '@foxy/interfaces'
 
 import { TIcon, TIconComponent } from '@foxy/types'
 
 export interface IIconProps {
-  icon?: TIcon
+    icon?: TIcon
 }
 
 export interface IIconComponentProps extends IIconProps, IColorProps, ICommonsComponentProps, ITagProps, ISizeProps, IPaddingProps, IMarginProps, IBorderProps {
-  disabled?: Boolean
+    disabled?: boolean
 }
 
 export interface IIconAliases {
-  [name: string]: TIcon
+    [name: string]: TIcon
 }
 
 export interface IIconSet {
-  component: TIconComponent
+    component: TIconComponent
 }

@@ -11,12 +11,12 @@ import {
 import { TCols } from '@foxy/types'
 
 export interface IColProps extends IColorProps, ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IBorderProps, IAlignProps {
-  cols?: TCols | 'auto',
-  sm?: TCols | 'auto',
-  md?: TCols | 'auto',
-  lg?: TCols | 'auto',
-  xl?: TCols | 'auto',
-  xxl?: TCols | 'auto',
+  cols?: TCols,
+  sm?: TCols,
+  md?: TCols,
+  lg?: TCols,
+  xl?: TCols,
+  xxl?: TCols,
   offset?: Omit<TCols, '12'>,
   offsetSm?: Omit<TCols, '12'>,
   offsetMd?: Omit<TCols, '12'>,

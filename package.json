@@ -1,32 +1,85 @@
 {
-  "name": "foxy-page-builder",
+  "name": "foxy",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "exports": {
+    ".": {
+      "scss": "./dist/assets/scss/main.scss",
+      "style": "./dist/assets/css/main.css",
+      "default": "./dist/foxy.mjs"
+    },
+    "./styles": {
+      "scss": "./dist/assets/scss/main.scss",
+      "style": "./dist/assets/css/main.css"
+    },
+    "./foxy": "./dist/foxy.js",
+    "./components": "./dist/components/index.mjs",
+    "./components/*": "./dist/components/*/index.mjs",
+    "./composables": "./dist/composables/index.mjs",
+    "./directives": "./dist/directives/index.mjs",
+    "./enums": "./dist/enums/index.mjs",
+    "./consts": "./dist/consts/index.mjs",
+    "./types": "./dist/types/index.d.ts",
+    "./interfaces": "./dist/interfaces/index.d.ts",
+    "./services": "./dist/services/index.mjs",
+    "./utils": "./dist/utils/index.mjs",
+    "./*": "./dist/*"
+  },
+  "files": [
+    "dist/"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview",
+    "dev": "npm run story:dev && npm run server:dev",
+    "build": "npm run server:build && npm run story:build",
+    "preview": "npm run story:preview && npm run server:preview",
     "story:dev": "histoire dev",
     "story:build": "histoire build",
-    "story:preview": "histoire preview"
+    "story:preview": "histoire preview",
+    "server:dev": "vite",
+    "server:build": "unbuild",
+    "server:preview": "vite preview",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "type:build": "vue-tsc --build --force",
+    "type:dev": "vue-tsc --watch --noEmit --skipLibCheck",
+    "lint:fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+    "test:unit": "vitest",
+    "test:e2e": "cypress",
+    "test:open": "cypress open",
+    "clean": "rm -rf dist node_modules package-lock.json"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
-    "vue": "^3.4.21",
-    "vue-i18n": "^11.0.1",
-    "vue-router": "^4.3.0"
+    "shiki": "^3.2.1",
+    "vue": "^3.5.13",
+    "vue-i18n": "^11.1.2",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "@histoire/plugin-vue": "^0.17.17",
-    "@vitejs/plugin-vue": "^5.0.4",
-    "histoire": "^0.17.17",
+    "@histoire/plugin-vue": "^1.0.0-alpha.2",
+    "@types/jest": "^29.5.14",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "cypress": "^14.2.1",
+    "eslint": "^9.23.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-vue": "^10.0.0",
+    "globals": "^16.0.0",
+    "histoire": "^1.0.0-alpha.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
     "markdown-it-codetabs": "^1.2.0",
     "markdown-it-deflist": "^3.0.0",
     "markdown-it-footnote": "^4.0.0",
-    "sass": "^1.77.2",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.11",
-    "vue-tsc": "^2.0.19"
+    "sass": "^1.86.0",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.28.0",
+    "unbuild": "^3.5.0",
+    "unplugin-vue-components": "^28.4.1",
+    "vite": "^6.2.3",
+    "vitepress": "^1.6.3",
+    "vitest": "^3.1.1",
+    "vue-tsc": "^2.2.8"
   }
 }

@@ -1,10 +1,10 @@
-import { IGoToInstance, IGoToOptions } from '@foxy/interfaces'
+import { IGoToInstance, IGoToOptions, IGoToOptionsPatterns } from '@foxy/interfaces'
 
 import { clamp, consoleWarn, int, mergeDeep, refElement } from '@foxy/utils'
 
 import { ComponentPublicInstance } from 'vue'
 
-export function genDefaults () {
+export function genDefaults (): Partial<IGoToOptions> {
     return {
         container: undefined,
         duration: 300,
@@ -90,10 +90,12 @@ export async function scrollTo (
     const target = (typeof _target === 'number' ? _target : getTarget(_target)) ?? 0
     const container = options.container === 'parent' && target instanceof HTMLElement
         ? target.parentElement!
-        : getContainer(options.container)
-    const ease = typeof options.easing === 'function' ? options.easing : options.patterns[options.easing]
+        : getContainer(options.container as ComponentPublicInstance | HTMLElement | string)
+    const patterns = options.patterns as IGoToOptionsPatterns
+    const easing = options.easing as keyof IGoToOptionsPatterns | ((t: number) => number)
+    const ease = typeof easing === 'function' ? easing : patterns[easing]
 
-    if (!ease) throw new TypeError(`Easing function "${options.easing}" not found.`)
+    if (!ease) throw new TypeError(`Easing function "${easing}" not found.`)
 
     let targetLocation: number
     if (typeof target === 'number') {
@@ -109,7 +111,7 @@ export async function scrollTo (
         }
     }
 
-    targetLocation += options.offset
+    targetLocation += options.offset as number
     targetLocation = clampTarget(container, targetLocation, !!horizontal)
 
     const startLocation = container[property] ?? 0
@@ -117,10 +119,11 @@ export async function scrollTo (
     if (targetLocation === startLocation) return Promise.resolve(targetLocation)
 
     const startTime = performance.now()
+    const duration = options.duration as number
 
     return new Promise(resolve => requestAnimationFrame(function step (currentTime: number) {
         const timeElapsed = currentTime - startTime
-        const progress = timeElapsed / options.duration
+        const progress = timeElapsed / duration
         const location = Math.floor(
             startLocation +
             (targetLocation - startLocation) *

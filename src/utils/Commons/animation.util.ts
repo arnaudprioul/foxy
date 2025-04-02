@@ -46,7 +46,7 @@ export function animate (
   let animation: Animation
   try {
     animation = el.animate(keyframes, options)
-  } catch (err) {
+  } catch {
     return { finished: Promise.resolve() }
   }
 

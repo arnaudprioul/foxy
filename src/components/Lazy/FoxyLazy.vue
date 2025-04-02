@@ -1,76 +1,82 @@
 <template>
-  <component
-    :is="tag"
-    v-intersect="intersect"
-    :class="lazyClasses"
-    :style="lazyStyles">
-    <template v-if="isActive">
-      <foxy-transition :transition="transition" appear>
-        <slot name="default"/>
-      </foxy-transition>
-    </template>
-  </component>
+	<component
+			:is="tag"
+			v-intersect="intersect"
+			:class="lazyClasses"
+			:style="lazyStyles"
+	>
+		<template v-if="isActive">
+			<foxy-transition
+					:transition="transition"
+					appear
+			>
+				<slot name="default"/>
+			</foxy-transition>
+		</template>
+	</component>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyFade, FoxyTransition } from '@foxy/components'
+<script
+		lang="ts"
+		setup
+>
+	import { FoxyFade, FoxyTransition } from '@foxy/components'
+	import { useDimension, useProps, useVModel } from '@foxy/composables'
+	import { ILazyComponentProps } from '@foxy/interfaces'
+	import { TTransitionProps } from "@foxy/types"
 
-  import { useDimension, useProps, useVModel } from '@foxy/composables'
+	import { computed, StyleValue } from 'vue'
 
-  import { ILazyComponentProps } from '@foxy/interfaces'
+	const props = withDefaults(defineProps<ILazyComponentProps>(), {
+		tag: 'div',
+		options: () => ({
+			root: undefined,
+			rootMargin: undefined,
+			threshold: undefined
+		}),
+		transition: () => ({component: FoxyFade}) as unknown as TTransitionProps
+	})
 
-  import { computed, StyleValue } from 'vue'
+	defineEmits(['update:modelValue'])
 
-  const props = withDefaults(defineProps<ILazyComponentProps>(), {
-    tag: 'div',
-    options: {
-      root: undefined,
-      rootMargin: undefined,
-      threshold: undefined,
-    },
-    transition: { component: FoxyFade }
-  })
+	const {filterProps} = useProps<ILazyComponentProps>(props)
 
-  const emits = defineEmits(['update:modelValue'])
+	const {dimensionStyles} = useDimension(props)
 
-  const {filterProps} = useProps<ILazyComponentProps>(props)
+	const isActive = useVModel(props, 'modelValue')
 
-  const { dimensionStyles } = useDimension(props)
+	const intersect = computed(() => {
+		return [
+			{handler: handleIntersect, options: props.options},
+			null,
+			isActive.value ? [] : ['once']
+		]
+	})
 
-  const isActive = useVModel(props, 'modelValue')
+	const handleIntersect = (isIntersecting: boolean) => {
+		if (isActive.value) return
 
-  const intersect = computed(() => {
-    return [
-      { handler: handleIntersect, options: props.options },
-      null,
-      isActive.value ? [] : ['once'],
-    ]
-  })
+		isActive.value = isIntersecting
+	}
 
-  const handleIntersect = (isIntersecting: boolean) => {
-    if (isActive.value) return
+	// CLASS & STYLES
 
-    isActive.value = isIntersecting
-  }
+	const lazyStyles = computed(() => {
+		return [
+			dimensionStyles.value,
+			props.style
+		] as StyleValue
+	})
+	const lazyClasses = computed(() => {
+		return [
+			'foxy-lazy',
+			props.class
+		]
+	})
 
-  // CLASS & STYLES
+	// EXPOSE
 
-  const lazyStyles = computed(() => {
-    return [
-      dimensionStyles.value,
-      props.style
-    ] as StyleValue
-  })
-  const lazyClasses = computed(() => {
-    return [
-      'foxy-lazy',
-      props.class,
-    ]
-  })
-
-  // EXPOSE
-
-  defineExpose({
-	  filterProps
-  })
+	defineExpose({
+		filterProps
+	})
 </script>

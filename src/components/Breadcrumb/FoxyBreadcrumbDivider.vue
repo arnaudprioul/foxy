@@ -35,6 +35,7 @@
   import { MDI_ICONS } from '@foxy/enums'
 
   import { IBreadcrumbDividerProps } from '@foxy/interfaces'
+  import { TValueOf } from "@foxy/types"
 
   import { computed, StyleValue, toRef } from 'vue'
 
@@ -51,7 +52,7 @@
   const { sizeStyles, sizeClasses } = useSize(props)
 
   const isIcon = computed(() => {
-    return typeof props.divider !== 'string' || Object.values(MDI_ICONS).includes(props.divider)
+    return typeof props.divider !== 'string' || Object.values(MDI_ICONS).includes(props.divider as TValueOf<typeof MDI_ICONS>)
   })
 
   // CLASS & STYLES

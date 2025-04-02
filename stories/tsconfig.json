@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@stories": [
+        "./stories/"
+      ],
+      "@stories/*": [
+        "./stories/*"
+      ]
+    }
+  },
+  "references": [
+    {
+      "path": "../tsconfig.json"
+    }
+  ]
+}

@@ -175,10 +175,10 @@ export function RGBtoHex ({ r, g, b, a }: TRGBA): THex {
 
 export function HexToRGB (hex: THex): TRGBA {
     hex = parseHex(hex)
-    let [r, g, b, a] = chunk(hex, 2).map((c: string) => int(c, 16))
-    a = a === undefined ? a : (a / 255)
+    const [r, g, b, a] = chunk(hex, 2).map((c: string) => int(c, 16))
+    const alpha = a === undefined ? a : (a / 255)
 
-    return { r, g, b, a }
+    return { r, g, b, a: alpha }
 }
 
 export function HexToHSV (hex: THex): THSVA {
@@ -281,7 +281,7 @@ export function classToHex (
 }
 
 export function XyzToRgb (xyz: TXYZ): TRGBA {
-    const rgb = Array(3)
+    const rgb: number[] = Array(3)
     const transform = SRGB_FORWARD_TRANSFORM
     const matrix = SRGB_FORWARD_MATRIX
 
@@ -308,13 +308,13 @@ export function RgbtoXyz ({ r, g, b }: TRGBA): TXYZ {
     const matrix = SRGB_REVERSE_MATRIX
 
     // Rescale from [0, 255] to [0, 1] then adjust sRGB gamma to linear RGB
-    r = transform(r / 255)
-    g = transform(g / 255)
-    b = transform(b / 255)
+    const rLinear = transform(r / 255)
+    const gLinear = transform(g / 255)
+    const bLinear = transform(b / 255)
 
     // Matrix color space transform
     for (let i = 0; i < 3; ++i) {
-        xyz[i] = matrix[i][0] * r + matrix[i][1] * g + matrix[i][2] * b
+        xyz[i] = matrix[i][0] * rLinear + matrix[i][1] * gLinear + matrix[i][2] * bLinear
     }
 
     return xyz

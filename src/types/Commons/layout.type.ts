@@ -1,5 +1,6 @@
-import type { IfAny } from '@vue/shared'
 import { ComponentObjectPropsOptions, Prop, PropType } from 'vue'
+
+import { TIfAny } from '@foxy/types'
 
 export type TPartialKeys<T> = { [P in keyof T]?: unknown }
 
@@ -38,6 +39,6 @@ export type TInferPropType<T> = [T] extends [null]
                             : TInferPropType<U>
                         : [T] extends [Prop<infer V, infer D>]
                             ? unknown extends V
-                                ? IfAny<V, V, D>
+                                ? TIfAny<V, V, D>
                                 : V
                             : T

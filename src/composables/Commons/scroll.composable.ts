@@ -78,7 +78,9 @@ export function useScroll (
     target.value?.removeEventListener('scroll', onScroll)
   })
 
-  canScroll && watch(canScroll, onScroll, { immediate: true })
+  if (canScroll) {
+    watch(canScroll, onScroll, { immediate: true })
+  }
 
   return {
     scrollThreshold,
@@ -99,19 +101,22 @@ export function useScrollStrategies (
 
   let scope: EffectScope | undefined
   watchEffect(async () => {
-    scope?.stop()
+    if (scope) {
+      scope.stop()
+    }
 
     if (!(data.isActive.value && props.scrollStrategy)) return
 
     scope = effectScope()
     await nextTick()
-    scope.active && scope.run(() => {
-      if (typeof props.scrollStrategy === 'function') {
-        props.scrollStrategy(data, props, scope!)
-      } else {
-        SCROLL_STRATEGIES[props.scrollStrategy]?.(data, props, scope!)
-      }
-    })
+    
+    if (!scope.active) return
+
+    if (typeof props.scrollStrategy === 'function') {
+      props.scrollStrategy(data, props, scope)
+    } else {
+      SCROLL_STRATEGIES[props.scrollStrategy]?.(data, props, scope)
+    }
   })
 
   onScopeDispose(() => {
@@ -123,7 +128,7 @@ export function useScrolling (listRef: Ref<TFoxyList | undefined>, textFieldRef:
   const isScrolling = shallowRef(false)
   let scrollTimeout: number
 
-  const onListScroll = (_e: Event) => {
+  const onListScroll = () => {
     cancelAnimationFrame(scrollTimeout)
     isScrolling.value = true
     scrollTimeout = requestAnimationFrame(() => {

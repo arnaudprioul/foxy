@@ -1,7 +1,6 @@
-import { TTemplateRef } from "@foxy/types"
 import { DeepReadonly, Ref } from 'vue'
 
 export interface IResizeState {
-  resizeRef: Ref
+  resizeRef: Ref<HTMLElement | null | undefined>
   contentRect: DeepReadonly<Ref<DOMRectReadOnly | undefined>>
 }

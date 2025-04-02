@@ -68,7 +68,7 @@
 
 	const props = withDefaults(defineProps<IBreadcrumbItemProps>(), {tag: 'span', density: DENSITY.DEFAULT})
 
-	const emits = defineEmits(['click:append', 'click:prepend', 'click:append'])
+	defineEmits(['click:append', 'click:prepend', 'click:append'])
 
 	const {filterProps} = useProps<IBreadcrumbItemProps>(props)
 

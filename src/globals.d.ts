@@ -114,8 +114,8 @@ declare module '@vue/runtime-core' {
     aliasName?: string
   }
 
-  // eslint-disable-next-line max-len
-  export interface ComponentOptionsBase<Props, RawBindings, D, C extends ComputedOptions, M extends MethodOptions, Mixin extends ComponentOptionsMixin, Extends extends ComponentOptionsMixin, E extends EmitsOptions, EE extends string = string, Defaults = {}> {
+   
+  export interface ComponentOptionsBase<_Props, _RawBindings, _D, _C extends ComputedOptions, _M extends MethodOptions, _Mixin extends ComponentOptionsMixin, _Extends extends ComponentOptionsMixin, _E extends EmitsOptions, _EE extends string = string, _Defaults = Record<string, never>> {
     aliasName?: string
   }
 
@@ -145,7 +145,7 @@ declare module '@vue/runtime-dom' {
   }[keyof Events]>
 
   type EventHandlers<E> = {
-    [K in keyof E]?: E[K] extends Function ? E[K] : (payload: E[K]) => void
+    [K in keyof E]?: E[K] extends (...args: any[]) => any ? E[K] : (payload: E[K]) => void
   }
 
   export interface HTMLAttributes extends EventHandlers<ModifiedEvents> {

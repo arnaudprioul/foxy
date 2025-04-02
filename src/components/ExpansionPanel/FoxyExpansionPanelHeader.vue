@@ -112,7 +112,7 @@
     collapseIcon: MDI_ICONS.CHEVRON_UP
   })
 
-  const emits = defineEmits(['click:append', 'click:prepend'])
+  defineEmits(['click:append', 'click:prepend'])
 
   const { filterProps } = useProps<IExpansionPanelHeaderProps>(props)
 
@@ -135,7 +135,7 @@
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { roundedClasses, roundedStyles } = useRounded(props)
 
-  const handleExpand = (_e: MouseEvent) => {
+  const handleExpand = () => {
     if (!props.readonly) {
       expansionPanel.toggle()
     }

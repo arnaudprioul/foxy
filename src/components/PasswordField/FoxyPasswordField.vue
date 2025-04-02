@@ -193,19 +193,11 @@
     setup
 >
   import { FoxyCounter, FoxyField, FoxyIcon, FoxyInput } from '@foxy/components'
-
   import { useAdjacentInner, useFocus, useProps, useVModel } from '@foxy/composables'
-
-  import { ACTIVE_TEXT_FIELD_TYPE, INPUT_TEXT_FIELD_TYPE } from '@foxy/consts'
-
   import { vIntersect } from '@foxy/directives'
-
   import { DENSITY, DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from '@foxy/enums'
-
   import { IPasswordFieldProps } from '@foxy/interfaces'
-
   import { TFoxyField, TFoxyInput } from "@foxy/types"
-
   import { filterInputAttrs, forwardRefs } from '@foxy/utils'
 
   import { computed, nextTick, ref, StyleValue, useAttrs, useSlots } from 'vue'
@@ -282,7 +274,7 @@
   const inputRef = ref<HTMLInputElement>()
 
   const isActive = computed(() => {
-    return ACTIVE_TEXT_FIELD_TYPE.includes(props.type) || props.persistentPlaceholder || isFocused.value || props.active
+    return props.persistentPlaceholder || isFocused.value || props.active
   })
 
   const handleFocus = () => {
@@ -324,15 +316,6 @@
     const el = e.target as HTMLInputElement
 
     model.value = el.value
-
-    if (typeof props.modelModifiers === 'string' && INPUT_TEXT_FIELD_TYPE.includes(props.type)) {
-      const caretPosition = [el.selectionStart, el.selectionEnd]
-
-      nextTick(() => {
-        el.selectionStart = caretPosition[0]
-        el.selectionEnd = caretPosition[1]
-      })
-    }
   }
 
   const hasCounter = computed(() => {

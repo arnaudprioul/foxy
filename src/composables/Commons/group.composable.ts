@@ -167,7 +167,7 @@ export function useGroup (
       const internalValue = selected.value.slice()
       const index = internalValue.findIndex((v) => v === id)
       const isSelected = ~index
-      value = value ?? !isSelected
+      const newValue = value !== undefined ? value : !isSelected
 
       // We can't remove value if group is
       // mandatory, value already exists,
@@ -186,15 +186,15 @@ export function useGroup (
           internalValue.length + 1 > props.max
       ) return
 
-      if (index < 0 && value) internalValue.push(id)
-      else if (index >= 0 && !value) internalValue.splice(index, 1)
+      if (index < 0 && newValue) internalValue.push(id)
+      else if (index >= 0 && !newValue) internalValue.splice(index, 1)
 
       selected.value = internalValue
     } else {
       const isSelected = selected.value.includes(id)
       if (props.mandatory && isSelected) return
 
-      selected.value = (value ?? !isSelected) ? [id] : []
+      selected.value = (value !== undefined ? value : !isSelected) ? [id] : []
     }
   }
 
@@ -203,23 +203,26 @@ export function useGroup (
     if (props.multiple) consoleWarn('This method is not supported when using "multiple" prop')
 
     if (!selected.value.length) {
-      const item = items.find(item => !item.disabled)
-      item && (selected.value = [item.id])
+        const item = items.find(item => !item.disabled)
+        
+        if (item) {
+            selected.value = [item.id]
+        }
     } else {
-      const currentId = selected.value[0]
-      const currentIndex = items.findIndex(i => i.id === currentId)
+        const currentId = selected.value[0]
+        const currentIndex = items.findIndex(i => i.id === currentId)
 
-      let newIndex = (currentIndex + offset) % items.length
-      let newItem = items[newIndex]
+        let newIndex = (currentIndex + offset) % items.length
+        let newItem = items[newIndex]
 
-      while (newItem.disabled && newIndex !== currentIndex) {
-        newIndex = (newIndex + offset) % items.length
-        newItem = items[newIndex]
-      }
+        while (newItem.disabled && newIndex !== currentIndex) {
+            newIndex = (newIndex + offset) % items.length
+            newItem = items[newIndex]
+        }
 
-      if (newItem.disabled) return
+        if (newItem.disabled) return
 
-      selected.value = [items[newIndex].id]
+        selected.value = [items[newIndex].id]
     }
   }
 

@@ -22,8 +22,8 @@ export interface IBlueprint extends Omit<IFoxyOptions, 'blueprint'> {
 
 export interface ICommonsComponentProps {
   id?: string,
-  class?: string | Array<string> | Object,
-  style?: string | Array<string> | Object | StyleValue
+  class?: string | Array<string> | object,
+  style?: string | Array<string> | object | StyleValue
 }
 
 export interface ITagProps {

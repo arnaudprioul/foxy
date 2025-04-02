@@ -10,13 +10,14 @@
   import { FoxyFade } from '@foxy/components'
   import { useProps, useTransition } from '@foxy/composables'
   import { ITransitionComponentProps } from '@foxy/interfaces'
+  import { TTransitionProps } from '@foxy/types'
 
   import { omit } from '@foxy/utils'
 
   import { computed, mergeProps, Transition, useAttrs } from 'vue'
 
   const props = withDefaults(defineProps<ITransitionComponentProps>(), {
-    transition: { component: FoxyFade }
+    transition: () => ({ component: FoxyFade }) as unknown as TTransitionProps
   })
 
   const {filterProps} = useProps<ITransitionComponentProps>(props)

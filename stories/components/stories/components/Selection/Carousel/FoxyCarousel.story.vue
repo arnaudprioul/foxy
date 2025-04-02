@@ -43,7 +43,7 @@
         />
 
         <hst-icon
-            v-model="state.delimiterIcon"
+            v-model="state.delimiterIcon as string"
             title="Delimiter Icon"
         />
 
@@ -58,11 +58,11 @@
         />
 
         <hst-icon
-            v-model="state.nextIcon"
+            v-model="state.nextIcon as string"
             title="Next Icon"
         />
         <hst-icon
-            v-model="state.prevIcon"
+            v-model="state.prevIcon as string"
             title="Prev Icon"
         />
 
@@ -94,7 +94,7 @@
 
   import { reactive } from 'vue'
 
-  const state: ICarouselProps = reactive({
+  const state: Partial<ICarouselProps> = reactive({
     continuous: true,
     showArrows: true,
     color: "#ffc529",

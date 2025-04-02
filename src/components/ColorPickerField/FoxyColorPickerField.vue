@@ -140,7 +140,7 @@
 
   import { IColorPickerFieldProps } from "@foxy/interfaces"
 
-  import { TColor, TFoxyColorPicker, TFoxyMenu, TFoxyTextField } from "@foxy/types"
+  import { TColor, TFoxyColorPicker, TFoxyMenu, TFoxyTextField, TTransitionProps } from "@foxy/types"
 
   import { forwardRefs, HSVtoCSS, matchesSelector } from "@foxy/utils"
 
@@ -154,7 +154,7 @@
     border: true,
     rounded: true,
     modelValue: null,
-    transition: { component: FoxyTranslateScale },
+	  transition: () => ({component: FoxyTranslateScale}) as unknown as TTransitionProps,
     closeText: 'foxy.close',
     openText: 'foxy.open',
     closeOnSelect: false
@@ -222,7 +222,7 @@
     }
   })
 
-  const handleClear = (_e: MouseEvent) => {
+  const handleClear = () => {
     model.value = COLOR_NULL
 
     if (props.openOnClear) {
@@ -243,7 +243,7 @@
       isFocused.value = true
     }
   }
-  const handleChange = (_e: Event) => {
+  const handleChange = () => {
     if (matchesSelector(foxyTextFieldRef.value, ':autofill') || matchesSelector(foxyTextFieldRef.value, ':-webkit-autofill')) {
       // (e.target as HTMLInputElement).value
       // TODO -  Select date

@@ -31,19 +31,19 @@
       </template>
       <template #controls>
         <hst-icon
-            v-model="state.prependIcon"
+            v-model="state.prependIcon as string"
             title="Prepend Icon"
         />
         <hst-icon
-            v-model="state.appendIcon"
+            v-model="state.appendIcon as string"
             title="Append Icon"
         />
         <hst-icon
-            v-model="state.prependInnerIcon"
+            v-model="state.prependInnerIcon as string"
             title="Prepend Inner Icon"
         />
         <hst-icon
-            v-model="state.appendInnerIcon"
+            v-model="state.appendInnerIcon as string"
             title="Append Inner Icon"
         />
 
@@ -96,13 +96,14 @@
   import { FoxyCol, FoxyContainer, FoxyRow, FoxySelect } from '@foxy/components'
 
   import { ALIGN, JUSTIFY } from '@foxy/enums'
+  import { ISelectProps } from "@foxy/interfaces"
 
   import { HstIcon } from '@stories/components/controls'
   import { logEvent } from 'histoire/client'
 
   import { reactive } from 'vue'
 
-  const state: { [key: string]: any } = reactive({
+  const state: Partial<ISelectProps> = reactive({
     label: 'Select',
     items: ['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming'],
     bgColor: '#fff'

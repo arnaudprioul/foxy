@@ -1,6 +1,6 @@
-import { NDateModule } from "@foxy/namespace"
+import { TInternalAdapter } from "@foxy/types"
 
-export interface IDateInstance extends NDateModule.InternalAdapter {
+export interface IDateInstance extends TInternalAdapter {
     locale?: any
 }
 

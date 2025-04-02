@@ -1,16 +1,16 @@
 import { SUPPORTS_INTERSECTION } from '@foxy/consts'
-import { IObserveDirectiveBinding } from '@foxy/interfaces'
+import { IIntersectDirectiveBinding, IIntersectHtmlElement } from '@foxy/interfaces'
 import { unmountIntersect } from '@foxy/utils'
 
 export const Intersect = {
-  mounted (el: HTMLElement, binding: IObserveDirectiveBinding) {
+  mounted (el: IIntersectHtmlElement, binding: IIntersectDirectiveBinding) {
     if (!SUPPORTS_INTERSECTION) return
 
     const modifiers = binding.modifiers || {}
     const value = binding.value
-    const { handler, options } = typeof value === 'object'
+    const { handler, options = { threshold: 0.1 } } = typeof value === 'object'
         ? value
-        : { handler: value, options: {} }
+        : { handler: value, options: { threshold: 0.1 } }
 
     const observer = new IntersectionObserver((
         entries: Array<IntersectionObserverEntry> = [],
@@ -45,7 +45,7 @@ export const Intersect = {
 
     observer.observe(el)
   },
-  unmounted (el: HTMLElement, binding: IObserveDirectiveBinding) {
+  unmounted (el: HTMLElement, binding: IIntersectDirectiveBinding) {
     unmountIntersect(el, binding)
   },
 }

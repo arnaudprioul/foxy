@@ -142,11 +142,17 @@
 
   import { DENSITY } from '@foxy/enums'
 
-  import { IDataTableProps } from '@foxy/interfaces'
+  import {
+	  IDataTableGroup,
+	  IDataTableGroupableItem,
+	  IDataTableProps,
+	  IDataTableSelectableItem,
+	  IDataTableSortItem
+  } from '@foxy/interfaces'
 
   import { TFoxyDataTableFooter, TFoxyDataTableHeaders, TFoxyDataTableRows, TFoxyTable } from "@foxy/types"
 
-  import { computed, ref, StyleValue, toRef, useAttrs, useSlots } from 'vue'
+  import { computed, Ref, ref, StyleValue, toRef, useAttrs, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<IDataTableProps>(), {
     page: 1,
@@ -156,7 +162,7 @@
     hideDefaultFooter: false
   })
 
-  const emits = defineEmits(['update:modelValue', 'update:page', 'update:itemsPerPage', 'update:sortBy', 'update:options', 'update:groupBy', 'update:expanded', 'update:currentItems'])
+  defineEmits(['update:modelValue', 'update:page', 'update:itemsPerPage', 'update:sortBy', 'update:options', 'update:groupBy', 'update:expanded', 'update:currentItems'])
 
   const { filterProps } = useProps<IDataTableProps>(props)
 
@@ -178,7 +184,7 @@
     sortRawFunctions,
     filterFunctions
   } = createHeaders(props, {
-    groupBy,
+    groupBy: groupBy as unknown as Ref<Array<IDataTableSortItem>>,
     showSelect: toRef(props, 'showSelect'),
     showExpand: toRef(props, 'showExpand')
   })
@@ -193,21 +199,23 @@
     customKeyFilter: filterFunctions
   })
 
-  const { toggleSort } = provideSort({ sortBy, multiSort, mustSort, page })
-  const { sortByWithGroups, opened, extractRows, isGroupOpen, toggleGroup } = provideGroupBy({ groupBy, sortBy })
+  const { toggleSort } = provideSort({ sortBy , multiSort, mustSort, page } as unknown as {sortBy: Ref<Array<IDataTableSortItem>>, multiSort: Ref<boolean>, mustSort: Ref<boolean>, page: Ref | undefined})
+  const { sortByWithGroups, opened, extractRows, isGroupOpen, toggleGroup } = provideGroupBy({ groupBy, sortBy } as unknown as {groupBy: Ref<Array<IDataTableSortItem>>, sortBy: Ref<Array<IDataTableSortItem>>})
 
   const { sortedItems } = useSortedItems(props, filteredItems, sortByWithGroups, {
     transform: item => item.columns,
     sortFunctions,
     sortRawFunctions
   })
-  const { flatItems } = useGroupedItems(sortedItems, groupBy, opened)
+  const { flatItems } = useGroupedItems(sortedItems, groupBy as unknown as Ref<Array<IDataTableSortItem>>, opened)
   const itemsLength = computed(() => flatItems.value.length)
 
   const { startIndex, stopIndex, pageCount, setItemsPerPage } = providePagination({ page, itemsPerPage, itemsLength })
   const { paginatedItems } = usePaginatedItems({ items: flatItems, startIndex, stopIndex, itemsPerPage })
 
-  const paginatedItemsWithoutGroups = computed(() => extractRows(paginatedItems.value))
+  const paginatedItemsWithoutGroups = computed(() => {
+		return extractRows(paginatedItems.value as unknown as Array<IDataTableGroup<IDataTableGroupableItem<any>> | IDataTableGroupableItem<any>>)
+  })
 
   const {
     isSelected,
@@ -216,15 +224,15 @@
     toggleSelect,
     someSelected,
     allSelected
-  } = provideSelection(props, { allItems: items, currentPage: paginatedItemsWithoutGroups })
+  } = provideSelection(props, { allItems: items, currentPage: paginatedItemsWithoutGroups as unknown as Ref<Array<IDataTableSelectableItem>> })
 
   const { isExpanded, toggleExpand } = provideExpanded(props)
 
   useOptions({
     page,
     itemsPerPage,
-    sortBy,
-    groupBy,
+    sortBy: sortBy as unknown as Ref<Array<IDataTableSortItem>>,
+    groupBy: groupBy as unknown as Ref<Array<IDataTableSortItem>>,
     search
   })
 

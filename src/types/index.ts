@@ -38,6 +38,7 @@ export * from './ColorPicker/color-picker-preview.type'
 export * from './ColorPicker/color-picker-edit.type'
 export * from './ColorPicker/color-picker-swatches.type'
 
+export * from './Commons/activator.type'
 export * from './Commons/axis.type'
 export * from './Commons/align.type'
 export * from './Commons/anchor.type'

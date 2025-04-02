@@ -136,7 +136,7 @@
     tag: 'div'
   })
 
-  const emits = defineEmits(['update:modelValue'])
+  defineEmits(['update:modelValue'])
 
   const { filterProps } = useProps<IExpansionPanelsProps>(props)
 

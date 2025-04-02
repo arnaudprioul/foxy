@@ -10,8 +10,8 @@ import {
 import { TIcon } from "@foxy/types"
 
 export interface IPaginationProps extends ICommonsComponentProps, ITagProps, IColorProps, IBorderProps, IPaddingProps, IMarginProps, IElevationProps {
-    start?: number | string
-    modelValue?: number | string
+    start?: number
+    modelValue?: number
     disabled?: boolean
     length?: number | string
     totalVisible?: number | string

@@ -72,7 +72,7 @@
 
   const slots = useSlots()
 
-  const handleChange = (_v: any) => {
+  const handleChange = () => {
     if (indeterminate.value) {
       indeterminate.value = false
     }

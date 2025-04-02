@@ -91,7 +91,7 @@
     modelValue: true
   })
 
-  const emits = defineEmits(['update:modelValue'])
+  defineEmits(['update:modelValue'])
 
   const { filterProps } = useProps<IAppBarProps>(props)
 
@@ -105,7 +105,7 @@
   })
 
   const hasPrepend = computed(() => {
-    return hasTitle || hasImage || slots.prepend
+    return hasTitle.value || hasImage.value || slots.prepend
   })
   const hasContent = computed(() => {
     return slots.content

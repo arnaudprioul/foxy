@@ -31,8 +31,6 @@
 		tag: 'div'
 	})
 
-	const emits = defineEmits([])
-
 	const {filterProps} = useProps<ISystemBarProps>(props)
 
 	const {dimensionStyles} = useDimension(props)

@@ -155,7 +155,7 @@
       handleMovementStart()
     }
 
-    shape.value = getTargetBox(root.value)
+    shape.value = getTargetBox(root.value as unknown as HTMLElement)
     const isInViewport = inViewport(shape.value)
     const condition = eventActions.value[props.event].condition
     const action = eventActions.value[props.event].action

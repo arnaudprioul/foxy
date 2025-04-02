@@ -37,7 +37,9 @@
   const { filterProps } = useProps<IDatePickerMonthsProps>(props)
 
   const adapter = useDate()
-  const model = useVModel(props, 'month', adapter.getMonth(adapter.date()), (v) => int(v))
+  const model = useVModel(props, 'month', adapter.getMonth(adapter.date()), (v) => {
+		return int(v || 0)
+  })
 
   const months = computed(() => {
     let date = adapter.startOfYear(adapter.date())
@@ -67,7 +69,7 @@
     model.value = model.value ?? adapter.getMonth(adapter.date())
   })
 
-  const btnProps = (month, i) => {
+  const btnProps = (month: {isDisabled: boolean, text: string, value: number}, i: number) => {
     return {
       active: model.value === i,
       color: model.value === i ? props.color : undefined,

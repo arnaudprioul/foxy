@@ -75,10 +75,12 @@ export function useVirtual<T> (props: IVirtualProps, items: Ref<readonly T[]>) {
         if (!~targetScrollIndex) return
 
         nextTick(() => {
-            IN_BROWSER && window.requestAnimationFrame(() => {
-                scrollToIndex(targetScrollIndex)
-                targetScrollIndex = -1
-            })
+            if (IN_BROWSER) {
+                window.requestAnimationFrame(() => {
+                    scrollToIndex(targetScrollIndex)
+                    targetScrollIndex = -1
+                })
+            }
         })
     })
 

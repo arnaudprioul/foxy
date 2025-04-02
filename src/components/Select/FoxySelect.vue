@@ -108,7 +108,7 @@
                     :items="displayItems"
                     renderless
                 >
-                  <template #item.renderless="{item, index, itemRef}">
+                  <template #item:renderless="{item, index, itemRef}">
                     <slot
                         name="item"
                         v-bind="{item, index, props: menuListItemProps(item, itemRef, index)}"
@@ -284,22 +284,21 @@
     useVModel
   } from '@foxy/composables'
 
-  import { FOXY_FORM_KEY, IN_BROWSER } from '@foxy/consts'
+  import { FOXY_FORM_KEY, IN_BROWSER, KEYBOARD_VALUES } from '@foxy/consts'
 
   import {
     BLOCK,
     DENSITY,
     DIRECTION,
     FILTERS_MODE,
-    KEYBOARD_VALUES,
     MDI_ICONS,
     SELECT_STRATEGY,
     TEXT_FIELD_TYPE
   } from '@foxy/enums'
 
-  import { IInternalListItem, ISelectProps } from '@foxy/interfaces'
+  import { IInternalListItem, ISelectProps, IItemProps } from '@foxy/interfaces'
 
-  import { TFoxyChip, TFoxyList, TFoxyMenu, TFoxyTextField, TFoxyVirtualScroll } from '@foxy/types'
+  import { TFoxyChip, TFoxyList, TFoxyMenu, TFoxyTextField, TFoxyVirtualScroll, TTransitionProps } from '@foxy/types'
 
   import { deepEqual, forwardRefs, matchesSelector, noop, wrapInArray } from '@foxy/utils'
 
@@ -327,7 +326,7 @@
     modelValue: null,
     role: 'combobox',
     itemType: 'type',
-    items: [],
+    items: () => [],
     itemTitle: 'title',
     itemValue: 'value',
     itemChildren: 'children',
@@ -335,15 +334,15 @@
     valueComparator: deepEqual,
     menuIcon: MDI_ICONS.MENU_DOWN_OUTLINE,
     divider: ',',
-    transition: { component: FoxyTranslateScale },
-    filterKeys: ['title'],
+    transition: () => ({ component: FoxyTranslateScale }) as unknown as TTransitionProps,
+    filterKeys: () => ['title'],
     filterMode: FILTERS_MODE.INTERSECTION,
     closeText: 'foxy.close',
     openText: 'foxy.open',
     noDataText: 'foxy.noDataText'
   })
 
-  const emits = defineEmits(['click:control', 'mousedown:control', 'update:focused', 'update:modelValue', 'update:menu', 'click:prepend', 'click:prependInner', 'click:append', 'click:appendInner', 'click:clear'])
+  defineEmits(['click:control', 'mousedown:control', 'update:focused', 'update:modelValue', 'update:menu', 'click:prepend', 'click:prependInner', 'click:append', 'click:appendInner', 'click:clear'])
 
   const { filterProps } = useProps<ISelectProps>(props)
 
@@ -359,7 +358,7 @@
 
   const { textColorStyles } = useTextColor(toRef(props, 'color'))
 
-  const { items, transformIn, transformOut } = useItems(props)
+  const { items, transformIn, transformOut } = useItems(props as IItemProps)
   const model = useVModel(
       props,
       'modelValue',
@@ -454,7 +453,7 @@
   })
 
   const menuListItemProps = (item: IInternalListItem, itemRef: VNodeRef, index: number) => {
-    return mergeProps(item.props, {
+    return mergeProps(item.props ?? {}, {
       ref: itemRef,
       key: index,
       active: (highlightFirst.value && index === 0) ? true : isSelected(item),
@@ -471,7 +470,7 @@
   } = useScrolling(foxyListRef, foxyTextFieldRef)
 
   const handleSelect = (item: IInternalListItem, set: boolean | null = true) => {
-    if (item.props.disabled) return
+    if (item.props?.disabled) return
 
     if (props.multiple) {
       const index = model.value.findIndex((selection) => (props.valueComparator ? props.valueComparator(selection.value, item.value) : deepEqual(selection.value, item.value)))
@@ -504,7 +503,7 @@
       })
     }
   }
-  const handleClear = (_e: MouseEvent) => {
+  const handleClear = () => {
     if (props.openOnClear) {
       menu.value = true
     }
@@ -533,15 +532,18 @@
     const selectionStart = foxyTextFieldRef.value?.selectionStart
     const length = model.value.length
 
-    if ((props.autocomplete && selectionIndex.value > -1) || [KEYBOARD_VALUES.ENTER, KEYBOARD_VALUES.EMPTY, KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.UP, KEYBOARD_VALUES.HOME, KEYBOARD_VALUES.END].includes(e.key)) {
+    const keyAutocompleteOut = [KEYBOARD_VALUES.ENTER, KEYBOARD_VALUES.EMPTY, KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.UP, KEYBOARD_VALUES.HOME, KEYBOARD_VALUES.END]
+    if ((props.autocomplete && selectionIndex.value > -1) || keyAutocompleteOut.includes(e.key as typeof keyAutocompleteOut[number])) {
       e.preventDefault()
     }
 
-    if ([KEYBOARD_VALUES.ENTER, KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.EMPTY].includes(e.key)) {
+    const keyMenuOpen = [KEYBOARD_VALUES.ENTER, KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.EMPTY]
+    if (keyMenuOpen.includes(e.key as typeof keyMenuOpen[number])) {
       menu.value = true
     }
 
-    if ([KEYBOARD_VALUES.ESC, KEYBOARD_VALUES.TAB].includes(e.key)) {
+    const keyMenuOut = [KEYBOARD_VALUES.ESC, KEYBOARD_VALUES.TAB]
+    if (keyMenuOut.includes(e.key as typeof keyMenuOut[number])) {
       menu.value = false
     }
 
@@ -551,8 +553,9 @@
       foxyListRef.value?.focus('last')
     }
 
+    const keyAutocompleteEnter = [KEYBOARD_VALUES.ENTER, KEYBOARD_VALUES.TAB]
     if (props.autocomplete) {
-      if (highlightFirst.value && [KEYBOARD_VALUES.ENTER, KEYBOARD_VALUES.TAB].includes(e.key)) {
+      if (highlightFirst.value && keyAutocompleteEnter.includes(e.key as typeof keyAutocompleteEnter[number])) {
         handleSelect(displayItems.value[0] as IInternalListItem)
       }
 
@@ -560,7 +563,8 @@
         foxyListRef.value?.focus('next')
       }
 
-      if ([KEYBOARD_VALUES.BACKSPACE, KEYBOARD_VALUES.DEL].includes(e.key)) {
+      const keyBack = [KEYBOARD_VALUES.BACKSPACE, KEYBOARD_VALUES.DEL]
+      if (keyBack.includes(e.key as typeof keyBack[number])) {
         if (
             !props.multiple &&
             model.value.length > 0 &&
@@ -634,9 +638,13 @@
         model.value = [item as IInternalListItem]
         const index = displayItems.value.indexOf(item)
 
-        IN_BROWSER && window.requestAnimationFrame(() => {
-          index >= 0 && foxyVirtualScrollRef.value?.scrollToIndex(index)
-        })
+        if (IN_BROWSER) {
+          window.requestAnimationFrame(() => {
+            if (index >= 0) {
+              foxyVirtualScrollRef.value?.scrollToIndex(index)
+            }
+          })
+        }
       }
     }
   }
@@ -660,14 +668,14 @@
       foxyTextFieldRef.value?.focus()
     }
   }
-  const handleFocusin = (_e: FocusEvent) => {
+  const handleFocusin = () => {
     isFocused.value = true
 
     setTimeout(() => {
       listHasFocus.value = true
     })
   }
-  const handleFocusout = (_e: FocusEvent) => {
+  const handleFocusout = () => {
     listHasFocus.value = false
   }
   const handleModelUpdate = (v: any) => {
@@ -692,7 +700,7 @@
   const chipSlotProps = (item: IInternalListItem) => {
     return {
       closable: props.closableChips,
-      disabled: item.props.disabled,
+      disabled: item.props?.disabled,
       bgColor: 'rgba(168, 168, 168, 1)',
       color: 'rgb(255, 255, 255)',
       border: true,
@@ -730,7 +738,8 @@
 
     if (val) {
       isSelecting.value = true
-      search.value = props.multiple ? '' : String(model.value.at(-1)?.props.title ?? '')
+	    // @ts-expect-error TODO
+      search.value = props.multiple ? '' : String(model.value?.at(-1)?.props.title ?? '')
       isPristine.value = true
 
       nextTick(() => isSelecting.value = false)
@@ -762,9 +771,13 @@
       const index = displayItems.value.findIndex(
           item => model.value.some((s) => (props.valueComparator ? props.valueComparator(s.value, item.value) : deepEqual(s.value, item.value)))
       )
-      IN_BROWSER && window.requestAnimationFrame(() => {
-        index >= 0 && foxyVirtualScrollRef.value?.scrollToIndex(index)
-      })
+      if (IN_BROWSER) {
+        window.requestAnimationFrame(() => {
+          if (index >= 0) {
+            foxyVirtualScrollRef.value?.scrollToIndex(index)
+          }
+        })
+      }
     }
   })
 

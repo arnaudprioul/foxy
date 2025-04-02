@@ -3,13 +3,6 @@
     setup
 >
   import { FoxyApp } from '@foxy/components'
-
-  import { Story, Variant } from 'histoire'
-
-  const props = defineProps<{
-    story: Story
-    variant?: Variant
-  }>()
 </script>
 
 <template>

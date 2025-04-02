@@ -22,8 +22,8 @@
           :key="index"
       >
         <div
-            :class="sliderFieldTickClasses"
-            :style="sliderFieldTickStyles"
+            :class="sliderFieldTickClasses(tick)"
+            :style="sliderFieldTickStyles(tick)"
         >
           <div
               v-if="tick.label || slots.item || slots[`item.${index}`]"

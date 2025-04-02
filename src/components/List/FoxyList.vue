@@ -15,7 +15,7 @@
       <foxy-list-children
           v-if="items"
           :items="items"
-          :returnObject="returnObject"
+          :return-object="returnObject"
       >
         <template
             v-if="hasChildrenItem"
@@ -102,7 +102,9 @@
     useRounded
   } from '@foxy/composables'
 
-  import { DENSITY, KEYBOARD_VALUES, LINES, OPEN_STRATEGY, SELECT_STRATEGY } from '@foxy/enums'
+  import { DENSITY, LINES, OPEN_STRATEGY, SELECT_STRATEGY } from '@foxy/enums'
+
+  import { KEYBOARD_VALUES } from '@foxy/consts'
 
   import { IListProps } from '@foxy/interfaces'
 
@@ -118,7 +120,7 @@
     selectStrategy: SELECT_STRATEGY.SINGLE_LEAF,
     openStrategy: OPEN_STRATEGY.LIST,
     itemType: 'type',
-    items: [],
+    items: () => [],
     itemTitle: 'title',
     itemValue: 'value',
     itemChildren: 'children',
@@ -127,7 +129,7 @@
     density: DENSITY.DEFAULT
   })
 
-  const emit = defineEmits(['update:selected', 'update:opened', 'click:open', 'click:select'])
+  defineEmits(['update:selected', 'update:opened', 'click:open', 'click:select'])
 
   const { filterProps } = useProps<IListProps>(props)
 
@@ -162,10 +164,10 @@
       focus()
     }
   }
-  const handleFocusIn = (_e: FocusEvent) => {
+  const handleFocusIn = () => {
     isFocused.value = true
   }
-  const handleFocusOut = (_e: FocusEvent) => {
+  const handleFocusOut = () => {
     isFocused.value = false
   }
   const handleKeydown = (e: KeyboardEvent) => {
@@ -185,7 +187,7 @@
 
     e.preventDefault()
   }
-  const handleMouseDown = (_e: MouseEvent) => {
+  const handleMouseDown = () => {
     isFocused.value = true
   }
   const focus = (location?: TFocusLocation) => {

@@ -47,7 +47,7 @@
 
   const props = withDefaults(defineProps<IBtnToggleProps>(), { tag: 'div', items: () => [], density: DENSITY.DEFAULT })
 
-  const emits = defineEmits(['update:modelValue'])
+  defineEmits(['update:modelValue'])
 
   const { filterProps } = useProps<IBtnToggleProps>(props)
 

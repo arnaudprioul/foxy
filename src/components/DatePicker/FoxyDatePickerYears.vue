@@ -35,7 +35,9 @@
   const { filterProps } = useProps<IDatePickerYearsProps>(props)
 
   const adapter = useDate()
-  const model = useVModel(props, 'year', adapter.getYear(adapter.date()), (v) => int(v))
+  const model = useVModel(props, 'year', adapter.getYear(adapter.date()), (v) => {
+		return int(v || 0)
+  })
 
   const years = computed(() => {
     const year = adapter.getYear(adapter.date())
@@ -55,7 +57,7 @@
 
     date = adapter.setYear(date, min)
 
-    return createRange(max - min + 1, min).map(i => {
+    return createRange(max - min + 1, min).map((i) => {
       const text = adapter.format(date, 'year')
       date = adapter.setYear(date, adapter.getYear(date) + 1)
 
@@ -72,7 +74,7 @@
 
   const yearRef = templateRef()
 
-  const btnProps = (year, i) => {
+  const btnProps = (year: {text: string, value: number}) => {
     return {
       ref: model.value === year.value ? yearRef : undefined,
       active: model.value === year.value,

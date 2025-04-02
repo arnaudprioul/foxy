@@ -119,7 +119,7 @@
   const { ssrBootStyles } = useSsrBoot()
   const { scopeId } = useScopeId()
 
-  const isActive = useVModel(props, 'modelValue', null, v => !!v)
+  const isActive = useVModel(props, 'modelValue', false, v => !!v)
   const rootEl = ref<HTMLElement>()
   const isHovering = shallowRef(false)
 
@@ -178,14 +178,13 @@
 
   const { layoutItemStyles, layoutItemScrimStyles, layoutId } = useLayoutItem({
     id: props.name,
-    order: computed(() => int(props.order as string || getUid() as string)),
+    order: computed(() => int(props.order as string || getUid().toString() as string)),
     position: location,
     layoutSize,
     elementSize: width,
     active: computed(() => isActive.value || isDragging.value) as ComputedRef<boolean>,
     disableTransitions: computed(() => isDragging.value),
     absolute: computed(() =>
-        // eslint-disable-next-line @typescript-eslint/no-use-before-define
         props.absolute || (isSticky.value && typeof isStuck.value !== 'string')
     )
   })

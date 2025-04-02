@@ -25,7 +25,7 @@
     "resolveJsonModule": true,
     "noEmit": false,
     "jsx": "preserve",
-    "baseUrl": "",
+    "baseUrl": ".",
     "declaration": true,
     "emitDeclarationOnly": true,
     "declarationMap": true,
@@ -36,31 +36,23 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@foxy": [
-        "src"
+        "./src"
       ],
       "@foxy/*": [
-        "src/*"
-      ],
-      "@stories": [
-        "stories"
-      ],
-      "@stories/*": [
-        "stories/*"
+        "./src/*"
       ]
     }
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.vue",
-    "stories/**/*.ts",
-    "stories/**/*.vue"
+    "src/**/*.vue"
   ],
   "exclude": [
-    "./plugins/**/*",
-    "./typings/**/*",
-    "./dist/**/*"
-    // This is what fixed it!
+    ".history",
+    "dist/**/*",
+    "src/**/*.cy.ts",
+    "node_modules"
   ],
   "references": [
     {

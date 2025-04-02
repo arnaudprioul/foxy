@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "@cy": [
+        "./cypress/"
+      ],
+      "@cy/*": [
+        "./cypress/*"
+      ]
+    }
+  },
+  "include": [
+    "node_modules/cypress/types/cypress-global-vars.d.ts"
+  ],
+  "references": [
+    {
+      "path": "../tsconfig.json"
+    }
+  ]
+}
