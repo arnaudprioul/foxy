@@ -33,26 +33,32 @@
     "dev": "npm run story:dev && npm run server:dev",
     "build": "npm run server:build && npm run story:build",
     "preview": "npm run story:preview && npm run server:preview",
+
     "story:dev": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview",
+
     "server:dev": "vite",
     "server:build": "unbuild",
     "server:preview": "vite preview",
+
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
+
     "type:build": "vue-tsc --build --force",
     "type:dev": "vue-tsc --watch --noEmit --skipLibCheck",
+
     "lint:fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+
     "test:unit": "vitest",
     "test:e2e": "cypress",
     "test:open": "cypress open",
+
     "clean": "rm -rf dist node_modules package-lock.json"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
-    "shiki": "^3.2.1",
     "vue": "^3.5.13",
     "vue-i18n": "^11.1.2",
     "vue-router": "^4.5.0"
@@ -61,6 +67,7 @@
     "@histoire/plugin-vue": "^1.0.0-alpha.2",
     "@types/jest": "^29.5.14",
     "@vitejs/plugin-vue": "^5.2.3",
+    "@vue/test-utils": "^2.4.6",
     "cypress": "^14.2.1",
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
@@ -73,6 +80,8 @@
     "markdown-it-deflist": "^3.0.0",
     "markdown-it-footnote": "^4.0.0",
     "sass": "^1.86.0",
+    "shiki": "^3.2.1",
+    "ts-transformer-keys": "^0.4.4",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.28.0",
     "unbuild": "^3.5.0",

@@ -4,10 +4,6 @@
     "allowUnreachableCode": false,
     "noImplicitReturns": true,
     "noImplicitAny": true,
-    "typeRoots": [
-      "./typings"
-    ],
-    "outFile": "./dist/framework.js",
     "allowJs": true,
     "target": "ES2020",
     "useDefineForClassFields": true,
@@ -41,17 +37,22 @@
       "@foxy/*": [
         "./src/*"
       ]
-    }
+    },
+    "types": [
+      "vitest/globals"
+    ]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "node_modules/cypress/types/cypress-global-vars.d.ts"
   ],
   "exclude": [
     ".history",
     "dist/**/*",
     "src/**/*.cy.ts",
+    "src/**/*.spec.ts",
     "node_modules"
   ],
   "references": [
