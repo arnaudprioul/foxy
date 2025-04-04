@@ -12,10 +12,9 @@
     setup
 >
   import useTitle from '@stories/composables/title.composable'
-
   import { alignList } from '@stories/const/align.const'
-
   import { TTitleProp } from '@stories/types/title.type'
+  
   import { Ref, ref } from 'vue'
 
   const props = defineProps<{

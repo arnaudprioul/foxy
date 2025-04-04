@@ -1,13 +1,19 @@
 {
   "compilerOptions": {
     "paths": {
+      "@foxy": [
+        "../src/"
+      ],
+      "@foxy/*": [
+        "../src/*"
+      ],
       "@stories": [
-        "./stories/"
+        "../stories/"
       ],
       "@stories/*": [
-        "./stories/*"
+        "../stories/*"
       ]
-    }
+    },
   },
   "references": [
     {

@@ -1,6 +1,5 @@
 <template>
 	<Story
-			:init-state="initState"
 			group="components"
 			title="Containment/App Bar"
 	>

@@ -68,6 +68,10 @@ export function getTargetActivator<T extends 'parent' | string | Element | Compo
         return el as HTMLElement
     }
 
+    if (selector === 'cursor') {
+        return document.querySelector('body') as HTMLElement
+    }
+
     if (typeof selector === 'string') {
         // Selector
         return document.querySelector(selector) as HTMLElement

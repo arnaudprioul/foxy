@@ -3,9 +3,13 @@
 			:id="id"
 			ref="foxyOverlayRef"
 			v-model="isActive"
+			:activator="activator"
 			:activator-props="activatorProps"
 			:class="menuClasses"
+			:open-on-click="openOnClick"
+			:open-on-context-menu="openOnContextMenu"
 			:style="menuStyles"
+			:target="target"
 			absolute
 			role="menu"
 			v-bind="{...overlayProps, ...scopeId}"
@@ -39,7 +43,10 @@
 							/>
 							<foxy-menu
 									v-else
-									v-bind="{...item, ...overlayProps, offset:[8, 8]}"
+									:offset="[8,8]"
+									:open-on-context-menu="false"
+									open-on-click
+									v-bind="{...item, ...overlayProps}"
 							>
 								<template #activator="{props}">
 									<foxy-list-item
@@ -61,7 +68,14 @@
 		lang="ts"
 		setup
 >
-	import { FoxyListGroup, FoxyListSubheader, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
+	import {
+		FoxyList,
+		FoxyListGroup,
+		FoxyListItem,
+		FoxyListSubheader,
+		FoxyOverlay,
+		FoxyTranslateScale
+	} from '@foxy/components'
 
 	import { useProps, useScopeId, useVModel } from '@foxy/composables'
 
@@ -90,7 +104,7 @@
 		transition: () => ({component: FoxyTranslateScale}) as unknown as TTransitionProps
 	})
 
-	defineEmits(['update:modelValue'])
+	defineEmits(['update:modelValue', 'contextmenu'])
 
 	const {filterProps} = useProps<IMenuProps>(props)
 
@@ -203,7 +217,9 @@
 	})
 
 	const overlayProps = computed(() => {
-		return foxyOverlayRef.value?.filterProps(props, ['activatorProps', 'id', 'class', 'style', 'modelValue', 'absolute'])
+		console.log(foxyOverlayRef.value?.filterProps(props, ['activatorProps', 'id', 'class', 'style', 'role', 'modelValue', 'absolute', 'activator', 'target', 'openOnClick', 'openOnContextMenu']))
+
+		return foxyOverlayRef.value?.filterProps(props, ['activatorProps', 'id', 'class', 'style', 'role', 'modelValue', 'absolute', 'activator', 'target', 'openOnClick', 'openOnContextMenu'])
 	})
 
 	const hasChilds = (item: IItemProps) => {

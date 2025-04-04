@@ -6,7 +6,7 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container fullscreen>
+        <foxy-container>
           <foxy-row
               :align-content="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
@@ -41,6 +41,32 @@
         />
       </template>
     </Variant>
+	  <Variant title="Contextual">
+		  <template #default>
+			  <foxy-container>
+				  <foxy-row
+						  :align-content="ALIGN.CENTER"
+						  :justify="JUSTIFY.CENTER"
+				  >
+					  <foxy-col cols="auto">
+						  <foxy-menu
+								  activator="cursor"
+								  target="cursor"
+								  :open-on-click="false"
+								  open-on-context-menu
+								  v-bind="state"
+						  />
+					  </foxy-col>
+				  </foxy-row>
+			  </foxy-container>
+		  </template>
+		  <template #controls>
+			  <hst-location
+					  v-model="state.location"
+					  title="Location"
+			  />
+		  </template>
+	  </Variant>
   </Story>
 </template>
 
@@ -55,10 +81,11 @@
   import { IMenuProps } from '@foxy/interfaces'
 
   import { HstLocation } from '@stories/components/controls'
+  import { logEvent } from "histoire/client"
 
   import { reactive } from 'vue'
 
-  const state: IMenuProps = reactive({
+  const state: Partial<IMenuProps> = reactive({
     items: [
       {
         title: 'Management', prependIcon: 'mdi-account-multiple-outline', items: [

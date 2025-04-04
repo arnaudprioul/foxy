@@ -96,7 +96,7 @@
 		transition: () => ({component: FoxyFade}) as unknown as TTransitionProps
 	})
 
-	const emits = defineEmits(['click:outside', 'update:modelValue', 'after-leave', 'keydown'])
+	const emits = defineEmits(['click:outside', 'update:modelValue', 'afterEnter', 'afterLeave', 'keydown'])
 
 	const {filterProps} = useProps<IOverlayProps>(props)
 
@@ -242,7 +242,7 @@
 
 	const handleAfterLeave = () => {
 		onAfterLeave()
-		emits('after-leave')
+		emits('afterLeave')
 	}
 
 	// SCRIM

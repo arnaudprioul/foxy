@@ -4,12 +4,13 @@ import { ComponentPublicInstance } from 'vue'
 
 export interface IActivatorProps extends IDelayProps {
   target?: 'parent' | 'cursor' | (string & {}) | Element | ComponentPublicInstance | [x: number, y: number] | undefined
-  activator?: 'parent' | (string & {}) | Element | ComponentPublicInstance | undefined
+  activator?: 'parent' | 'cursor' | (string & {}) | Element | ComponentPublicInstance
   activatorProps?: any
 
-  openOnClick?: boolean | undefined
+  openOnClick?: boolean
+  openOnContextMenu?: boolean
   openOnHover?: boolean
-  openOnFocus?: boolean | undefined
+  openOnFocus?: boolean
 
   closeOnContentClick?: boolean
 }
