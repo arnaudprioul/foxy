@@ -4,7 +4,7 @@
 			:style="codeStyles"
 	>
 		<div
-				v-if="label || hasSlot('label')"
+				v-if="label || slots.label"
 				class="foxy-code__header"
 		>
 			<div class="foxy-code__label">
@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="foxy-code__code">
-			<div v-if="copy || hasSlot('actions')" class="foxy-code__actions">
+			<div v-if="copy || slots.actions" class="foxy-code__actions">
 				<slot name="actions">
 					<foxy-tooltip>
 						<template #activator="props">
@@ -57,8 +57,7 @@
 		useMargin,
 		usePadding,
 		useProps,
-		useRounded,
-		useSlots
+		useRounded
 	} from '@foxy/composables'
 
 	import { COPY_STATUS, DENSITY } from '@foxy/enums'
@@ -66,7 +65,7 @@
 	import { ICodeProps } from '@foxy/interfaces'
 	import { TCopyStatus } from "@foxy/types"
 
-	import { computed, onBeforeMount, ref, StyleValue, toRef } from 'vue'
+	import { computed, onBeforeMount, ref, StyleValue, toRef, useSlots } from 'vue'
 
 	const props = withDefaults(defineProps<ICodeProps>(), {
 		density: DENSITY.DEFAULT,
@@ -87,7 +86,7 @@
 	const {dimensionStyles} = useDimension(props)
 	const {elevationClasses} = useElevation(props)
 	const {roundedClasses, roundedStyles} = useRounded(props)
-	const {hasSlot} = useSlots()
+	const slots = useSlots()
 
 	const copying = ref(false)
 	const copyTextValue = ref('')

@@ -26,23 +26,33 @@ export * from './Carousel/carousel-item.type'
 
 export * from './Code/code.type'
 
+export * from './Charts/chart.type'
+
 export * from './Checkbox/checkbox.type'
 export * from './Checkbox/checkbox-btn.type'
 
 export * from './Chip/chip.type'
 export * from './Chip/chip-group.type'
 
-export * from './Commons/adjacent.type'
+export * from './ColorPicker/color-picker.type'
+export * from './ColorPicker/color-picker-canvas.type'
+export * from './ColorPicker/color-picker-preview.type'
+export * from './ColorPicker/color-picker-edit.type'
+export * from './ColorPicker/color-picker-swatches.type'
+
+export * from './Commons/activator.type'
+export * from './Commons/axis.type'
 export * from './Commons/align.type'
 export * from './Commons/anchor.type'
 export * from './Commons/border.type'
 export * from './Commons/color.type'
+export * from './Commons/calendar.type'
 export * from './Commons/commons.type'
+export * from './Commons/date.type'
 export * from './Commons/density.type'
 export * from './Commons/dimension.type'
 export * from './Commons/direction.type'
 export * from './Commons/display.type'
-export * from './Commons/drag.type'
 export * from './Commons/event.type'
 export * from './Commons/filters.type'
 export * from './Commons/forwardRefs.type'
@@ -63,6 +73,8 @@ export * from './Commons/touch.type'
 export * from './Commons/v-model.type'
 export * from './Commons/validation.type'
 
+export * from './ContextualMenu/contextual-menu.type'
+
 export * from './Counter/counter.type'
 
 export * from './DataList/data-list.type'
@@ -79,6 +91,15 @@ export * from './DataTable/data-table-headers-cell.type'
 export * from './DataTable/data-table-headers-cell-mobile.type'
 export * from './DataTable/data-table-row.type'
 export * from './DataTable/data-table-rows.type'
+
+export * from './DatePicker/date-picker.type'
+export * from './DatePicker/date-picker-controls.type'
+export * from './DatePicker/date-picker-header.type'
+export * from './DatePicker/date-picker-month.type'
+export * from './DatePicker/date-picker-months.type'
+export * from './DatePicker/date-picker-years.type'
+
+export * from './DatePickerField/date-picker-field.type'
 
 export * from './Dialog/dialog.type'
 export * from './Dialog/dialog-confirmation.type'
@@ -137,7 +158,12 @@ export * from './Menu/menu.type'
 
 export * from './Messages/messages.type'
 
+export * from './NumberField/number-field.type'
+
+export * from './OtpInputField/otp-input-field.type'
+
 export * from './Overlay/overlay.type'
+export * from './Overlay/overlay-scrim.type'
 
 export * from './PageBuilder/editor.type'
 
@@ -145,6 +171,11 @@ export * from './Pagination/pagination.type'
 
 export * from './Parallax/parallax.type'
 export * from './Parallax/parallax-element.type'
+
+export * from './PasswordField/password-field.type'
+
+export * from './Picker/picker.type'
+export * from './Picker/picker-title.type'
 
 export * from './Progress/progress.type'
 export * from './Progress/progress-circular.type'
