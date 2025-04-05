@@ -1,9 +1,9 @@
 <template>
 	<foxy-menu
 			ref="foxyMenuRef"
+			v-model:model-value="modelValue"
 			:class="contextualMenuClasses"
 			:style="contextualMenuStyles"
-			v-model:model-value="modelValue"
 			:open-on-click="false"
 			activator="cursor"
 			open-on-context-menu
