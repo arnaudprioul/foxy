@@ -3,6 +3,6 @@ import FoxyAvatar from './FoxyAvatar.vue'
 describe('<FoxyAvatar />', () => {
   it('renders', () => {
     // see: https://on.cypress.io/mounting-vue
-    cy.mount(FoxyAvatar)
+    cy.mount(h(FoxyAvatar), {})
   })
 })

@@ -3,6 +3,6 @@ import FoxyExpansionPanels from './FoxyExpansionPanels.vue'
 describe('<FoxyExpansionPanels />', () => {
   it('renders', () => {
     // see: https://on.cypress.io/mounting-vue
-    cy.mount(FoxyExpansionPanels)
+    cy.mount(h(FoxyExpansionPanels), {})
   })
 })

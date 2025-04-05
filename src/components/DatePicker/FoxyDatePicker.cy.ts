@@ -3,6 +3,6 @@ import FoxyDatePicker from './FoxyDatePicker.vue'
 describe('<FoxyDatePicker />', () => {
   it('renders', () => {
     // see: https://on.cypress.io/mounting-vue
-    cy.mount(FoxyDatePicker)
+    cy.mount(h(FoxyDatePicker), {})
   })
 })

@@ -3,6 +3,6 @@ import FoxyForm from './FoxyForm.vue'
 describe('<FoxyForm />', () => {
   it('renders', () => {
     // see: https://on.cypress.io/mounting-vue
-    cy.mount(FoxyForm)
+    cy.mount(h(FoxyForm), {})
   })
 })

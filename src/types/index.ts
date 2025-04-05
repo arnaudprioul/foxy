@@ -71,6 +71,8 @@ export * from './Commons/touch.type'
 export * from './Commons/v-model.type'
 export * from './Commons/validation.type'
 
+export * from './ContextualMenu/contextual-menu.type'
+
 export * from './Counter/counter.type'
 
 export * from './DataList/data-list.type'

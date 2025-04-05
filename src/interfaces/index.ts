@@ -89,6 +89,8 @@ export * from './Commons/touch.interface'
 export * from './Commons/validation.interface'
 export * from './Commons/virtual.interface'
 
+export * from './ContextualMenu/contextual-menu.interface'
+
 export * from './Counter/counter.interface'
 
 export * from './DataList/data-list.interface'

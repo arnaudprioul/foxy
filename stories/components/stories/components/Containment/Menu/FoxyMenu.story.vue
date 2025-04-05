@@ -49,13 +49,7 @@
 						  :justify="JUSTIFY.CENTER"
 				  >
 					  <foxy-col cols="auto">
-						  <foxy-menu
-								  activator="cursor"
-								  target="cursor"
-								  :open-on-click="false"
-								  open-on-context-menu
-								  v-bind="state"
-						  />
+						  <foxy-contextual-menu v-bind="state"/>
 					  </foxy-col>
 				  </foxy-row>
 			  </foxy-container>
@@ -74,7 +68,7 @@
     lang="ts"
     setup
 >
-  import { FoxyBtn, FoxyCol, FoxyContainer, FoxyMenu, FoxyRow } from '@foxy/components'
+	import { FoxyBtn, FoxyCol, FoxyContainer, FoxyContextualMenu, FoxyMenu, FoxyRow } from '@foxy/components'
 
   import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxy/enums'
 

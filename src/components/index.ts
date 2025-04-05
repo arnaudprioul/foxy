@@ -26,6 +26,8 @@ export * from './ColorPicker'
 
 export * from './ColorPickerField'
 
+export * from './ContextualMenu'
+
 export * from './Counter'
 
 export * from './DataList'
