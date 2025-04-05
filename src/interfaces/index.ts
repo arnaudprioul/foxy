@@ -3,6 +3,7 @@ export * from './Alert/alert.interface'
 export * from './App/app-bar.interface'
 
 export * from './Avatar/avatar.interface'
+export * from './Avatar/avatar-group.interface'
 
 export * from './Badge/badge.interface'
 

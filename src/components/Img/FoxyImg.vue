@@ -138,16 +138,16 @@
           src: props.src.src,
           srcset: props.srcset || props.src.srcset,
           lazySrc: props.lazySrc || props.src.lazySrc,
-          aspect: Number(props.aspectRatio || props.src.aspect || 0)
+          aspectRatio: Number(props.aspectRatio || props.src.aspectRatio || 0)
         } : {
           src: props.src,
           srcset: props.srcset,
           lazySrc: props.lazySrc,
-          aspect: Number(props.aspectRatio || 0)
+			    aspectRatio: Number(props.aspectRatio || 0)
         }
   })
   const aspectRatio = computed(() => {
-    return normalisedSrc.value.aspect || naturalWidth.value! / naturalHeight.value! || 0
+    return normalisedSrc.value.aspectRatio || naturalWidth.value! / naturalHeight.value! || 0
   })
 
   const responsiveProps = pick(props, ['aspectRatio', 'contentClass', 'inline', 'height', 'maxHeight', 'maxWidth', 'minHeight', 'minWidth', 'width', 'class', 'style'])

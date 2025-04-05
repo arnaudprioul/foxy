@@ -1,5 +1,6 @@
 <template>
 	<Story
+			auto-props-disabled
 			group="components"
 			title="Containment/App Bar"
 	>

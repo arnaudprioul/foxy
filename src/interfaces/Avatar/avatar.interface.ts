@@ -8,12 +8,12 @@ import {
   IRoundedProps,
   ISizeProps,
   ITagProps,
-  IStatusProps
+  IStatusProps, ISrcObject
 } from '@foxy/interfaces'
 
 export interface IAvatarProps extends ICommonsComponentProps, IDensityProps, IRoundedProps, ISizeProps, ITagProps, IColorProps, IPaddingProps, IMarginProps, IBorderProps, IStatusProps {
   start?: boolean,
   end?: boolean,
-  image?: string,
+  image?: string | ISrcObject,
   text?: string,
 }
