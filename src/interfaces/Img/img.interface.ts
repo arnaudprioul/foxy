@@ -27,6 +27,7 @@ export interface ISrcObject {
   src?: string
   srcset?: string
   lazySrc?: string
-  aspect: number
+  aspectRatio: number
+  alt?: string
 }
 
