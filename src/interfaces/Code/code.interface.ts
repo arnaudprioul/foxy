@@ -20,4 +20,5 @@ export interface ICodeProps extends ICommonsComponentProps, IColorProps, IBorder
     copyFailedText?: string
     indent?: number
     label?: string
+    useHlJs?: boolean
 }

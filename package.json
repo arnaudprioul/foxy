@@ -33,28 +33,21 @@
     "dev": "npm run story:dev && npm run server:dev",
     "build": "npm run server:build && npm run story:build",
     "preview": "npm run story:preview && npm run server:preview",
-
     "story:dev": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview",
-
     "server:dev": "vite",
     "server:build": "unbuild",
     "server:preview": "vite preview",
-
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-
     "type:build": "vue-tsc --build --force",
     "type:dev": "vue-tsc --watch --noEmit --skipLibCheck",
-
     "lint:fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
-
     "test:unit": "vitest",
     "test:e2e": "cypress",
     "test:open": "cypress open",
-
     "clean": "rm -rf dist node_modules package-lock.json"
   },
   "dependencies": {
@@ -90,5 +83,8 @@
     "vitepress": "^1.6.3",
     "vitest": "^3.1.1",
     "vue-tsc": "^2.2.8"
+  },
+  "optionalDependencies": {
+    "highlight.js": "^11.11.1"
   }
 }

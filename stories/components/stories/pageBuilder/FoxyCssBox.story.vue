@@ -1,26 +1,26 @@
 <template>
-  <Story
-      :init-state="initState"
-      group="pageBuilder"
-      title="CssBox"
-  >
-    <template #default="{ state }">
-      <foxy-css-box v-bind="state.props"/>
-    </template>
-  </Story>
+	<Story
+			auto-props-disabled
+			group="pageBuilder"
+			title="CssBox"
+	>
+		<Variant title="Default">
+			<template #default>
+				<foxy-css-box v-bind="state"/>
+			</template>
+		</Variant>
+	</Story>
 </template>
 
 <script
-    lang="ts"
-    setup
+		lang="ts"
+		setup
 >
-  import { FoxyCssBox } from '@foxy/components'
+	import { FoxyCssBox } from '@foxy/components'
+	import { ICssBoxProps } from "@foxy/interfaces"
+	import { reactive } from "vue"
 
-  function initState () {
-    return {
-      props: {}
-    }
-  }
+	const state: Partial<ICssBoxProps> = reactive({})
 </script>
 <docs lang="md">
 Css Box Documentation
