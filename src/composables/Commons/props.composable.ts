@@ -2,23 +2,18 @@ import { IFilterPropsOptions } from "@foxy/interfaces"
 
 import { pick } from "@foxy/utils"
 
-import { ComponentPropsOptions, ExtractPropTypes } from "vue"
+import { ExtractPropTypes } from "vue"
 
-export function useProps<PropsOptions extends Readonly<ComponentPropsOptions>, Props = ExtractPropTypes<PropsOptions>> (props: PropsOptions): IFilterPropsOptions<PropsOptions> {
-    const filterProps = <
-        T extends Partial<Props>,
-        U extends Extract<keyof T, string>
-    > (properties: T, excludes: string[] = ['class', 'style', 'id']): Partial<Pick<T, U>> => {
-        const propKeys = Object.keys(props)
-            .filter((key) => {
-                return !excludes.includes(key)
-            })
+export function useProps<T extends Record<string, any>>(props: T): IFilterPropsOptions<T> {
+    const defaultExcludes = ['class', 'style', 'id']
 
-        return pick(properties, propKeys)
+    const filterProps = <U extends Partial<ExtractPropTypes<T>>>(
+        properties: U,
+        excludes: string[] = defaultExcludes
+    ) => {
+        const propKeys = Object.keys(props).filter(key => !excludes.includes(key)) as Extract<keyof U, string>[]
+        return pick(properties, propKeys) as Partial<U>
     }
 
-    return {
-        filterProps,
-        props
-    }
+    return { filterProps, props }
 }

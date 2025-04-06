@@ -1,0 +1,1 @@
+export { default as FoxyChartLine } from './FoxyChartLine.vue'

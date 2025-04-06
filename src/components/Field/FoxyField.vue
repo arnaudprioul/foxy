@@ -3,7 +3,8 @@
       :class="fieldClasses"
       :style="fieldStyles"
       v-bind="$attrs"
-      @click="handleClick">
+      @click="handleClick"
+  >
     <div class="foxy-field__overlay"/>
 
     <template v-if="hasLoading">
@@ -22,22 +23,32 @@
       </slot>
     </template>
 
-    <div v-if="hasPrependInner" key="prependInner" class="foxy-field__prepend-inner" @click="handleClickPrependInner">
+    <div
+        v-if="hasPrependInner"
+        key="prependInner"
+        class="foxy-field__prepend-inner"
+        @click="handleClickPrependInner"
+    >
       <slot name="prependInner">
         <foxy-avatar
             v-if="prependInnerAvatar"
             key="prepend-avatar"
             :density="density"
-            :image="prependInnerAvatar"/>
+            :image="prependInnerAvatar"
+        />
         <foxy-icon
             v-if="prependInnerIcon"
             key="prepend-icon"
             :density="density"
-            :icon="prependInnerIcon"/>
+            :icon="prependInnerIcon"
+        />
       </slot>
     </div>
 
-    <div class="foxy-field__field" data-no-activator="">
+    <div
+        class="foxy-field__field"
+        data-no-activator=""
+    >
       <template v-if="hasFloatingLabel">
         <slot name="floatingLabel">
           <foxy-label
@@ -48,7 +59,8 @@
               :style="colorStyles"
               :text="label"
               class="foxy-field__label"
-              floating/>
+              floating
+          />
         </slot>
       </template>
 
@@ -60,11 +72,15 @@
               :required="required"
               :style="colorStyles"
               :text="label"
-              class="foxy-field__label"/>
+              class="foxy-field__label"
+          />
         </slot>
       </template>
 
-      <span v-if="hasPrefix" class="foxy-field__prefix">
+      <span
+          v-if="hasPrefix"
+          class="foxy-field__prefix"
+      >
          <slot name="prefix">
           <span>
             {{ prefix }}
@@ -72,9 +88,15 @@
          </slot>
       </span>
 
-      <slot name="default" v-bind="slotProps"/>
+      <slot
+          name="default"
+          v-bind="slotProps"
+      />
 
-      <span v-if="hasSuffix" class="foxy-field__suffix">
+      <span
+          v-if="hasSuffix"
+          class="foxy-field__suffix"
+      >
         <slot name="suffix">
           <span>
             {{ suffix }}
@@ -83,32 +105,45 @@
       </span>
     </div>
 
-    <foxy-expand-x v-if="hasClear" key="clear">
+    <foxy-expand-x
+        v-if="hasClear"
+        key="clear"
+    >
       <div
           v-show="props.dirty"
           class="foxy-field__clearable"
-          @mousedown="handleMousedownClear">
+          @mousedown="handleMousedownClear"
+      >
         <slot name="clear">
-          <foxy-icon :icon="props.clearIcon"
-                     @blur="handleBlur"
-                     @focus="handleFocus"
-                     @keydown="handleKeydownClear"/>
+          <foxy-icon
+              :icon="props.clearIcon"
+              @blur="handleBlur"
+              @focus="handleFocus"
+              @keydown="handleKeydownClear"
+          />
         </slot>
       </div>
     </foxy-expand-x>
 
-    <div v-if="hasAppendInner" key="appendInner" class="foxy-field__append-inner" @click="handleClickAppendInner">
+    <div
+        v-if="hasAppendInner"
+        key="appendInner"
+        class="foxy-field__append-inner"
+        @click="handleClickAppendInner"
+    >
       <slot name="appendInner">
         <foxy-avatar
             v-if="appendInnerAvatar"
             key="append-avatar"
             :density="density"
-            :image="appendInnerAvatar"/>
+            :image="appendInnerAvatar"
+        />
         <foxy-icon
             v-if="appendInnerIcon"
             key="append-icon"
             :density="density"
-            :icon="appendInnerIcon"/>
+            :icon="appendInnerIcon"
+        />
       </slot>
     </div>
 
@@ -120,198 +155,217 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import {FoxyAvatar, FoxyExpandX, FoxyIcon, FoxyLabel, FoxyProgress} from '@foxy/components'
+<script
+    lang="ts"
+    setup
+>
+  import { FoxyAvatar, FoxyExpandX, FoxyIcon, FoxyLabel, FoxyProgress } from '@foxy/components'
 
-import { useAdjacentInner, useBothColor, useDensity, useFocus, useLoader, useProps, useSlots } from '@foxy/composables'
+  import {
+    useAdjacentInner,
+    useBothColor,
+    useDensity,
+    useFocus,
+    useLoader,
+    useProps,
+    useRtl
+  } from '@foxy/composables'
 
-import {EASING, KEYBOARD_VALUES, PROGRESS_TYPE} from '@foxy/enums'
+  import { KEYBOARD_VALUES } from '@foxy/consts'
 
-import { IFieldProps } from '@foxy/interfaces'
-import { TFoxyLabel } from "@foxy/types"
+  import { EASING, PROGRESS_TYPE } from '@foxy/enums'
 
-import {animate, convertToUnit, getUid, nullifyTransforms} from '@foxy/utils'
+  import { IFieldProps } from '@foxy/interfaces'
 
-import {computed, ref, StyleValue, watch} from 'vue'
+  import { TFoxyLabel } from "@foxy/types"
 
-const props = withDefaults(defineProps<IFieldProps>(), {})
+  import { animate, convertToUnit, getUid, nullifyTransforms } from '@foxy/utils'
 
-const emits = defineEmits(['update:focused', 'update:modelValue', 'click:appendInner', 'click:prependInner', 'click:clear'])
+  import { computed, ref, StyleValue, watch, useSlots } from 'vue'
 
-const {filterProps} = useProps<IFieldProps>(props)
+  const props = withDefaults(defineProps<IFieldProps>(), {})
 
-const {loaderClasses} = useLoader(props)
-const {densityClasses} = useDensity(props)
+  defineEmits(['update:focused', 'update:modelValue', 'click:appendInner', 'click:prependInner', 'click:clear'])
 
-const {focusClasses, isFocused, onFocus: handleFocus, onBlur: handleBlur} = useFocus(props)
-const {
-  hasAppendInner,
-  onClickAppendInner: handleClickAppendInner,
-  onClickPrependInner: handleClickPrependInner,
-  clickClear: handleClickClear,
-  hasPrependInner,
-  hasClear
-} = useAdjacentInner(props)
+  const { filterProps } = useProps<IFieldProps>(props)
 
-const uid = getUid()
-const id = computed(() => props.id || `input-${uid}`)
-const messagesId = computed(() => `${id.value}-messages`)
+  const { loaderClasses } = useLoader(props)
+  const { densityClasses } = useDensity(props)
+  const { rtlClasses } = useRtl()
 
-const foxyLabelRef = ref<TFoxyLabel>()
-const foxyFloatingLabelRef = ref<TFoxyLabel>()
-const controlRef = ref<HTMLElement>()
+  const { focusClasses, isFocused, onFocus: handleFocus, onBlur: handleBlur } = useFocus(props)
+  const {
+    hasAppendInner,
+    onClickAppendInner: handleClickAppendInner,
+    onClickPrependInner: handleClickPrependInner,
+    clickClear: handleClickClear,
+    hasPrependInner,
+    hasClear
+  } = useAdjacentInner(props)
 
-const currentColor = computed(() => {
-  return props.error || props.disabled ? undefined
-      : isActive.value && isFocused.value ? props.activeColor
-          : props.color
-})
-const currentBgColor = computed(() => {
-  return props.error || props.disabled ? undefined
-      : isActive.value && isFocused.value ? props.activeBgColor
-          : props.bgColor
-})
+  const uid = getUid()
+  const id = computed(() => props.id || `input-${uid}`)
+  const messagesId = computed(() => `${id.value}-messages`)
 
-const {colorStyles} = useBothColor(currentBgColor, currentColor)
+  const foxyLabelRef = ref<TFoxyLabel>()
+  const foxyFloatingLabelRef = ref<TFoxyLabel>()
+  const controlRef = ref<HTMLElement>()
 
-const handleClick = (e: MouseEvent) => {
-  if (e.target !== document.activeElement) {
+  const currentColor = computed(() => {
+    return props.error || props.disabled ? undefined
+        : isActive.value && isFocused.value && props.activeColor ? props.activeColor
+            : props.color
+  })
+  const currentBgColor = computed(() => {
+    return props.error || props.disabled ? undefined
+        : isActive.value && isFocused.value && props.activeBgColor ? props.activeBgColor
+            : props.bgColor
+  })
+
+  const { colorStyles } = useBothColor(currentBgColor, currentColor)
+
+  const handleClick = (e: MouseEvent) => {
+    if (e.target !== document.activeElement) {
+      e.preventDefault()
+    }
+  }
+  const handleKeydownClear = (e: KeyboardEvent) => {
+    if (e.key !== KEYBOARD_VALUES.ENTER && e.key !== ' ') return
+
     e.preventDefault()
+    e.stopPropagation()
+
+    handleClickClear(new MouseEvent('click'))
   }
-}
-const handleKeydownClear = (e: KeyboardEvent) => {
-  if (e.key !== KEYBOARD_VALUES.ENTER && e.key !== ' ') return
+  const handleMousedownClear = (e: MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
 
-  e.preventDefault()
-  e.stopPropagation()
-
-  handleClickClear(new MouseEvent('click'))
-}
-const handleMousedownClear = (e: MouseEvent) => {
-  e.preventDefault()
-  e.stopPropagation()
-
-  handleClickClear(e)
-}
-
-const slotProps = computed(() => {
-  return {
-    class: 'foxy-field__input',
-    id: id.value,
-    'aria-describedby': messagesId.value,
-    isActive: isActive.value,
-    isFocused: isFocused.value,
-    controlRef: controlRef.value,
-    onBlur: handleBlur,
-    onFocus: handleFocus,
+    handleClickClear(e)
   }
-})
 
-const {hasSlot} = useSlots()
-const hasFloatingLabel = computed(() => {
-  return !props.singleLine && !!(props.label || hasSlot('floatingLabel'))
-})
-const hasLabel = computed(() => {
-  return !props.singleLine && !!(props.label || hasSlot('label'))
-})
-const hasLoading = computed(() => {
-  return hasSlot('loader') || !!props.loading
-})
-const hasPrefix = computed(() => {
-  return !!props.prefix
-})
-const hasSuffix = computed(() => {
-  return !!props.suffix
-})
+  const slotProps = computed(() => {
+    return {
+      class: 'foxy-field__input',
+      id: id.value,
+      'aria-describedby': messagesId.value,
+      isActive: isActive.value,
+      isFocused: isFocused.value,
+      controlRef: controlRef.value,
+      onBlur: handleBlur,
+      onFocus: handleFocus
+    }
+  })
 
-const isActive = computed(() => {
-  return props.dirty || props.active || hasPrefix.value || hasSuffix.value
-})
-watch(isActive, (newVal, oldVal) => {
-  if (hasLabel.value && newVal !== oldVal) {
-    const el: HTMLElement = foxyLabelRef.value!.$el
-    const targetEl: HTMLElement = foxyFloatingLabelRef.value!.$el
+  const slots = useSlots()
+  const hasFloatingLabel = computed(() => {
+    return !props.singleLine && !!(props.label || slots.floatingLabel)
+  })
+  const hasLabel = computed(() => {
+    return !props.singleLine && !!(props.label || slots.label)
+  })
+  const hasLoading = computed(() => {
+    return slots.loader || !!props.loading
+  })
+  const hasPrefix = computed(() => {
+    return !!props.prefix
+  })
+  const hasSuffix = computed(() => {
+    return !!props.suffix
+  })
 
-    requestAnimationFrame(() => {
-      const rect = nullifyTransforms(el)
-      const targetRect = targetEl.getBoundingClientRect()
+  const isActive = computed(() => {
+    return props.dirty || props.active || hasPrefix.value || hasSuffix.value
+  })
+  watch(isActive, (newVal, oldVal) => {
+    if (hasLabel.value && newVal !== oldVal) {
+      const el: HTMLElement = foxyLabelRef.value!.$el
+      const targetEl: HTMLElement = foxyFloatingLabelRef.value!.$el
 
-      const x = targetRect.x - rect.x
-      const y = targetRect.y - rect.y - (rect.height / 2 - targetRect.height / 2)
+      requestAnimationFrame(() => {
+        const rect = nullifyTransforms(el)
+        const targetRect = targetEl.getBoundingClientRect()
 
-      const targetWidth = targetRect.width / 0.75
-      const width = Math.abs(targetWidth - rect.width) > 1
-          ? {maxWidth: convertToUnit(targetWidth)}
-          : undefined
+        const x = targetRect.x - rect.x
+        const y = targetRect.y - rect.y - (rect.height / 2 - targetRect.height / 2)
 
-      const style = getComputedStyle(el)
-      const targetStyle = getComputedStyle(targetEl)
-      const duration = parseFloat(style.transitionDuration) * 1000 || 150
-      const scale = parseFloat(targetStyle.getPropertyValue('--foxy-field__label---font-size'))
-      const color = targetStyle.getPropertyValue('color')
+        const targetWidth = targetRect.width / 0.75
+        const width = Math.abs(targetWidth - rect.width) > 1
+            ? { maxWidth: convertToUnit(targetWidth) }
+            : undefined
 
-      el.style.visibility = 'visible'
-      targetEl.style.visibility = 'hidden'
+        const style = getComputedStyle(el)
+        const targetStyle = getComputedStyle(targetEl)
+        const duration = parseFloat(style.transitionDuration) * 1000 || 150
+        const scale = parseFloat(targetStyle.getPropertyValue('--foxy-field__label---font-size'))
+        const color = targetStyle.getPropertyValue('color')
 
-      animate(el, {
-        transform: `translate(${x}px, ${y}px) scale(${scale})`,
-        color,
-        ...width,
-      }, {
-        duration,
-        easing: EASING.STANDARD,
-        direction: newVal ? 'normal' : 'reverse',
-      }).finished.then(() => {
-        el.style.removeProperty('visibility')
-        targetEl.style.removeProperty('visibility')
+        el.style.visibility = 'visible'
+        targetEl.style.visibility = 'hidden'
+
+        animate(el, {
+          transform: `translate(${x}px, ${y}px) scale(${scale})`,
+          color,
+          ...width
+        }, {
+          duration,
+          easing: EASING.STANDARD,
+          direction: newVal ? 'normal' : 'reverse'
+        }).finished.then(() => {
+          el.style.removeProperty('visibility')
+          targetEl.style.removeProperty('visibility')
+        })
       })
-    })
-  }
-}, {flush: 'post'})
+    }
+  }, { flush: 'post' })
 
-// CLASS & STYLES
+  // CLASS & STYLES
 
-const fieldStyles = computed(() => {
-  return [
-    colorStyles.value,
-    props.style,
-  ] as StyleValue
-})
-const fieldClasses = computed(() => {
-  return [
-    'foxy-field',
-    {
-      'foxy-field--active': isActive.value,
-      'foxy-field--appended': hasAppendInner.value,
-      'foxy-field--center-affix': props.centerAffix,
-      'foxy-field--disabled': props.disabled,
-      'foxy-field--dirty': props.dirty,
-      'foxy-field--error': props.error,
-      'foxy-field--flat': props.flat,
-      'foxy-field--has-background': !!props.bgColor,
-      'foxy-field--persistent-clear': props.persistentClear,
-      'foxy-field--prepended': hasPrependInner.value,
-      'foxy-field--reverse': props.reverse,
-      'foxy-field--single-line': props.singleLine,
-      'foxy-field--no-label': !hasLabel.value,
-      'foxy-text-field--prefixed': props.prefix,
-      'foxy-text-field--suffixed': props.suffix
-    },
-    loaderClasses.value,
-    densityClasses.value,
-    focusClasses.value,
-    props.class,
-  ]
-})
+  const fieldStyles = computed(() => {
+    return [
+      colorStyles.value,
+      props.style
+    ] as StyleValue
+  })
+  const fieldClasses = computed(() => {
+    return [
+      'foxy-field',
+      {
+        'foxy-field--active': isActive.value,
+        'foxy-field--appended': hasAppendInner.value,
+        'foxy-field--center-affix': props.centerAffix,
+        'foxy-field--disabled': props.disabled,
+        'foxy-field--dirty': props.dirty,
+        'foxy-field--error': props.error,
+        'foxy-field--flat': props.flat,
+        'foxy-field--has-background': !!props.bgColor,
+        'foxy-field--persistent-clear': props.persistentClear,
+        'foxy-field--prepended': hasPrependInner.value,
+        'foxy-field--reverse': props.reverse,
+        'foxy-field--single-line': props.singleLine,
+        'foxy-field--no-label': !hasLabel.value,
+        'foxy-text-field--prefixed': props.prefix,
+        'foxy-text-field--suffixed': props.suffix
+      },
+      rtlClasses.value,
+      loaderClasses.value,
+      densityClasses.value,
+      focusClasses.value,
+      props.class
+    ]
+  })
 
-// EXPOSE
+  // EXPOSE
 
-defineExpose({
-	filterProps
-})
+  defineExpose({
+    filterProps
+  })
 </script>
 
-<style lang="scss" scoped>
+<style
+    lang="scss"
+    scoped
+>
 .foxy-field {
   $this: &;
 
@@ -326,6 +380,7 @@ defineExpose({
   flex: 1 0;
   grid-area: control;
   position: relative;
+  padding-inline: var(--foxy-field---padding-start) var(--foxy-field---padding-end);
 
   --foxy-field---padding-start: 16px;
   --foxy-field---padding-end: 16px;
@@ -334,6 +389,8 @@ defineExpose({
 
   --foxy-field__input---padding-top: calc(var(--foxy-field---padding-top, 8px) + calc(var(--foxy-input---padding-top, 16px) + var(--foxy-input---density, 0px)));
   --foxy-field__input---padding-bottom: var(--foxy-field---padding-bottom, 4px);
+  --foxy-field__input---padding-start: var(--foxy-field---padding-bottom, 16px);
+  --foxy-field__input---padding-end: var(--foxy-field---padding-bottom, 16px);
 
   .foxy-chip {
     --foxy-chip---height: 24px;
@@ -349,7 +406,7 @@ defineExpose({
     opacity: 0.7;
     min-height: max(calc(var(--foxy-input__control---height, 56px) + var(--foxy-input---density, 0px)), 1.5rem + var(--foxy-field__input---padding-top) + var(--foxy-field__input---padding-bottom));
     min-width: 0;
-    padding-inline: var(--foxy-field---padding-start) var(--foxy-field---padding-end);
+    padding-inline: var(--foxy-field__input---padding-start) var(--foxy-field__input---padding-end);
     padding-top: var(--foxy-field__input---padding-top);
     padding-bottom: var(--foxy-field__input---padding-bottom);
     position: relative;
@@ -392,11 +449,11 @@ defineExpose({
   }
 
   &__prefix {
-    padding-inline-start: var(--foxy-field---padding-start);
+    padding-inline-start: var(--foxy-field---padding-start, 16px);
   }
 
   &__suffix {
-    padding-inline-end: var(--foxy-field---padding-end);
+    padding-inline-end: var(--foxy-field---padding-end, 16px);
   }
 
   &__field {
@@ -409,7 +466,6 @@ defineExpose({
 
   &__prepend-inner {
     grid-area: prepend-inner;
-    padding-inline-end: var(--foxy-field-padding-after);
   }
 
   &__clearable {
@@ -418,7 +474,6 @@ defineExpose({
 
   &__append-inner {
     grid-area: append-inner;
-    padding-inline-start: var(--foxy-field-padding-after);
   }
 
   &__append-inner,
@@ -426,7 +481,8 @@ defineExpose({
   &__prepend-inner {
     display: flex;
     align-items: flex-start;
-    padding-top: var(--foxy-input-padding-top, 8px);
+    padding-top: var(--foxy-input---padding-top, 8px);
+    padding-inline: var(--foxy-field---padding-start) var(--foxy-field---padding-end);
 
     > .foxy-icon {
       opacity: 0.7;
@@ -445,9 +501,9 @@ defineExpose({
   &__label {
     contain: layout paint;
     display: block;
-    margin-inline-start: var(--foxy-field---padding-start, 0);
-    margin-inline-end: var(--foxy-field---padding-end, 0);
-    max-width: calc(100% - var(--foxy-field---padding-start, 0) - var(--foxy-field---padding-end, 0));
+    margin-inline-start: var(--foxy-field__input---padding-start, 0);
+    margin-inline-end: var(--foxy-field__input---padding-end, 0);
+    max-width: calc(100% - var(--foxy-field__input---padding-start, 0) - var(--foxy-field__input---padding-end, 0));
     pointer-events: none;
     position: absolute;
     top: calc(var(--foxy-input---padding-top, 16px) + var(--foxy-input---density) - 8px);
@@ -468,7 +524,7 @@ defineExpose({
   }
 
   &--suffixed {
-    --foxy-field---padding-end: 0;
+    --foxy-field---padding-end: 6px;
   }
 
   &--center-affix {
@@ -516,12 +572,10 @@ defineExpose({
   }
 
   &--prepended {
-    padding-inline-start: 12px;
     --foxy-field---padding-start: 6px;
   }
 
   &--appended {
-    padding-inline-end: 12px;
     --foxy-field---padding-end: 6px;
   }
 

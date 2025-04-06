@@ -1,0 +1,5 @@
+# Foxyotpinputfield
+
+## Usage
+
+    <FoxyOtpInputField />

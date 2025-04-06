@@ -1,7 +1,7 @@
 <template>
   <component
-		  ref="foxyProgressRef"
-      :is="progressComponent"
+		  :is="progressComponent"
+      ref="foxyProgressRef"
       :aria-hidden="!props.active"
       :aria-valuemax="max"
       :aria-valuenow="indeterminate ? undefined : normalizedValue"
@@ -24,9 +24,8 @@
   import { PROGRESS_TYPE, SIZES } from '@foxy/enums'
 
   import { IProgressProps } from '@foxy/interfaces'
-  import { TFoxyProgressCircular, TFoxyProgressLinear } from "@foxy/types"
 
-  import { keys, pick } from '@foxy/utils'
+  import { TFoxyProgressCircular, TFoxyProgressLinear } from "@foxy/types"
 
   import { computed, ref, StyleValue } from 'vue'
 

@@ -87,7 +87,7 @@ export function parseFixedColumns (items: Array<IInternalDataTableHeader>) {
       }
     } else if (item.fixed) {
       item.fixedOffset = fixedOffset
-      fixedOffset += parseFloat(item.width || '0') || 0
+      fixedOffset += parseFloat(item.width as string || '0') || 0
     }
 
     return fixedOffset

@@ -32,7 +32,7 @@
 		reverseTransition: undefined
 	})
 
-	const emits = defineEmits(['group:selected'])
+	defineEmits(['group:selected'])
 
 	const {filterProps} = useProps<IWindowItemProps>(props)
 
@@ -105,23 +105,23 @@
 				? props.reverseTransition
 				: props.transition
 
-		const transition = !hasTransition.value ? false : {
+		const trans: false | { name: string | undefined, [key: string]: any } = !hasTransition.value ? false : {
 			name: typeof name !== 'string' ? window.transition.value : name
 		}
 
 		if (hasTransition.value) {
-			if (!isBooted.value) {
-				transition.onBeforeEnter = handleBeforeTransition
-				transition.onAfterEnter = handleAfterTransition
-				transition.onEnterCancelled = handleTransitionCancelled
-				transition.onBeforeLeave = handleBeforeTransition
-				transition.onAfterLeave = handleAfterTransition
-				transition.onLeaveCancelled = handleTransitionCancelled
-				transition.onEnter = handleEnterTransition
+			if (!isBooted.value && typeof trans !== 'boolean') {
+				trans!.onBeforeEnter = handleBeforeTransition
+				trans!.onAfterEnter = handleAfterTransition
+				trans!.onEnterCancelled = handleTransitionCancelled
+				trans!.onBeforeLeave = handleBeforeTransition
+				trans!.onAfterLeave = handleAfterTransition
+				trans!.onLeaveCancelled = handleTransitionCancelled
+				trans!.onEnter = handleEnterTransition
 			}
 		}
 
-		return transition
+		return trans
 	})
 
 	const isShown = computed(() => {

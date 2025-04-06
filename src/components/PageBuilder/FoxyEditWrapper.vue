@@ -1,33 +1,48 @@
 <template>
-  <div :class="editWrapperClasses" :style="editWrapperStyles">
+  <div
+      :class="editWrapperClasses"
+      :style="editWrapperStyles"
+  >
     <div class="foxy-edit-wrapper__wrapper">
       <slot name="default"/>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-	import { useProps, useSlots } from '@foxy/composables'
-
+<script
+    lang="ts"
+    setup
+>
+  import { useProps } from '@foxy/composables'
   import { IAutoPropComponentDefinition, IEditWrapperProps } from '@foxy/interfaces'
-
   import { scanForAutoProps } from '@foxy/utils'
 
-  import { computed, StyleValue } from 'vue'
+  import { computed, StyleValue, useSlots, ref, watch } from 'vue'
 
-	// TODO - WIP
+  // TODO - WIP
 
   const props = withDefaults(defineProps<IEditWrapperProps>(), { slotName: 'default', autoDetectProps: true })
 
-  const {filterProps} = useProps<IEditWrapperProps>(props)
+  const { filterProps } = useProps<IEditWrapperProps>(props)
 
-  const { hasSlot, slots } = useSlots()
+  const slots = useSlots()
 
-  const vnodes = hasSlot(props.slotName) ? slots[props.slotName]() : undefined
+  const vnodes = ref<Array<any>>([])
 
-  if (slots[props.slotName] && props.autoDetectProps && vnodes) {
-    const propsTypes: Array<IAutoPropComponentDefinition> = scanForAutoProps(vnodes)
-  }
+  watch(() => props, () => {
+	  if (typeof slots[props.slotName] !== "undefined") {
+		  // @ts-expect-error TODO
+		  vnodes.value = slots[props.slotName]()
+	  }
+
+	  if (slots[props.slotName] && props.autoDetectProps && vnodes) {
+		  const _propsTypes: Array<IAutoPropComponentDefinition> = scanForAutoProps(vnodes.value)
+
+		  console.log(_propsTypes)
+	  }
+  }, {
+		immediate: true
+  })
 
   // CLASS & STYLES
 
@@ -39,24 +54,27 @@
   const editWrapperClasses = computed(() => {
     return [
       'foxy-edit-wrapper',
-      props.class,
+      props.class
     ]
   })
 
-	// EXPOSE
+  // EXPOSE
 
-	defineExpose({
-		filterProps
-	})
+  defineExpose({
+    filterProps
+  })
 
 </script>
 
-<style lang="scss" scoped>
+<style
+    lang="scss"
+    scoped
+>
 
 </style>
 
 <style>
-  :root {
+:root {
 
-  }
+}
 </style>

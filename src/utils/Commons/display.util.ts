@@ -6,8 +6,11 @@ import { TSSROptions } from '@foxy/types'
 
 import { mergeDeep } from '@foxy/utils'
 
-export function parseDisplayOptions (options: IDisplayOptions = DEFAULT_DISPLAY_OPTIONS) {
-  return mergeDeep(DEFAULT_DISPLAY_OPTIONS, options) as IInternalDisplayOptions
+export function parseDisplayOptions (options: IDisplayOptions = DEFAULT_DISPLAY_OPTIONS): IInternalDisplayOptions {
+  return mergeDeep(
+    DEFAULT_DISPLAY_OPTIONS as Record<string, unknown>,
+    options as Record<string, unknown>
+  ) as unknown as IInternalDisplayOptions
 }
 
 export function getClientWidth (ssr?: TSSROptions) {

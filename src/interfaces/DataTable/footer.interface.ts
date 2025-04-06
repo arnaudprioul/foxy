@@ -1,8 +1,8 @@
-import { IAlignProps, IColorProps, ICommonsComponentProps, IPaddingProps, IPaginationProps } from "@foxy/interfaces"
+import { IAlignProps, IColorProps, ICommonsComponentProps, IPaddingProps } from "@foxy/interfaces"
 
 import { TIcon } from "@foxy/types"
 
-export interface IDataTableFooterProps extends ICommonsComponentProps, IColorProps, IPaddingProps, IAlignProps, IPaginationProps {
+export interface IDataTableFooterProps extends ICommonsComponentProps, IColorProps, IPaddingProps, IAlignProps {
     prevIcon?: TIcon
     nextIcon?: TIcon
     firstIcon?: TIcon

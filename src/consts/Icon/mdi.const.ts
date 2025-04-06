@@ -28,7 +28,7 @@ export const MDI_ALIASES: IIconAliases = {
   checkboxOn: 'mdi-checkbox-marked',
   checkboxOff: 'mdi-checkbox-blank-outline',
   checkboxIndeterminate: 'mdi-minus-box',
-  delimiter: 'mdi-circle', // for carousel
+  delimiter: 'mdi-circle',
   sortAsc: 'mdi-arrow-up',
   sortDesc: 'mdi-arrow-down',
   expand: 'mdi-chevron-down',
@@ -50,4 +50,6 @@ export const MDI_ALIASES: IIconAliases = {
   minus: 'mdi-minus',
   calendar: 'mdi-calendar',
   eyeDropper: 'mdi-eyedropper',
+  eyeOff: 'mdi-eye-off-outline',
+  eyeOn: 'mdi-eye-outline'
 }

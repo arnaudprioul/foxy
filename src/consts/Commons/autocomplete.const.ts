@@ -1,4 +1,4 @@
-import { KEYBOARD_VALUES } from '@foxy/enums'
+import { KEYBOARD_VALUES } from '@foxy/consts'
 
 export const COMPOSITION_IGNORE_KEYS = [
   KEYBOARD_VALUES.UP,

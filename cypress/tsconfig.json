@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "@cy": [
+        "./cypress/"
+      ],
+      "@cy/*": [
+        "./cypress/*"
+      ]
+    }
+  },
+  "include": [
+
+  ],
+  "references": [
+    {
+      "path": "../tsconfig.json"
+    }
+  ]
+}

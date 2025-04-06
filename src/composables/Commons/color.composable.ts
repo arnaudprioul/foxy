@@ -39,10 +39,12 @@ export function useColor (colors: Ref<{ background?: TColor, text?: TColor }>) {
 }
 
 export function useBothColor<T extends Record<K, TColor>, K extends string> (bgColorProps: T | Ref<TColor>, colorProps: T | Ref<TColor>, name?: K) {
-  const colors = computed(() => ({
-    text: isRef(colorProps) ? colorProps.value : (name ? colorProps[name] : null),
-    background: isRef(bgColorProps) ? bgColorProps.value : (name ? bgColorProps[name] : null),
-  }))
+  const colors = computed(() => {
+    return {
+      text: isRef(colorProps) ? colorProps.value : (name ? colorProps[name] : null),
+      background: isRef(bgColorProps) ? bgColorProps.value : (name ? bgColorProps[name] : null),
+    }
+  })
 
   return useColor(colors)
 }

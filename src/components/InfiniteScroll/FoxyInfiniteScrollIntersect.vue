@@ -15,7 +15,7 @@
 
   const {filterProps} = useProps<IInfiniteScrollIntersectProps>(props)
 
-  const { intersectionRef, isIntersecting } = useIntersectionObserver((entries) => {
+  const { intersectionRef, isIntersecting } = useIntersectionObserver(() => {
   }, props.margin ? { rootMargin: props.margin } : undefined)
 
   watch(isIntersecting, async (val) => {

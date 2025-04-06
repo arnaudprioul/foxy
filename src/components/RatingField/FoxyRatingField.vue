@@ -5,16 +5,27 @@
 			v-model="model"
 			:class="ratingFieldClasses"
 			:style="ratingFieldStyles"
-			v-bind="{...rootAttrs, ...inputProps}">
-		<template v-if="hasSlot('prepend')" #prepend>
+			v-bind="{...rootAttrs, ...inputProps}"
+	>
+		<template
+				v-if="slots.prepend"
+				#prepend
+		>
 			<slot name="prepend"/>
 		</template>
 
 		<template #default="{id,messagesId,isDisabled,isReadonly,isValid}">
-			<slot name="default" v-bind="{id,messagesId,isDisabled,isReadonly,isValid}">
+			<slot
+					name="default"
+					v-bind="{id,messagesId,isDisabled,isReadonly,isValid}"
+			>
 				<div class="foxy-rating-field__label">
 					<slot name="label">
-						<foxy-label :for="id" :required="required" :text="label"/>
+						<foxy-label
+								:for="id"
+								:required="required"
+								:text="label"
+						/>
 					</slot>
 				</div>
 
@@ -24,14 +35,16 @@
 							:index="-1"
 							:show-star="false"
 							:value="0"
-							v-bind="{...itemState[0], ...eventState[0]}"/>
+							v-bind="{...itemState[0], ...eventState[0]}"
+					/>
 				</div>
 
 				<template
 						v-for="(range, index) in ranges"
-						:key="index">
+						:key="index"
+				>
 					<div class="foxy-rating-field__wrapper">
-						<template v-if="hasLabels && labelOnTop && hasSlot(`itemLabel.${index}`)">
+						<template v-if="hasLabels && labelOnTop && slots[`itemLabel.${index}`]">
 							<slot :name="`itemLabel.${index}`">
 								<slot name="itemLabel">
 									<span>{{ itemLabels[index] ?? '&nbsp;' }}</span>
@@ -44,22 +57,25 @@
 										:checked="isChecked(range - 0.5)"
 										:index="index * 2"
 										:value="range - 0.5"
-										v-bind="{...itemState[index * 2], ...eventState[(index * 2) + 1]}"/>
+										v-bind="{...itemState[index * 2], ...eventState[(index * 2) + 1]}"
+								/>
 								<foxy-rating-field-item
 										:checked="isChecked(range)"
 										:index="(index * 2) + 1"
 										:value="range"
-										v-bind="{...itemState[(index * 2) + 1], ...eventState[(index * 2) + 2]}"/>
+										v-bind="{...itemState[(index * 2) + 1], ...eventState[(index * 2) + 2]}"
+								/>
 							</template>
 							<template v-else>
 								<foxy-rating-field-item
 										:checked="isChecked(range)"
 										:index="index"
 										:value="range"
-										v-bind="{...itemState[index], ...eventState[index + 1]}"/>
+										v-bind="{...itemState[index], ...eventState[index + 1]}"
+								/>
 							</template>
 						</div>
-						<template v-if="hasLabels && labelOnBottom && hasSlot(`itemLabel.${index}`)">
+						<template v-if="hasLabels && labelOnBottom && slots[`itemLabel.${index}`]">
 							<slot :name="`itemLabel.${index}`">
 								<slot name="itemLabel">
 									<span>{{ itemLabels[index] ?? '&nbsp;' }}</span>
@@ -71,28 +87,52 @@
 			</slot>
 		</template>
 
-		<template v-if="hasSlot('append')" #append>
+		<template
+				v-if="slots.append"
+				#append
+		>
 			<slot name="append"/>
 		</template>
 
-		<template v-if="hasSlot('details')" #details="detailsSlotProps">
-			<slot name="details" v-bind="detailsSlotProps"/>
+		<template
+				v-if="slots.details"
+				#details="detailsSlotProps"
+		>
+			<slot
+					name="details"
+					v-bind="detailsSlotProps"
+			/>
 		</template>
 
-		<template v-if="hasSlot('messages')" #messages="{hasMessages, messages}">
-			<slot name="messages" v-bind="{hasMessages, messages}"/>
+		<template
+				v-if="slots.messages"
+				#messages="{hasMessages, messages}"
+		>
+			<slot
+					name="messages"
+					v-bind="{hasMessages, messages}"
+			/>
 		</template>
 
-		<template v-if="hasSlot('message')" #message="{message}">
-			<slot name="message" v-bind="{message}"/>
+		<template
+				v-if="slots.message"
+				#message="{message}"
+		>
+			<slot
+					name="message"
+					v-bind="{message}"
+			/>
 		</template>
 	</foxy-input>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyInput, FoxyLabel, FoxyRatingFieldItem } from '@foxy/components'
 
-	import { useProps, useSlots, useVModel } from '@foxy/composables'
+	import { useProps, useVModel } from '@foxy/composables'
 
 	import { BLOCK, DENSITY, SIZES } from '@foxy/enums'
 
@@ -102,11 +142,9 @@
 
 	import { clamp, createRange, filterInputAttrs, getUid } from '@foxy/utils'
 
-	import { computed, ref, shallowRef, StyleValue, useAttrs } from 'vue'
+	import { computed, ref, shallowRef, StyleValue, useAttrs, useSlots } from 'vue'
 
 	const props = withDefaults(defineProps<IRatingFieldProps>(), {
-		emptyIcon: '$ratingEmpty',
-		fullIcon: '$ratingFull',
 		length: 5,
 		modelValue: 0,
 		itemLabelPosition: BLOCK.TOP,
@@ -115,14 +153,14 @@
 		size: SIZES.DEFAULT
 	})
 
-	const emits = defineEmits(['update:modelValue'])
+	defineEmits(['update:modelValue'])
 
 	const {filterProps} = useProps<IRatingFieldProps>(props)
 
 	const foxyInputRef = ref<TFoxyInput>()
 	const foxyRatingFieldItemRef = ref<TFoxyRatingFieldItem>()
 
-	const {hasSlot} = useSlots()
+	const slots = useSlots()
 
 	const model = useVModel(props, 'modelValue')
 	const attrs = useAttrs()
@@ -174,12 +212,12 @@
 			}
 		})
 	})
-	const isChecked = (value) => {
+	const isChecked = (value: number) => {
 		return normalizedValue.value === value
 	}
 
 	const hasLabels = computed(() => {
-		return !!props.itemLabels?.length || hasSlot('itemLabel')
+		return !!props.itemLabels?.length || slots.itemLabel
 	})
 	const labelOnTop = computed(() => {
 		return props.itemLabelPosition === BLOCK.TOP
@@ -188,7 +226,7 @@
 		return props.itemLabelPosition === BLOCK.BOTTOM
 	})
 
-	const [rootAttrs, controlAttrs] = filterInputAttrs(attrs)
+	const [rootAttrs, _controlAttrs] = filterInputAttrs(attrs)
 
 	const inputProps = computed(() => {
 		return foxyInputRef.value?.filterProps(props, ['class', 'style', 'modelValue', 'id', 'focused'])
@@ -219,7 +257,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-rating-field {
 		max-width: 100%;
 		display: inline-flex;
@@ -245,11 +286,8 @@
 		}
 	}
 </style>
-
 <style>
 	:root {
 
 	}
 </style>
-<script lang="ts" setup>
-</script>

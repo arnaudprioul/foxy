@@ -1,0 +1,5 @@
+# FoxyColorPickerPreview
+
+## Usage
+
+    <FoxyColorPickerPreview />

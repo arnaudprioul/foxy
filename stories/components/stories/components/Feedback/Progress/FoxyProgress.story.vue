@@ -4,10 +4,16 @@
       group="components"
       title="Feedback/Progress"
   >
-    <Variant title="Circle" :meta="{centering: true}">
+    <Variant
+        :meta="{centering: true}"
+        title="Circle"
+    >
       <template #default>
         <foxy-container>
-          <foxy-row :align-content="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align-content="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col cols="auto">
               <foxy-progress v-bind="stateCircle"/>
             </foxy-col>
@@ -15,10 +21,16 @@
         </foxy-container>
       </template>
     </Variant>
-    <Variant title="Line" :meta="{centering: true}">
+    <Variant
+        :meta="{centering: true}"
+        title="Line"
+    >
       <template #default>
         <foxy-container>
-          <foxy-row :align-content="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align-content="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col cols="12">
               <foxy-progress v-bind="stateLinear"/>
             </foxy-col>
@@ -28,14 +40,23 @@
     </Variant>
 
     <template #controls>
-      <hst-checkbox v-model="state.indeterminate" title="Indeterminate"/>
+      <hst-checkbox
+          v-model="state.indeterminate"
+          title="Indeterminate"
+      />
 
-      <hst-checkbox v-model="state.active" title="Active"/>
+      <hst-checkbox
+          v-model="state.active"
+          title="Active"
+      />
     </template>
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyCol, FoxyContainer, FoxyProgress, FoxyRow } from '@foxy/components'
 
   import { ALIGN, JUSTIFY, PROGRESS_TYPE } from '@foxy/enums'

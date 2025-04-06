@@ -13,5 +13,5 @@ import {
 export interface IChipGroupProps extends ICommonsComponentProps, ITagProps, IGroupProps, IColorProps, IMarginProps, IPaddingProps, IBorderProps, IRoundedProps, ISlideGroupProps {
     column?: boolean
     filter?: boolean
-    valueComparator?: Function
+    valueComparator?: (a: any, b: any) => boolean
 }

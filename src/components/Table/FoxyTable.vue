@@ -1,13 +1,15 @@
 <template>
   <component
-    :is="tag"
-    :class="tableClasses"
-    :style="tableStyles">
+      :is="tag"
+      :class="tableClasses"
+      :style="tableStyles"
+  >
     <slot name="top"/>
 
     <div
-      :class="tableWrapperClasses"
-      :style="tableWrapperStyles">
+        :class="tableWrapperClasses"
+        :style="tableWrapperStyles"
+    >
       <slot name="wrapper">
         <table>
           <slot name="default"/>
@@ -19,31 +21,35 @@
   </component>
 </template>
 
-<script lang="ts" setup>
-	import {
-		useBorder,
-		useDensity,
-		useDimension,
-		useElevation,
-		useMargin,
-		usePadding, useProps,
-		useRounded,
-		useSlots
-	} from '@foxy/composables'
+<script
+    lang="ts"
+    setup
+>
+  import {
+    useBorder,
+    useDensity,
+    useDimension,
+    useElevation,
+    useMargin,
+    usePadding,
+    useProps,
+    useRounded
+  } from '@foxy/composables'
+
   import { DENSITY } from '@foxy/enums'
 
   import { ITableProps } from '@foxy/interfaces'
 
-  import { computed, StyleValue } from 'vue'
+  import { computed, StyleValue, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<ITableProps>(), {
     tag: 'div',
     density: DENSITY.DEFAULT
   })
 
-  const {filterProps} = useProps<ITableProps>(props)
+  const { filterProps } = useProps<ITableProps>(props)
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
 
   const { densityClasses } = useDensity(props)
   const { dimensionStyles } = useDimension(props)
@@ -70,8 +76,8 @@
       {
         'foxy-table--fixed-header': props.fixedHeader,
         'foxy-table--fixed-footer': props.fixedFooter,
-        'foxy-table--has-top': hasSlot('top'),
-        'foxy-table--has-bottom': hasSlot('bottom')
+        'foxy-table--has-top': slots.top,
+        'foxy-table--has-bottom': slots.bottom
       },
       densityClasses.value,
       borderClasses.value,
@@ -79,7 +85,7 @@
       elevationClasses.value,
       paddingClasses.value,
       marginClasses.value,
-      props.class,
+      props.class
     ]
   })
   const tableWrapperStyles = computed(() => {
@@ -91,13 +97,13 @@
   const tableWrapperClasses = computed(() => {
     return [
       'foxy-table__wrapper',
-      props.class,
+      props.class
     ]
   })
 
-	// EXPOSE
+  // EXPOSE
 
-	defineExpose({
-		filterProps
-	})
+  defineExpose({
+    filterProps
+  })
 </script>

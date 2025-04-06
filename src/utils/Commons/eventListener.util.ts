@@ -1,6 +1,6 @@
 import { getCurrentScope, onScopeDispose, Ref, unref } from 'vue'
 
-export function resolveUnref (r: Ref | Function) {
+export function resolveUnref (r: Ref | (() => unknown)) {
   return typeof r === 'function' ? r() : unref(r)
 }
 

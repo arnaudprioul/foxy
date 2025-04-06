@@ -1,41 +1,55 @@
 <template>
-	<template v-if="true">
-		<slot name="activator" v-bind="activatorProps"/>
-		<template v-if="isMounted && hasContent">
-			<teleport :disabled="!teleportTarget" :to="teleportTarget">
-				<div
-						ref="root"
-						:class="overlayClasses"
-						:style="overlayStyles"
-						v-bind="{ ...scopeId, ...$attrs }">
-					<foxy-overlay-scrim
-							ref="scrimEl"
-							:active="isActive && !!scrim"
-							:scrim="scrim"
-							v-bind="{...scrimEvents, ...scrimColor}"/>
-					<foxy-transition
-							:target="target"
-							:transition="transition"
-							appear
-							persisted
-							@after-leave="handleAfterLeave">
-						<div
-								v-show="isActive"
-								ref="contentEl"
-								v-click-outside="{ handler: handleClickOutside, closeConditional, include: () => [activatorEl] }"
-								:class="overlayContentClasses"
-								:style="overlayContentStyles"
-								v-bind="{ ...contentEvents, ...contentProps }">
-							<slot name="default" v-bind="{isActive}"/>
-						</div>
-					</foxy-transition>
-				</div>
-			</Teleport>
-		</template>
+	<slot
+			name="activator"
+			v-bind="activatorProps"
+	/>
+	<template v-if="isMounted && hasContent">
+		<teleport
+				:disabled="!teleportTarget"
+				:to="teleportTarget"
+		>
+			<div
+					ref="root"
+					:class="overlayClasses"
+					:style="overlayStyles"
+					v-bind="{ ...scopeId, ...$attrs }"
+			>
+				<foxy-overlay-scrim
+						ref="scrimEl"
+						:active="isActive && !!scrim"
+						:scrim="scrim"
+						v-bind="{...scrimEvents, ...scrimColor}"
+				/>
+				<foxy-transition
+						:target="target"
+						:transition="transition"
+						appear
+						persisted
+						@after-leave="handleAfterLeave"
+				>
+					<div
+							v-show="isActive"
+							ref="contentEl"
+							v-click-outside="{ handler: handleClickOutside, closeConditional, include: () => [activatorEl] }"
+							:class="overlayContentClasses"
+							:style="overlayContentStyles"
+							v-bind="{ ...contentEvents, ...contentProps }"
+					>
+						<slot
+								name="default"
+								v-bind="{isActive}"
+						/>
+					</div>
+				</foxy-transition>
+			</div>
+		</Teleport>
 	</template>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyFade, FoxyOverlayScrim, FoxyTransition } from '@foxy/components'
 
 	import {
@@ -48,6 +62,7 @@
 		useLocationStrategies,
 		useProps,
 		useRouter,
+		useRtl,
 		useScopeId,
 		useScrollStrategies,
 		useStack,
@@ -56,14 +71,15 @@
 		useVModel
 	} from '@foxy/composables'
 
-	import { IN_BROWSER } from '@foxy/consts'
+	import { IN_BROWSER, KEYBOARD_VALUES } from '@foxy/consts'
 
 	import { vClickOutside } from '@foxy/directives'
 
-	import { BLOCK, EASING, KEYBOARD_VALUES, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@foxy/enums'
+	import { BLOCK, EASING, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@foxy/enums'
 
 	import { IOverlayProps } from '@foxy/interfaces'
-	import { TFoxyOverlayScrim } from "@foxy/types/Overlay/overlay-scrim.type.ts"
+
+	import { TFoxyOverlayScrim, TTransitionProps } from "@foxy/types"
 
 	import { animate, convertToUnit, getScrollParent } from '@foxy/utils'
 
@@ -77,10 +93,10 @@
 		location: BLOCK.BOTTOM,
 		origin: 'auto',
 		scrollStrategy: SCROLL_STRATEGIES.BLOCK,
-		transition: {component: FoxyFade}
+		transition: () => ({component: FoxyFade}) as unknown as TTransitionProps
 	})
 
-	const emits = defineEmits(['click:outside', 'update:modelValue', 'afterLeave'])
+	const emits = defineEmits(['click:outside', 'update:modelValue', 'afterEnter', 'afterLeave', 'keydown'])
 
 	const {filterProps} = useProps<IOverlayProps>(props)
 
@@ -107,6 +123,7 @@
 	const {dimensionStyles} = useDimension(props)
 	const isMounted = useHydration()
 	const {scopeId} = useScopeId()
+	const {rtlClasses} = useRtl()
 
 	watch(() => props.disabled, (v) => {
 		if (v) isActive.value = false
@@ -166,13 +183,15 @@
 		}
 	}
 
-	IN_BROWSER && watch(isActive, val => {
-		if (val) {
-			window.addEventListener('keydown', handleKeydown)
-		} else {
-			window.removeEventListener('keydown', handleKeydown)
-		}
-	}, {immediate: true})
+	if (IN_BROWSER) {
+		watch(isActive, val => {
+			if (val) {
+				window.addEventListener('keydown', handleKeydown)
+			} else {
+				window.removeEventListener('keydown', handleKeydown)
+			}
+		}, {immediate: true})
+	}
 
 	onBeforeUnmount(() => {
 		if (!IN_BROWSER) return
@@ -209,14 +228,16 @@
 	const animateClick = () => {
 		if (props.noClickAnimation) return
 
-		contentEl.value && animate(contentEl.value, [
-			{transformOrigin: 'center'},
-			{transform: 'scale(1.03)'},
-			{transformOrigin: 'center'}
-		], {
-			duration: 150,
-			easing: EASING.STANDARD
-		})
+		if (contentEl.value) {
+			animate(contentEl.value, [
+				{transformOrigin: 'center'},
+				{transform: 'scale(1.03)'},
+				{transformOrigin: 'center'}
+			], {
+				duration: 150,
+				easing: EASING.STANDARD
+			})
+		}
 	}
 
 	const handleAfterLeave = () => {
@@ -256,6 +277,7 @@
 				'foxy-overlay--active': isActive.value,
 				'foxy-overlay--contained': props.contained
 			},
+			rtlClasses.value,
 			props.class
 		]
 	})
@@ -276,7 +298,10 @@
 
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-overlay {
 		$this: &;
 

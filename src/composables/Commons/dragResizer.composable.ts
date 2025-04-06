@@ -21,9 +21,9 @@ export function useDragResizer (el: HTMLElement | undefined, value: Ref<number>,
   const isHorizontal = computed(() => {
     return axis === AXIS.X
   })
-  const isVertical = computed(() => {
-    return axis === AXIS.Y
-  })
+  // const isVertical = computed(() => {
+  //   return axis === AXIS.Y
+  // })
 
   // TODO - Rework for both axis
 

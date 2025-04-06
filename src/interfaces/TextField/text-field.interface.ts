@@ -12,7 +12,7 @@ import { TTextFieldType } from '@foxy/types'
 export interface ITextFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps {
   autofocus?: boolean
   counter?: boolean | number | string
-  counterValue?: number | Function
+  counterValue?: number | ((e: any) => number)
   placeholder?: string
   persistentPlaceholder?: boolean
   persistentCounter?: boolean

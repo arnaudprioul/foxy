@@ -45,6 +45,7 @@
 	import { FoxyBtn, FoxyCheckboxBtn, FoxyDataTableColumnCell } from "@foxy/components"
 
 	import { useGroupBy, useHeaders, useProps, useSelection } from "@foxy/composables"
+	import { MDI_ICONS } from "@foxy/enums"
 
 	import { IDataTableGroupHeaderRowProps } from "@foxy/interfaces"
 
@@ -62,7 +63,7 @@
 		return extractRows([props.item])
 	})
 	const groupIcon = computed(() => {
-		return isGroupOpen(props.item) ? '$expand' : '$next'
+		return isGroupOpen(props.item) ? MDI_ICONS.CHEVRON_DOWN : MDI_ICONS.CHEVRON_RIGHT
 	})
 
 	const handleClick = () => toggleGroup(props.item)

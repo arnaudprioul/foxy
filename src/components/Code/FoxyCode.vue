@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts" setup>
-	import { FoxyTooltip } from "@foxy/components"
+	import { FoxyBtn, FoxyTooltip } from "@foxy/components"
 	import {
 		useBorder,
 		useBothColor,

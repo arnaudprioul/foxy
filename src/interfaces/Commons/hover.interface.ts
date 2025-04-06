@@ -7,8 +7,7 @@ export interface IHoverProps {
 export interface IHoverDirectiveBinding extends Omit<DirectiveBinding, 'modifiers' | 'value'> {
   value?: boolean | { class: string }
   modifiers: {
-    center?: boolean
-    circle?: boolean
+    callback: () => void,
     stop?: boolean
   }
 }

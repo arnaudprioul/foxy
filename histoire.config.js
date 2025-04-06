@@ -8,6 +8,7 @@ import markdownItFootnote from 'markdown-it-footnote'
 export default defineConfig({
     // your Histoire configuration
     setupFile: '/stories/histoire.setup.ts',
+    outDir: 'dist/stories',
     plugins: [
         HstVue()
     ],

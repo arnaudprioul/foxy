@@ -7,7 +7,10 @@
   ></hst-select>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { TIcon } from '@foxy/types'
 
   import useTitle from '@stories/composables/title.composable'

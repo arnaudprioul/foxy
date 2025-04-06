@@ -7,30 +7,31 @@
   />
 </template>
 
-<script lang="ts" setup>
-import { Ref, ref } from 'vue'
+<script
+    lang="ts"
+    setup
+>
+  import useTitle from '@stories/composables/title.composable'
+  import { alignList } from '@stories/const/align.const'
+  import { TTitleProp } from '@stories/types/title.type'
+  
+  import { Ref, ref } from 'vue'
 
-import { alignList } from '@stories/const/align.const'
+  const props = defineProps<{
+    modelValue?: string
+  } & TTitleProp>()
 
-import { TTitleProp } from '@stories/types/title.type'
+  const emit = defineEmits(['update:modelValue'])
 
-import useTitle from '@stories/composables/title.composable'
+  const { getTitle } = useTitle(props.title, 'Variant')
 
-const props = defineProps<{
-  modelValue?: string
-} & TTitleProp>()
+  const variant: Ref<string> = ref('start')
 
-const emit = defineEmits(['update:modelValue'])
+  if (props.modelValue) {
+    variant.value = props.modelValue
+  }
 
-const { getTitle } = useTitle(props.title, 'Variant')
-
-const variant: Ref<string> = ref('start')
-
-if (props.modelValue) {
-  variant.value = props.modelValue
-}
-
-const handleChange = (value: string) => {
-  emit('update:modelValue', value)
-}
+  const handleChange = (value: string) => {
+    emit('update:modelValue', value)
+  }
 </script>

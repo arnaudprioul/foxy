@@ -29,4 +29,5 @@ export interface IRatingFieldItemProps extends ICommonsComponentProps, ITagProps
   emptyIcon?: TIcon
   halfIncrements?: boolean
   checked?: boolean
+  length?: number
 }

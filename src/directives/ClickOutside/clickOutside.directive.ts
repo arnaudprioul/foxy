@@ -13,7 +13,7 @@ export const ClickOutside = {
       el._clickOutside!.lastMousedownWasOutside = checkEvent(e as MouseEvent, el, binding)
     }
 
-    handleShadow(el, (app: HTMLElement) => {
+    handleShadow(el, (app: Document | ShadowRoot) => {
       app.addEventListener('click', handleClick, true)
       app.addEventListener('mousedown', handleMousedown, true)
     })
@@ -33,7 +33,7 @@ export const ClickOutside = {
   unmounted (el: HTMLElement, binding: IClickOutsideDirectiveBinding) {
     if (!el._clickOutside) return
 
-    handleShadow(el, (app: HTMLElement) => {
+    handleShadow(el, (app: Document | ShadowRoot) => {
       if (!app || !el._clickOutside?.[binding.instance!.$.uid]) return
 
       const { onClick, onMousedown } = el._clickOutside[binding.instance!.$.uid]!

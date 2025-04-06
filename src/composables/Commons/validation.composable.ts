@@ -147,7 +147,7 @@ export function useValidation (props: IValidationProps, name = getCurrentInstanc
 
     isValidating.value = true
 
-    if (!!props.rules) {
+    if (props.rules) {
       for (const rule of props.rules) {
         if (results.length >= +(props.maxErrors ?? 1)) {
           break
@@ -159,7 +159,7 @@ export function useValidation (props: IValidationProps, name = getCurrentInstanc
         if (result === true) continue
 
         if (result !== false && typeof result !== 'string') {
-          // eslint-disable-next-line no-console
+           
           console.warn(`${result} is not a valid value. Rule functions must return boolean true or a string.`)
 
           continue

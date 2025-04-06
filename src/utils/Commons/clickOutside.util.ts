@@ -2,7 +2,7 @@ import { IClickOutsideDirectiveBinding } from '@foxy/interfaces'
 
 import { attachedRoot } from '@foxy/utils'
 
-function defaultConditional () {
+function defaultConditional (): boolean {
   return true
 }
 
@@ -25,7 +25,7 @@ export function checkEvent (e: MouseEvent, el: HTMLElement, binding: IClickOutsi
 
   // Check if additional elements were passed to be included in check
   // (click must be outside all included elements, if any)
-  const elements = ((typeof binding.value === 'object' && binding.value.include) || (() => []))()
+  const elements = (typeof binding.value === 'object' && binding.value.include) ? binding.value.include() : []
   // Add the root element for the component this directive was defined on
   elements.push(el)
 
@@ -46,12 +46,16 @@ export function checkIsActive (e: MouseEvent, binding: IClickOutsideDirectiveBin
 export function directive (e: MouseEvent, el: HTMLElement, binding: IClickOutsideDirectiveBinding) {
   const handler = typeof binding.value === 'function' ? binding.value : binding.value.handler
 
-  el._clickOutside!.lastMousedownWasOutside && checkEvent(e, el, binding) && setTimeout(() => {
-    checkIsActive(e, binding) && handler && handler(e)
-  }, 0)
+  if (el._clickOutside?.lastMousedownWasOutside && checkEvent(e, el, binding)) {
+    setTimeout(() => {
+      if (checkIsActive(e, binding) && handler) {
+        handler(e)
+      }
+    }, 0)
+  }
 }
 
-export function handleShadow (el: HTMLElement, callback: Function): void {
+export function handleShadow (el: HTMLElement, callback: (root: Document | ShadowRoot) => void): void {
   const root = attachedRoot(el)
 
   callback(document)

@@ -2,24 +2,36 @@
 	<component
 			:is="tag"
 			:class="listGroupClasses"
-			:style="listGroupStyles">
+			:style="listGroupStyles"
+	>
 		<slot name="default">
 			<foxy-list-group-activator class="foxy-list-group__activator">
-				<slot name="activator"
-				      v-bind="{ events: activatorEvents, props: activatorProps, isOpen, toggleIcon }">
+				<slot
+						name="activator"
+						v-bind="{ events: activatorEvents, props: activatorProps, isOpen, toggleIcon }"
+				>
 					<foxy-list-item
 							:active="isOpen"
-							:appendIcon="appendActivatorIcon"
-							:prependIcon="prependActivatorIcon"
+							:append-icon="appendActivatorIcon"
+							:prepend-icon="prependActivatorIcon"
 							:title="title"
 							:value="value"
 							v-bind="activatorProps"
-							v-on="activatorEvents"/>
+							v-on="activatorEvents"
+					/>
 				</slot>
 			</foxy-list-group-activator>
 
-			<foxy-transition :disabled="!isBooted" :transition="transition">
-				<div v-if="isOpen" :aria-labelledby="id" class="foxy-list-group__items" role="group">
+			<foxy-transition
+					:disabled="!isBooted"
+					:transition="transition"
+			>
+				<div
+						v-if="isOpen"
+						:aria-labelledby="id"
+						class="foxy-list-group__items"
+						role="group"
+				>
 					<slot name="items"/>
 				</div>
 			</foxy-transition>
@@ -27,8 +39,11 @@
 	</component>
 </template>
 
-<script lang="ts" setup>
-	import { FoxyExpandY, FoxyListGroupActivator, FoxyTransition } from '@foxy/components'
+<script
+		lang="ts"
+		setup
+>
+	import { FoxyExpandY, FoxyListGroupActivator, FoxyListItem, FoxyTransition } from '@foxy/components'
 
 	import {
 		useBorder,
@@ -36,10 +51,13 @@
 		useList,
 		useMargin,
 		useNestedItem,
-		usePadding, useProps,
+		usePadding,
+		useProps,
 		useRounded,
 		useSsrBoot
 	} from '@foxy/composables'
+
+	import { MDI_ICONS } from "@foxy/enums"
 
 	import { IListActivatorProps, IListGroupProps } from '@foxy/interfaces'
 
@@ -47,8 +65,8 @@
 
 	const props = withDefaults(defineProps<IListGroupProps>(), {
 		tag: 'div',
-		collapseIcon: '$collapse',
-		expandIcon: '$expand'
+		expandIcon: MDI_ICONS.CHEVRON_DOWN,
+		collapseIcon: MDI_ICONS.CHEVRON_UP
 	})
 
 	const emits = defineEmits(['click:activator'])
@@ -131,7 +149,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-list-group {
 		$this: &;
 

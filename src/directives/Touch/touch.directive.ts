@@ -1,4 +1,5 @@
 import { ITouchDirectiveBinding } from '@foxy/interfaces'
+import { TTouchEvent } from '@foxy/types'
 
 import { createHandlers } from '@foxy/utils'
 
@@ -16,8 +17,8 @@ export const Touch = {
     target._touchHandlers = target._touchHandlers ?? Object.create(null)
     target._touchHandlers![uid] = handlers
 
-    Object.keys(handlers).forEach((eventName: string) => {
-      target.addEventListener(eventName, handlers[eventName], options)
+    Object.keys(handlers).forEach((eventName) => {
+      target.addEventListener(eventName as TTouchEvent, handlers[eventName as TTouchEvent], options)
     })
   },
   unmounted: (el: HTMLElement, binding: ITouchDirectiveBinding) => {

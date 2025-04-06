@@ -1,29 +1,37 @@
 <template>
   <div
-    :aria-orientation="direction"
-    :aria-readonly="!!readonly"
-    :aria-valuemax="max"
-    :aria-valuemin="min"
-    :aria-valuenow="modelValue"
-    :class="sliderFieldThumbClasses"
-    :style="sliderFieldThumbStyles"
-    :tabindex="isDisabled ? -1 : 0"
-    role="slider"
-    @keydown="!isReadonly ? handleKeydown : undefined">
+      :aria-orientation="direction"
+      :aria-readonly="!!readonly"
+      :aria-valuemax="max"
+      :aria-valuemin="min"
+      :aria-valuenow="modelValue"
+      :class="sliderFieldThumbClasses"
+      :style="sliderFieldThumbStyles"
+      :tabindex="isDisabled ? -1 : 0"
+      role="slider"
+      @keydown="!isReadonly ? handleKeydown : undefined"
+  >
     <div
-      :class="sliderFieldThumbSurfaceClasses"
-      :style="sliderFieldThumbSurfaceStyles"/>
+        :class="sliderFieldThumbSurfaceClasses"
+        :style="sliderFieldThumbSurfaceStyles"
+    />
 
     <div
-      v-ripple="rippleProps"
-      :style="sliderFieldThumbRippleStyles"
-      class="foxy-slider-field-thumb__ripple"/>
+        v-ripple="rippleProps"
+        :style="sliderFieldThumbRippleStyles"
+        class="foxy-slider-field-thumb__ripple"
+    />
 
     <foxy-translate-scale origin="bottom center">
-      <div v-show="showLabel"
-           class="foxy-slider-field-thumb__label-container">
+      <div
+          v-show="showLabel"
+          class="foxy-slider-field-thumb__label-container"
+      >
         <div class="foxy-slider-field-thumb__label">
-          <slot name="default" v-bind="{ modelValue: props.modelValue }">
+          <slot
+              name="default"
+              v-bind="{ modelValue: props.modelValue }"
+          >
             <span>{{ label }}</span>
           </slot>
         </div>
@@ -32,20 +40,16 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyTranslateScale } from '@foxy/components'
-
   import { useBorder, useElevation, useProps, useRounded, useTextColor } from '@foxy/composables'
-
-  import { FOXY_SLIDER_FIELD_KEY } from '@foxy/consts'
-
+  import { FOXY_SLIDER_FIELD_KEY, KEYBOARD_VALUES } from '@foxy/consts'
   import { vRipple } from '@foxy/directives'
-
-  import { KEYBOARD_VALUES } from '@foxy/enums'
-
   import { ISliderFieldThumbProps } from '@foxy/interfaces'
-
-  import { clamp, convertToUnit } from '@foxy/utils'
+  import { clamp, convertToUnit, int } from '@foxy/utils'
 
   import { computed, inject, StyleValue } from 'vue'
 
@@ -60,7 +64,7 @@
 
   const emits = defineEmits(['update:modelValue'])
 
-  const {filterProps} = useProps<ISliderFieldThumbProps>(props)
+  const { filterProps } = useProps<ISliderFieldThumbProps>(props)
 
   const slider = inject(FOXY_SLIDER_FIELD_KEY)
 
@@ -80,7 +84,7 @@
     isVertical,
     mousePressed,
     decimals,
-    indexFromEnd,
+    indexFromEnd
   } = slider
 
   const isDisabled = computed(() => {
@@ -94,7 +98,7 @@
   })
   const size = computed(() => {
     if (typeof props?.size === 'number') {
-      return parseInt(props.size, 10)
+      return int(props.size)
     }
 
     return 20
@@ -131,17 +135,18 @@
   })
 
   const parseKeydown = (e: KeyboardEvent, value: number) => {
-    if (!relevantKeys.includes(e.key)) return
+    if (!relevantKeys.includes(e.key as typeof relevantKeys[number])) return
 
     e.preventDefault()
 
     const _step = step.value || 0.1
     const steps = (props.max - props.min) / _step
-    if ([KEYBOARD_VALUES.LEFT, KEYBOARD_VALUES.RIGHT, KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.UP].includes(e.key)) {
+    const keyValue = [KEYBOARD_VALUES.LEFT, KEYBOARD_VALUES.RIGHT, KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.UP]
+    if (keyValue.includes(e.key as typeof keyValue[number])) {
       const increase = isVertical.value
-        ? [KEYBOARD_VALUES.RIGHT, isReversed.value ? KEYBOARD_VALUES.DOWN : KEYBOARD_VALUES.UP]
-        : [KEYBOARD_VALUES.RIGHT, KEYBOARD_VALUES.UP]
-      const direction = increase.includes(e.key) ? 1 : -1
+          ? [KEYBOARD_VALUES.RIGHT, isReversed.value ? KEYBOARD_VALUES.DOWN : KEYBOARD_VALUES.UP]
+          : [KEYBOARD_VALUES.RIGHT, KEYBOARD_VALUES.UP]
+      const direction = increase.includes(e.key as typeof increase[number]) ? 1 : -1
       const multiplier = e.shiftKey ? 2 : (e.ctrlKey ? 1 : 0)
 
       value = value + (direction * _step * multipliers.value[multiplier])
@@ -158,8 +163,10 @@
   }
   const handleKeydown = (e: KeyboardEvent) => {
     const newValue = parseKeydown(e, props.modelValue)
-
-    newValue != null && emits('update:modelValue', newValue)
+    
+    if (newValue !== null && newValue !== undefined) {
+      emits('update:modelValue', newValue)
+    }
   }
 
   const showLabel = computed(() => {
@@ -175,7 +182,7 @@
     return [
       {
         '--foxy-slider-field-thumb---position': positionPercentage.value,
-        '--foxy-slider-field-thumb---size': convertToUnit(size.value),
+        '--foxy-slider-field-thumb---size': convertToUnit(size.value)
       },
       props.style
     ] as StyleValue
@@ -185,7 +192,7 @@
       'foxy-slider-field-thumb',
       {
         'foxy-slider-field-thumb--focused': props.focused,
-        'foxy-slider-field-thumb--pressed': props.focused && mousePressed.value,
+        'foxy-slider-field-thumb--pressed': props.focused && mousePressed.value
       },
       props.class
     ]
@@ -203,7 +210,7 @@
       'foxy-slider-field-thumb__surface',
       elevationClasses.value,
       borderClasses.value,
-      roundedClasses.value,
+      roundedClasses.value
     ]
   })
   const sliderFieldThumbRippleStyles = computed(() => {
@@ -216,143 +223,146 @@
   // EXPOSE
 
   defineExpose({
-	  filterProps
+    filterProps
   })
 </script>
 
-<style lang="scss" scoped>
-  .foxy-slider-field-thumb {
-    $this: &;
+<style
+    lang="scss"
+    scoped
+>
+.foxy-slider-field-thumb {
+  $this: &;
 
-    touch-action: none;
+  touch-action: none;
+  color: rgba(66, 66, 66, 1);
+  outline: none;
+  position: absolute;
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+  &__label {
+    background: rgba(66, 66, 66, 0.7);
     color: rgba(66, 66, 66, 1);
-    outline: none;
-    position: absolute;
-    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 
-    &__label {
-      background: rgba(66, 66, 66, 0.7);
-      color: rgba(66, 66, 66, 1);
+    &:before {
+      color: rgba(66, 66, 66, 0.7);
+    }
+  }
 
-      &:before {
-        color: rgba(66, 66, 66, 0.7);
-      }
+  &__surface {
+    cursor: pointer;
+    width: var(--foxy-slider-field-thumb---size, 20);
+    height: var(--foxy-slider-field-thumb---size, 20);
+    border-radius: 50%;
+    user-select: none;
+    background-color: currentColor;
+
+    @media (forced-colors: active) {
+      background-color: highlight;
     }
 
-    &__surface {
-      cursor: pointer;
-      width: var(--foxy-slider-field-thumb---size, 20);
-      height: var(--foxy-slider-field-thumb---size, 20);
+    &:before {
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      content: "";
+      color: inherit;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
-      user-select: none;
-      background-color: currentColor;
+      background: currentColor;
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+    }
 
-      @media (forced-colors: active) {
-        background-color: highlight;
-      }
+    &:after {
+      content: "";
+      width: 42px;
+      height: 42px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 
+  &__label-container {
+    position: absolute;
+    transition: 0.2s cubic-bezier(0.4, 0, 1, 1);
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    min-width: 35px;
+    height: 25px;
+    border-radius: 4px;
+    padding: 6px;
+    position: absolute;
+    user-select: none;
+    transition: 0.2s cubic-bezier(0.4, 0, 1, 1);
+
+    &:before {
+      content: "";
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+  }
+
+  &__ripple {
+    position: absolute;
+    left: calc(var(--foxy-slider-field-thumb---size, 20) / -2);
+    top: calc(var(--foxy-range-slider-thumb---size, 20) / -2);
+    width: calc(var(--foxy-range-slider-thumb---size, 20) * 2);
+    height: calc(var(--foxy-range-slider-thumb---size, 20) * 2);
+    background: inherit;
+  }
+
+  &--focused {
+    #{$this}__surface {
       &:before {
-        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        content: "";
-        color: inherit;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background: currentColor;
-        position: absolute;
-        pointer-events: none;
-        opacity: 0;
-      }
-
-      &:after {
-        content: "";
-        width: 42px;
-        height: 42px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        transform: scale(2);
+        opacity: 0.12;
       }
     }
+  }
 
-    &__label-container {
-      position: absolute;
-      transition: 0.2s cubic-bezier(0.4, 0, 1, 1);
-    }
+  &--pressed {
+    transition: none;
 
-    &__label {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      min-width: 35px;
-      height: 25px;
-      border-radius: 4px;
-      padding: 6px;
-      position: absolute;
-      user-select: none;
-      transition: 0.2s cubic-bezier(0.4, 0, 1, 1);
-
+    #{$this}__surface {
       &:before {
-        content: "";
-        width: 0;
-        height: 0;
-        position: absolute;
+        opacity: 0.12;
       }
     }
+  }
 
-    &__ripple {
-      position: absolute;
-      left: calc(var(--foxy-slider-field-thumb---size, 20) / -2);
-      top: calc(var(--foxy-range-slider-thumb---size, 20) / -2);
-      width: calc(var(--foxy-range-slider-thumb---size, 20) * 2);
-      height: calc(var(--foxy-range-slider-thumb---size, 20) * 2);
-      background: inherit;
-    }
-
-    &--focused {
+  @media (hover: hover) {
+    &:hover {
       #{$this}__surface {
         &:before {
           transform: scale(2);
-          opacity: 0.12;
         }
       }
-    }
 
-    &--pressed {
-      transition: none;
-
-      #{$this}__surface {
-        &:before {
-          opacity: 0.12;
-        }
-      }
-    }
-
-    @media (hover: hover) {
-      &:hover {
+      &:not(#{$this}--focused) {
         #{$this}__surface {
           &:before {
-            transform: scale(2);
-          }
-        }
-
-        &:not(#{$this}--focused) {
-          #{$this}__surface {
-            &:before {
-              opacity: 0.04;
-            }
+            opacity: 0.04;
           }
         }
       }
     }
   }
+}
 </style>
 
 <style>
-  :root {
+:root {
 
-  }
+}
 </style>

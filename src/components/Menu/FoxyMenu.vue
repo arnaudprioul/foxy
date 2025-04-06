@@ -3,37 +3,57 @@
 			:id="id"
 			ref="foxyOverlayRef"
 			v-model="isActive"
+			:activator="activator"
 			:activator-props="activatorProps"
 			:class="menuClasses"
+			:open-on-click="openOnClick"
+			:open-on-context-menu="openOnContextMenu"
 			:style="menuStyles"
+			:target="target"
 			absolute
 			role="menu"
 			v-bind="{...overlayProps, ...scopeId}"
 			@keydown="handleKeydown"
-			@click:outside="handleClickOutside">
+			@click:outside="handleClickOutside"
+	>
 		<template #activator="{props}">
-			<slot name="activator" v-bind="{props}"/>
+			<slot
+					name="activator"
+					v-bind="{props}"
+			/>
 		</template>
 
 		<template #default>
 			<slot name="default">
 				<foxy-list class="foxy-menu__list">
-					<foxy-list-subheader v-if="title" class="foxy-menu__title">{{ title }}</foxy-list-subheader>
+					<foxy-list-subheader
+							v-if="title"
+							class="foxy-menu__title"
+					>{{ title }}
+					</foxy-list-subheader>
 					<foxy-list-group class="foxy-menu__items">
-						<template v-for="(item, index) in items" :key="index">
+						<template
+								v-for="(item, index) in items"
+								:key="index"
+						>
 							<foxy-list-item
 									v-if="!hasChilds(item)"
 									class="foxy-menu__item"
-									v-bind="item"/>
+									v-bind="item"
+							/>
 							<foxy-menu
 									v-else
-									v-bind="{...item, ...overlayProps, offset:[8, 8]}"
+									:offset="[8,8]"
+									:open-on-context-menu="false"
+									open-on-click
+									v-bind="{...item, ...overlayProps}"
 							>
 								<template #activator="{props}">
 									<foxy-list-item
 											:append-icon="MDI_ICONS.CHEVRON_RIGHT"
 											class="foxy-menu__item"
-											v-bind="{...props, ...item}"/>
+											v-bind="{...props, ...item}"
+									/>
 								</template>
 							</foxy-menu>
 						</template>
@@ -44,18 +64,28 @@
 	</foxy-overlay>
 </template>
 
-<script lang="ts" setup>
-	import { FoxyListGroup, FoxyListSubheader, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
+<script
+		lang="ts"
+		setup
+>
+	import {
+		FoxyList,
+		FoxyListGroup,
+		FoxyListItem,
+		FoxyListSubheader,
+		FoxyOverlay,
+		FoxyTranslateScale
+	} from '@foxy/components'
 
 	import { useProps, useScopeId, useVModel } from '@foxy/composables'
 
-	import { FOXY_MENU_KEY } from '@foxy/consts'
+	import { FOXY_MENU_KEY, KEYBOARD_VALUES } from '@foxy/consts'
 
-	import { INLINE, KEYBOARD_VALUES, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@foxy/enums'
+	import { INLINE, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@foxy/enums'
 
 	import { IItemProps, IMenuProps } from '@foxy/interfaces'
 
-	import { TFoxyOverlay } from '@foxy/types'
+	import { TFoxyOverlay, TTransitionProps } from '@foxy/types'
 
 	import { focusableChildren, focusChild, forwardRefs, getNextElement, getUid } from '@foxy/utils'
 
@@ -70,12 +100,11 @@
 		openOnClick: true,
 		location: INLINE.RIGHT,
 		scrollStrategy: SCROLL_STRATEGIES.REPOSITION,
-		width: 200,
 		offset: 8,
-		transition: {component: FoxyTranslateScale}
+		transition: () => ({component: FoxyTranslateScale}) as unknown as TTransitionProps
 	})
 
-	const emits = defineEmits(['update:modelValue'])
+	defineEmits(['update:modelValue', 'contextmenu'])
 
 	const {filterProps} = useProps<IMenuProps>(props)
 
@@ -161,6 +190,8 @@
 		if (props.disabled) return
 
 		const el = foxyOverlayRef.value?.contentEl
+		const keyDown = [KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.UP]
+
 		if (el && isActive.value) {
 			if (e.key === KEYBOARD_VALUES.DOWN) {
 				e.preventDefault()
@@ -169,7 +200,7 @@
 				e.preventDefault()
 				focusChild(el, 'prev')
 			}
-		} else if ([KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.UP].includes(e.key)) {
+		} else if (keyDown.includes(e.key as typeof keyDown[number])) {
 			isActive.value = true
 			e.preventDefault()
 			setTimeout(() => setTimeout(() => handleActivatorKeydown(e)))
@@ -186,7 +217,9 @@
 	})
 
 	const overlayProps = computed(() => {
-		return foxyOverlayRef.value?.filterProps(props, ['activatorProps', 'id', 'class', 'style', 'modelValue', 'absolute'])
+		console.log(foxyOverlayRef.value?.filterProps(props, ['activatorProps', 'id', 'class', 'style', 'role', 'modelValue', 'absolute', 'activator', 'target', 'openOnClick', 'openOnContextMenu']))
+
+		return foxyOverlayRef.value?.filterProps(props, ['activatorProps', 'id', 'class', 'style', 'role', 'modelValue', 'absolute', 'activator', 'target', 'openOnClick', 'openOnContextMenu'])
 	})
 
 	const hasChilds = (item: IItemProps) => {
@@ -212,7 +245,10 @@
 	defineExpose(forwardRefs({openChildren, filterProps}, foxyOverlayRef))
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-menu {
 
 	}

@@ -40,7 +40,7 @@ export function isPotentiallyScrollable (el?: Element | null) {
 }
 
 export function closeScrollStrategy (data: IScrollStrategyData) {
-  const onScroll = (_e: Event) => {
+  const onScroll = () => {
     data.isActive.value = false
   }
 
@@ -55,12 +55,12 @@ export function blockScrollStrategy (data: IScrollStrategyData, props: IScrollSt
   ])].filter(el => !el.classList.contains('foxy-overlay--scroll-blocked'))
   const scrollbarWidth = window.innerWidth - document.documentElement.offsetWidth
 
-  const scrollableParent = (el => hasScrollbar(el) && el)(offsetParent || document.documentElement)
-  if (scrollableParent) {
+  const scrollableParent = offsetParent || document.documentElement
+  if (hasScrollbar(scrollableParent)) {
     data.root.value!.classList.add('foxy-overlay--scroll-blocked')
   }
 
-  scrollElements.forEach((el, _i) => {
+  scrollElements.forEach((el) => {
     el.style.setProperty('--foxy-body-scroll-x', convertToUnit(-el.scrollLeft))
     el.style.setProperty('--foxy-body-scroll-y', convertToUnit(-el.scrollTop))
 
@@ -72,7 +72,7 @@ export function blockScrollStrategy (data: IScrollStrategyData, props: IScrollSt
   })
 
   onScopeDispose(() => {
-    scrollElements.forEach((el, _i) => {
+    scrollElements.forEach((el) => {
       const x = parseFloat(el.style.getPropertyValue('--foxy-body-scroll-x'))
       const y = parseFloat(el.style.getPropertyValue('--foxy-body-scroll-y'))
 
@@ -89,7 +89,7 @@ export function blockScrollStrategy (data: IScrollStrategyData, props: IScrollSt
 
       el.style.scrollBehavior = scrollBehavior
     })
-    if (scrollableParent) {
+    if (hasScrollbar(scrollableParent)) {
       data.root.value!.classList.remove('foxy-overlay--scroll-blocked')
     }
   })
@@ -109,7 +109,7 @@ export function repositionScrollStrategy (data: IScrollStrategyData, _props: ISc
     })
   }
 
-  ric = (typeof requestIdleCallback === 'undefined' ? (cb: Function) => cb() : requestIdleCallback)(() => {
+  ric = (typeof requestIdleCallback === 'undefined' ? (cb: () => number) => cb() : requestIdleCallback)(() => {
     scope.run(() => {
       bindScroll(data.targetEl.value ?? data.contentEl.value, e => {
         if (slow) {
@@ -128,10 +128,15 @@ export function repositionScrollStrategy (data: IScrollStrategyData, _props: ISc
         }
       })
     })
+    
+    return 0
   })
 
   onScopeDispose(() => {
-    typeof cancelIdleCallback !== 'undefined' && cancelIdleCallback(ric)
+    if (typeof cancelIdleCallback !== 'undefined') {
+      cancelIdleCallback(ric)
+    }
+    
     cancelAnimationFrame(raf)
   })
 }

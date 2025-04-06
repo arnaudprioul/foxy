@@ -4,7 +4,7 @@ import { TOmitPrefix, TOmitProps, TUnionToIntersection } from '@foxy/types'
 
 import { ComponentPublicInstance, Ref, UnwrapRef } from 'vue'
 
-export function forwardRefs<T extends {}, U extends Ref<HTMLElement | Omit<ComponentPublicInstance, '$emit' | '$slots'> | undefined>[]> (
+export function forwardRefs<T extends Record<string, unknown>, U extends Ref<HTMLElement | Omit<ComponentPublicInstance, '$emit' | '$slots'> | undefined>[]> (
     target: T,
     ...refs: U
 ): T & TUnionToIntersection<{ [K in keyof U]: TOmitPrefix<TOmitProps<NonNullable<UnwrapRef<U[K]>>>, '$'> }[number]> {

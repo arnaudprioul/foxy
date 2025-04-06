@@ -1,7 +1,13 @@
 <template>
-	<template v-for="(row, y) in headers">
+	<template
+			v-for="(row, y) in headers"
+			:key="y"
+	>
 		<tr class="foxy-data-table-headers">
-			<template v-for="(column, x) in row">
+			<template
+					v-for="(column, x) in row"
+					:key="x"
+			>
 				<foxy-data-table-header-cell
 						ref="foxyDataTableHeaderCellRef"
 						:class="dataTableHeadersCellClasses"
@@ -16,7 +22,10 @@
 	</template>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyDataTableHeaderCell } from '@foxy/components'
 
 	import { useProps } from "@foxy/composables"

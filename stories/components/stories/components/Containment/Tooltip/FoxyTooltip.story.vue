@@ -7,7 +7,10 @@
     <Variant title="Default">
       <template #default>
         <foxy-container>
-          <foxy-row :align="ALIGN.CENTER" :justify="JUSTIFY.CENTER">
+          <foxy-row
+              :align="ALIGN.CENTER"
+              :justify="JUSTIFY.CENTER"
+          >
             <foxy-col cols="auto">
               <foxy-tooltip v-bind="state">
                 <template #activator="{ props }">
@@ -27,8 +30,11 @@
   </Story>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyTooltip, FoxyBtn, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
+<script
+    lang="ts"
+    setup
+>
+  import { FoxyBtn, FoxyCol, FoxyContainer, FoxyRow, FoxyTooltip } from '@foxy/components'
 
   import { ALIGN, JUSTIFY } from '@foxy/enums'
 

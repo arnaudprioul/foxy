@@ -5,20 +5,28 @@
 			v-model="model"
 			:class="radioGroupClasses"
 			:style="radioGroupStyles"
-			v-bind="{ ...rootAttrs, ...inputProps }">
+			v-bind="{ ...rootAttrs, ...inputProps }"
+	>
 		<template #default="{id, messagesId, isDisabled, isReadonly, isValid}">
-			<slot name="default" v-bind="{id, messagesId, isDisabled, isReadonly, isValid}">
+			<slot
+					name="default"
+					v-bind="{id, messagesId, isDisabled, isReadonly, isValid}"
+			>
 
-				<slot name="label" v-bind="{label, required}">
+				<slot
+						name="label"
+						v-bind="{label, required}"
+				>
 					<foxy-label
 							:id="id"
 							:required="required"
-							:text="label"/>
+							:text="label"
+					/>
 				</slot>
 
 				<foxy-selection-control-group
-						ref="foxySelectionControlGroupRef"
 						:id="id"
+						ref="foxySelectionControlGroupRef"
 						v-model="model"
 						:aria-describedby="messagesId"
 						:aria-labelledby="label ? id : undefined"
@@ -26,16 +34,21 @@
 						:items="items"
 						:multiple="false"
 						:readonly="isReadonly"
-						v-bind="{ ...controlProps , ...controlAttrs}">
+						v-bind="{ ...controlProps , ...controlAttrs}"
+				>
 					<template #item="{item}">
-						<slot name="item" v-bind="{id, messagesId, isDisabled, isReadonly, isValid}">
+						<slot
+								name="item"
+								v-bind="{id, messagesId, isDisabled, isReadonly, isValid}"
+						>
 							<foxy-radio
 									ref="foxyRadioRef"
 									v-model="model"
 									:aria-describedby="messagesId"
 									:disabled="isDisabled"
 									:readonly="isReadonly"
-									v-bind="item"/>
+									v-bind="item"
+							/>
 						</slot>
 					</template>
 				</foxy-selection-control-group>
@@ -44,7 +57,10 @@
 	</foxy-input>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyInput, FoxyLabel, FoxyRadio, FoxySelectionControlGroup } from '@foxy/components'
 
 	import { useProps, useVModel } from '@foxy/composables'
@@ -54,14 +70,12 @@
 	import { IRadioGroupProps } from '@foxy/interfaces'
 	import { TFoxyInput, TFoxyRadio, TFoxySelectionControlGroup } from "@foxy/types"
 
-	import { filterInputAttrs, getUid, keys, omit, pick } from '@foxy/utils'
+	import { filterInputAttrs, getUid } from '@foxy/utils'
 
 	import { computed, ref, StyleValue, useAttrs } from 'vue'
 
 	const props = withDefaults(defineProps<IRadioGroupProps>(), {
-		density: DENSITY.DEFAULT,
-		trueIcon: '$radioOn',
-		falseIcon: '$radioOff'
+		density: DENSITY.DEFAULT
 	})
 
 	const {filterProps} = useProps<IRadioGroupProps>(props)

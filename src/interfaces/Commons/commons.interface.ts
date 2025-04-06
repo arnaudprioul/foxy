@@ -1,7 +1,8 @@
-import { IDisplayOptions, IGoToOptions } from '@foxy/interfaces'
+import { IDateOptions, IDisplayOptions, IGoToOptions, IRtlOptions } from '@foxy/interfaces'
+import { ILocaleOptions } from "@foxy/interfaces/Commons/locale.interface.ts"
 
 import { TIconOptions, TSSROptions } from '@foxy/types'
-import { ComponentPropsOptions, ExtractPropTypes, StyleValue } from 'vue'
+import { ExtractPropTypes, StyleValue } from 'vue'
 
 export interface IFoxyOptions {
   aliases?: any
@@ -12,6 +13,8 @@ export interface IFoxyOptions {
   display?: IDisplayOptions
   ssr?: TSSROptions
   goTo?: IGoToOptions
+  date?: IDateOptions
+  locale?: ILocaleOptions & IRtlOptions
 }
 
 export interface IBlueprint extends Omit<IFoxyOptions, 'blueprint'> {
@@ -19,8 +22,8 @@ export interface IBlueprint extends Omit<IFoxyOptions, 'blueprint'> {
 
 export interface ICommonsComponentProps {
   id?: string,
-  class?: string | Array<string> | Object,
-  style?: string | Array<string> | Object | StyleValue
+  class?: string | Array<string> | object,
+  style?: string | Array<string> | object | StyleValue
 }
 
 export interface ITagProps {
@@ -38,7 +41,7 @@ export interface IIntersectionObserverInit {
   threshold?: number | Array<number>;
 }
 
-export interface IFilterPropsOptions<PropsOptions extends Readonly<ComponentPropsOptions>, Props = ExtractPropTypes<PropsOptions>> {
+export interface IFilterPropsOptions<PropsOptions extends {[key: string] : any}, Props = ExtractPropTypes<PropsOptions>> {
   filterProps<
       T extends Partial<Props>,
       U extends Extract<keyof T, string>

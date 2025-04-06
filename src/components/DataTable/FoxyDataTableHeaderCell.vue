@@ -18,7 +18,7 @@
 				<template v-if="hasColumn('data-table-select')">
 					<foxy-checkbox-btn
 							:indeterminate="someSelected && !allSelected"
-							:modelValue="allSelected"
+							:model-value="allSelected"
 							@update:model-value="selectAll"
 					/>
 				</template>
@@ -41,7 +41,7 @@
 									key="badge"
 									:style="colorStyles"
 									class="foxy-data-table-header-cell__sort-badge">
-								{{ sortBy.findIndex((x) => x.key === column.key) + 1 }}
+								{{ sortedItems(column) }}
 							</div>
 						</template>
 					</div>
@@ -56,7 +56,7 @@
 
 	import { useBothColor, useCell, useHeadersCell, useProps, useSelection, useSort } from '@foxy/composables'
 
-	import { IDataTableHeaderCellProps, IInternalDataTableHeader } from '@foxy/interfaces'
+	import { IDataTableHeaderCellProps, IDataTableSortItem, IInternalDataTableHeader } from '@foxy/interfaces'
 
 	import { convertToUnit } from '@foxy/utils'
 
@@ -73,6 +73,12 @@
 	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
 
 	const headerProps = mergeProps(props.headerProps ?? {})
+
+	const sortedItems = (column: IDataTableSortItem) => {
+		return sortBy.value.findIndex((x: IDataTableSortItem) => {
+			return x.key === column.key + 1
+		})
+	}
 
 	const getFixedStyles = (column: IInternalDataTableHeader, y: number): CSSProperties | undefined => {
 		if (!props.sticky && !column.fixed) return undefined

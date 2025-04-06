@@ -7,70 +7,113 @@
 			:style="dialogStyles"
 			aria-modal="true"
 			role="dialog"
-			v-bind="{...overlayProps, ...scopeId}">
-		<template v-if="hasSlot('activator')" #activator="{props}">
-			<slot name="activator" v-bind="{props}"/>
+			v-bind="{...overlayProps, ...scopeId}"
+	>
+		<template
+				v-if="slots.activator"
+				#activator="{props}"
+		>
+			<slot
+					name="activator"
+					v-bind="{props}"
+			/>
 		</template>
 
 		<template #default="{isActive}">
-			<slot name="default" v-bind="{isActive}">
+			<slot
+					name="default"
+					v-bind="{isActive}"
+			>
 				<foxy-card
 						ref="foxyCardRef"
-						v-bind="cardProps">
-					<template v-if="hasSlot('loader')" #loader>
+						v-bind="cardProps"
+				>
+					<template
+							v-if="slots.loader"
+							#loader
+					>
 						<slot name="loader"/>
 					</template>
 
-					<template v-if="hasSlot('header')" #header>
+					<template
+							v-if="slots.header"
+							#header
+					>
 						<slot name="header"/>
 					</template>
 
-					<template #header.append>
-						<slot name="header.append">
+					<template #header:append>
+						<slot name="header:append">
 							<foxy-btn
 									:icon="MDI_ICONS.CLOSE"
 									:rounded="0"
 									bg-color="transparent"
-									@click="handleClose"/>
+									@click="handleClose"
+							/>
 						</slot>
 					</template>
 
-					<template v-if="hasPrepend" #header.prepend>
-						<slot name="header.prepend">
+					<template
+							v-if="hasPrepend"
+							#header:prepend
+					>
+						<slot name="header:prepend">
 							<foxy-icon
 									v-if="hasIcon"
 									key="prepend-icon"
 									:icon="icon as TIcon"
-									:size="28"/>
+									:size="28"
+							/>
 						</slot>
 					</template>
 
-					<template v-if="hasSlot('header.title')" #header.title>
-						<slot name="header.title"/>
+					<template
+							v-if="slots['header:title']"
+							#header:title
+					>
+						<slot name="header:title"/>
 					</template>
 
-					<template v-if="hasSlot('header.subtitle')" #header.subtitle>
-						<slot name="header.subtitle"/>
+					<template
+							v-if="slots['header:subtitle']"
+							#header:subtitle
+					>
+						<slot name="header:subtitle"/>
 					</template>
 
-					<template v-if="hasSlot('header.content')" #header.content>
-						<slot name="header.content"/>
+					<template
+							v-if="slots['header:content']"
+							#header:content
+					>
+						<slot name="header:content"/>
 					</template>
 
-					<template v-if="hasSlot('asset')" #asset>
+					<template
+							v-if="slots.asset"
+							#asset
+					>
 						<slot name="asset"/>
 					</template>
 
-					<template v-if="hasSlot('text')" #text>
+					<template
+							v-if="slots.text"
+							#text
+					>
 						<slot name="text"/>
 					</template>
 
 					<template #default>
 						<slot name="content"/>
-						<div ref="endText" v-intersect="handleIntersect"></div>
+						<div
+								ref="endText"
+								v-intersect="handleIntersect"
+						></div>
 					</template>
 
-					<template v-if="hasSlot('footer')" #footer>
+					<template
+							v-if="slots.footer"
+							#footer
+					>
 						<slot name="footer"/>
 					</template>
 				</foxy-card>
@@ -79,30 +122,26 @@
 	</foxy-overlay>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyBtn, FoxyCard, FoxyIcon, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
-
-	import { useProps, useScopeId, useSlots, useStatus, useVModel } from '@foxy/composables'
-
+	import { useProps, useScopeId, useStatus, useVModel } from '@foxy/composables'
 	import { IN_BROWSER } from '@foxy/consts'
-
 	import { vIntersect } from '@foxy/directives'
-
 	import { MDI_ICONS } from '@foxy/enums'
-
 	import { IDialogProps } from '@foxy/interfaces'
-
-	import { TFoxyCard, TFoxyOverlay, TIcon } from '@foxy/types'
-
+	import { TFoxyCard, TFoxyOverlay, TIcon, TTransitionProps } from '@foxy/types'
 	import { focusableChildren, forwardRefs } from '@foxy/utils'
 
-	import { Component, computed, mergeProps, nextTick, ref, StyleValue, watch } from 'vue'
+	import { computed, mergeProps, nextTick, ref, StyleValue, useSlots, watch } from 'vue'
 
 	const props = withDefaults(defineProps<IDialogProps>(), {
 		retainFocus: true,
 		origin: 'center center',
 		scrollStrategy: 'block',
-		transition: {component: FoxyTranslateScale as Component},
+		transition: () => ({component: FoxyTranslateScale}) as unknown as TTransitionProps,
 		zIndex: 2400
 	})
 
@@ -112,7 +151,7 @@
 
 	const isActive = useVModel(props, 'modelValue')
 	const {scopeId} = useScopeId()
-	const {hasSlot} = useSlots()
+	const slots = useSlots()
 	const {icon, statusClasses} = useStatus(props)
 
 	const foxyOverlayRef = ref<TFoxyOverlay>()
@@ -149,9 +188,11 @@
 
 	if (IN_BROWSER) {
 		watch(() => isActive.value && props.retainFocus, (val) => {
-			val
-					? document.addEventListener('focusin', handleFocusin)
-					: document.removeEventListener('focusin', handleFocusin)
+			if (val) {
+				document.addEventListener('focusin', handleFocusin)
+			} else {
+				document.removeEventListener('focusin', handleFocusin)
+			}
 		}, {immediate: true})
 	}
 
@@ -180,14 +221,14 @@
 	const handleClose = () => {
 		isActive.value = false
 	}
-	const handleIntersect = (_isIntersecting: boolean, entries: Array<IntersectionObserverEntry>, _observer: IntersectionObserver) => {
+	const handleIntersect = (_isIntersecting: boolean, entries: Array<IntersectionObserverEntry>) => {
 		if (entries[entries.length - 1].isIntersecting) {
 			emits('isRead', true)
 		}
 	}
 
 	const hasPrepend = computed(() => {
-		return !!(hasSlot('header.prepend') || icon.value)
+		return !!(slots['header:prepend'] || icon.value)
 	})
 	const hasIcon = computed(() => {
 		return !!(props.icon || props.status)
@@ -217,7 +258,10 @@
 	defineExpose(forwardRefs({filterProps}, foxyOverlayRef))
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-dialog {
 		$this: &;
 

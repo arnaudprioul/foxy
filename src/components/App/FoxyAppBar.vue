@@ -1,185 +1,220 @@
 <template>
-	<foxy-toolbar
-			:class="toolbarClasses"
-			:collapse="isCollapsed"
-			:flat="isFlat"
-			:style="toolbarStyles"
-			v-bind="props">
-		<template v-if="hasAppend" #append>
-			<slot name="append"></slot>
-		</template>
+  <foxy-toolbar
+      ref="foxyToolbarRef"
+      :class="toolbarClasses"
+      :collapse="isCollapsed"
+      :flat="isFlat"
+      :style="toolbarStyles"
+      v-bind="toolbarProps"
+  >
+    <template
+        v-if="hasAppend"
+        #append
+    >
+      <slot name="append"></slot>
+    </template>
 
-		<template v-if="hasPrepend" #prepend>
-			<slot name="prepend">
-				<div v-if="hasImage" class="foxy-bar__img">
-					<slot name="title">
-						<foxy-img v-bind="image"/>
-					</slot>
-				</div>
-				<div v-if="hasTitle" class="foxy-bar__title">
-					<slot name="title">
-						<foxy-title :text="title" class="foxy-bar__title"/>
-					</slot>
-				</div>
-			</slot>
-		</template>
+    <template
+        v-if="hasPrepend"
+        #prepend
+    >
+      <slot name="prepend">
+        <div
+            v-if="hasImage"
+            class="foxy-bar__img"
+        >
+          <slot name="title">
+            <foxy-img v-bind="image"/>
+          </slot>
+        </div>
+        <div
+            v-if="hasTitle"
+            class="foxy-bar__title"
+        >
+          <slot name="title">
+            <foxy-title
+                :text="title"
+                class="foxy-bar__title"
+            />
+          </slot>
+        </div>
+      </slot>
+    </template>
 
-		<template v-if="hasContent" #content>
-			<slot name="content"></slot>
-		</template>
+    <template
+        v-if="hasContent"
+        #content
+    >
+      <slot name="content"></slot>
+    </template>
 
-		<template v-if="hasSlot('default')" #default>
-			<slot name="default"></slot>
-		</template>
-	</foxy-toolbar>
+    <template
+        v-if="slots.default"
+        #default
+    >
+      <slot name="default"></slot>
+    </template>
+  </foxy-toolbar>
 </template>
 
-<script lang="ts" setup>
-	import { FoxyImg, FoxyTitle, FoxyToolbar } from '@foxy/components'
+<script
+    lang="ts"
+    setup
+>
+  import { FoxyImg, FoxyTitle, FoxyToolbar } from '@foxy/components'
 
-	import {
-		useLayoutItem,
-		useProps,
-		useScroll,
-		useSlots,
-		useSsrBoot,
-		useToggleScope,
-		useVModel
-	} from '@foxy/composables'
+  import {
+    useLayoutItem,
+    useProps,
+    useScroll,
+    useSsrBoot,
+    useToggleScope,
+    useVModel
+  } from '@foxy/composables'
 
-	import { DENSITY, LAYOUT_POSITION } from '@foxy/enums'
+  import { BLOCK, DENSITY } from '@foxy/enums'
 
-	import { IAppBarProps } from '@foxy/interfaces'
-	import { computed, shallowRef, StyleValue, toRef, watchEffect } from 'vue'
+  import { IAppBarProps } from '@foxy/interfaces'
 
-	const props = withDefaults(defineProps<IAppBarProps>(), {
-		tag: 'header',
-		height: 64,
-		density: DENSITY.DEFAULT,
-		scrollThreshold: 300,
-		location: LAYOUT_POSITION.TOP,
-		modelValue: true
-	})
+  import { TFoxyToolbar } from "@foxy/types"
 
-	const emits = defineEmits(['update:modelValue'])
+  import { forwardRefs, int } from "@foxy/utils"
 
-	const {filterProps} = useProps<IAppBarProps>(props)
+  import { computed, ref, shallowRef, StyleValue, toRef, watchEffect, useSlots } from 'vue'
 
-	const {ssrBootStyles} = useSsrBoot()
-	const {hasSlot} = useSlots()
+  const props = withDefaults(defineProps<IAppBarProps>(), {
+    tag: 'header',
+    height: 64,
+    density: DENSITY.DEFAULT,
+    scrollThreshold: 300,
+    location: BLOCK.TOP,
+    modelValue: true
+  })
 
-	const hasPrepend = computed(() => {
-		return hasTitle || hasImage || hasSlot('prepend')
-	})
-	const hasContent = computed(() => {
-		return hasSlot('content')
-	})
-	const hasAppend = computed(() => {
-		return hasSlot('append')
-	})
-	const hasTitle = computed(() => {
-		return !!(props.title || hasSlot('title'))
-	})
-	const hasImage = computed(() => {
-		return !!(props.image || hasSlot('img'))
-	})
+  defineEmits(['update:modelValue'])
 
-	const isActive = useVModel(props, 'modelValue')
+  const { filterProps } = useProps<IAppBarProps>(props)
 
-	// SCROLL
-	const scrollBehavior = computed(() => {
-		const behavior = new Set(props.scrollBehavior?.split(' ') ?? [])
+  const { ssrBootStyles } = useSsrBoot()
+  const slots = useSlots()
 
-		return {
-			hide: behavior.has('hide'),
-			// fullyHide: behavior.has('fully-hide'),
-			inverted: behavior.has('inverted'),
-			collapse: behavior.has('collapse'),
-			elevate: behavior.has('elevate'),
-			fadeImage: behavior.has('fade-image')
-			// shrink: behavior.has('shrink'),
-		}
-	})
-	const canScroll = computed(() => {
-		const behavior = scrollBehavior.value
+  const foxyToolbarRef = ref<TFoxyToolbar>()
 
-		return (
-				behavior.hide ||
-				behavior.inverted ||
-				behavior.collapse ||
-				behavior.elevate ||
-				behavior.fadeImage ||
-				!isActive.value
-		)
-	})
+  const toolbarProps = computed(() => {
+    return foxyToolbarRef.value?.filterProps(props, ['class', 'style', 'collapse', 'flat'])
+  })
 
-	const {
-		currentScroll,
-		scrollThreshold,
-		isScrollingUp,
-		scrollRatio
-	} = useScroll(props, {canScroll})
-	useToggleScope(computed(() => !!props.scrollBehavior), () => {
-		watchEffect(() => {
-			if (scrollBehavior.value.hide) {
-				if (scrollBehavior.value.inverted) {
-					isActive.value = currentScroll.value > scrollThreshold.value
-				} else {
-					isActive.value = isScrollingUp.value || (currentScroll.value < scrollThreshold.value)
-				}
-			} else {
-				isActive.value = true
-			}
-		})
-	})
+  const hasPrepend = computed(() => {
+    return hasTitle.value || hasImage.value || slots.prepend
+  })
+  const hasContent = computed(() => {
+    return slots.content
+  })
+  const hasAppend = computed(() => {
+    return slots.append
+  })
+  const hasTitle = computed(() => {
+    return !!(props.title || slots.title)
+  })
+  const hasImage = computed(() => {
+    return !!(props.image || slots.img)
+  })
 
-	const isCollapsed = computed(() => props.collapse || (
-			scrollBehavior.value.collapse &&
-			(scrollBehavior.value.inverted ? scrollRatio.value > 0 : scrollRatio.value === 0)
-	))
-	const isFlat = computed(() => props.flat || (
-			scrollBehavior.value.elevate &&
-			(scrollBehavior.value.inverted ? currentScroll.value > 0 : currentScroll.value === 0)
-	))
-	const height = computed(() => {
-		if (scrollBehavior.value.hide && scrollBehavior.value.inverted) return 0
+  const isActive = useVModel(props, 'modelValue')
 
-		return props.height ?? 0
-	})
+  // SCROLL
+  const scrollBehavior = computed(() => {
+    const behavior = new Set(props.scrollBehavior?.split(' ') ?? [])
 
-	// LAYOUT
+    return {
+      hide: behavior.has('hide'),
+      // fullyHide: behavior.has('fully-hide'),
+      inverted: behavior.has('inverted'),
+      collapse: behavior.has('collapse'),
+      elevate: behavior.has('elevate'),
+      fadeImage: behavior.has('fade-image')
+      // shrink: behavior.has('shrink'),
+    }
+  })
+  const canScroll = computed(() => {
+    const behavior = scrollBehavior.value
 
-	const {layoutItemStyles, layoutIsReady} = useLayoutItem({
-		id: props.name,
-		order: computed(() => parseInt(props.order as string, 10)),
-		position: toRef(props, 'location'),
-		layoutSize: height,
-		elementSize: shallowRef(undefined),
-		active: isActive,
-		absolute: toRef(props, 'absolute')
-	})
+    return (
+        behavior.hide ||
+        behavior.inverted ||
+        behavior.collapse ||
+        behavior.elevate ||
+        behavior.fadeImage ||
+        !isActive.value
+    )
+  })
 
-	// CLASS & STYLES
+  const {
+    currentScroll,
+    scrollThreshold,
+    isScrollingUp,
+    scrollRatio
+  } = useScroll(props, { canScroll })
+  useToggleScope(computed(() => !!props.scrollBehavior), () => {
+    watchEffect(() => {
+      if (scrollBehavior.value.hide) {
+        if (scrollBehavior.value.inverted) {
+          isActive.value = currentScroll.value > scrollThreshold.value
+        } else {
+          isActive.value = isScrollingUp.value || (currentScroll.value < scrollThreshold.value)
+        }
+      } else {
+        isActive.value = true
+      }
+    })
+  })
 
-	const toolbarStyles = computed(() => {
-		return [
-			layoutItemStyles.value,
-			ssrBootStyles.value,
-			props.style
-		] as StyleValue
-	})
-	const toolbarClasses = computed(() => {
-		return [
-			'foxy-app-bar',
-			`foxy-app-bar--${props.location}`,
-			props.class
-		]
-	})
+  const isCollapsed = computed(() => props.collapse || (
+      scrollBehavior.value.collapse &&
+      (scrollBehavior.value.inverted ? scrollRatio.value > 0 : scrollRatio.value === 0)
+  ))
+  const isFlat = computed(() => props.flat || (
+      scrollBehavior.value.elevate &&
+      (scrollBehavior.value.inverted ? currentScroll.value > 0 : currentScroll.value === 0)
+  ))
+  const height = computed(() => {
+    if (scrollBehavior.value.hide && scrollBehavior.value.inverted) return 0
 
-	// EXPOSE
+    return props.height ?? 0
+  })
 
-	defineExpose({
-		layoutIsReady,
-		filterProps
-	})
+  // LAYOUT
+
+  const { layoutItemStyles } = useLayoutItem({
+    id: props.name,
+    order: computed(() => int(props.order as string)),
+    position: toRef(props, 'location'),
+    layoutSize: height,
+    elementSize: shallowRef(undefined),
+    active: isActive,
+    absolute: toRef(props, 'absolute')
+  })
+
+  // CLASS & STYLES
+
+  const toolbarStyles = computed(() => {
+    return [
+      layoutItemStyles.value,
+      ssrBootStyles.value,
+      props.style
+    ] as StyleValue
+  })
+  const toolbarClasses = computed(() => {
+    return [
+      'foxy-app-bar',
+      `foxy-app-bar--${props.location}`,
+      props.class
+    ]
+  })
+
+  // EXPOSE
+
+  defineExpose(forwardRefs({
+    filterProps
+  }, foxyToolbarRef))
 </script>

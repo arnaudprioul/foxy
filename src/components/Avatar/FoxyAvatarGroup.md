@@ -1,0 +1,4 @@
+# FoxyAvatarGroup
+
+## Usage
+    <FoxyAvatarGroup />

@@ -1,5 +1,5 @@
 import { IN_BROWSER } from '@foxy/consts'
-import { ILink, ILinkListenersProps, ILinkProps, ITagProps } from '@foxy/interfaces'
+import { ILink, ILinkProps, ITagProps } from '@foxy/interfaces'
 
 import { deepEqual, getCurrentInstance, hasEvent } from '@foxy/utils'
 
@@ -16,14 +16,16 @@ import {
 export function useRoute (): Ref<RouteLocationNormalizedLoaded | undefined> {
   const vm = getCurrentInstance('useRoute')
 
+  // @ts-expect-error TODO
   return computed(() => vm?.proxy?.$route)
 }
 
 export function useRouter (): Router | undefined {
+  // @ts-expect-error TODO
   return getCurrentInstance('useRouter')?.proxy?.$router
 }
 
-export function useLink (props: ILinkProps & ILinkListenersProps & ITagProps, attrs: SetupContext['attrs']): ILink {
+export function useLink (props: ILinkProps & ITagProps, attrs: SetupContext['attrs']): ILink {
   const RouterLink = resolveDynamicComponent('RouterLink') as typeof _RouterLink | string
 
   const isLink = computed(() => !!(props.href || props.to))
@@ -69,17 +71,29 @@ export function useBackButton (router: Router | undefined, cb: (next: Navigation
   if (IN_BROWSER) {
     nextTick(() => {
       window.addEventListener('popstate', onPopstate)
-      removeBefore = router?.beforeEach((to, from, next) => {
-        if (!inTransition) {
-          setTimeout(() => popped ? cb(next) : next())
-        } else {
-          popped ? cb(next) : next()
-        }
-        inTransition = true
-      })
-      removeAfter = router?.afterEach(() => {
-        inTransition = false
-      })
+      if (router) {
+        removeBefore = router.beforeEach((_to, _from, next) => {
+          if (!inTransition) {
+            setTimeout(() => {
+              if (popped) {
+                cb(next)
+              } else {
+                next()
+              }
+            })
+          } else {
+            if (popped) {
+              cb(next)
+            } else {
+              next()
+            }
+          }
+          inTransition = true
+        })
+        removeAfter = router.afterEach(() => {
+          inTransition = false
+        })
+      }
     })
     onScopeDispose(() => {
       window.removeEventListener('popstate', onPopstate)

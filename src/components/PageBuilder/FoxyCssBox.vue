@@ -99,7 +99,7 @@
 
   const props = withDefaults(defineProps<ICssBoxProps>(), {})
 
-  const emits = defineEmits(['update:padding', 'update:margin', 'update:border'])
+  defineEmits(['update:padding', 'update:margin', 'update:border'])
 
   const {filterProps} = useProps<ICssBoxProps>(props)
 

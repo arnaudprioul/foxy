@@ -1,10 +1,8 @@
 import { ALIGN } from '@foxy/enums'
 import { ICommonsComponentProps, IDimensionProps, IPaddingProps, ITagProps } from '@foxy/interfaces'
 
-import { TAlign } from '@foxy/types'
-
 export interface IDataTableColumnProps extends ICommonsComponentProps, ITagProps, IDimensionProps, IPaddingProps {
-  align?: Omit<TAlign, ALIGN.BASELINE | ALIGN.STRETCH>
+  align?: ALIGN.START | ALIGN.END | ALIGN.CENTER
   fixed?: boolean
   fixedOffset?: number | string
   lastFixed?: boolean

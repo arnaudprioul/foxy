@@ -28,8 +28,19 @@ export const KEYCODES = Object.freeze({
   shift: 16,
 })
 
+export const RIPPLE_OPTIONS = {
+    class: 'foxy-ripple__element',
+    center: false,
+    circle: false,
+    duration: 1000,
+    easing: 'ease-out',
+    opacity: 0.3,
+    x: 0,
+    y: 0
+} as const
+
 export const RIPPLES = {
-  /* eslint-disable max-statements */
+   
   show (
       e: TRippleEvent,
       el: IRippleHtmlElement,

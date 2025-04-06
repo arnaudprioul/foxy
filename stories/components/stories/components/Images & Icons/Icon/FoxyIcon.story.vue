@@ -1,5 +1,8 @@
 <template>
-  <Story group="components" title="Images & Icons/Icons">
+  <Story
+      group="components"
+      title="Images & Icons/Icons"
+  >
     <Variant title="MDI Icons">
       <template #default>
         <foxy-icon v-bind="state"/>
@@ -8,7 +11,10 @@
   </Story>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyIcon } from '@foxy/components'
 
   import { MDI_ICONS } from '@foxy/enums'

@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils'
-import Foxyparallaxcontainer from './FoxyParallax.vue'
+import Foxyparallax from './FoxyParallax.vue'
 
-describe('Spec Foxyparallaxcontainer', function () {
+describe('Spec Foxyparallax', function () {
   it('mounts', () => {
-    const wrapper = mount(Foxyparallaxcontainer)
+    const wrapper = mount(Foxyparallax)
     expect(wrapper)
         .toBeTruthy()
   })

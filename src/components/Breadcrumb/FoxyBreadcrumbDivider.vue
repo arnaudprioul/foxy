@@ -2,7 +2,8 @@
   <component
       :is="tag"
       :class="breadcrumbDividerClasses"
-      :style="breadcrumbDividerStyles">
+      :style="breadcrumbDividerStyles"
+  >
     <slot name="default">
       <template v-if="isIcon">
         <foxy-icon :icon="divider"/>
@@ -14,29 +15,33 @@
   </component>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyIcon } from '@foxy/components'
 
   import {
-	  useBorder,
-	  useBothColor,
-	  useDensity,
-	  useMargin,
-	  usePadding,
-	  useProps,
-	  useRounded,
-	  useSize
+    useBorder,
+    useBothColor,
+    useDensity,
+    useMargin,
+    usePadding,
+    useProps,
+    useRounded,
+    useSize
   } from '@foxy/composables'
 
   import { MDI_ICONS } from '@foxy/enums'
 
   import { IBreadcrumbDividerProps } from '@foxy/interfaces'
+  import { TValueOf } from "@foxy/types"
 
   import { computed, StyleValue, toRef } from 'vue'
 
-  const props = withDefaults(defineProps<IBreadcrumbDividerProps>(), {tag: 'span', divider: '/'})
+  const props = withDefaults(defineProps<IBreadcrumbDividerProps>(), { tag: 'span', divider: '/' })
 
-  const {filterProps} = useProps<IBreadcrumbDividerProps>(props)
+  const { filterProps } = useProps<IBreadcrumbDividerProps>(props)
 
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { densityClasses } = useDensity(props)
@@ -47,7 +52,7 @@
   const { sizeStyles, sizeClasses } = useSize(props)
 
   const isIcon = computed(() => {
-    return typeof props.divider !== 'string' || Object.values(MDI_ICONS).includes(props.divider)
+    return typeof props.divider !== 'string' || Object.values(MDI_ICONS).includes(props.divider as TValueOf<typeof MDI_ICONS>)
   })
 
   // CLASS & STYLES
@@ -72,36 +77,39 @@
       borderClasses.value,
       paddingClasses.value,
       marginClasses.value,
-      props.class,
+      props.class
     ]
   })
 
   // EXPOSE
 
   defineExpose({
-	  filterProps
+    filterProps
   })
 </script>
 
-<style lang="scss" scoped>
-  .foxy-breadcrumbs-divider {
-    display: inline-block;
-    vertical-align: middle;
+<style
+    lang="scss"
+    scoped
+>
+.foxy-breadcrumbs-divider {
+  display: inline-block;
+  vertical-align: middle;
 
-    &--density-default {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
-
-    &--density-compact {
-      padding-left: 4px;
-      padding-right: 4px;
-    }
+  &--density-default {
+    padding-left: 8px;
+    padding-right: 8px;
   }
+
+  &--density-compact {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
 </style>
 
 <style>
-  :root {
+:root {
 
-  }
+}
 </style>

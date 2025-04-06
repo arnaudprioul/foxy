@@ -10,7 +10,7 @@ export interface IDataTableSelectProps {
   showSelect?: boolean
   selectStrategy?: TDataTableSelectStrategy
   modelValue?: Array<any>
-  valueComparator?: Function
+  valueComparator?: (a: any, b: any) => boolean
 }
 
 export interface IDataTableSelectStrategy {

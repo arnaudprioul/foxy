@@ -1,21 +1,38 @@
 <template>
 	<template v-if="renderless">
-		<div ref="markerRef" :style="{ 'padding-top': convertToUnit(paddingTop) }" class="foxy-virtual-scroll__spacer"/>
+		<div
+				ref="markerRef"
+				:style="{ 'padding-top': convertToUnit(paddingTop) }"
+				class="foxy-virtual-scroll__spacer"
+		/>
 
-		<template v-for="(item, index) in computedItems" :key="index">
+		<template
+				v-for="(item, index) in computedItems"
+				:key="index"
+		>
 			<foxy-virtual-scroll-item
 					:renderless="renderless"
 					class="foxy-virtual-scroll__item"
-					@update:height="handleItemResize(index, $event)">
+					@update:height="handleItemResize(index, $event)"
+			>
 				<template #renderless="{itemRef}">
-					<slot :name="`item.renderless.${item.index}`" v-bind="{ item: item.raw, itemRef }">
-						<slot name="item.renderless" v-bind="{ item: item.raw, index: item.index, itemRef }"/>
+					<slot
+							:name="`item.renderless.${item.index}`"
+							v-bind="{ item: item.raw, itemRef }"
+					>
+						<slot
+								name="item.renderless"
+								v-bind="{ item: item.raw, index: item.index, itemRef }"
+						/>
 					</slot>
 				</template>
 			</foxy-virtual-scroll-item>
 		</template>
 
-		<div class="foxy-virtual-scroll__spacer" style="{ 'padding-bottom': convertToUnit(paddingBottom) }"/>
+		<div
+				class="foxy-virtual-scroll__spacer"
+				style="{ 'padding-bottom': convertToUnit(paddingBottom) }"
+		/>
 	</template>
 	<template v-else>
 		<div
@@ -23,20 +40,34 @@
 				:class="virtualScrollClasses"
 				:style="virtualScrollStyles"
 				@scrollend="handleScrollend"
-				@scroll-passive="handleScroll">
+				@scroll-passive="handleScroll"
+		>
 			<div
 					ref="markerRef"
 					:style="{
               'padding-top': convertToUnit(paddingTop),
               'padding-bottom': convertToUnit(paddingBottom),
             }"
-					class="foxy-virtual-scroll__container">
-				<template v-for="(item, index) in computedItems" :key="index">
-					<foxy-virtual-scroll-item :renderless="renderless" class="foxy-virtual-scroll__item"
-					                          @update:height="handleItemResize(index, $event)">
+					class="foxy-virtual-scroll__container"
+			>
+				<template
+						v-for="(item, index) in computedItems"
+						:key="index"
+				>
+					<foxy-virtual-scroll-item
+							:renderless="renderless"
+							class="foxy-virtual-scroll__item"
+							@update:height="handleItemResize(index, $event)"
+					>
 						<template #default>
-							<slot :name="`item.${item.index}`" v-bind="{ item: item.raw }">
-								<slot name="item" v-bind="{ item: item.raw, index: item.index }"/>
+							<slot
+									:name="`item.${item.index}`"
+									v-bind="{ item: item.raw }"
+							>
+								<slot
+										name="item"
+										v-bind="{ item: item.raw, index: item.index }"
+								/>
 							</slot>
 						</template>
 					</foxy-virtual-scroll-item>
@@ -46,7 +77,10 @@
 	</template>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyVirtualScrollItem } from '@foxy/components'
 
 	import { useDimension, useProps, useToggleScope, useVirtual } from '@foxy/composables'

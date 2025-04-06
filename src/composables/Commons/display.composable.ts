@@ -51,7 +51,7 @@ export function createDisplay (options?: IDisplayOptions, ssr?: TSSROptions): ID
     platform.value = getPlatform()
   }
 
-  // eslint-disable-next-line max-statements
+   
   watchEffect(() => {
     const xs = width.value < thresholds.sm
     const sm = width.value < thresholds.md && !xs

@@ -6,7 +6,18 @@ import { IActivatorProps } from '@foxy/interfaces'
 
 import { activator, getCurrentInstance, getTargetActivator, matchesSelector, refElement } from '@foxy/utils'
 
-import { computed, effectScope, EffectScope, inject, nextTick, onScopeDispose, ref, Ref, watch, watchEffect } from 'vue'
+import {
+  computed,
+  effectScope,
+  EffectScope,
+  inject,
+  nextTick,
+  onScopeDispose,
+  ref,
+  Ref,
+  watch,
+  watchEffect
+} from 'vue'
 
 export function useActivator (props: IActivatorProps, { isActive, isTop }: {
   isActive: Ref<boolean>,
@@ -19,8 +30,15 @@ export function useActivator (props: IActivatorProps, { isActive, isTop }: {
   let isFocused = false
   let firstEnter = true
 
-  const openOnFocus = computed(() => props.openOnFocus || (props.openOnFocus == null && props.openOnHover))
-  const openOnClick = computed(() => props.openOnClick || (props.openOnClick == null && !props.openOnHover && !openOnFocus.value))
+  const openOnFocus = computed(() => {
+    return props.openOnFocus || (props.openOnFocus == null && props.openOnHover)
+  })
+  const openOnClick = computed(() => {
+    return props.openOnClick || (props.openOnClick == null && !props.openOnHover && !openOnFocus.value)
+  })
+  const openOnContextMenu = computed(() => {
+    return props.openOnContextMenu || (props.openOnContextMenu == null && !props.openOnHover && !openOnClick.value && !openOnFocus.value)
+  })
 
   const delayCallback = (value: boolean) => {
     if (
@@ -53,6 +71,16 @@ export function useActivator (props: IActivatorProps, { isActive, isTop }: {
 
     isActive.value = !isActive.value
   }
+  const handleContextMenu = (e: MouseEvent) => {
+    e.stopPropagation()
+    e.preventDefault()
+
+    activatorEl.value = (e.currentTarget || e.target) as HTMLElement
+
+    cursorTarget.value = [e.clientX, e.clientY]
+
+    isActive.value = !isActive.value
+  }
   const handleMouseEnter = (e: MouseEvent) => {
     if (e.sourceCapabilities?.firesTouchEvents) return
 
@@ -64,7 +92,7 @@ export function useActivator (props: IActivatorProps, { isActive, isTop }: {
     isHovered = false
     runCloseDelay()
   }
-  const handleFoxus = (e: FocusEvent) => {
+  const handleFocus = (e: FocusEvent) => {
     if (matchesSelector(e.target as HTMLElement, ':focus-visible') === false) return
 
     isFocused = true
@@ -81,10 +109,11 @@ export function useActivator (props: IActivatorProps, { isActive, isTop }: {
   }
 
   const availableEvents = {
+    onContextmenu: handleContextMenu,
     onClick: handleClick,
     onMouseenter: handleMouseEnter,
     onMouseleave: handleMouseLeave,
-    onFocus: handleFoxus,
+    onFocus: handleFocus,
     onBlur: handleBlur
   }
 
@@ -93,6 +122,9 @@ export function useActivator (props: IActivatorProps, { isActive, isTop }: {
 
     if (openOnClick.value) {
       events.onClick = availableEvents.onClick
+    }
+    if (openOnContextMenu.value) {
+      events.onContextmenu = availableEvents.onContextmenu
     }
     if (props.openOnHover) {
       events.onMouseenter = availableEvents.onMouseenter

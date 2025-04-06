@@ -1,5 +1,10 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
+    "allowUnreachableCode": false,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "allowJs": true,
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -8,16 +13,15 @@
       "DOM",
       "DOM.Iterable"
     ],
+    "outDir": "./dist",
     "skipLibCheck": true,
     /* Bundler mode */
-    "allowTsInNodeModules": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "jsx": "preserve",
-    "baseUrl": "",
+    "baseUrl": ".",
     "declaration": true,
     "emitDeclarationOnly": true,
     "declarationMap": true,
@@ -28,35 +32,32 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@foxy": [
-        "src"
+        "./src"
       ],
       "@foxy/*": [
-        "src/*"
-      ],
-      "@stories": [
-        "stories"
-      ],
-      "@stories/*": [
-        "stories/*"
+        "./src/*"
       ]
     },
-    "files": [
-      "node_modules/ts-transformer-keys/index.d.ts"
+    "types": [
+      "vitest/globals"
     ]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "stories/**/*.ts",
-    "stories/**/*.vue"
+    "node_modules/cypress/types/cypress-global-vars.d.ts"
+  ],
+  "exclude": [
+    ".history",
+    "dist/**/*",
+    "src/**/*.cy.ts",
+    "src/**/*.spec.ts",
+    "node_modules"
   ],
   "references": [
     {
       "path": "./tsconfig.node.json"
     }
-  ],
-  "files": [
-    "node_modules/ts-transformer-keys/index.d.ts"
   ]
 }

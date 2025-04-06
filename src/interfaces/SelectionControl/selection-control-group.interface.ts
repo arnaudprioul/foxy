@@ -14,7 +14,7 @@ export interface ISelectionControlGroupProps extends ICommonsComponentProps, ICo
   readonly?: boolean
   modelValue?: any
   type?: string
-  valueComparator?: Function
+  valueComparator?: (a: any, b: any) => boolean
   items?: Array<any>
 }
 

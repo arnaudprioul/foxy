@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@docs": [
+        "./docs/"
+      ],
+      "@docs/*": [
+        "./docs/*"
+      ]
+    }
+  },
+  "references": [
+    {
+      "path": "../tsconfig.json"
+    }
+  ]
+}

@@ -5,7 +5,8 @@ import { TPoint } from '@foxy/types'
 export function elementMovement (action: IParallaxElementMovement) {
   const { y, x, target, strength = 10, event = null, minX, minY, maxX, maxY } = action
 
-  let { originY = 50, originX = 50 } = action
+  const { originX = 50 } = action
+  let { originY = 50 } = action
 
   if (event === 'scroll') {
     originY = -originY / 2

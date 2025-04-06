@@ -21,7 +21,7 @@
 
   import { camelize } from 'vue'
 
-  withDefaults(defineProps<ITransitionProps>(), {
+  const props =withDefaults(defineProps<ITransitionProps>(), {
     name: 'foxy-transition--expand-y',
     mode: TRANSITION_MODE.IN_OUT
   })
@@ -29,7 +29,7 @@
   const {filterProps} = useProps<ITransitionProps>(props)
 
   const expandedParentClass = ''
-  const sizeProperty = 'height' as 'height'
+  const sizeProperty = 'height' as const
   const offsetProperty = camelize(`offset-${sizeProperty}`) as 'offsetHeight'
 
   const resetStyles = (el: IHTMLExpandElement) => {

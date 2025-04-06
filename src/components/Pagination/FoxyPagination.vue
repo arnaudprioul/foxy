@@ -1,51 +1,81 @@
 <template>
 	<component
-		:is="tag"
-		ref="resizeRef"
-		:class="paginationClasses"
-		:style="paginationStyles"
-		role="navigation"
-		:aria-label="ariaLabel"
-		@keydown="handleKeydown"
+			:is="tag"
+			ref="resizeRef"
+			:aria-label="ariaLabel"
+			:class="paginationClasses"
+			:style="paginationStyles"
+			role="navigation"
+			@keydown="handleKeydown"
 	>
 		<ul class="foxy-pagination__list">
 			<template v-if="showFirstLastPage">
-				<li key="first" class="foxy-pagination__first">
-					<slot name="first" v-bind="{...controls.first}">
-						<foxy-btn v-bind="{...controls.first }" />
+				<li
+						key="first"
+						class="foxy-pagination__first"
+				>
+					<slot
+							name="first"
+							v-bind="{...controls.first}"
+					>
+						<foxy-btn v-bind="{...controls.first }"/>
 					</slot>
 				</li>
 			</template>
 
-			<li key="prev" class="foxy-pagination__prev">
-				<slot name="prev" v-bind="{...controls.prev}">
-					<foxy-btn v-bind="{...controls.prev }" />
+			<li
+					key="prev"
+					class="foxy-pagination__prev"
+			>
+				<slot
+						name="prev"
+						v-bind="{...controls.prev}"
+				>
+					<foxy-btn v-bind="{...controls.prev }"/>
 				</slot>
 			</li>
 
-			<template v-for="(item) in items" :key="item.key">
+			<template
+					v-for="(item) in items"
+					:key="item.key"
+			>
 				<li
-						class="foxy-pagination__item"
 						:class="{'foxy-pagination__item--is-active': item.isActive}"
+						class="foxy-pagination__item"
 				>
 					<slot :name="`item-${item.key}`">
 						<slot name="item">
-							<foxy-btn :text="item.page.toString()" v-bind="{ ...item.props }"/>
+							<foxy-btn
+									:text="item.page.toString()"
+									v-bind="{ ...item.props }"
+							/>
 						</slot>
 					</slot>
 				</li>
 			</template>
 
-			<li key="next" class="foxy-pagination__next">
-				<slot name="next" v-bind="{...controls.next}">
-					<foxy-btn v-bind="{...controls.next }" />
+			<li
+					key="next"
+					class="foxy-pagination__next"
+			>
+				<slot
+						name="next"
+						v-bind="{...controls.next}"
+				>
+					<foxy-btn v-bind="{...controls.next }"/>
 				</slot>
 			</li>
 
 			<template v-if="showFirstLastPage">
-				<li key="last" class="foxy-pagination__last">
-					<slot name="last" v-bind="{...controls.last}">
-						<foxy-btn v-bind="{...controls.last }" />
+				<li
+						key="last"
+						class="foxy-pagination__last"
+				>
+					<slot
+							name="last"
+							v-bind="{...controls.last}"
+					>
+						<foxy-btn v-bind="{...controls.last }"/>
 					</slot>
 				</li>
 			</template>
@@ -53,55 +83,63 @@
 	</component>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyBtn } from "@foxy/components"
 
-	import { useDisplay, useProps, useResizeObserver, useVModel, useRefs } from "@foxy/composables"
+	import { useDisplay, useLocale, useProps, useRefs, useResizeObserver, useVModel } from "@foxy/composables"
 
-	import { KEYBOARD_VALUES } from "@foxy/enums"
+	import { KEYBOARD_VALUES } from "@foxy/consts"
 
-  import { IPaginationProps } from "@foxy/interfaces"
+	import { MDI_ICONS } from "@foxy/enums"
 
-	import { createRange } from "@foxy/utils"
+	import { IPaginationProps } from "@foxy/interfaces"
+
+	import { createRange, int } from "@foxy/utils"
 
 	import { ComponentPublicInstance, computed, nextTick, shallowRef, StyleValue } from "vue"
 
-  const props = withDefaults(defineProps<IPaginationProps>(), {
-	  prevIcon: '$prev',
-	  nextIcon: '$next',
-	  firstIcon: '$first',
-	  lastIcon: '$last',
-	  tag: 'div',
-	  ellipsis: '...',
-	  length: 1,
-	  start: 1,
-	  ariaLabel: 'Pagination Navigation',
-	  pageAriaLabel: 'Go to page',
-	  currentPageAriaLabel: 'Current page - Page',
-	  firstAriaLabel: 'First page',
-	  previousAriaLabel: 'Previous page',
-	  nextAriaLabel: 'Next page',
-	  lastAriaLabel: 'Last page'
-  })
+	const props = withDefaults(defineProps<IPaginationProps>(), {
+		prevIcon: MDI_ICONS.CHEVRON_LEFT,
+		nextIcon: MDI_ICONS.CHEVRON_RIGHT,
+		firstIcon: MDI_ICONS.CHEVRON_DOUBLE_LEFT,
+		lastIcon: MDI_ICONS.CHEVRON_DOUBLE_RIGHT,
+		tag: 'div',
+		ellipsis: '...',
+		length: 1,
+		start: 1,
+		modelValue: 1, // TODO - Delete default value for modelValue
+		ariaLabel: 'foxy.pagination.ariaLabel.root',
+		pageAriaLabel: 'foxy.pagination.ariaLabel.page',
+		currentPageAriaLabel: 'foxy.pagination.ariaLabel.currentPage',
+		firstAriaLabel: 'foxy.pagination.ariaLabel.first',
+		previousAriaLabel: 'foxy.pagination.ariaLabel.previous',
+		nextAriaLabel: 'foxy.pagination.ariaLabel.next',
+		lastAriaLabel: 'foxy.pagination.ariaLabel.last'
+	})
 
-  const emits = defineEmits([
-			'update:modelValue',
-		  'first',
-		  'next',
-		  'prev',
-		  'last'
-  ])
+	const emits = defineEmits([
+		'update:modelValue',
+		'first',
+		'next',
+		'prev',
+		'last'
+	])
 
-  const {filterProps} = useProps<IPaginationProps>(props)
+	const {filterProps} = useProps<IPaginationProps>(props)
 
-  const page = useVModel(props, 'modelValue', props.start)
-  const { width } = useDisplay()
-  const maxButtons = shallowRef(-1)
+	const {t} = useLocale()
 
-	const { resizeRef } = useResizeObserver((entries: ResizeObserverEntry[]) => {
+	const page = useVModel(props, 'modelValue', props.start)
+	const {width} = useDisplay()
+	const maxButtons = shallowRef(-1)
+
+	const {resizeRef} = useResizeObserver((entries: ResizeObserverEntry[]) => {
 		if (!entries.length) return
 
-		const { target, contentRect } = entries[0]
+		const {target, contentRect} = entries[0]
 
 		const firstItem = target.querySelector('.foxy-pagination__list > *') as HTMLElement
 
@@ -114,17 +152,17 @@
 
 		maxButtons.value = getMax(totalWidth, itemWidth)
 	})
-	const { refs, updateRef } = useRefs<ComponentPublicInstance>()
+	const {refs, updateRef} = useRefs<ComponentPublicInstance>()
 
 	const length = computed(() => {
-		return parseInt(props.length, 10)
+		return int(props.length)
 	})
 	const start = computed(() => {
-		return parseInt(props.start, 10)
+		return int(props.start)
 	})
 	const totalVisible = computed(() => {
 		if (props.totalVisible != null) {
-			return parseInt(props.totalVisible, 10)
+			return int(props.totalVisible)
 		}
 
 		if (maxButtons.value >= 0) {
@@ -173,8 +211,8 @@
 						ref,
 						ellipsis: true,
 						icon: true,
-						disabled: true,
-					},
+						disabled: true
+					}
 				}
 			} else {
 				const isActive = item === page.value
@@ -189,9 +227,9 @@
 						disabled: !!props.disabled || +props.length < 2,
 						color: isActive ? props.activeColor : props.color,
 						'aria-current': isActive,
-						'aria-label': isActive ? props.currentPageAriaLabel : props.pageAriaLabel, item,
-						onClick: (e: Event) => setValue(e, item),
-					},
+						'aria-label': t(isActive ? props.currentPageAriaLabel : props.pageAriaLabel, item),
+						onClick: (e: Event) => setValue(e, item)
+					}
 				}
 			}
 		})
@@ -206,29 +244,29 @@
 				onClick: (e: Event) => setValue(e, start.value, 'first'),
 				disabled: prevDisabled,
 				'aria-label': props.firstAriaLabel,
-				'aria-disabled': prevDisabled,
+				'aria-disabled': prevDisabled
 			},
 			prev: {
 				icon: props.prevIcon,
 				onClick: (e: Event) => setValue(e, page.value - 1, 'prev'),
 				disabled: prevDisabled,
 				'aria-label': props.previousAriaLabel,
-				'aria-disabled': prevDisabled,
+				'aria-disabled': prevDisabled
 			},
 			next: {
 				icon: props.nextIcon,
 				onClick: (e: Event) => setValue(e, page.value + 1, 'next'),
 				disabled: nextDisabled,
 				'aria-label': props.nextAriaLabel,
-				'aria-disabled': nextDisabled,
+				'aria-disabled': nextDisabled
 			},
 			last: {
 				icon: props.lastIcon,
 				onClick: (e: Event) => setValue(e, start.value + length.value - 1, 'last'),
 				disabled: nextDisabled,
 				'aria-label': props.lastAriaLabel,
-				'aria-disabled': nextDisabled,
-			},
+				'aria-disabled': nextDisabled
+			}
 		}
 	})
 
@@ -242,7 +280,10 @@
 	const setValue = (e: Event, value: number, event?: any) => {
 		e.preventDefault()
 		page.value = value
-		event && emits(event, value)
+
+		if (event) {
+			emits(event, value)
+		}
 	}
 	const updateFocus = () => {
 		const currentIndex = page.value - start.value
@@ -264,7 +305,7 @@
 	const paginationClasses = computed(() => {
 		return [
 			'foxy-pagination',
-			props.class,
+			props.class
 		]
 	})
 	const paginationStyles = computed(() => {
@@ -273,14 +314,17 @@
 		] as StyleValue
 	})
 
-  // EXPOSE
+	// EXPOSE
 
-  defineExpose({
-	  filterProps
-  })
+	defineExpose({
+		filterProps
+	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-pagination {
 
 		&__list {
@@ -321,7 +365,7 @@
 </style>
 
 <style>
-  :root {
-	  --foxy-pagination__item--is-active---border-opacity: 0.12;
-  }
+	:root {
+		--foxy-pagination__item--is-active---border-opacity: 0.12;
+	}
 </style>

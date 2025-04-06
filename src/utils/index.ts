@@ -3,10 +3,11 @@ export * from './Commons/border.util'
 export * from './Commons/color.util'
 export * from './Commons/commons.util'
 export * from './Commons/console.util'
+export * from './Commons/date.util'
 export * from './Commons/getCurrentInstance.util'
 export * from './Commons/layout.util'
+export * from './Commons/locale.util'
 export * from './Commons/nested.util'
-export * from './Commons/propsFactory.util'
 export * from './Commons/ripple.util'
 export * from './Commons/rounded.util'
 export * from './Commons/padding.util'
@@ -33,15 +34,27 @@ export * from './Commons/touch.util'
 export * from './Commons/virtual.util'
 export * from './Commons/forwardRefs.util'
 export * from './Commons/event.util'
-export * from './Input/input.util'
-export * from './List/list-item.util'
-export * from './PageBuilder/editor.util'
-export * from './Transition/transition.util'
-export * from './Slide/slide-group.util'
 export * from './Commons/autocomplete.util'
+
+export * from './ColorPicker/color-picker.util'
+
+export * from './Input/input.util'
+
+export * from './List/list-item.util'
+
+export * from './PageBuilder/editor.util'
+
+export * from './Transition/transition.util'
+
+export * from './Slide/slide-group.util'
+
 export * from './SliderField/slider-field.util'
-export * from './Parallax/parallax-element.util.ts'
-export * from './DataTable/headers.util.ts'
-export * from './DataTable/items.util.ts'
-export * from './DataTable/sort.util.ts'
-export * from './DataTable/group.util.ts'
+
+export * from './Parallax/parallax-element.util'
+
+export * from './DataTable/headers.util'
+export * from './DataTable/items.util'
+export * from './DataTable/sort.util'
+export * from './DataTable/group.util'
+
+export * from './Charts/chart.util'

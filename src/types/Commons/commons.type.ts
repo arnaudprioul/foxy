@@ -22,9 +22,17 @@ export type TMaybePick<
 export type TFocusLocation = `${FOCUS_LOCATION}` | number
 
 export type TTemplateRef = {
-  (target: Element | ComponentPublicInstance | null): void
-  value: HTMLElement | ComponentPublicInstance | null | undefined
-  readonly el: HTMLElement | undefined
+    (target: Element | ComponentPublicInstance | null): void
+    value: HTMLElement | ComponentPublicInstance | null | undefined
+    readonly el: HTMLElement | undefined
 }
 
 export type TClientPosition = `${CLIENT_POSITION}`
+
+export type TIfAny<T, Y, N> = 0 extends (1 & T) ? Y : N
+
+export type TWrapInArrayResult<T> = T extends Readonly<Array<any>>
+    ? TIfAny<T, Array<T>, T>
+    : Array<NonNullable<T>>
+
+export type TValueOf<T> = T[keyof T];

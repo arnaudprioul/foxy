@@ -6,7 +6,8 @@
 			:class="switchClasses"
 			:focused="isFocused"
 			:style="switchStyles"
-			v-bind="{ ...rootAttrs, ...inputProps }">
+			v-bind="{ ...rootAttrs, ...inputProps }"
+	>
 		<template #default="{id, messagesId, isDisabled, isReadonly, isValid}">
 			<foxy-selection-control
 					:id="id"
@@ -20,18 +21,34 @@
 					v-bind="{ ...controlProps, ...controlAttrs }"
 					@blur="handleBlur"
 					@focus="handleFocus"
-					@update:modelValue="handleChange">
+					@update:model-value="handleChange"
+			>
 				<template #default="{backgroundColorStyles, textColorStyles}">
 					<div
 							:style="[backgroundColorStyles, textColorStyles]"
 							class="foxy-switch__track"
-							@click="handleTrackClick">
-						<div v-if="hasSlot('track.true')" key="prepend" class="foxy-switch__track-true">
-							<slot name="track.true" v-bind="{model, isValid}"/>
+							@click="handleTrackClick"
+					>
+						<div
+								v-if="slots['track.true']"
+								key="prepend"
+								class="foxy-switch__track-true"
+						>
+							<slot
+									name="track.true"
+									v-bind="{model, isValid}"
+							/>
 						</div>
 
-						<div v-if="hasSlot('track.false')" key="append" class="foxy-switch__track-false">
-							<slot name="track.false" v-bind="{model, isValid}"/>
+						<div
+								v-if="slots['track.false']"
+								key="append"
+								class="foxy-switch__track-false"
+						>
+							<slot
+									name="track.false"
+									v-bind="{model, isValid}"
+							/>
 						</div>
 					</div>
 				</template>
@@ -43,7 +60,8 @@
 							:aria-disabled="selectionControlProps.disabled"
 							:aria-label="selectionControlProps.label"
 							:checked="model"
-							v-bind="selectionControlProps"/>
+							v-bind="selectionControlProps"
+					/>
 
 					<div
 							:class="['foxy-switch__thumb', { 'foxy-switch__thumb--filled': !!icon || props.loading }]"
@@ -51,7 +69,11 @@
 					>
 						<foxy-translate-scale>
 							<template v-if="!props.loading">
-								<foxy-icon v-if="icon" :icon="icon" size="x-small"/>
+								<foxy-icon
+										v-if="icon"
+										:icon="icon"
+										size="x-small"
+								/>
 							</template>
 
 							<template v-if="hasLoading">
@@ -78,26 +100,29 @@
 	</foxy-input>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyIcon, FoxyInput, FoxyProgress, FoxySelectionControl, FoxyTranslateScale } from '@foxy/components'
 
-	import { useFocus, useLoader, useProps, useSlots, useVModel } from '@foxy/composables'
+	import { useFocus, useLoader, useProps, useVModel } from '@foxy/composables'
 
 	import { DENSITY, PROGRESS_TYPE, SIZES } from '@foxy/enums'
 
 	import { ISwitchProps } from '@foxy/interfaces'
 	import { TFoxyInput, TFoxySelectionControl } from "@foxy/types"
 
-	import { filterInputAttrs, getUid, keys, omit, pick } from '@foxy/utils'
+	import { filterInputAttrs, getUid } from '@foxy/utils'
 
-	import { computed, ref, StyleValue, useAttrs } from 'vue'
+	import { computed, ref, StyleValue, useAttrs, useSlots } from 'vue'
 
 	const props = withDefaults(defineProps<ISwitchProps>(), {
 		density: DENSITY.DEFAULT,
 		centerAffix: true
 	})
 
-	const emits = defineEmits(['update:modelValue', 'update:focused', 'update:indeterminate', 'click:label'])
+	defineEmits(['update:modelValue', 'update:focused', 'update:indeterminate', 'click:label'])
 
 	const {filterProps} = useProps<ISwitchProps>(props)
 
@@ -108,7 +133,7 @@
 	const model = useVModel(props, 'modelValue')
 	const {isFocused, onFocus: handleFocus, onBlur: handleBlur} = useFocus(props)
 	const attrs = useAttrs()
-	const {hasSlot} = useSlots()
+	const slots = useSlots()
 
 	const {loaderClasses} = useLoader(props)
 
@@ -137,7 +162,7 @@
 	})
 
 	const hasLoading = computed(() => {
-		return hasSlot('loader') || !!props.loading
+		return slots.loader || !!props.loading
 	})
 
 	// CLASS & STYLES
@@ -167,7 +192,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-switch {
 		$this: &;
 

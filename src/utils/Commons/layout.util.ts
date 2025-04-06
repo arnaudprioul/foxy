@@ -1,36 +1,36 @@
-import type { Ref } from 'vue'
-
 import { ILayer } from '@foxy/interfaces'
 
-import { TLayoutPosition } from '@foxy/types'
+import { TDirectionBoth } from '@foxy/types'
+import { int } from "@foxy/utils"
+import type { Ref } from 'vue'
 
 export function generateLayers (
     layout: Array<string>,
-    positions: Map<string, Ref<TLayoutPosition>>,
+    positions: Map<string, Ref<TDirectionBoth>>,
     layoutSizes: Map<string, Ref<number | string>>,
-    activeItems: Map<string, Ref<boolean>>,
+    activeItems: Map<string, Ref<boolean>>
 ): Array<{ id: string, layer: ILayer }> {
-  let previousLayer: ILayer = { top: 0, left: 0, right: 0, bottom: 0 }
-  const layers = [{ id: '', layer: { ...previousLayer } }]
+    let previousLayer: ILayer = { top: 0, left: 0, right: 0, bottom: 0 }
+    const layers = [{ id: '', layer: { ...previousLayer } }]
 
-  for (const id of layout) {
-    const position = positions.get(id)
-    const amount = layoutSizes.get(id)
-    const active = activeItems.get(id)
-    if (!position || !amount || !active) continue
+    for (const id of layout) {
+        const position = positions.get(id)
+        const amount = layoutSizes.get(id)
+        const active = activeItems.get(id)
+        if (!position || !amount || !active) continue
 
-    const layer = {
-      ...previousLayer,
-      [position.value]: parseInt(previousLayer[position.value], 10) + (active.value ? parseInt(amount.value, 10) : 0),
+        const layer = {
+            ...previousLayer,
+            [position.value]: int(previousLayer[position.value]) + (active.value ? int(amount.value) : 0)
+        }
+
+        layers.push({
+            id,
+            layer
+        })
+
+        previousLayer = layer
     }
 
-    layers.push({
-      id,
-      layer,
-    })
-
-    previousLayer = layer
-  }
-
-  return layers
+    return layers
 }

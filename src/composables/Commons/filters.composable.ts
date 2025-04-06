@@ -11,7 +11,7 @@ export function useFilter <T extends IInternalItem> (
     items: MaybeRef<T[]>,
     query: Ref<string | undefined> | (() => string | undefined),
     options?: {
-      transform?: (item: T) => {}
+      transform?: (item: T) => Record<string, unknown>
       customKeyFilter?: MaybeRef<TFilterKeyFunctions | undefined>
     }
 ) {

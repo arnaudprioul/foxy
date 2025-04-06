@@ -6,8 +6,12 @@
 			:class="textareaFieldClasses"
 			:focused="isFocused"
 			:style="textareaFieldStyles"
-			v-bind="{ ...rootAttrs, ...inputProps }">
-		<template v-if="hasSlot('prepend')" #prepend>
+			v-bind="{ ...rootAttrs, ...inputProps }"
+	>
+		<template
+				v-if="slots.prepend"
+				#prepend
+		>
 			<slot name="prepend"/>
 		</template>
 
@@ -26,31 +30,53 @@
 					@click="handleControlClick"
 					@mousedown="handleControlMousedown"
 					@click:clear="handleClear"
-					@click:prependInner="handleClickPrependInner"
-					@click:appendInner="handleClickAppendInner">
-				<template v-if="hasSlot('loader')" #loader>
+					@click:prepend-inner="handleClickPrependInner"
+					@click:append-inner="handleClickAppendInner"
+			>
+				<template
+						v-if="slots.loader"
+						#loader
+				>
 					<slot name="loader"/>
 				</template>
 
-				<template v-if="hasSlot('prependInner')" #prependInner>
+				<template
+						v-if="slots.prependInner"
+						#prependInner
+				>
 					<slot name="prependInner"/>
 				</template>
 
-				<template v-if="hasSlot('floatingLabel')" #floatingLabel>
+				<template
+						v-if="slots.floatingLabel"
+						#floatingLabel
+				>
 					<slot name="floatingLabel"/>
 				</template>
 
-				<template v-if="hasSlot('label')" #label>
+				<template
+						v-if="slots.label"
+						#label
+				>
 					<slot name="label"/>
 				</template>
 
-				<template v-if="hasSlot('prefix')" #prefix>
+				<template
+						v-if="slots.prefix"
+						#prefix
+				>
 					<slot name="prefix"/>
 				</template>
 
 				<template #default="{class: fieldSlotClass, ...fieldSlotProps}">
-					<div :class="fieldSlotClass" data-no-activator="">
-						<slot name="default" v-bind="fieldSlotProps"/>
+					<div
+							:class="fieldSlotClass"
+							data-no-activator=""
+					>
+						<slot
+								name="default"
+								v-bind="fieldSlotProps"
+						/>
 						<textarea
 								ref="textareaRef"
 								v-intersect="intersect"
@@ -64,68 +90,122 @@
 								v-bind="{ ...fieldSlotProps, ...inputAttrs }"
 								@blur="handleBlur"
 								@focus="handleFocus"
-								@input="handleInput"/>
+								@input="handleInput"
+						/>
 					</div>
-					<div v-if="!autoGrow" ref="verticalDragger" class="foxy-textarea-field__grip">
-						<svg aria-hidden="true" height="1em" preserveAspectRatio="xMidYMid meet"
-						     role="img" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"
-						     xmlns:xlink="http://www.w3.org/1999/xlink">
-							<path d="M21 11H3V9h18zm0 2H3v2h18z" fill="currentColor"></path>
+					<div
+							v-if="!autoGrow"
+							ref="verticalDragger"
+							class="foxy-textarea-field__grip"
+					>
+						<svg
+								aria-hidden="true"
+								height="1em"
+								preserveAspectRatio="xMidYMid meet"
+								role="img"
+								viewBox="0 0 24 24"
+								width="1em"
+								xmlns="http://www.w3.org/2000/svg"
+								xmlns:xlink="http://www.w3.org/1999/xlink"
+						>
+							<path
+									d="M21 11H3V9h18zm0 2H3v2h18z"
+									fill="currentColor"
+							></path>
 						</svg>
 					</div>
 				</template>
 
-				<template v-if="hasSlot('suffix')" #suffix>
+				<template
+						v-if="slots.suffix"
+						#suffix
+				>
 					<slot name="suffix"/>
 				</template>
 
-				<template v-if="hasSlot('appendInner')" #appendInner>
+				<template
+						v-if="slots.appendInner"
+						#appendInner
+				>
 					<slot name="appendInner"/>
 				</template>
 
-				<template v-if="hasSlot('clear')" #clear>
+				<template
+						v-if="slots.clear"
+						#clear
+				>
 					<slot name="clear"/>
 				</template>
 			</foxy-field>
 		</template>
 
-		<template v-if="hasSlot('append')" #append>
+		<template
+				v-if="slots.append"
+				#append
+		>
 			<slot name="append"/>
 		</template>
 
-		<template v-if="hasDetails" #details="detailsSlotProps">
-			<slot name="details" v-bind="detailsSlotProps">
+		<template
+				v-if="hasDetails"
+				#details="detailsSlotProps"
+		>
+			<slot
+					name="details"
+					v-bind="detailsSlotProps"
+			>
 				<foxy-counter
 						:active="props.persistentCounter || isFocused"
 						:disabled="props.disabled"
 						:max="max"
 						:value="counterValue"
 				>
-					<template v-if="hasSlot('counter')" #default="{counter, value, max}">
-						<slot name="counter" v-bind="{counter, value, max}"/>
+					<template
+							v-if="slots.counter"
+							#default="{counter, value, max}"
+					>
+						<slot
+								name="counter"
+								v-bind="{counter, value, max}"
+						/>
 					</template>
 				</foxy-counter>
 			</slot>
 		</template>
 
-		<template v-if="hasSlot('messages')" #messages="{hasMessages, messages}">
-			<slot name="messages" v-bind="{hasMessages, messages}"/>
+		<template
+				v-if="slots.messages"
+				#messages="{hasMessages, messages}"
+		>
+			<slot
+					name="messages"
+					v-bind="{hasMessages, messages}"
+			/>
 		</template>
 
-		<template v-if="hasSlot('message')" #message="{message}">
-			<slot name="message" v-bind="{message}"/>
+		<template
+				v-if="slots.message"
+				#message="{message}"
+		>
+			<slot
+					name="message"
+					v-bind="{message}"
+			/>
 		</template>
 	</foxy-input>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyCounter, FoxyField, FoxyInput } from '@foxy/components'
 
-	import { useAdjacentInner, useDragResizer, useFocus, useProps, useSlots, useVModel } from '@foxy/composables'
+	import { useAdjacentInner, useDragResizer, useFocus, useProps, useVModel } from '@foxy/composables'
 
 	import { vIntersect } from '@foxy/directives'
 
-	import { AXIS, DENSITY } from '@foxy/enums'
+	import { AXIS, DENSITY, MDI_ICONS } from '@foxy/enums'
 
 	import { ITextareaFieldProps } from '@foxy/interfaces'
 
@@ -133,11 +213,22 @@
 
 	import { clamp, convertToUnit, filterInputAttrs } from '@foxy/utils'
 
-	import { computed, nextTick, onBeforeUnmount, ref, shallowRef, StyleValue, useAttrs, watch, watchEffect } from 'vue'
+	import {
+		computed,
+		nextTick,
+		onBeforeUnmount,
+		ref,
+		shallowRef,
+		StyleValue,
+		useAttrs,
+		useSlots,
+		watch,
+		watchEffect
+	} from 'vue'
 
 	const props = withDefaults(defineProps<ITextareaFieldProps>(), {
 		density: DENSITY.DEFAULT,
-		clearIcon: '$clear',
+		clearIcon: MDI_ICONS.CLOSE_CIRCLE_OUTLINE,
 		border: true,
 		rounded: true,
 		rows: 3
@@ -148,7 +239,7 @@
 	const {filterProps} = useProps<ITextareaFieldProps>(props)
 
 	const attrs = useAttrs()
-	const {hasSlot} = useSlots()
+	const slots = useSlots()
 
 	const model = useVModel(props, 'modelValue')
 	const {isFocused, onFocus, onBlur: handleBlur} = useFocus(props)
@@ -226,7 +317,7 @@
 
 		model.value = el.value
 
-		if (props.modelModifiers?.trim) {
+		if (typeof props.modelModifiers !== 'boolean' && props.modelModifiers?.trim) {
 			const caretPosition = [el.selectionStart, el.selectionEnd]
 
 			nextTick(() => {
@@ -235,7 +326,7 @@
 			})
 		}
 	}
-	const handleFocus = (_e: FocusEvent) => {
+	const handleFocus = () => {
 		focus()
 	}
 
@@ -250,7 +341,7 @@
 	})
 
 	const minHeight = computed(() => {
-		if (!textareaRef.value || !foxyFieldRef.value) return
+		if (!textareaRef.value || !foxyFieldRef.value) return 0
 
 		const style = getComputedStyle(textareaRef.value)
 		const fieldStyle = getComputedStyle(foxyFieldRef.value.$el)
@@ -267,7 +358,7 @@
 		)
 	})
 	const maxHeight = computed(() => {
-		if (!textareaRef.value) return
+		if (!textareaRef.value) return 0
 
 		const style = getComputedStyle(textareaRef.value)
 
@@ -277,7 +368,7 @@
 
 		const lineHeight = parseFloat(style.lineHeight)
 
-		return parseFloat(props.maxRows!) * lineHeight + padding || Infinity
+		return parseFloat(props.maxRows!) * lineHeight + padding || Infinity as number
 	})
 	const controlHeight = shallowRef(0)
 
@@ -293,12 +384,12 @@
 					parseFloat(style.getPropertyValue('--foxy-input---padding-top')) +
 					parseFloat(style.getPropertyValue('--foxy-field---padding-bottom'))
 
-			controlHeight.value = clamp(textareaRef.value?.scrollHeight + padding ?? 0, minHeight.value, maxHeight.value)
+			controlHeight.value = clamp((textareaRef.value?.scrollHeight ?? 0) + padding, minHeight.value, maxHeight.value)
 		})
 	}
 
 	watch([model, () => props.maxRows, () => props.density, () => props.rows], () => {
-		calculateInputHeight
+		calculateInputHeight()
 	}, {immediate: true})
 	watch(minHeight, () => {
 		controlHeight.value = minHeight.value
@@ -306,7 +397,7 @@
 	watch([verticalDragger, minHeight, maxHeight], () => {
 		if (!verticalDragger.value) return
 
-		useDragResizer(verticalDragger, controlHeight, minHeight.value, maxHeight.value, AXIS.Y)
+		useDragResizer(verticalDragger.value, controlHeight, minHeight.value, maxHeight.value, AXIS.Y)
 	})
 	watch(controlHeight, (newHeight) => {
 		nextTick(() => {
@@ -338,10 +429,10 @@
 	})
 
 	const hasCounter = computed(() => {
-		return hasSlot('counter') || props.counter || props.counterValue
+		return slots.counter || props.counter || props.counterValue
 	})
 	const hasDetails = computed(() => {
-		return hasCounter.value || hasSlot('details')
+		return hasCounter.value || slots.details
 	})
 
 	const [rootAttrs, inputAttrs] = filterInputAttrs(attrs)
@@ -388,7 +479,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-textarea-field {
 		$this: &;
 

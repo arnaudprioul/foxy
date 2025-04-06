@@ -21,7 +21,7 @@
     mode: TRANSITION_MODE.IN_OUT
   })
 
-  const {filterProps} = useProps<ITransitionScaleProps>(props)
+  const {filterProps} = useProps<ITranslateScaleProps>(props)
 
   const hasTarget = computed(() => {
     return !!props.target

@@ -8,7 +8,7 @@ import { TAnchor } from '@foxy/types'
 
 import { parseAnchor } from '@foxy/utils'
 
-import { computed, CSSProperties, onScopeDispose, ref, watch } from 'vue'
+import { computed, onScopeDispose, ref, watch } from 'vue'
 
 export function useLocation (props: ILocationProps, opposite = false, offset?: (side: string) => number) {
 
@@ -27,7 +27,7 @@ export function useLocation (props: ILocationProps, opposite = false, offset?: (
           : 0
     }
 
-    const styles = {} as CSSProperties
+    const styles = {} as Record<string, string | number>
 
     if (side !== 'center') {
       if (opposite) styles[OPPOSITE_MAP[side]] = `calc(100% - ${getOffset(side)}px)`
@@ -82,10 +82,12 @@ export function useLocationStrategies (
 
       window.addEventListener('resize', handleResize, { passive: true })
 
-      if (typeof props.locationStrategy === 'function') {
-        updateLocation.value = props.locationStrategy(data, props, contentStyles)?.updateLocation
-      } else {
-        updateLocation.value = LOCATION_STRATEGIES[props.locationStrategy](data, props, contentStyles)?.updateLocation
+      if (props.locationStrategy) {
+        if (typeof props.locationStrategy === 'function') {
+          updateLocation.value = props.locationStrategy(data, props, contentStyles)?.updateLocation
+        } else {
+          updateLocation.value = LOCATION_STRATEGIES[props.locationStrategy](data, props, contentStyles)?.updateLocation
+        }
       }
     })
   }

@@ -1,15 +1,25 @@
 <template>
   <component
-    :is="tag"
-    :class="breadcrumbClasses"
-    :style="breadcrumbStyles">
+      :is="tag"
+      :class="breadcrumbClasses"
+      :style="breadcrumbStyles"
+  >
     <slot name="default">
       <template v-if="hasItems">
         <ul class="foxy-breadcrumb__items">
-          <template v-for="(item, index) in items" :key="index">
+          <template
+              v-for="(item, index) in items"
+              :key="index"
+          >
             <li class="foxy-breadcrumb__item">
-              <slot :name="`item.${index}`" v-bind="{item, index}">
-                <slot name="item" v-bind="{ item, index }">
+              <slot
+                  :name="`item.${index}`"
+                  v-bind="{item, index}"
+              >
+                <slot
+                    name="item"
+                    v-bind="{ item, index }"
+                >
                   <foxy-breadcrumb-item v-bind="item">
                     <slot name="title"/>
                   </foxy-breadcrumb-item>
@@ -17,8 +27,14 @@
               </slot>
 
               <template v-if="!isLastItem(index)">
-                <slot :name="`divider.${index}`" v-bind="{divider}">
-                  <slot name="divider" v-bind="{divider}">
+                <slot
+                    :name="`divider.${index}`"
+                    v-bind="{divider}"
+                >
+                  <slot
+                      name="divider"
+                      v-bind="{divider}"
+                  >
                     <foxy-breadcrumb-divider :divider="divider"/>
                   </slot>
                 </slot>
@@ -31,18 +47,20 @@
   </component>
 </template>
 
-<script lang="ts" setup>
+<script
+    lang="ts"
+    setup
+>
   import { FoxyBreadcrumbDivider, FoxyBreadcrumbItem } from '@foxy/components'
 
   import {
-	  useBorder,
-	  useBothColor,
-	  useDensity,
-	  useMargin,
-	  usePadding,
-	  useProps,
-	  useRounded,
-	  useSlots
+    useBorder,
+    useBothColor,
+    useDensity,
+    useMargin,
+    usePadding,
+    useProps,
+    useRounded
   } from '@foxy/composables'
 
   import { DENSITY } from '@foxy/enums'
@@ -51,16 +69,16 @@
 
   import { TBreadcrumbItem } from '@foxy/types'
 
-  import { computed, StyleValue, toRef } from 'vue'
+  import { computed, StyleValue, toRef, useSlots } from 'vue'
 
   const props = withDefaults(defineProps<IBreadcrumbProps>(), {
     divider: '/',
-    items: [] as Array<TBreadcrumbItem>,
+    items: () => [] as Array<TBreadcrumbItem>,
     tag: 'div',
     density: DENSITY.DEFAULT
   })
 
-  const {filterProps} = useProps<IBreadcrumbProps>(props)
+  const { filterProps } = useProps<IBreadcrumbProps>(props)
 
   const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
   const { densityClasses } = useDensity(props)
@@ -82,9 +100,9 @@
     return index === props.items.length - 1
   }
 
-  const { hasSlot } = useSlots()
+  const slots = useSlots()
   const hasItems = computed(() => {
-    return hasSlot('default') || items.value
+    return slots.default || items.value
   })
 
   // CLASS & STYLES
@@ -107,48 +125,51 @@
       borderClasses.value,
       paddingClasses.value,
       marginClasses.value,
-      props.class,
+      props.class
     ]
   })
 
   // EXPOSE
 
   defineExpose({
-	  filterProps
+    filterProps
   })
 </script>
 
-<style lang="scss" scoped>
-  .foxy-breadcrumb {
-    padding: 16px;
+<style
+    lang="scss"
+    scoped
+>
+.foxy-breadcrumb {
+  padding: 16px;
 
-    &--rounded {
-      border-radius: 4px;
-    }
-
-    &--density-default {
-      padding: 16px;
-    }
-
-    &--density-compact {
-      padding: 8px;
-    }
-
-    &__items {
-      display: flex;
-      align-items: center;
-      line-height: 1.6;
-      list-style: none;
-    }
-
-    &__item {
-      display: flex;
-    }
+  &--rounded {
+    border-radius: 4px;
   }
+
+  &--density-default {
+    padding: 16px;
+  }
+
+  &--density-compact {
+    padding: 8px;
+  }
+
+  &__items {
+    display: flex;
+    align-items: center;
+    line-height: 1.6;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+  }
+}
 </style>
 
 <style>
-  :root {
+:root {
 
-  }
+}
 </style>

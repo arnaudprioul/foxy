@@ -59,7 +59,7 @@
       classes.push(`foxy-col--${props.cols}`)
     }
 
-    for (let type in propMap) {
+    for (const type in propMap) {
       propMap[type as keyof typeof propMap].forEach((prop) => {
         if (props[prop as keyof typeof props]) classes.push(`foxy-col--${toKebabCase(prop)}-${props[prop as keyof typeof props]}`)
       })

@@ -1,42 +1,50 @@
 <template>
-  <foxy-layout
-      ref="foxyAppRef"
-      :id="id"
-      :class="appClasses"
-      :style="appStyles">
-    <template #default>
-      <slot name="default"/>
-    </template>
-  </foxy-layout>
+	<foxy-layout
+			:id="id"
+			ref="foxyAppRef"
+			:class="appClasses"
+			:style="appStyles">
+		<template #default>
+			<slot name="default"/>
+		</template>
+	</foxy-layout>
 </template>
 
 <script lang="ts" setup>
-  import { useProps } from "@foxy/composables"
-  import { TFoxyApp } from "@foxy/types"
-  import { computed, ref, StyleValue } from 'vue'
+	import { FoxyLayout } from '@foxy/components'
 
-  import { ILayoutProps } from '@foxy/interfaces'
+	import { useProps, useRtl } from "@foxy/composables"
 
-  import { FoxyLayout } from '@foxy/components'
+	import { ILayoutProps } from '@foxy/interfaces'
 
-  const props = withDefaults(defineProps<ILayoutProps>(), { fullHeight: true })
+	import { TFoxyApp } from "@foxy/types"
 
-  const {filterProps} = useProps<ILayoutProps>(props)
+	import { computed, ref, StyleValue } from 'vue'
 
-  const foxyAppRef = ref<TFoxyApp>()
+	const props = withDefaults(defineProps<ILayoutProps>(), {fullHeight: true})
 
-  // CLASSES & STYLES
+	const {filterProps} = useProps<ILayoutProps>(props)
 
-  const appStyles = computed(() => {
-    return [props.style] as StyleValue
-  })
-  const appClasses = computed(() => {
-    return ['foxy-app', props.class]
-  })
+	const {rtlClasses} = useRtl()
 
-  // EXPOSE
+	const foxyAppRef = ref<TFoxyApp>()
 
-  defineExpose({
-	  filterProps
-  })
+	// CLASSES & STYLES
+
+	const appStyles = computed(() => {
+		return [props.style] as StyleValue
+	})
+	const appClasses = computed(() => {
+		return [
+			'foxy-app',
+			rtlClasses.value,
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

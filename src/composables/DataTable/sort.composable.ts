@@ -75,19 +75,18 @@ export function useSort () {
 
 export function useSortedItems<T extends IInternalItem> (
     props: {
-      customKeySort: Record<string, TDataTableCompareFunction> | undefined
-      disableSort?: Boolean
+      customKeySort: TDataTableCompareFunction | undefined
     },
     items: Ref<T[]>,
     sortBy: Ref<Array<IDataTableSortItem>>,
     options?: {
-      transform?: (item: T) => {}
+      transform?: (item: T) => Record<string, unknown>
       sortFunctions?: Ref<Record<string, TDataTableCompareFunction> | undefined>
       sortRawFunctions?: Ref<Record<string, TDataTableCompareFunction> | undefined>
     },
 ) {
   const sortedItems = computed(() => {
-    if (!sortBy.value.length || props.disableSort) return items.value
+    if (!sortBy.value.length) return items.value
 
     return sortItems(items.value, sortBy.value, {
       transform: options?.transform,
