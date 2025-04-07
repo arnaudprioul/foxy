@@ -1,4 +1,5 @@
 import FoxyDataList from './FoxyDataList.vue'
+import { h } from "vue"
 
 describe('<FoxyDataList />', () => {
   it('renders', () => {

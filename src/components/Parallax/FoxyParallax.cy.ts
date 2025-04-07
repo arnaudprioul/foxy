@@ -1,4 +1,5 @@
 import FoxyParallax from './FoxyParallax.vue'
+import { h } from "vue"
 
 describe('<FoxyParallax />', () => {
   it('renders', () => {

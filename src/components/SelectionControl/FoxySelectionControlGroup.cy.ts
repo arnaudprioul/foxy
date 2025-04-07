@@ -1,4 +1,5 @@
 import FoxySelectionControlGroup from './FoxySelectionControlGroup.vue'
+import { h } from "vue"
 
 describe('<FoxySelectionControlGroup />', () => {
   it('renders', () => {

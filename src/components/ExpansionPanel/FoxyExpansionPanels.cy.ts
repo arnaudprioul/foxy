@@ -1,4 +1,5 @@
 import FoxyExpansionPanels from './FoxyExpansionPanels.vue'
+import { h } from "vue"
 
 describe('<FoxyExpansionPanels />', () => {
   it('renders', () => {

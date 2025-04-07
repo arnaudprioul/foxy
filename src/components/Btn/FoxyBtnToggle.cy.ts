@@ -1,4 +1,5 @@
 import FoxyBtnToggle from './FoxyBtnToggle.vue'
+import { h } from "vue"
 
 describe('<FoxyBtnToggle />', () => {
   it('renders', () => {

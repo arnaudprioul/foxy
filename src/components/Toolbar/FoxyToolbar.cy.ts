@@ -1,4 +1,5 @@
 import FoxyToolbar from './FoxyToolbar.vue'
+import { h } from "vue"
 
 describe('<FoxyToolbar />', () => {
   it('renders', () => {

@@ -1,4 +1,5 @@
 import FoxySwitch from './FoxySwitch.vue'
+import { h } from "vue"
 
 describe('<FoxySwitch />', () => {
   it('renders', () => {

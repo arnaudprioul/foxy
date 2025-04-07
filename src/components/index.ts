@@ -54,6 +54,8 @@ export * from './Form'
 
 export * from './Grids'
 
+export * from './Highlight'
+
 export * from './Icon'
 
 export * from './Img'

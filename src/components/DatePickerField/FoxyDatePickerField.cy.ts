@@ -1,4 +1,5 @@
 import FoxyDatePickerField from './FoxyDatePickerField.vue'
+import { h } from "vue"
 
 describe('<FoxyDatePickerField />', () => {
   it('renders', () => {

@@ -1,4 +1,5 @@
 import FoxyChip from './FoxyChip.vue'
+import { h } from "vue"
 
 describe('<FoxyChip />', () => {
   it('renders', () => {

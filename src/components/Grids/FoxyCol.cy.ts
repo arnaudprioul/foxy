@@ -1,4 +1,5 @@
 import FoxyCol from './FoxyCol.vue'
+import { h } from "vue"
 
 describe('<FoxyCol />', () => {
   it('renders', () => {

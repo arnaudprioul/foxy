@@ -1,4 +1,5 @@
 import FoxyTextareaField from './FoxyTextareaField.vue'
+import { h } from "vue"
 
 describe('<FoxyTextareaField />', () => {
   it('renders', () => {

@@ -1,4 +1,5 @@
 import FoxyColorPickerField from './FoxyColorPickerField.vue'
+import { h } from "vue"
 
 describe('<FoxyColorPickerField />', () => {
   it('renders', () => {

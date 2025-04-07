@@ -1,4 +1,5 @@
 import FoxySystemBar from './FoxySystemBar.vue'
+import { h } from "vue"
 
 describe('<FoxySystemBar />', () => {
   it('renders', () => {

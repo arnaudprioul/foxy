@@ -1,4 +1,5 @@
 import FoxyRadioBtn from './FoxyRadioBtn.vue'
+import { h } from "vue"
 
 describe('<FoxyRadioBtn />', () => {
   it('renders', () => {

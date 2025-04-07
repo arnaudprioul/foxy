@@ -1,4 +1,5 @@
 import FoxyRow from './FoxyRow.vue'
+import { h } from "vue"
 
 describe('<FoxyRow />', () => {
   it('renders', () => {

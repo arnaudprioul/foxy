@@ -1,4 +1,5 @@
 import FoxyRadioGroup from './FoxyRadioGroup.vue'
+import { h } from "vue"
 
 describe('<FoxyRadioGroup />', () => {
   it('renders', () => {

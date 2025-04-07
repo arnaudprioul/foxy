@@ -1,4 +1,5 @@
 import FoxyFileField from './FoxyFileField.vue'
+import { h } from "vue"
 
 describe('<FoxyFileField />', () => {
   it('renders', () => {

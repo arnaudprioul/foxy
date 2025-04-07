@@ -1,4 +1,5 @@
 import FoxyTitle from './FoxyTitle.vue'
+import { h } from "vue"
 
 describe('<FoxyTitle />', () => {
   it('renders', () => {

@@ -142,6 +142,8 @@ export * from './Grids/row.interface'
 export * from './Grids/col.interface'
 export * from './Grids/spacer.interface'
 
+export * from './Highlight/highlight.interface'
+
 export * from './Icon/icon.interface'
 
 export * from './Img/img.interface'

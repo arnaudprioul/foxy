@@ -1,4 +1,5 @@
 import FoxyRadio from './FoxyRadio.vue'
+import { h } from "vue"
 
 describe('<FoxyRadio />', () => {
   it('renders', () => {

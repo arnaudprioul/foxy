@@ -1,4 +1,5 @@
 import FoxyDialog from './FoxyDialog.vue'
+import { h } from "vue"
 
 describe('<FoxyDialog />', () => {
   it('renders', () => {

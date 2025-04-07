@@ -1,4 +1,5 @@
 import FoxyMenu from './FoxyMenu.vue'
+import { h } from "vue"
 
 describe('<FoxyMenu />', () => {
   it('renders', () => {

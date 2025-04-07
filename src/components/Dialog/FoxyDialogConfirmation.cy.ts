@@ -1,4 +1,5 @@
 import FoxyDialogConfirmation from './FoxyDialogConfirmation.vue'
+import { h } from "vue"
 
 describe('<FoxyDialogConfirmation />', () => {
   it('renders', () => {

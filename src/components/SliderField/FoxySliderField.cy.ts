@@ -1,4 +1,5 @@
 import FoxySliderField from './FoxySliderField.vue'
+import { h } from "vue"
 
 describe('<FoxySliderField />', () => {
   it('renders', () => {

@@ -1,4 +1,5 @@
 import FoxyResponsive from './FoxyResponsive.vue'
+import { h } from "vue"
 
 describe('<FoxyResponsive />', () => {
   it('renders', () => {

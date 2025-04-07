@@ -1,4 +1,5 @@
 import FoxySnackbar from './FoxySnackbar.vue'
+import { h } from "vue"
 
 describe('<FoxySnackbar />', () => {
   it('renders', () => {

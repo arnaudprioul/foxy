@@ -1,4 +1,5 @@
 import FoxySheet from './FoxySheet.vue'
+import { h } from "vue"
 
 describe('<FoxySheet />', () => {
   it('renders', () => {

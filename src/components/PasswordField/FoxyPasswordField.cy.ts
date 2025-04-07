@@ -1,4 +1,5 @@
 import FoxyPasswordField from './FoxyPasswordField.vue'
+import { h } from "vue"
 
 describe('<FoxyPasswordField />', () => {
   it('renders', () => {

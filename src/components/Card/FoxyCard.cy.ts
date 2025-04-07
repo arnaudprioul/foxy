@@ -1,4 +1,5 @@
 import FoxyCard from './FoxyCard.vue'
+import { h } from "vue"
 
 describe('<FoxyCard />', () => {
   it('renders', () => {

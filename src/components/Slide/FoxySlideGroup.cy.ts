@@ -1,4 +1,5 @@
 import FoxySlideGroup from './FoxySlideGroup.vue'
+import { h } from "vue"
 
 describe('<FoxySlideGroup />', () => {
   it('renders', () => {

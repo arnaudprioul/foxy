@@ -1,4 +1,5 @@
 import FoxyDrawer from './FoxyDrawer.vue'
+import { h } from "vue"
 
 describe('<FoxyDrawer />', () => {
   it('renders', () => {

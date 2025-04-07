@@ -1,4 +1,5 @@
 import FoxyDivider from './FoxyDivider.vue'
+import { h } from "vue"
 
 describe('<FoxyDivider />', () => {
   it('renders', () => {

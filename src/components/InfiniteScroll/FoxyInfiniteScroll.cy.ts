@@ -1,4 +1,5 @@
 import FoxyInfiniteScroll from './FoxyInfiniteScroll.vue'
+import { h } from "vue"
 
 describe('<FoxyInfiniteScroll />', () => {
   it('renders', () => {

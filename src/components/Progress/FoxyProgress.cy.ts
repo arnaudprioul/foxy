@@ -1,4 +1,5 @@
 import FoxyProgress from './FoxyProgress.vue'
+import { h } from "vue"
 
 describe('<FoxyProgress />', () => {
   it('renders', () => {

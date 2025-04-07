@@ -1,4 +1,5 @@
 import FoxyColorPicker from './FoxyColorPicker.vue'
+import { h } from "vue"
 
 describe('<FoxyColorPicker />', () => {
   it('renders', () => {

@@ -1,4 +1,5 @@
 import FoxyRatingField from './FoxyRatingField.vue'
+import { h } from "vue"
 
 describe('<FoxyRatingField />', () => {
   it('renders', () => {

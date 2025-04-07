@@ -1,4 +1,5 @@
 import FoxyImg from './FoxyImg.vue'
+import { h } from "vue"
 
 describe('<FoxyImg />', () => {
   it('renders', () => {

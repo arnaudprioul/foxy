@@ -1,4 +1,5 @@
 import FoxyIcon from './FoxyIcon.vue'
+import { h } from "vue"
 
 describe('<FoxyIcon />', () => {
   it('renders', () => {

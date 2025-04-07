@@ -1,4 +1,5 @@
 import FoxyVirtualScroll from './FoxyVirtualScroll.vue'
+import { h } from "vue"
 
 describe('<FoxyVirtualScroll />', () => {
   it('renders', () => {

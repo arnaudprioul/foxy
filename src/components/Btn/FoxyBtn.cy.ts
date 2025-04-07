@@ -1,4 +1,5 @@
 import FoxyBtn from './FoxyBtn.vue'
+import { h } from "vue"
 
 describe('<FoxyBtn />', () => {
   it('renders', () => {

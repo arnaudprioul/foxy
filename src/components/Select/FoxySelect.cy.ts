@@ -1,4 +1,5 @@
 import FoxySelect from './FoxySelect.vue'
+import { h } from "vue"
 
 describe('<FoxySelect />', () => {
   it('renders', () => {

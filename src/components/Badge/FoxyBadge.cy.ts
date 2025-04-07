@@ -1,4 +1,5 @@
 import FoxyBadge from './FoxyBadge.vue'
+import { h } from "vue"
 
 describe('<FoxyBadge />', () => {
   it('renders', () => {

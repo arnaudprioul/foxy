@@ -1,4 +1,5 @@
 import FoxyForm from './FoxyForm.vue'
+import { h } from "vue"
 
 describe('<FoxyForm />', () => {
   it('renders', () => {

@@ -1,4 +1,5 @@
 import FoxyContainer from './FoxyContainer.vue'
+import { h } from "vue"
 
 describe('<FoxyContainer />', () => {
   it('renders', () => {

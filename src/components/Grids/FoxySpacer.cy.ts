@@ -1,4 +1,5 @@
 import FoxySpacer from './FoxySpacer.vue'
+import { h } from "vue"
 
 describe('<FoxySpacer />', () => {
   it('renders', () => {

@@ -1,4 +1,5 @@
 import FoxyCounter from './FoxyCounter.vue'
+import { h } from "vue"
 
 describe('<FoxyCounter />', () => {
   it('renders', () => {

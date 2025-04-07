@@ -1,4 +1,5 @@
 import FoxyLoader from './FoxyLoader.vue'
+import { h } from "vue"
 
 describe('<FoxyLoader />', () => {
   it('renders', () => {

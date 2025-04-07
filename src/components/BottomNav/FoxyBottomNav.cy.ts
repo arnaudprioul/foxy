@@ -1,4 +1,5 @@
 import FoxyBottomNav from './FoxyBottomNav.vue'
+import { h } from "vue"
 
 describe('<FoxyBottomNav />', () => {
   it('renders', () => {

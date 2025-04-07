@@ -1,4 +1,5 @@
 import FoxyCarousel from './FoxyCarousel.vue'
+import { h } from "vue"
 
 describe('<FoxyCarousel />', () => {
   it('renders', () => {

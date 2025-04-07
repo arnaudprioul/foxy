@@ -1,4 +1,5 @@
 import FoxyTooltip from './FoxyTooltip.vue'
+import { h } from "vue"
 
 describe('<FoxyTooltip />', () => {
   it('renders', () => {
