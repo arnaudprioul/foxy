@@ -1,4 +1,4 @@
-import { computed, isRef, Ref } from 'vue'
+import { computed, ComputedRef, isRef, Ref } from 'vue'
 
 import { TColor } from '@foxy/types'
 
@@ -38,7 +38,7 @@ export function useColor (colors: Ref<{ background?: TColor, text?: TColor }>) {
   return { colorStyles }
 }
 
-export function useBothColor<T extends Record<K, TColor>, K extends string> (bgColorProps: T | Ref<TColor>, colorProps: T | Ref<TColor>, name?: K) {
+export function useBothColor<T extends Record<K, TColor>, K extends string> (bgColorProps: T | Ref<TColor>, colorProps: T | Ref<TColor> | ComputedRef<TColor>, name?: K) {
   const colors = computed(() => {
     return {
       text: isRef(colorProps) ? colorProps.value : (name ? colorProps[name] : null),

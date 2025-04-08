@@ -25,18 +25,28 @@
 		useVModel
 	} from "@foxy/composables"
 	import { IHighlightProps } from "@foxy/interfaces"
+	import { TColorType } from "@foxy/types"
+	import { getContrast } from "@foxy/utils"
 	import { computed, StyleValue, toRef } from "vue"
 
 	const props = withDefaults(defineProps<IHighlightProps>(), {
 		tag: 'mark',
 		autoEscape: true,
 		patterns: () => [],
-		text: ''
+		text: '',
+		bgColor: '#ffc529',
+		color: '#ffffff'
 	})
 
 	const {filterProps} = useProps<IHighlightProps>(props)
 
-	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
+	const color = computed(() => {
+		return getContrast(props.bgColor as TColorType, props.color as TColorType) > 2 ?
+				props.color : getContrast(props.bgColor as TColorType, '#ffffff') > 2 ?
+						'white' : 'black'
+	})
+
+	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), color)
 	const {roundedClasses, roundedStyles} = useRounded(props)
 	const {borderClasses, borderStyles} = useBorder(props)
 	const {paddingClasses, paddingStyles} = usePadding(props)

@@ -23,7 +23,7 @@
 						title="Text"
 				/>
 
-				<hst-checkbox v-model="state.border"/>
+				<hst-checkbox title="border" v-model="state.border"/>
 
 				<hst-rounded v-model:rounded="state.rounded"/>
 			</template>
