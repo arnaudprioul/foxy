@@ -433,7 +433,7 @@
 
   const displayItems = computed(() => {
     if (props.hideSelected) {
-      return filteredItems.value.filter((filteredItem) => !model.value.some(s => s.value === filteredItem.value))
+      return filteredItems.value.filter((filteredItem) => !model.value.some((s) => s.value === filteredItem.value))
     }
 
     return filteredItems.value
