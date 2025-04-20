@@ -114,18 +114,18 @@
   import { FoxyAvatar, FoxyIcon } from '@foxy/components'
 
   import {
-    useAdjacent,
-    useBackgroundColor,
-    useBorder,
-    useDensity,
-    useDimension,
-    useElevation,
-    useLink,
-    useList,
-    useMargin,
-    useNestedItem,
-    usePadding, useProps,
-    useRounded
+	  useAdjacent,
+	  useBackgroundColor,
+	  useBorder,
+	  useDensity,
+	  useDimension,
+	  useElevation,
+	  useLink,
+	  useList,
+	  useMargin,
+	  useNestedItem,
+	  usePadding, useProps,
+	  useRounded
   } from '@foxy/composables'
 
   import { vRipple } from '@foxy/directives'

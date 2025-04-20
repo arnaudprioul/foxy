@@ -2,6 +2,10 @@ import { Ref } from 'vue'
 
 import { TScrollBehavior, TScrollStrategy, TScrollStrategyFn } from '@foxy/types'
 
+export interface IScrollToProps {
+  internalScrollable?: boolean
+}
+
 export interface IScrollProps {
   scrollBehavior?: TScrollBehavior
   scrollTarget?: string

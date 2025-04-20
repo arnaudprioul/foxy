@@ -8,9 +8,10 @@ export interface ILinkProps {
   exact?: boolean
 }
 
-export interface ILink extends Omit<Partial<ReturnType<typeof _useLink>>, 'href'> {
+export interface ILink extends Omit<Partial<ReturnType<typeof _useLink>>, 'href' | 'navigate'> {
   tag: string
   isLink: ComputedRef<boolean>
   isClickable: ComputedRef<boolean>
   href: Ref<string | undefined>
+  navigate?: any
 }

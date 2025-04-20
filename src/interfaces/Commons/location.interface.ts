@@ -9,9 +9,8 @@ export interface ILocationProps {
   location?: TAnchor
 }
 
-export interface ILocationStrategyProps extends IDimensionProps {
+export interface ILocationStrategyProps extends IDimensionProps, ILocationProps {
   locationStrategy?: TLocationStrategy | TLocationStrategyFn
-  location?: TAnchor
   origin?: TAnchor | 'auto' | 'overlap'
   offset?: number | string | Array<number>
 }
