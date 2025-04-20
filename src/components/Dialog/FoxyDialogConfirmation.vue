@@ -30,38 +30,38 @@
     </template>
 
     <template
-        v-if="slots['header:append']"
-        #header:append
+        v-if="slots['header-append']"
+        #header-append
     >
-      <slot name="header:append"/>
+      <slot name="header-append"/>
     </template>
 
     <template
-        v-if="slots['header:prepend']"
-        #header:prepend
+        v-if="slots['header-prepend']"
+        #header-prepend
     >
-      <slot name="header:prepend"/>
+      <slot name="header-prepend"/>
     </template>
 
     <template
-        v-if="slots['header:title']"
-        #header:title
+        v-if="slots['header-title']"
+        #header-title
     >
-      <slot name="header:title"/>
+      <slot name="header-title"/>
     </template>
 
     <template
-        v-if="slots['header:subtitle']"
-        #header:subtitle
+        v-if="slots['header-subtitle']"
+        #header-subtitle
     >
-      <slot name="header:subtitle"/>
+      <slot name="header-subtitle"/>
     </template>
 
     <template
-        v-if="slots['header:content']"
-        #header:content
+        v-if="slots['header-content']"
+        #header-content
     >
-      <slot name="header:content"/>
+      <slot name="header-content"/>
     </template>
 
     <template

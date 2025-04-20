@@ -42,8 +42,8 @@
 						<slot name="header"/>
 					</template>
 
-					<template #header:append>
-						<slot name="header:append">
+					<template #header-append>
+						<slot name="header-append">
 							<foxy-btn
 									:icon="MDI_ICONS.CLOSE"
 									:rounded="0"
@@ -55,9 +55,9 @@
 
 					<template
 							v-if="hasPrepend"
-							#header:prepend
+							#header-prepend
 					>
-						<slot name="header:prepend">
+						<slot name="header-prepend">
 							<foxy-icon
 									v-if="hasIcon"
 									key="prepend-icon"
@@ -68,24 +68,24 @@
 					</template>
 
 					<template
-							v-if="slots['header:title']"
-							#header:title
+							v-if="slots['header-title']"
+							#header-title
 					>
-						<slot name="header:title"/>
+						<slot name="header-title"/>
 					</template>
 
 					<template
-							v-if="slots['header:subtitle']"
-							#header:subtitle
+							v-if="slots['header-subtitle']"
+							#header-subtitle
 					>
-						<slot name="header:subtitle"/>
+						<slot name="header-subtitle"/>
 					</template>
 
 					<template
-							v-if="slots['header:content']"
-							#header:content
+							v-if="slots['header-content']"
+							#header-content
 					>
-						<slot name="header:content"/>
+						<slot name="header-content"/>
 					</template>
 
 					<template
@@ -228,7 +228,7 @@
 	}
 
 	const hasPrepend = computed(() => {
-		return !!(slots['header:prepend'] || icon.value)
+		return !!(slots['header-prepend'] || icon.value)
 	})
 	const hasIcon = computed(() => {
 		return !!(props.icon || props.status)

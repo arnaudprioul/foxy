@@ -230,7 +230,7 @@
   })
 
   const hasPrepend = computed(() => {
-    return !!(slots['header:prepend'] || icon.value)
+    return !!(slots['prepend'] || icon.value)
   })
   const hasIcon = computed(() => {
     return !!(props.icon || props.status)
