@@ -40,15 +40,18 @@
 	</div>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyPagination, FoxyRow, FoxySelect } from "@foxy/components"
 
 	import { useLocale, usePagination, useProps } from "@foxy/composables"
 
 	import { DENSITY } from "@foxy/enums"
 
-	import { IDataTableFooterProps } from "@foxy/interfaces"
-	import { TFoxyPagination } from "@foxy/types"
+	import type { IDataTableFooterProps } from "@foxy/interfaces"
+	import type { TFoxyPagination } from "@foxy/types"
 
 	import { computed, ref, StyleValue } from "vue"
 
@@ -134,6 +137,9 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 
 </style>

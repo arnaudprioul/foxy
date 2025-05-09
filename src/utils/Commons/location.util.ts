@@ -1,10 +1,10 @@
 import { AXIS } from '@foxy/enums'
 
-import { IBox, ILocationStrategyData, ILocationStrategyProps } from '@foxy/interfaces'
+import type { IBox, ILocationStrategyData, ILocationStrategyProps } from '@foxy/interfaces'
 
 import { Box } from '@foxy/services'
 
-import { TAnchor } from '@foxy/types'
+import type { TAnchor } from '@foxy/types'
 
 import {
     anchorToPoint,

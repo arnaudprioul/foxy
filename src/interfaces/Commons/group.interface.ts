@@ -1,4 +1,4 @@
-import { ComponentInternalInstance, ComputedRef, Ref } from 'vue'
+import type { ComponentInternalInstance, ComputedRef, Ref } from 'vue'
 
 export interface IGroupProvide {
     register: (item: IGroupItem, cmp: ComponentInternalInstance) => void

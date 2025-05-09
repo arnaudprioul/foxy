@@ -3,21 +3,25 @@
 			:id="id"
 			ref="foxyAppRef"
 			:class="appClasses"
-			:style="appStyles">
+			:style="appStyles"
+	>
 		<template #default>
 			<slot name="default"/>
 		</template>
 	</foxy-layout>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyLayout } from '@foxy/components'
 
 	import { useProps, useRtl } from "@foxy/composables"
 
-	import { ILayoutProps } from '@foxy/interfaces'
+	import type { ILayoutProps } from '@foxy/interfaces'
 
-	import { TFoxyApp } from "@foxy/types"
+	import type { TFoxyApp } from "@foxy/types"
 
 	import { computed, ref, StyleValue } from 'vue'
 

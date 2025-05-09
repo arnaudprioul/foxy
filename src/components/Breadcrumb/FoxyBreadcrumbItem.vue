@@ -5,20 +5,27 @@
 			:class="breadcrumbItemClasses"
 			:href="link.href"
 			:style="breadcrumbItemStyles"
-			@click="link.navigate">
+			@click="link.navigate"
+	>
 		<template v-if="hasPrepend">
-      <span key="prepend" class="foxy-breadcrumbs__prepend" @click="handleClickPrepend">
+      <span
+		      key="prepend"
+		      class="foxy-breadcrumbs__prepend"
+		      @click="handleClickPrepend"
+      >
         <slot name="prepend">
           <foxy-avatar
 		          v-if="prependAvatar"
 		          key="prepend-avatar"
 		          :density="density"
-		          :image="prependAvatar"/>
+		          :image="prependAvatar"
+          />
           <foxy-icon
 		          v-if="prependIcon"
 		          key="prepend-icon"
 		          :density="density"
-		          :icon="prependIcon"/>
+		          :icon="prependIcon"
+          />
         </slot>
       </span>
 		</template>
@@ -28,25 +35,34 @@
 		</slot>
 
 		<template v-if="hasAppend">
-      <span key="append" class="foxy-breadcrumbs__append" @click="handleClickAppend">
+      <span
+		      key="append"
+		      class="foxy-breadcrumbs__append"
+		      @click="handleClickAppend"
+      >
        <slot name="append">
          <foxy-avatar
 		         v-if="appendAvatar"
 		         key="append-avatar"
 		         :density="density"
-		         :image="appendAvatar"/>
+		         :image="appendAvatar"
+         />
          <foxy-icon
 		         v-if="appendIcon"
 		         key="append-icon"
 		         :density="density"
-		         :icon="appendIcon"/>
+		         :icon="appendIcon"
+         />
        </slot>
       </span>
 		</template>
 	</component>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyAvatar, FoxyIcon } from '@foxy/components'
 
 	import {
@@ -56,13 +72,14 @@
 		useDensity,
 		useLink,
 		useMargin,
-		usePadding, useProps,
+		usePadding,
+		useProps,
 		useRounded
 	} from '@foxy/composables'
 
 	import { DENSITY } from '@foxy/enums'
 
-	import { IBreadcrumbItemProps } from '@foxy/interfaces'
+	import type { IBreadcrumbItemProps } from '@foxy/interfaces'
 
 	import { computed, StyleValue, toRef, useAttrs } from 'vue'
 
@@ -128,7 +145,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-breadcrumb-item {
 		align-items: center;
 		color: inherit;

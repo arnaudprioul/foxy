@@ -83,9 +83,9 @@
 
 	import { INLINE, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@foxy/enums'
 
-	import { IItemProps, IMenuProps } from '@foxy/interfaces'
+	import type { IItemProps, IMenuProps } from '@foxy/interfaces'
 
-	import { TFoxyOverlay, TTransitionProps } from '@foxy/types'
+	import type { TFoxyOverlay, TTransitionProps } from '@foxy/types'
 
 	import { focusableChildren, focusChild, forwardRefs, getNextElement, getUid } from '@foxy/utils'
 

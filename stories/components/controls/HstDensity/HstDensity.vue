@@ -11,13 +11,13 @@
     lang="ts"
     setup
 >
-  import useTitle from '@stories/composables/title.composable'
+	import useTitle from '@stories/composables/title.composable'
 
-  import { densityList } from '@stories/const/density.const'
-  import { TTitleProp } from '@stories/types/title.type'
-  import { Ref, ref } from 'vue'
+	import { densityList } from '@stories/const/density.const'
+	import type { TTitleProp } from '@stories/types/title.type'
+	import { Ref, ref } from 'vue'
 
-  const props = defineProps<{
+	const props = defineProps<{
     modelValue?: string
   } & TTitleProp>()
 

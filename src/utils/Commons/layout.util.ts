@@ -1,7 +1,9 @@
-import { ILayer } from '@foxy/interfaces'
+import type { ILayer } from '@foxy/interfaces'
 
-import { TDirectionBoth } from '@foxy/types'
+import type { TDirectionBoth } from '@foxy/types'
+
 import { int } from "@foxy/utils"
+
 import type { Ref } from 'vue'
 
 export function generateLayers (
@@ -10,8 +12,8 @@ export function generateLayers (
     layoutSizes: Map<string, Ref<number | string>>,
     activeItems: Map<string, Ref<boolean>>
 ): Array<{ id: string, layer: ILayer }> {
-    let previousLayer: ILayer = { top: 0, left: 0, right: 0, bottom: 0 }
-    const layers = [{ id: '', layer: { ...previousLayer } }]
+    let previousLayer: ILayer = {top: 0, left: 0, right: 0, bottom: 0}
+    const layers = [{id: '', layer: {...previousLayer}}]
 
     for (const id of layout) {
         const position = positions.get(id)

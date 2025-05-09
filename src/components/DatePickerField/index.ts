@@ -1,1 +1,1 @@
-export {default as FoxyDatePickerField} from './FoxyDatePickerField.vue'
+export { default as FoxyDatePickerField } from './FoxyDatePickerField.vue'

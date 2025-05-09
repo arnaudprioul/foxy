@@ -2,14 +2,11 @@ import { useLocale } from "@foxy/composables"
 
 import { FOXY_DATE_OPTIONS_KEY } from "@foxy/consts"
 
-import { IDateOptions, ILocaleInstance } from "@foxy/interfaces"
+import type { IDateOptions, ILocaleInstance } from "@foxy/interfaces"
 
 import { DateAdapter } from "@foxy/services"
 
-import { mergeDeep } from "@foxy/utils"
-
-import { createInstance } from "@foxy/utils"
-
+import { createInstance, mergeDeep } from "@foxy/utils"
 import { inject } from "vue"
 
 export function createDate (options: IDateOptions | undefined, locale: ILocaleInstance) {
@@ -56,13 +53,13 @@ export function createDate (options: IDateOptions | undefined, locale: ILocaleIn
             uk: 'uk-UA',
             vi: 'vi-VN',
             zhHans: 'zh-CN',
-            zhHant: 'zh-TW',
-        },
+            zhHant: 'zh-TW'
+        }
     }, options as unknown as Record<string, unknown>) as unknown as IDateOptions
 
     return {
         options: _options,
-        instance: createInstance(_options, locale),
+        instance: createInstance(_options, locale)
     }
 }
 

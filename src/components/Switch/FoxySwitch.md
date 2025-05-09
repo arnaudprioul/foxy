@@ -1,4 +1,5 @@
 # Foxyswitch
 
 ## Usage
+
     <FoxySwitch />

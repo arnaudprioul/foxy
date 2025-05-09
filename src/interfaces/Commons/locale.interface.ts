@@ -1,5 +1,5 @@
-import { ComputedRef, Ref } from "vue"
-import { I18n, useI18n } from "vue-i18n"
+import type { ComputedRef, Ref } from "vue"
+import type { I18n, useI18n } from "vue-i18n"
 
 export interface ILocaleMessages {
     [key: string]: ILocaleMessages | string

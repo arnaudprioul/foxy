@@ -2,6 +2,12 @@
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "paths": {
+      "@foxy": [
+        "../src/"
+      ],
+      "@foxy/*": [
+        "../src/*"
+      ],
       "@cy": [
         "./cypress/"
       ],

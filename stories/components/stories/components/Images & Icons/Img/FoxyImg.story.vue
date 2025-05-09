@@ -82,7 +82,7 @@
 		setup
 >
 	import { FoxyImg, FoxyProgress } from '@foxy/components'
-	import { IImgProps } from "@foxy/interfaces"
+	import type { IImgProps } from "@foxy/interfaces"
 
 	import { reactive } from 'vue'
 

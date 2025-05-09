@@ -1,4 +1,4 @@
-import { TEventHandler } from '@foxy/types'
+import type { TEventHandler } from '@foxy/types'
 import { isOn } from '@foxy/utils'
 
 export function getPrefixedEventHandlers<T extends `:${string}`> (
@@ -6,10 +6,10 @@ export function getPrefixedEventHandlers<T extends `:${string}`> (
     suffix: T,
     getData: TEventHandler
 ): Record<`${string}${T}`, TEventHandler> {
-  return Object.keys(attrs)
-      .filter(key => isOn(key) && key.endsWith(suffix))
-      .reduce((acc: any, key) => {
-        acc[key.slice(0, -suffix.length)] = (event: Event) => attrs[key](event, getData(event))
-        return acc
-      }, {} as Record<`${string}${T}`, TEventHandler>)
+    return Object.keys(attrs)
+        .filter(key => isOn(key) && key.endsWith(suffix))
+        .reduce((acc: any, key) => {
+            acc[key.slice(0, -suffix.length)] = (event: Event) => attrs[key](event, getData(event))
+            return acc
+        }, {} as Record<`${string}${T}`, TEventHandler>)
 }

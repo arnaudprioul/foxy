@@ -1,6 +1,6 @@
-import { ICalendarProps, IColorProps, ICommonsComponentProps } from "@foxy/interfaces"
+import type { ICalendarProps, IColorProps, ICommonsComponentProps } from "@foxy/interfaces"
 
-import { TTransitionProps } from "@foxy/types"
+import type { TTransitionProps } from "@foxy/types"
 
 export interface IDatePickerMonthProps extends ICommonsComponentProps, IColorProps, ICalendarProps {
     hideWeekdays?: boolean

@@ -1,5 +1,5 @@
-import { IGroupItemProvide } from '@foxy/interfaces'
+import type { IGroupItemProvide } from '@foxy/interfaces'
 
-import { InjectionKey } from 'vue'
+import type { InjectionKey } from 'vue'
 
 export const FOXY_EXPANSION_PANEL_KEY: InjectionKey<IGroupItemProvide> = Symbol.for('foxy:expansion-panel')

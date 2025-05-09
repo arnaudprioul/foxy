@@ -1,13 +1,13 @@
-import { IFilterPropsOptions } from "@foxy/interfaces"
+import type { IFilterPropsOptions } from "@foxy/interfaces"
 
 import { pick } from "@foxy/utils"
 
 import { ExtractPropTypes } from "vue"
 
-export function useProps<T extends Record<string, any>>(props: T): IFilterPropsOptions<T> {
+export function useProps<T extends Record<string, any>> (props: T): IFilterPropsOptions<T> {
     const defaultExcludes = ['class', 'style', 'id']
 
-    const filterProps = <U extends Partial<ExtractPropTypes<T>>>(
+    const filterProps = <U extends Partial<ExtractPropTypes<T>>> (
         properties: U,
         excludes: string[] = defaultExcludes
     ) => {
@@ -15,5 +15,5 @@ export function useProps<T extends Record<string, any>>(props: T): IFilterPropsO
         return pick(properties, propKeys) as Partial<U>
     }
 
-    return { filterProps, props }
+    return {filterProps, props}
 }

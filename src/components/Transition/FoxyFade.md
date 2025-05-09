@@ -1,4 +1,5 @@
 # FoxyFade
 
 ## Usage
+
     <FoxyFade />

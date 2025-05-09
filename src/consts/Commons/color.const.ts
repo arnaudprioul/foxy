@@ -3,28 +3,28 @@ import { HSLtoRGB, HSVtoRGB } from '@foxy/utils'
 export const CSS_COLOR_REGEX = /^(?<fn>(?:rgb|hsl)a?)\((?<values>.+)\)/
 
 export const COLOR_MAPPERS = {
-  rgb: (r: number, g: number, b: number, a?: number) => ({ r, g, b, a }),
-  rgba: (r: number, g: number, b: number, a?: number) => ({ r, g, b, a }),
-  hsl: (h: number, s: number, l: number, a?: number) => HSLtoRGB({ h, s, l, a }),
-  hsla: (h: number, s: number, l: number, a?: number) => HSLtoRGB({ h, s, l, a }),
-  hsv: (h: number, s: number, v: number, a?: number) => HSVtoRGB({ h, s, v, a }),
-  hsva: (h: number, s: number, v: number, a?: number) => HSVtoRGB({ h, s, v, a }),
+    rgb: (r: number, g: number, b: number, a?: number) => ({r, g, b, a}),
+    rgba: (r: number, g: number, b: number, a?: number) => ({r, g, b, a}),
+    hsl: (h: number, s: number, l: number, a?: number) => HSLtoRGB({h, s, l, a}),
+    hsla: (h: number, s: number, l: number, a?: number) => HSLtoRGB({h, s, l, a}),
+    hsv: (h: number, s: number, v: number, a?: number) => HSVtoRGB({h, s, v, a}),
+    hsva: (h: number, s: number, v: number, a?: number) => HSVtoRGB({h, s, v, a})
 }
 
 export const SRGB_FORWARD_MATRIX = [
-  [3.2406, -1.5372, -0.4986],
-  [-0.9689, 1.8758, 0.0415],
-  [0.0557, -0.2040, 1.0570],
+    [3.2406, -1.5372, -0.4986],
+    [-0.9689, 1.8758, 0.0415],
+    [0.0557, -0.2040, 1.0570]
 ]
 export const SRGB_REVERSE_MATRIX = [
-  [0.4124, 0.3576, 0.1805],
-  [0.2126, 0.7152, 0.0722],
-  [0.0193, 0.1192, 0.9505],
+    [0.4124, 0.3576, 0.1805],
+    [0.2126, 0.7152, 0.0722],
+    [0.0193, 0.1192, 0.9505]
 ]
 export const SRGB_FORWARD_TRANSFORM = (C: number): number => (
-C <= 0.0031308
-    ? C * 12.92
-: 1.055 * C ** (1 / 2.4) - 0.055
+    C <= 0.0031308
+        ? C * 12.92
+        : 1.055 * C ** (1 / 2.4) - 0.055
 )
 export const SRGB_REVERSE_TRANSFORM = (C: number): number => (
     C <= 0.04045

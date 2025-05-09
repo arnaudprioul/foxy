@@ -14,8 +14,8 @@ import {
 
 import * as foxyDirectives from '@foxy/directives'
 
-import { IFoxyOptions } from '@foxy/interfaces'
-import { TIconOptions } from '@foxy/types'
+import type { IFoxyOptions } from '@foxy/interfaces'
+import type { TIconOptions } from '@foxy/types'
 import { getUid, mergeDeep } from '@foxy/utils'
 
 import '@mdi/font/css/materialdesignicons.css'

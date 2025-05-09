@@ -18,8 +18,8 @@
 >
 	import { FoxyFade, FoxyTransition } from '@foxy/components'
 	import { useBackgroundColor, useProps } from '@foxy/composables'
-	import { IOverlayScrimProps } from '@foxy/interfaces'
-	import { TTransitionProps } from "@foxy/types"
+	import type { IOverlayScrimProps } from '@foxy/interfaces'
+	import type { TTransitionProps } from "@foxy/types"
 
 	import { computed, StyleValue } from 'vue'
 

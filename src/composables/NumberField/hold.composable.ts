@@ -1,6 +1,8 @@
 import { onScopeDispose } from "vue"
 
-export function useHold ({ toggleUpDown }: { toggleUpDown: (increment: boolean) => void }, holdRepeat: number = 50, holdDelay: number = 500) {
+export function useHold ({toggleUpDown}: {
+    toggleUpDown: (increment: boolean) => void
+}, holdRepeat: number = 50, holdDelay: number = 500) {
     let timeout = -1
     let interval = -1
 
@@ -23,5 +25,5 @@ export function useHold ({ toggleUpDown }: { toggleUpDown: (increment: boolean) 
         toggleUpDown(value === 'up')
     }
 
-    return { holdStart, holdStop }
+    return {holdStart, holdStop}
 }

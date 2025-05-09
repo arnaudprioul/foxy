@@ -2,17 +2,21 @@
 	<component
 			:is="tag"
 			:class="dataTableColumnClasses"
-			:style="dataTableColumnStyles">
+			:style="dataTableColumnStyles"
+	>
 		<slot name="default"/>
 	</component>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { useDimension, usePadding, useProps } from '@foxy/composables'
 
 	import { ALIGN } from '@foxy/enums'
 
-	import { IDataTableColumnProps } from '@foxy/interfaces'
+	import type { IDataTableColumnProps } from '@foxy/interfaces'
 
 	import { convertToUnit } from '@foxy/utils'
 
@@ -61,7 +65,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-data-table-cell {
 		&--align-end {
 			text-align: end;

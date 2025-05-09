@@ -2,12 +2,19 @@ import * as foxyMessages from "@foxy/assets/locales"
 
 import { FOXY_LOCALE_KEY, LOCALE_RTL_DEFAULT } from "@foxy/consts"
 
-import { ILocaleInstance, ILocaleOptions, ILocaleProps, IRtlInstance, IRtlOptions, IRtlProps } from "@foxy/interfaces"
+import type {
+    ILocaleInstance,
+    ILocaleOptions,
+    ILocaleProps,
+    IRtlInstance,
+    IRtlOptions,
+    IRtlProps
+} from "@foxy/interfaces"
 
 import { createVueI18nAdapter, getCurrentInstanceName, mergeDeep } from "@foxy/utils"
 
 import { computed, inject, provide, ref } from "vue"
-import { createI18n, useI18n, I18n } from "vue-i18n"
+import { createI18n, I18n, useI18n } from "vue-i18n"
 
 export function createLocale (options?: ILocaleOptions & IRtlOptions) {
     const i18nOptions = mergeDeep({

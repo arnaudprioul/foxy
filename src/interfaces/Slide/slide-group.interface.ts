@@ -1,4 +1,4 @@
-import {
+import type {
     IBorderProps,
     ICommonsComponentProps,
     IDirectionProps,
@@ -9,7 +9,7 @@ import {
     IRoundedProps,
     ITagProps
 } from '@foxy/interfaces'
-import { TIcon } from '@foxy/types'
+import type { TIcon } from '@foxy/types'
 
 export interface ISlideGroupProps extends ICommonsComponentProps, ITagProps, IDirectionProps, IGroupProps, IPaddingProps, IMarginProps, IRoundedProps, IBorderProps, IDisplayProps {
     centerActive?: boolean

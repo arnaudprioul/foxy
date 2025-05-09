@@ -1,13 +1,19 @@
-import { ICommonsComponentProps } from '@foxy/interfaces'
-import { PropDefinition } from '@histoire/shared/src/types/story.ts'
+import type { ICommonsComponentProps } from '@foxy/interfaces'
 
 export interface IEditWrapperProps extends ICommonsComponentProps {
-  slotName?: string
-  autoDetectProps?: boolean
+    slotName?: string
+    autoDetectProps?: boolean
 }
 
 export interface IAutoPropComponentDefinition {
-  name: string
-  index: number
-  props: Array<PropDefinition>
+    name: string
+    index: number
+    props: Array<IPropDefinition>
+}
+
+export interface IPropDefinition {
+    name: string
+    types?: string[]
+    required?: boolean
+    default?: any
 }

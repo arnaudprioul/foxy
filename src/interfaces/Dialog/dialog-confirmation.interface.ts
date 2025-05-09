@@ -1,5 +1,5 @@
-import { IDialogProps } from '@foxy/interfaces'
+import type { IDialogProps } from '@foxy/interfaces'
 
 export interface IDialogConfirmationProps extends IDialogProps {
-  cancellable?: boolean
+    cancellable?: boolean
 }

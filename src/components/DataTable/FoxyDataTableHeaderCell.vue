@@ -11,9 +11,13 @@
 			:style="dataTableHeaderCellStyles"
 			tag="th"
 			v-bind="{ ...headerProps }"
-			@click="handleClick">
+			@click="handleClick"
+	>
 		<template #default>
-			<slot :name="`header.${column.key}`" v-bind="slotProps">
+			<slot
+					:name="`header.${column.key}`"
+					v-bind="slotProps"
+			>
 
 				<template v-if="hasColumn('data-table-select')">
 					<foxy-checkbox-btn
@@ -30,9 +34,9 @@
 						<template v-if="column.sortable && !props.disableSort">
 							<foxy-icon
 									key="icon"
+									:class="{'foxy-data-table-header-cell__sort-icon--active': isSorted(column)}"
 									:icon="getSortIcon(column)"
 									class="foxy-data-table-header-cell__sort-icon"
-									:class="{'foxy-data-table-header-cell__sort-icon--active': isSorted(column)}"
 							/>
 						</template>
 
@@ -40,7 +44,8 @@
 							<div
 									key="badge"
 									:style="colorStyles"
-									class="foxy-data-table-header-cell__sort-badge">
+									class="foxy-data-table-header-cell__sort-badge"
+							>
 								{{ sortedItems(column) }}
 							</div>
 						</template>
@@ -51,12 +56,15 @@
 	</foxy-data-table-column-cell>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyCheckboxBtn, FoxyDataTableColumnCell, FoxyIcon } from '@foxy/components'
 
 	import { useBothColor, useCell, useHeadersCell, useProps, useSelection, useSort } from '@foxy/composables'
 
-	import { IDataTableHeaderCellProps, IDataTableSortItem, IInternalDataTableHeader } from '@foxy/interfaces'
+	import type { IDataTableHeaderCellProps, IDataTableSortItem, IInternalDataTableHeader } from '@foxy/interfaces'
 
 	import { convertToUnit } from '@foxy/utils'
 
@@ -144,7 +152,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-data-table-header-cell {
 		$this: &;
 
@@ -212,8 +223,8 @@
 
 <style>
 	:root {
-		--foxy-data-table-header-cell---background: rgba(33,33,33, 1);
-		--foxy-data-table-header-cell---color: rgba(255,255,255, 1);
+		--foxy-data-table-header-cell---background: rgba(33, 33, 33, 1);
+		--foxy-data-table-header-cell---color: rgba(255, 255, 255, 1);
 
 		--foxy-data-table-header-cell--sortable---color: rgba(255, 255, 255, 1);
 

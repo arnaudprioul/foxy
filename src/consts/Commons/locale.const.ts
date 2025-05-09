@@ -1,5 +1,5 @@
-import { ILocaleInstance, IRtlInstance } from "@foxy/interfaces"
-import { InjectionKey } from "vue"
+import type { ILocaleInstance, IRtlInstance } from "@foxy/interfaces"
+import type { InjectionKey } from "vue"
 
 export const FOXY_LOCALE_KEY: InjectionKey<ILocaleInstance & IRtlInstance> = Symbol.for('foxy:locale')
 

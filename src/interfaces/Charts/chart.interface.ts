@@ -1,7 +1,13 @@
-import { IChartLineProps, IColorProps, ICommonsComponentProps, IDimensionProps, IPaddingProps } from "@foxy/interfaces"
-import { IChartBarProps } from "@foxy/interfaces/Charts/chart-bar.interface.ts"
+import type {
+    IChartBarProps,
+    IChartLineProps,
+    IColorProps,
+    ICommonsComponentProps,
+    IDimensionProps,
+    IPaddingProps
+} from "@foxy/interfaces"
 
-import { TChartItem, TChartType, TDirectionBoth } from "@foxy/types"
+import type { TChartItem, TChartType, TDirectionBoth } from "@foxy/types"
 
 export interface IChartProps extends ICommonsComponentProps, IChartLineProps, IChartBarProps {
     type?: TChartType

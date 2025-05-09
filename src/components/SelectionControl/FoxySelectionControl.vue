@@ -71,7 +71,7 @@
 
 	import { vRipple } from '@foxy/directives'
 
-	import { ISelectionControlProps } from '@foxy/interfaces'
+	import type { ISelectionControlProps } from "@foxy/interfaces"
 
 	import { filterInputAttrs, forwardRefs, getUid, matchesSelector } from '@foxy/utils'
 

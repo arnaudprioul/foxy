@@ -131,8 +131,8 @@
 	import { IN_BROWSER } from '@foxy/consts'
 	import { vIntersect } from '@foxy/directives'
 	import { MDI_ICONS } from '@foxy/enums'
-	import { IDialogProps } from '@foxy/interfaces'
-	import { TFoxyCard, TFoxyOverlay, TIcon, TTransitionProps } from '@foxy/types'
+	import type { IDialogProps } from '@foxy/interfaces'
+	import type { TFoxyCard, TFoxyOverlay, TIcon, TTransitionProps } from '@foxy/types'
 	import { focusableChildren, forwardRefs } from '@foxy/utils'
 
 	import { computed, mergeProps, nextTick, ref, StyleValue, useSlots, watch } from 'vue'

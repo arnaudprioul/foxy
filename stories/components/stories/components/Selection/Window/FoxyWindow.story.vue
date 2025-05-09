@@ -46,15 +46,15 @@
     lang="ts"
     setup
 >
-  import { FoxyCol, FoxyContainer, FoxyRow, FoxySheet, FoxyTitle, FoxyWindow, FoxyWindowItem } from '@foxy/components'
+	import { FoxyCol, FoxyContainer, FoxyRow, FoxySheet, FoxyTitle, FoxyWindow, FoxyWindowItem } from '@foxy/components'
 
-  import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxy/enums'
 
-  import { IWindowProps } from '@foxy/interfaces'
+	import type { IWindowProps } from '@foxy/interfaces'
 
-  import { reactive } from 'vue'
+	import { reactive } from 'vue'
 
-  const state: IWindowProps = reactive({
+	const state: IWindowProps = reactive({
     showArrows: true,
     modelValue: 0
   })

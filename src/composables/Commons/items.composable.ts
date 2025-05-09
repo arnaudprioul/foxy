@@ -1,4 +1,4 @@
-import { IInternalListItem, IItemProps } from '@foxy/interfaces'
+import type { IInternalListItem, IItemProps } from '@foxy/interfaces'
 
 import { deepEqual, transformListItem, transformListItems } from '@foxy/utils'
 
@@ -43,9 +43,9 @@ export function useItems (props: IItemProps & { itemType?: string }) {
 
     const transformOut = (value: IInternalListItem[]): any[] => {
         return props.returnObject
-            ? value.map(({ raw }) => raw)
-            : value.map(({ value }) => value)
+            ? value.map(({raw}) => raw)
+            : value.map(({value}) => value)
     }
 
-    return { items, transformIn, transformOut }
+    return {items, transformIn, transformOut}
 }

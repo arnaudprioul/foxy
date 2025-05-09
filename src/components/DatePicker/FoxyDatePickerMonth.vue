@@ -22,9 +22,9 @@
 						:key="`week-days-${indexWeek}`"
 				>
 					<div
-						:id="`week-days-${indexWeek}`"
-						class="foxy-date-picker-month__day foxy-date-picker-month__day--adjacent"
-						>
+							:id="`week-days-${indexWeek}`"
+							class="foxy-date-picker-month__day foxy-date-picker-month__day--adjacent"
+					>
 						<span>{{ week }}</span>
 					</div>
 				</template>
@@ -45,9 +45,9 @@
 							:key="indexWeekDay"
 					>
 						<div
-							:id="`${indexWeekDay}-weekday`"
-							class="foxy-date-picker-month__day foxy-date-picker-month__weekday"
-							>
+								:id="`${indexWeekDay}-weekday`"
+								class="foxy-date-picker-month__day foxy-date-picker-month__weekday"
+						>
 							<span>{{ weekDay }}</span>
 						</div>
 					</template>
@@ -95,20 +95,15 @@
 		lang="ts"
 		setup
 >
-	import {
-		FoxyBtn,
-		FoxyReverseTranslatePicker,
-		FoxyTransition,
-		FoxyTranslatePicker
-	} from "@foxy/components"
+	import { FoxyBtn, FoxyReverseTranslatePicker, FoxyTransition, FoxyTranslatePicker } from "@foxy/components"
 
 	import { useCalendar, useDate, useProps } from "@foxy/composables"
 
 	import { CALENDAR_STRATEGY, DENSITY } from "@foxy/enums"
 
-	import { IDatePickerMonthProps, IDay } from "@foxy/interfaces"
+	import type { IDatePickerMonthProps, IDay } from "@foxy/interfaces"
 
-	import { TFoxyBtn, TTransitionProps } from "@foxy/types"
+	import type { TFoxyBtn, TTransitionProps } from "@foxy/types"
 
 	import { wrapInArray } from "@foxy/utils"
 
@@ -118,7 +113,7 @@
 		weekdays: () => [0, 1, 2, 3, 4, 5, 6],
 		weeksInMonth: CALENDAR_STRATEGY.DYNAMIC,
 		transition: () => ({component: FoxyTranslatePicker}) as unknown as TTransitionProps,
-		reverseTransition: () => ({component: FoxyReverseTranslatePicker}) as unknown as TTransitionProps,
+		reverseTransition: () => ({component: FoxyReverseTranslatePicker}) as unknown as TTransitionProps
 	})
 
 	const {filterProps} = useProps<IDatePickerMonthProps>(props)

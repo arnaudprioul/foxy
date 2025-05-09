@@ -66,14 +66,14 @@
     lang="ts"
     setup
 >
-  import { FoxyDialogConfirmation } from '@foxy/components'
+	import { FoxyDialogConfirmation } from '@foxy/components'
 
-  import { IDialogConfirmationProps } from '@foxy/interfaces'
+	import type { IDialogConfirmationProps } from '@foxy/interfaces'
 
-  import { logEvent } from 'histoire/client'
-  import { reactive } from 'vue'
+	import { logEvent } from 'histoire/client'
+	import { reactive } from 'vue'
 
-  const state = reactive<IDialogConfirmationProps>({
+	const state = reactive<IDialogConfirmationProps>({
     modelValue: true,
     maxHeight: '300px',
     cancellable: true,

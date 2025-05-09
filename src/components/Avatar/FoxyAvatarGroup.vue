@@ -53,8 +53,8 @@
 	import { FoxyAvatar } from "@foxy/components"
 	import { useProps, useRtl } from "@foxy/composables"
 	import { DIRECTION } from "@foxy/enums"
-	import { IAvatarGroupProps, IAvatarProps } from "@foxy/interfaces"
-	import { TFoxyAvatar } from '@foxy/types'
+	import type { IAvatarGroupProps, IAvatarProps } from "@foxy/interfaces"
+	import type { TFoxyAvatar } from '@foxy/types'
 
 	import { computed, mergeProps, ref, StyleValue, VNodeProps } from "vue"
 

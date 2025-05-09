@@ -1,47 +1,51 @@
 <template>
-  <component
-      :is="component"
-      v-bind="transitionProps">
-    <slot name="default"/>
-  </component>
+	<component
+			:is="component"
+			v-bind="transitionProps"
+	>
+		<slot name="default"/>
+	</component>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyFade } from '@foxy/components'
-  import { useProps, useTransition } from '@foxy/composables'
-  import { ITransitionComponentProps } from '@foxy/interfaces'
-  import { TTransitionProps } from '@foxy/types'
+<script
+		lang="ts"
+		setup
+>
+	import { FoxyFade } from '@foxy/components'
+	import { useProps, useTransition } from '@foxy/composables'
+	import type { ITransitionComponentProps } from '@foxy/interfaces'
+	import type { TTransitionProps } from '@foxy/types'
 
-  import { omit } from '@foxy/utils'
+	import { omit } from '@foxy/utils'
 
-  import { computed, mergeProps, Transition, useAttrs } from 'vue'
+	import { computed, mergeProps, Transition, useAttrs } from 'vue'
 
-  const props = withDefaults(defineProps<ITransitionComponentProps>(), {
-    transition: () => ({ component: FoxyFade }) as unknown as TTransitionProps
-  })
+	const props = withDefaults(defineProps<ITransitionComponentProps>(), {
+		transition: () => ({component: FoxyFade}) as unknown as TTransitionProps
+	})
 
-  const {filterProps} = useProps<ITransitionComponentProps>(props)
+	const {filterProps} = useProps<ITransitionComponentProps>(props)
 
-  const attrs = useAttrs()
-  const { isDisabled } = useTransition(props)
+	const attrs = useAttrs()
+	const {isDisabled} = useTransition(props)
 
-  const component = computed(() => {
-    return typeof props.transition === 'object' && props.transition.component ? props.transition.component : Transition
-  })
-  const customProps = computed(() => {
-    return typeof props.transition === 'object' ? omit(props.transition, ['component']) : {}
-  })
-  const transitionProps = computed(() => {
-    return mergeProps(
-        typeof props.transition === 'string' ? { name: isDisabled.value ? '' : props.transition } : { ...customProps.value },
-        { ...attrs },
-        { disabled: isDisabled.value })
-  })
+	const component = computed(() => {
+		return typeof props.transition === 'object' && props.transition.component ? props.transition.component : Transition
+	})
+	const customProps = computed(() => {
+		return typeof props.transition === 'object' ? omit(props.transition, ['component']) : {}
+	})
+	const transitionProps = computed(() => {
+		return mergeProps(
+				typeof props.transition === 'string' ? {name: isDisabled.value ? '' : props.transition} : {...customProps.value},
+				{...attrs},
+				{disabled: isDisabled.value})
+	})
 
-  // EXPOSE
+	// EXPOSE
 
-  defineExpose({
-	  filterProps
-  })
+	defineExpose({
+		filterProps
+	})
 
 </script>

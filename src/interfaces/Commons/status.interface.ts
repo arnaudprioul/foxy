@@ -1,7 +1,7 @@
-import { IIconProps } from '@foxy/interfaces'
+import type { IIconProps } from '@foxy/interfaces'
 
-import { TContextualType } from '@foxy/types'
+import type { TContextualType } from '@foxy/types'
 
 export interface IStatusProps extends IIconProps {
-  status?: TContextualType
+    status?: TContextualType
 }

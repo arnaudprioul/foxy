@@ -23,7 +23,7 @@
 		useSsrBoot
 	} from "@foxy/composables"
 
-	import { ISystemBarProps } from "@foxy/interfaces"
+	import type { ISystemBarProps } from "@foxy/interfaces"
 
 	import { computed, shallowRef, StyleValue, toRef } from "vue"
 

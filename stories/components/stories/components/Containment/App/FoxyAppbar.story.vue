@@ -21,7 +21,7 @@
 >
 	import { FoxyAppBar } from '@foxy/components'
 
-	import { IAppBarProps } from "@foxy/interfaces"
+	import type { IAppBarProps } from "@foxy/interfaces"
 
 	import { reactive } from "vue"
 

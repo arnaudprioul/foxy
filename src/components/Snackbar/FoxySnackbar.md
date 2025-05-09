@@ -1,4 +1,5 @@
 # Foxysnackbar
 
 ## Usage
+
     <FoxySnackbar />

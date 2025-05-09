@@ -1,4 +1,5 @@
 # Foxydatatable
 
 ## Usage
+
     <FoxyDataTable />

@@ -1,6 +1,6 @@
-import { IDateAdapter } from "@foxy/interfaces"
+import type { IDateAdapter } from "@foxy/interfaces"
 
-import { TCustomDateFormat } from "@foxy/types"
+import type { TCustomDateFormat } from "@foxy/types"
 
 import {
     addDays,

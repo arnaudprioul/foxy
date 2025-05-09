@@ -1,5 +1,5 @@
 import { FoxyBreadcrumb } from "@foxy/components"
-import { IBreadcrumbItemProps } from '@foxy/interfaces'
+import type { IBreadcrumbItemProps } from '@foxy/interfaces'
 
 export type TBreadcrumbItem = string | Partial<IBreadcrumbItemProps> | never
 

@@ -1,4 +1,4 @@
-import { IAdjacentInnerProps, IAdjacentProps } from '@foxy/interfaces'
+import type { IAdjacentInnerProps, IAdjacentProps } from '@foxy/interfaces'
 
 import { getCurrentInstance } from "@foxy/utils";
 

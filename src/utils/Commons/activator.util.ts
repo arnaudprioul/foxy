@@ -1,5 +1,5 @@
 import { useActivator } from '@foxy/composables'
-import { IActivatorProps } from '@foxy/interfaces'
+import type { IActivatorProps } from '@foxy/interfaces'
 import { bindProps, unbindProps } from '@foxy/utils'
 
 import { ComponentInternalInstance, ComponentPublicInstance, mergeProps, nextTick, onScopeDispose, watch } from 'vue'

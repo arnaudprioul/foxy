@@ -1,4 +1,4 @@
-import {
+import type {
     IBorderProps,
     IColorProps,
     ICommonsComponentProps,
@@ -10,7 +10,7 @@ import {
     IPaddingProps,
     IRoundedProps
 } from "@foxy/interfaces"
-import { TIcon } from "@foxy/types"
+import type { TIcon } from "@foxy/types"
 
 export interface INumberFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps {
     autofocus?: boolean

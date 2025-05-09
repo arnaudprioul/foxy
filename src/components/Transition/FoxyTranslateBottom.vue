@@ -1,24 +1,28 @@
 <template>
-  <component
-      :is="tag"
-      :name="name"
-      v-bind="transitionProps">
-    <slot name="default"/>
-  </component>
+	<component
+			:is="tag"
+			:name="name"
+			v-bind="transitionProps"
+	>
+		<slot name="default"/>
+	</component>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { useCssTransition, useProps } from '@foxy/composables'
 
-  import { ITransitionProps } from '@foxy/interfaces'
+	import type { ITransitionProps } from '@foxy/interfaces'
 
-  const props = withDefaults(defineProps<ITransitionProps>(), {
-    name: 'foxy-transition--translate-bottom'
-  })
+	const props = withDefaults(defineProps<ITransitionProps>(), {
+		name: 'foxy-transition--translate-bottom'
+	})
 
-  const {filterProps} = useProps<ITransitionProps>(props)
+	const {filterProps} = useProps<ITransitionProps>(props)
 
-  const { name, tag, transitionProps } = useCssTransition(props)
+	const {name, tag, transitionProps} = useCssTransition(props)
 
 	// EXPOSE
 
@@ -28,25 +32,25 @@
 </script>
 
 <style lang="scss">
-  .foxy-transition--translate-bottom {
-    &-enter-active {
-      transition-duration: 225ms;
-      transition-timing-function: cubic-bezier(0.0, 0, 0.2, 1);
-    }
+	.foxy-transition--translate-bottom {
+		&-enter-active {
+			transition-duration: 225ms;
+			transition-timing-function: cubic-bezier(0.0, 0, 0.2, 1);
+		}
 
-    &-leave-active {
-      transition-duration: 125ms;
-      transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-    }
+		&-leave-active {
+			transition-duration: 125ms;
+			transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+		}
 
-    &-enter-active,
-    &-leave-active {
-      transition-property: transform, opacity;
-      pointer-events: none;
-    }
+		&-enter-active,
+		&-leave-active {
+			transition-property: transform, opacity;
+			pointer-events: none;
+		}
 
-    &-enter-from, &-leave-to {
-      transform: translateY(calc(50vh + 50%));
-    }
-  }
+		&-enter-from, &-leave-to {
+			transform: translateY(calc(50vh + 50%));
+		}
+	}
 </style>

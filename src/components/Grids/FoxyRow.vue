@@ -15,7 +15,7 @@
 	import { useBorder, useBothColor, useDensity, useMargin, usePadding, useProps } from '@foxy/composables'
 	import { DENSITY } from '@foxy/enums'
 
-	import { IRowProps } from '@foxy/interfaces'
+	import type { IRowProps } from '@foxy/interfaces'
 
 	import { toKebabCase } from '@foxy/utils'
 

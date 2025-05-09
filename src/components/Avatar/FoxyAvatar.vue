@@ -58,7 +58,7 @@
 		useSize
 	} from '@foxy/composables'
 
-	import { IAvatarProps, ISrcObject } from '@foxy/interfaces'
+	import type { IAvatarProps, ISrcObject } from '@foxy/interfaces'
 
 	import { computed, StyleValue, toRef, useSlots } from 'vue'
 

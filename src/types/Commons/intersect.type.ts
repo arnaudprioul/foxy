@@ -1,5 +1,5 @@
 export type TObserveHandler = (
     isIntersecting: boolean,
     entries: Array<IntersectionObserverEntry>,
-    observer: IntersectionObserver,
+    observer: IntersectionObserver
 ) => void

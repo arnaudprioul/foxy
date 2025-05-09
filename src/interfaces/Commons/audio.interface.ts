@@ -1,4 +1,4 @@
 export interface IAudioProps {
-  audio?: string
-  playAudio?: boolean
+    audio?: string
+    playAudio?: boolean
 }

@@ -1,9 +1,9 @@
-import FoxyTextField from './FoxyTextField.vue'
 import { h } from "vue"
+import FoxyTextField from './FoxyTextField.vue'
 
 describe('<FoxyTextField />', () => {
-  it('renders', () => {
-    // see: https://on.cypress.io/mounting-vue
-    cy.mount(h(FoxyTextField), {})
-  })
+    it('renders', () => {
+        // see: https://on.cypress.io/mounting-vue
+        cy.mount(h(FoxyTextField), {})
+    })
 })

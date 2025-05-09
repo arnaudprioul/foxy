@@ -27,7 +27,7 @@
 >
 	import { useProps, useResizeObserver } from "@foxy/composables"
 
-	import { IColorPickerCanvasProps } from "@foxy/interfaces"
+	import type { IColorPickerCanvasProps } from "@foxy/interfaces"
 
 	import { clamp, convertToUnit, getEventCoordinates, int } from "@foxy/utils"
 

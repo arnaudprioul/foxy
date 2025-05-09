@@ -2,92 +2,86 @@ import type { AutoPropComponentDefinition, PropDefinition } from '@histoire/shar
 import { pascalCase } from "change-case"
 import { PropType, VNode } from 'vue'
 
-export function getNameFromFile(file: string) {
-  const parts = /([^/]+)\.vue$/.exec(file)
-  if (parts) {
-    return pascalCase(parts[1])
-  }
-  return 'Anonymous'
+export function getNameFromFile (file: string) {
+    const parts = /([^/]+)\.vue$/.exec(file)
+    if (parts) {
+        return pascalCase(parts[1])
+    }
+    return 'Anonymous'
 }
 
-export function getTagName(vnode: VNode) {
-  if (typeof vnode.type === 'string') {
-    return vnode.type
-  }
-
-  else if (vnode.type?.__asyncResolved) {
-    const asyncComp = vnode.type?.__asyncResolved
-    return asyncComp.name ?? getNameFromFile(asyncComp.__file)
-  }
-
-  else if (vnode.type?.name) {
-    return vnode.type.name
-  }
-
-  else if (vnode.type?.__file) {
-    return getNameFromFile(vnode.type.__file)
-  }
-  return 'Anonymous'
+export function getTagName (vnode: VNode) {
+    if (typeof vnode.type === 'string') {
+        return vnode.type
+    } else if (vnode.type?.__asyncResolved) {
+        const asyncComp = vnode.type?.__asyncResolved
+        return asyncComp.name ?? getNameFromFile(asyncComp.__file)
+    } else if (vnode.type?.name) {
+        return vnode.type.name
+    } else if (vnode.type?.__file) {
+        return getNameFromFile(vnode.type.__file)
+    }
+    return 'Anonymous'
 }
 
-export function scanForAutoProps(vnodes: Array<any>) {
-  const result: Array<AutoPropComponentDefinition> = []
-  let index = 0
+export function scanForAutoProps (vnodes: Array<any>) {
+    const result: Array<AutoPropComponentDefinition> = []
+    let index = 0
 
-  for (const vnode of vnodes) {
-    if (typeof vnode.type === 'object') {
+    for (const vnode of vnodes) {
+        if (typeof vnode.type === 'object') {
 
-      const propDefs: Array<PropDefinition> = []
+            const propDefs: Array<PropDefinition> = []
 
-      for (const key in vnode.type.props) {
+            for (const key in vnode.type.props) {
 
-        const prop = vnode.type.props[key]
-        let types
-        let defaultValue
+                const prop = vnode.type.props[key]
+                let types
+                let defaultValue
 
-        if (prop) {
-          const rawTypes = Array.isArray(prop.type) ? prop.type : typeof prop === 'function' ? [prop] : [prop.type]
+                if (prop) {
+                    const rawTypes = Array.isArray(prop.type) ? prop.type : typeof prop === 'function' ? [prop] : [prop.type]
 
-          types = rawTypes.map((t: PropType<any>) => {
-            switch (t) {
-              case String:
-                return 'string'
-              case Number:
-                return 'number'
-              case Boolean:
-                return 'boolean'
-              case Object:
-                return 'object'
-              case Array:
-                return 'array'
-              default:
-                return 'unknown'
+                    types = rawTypes.map((t: PropType<any>) => {
+                        switch (t) {
+                            case String:
+                                return 'string'
+                            case Number:
+                                return 'number'
+                            case Boolean:
+                                return 'boolean'
+                            case Object:
+                                return 'object'
+                            case Array:
+                                return 'array'
+                            default:
+                                return 'unknown'
+                        }
+                    })
+
+                    defaultValue = typeof prop.default === 'function' ? prop.default.toString() : prop.default
+                }
+
+                propDefs.push({
+                    name: key,
+                    types,
+                    required: prop?.required,
+                    default: defaultValue
+                })
             }
-          })
 
-          defaultValue = typeof prop.default === 'function' ? prop.default.toString() : prop.default
+            result.push({
+                name: getTagName(vnode),
+                index,
+                props: propDefs
+            } as AutoPropComponentDefinition)
+            index++
         }
 
-        propDefs.push({
-          name: key,
-          types,
-          required: prop?.required,
-          default: defaultValue,
-        })
-      }
-
-      result.push({
-        name: getTagName(vnode),
-        index,
-        props: propDefs,
-      } as AutoPropComponentDefinition)
-      index++
+        if (Array.isArray(vnode.children)) {
+            result.push(...scanForAutoProps(vnode.children))
+        }
     }
 
-    if (Array.isArray(vnode.children)) {
-      result.push(...scanForAutoProps(vnode.children))
-    }
-  }
-
-  return result.filter(def => def.props.length)
+    return result.filter(def => def.props.length)
 }

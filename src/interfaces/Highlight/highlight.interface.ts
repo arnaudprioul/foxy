@@ -1,6 +1,8 @@
-import {
-    IBorderProps, IColorProps,
-    ICommonsComponentProps, IElevationProps,
+import type {
+    IBorderProps,
+    IColorProps,
+    ICommonsComponentProps,
+    IElevationProps,
     IMarginProps,
     IPaddingProps,
     IRoundedProps,

@@ -110,8 +110,9 @@
 
 	import { DENSITY, PROGRESS_TYPE, SIZES } from '@foxy/enums'
 
-	import { ISwitchProps } from '@foxy/interfaces'
-	import { TFoxyInput, TFoxySelectionControl } from "@foxy/types"
+	import type { ISwitchProps } from "@foxy/interfaces"
+
+	import type { TFoxyInput, TFoxySelectionControl } from "@foxy/types"
 
 	import { filterInputAttrs, getUid } from '@foxy/utils'
 

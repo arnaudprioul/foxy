@@ -129,9 +129,9 @@
 		PROGRESS_TYPE
 	} from '@foxy/enums'
 
-	import { IInfiniteScrollProps } from '@foxy/interfaces'
+	import type { IInfiniteScrollProps } from '@foxy/interfaces'
 
-	import { TInfiniteScrollSide, TInfiniteScrollStatus } from '@foxy/types'
+	import type { TInfiniteScrollSide, TInfiniteScrollStatus } from '@foxy/types'
 
 	import { computed, nextTick, onMounted, ref, shallowRef, StyleValue, toRef } from 'vue'
 

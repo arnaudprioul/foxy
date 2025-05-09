@@ -30,8 +30,8 @@
 
 	import { useProps } from "@foxy/composables"
 
-	import { IDataTableHeadersCellProps } from '@foxy/interfaces'
-	import { TFoxyDataTableHeaderCell } from "@foxy/types"
+	import type { IDataTableHeadersCellProps } from '@foxy/interfaces'
+	import type { TFoxyDataTableHeaderCell } from "@foxy/types"
 
 	import { computed, ref, StyleValue } from 'vue'
 

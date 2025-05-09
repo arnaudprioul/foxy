@@ -1,1 +1,1 @@
-export {default as FoxySlideGroup} from './FoxySlideGroup.vue'
+export { default as FoxySlideGroup } from './FoxySlideGroup.vue'

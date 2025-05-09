@@ -1,8 +1,8 @@
-import { ICommonsComponentProps } from '@foxy/interfaces'
+import type { ICommonsComponentProps } from '@foxy/interfaces'
 
-import { TDirectionBoth } from '@foxy/types'
+import type { TDirectionBoth } from '@foxy/types'
 
-import { ComponentInternalInstance, ComputedRef, CSSProperties, Ref } from 'vue'
+import type { ComponentInternalInstance, ComputedRef, CSSProperties, Ref } from 'vue'
 
 export interface ILayoutProvide {
     register: (

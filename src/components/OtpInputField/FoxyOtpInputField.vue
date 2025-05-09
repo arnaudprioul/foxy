@@ -9,7 +9,10 @@
 				:style="dimensionStyles"
 				class="foxy-otp-input-field__content"
 		>
-			<template v-for="(_, i) in fields" :key="i">
+			<template
+					v-for="(_, i) in fields"
+					:key="i"
+			>
 				<template v-if="divider && i !== 0">
 					<span class="foxy-otp-input-field__divider">
 						{{ divider }}
@@ -136,9 +139,9 @@
 
 	import { OTP_INPUT_FIELD_TYPE, PROGRESS_TYPE } from "@foxy/enums"
 
-	import { IOtpInputFieldProps } from "@foxy/interfaces"
+	import type { IOtpInputFieldProps } from "@foxy/interfaces"
 
-	import { TFoxyField } from "@foxy/types"
+	import type { TFoxyField } from "@foxy/types"
 
 	import { filterInputAttrs, focusChild } from "@foxy/utils"
 

@@ -1,10 +1,9 @@
 // Utilities
-import { onBeforeUpdate, ref } from 'vue'
-
 // Types
 import type { Ref } from 'vue'
+import { onBeforeUpdate, ref } from 'vue'
 
-export function useRefs <T extends object> () {
+export function useRefs<T extends object> () {
     const refs = ref<(T | undefined)[]>([]) as Ref<(T | undefined)[]>
 
     onBeforeUpdate(() => (refs.value = []))
@@ -13,5 +12,5 @@ export function useRefs <T extends object> () {
         refs.value[i] = e
     }
 
-    return { refs, updateRef }
+    return {refs, updateRef}
 }

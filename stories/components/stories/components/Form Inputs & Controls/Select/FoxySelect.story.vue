@@ -93,17 +93,16 @@
     lang="ts"
     setup
 >
-  import { FoxyCol, FoxyContainer, FoxyRow, FoxySelect } from '@foxy/components'
+	import { FoxyCol, FoxyContainer, FoxyRow, FoxySelect } from '@foxy/components'
 
-  import { ALIGN, JUSTIFY } from '@foxy/enums'
-  import { ISelectProps } from "@foxy/interfaces"
+	import { ALIGN, JUSTIFY } from '@foxy/enums'
 
-  import { HstIcon } from '@stories/components/controls'
-  import { logEvent } from 'histoire/client'
+	import { HstIcon } from '@stories/components/controls'
+	import { logEvent } from 'histoire/client'
 
-  import { reactive } from 'vue'
+	import { reactive } from 'vue'
 
-  const state: Partial<ISelectProps> = reactive({
+	const state: Partial<ISelectProps> = reactive({
     label: 'Select',
     items: ['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming'],
     bgColor: '#fff'

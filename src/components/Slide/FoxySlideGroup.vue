@@ -4,13 +4,15 @@
 			:class="slideGroupClasses"
 			:style="slideGroupStyles"
 			:tabindex="(isFocused || group.selected.value.length) ? -1 : 0"
-			@focus="handleFocus">
+			@focus="handleFocus"
+	>
 		<div
 				v-if="hasAffixes"
 				key="prev"
 				:class="slideGroupPrevClasses"
 				@click="handleFocusAffixes"
-				@mousedown="hasPrev && scrollTo('prev')">
+				@mousedown="hasPrev && scrollTo('prev')"
+		>
 			>
 			<slot name="prev">
 				<foxy-fade>
@@ -23,14 +25,19 @@
 				key="container"
 				ref="containerRef"
 				class="foxy-slide-group__container"
-				@scroll="handleScroll">
+				@scroll="handleScroll"
+		>
 			<div
 					ref="contentRef"
 					class="foxy-slide-group__content"
 					@focusin="handleFocusin"
 					@focusout="handleFocusout"
-					@keydown="handleKeydown">
-				<slot name="default" v-bind="slotProps"/>
+					@keydown="handleKeydown"
+			>
+				<slot
+						name="default"
+						v-bind="slotProps"
+				/>
 			</div>
 		</div>
 
@@ -39,7 +46,8 @@
 				key="next"
 				:class="slideGroupNextClasses"
 				@click="handleFocusAffixes"
-				@mousedown="hasNext && scrollTo('next')">
+				@mousedown="hasNext && scrollTo('next')"
+		>
 			>
 			<slot name="next">
 				<foxy-fade>
@@ -50,7 +58,10 @@
 	</component>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyFade, FoxyIcon } from "@foxy/components"
 	import {
 		useBorder,
@@ -58,19 +69,23 @@
 		useGoTo,
 		useGroup,
 		useMargin,
-		usePadding, useProps,
+		usePadding,
+		useProps,
 		useResizeObserver,
-		useRounded, useRtl
+		useRounded,
+		useRtl
 	} from "@foxy/composables"
 
 	import { FOXY_SLIDE_GROUP_KEY, IN_BROWSER } from "@foxy/consts"
 
 	import { DIRECTION, MDI_ICONS } from "@foxy/enums"
 
-	import { IGoToOptions, ISlideGroupProps } from "@foxy/interfaces"
+	import type { IGoToOptions, ISlideGroupProps } from "@foxy/interfaces"
 	import {
 		calculateCenteredTarget,
-		calculateUpdatedTarget, focusableChildren, getClientSize,
+		calculateUpdatedTarget,
+		focusableChildren,
+		getClientSize,
 		getOffsetSize,
 		getScrollPosition,
 		getScrollSize
@@ -155,11 +170,11 @@
 
 	const scrollToChildren = (children: HTMLElement, center?: boolean) => {
 		let target = calculateUpdatedTarget({
-      containerElement: containerRef.value!,
-      isHorizontal: isHorizontal.value,
+			containerElement: containerRef.value!,
+			isHorizontal: isHorizontal.value,
 			isRtl: isRtl.value,
-      selectedElement: children
-    })
+			selectedElement: children
+		})
 
 		if (center) {
 			target = calculateCenteredTarget({

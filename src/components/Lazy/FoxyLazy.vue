@@ -21,9 +21,14 @@
 		setup
 >
 	import { FoxyFade, FoxyTransition } from '@foxy/components'
+
 	import { useDimension, useProps, useVModel } from '@foxy/composables'
-	import { ILazyComponentProps } from '@foxy/interfaces'
-	import { TTransitionProps } from "@foxy/types"
+
+	import { vIntersect } from '@foxy/directives'
+
+	import type { ILazyComponentProps } from '@foxy/interfaces'
+
+	import type { TTransitionProps } from "@foxy/types"
 
 	import { computed, StyleValue } from 'vue'
 

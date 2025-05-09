@@ -1,25 +1,25 @@
-import {
-  IColorProps,
-  ICommonsComponentProps,
-  IMarginProps,
-  IPaddingProps,
-  IProgressCircularProps,
-  IProgressLinearProps,
-  ITagProps
+import type {
+    IColorProps,
+    ICommonsComponentProps,
+    IMarginProps,
+    IPaddingProps,
+    IProgressCircularProps,
+    IProgressLinearProps,
+    ITagProps
 } from '@foxy/interfaces'
 
-import { TProgressType } from '@foxy/types'
+import type { TProgressType } from '@foxy/types'
 
 export interface IProgressProps extends IProgressLinearProps, IProgressCircularProps {
-  type?: TProgressType
+    type?: TProgressType
 }
 
 export interface IProgressTypeProps extends ITagProps, ICommonsComponentProps, IColorProps, IPaddingProps, IMarginProps {
-  indeterminate?: boolean
-  modelValue?: string | number
-  thickness?: string | number
-  active?: boolean
-  absolute?: boolean
-  max?: number | string
-  striped?: boolean
+    indeterminate?: boolean
+    modelValue?: string | number
+    thickness?: string | number
+    active?: boolean
+    absolute?: boolean
+    max?: number | string
+    striped?: boolean
 }

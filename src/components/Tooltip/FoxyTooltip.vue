@@ -40,9 +40,9 @@
 
 	import { INLINE, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@foxy/enums'
 
-	import { ITooltipProps } from '@foxy/interfaces'
+	import type { ITooltipProps } from '@foxy/interfaces'
 
-	import { TAnchor, TFoxyOverlay } from '@foxy/types'
+	import type { TAnchor, TFoxyOverlay } from '@foxy/types'
 
 	import { forwardRefs, getUid } from '@foxy/utils'
 

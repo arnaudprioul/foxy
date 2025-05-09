@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils'
-import Foxyslidertrack from './FoxySliderFieldFieldTrack.vue'
+import Foxysliderfieldtrack from './FoxySliderFieldTrack.vue'
 
-describe('Spec Foxyslidertrack', function () {
-  it('mounts', () => {
-    const wrapper = mount(Foxyslidertrack)
-    expect(wrapper)
-        .toBeTruthy()
-  })
+describe('Spec Foxysliderfieldtrack', function () {
+	it('mounts', () => {
+		const wrapper = mount(Foxysliderfieldtrack)
+		expect(wrapper)
+			.toBeTruthy()
+	})
 })

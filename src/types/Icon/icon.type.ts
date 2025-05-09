@@ -1,7 +1,7 @@
 import { FoxyIcon } from "@foxy/components"
-import type { Component } from 'vue'
 
-import { IIconAliases, IIconProps, IIconSet } from '@foxy/interfaces'
+import type { IIconAliases, IIconProps, IIconSet } from '@foxy/interfaces'
+import type { Component } from 'vue'
 
 export type TIcon =
     | string
@@ -9,14 +9,14 @@ export type TIcon =
     | Component
 
 export type TIconOptions = {
-  defaultSet?: string
-  aliases?: Partial<IIconAliases>
-  sets?: Record<string, IIconSet>
+    defaultSet?: string
+    aliases?: Partial<IIconAliases>
+    sets?: Record<string, IIconSet>
 }
 
 export type TIconInstance = {
-  component: TIconComponent
-  icon?: TIcon
+    component: TIconComponent
+    icon?: TIcon
 }
 
 export type TIconComponent = Component<IIconProps>

@@ -12,7 +12,7 @@ import {
     IRoundedProps
 } from "@foxy/interfaces"
 
-import { TIcon } from "@foxy/types"
+import type { TIcon } from "@foxy/types"
 
 export interface IPasswordFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IAdjacentInnerProps {
     onIcon?: TIcon

@@ -2,9 +2,9 @@ import { FOXY_SLIDER_FIELD_KEY } from '@foxy/consts'
 
 import { BLOCK, CLIENT_POSITION, DIMENSIONS, DIRECTION, INLINE } from '@foxy/enums'
 
-import { ISliderField, ISliderFieldProps, ISliderFieldProvide } from '@foxy/interfaces'
+import type { ISliderField, ISliderFieldProps, ISliderFieldProvide } from '@foxy/interfaces'
 
-import { TTick } from '@foxy/types'
+import type { TTick } from '@foxy/types'
 
 import { clamp, createRange, getDecimals, getPosition, getSliderFieldOffset, int } from '@foxy/utils'
 
@@ -38,7 +38,7 @@ export function useSteps (props: ISliderFieldProps) {
         return parseFloat(Math.min(newValue, max.value).toFixed(decimals.value))
     }
 
-    return { min, max, step, decimals, roundValue }
+    return {min, max, step, decimals, roundValue}
 }
 
 export function useSlider ({
@@ -62,7 +62,7 @@ export function useSlider ({
         return isVertical.value !== isReversed.value
     })
 
-    const { min, max, step, decimals, roundValue } = steps
+    const {min, max, step, decimals, roundValue} = steps
 
     // TODO - need rework to use tick object and move it in tick component
     const tickSize = computed(() => {
@@ -111,7 +111,7 @@ export function useSlider ({
         return []
     })
     const hasTicksLabels = computed(() => {
-        return parsedTicks.value.some(({ label }) => !!label)
+        return parsedTicks.value.some(({label}) => !!label)
     })
 
     const disabled = toRef(props, 'disabled')
@@ -156,7 +156,7 @@ export function useSlider ({
         return roundValue(min.value + clickPos * (max.value - min.value))
     }
     const onStop = (e: MouseEvent | TouchEvent) => {
-        onSliderEnd({ value: parseMouseMove(e) })
+        onSliderEnd({value: parseMouseMove(e)})
 
         mousePressed.value = false
         startOffset.value = 0
@@ -173,16 +173,16 @@ export function useSlider ({
             startOffset.value = getSliderFieldOffset(e, activeThumbRef.value, props.direction ?? DIRECTION.VERTICAL)
         } else {
             startOffset.value = 0
-            onSliderMove({ value: parseMouseMove(e) })
+            onSliderMove({value: parseMouseMove(e)})
         }
 
-        onSliderStart({ value: parseMouseMove(e) })
+        onSliderStart({value: parseMouseMove(e)})
     }
 
-    const moveListenerOptions = { passive: true, capture: true }
+    const moveListenerOptions = {passive: true, capture: true}
 
     const onMouseMove = (e: MouseEvent | TouchEvent) => {
-        onSliderMove({ value: parseMouseMove(e) })
+        onSliderMove({value: parseMouseMove(e)})
     }
     const onSliderMouseUp = (e: MouseEvent) => {
         e.stopPropagation()
@@ -205,9 +205,9 @@ export function useSlider ({
         onStart(e)
 
         window.addEventListener('touchmove', onMouseMove, moveListenerOptions)
-        
+
         if (e.target) {
-            e.target.addEventListener('touchend', onSliderTouchend as EventListener, { passive: false })
+            e.target.addEventListener('touchend', onSliderTouchend as EventListener, {passive: false})
         }
     }
     const onSliderMousedown = (e: MouseEvent) => {
@@ -218,7 +218,7 @@ export function useSlider ({
         onStart(e)
 
         window.addEventListener('mousemove', onMouseMove, moveListenerOptions)
-        window.addEventListener('mouseup', onSliderMouseUp, { passive: false })
+        window.addEventListener('mouseup', onSliderMouseUp, {passive: false})
     }
     const onPosition = (val: number) => {
         const percentage = (val - min.value) / (max.value - min.value) * 100

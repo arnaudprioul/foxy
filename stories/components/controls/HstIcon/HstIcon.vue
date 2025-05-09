@@ -11,17 +11,17 @@
     lang="ts"
     setup
 >
-  import { TIcon } from '@foxy/types'
+	import type { TIcon } from '@foxy/types'
 
-  import useTitle from '@stories/composables/title.composable'
+	import useTitle from '@stories/composables/title.composable'
 
-  import { iconList } from '@stories/const/icon.const'
+	import { iconList } from '@stories/const/icon.const'
 
-  import { TTitleProp } from '@stories/types/title.type'
+	import type { TTitleProp } from '@stories/types/title.type'
 
-  import { Ref, ref } from 'vue'
+	import { Ref, ref } from 'vue'
 
-  const props = defineProps<{
+	const props = defineProps<{
     modelValue?: string,
   } & TTitleProp>()
 

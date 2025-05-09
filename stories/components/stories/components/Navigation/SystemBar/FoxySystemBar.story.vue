@@ -26,7 +26,6 @@
 >
 	import { FoxyIcon, FoxySystemBar } from '@foxy/components'
 	import { MDI_ICONS } from "@foxy/enums"
-	import { ISystemBarProps } from "@foxy/interfaces"
 	import { reactive } from "vue"
 
 	const state: Partial<ISystemBarProps> = reactive({})

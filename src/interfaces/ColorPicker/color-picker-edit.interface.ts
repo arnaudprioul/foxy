@@ -1,6 +1,6 @@
-import { ICommonsComponentProps } from "@foxy/interfaces"
+import type { ICommonsComponentProps } from "@foxy/interfaces"
 
-import { TColorModes, THSVA } from "@foxy/types"
+import type { TColorModes, THSVA } from "@foxy/types"
 
 export interface IColorPickerEditProps extends ICommonsComponentProps {
     colorHsv?: THSVA | null

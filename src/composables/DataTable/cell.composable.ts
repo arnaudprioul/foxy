@@ -1,4 +1,4 @@
-import { IInternalDataTableHeader } from "@foxy/interfaces"
+import type { IInternalDataTableHeader } from "@foxy/interfaces"
 
 export function useCell () {
     const getPadding = (column: IInternalDataTableHeader) => {

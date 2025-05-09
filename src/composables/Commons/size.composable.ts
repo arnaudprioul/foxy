@@ -1,35 +1,33 @@
-import { computed, isRef } from 'vue'
-
 import { SIZES_ARRAY } from '@foxy/consts'
+import type { ISizeProps } from "@foxy/interfaces"
 
-import { ISizeProps } from '@foxy/interfaces'
-
-import { TSize } from '@foxy/types'
+import type { TSize } from '@foxy/types'
 
 import { convertToUnit, getCurrentInstanceName } from '@foxy/utils'
+import { computed, isRef } from 'vue'
 
 export function useSize (props: ISizeProps, name = getCurrentInstanceName()) {
-  const sizeClasses = computed(() => {
-    const size = isRef(props) ? props.value : props.size
-    const classes = []
+    const sizeClasses = computed(() => {
+        const size = isRef(props) ? props.value : props.size
+        const classes = []
 
-    if (size && SIZES_ARRAY.includes(size as TSize)) {
-      classes.push(`${name}--size-${size}`)
-    }
+        if (size && SIZES_ARRAY.includes(size as TSize)) {
+            classes.push(`${name}--size-${size}`)
+        }
 
-    return classes
-  })
+        return classes
+    })
 
-  const sizeStyles = computed(() => {
-    const styles = []
+    const sizeStyles = computed(() => {
+        const styles = []
 
-    if (props.size && !SIZES_ARRAY.includes(props.size as TSize)) {
-      styles.push(`width': ${convertToUnit(props.size)}`)
-      styles.push(`height': ${convertToUnit(props.size)}`)
-    }
+        if (props.size && !SIZES_ARRAY.includes(props.size as TSize)) {
+            styles.push(`width': ${convertToUnit(props.size)}`)
+            styles.push(`height': ${convertToUnit(props.size)}`)
+        }
 
-    return styles
-  })
+        return styles
+    })
 
-  return { sizeStyles, sizeClasses }
+    return {sizeStyles, sizeClasses}
 }

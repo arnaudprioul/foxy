@@ -1,9 +1,10 @@
-import { mount } from "cypress/vue"
-import { h } from "vue"
+import { FoxyApp } from "@foxy/components"
 
 import { createFoxy } from "@foxy/foxy"
-import { IFoxyOptions } from "@foxy/interfaces"
-import { FoxyApp } from "@foxy/components"
+
+import type { IFoxyOptions } from "@foxy/interfaces"
+import { mount } from "cypress/vue"
+import { h } from "vue"
 
 const foxyOptions: IFoxyOptions = {}
 

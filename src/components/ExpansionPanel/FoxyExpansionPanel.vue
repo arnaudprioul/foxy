@@ -100,9 +100,9 @@
 
 	import { FOXY_EXPANSION_PANEL_KEY } from '@foxy/consts'
 
-	import { IExpansionPanelProps } from '@foxy/interfaces'
+	import type { IExpansionPanelProps } from '@foxy/interfaces'
 
-	import { TFoxyExpansionPanelContent, TFoxyExpansionPanelHeader } from "@foxy/types"
+	import type { TFoxyExpansionPanelContent, TFoxyExpansionPanelHeader } from "@foxy/types"
 
 	import { computed, provide, ref, StyleValue, toRef, useSlots } from 'vue'
 

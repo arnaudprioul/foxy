@@ -1,4 +1,5 @@
 # Foxybar
 
 ## Usage
+
     <FoxyBar />

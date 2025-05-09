@@ -1,11 +1,10 @@
 // Composables
-import { useBorder } from './border.composable'
-import { IBorderProps } from '../../interfaces'
-
 import { mount } from "@vue/test-utils"
 
 // Utilities
 import { keys } from "ts-transformer-keys"
+import type { IBorderProps } from '../../interfaces'
+import { useBorder } from './border.composable'
 
 describe('border.ts', () => {
     it('should create border props', () => {
@@ -26,7 +25,7 @@ describe('border.ts', () => {
         [{border: 1}, []],
         // Border only
         [{border: true}, ['test--border']],
-        [{border: ''}, ['test--border']],
+        [{border: ''}, ['test--border']]
     ] as IBorderProps[])('should have the correct class using %s', (props: IBorderProps, expected: any) => {
         const {borderClasses} = useBorder(props as IBorderProps, 'test')
 

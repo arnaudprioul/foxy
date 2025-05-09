@@ -1,51 +1,59 @@
 <template>
-  <component
-      :is="tag"
-      :class="spacerClasses"
-      :style="spacerStyles">
-    <slot name="default"/>
-  </component>
+	<component
+			:is="tag"
+			:class="spacerClasses"
+			:style="spacerStyles"
+	>
+		<slot name="default"/>
+	</component>
 </template>
 
-<script lang="ts" setup>
-  import { useProps } from "@foxy/composables"
-  import { ISpacerProps } from '@foxy/interfaces'
+<script
+		lang="ts"
+		setup
+>
+	import { useProps } from "@foxy/composables"
 
-  import { computed, StyleValue } from 'vue'
+	import type { ISpacerProps } from "@foxy/interfaces"
 
-  const props = withDefaults(defineProps<ISpacerProps>(), { tag: 'div' })
+	import { computed, StyleValue } from 'vue'
 
-  const {filterProps} = useProps<ISpacerProps>(props)
+	const props = withDefaults(defineProps<ISpacerProps>(), {tag: 'div'})
 
-  // CLASSES & STYLES
+	const {filterProps} = useProps<ISpacerProps>(props)
 
-  const spacerStyles = computed(() => {
-    return [
-      props.style
-    ] as StyleValue
-  })
-  const spacerClasses = computed(() => {
-    return [
-      'foxy-spacer',
-      props.class,
-    ]
-  })
+	// CLASSES & STYLES
 
-  // EXPOSE
+	const spacerStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const spacerClasses = computed(() => {
+		return [
+			'foxy-spacer',
+			props.class
+		]
+	})
 
-  defineExpose({
-	  filterProps
-  })
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
-<style lang="scss" scoped>
-  .foxy-spacer {
-    flex-grow: var(--foxy-spacer---flex-grow);
-  }
+<style
+		lang="scss"
+		scoped
+>
+	.foxy-spacer {
+		flex-grow: var(--foxy-spacer---flex-grow);
+	}
 </style>
 
 <style>
-  :root {
-    --foxy-spacer---flex-grow: 1;
-  }
+	:root {
+		--foxy-spacer---flex-grow: 1;
+	}
 </style>

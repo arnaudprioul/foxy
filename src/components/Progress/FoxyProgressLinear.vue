@@ -65,7 +65,7 @@
 		useRtl
 	} from '@foxy/composables'
 
-	import { IProgressLinearProps } from '@foxy/interfaces'
+	import type { IProgressLinearProps } from '@foxy/interfaces'
 
 	import { convertToUnit } from '@foxy/utils'
 

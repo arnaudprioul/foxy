@@ -1,316 +1,316 @@
 <template>
-  <div
-      :class="sliderFieldTrackClasses"
-      :style="sliderFieldTrackStyles"
-  >
-    <div
-        :class="sliderFieldTrackBgClasses"
-        :style="sliderFieldTrackBgStyles"
-    />
+	<div
+			:class="sliderFieldTrackClasses"
+			:style="sliderFieldTrackStyles"
+	>
+		<div
+				:class="sliderFieldTrackBgClasses"
+				:style="sliderFieldTrackBgStyles"
+		/>
 
-    <div
-        :class="sliderFieldTrackFillClasses"
-        :style="sliderFieldTrackFillStyles"
-    />
+		<div
+				:class="sliderFieldTrackFillClasses"
+				:style="sliderFieldTrackFillStyles"
+		/>
 
-    <div
-        v-if="showTicks"
-        :class="sliderFieldTrackTicksClasses"
-    >
-      <template
-          v-for="(tick, index) in ticks"
-          :key="index"
-      >
-        <div
-            :class="sliderFieldTickClasses(tick)"
-            :style="sliderFieldTickStyles(tick)"
-        >
-          <div
-              v-if="tick.label || slots.item || slots[`item.${index}`]"
-              class="foxy-slider-field-track__tick-label"
-          >
-            <slot
-                name="item"
-                v-bind="{ tick, index }"
-            >
-              <slot
-                  :name="`item.${index}`"
-                  v-bind="{ tick, index }"
-              >
-                {{ tick.label }}
-              </slot>
-            </slot>
-          </div>
-        </div>
-      </template>
-    </div>
-  </div>
+		<div
+				v-if="showTicks"
+				:class="sliderFieldTrackTicksClasses"
+		>
+			<template
+					v-for="(tick, index) in ticks"
+					:key="index"
+			>
+				<div
+						:class="sliderFieldTickClasses(tick)"
+						:style="sliderFieldTickStyles(tick)"
+				>
+					<div
+							v-if="tick.label || slots.item || slots[`item.${index}`]"
+							class="foxy-slider-field-track__tick-label"
+					>
+						<slot
+								name="item"
+								v-bind="{ tick, index }"
+						>
+							<slot
+									:name="`item.${index}`"
+									v-bind="{ tick, index }"
+							>
+								{{ tick.label }}
+							</slot>
+						</slot>
+					</div>
+				</div>
+			</template>
+		</div>
+	</div>
 </template>
 
 <script
-    lang="ts"
-    setup
+		lang="ts"
+		setup
 >
-  import { useBackgroundColor, useProps, useRounded } from '@foxy/composables'
+	import { useBackgroundColor, useProps, useRounded } from '@foxy/composables'
 
-  import { FOXY_SLIDER_FIELD_KEY } from '@foxy/consts'
+	import { FOXY_SLIDER_FIELD_KEY } from '@foxy/consts'
 
-  import { ISliderFieldTrackProps } from '@foxy/interfaces'
+	import type { ISliderFieldTrackProps } from "@foxy/interfaces"
 
-  import { TTick } from '@foxy/types'
+	import type { TTick } from '@foxy/types'
 
-  import { convertToUnit, int } from '@foxy/utils'
+	import { convertToUnit, int } from '@foxy/utils'
 
-  import { computed, inject, StyleValue, useSlots } from 'vue'
+	import { computed, inject, StyleValue, useSlots } from 'vue'
 
-  const props = withDefaults(defineProps<ISliderFieldTrackProps>(), {
-    start: 0,
-    stop: 100,
-    size: 4
-  })
+	const props = withDefaults(defineProps<ISliderFieldTrackProps>(), {
+		start: 0,
+		stop: 100,
+		size: 4
+	})
 
-  const { filterProps } = useProps<ISliderFieldTrackProps>(props)
+	const {filterProps} = useProps<ISliderFieldTrackProps>(props)
 
-  const slider = inject(FOXY_SLIDER_FIELD_KEY)
+	const slider = inject(FOXY_SLIDER_FIELD_KEY)
 
-  if (!slider) throw new Error('[Foxy] -slider-track must be inside -slider')
+	if (!slider) throw new Error('[Foxy] -slider-track must be inside -slider')
 
-  const slots = useSlots()
+	const slots = useSlots()
 
-  const {
-    color: sliderColor,
-    bgColor: sliderBgColor,
-    error,
-    disabled,
-    rounded: sliderRounded,
-    showTicks: sliderShowTicks,
-    tickSize: sliderTickSize,
-    parsedTicks,
-    min,
-    max,
-    isVertical,
-    indexFromEnd
-  } = slider
+	const {
+		color: sliderColor,
+		bgColor: sliderBgColor,
+		error,
+		disabled,
+		rounded: sliderRounded,
+		showTicks: sliderShowTicks,
+		tickSize: sliderTickSize,
+		parsedTicks,
+		min,
+		max,
+		isVertical,
+		indexFromEnd
+	} = slider
 
-  const isDisabled = computed(() => {
-    return props.disabled ?? disabled.value
-  })
-  const color = computed(() => {
-    return error.value || isDisabled.value ? undefined : sliderColor.value ? sliderColor.value : props.color
-  })
-  const bgColor = computed(() => {
-    return error.value || isDisabled.value ? undefined : sliderBgColor.value ? sliderBgColor.value : props.bgColor
-  })
-  const size = computed(() => {
-    if (typeof props?.size === 'number') {
-      return int(props.size)
-    }
+	const isDisabled = computed(() => {
+		return props.disabled ?? disabled.value
+	})
+	const color = computed(() => {
+		return error.value || isDisabled.value ? undefined : sliderColor.value ? sliderColor.value : props.color
+	})
+	const bgColor = computed(() => {
+		return error.value || isDisabled.value ? undefined : sliderBgColor.value ? sliderBgColor.value : props.bgColor
+	})
+	const size = computed(() => {
+		if (typeof props?.size === 'number') {
+			return int(props.size)
+		}
 
-    return 4
-  })
+		return 4
+	})
 
-  const showTicks = computed(() => {
-    return !!sliderShowTicks.value
-  })
+	const showTicks = computed(() => {
+		return !!sliderShowTicks.value
+	})
 
-  const roundedProps = computed(() => {
-    return props.rounded ?? sliderRounded.value
-  })
+	const roundedProps = computed(() => {
+		return props.rounded ?? sliderRounded.value
+	})
 
-  const { roundedClasses, roundedStyles } = useRounded(roundedProps)
-  const { backgroundColorStyles: trackFillColorStyles } = useBackgroundColor(bgColor)
-  const { backgroundColorStyles } = useBackgroundColor(color)
+	const {roundedClasses, roundedStyles} = useRounded(roundedProps)
+	const {backgroundColorStyles: trackFillColorStyles} = useBackgroundColor(bgColor)
+	const {backgroundColorStyles} = useBackgroundColor(color)
 
-  const startDir = computed(() => `inset-${isVertical.value ? 'block' : 'inline'}-${indexFromEnd.value ? 'end' : 'start'}`)
-  const endDir = computed(() => isVertical.value ? 'height' : 'width')
+	const startDir = computed(() => `inset-${isVertical.value ? 'block' : 'inline'}-${indexFromEnd.value ? 'end' : 'start'}`)
+	const endDir = computed(() => isVertical.value ? 'height' : 'width')
 
-  const backgroundStyles = computed(() => {
-    return {
-      [startDir.value]: '0%',
-      [endDir.value]: '100%'
-    }
-  })
-  const trackFillWidth = computed(() => {
-    return props.stop - props.start
-  })
+	const backgroundStyles = computed(() => {
+		return {
+			[startDir.value]: '0%',
+			[endDir.value]: '100%'
+		}
+	})
+	const trackFillWidth = computed(() => {
+		return props.stop - props.start
+	})
 
-  const trackFillStyles = computed(() => {
-    return {
-      [startDir.value]: convertToUnit(props.start, '%'),
-      [endDir.value]: convertToUnit(trackFillWidth.value, '%')
-    }
-  })
+	const trackFillStyles = computed(() => {
+		return {
+			[startDir.value]: convertToUnit(props.start, '%'),
+			[endDir.value]: convertToUnit(trackFillWidth.value, '%')
+		}
+	})
 
-  const ticks = computed(() => {
-    return isVertical.value ? parsedTicks.value.slice().reverse() : parsedTicks.value
-  })
+	const ticks = computed(() => {
+		return isVertical.value ? parsedTicks.value.slice().reverse() : parsedTicks.value
+	})
 
-  const sliderFieldTickStyles = (tick: TTick) => {
-    const directionValue = tick.value !== min.value && tick.value !== max.value ? convertToUnit(tick.position, '%') : undefined
+	const sliderFieldTickStyles = (tick: TTick) => {
+		const directionValue = tick.value !== min.value && tick.value !== max.value ? convertToUnit(tick.position, '%') : undefined
 
-    return [
-      {
-        '--foxy-slider-field-track__tick---size': convertToUnit(sliderTickSize.value),
-        [startDir.value]: directionValue
-      },
-      props.style
-    ] as StyleValue
-  }
-  const sliderFieldTickClasses = (tick: TTick) => {
-    return [
-      'foxy-slider-field-track__tick',
-      {
-        'foxy-slider-field-track__tick--filled': tick.position >= props.start && tick.position <= props.stop,
-        'foxy-slider-field-track__tick--first': tick.value === min.value,
-        'foxy-slider-field-track__tick--last': tick.value === max.value
-      }
-    ]
-  }
+		return [
+			{
+				'--foxy-slider-field-track__tick---size': convertToUnit(sliderTickSize.value),
+				[startDir.value]: directionValue
+			},
+			props.style
+		] as StyleValue
+	}
+	const sliderFieldTickClasses = (tick: TTick) => {
+		return [
+			'foxy-slider-field-track__tick',
+			{
+				'foxy-slider-field-track__tick--filled': tick.position >= props.start && tick.position <= props.stop,
+				'foxy-slider-field-track__tick--first': tick.value === min.value,
+				'foxy-slider-field-track__tick--last': tick.value === max.value
+			}
+		]
+	}
 
-  // CLASS & STYLES
+	// CLASS & STYLES
 
-  const sliderFieldTrackStyles = computed(() => {
-    return [
-      {
-        '--foxy-slider-field-track---size': convertToUnit(size.value)
-      },
-      roundedStyles.value,
-      props.style
-    ] as StyleValue
-  })
-  const sliderFieldTrackClasses = computed(() => {
-    return [
-      'foxy-slider-field-track',
-      roundedClasses.value,
-      props.class
-    ]
-  })
-  const sliderFieldTrackBgStyles = computed(() => {
-    return [
-      backgroundStyles.value,
-      backgroundColorStyles.value
-    ] as StyleValue
-  })
-  const sliderFieldTrackBgClasses = computed(() => {
-    return [
-      'foxy-slider-field-track__background',
-      {
-        'foxy-slider-field-track__background--opacity': !!color.value
-      }
-    ]
-  })
-  const sliderFieldTrackFillStyles = computed(() => {
-    return [
-      trackFillStyles.value,
-      trackFillColorStyles.value
-    ] as StyleValue
-  })
-  const sliderFieldTrackFillClasses = computed(() => {
-    return [
-      'foxy-slider-field-track__fill'
-    ]
-  })
-  const sliderFieldTrackTicksClasses = computed(() => {
-    return [
-      'foxy-slider-field-track__ticks',
-      {
-        'foxy-slider-field-track__ticks--always-show': sliderShowTicks.value === 'always'
-      }
-    ]
-  })
+	const sliderFieldTrackStyles = computed(() => {
+		return [
+			{
+				'--foxy-slider-field-track---size': convertToUnit(size.value)
+			},
+			roundedStyles.value,
+			props.style
+		] as StyleValue
+	})
+	const sliderFieldTrackClasses = computed(() => {
+		return [
+			'foxy-slider-field-track',
+			roundedClasses.value,
+			props.class
+		]
+	})
+	const sliderFieldTrackBgStyles = computed(() => {
+		return [
+			backgroundStyles.value,
+			backgroundColorStyles.value
+		] as StyleValue
+	})
+	const sliderFieldTrackBgClasses = computed(() => {
+		return [
+			'foxy-slider-field-track__background',
+			{
+				'foxy-slider-field-track__background--opacity': !!color.value
+			}
+		]
+	})
+	const sliderFieldTrackFillStyles = computed(() => {
+		return [
+			trackFillStyles.value,
+			trackFillColorStyles.value
+		] as StyleValue
+	})
+	const sliderFieldTrackFillClasses = computed(() => {
+		return [
+			'foxy-slider-field-track__fill'
+		]
+	})
+	const sliderFieldTrackTicksClasses = computed(() => {
+		return [
+			'foxy-slider-field-track__ticks',
+			{
+				'foxy-slider-field-track__ticks--always-show': sliderShowTicks.value === 'always'
+			}
+		]
+	})
 
-  // EXPOSE
+	// EXPOSE
 
-  defineExpose({
-    filterProps
-  })
+	defineExpose({
+		filterProps
+	})
 </script>
 
 <style
-    lang="scss"
-    scoped
+		lang="scss"
+		scoped
 >
-.foxy-slider-field-track {
-  $this: &;
+	.foxy-slider-field-track {
+		$this: &;
 
-  border-radius: 9999px;
+		border-radius: 9999px;
 
-  @media (forced-colors: active) {
-    border: thin solid buttontext;
-  }
+		@media (forced-colors: active) {
+			border: thin solid buttontext;
+		}
 
-  &__background,
-  &__fill {
-    position: absolute;
-    border-radius: inherit;
-    transition: var(--foxy-slider-field__track---transition, 0.3s cubic-bezier(0.25, 0.8, 0.5, 1));
+		&__background,
+		&__fill {
+			position: absolute;
+			border-radius: inherit;
+			transition: var(--foxy-slider-field__track---transition, 0.3s cubic-bezier(0.25, 0.8, 0.5, 1));
 
-    @media (forced-colors: active) {
-      background-color: highlight;
-    }
-  }
+			@media (forced-colors: active) {
+				background-color: highlight;
+			}
+		}
 
-  &__background {
-    background-color: rgb(148, 148, 148);
-  }
+		&__background {
+			background-color: rgb(148, 148, 148);
+		}
 
-  &__fill {
-    background-color: rgba(84, 84, 84, 1);
-  }
+		&__fill {
+			background-color: rgba(84, 84, 84, 1);
+		}
 
-  &__ticks {
-    height: 100%;
-    width: 100%;
-    position: relative;
+		&__ticks {
+			height: 100%;
+			width: 100%;
+			position: relative;
 
-    #{$this}--always-show {
-      #{$this}__tick {
-        opacity: 1;
-      }
-    }
-  }
+			#{$this}--always-show {
+				#{$this}__tick {
+					opacity: 1;
+				}
+			}
+		}
 
-  &__tick {
-    background-color: rgba(66, 66, 66, 1);
-    position: absolute;
-    opacity: 0;
-    transition: 0.2s opacity cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 2px;
-    width: var(--foxy-slider-field-track__tick---size, 2);
-    height: var(--foxy-slider-field-track__tick---size, 2);
-    transform: translate(calc(var(--foxy-slider-field-track__tick---size, 2) / -2), calc(var(--foxy-slider-field-track__tick---size, 2) / -2));
+		&__tick {
+			background-color: rgba(66, 66, 66, 1);
+			position: absolute;
+			opacity: 0;
+			transition: 0.2s opacity cubic-bezier(0.4, 0, 0.2, 1);
+			border-radius: 2px;
+			width: var(--foxy-slider-field-track__tick---size, 2);
+			height: var(--foxy-slider-field-track__tick---size, 2);
+			transform: translate(calc(var(--foxy-slider-field-track__tick---size, 2) / -2), calc(var(--foxy-slider-field-track__tick---size, 2) / -2));
 
-    &--filled {
-      background-color: rgba(238, 238, 238, 1);
-    }
+			&--filled {
+				background-color: rgba(238, 238, 238, 1);
+			}
 
-    &--first {
-      #{$this}__tick-label {
-        transform: none;
-      }
-    }
+			&--first {
+				#{$this}__tick-label {
+					transform: none;
+				}
+			}
 
-    &--last {
-      #{$this}__tick-label {
-        transform: translateX(-100%);
-      }
-    }
-  }
+			&--last {
+				#{$this}__tick-label {
+					transform: translateX(-100%);
+				}
+			}
+		}
 
-  &__tick-label {
-    position: absolute;
-    user-select: none;
-    white-space: nowrap;
-  }
+		&__tick-label {
+			position: absolute;
+			user-select: none;
+			white-space: nowrap;
+		}
 
-  &__background--opacity {
-    opacity: 0.38;
-  }
-}
+		&__background--opacity {
+			opacity: 0.38;
+		}
+	}
 </style>
 
 <style>
-:root {
+	:root {
 
-}
+	}
 </style>

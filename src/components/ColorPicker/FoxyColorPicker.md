@@ -1,4 +1,5 @@
 # FoxyColorPicker
 
 ## Usage
+
     <FoxyColorPicker />

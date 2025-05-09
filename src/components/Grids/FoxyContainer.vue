@@ -2,15 +2,19 @@
 	<component
 			:is="tag"
 			:class="containerClasses"
-			:style="containerStyles">
+			:style="containerStyles"
+	>
 		<slot name="default"/>
 	</component>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded, useRtl } from '@foxy/composables'
 
-	import { IContainerProps } from '@foxy/interfaces'
+	import type { IContainerProps } from '@foxy/interfaces'
 
 	import { computed, StyleValue, toRef } from 'vue'
 
@@ -60,7 +64,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-container {
 		box-sizing: var(--foxy-container---box-sizing);
 		align-items: var(--foxy-container---align-items);

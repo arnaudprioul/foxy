@@ -207,9 +207,9 @@
 
 	import { AXIS, DENSITY, MDI_ICONS } from '@foxy/enums'
 
-	import { ITextareaFieldProps } from '@foxy/interfaces'
+	import type { ITextareaFieldProps } from '@foxy/interfaces'
 
-	import { TFoxyField, TFoxyInput } from '@foxy/types'
+	import type { TFoxyField, TFoxyInput } from '@foxy/types'
 
 	import { clamp, convertToUnit, filterInputAttrs } from '@foxy/utils'
 

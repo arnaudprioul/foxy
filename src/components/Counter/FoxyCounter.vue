@@ -27,8 +27,8 @@
 
 	import { useProps, useSsrBoot } from "@foxy/composables"
 
-	import { ICounterProps } from "@foxy/interfaces"
-	import { TTransitionProps } from "@foxy/types"
+	import type { ICounterProps } from "@foxy/interfaces"
+	import type { TTransitionProps } from "@foxy/types"
 
 	import { computed, StyleValue } from "vue"
 

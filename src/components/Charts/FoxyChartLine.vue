@@ -72,7 +72,7 @@
 >
 	import { BLOCK } from "@foxy/enums"
 
-	import { IBoundary, IChartLineProps, IPoint } from "@foxy/interfaces"
+	import type { IBoundary, IChartLineProps, IPoint } from "@foxy/interfaces"
 
 	import { genPath, getPropertyFromItem, getUid, int } from "@foxy/utils"
 

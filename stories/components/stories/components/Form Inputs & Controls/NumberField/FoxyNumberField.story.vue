@@ -97,18 +97,18 @@
     lang="ts"
     setup
 >
-  import { FoxyCol, FoxyContainer, FoxyNumberField, FoxyRow } from '@foxy/components'
+	import { FoxyCol, FoxyContainer, FoxyNumberField, FoxyRow } from '@foxy/components'
 
-  import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxy/enums'
 
-  import { INumberFieldProps } from '@foxy/interfaces'
+	import type { INumberFieldProps } from '@foxy/interfaces'
 
-  import { HstIcon } from '@stories/components/controls'
+	import { HstIcon } from '@stories/components/controls'
 
-  import { logEvent } from 'histoire/client'
-  import { reactive } from 'vue'
+	import { logEvent } from 'histoire/client'
+	import { reactive } from 'vue'
 
-  const state: Partial<INumberFieldProps> = reactive({
+	const state: Partial<INumberFieldProps> = reactive({
     label: 'Numberfield',
     bgColor: '#fff'
   })

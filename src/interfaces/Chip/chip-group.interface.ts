@@ -1,4 +1,4 @@
-import {
+import type {
     IBorderProps,
     IColorProps,
     ICommonsComponentProps,
@@ -6,8 +6,8 @@ import {
     IMarginProps,
     IPaddingProps,
     IRoundedProps,
-    ITagProps,
-    ISlideGroupProps
+    ISlideGroupProps,
+    ITagProps
 } from '@foxy/interfaces'
 
 export interface IChipGroupProps extends ICommonsComponentProps, ITagProps, IGroupProps, IColorProps, IMarginProps, IPaddingProps, IBorderProps, IRoundedProps, ISlideGroupProps {

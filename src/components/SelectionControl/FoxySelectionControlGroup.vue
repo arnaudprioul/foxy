@@ -36,7 +36,7 @@
 
 	import { DENSITY } from '@foxy/enums'
 
-	import { ISelectionControlGroupProps } from '@foxy/interfaces'
+	import type { ISelectionControlGroupProps } from "@foxy/interfaces"
 
 	import { getUid } from '@foxy/utils'
 

@@ -77,9 +77,9 @@
 
 	import { BLOCK, EASING, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@foxy/enums'
 
-	import { IOverlayProps } from '@foxy/interfaces'
+	import type { IOverlayProps } from '@foxy/interfaces'
 
-	import { TFoxyOverlayScrim, TTransitionProps } from "@foxy/types"
+	import type { TFoxyOverlayScrim, TTransitionProps } from "@foxy/types"
 
 	import { animate, convertToUnit, getScrollParent } from '@foxy/utils'
 

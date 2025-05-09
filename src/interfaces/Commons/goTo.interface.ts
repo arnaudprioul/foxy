@@ -1,4 +1,4 @@
-import { ComponentPublicInstance, Ref } from "vue"
+import type { ComponentPublicInstance, Ref } from "vue"
 
 export interface IGoToOptions {
     container: ComponentPublicInstance | HTMLElement | string
@@ -10,7 +10,7 @@ export interface IGoToOptions {
 }
 
 export interface IGoToOptionsPatterns {
-    [key: string] : (t: number) => number
+    [key: string]: (t: number) => number
 }
 
 export interface IGoToInstance {

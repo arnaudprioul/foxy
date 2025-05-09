@@ -2,7 +2,7 @@ import { FoxyDataTable } from "@foxy/components"
 
 import { DATATABLE_SELECT_STRATEGY } from '@foxy/enums'
 
-import { IDataTableItemKey } from '@foxy/interfaces'
+import type { IDataTableItemKey } from '@foxy/interfaces'
 
 export type TDataTableCompareFunction<T = any> = (a: T, b: T) => number | null
 

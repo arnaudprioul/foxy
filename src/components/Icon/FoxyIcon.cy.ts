@@ -1,9 +1,9 @@
-import FoxyIcon from './FoxyIcon.vue'
 import { h } from "vue"
+import FoxyIcon from './FoxyIcon.vue'
 
 describe('<FoxyIcon />', () => {
-  it('renders', () => {
-    // see: https://on.cypress.io/mounting-vue
-    cy.mount(h(FoxyIcon), {})
-  })
+    it('renders', () => {
+        // see: https://on.cypress.io/mounting-vue
+        cy.mount(h(FoxyIcon), {})
+    })
 })

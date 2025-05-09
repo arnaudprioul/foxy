@@ -1,4 +1,4 @@
-import { IGoToInstance, IGoToOptions, IGoToOptionsPatterns } from '@foxy/interfaces'
+import type { IGoToInstance, IGoToOptions, IGoToOptionsPatterns } from '@foxy/interfaces'
 
 import { clamp, consoleWarn, int, mergeDeep, refElement } from '@foxy/utils'
 
@@ -59,7 +59,7 @@ export function clampTarget (
     value: number,
     horizontal: boolean
 ) {
-    const { scrollWidth, scrollHeight } = container
+    const {scrollWidth, scrollHeight} = container
     const [containerWidth, containerHeight] = container === document.scrollingElement
         ? [window.innerWidth, window.innerHeight]
         : [container.offsetWidth, container.offsetHeight]

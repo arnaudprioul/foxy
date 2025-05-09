@@ -1,4 +1,4 @@
-import {
+import type {
     IBorderProps,
     IColorPickerCanvasProps,
     IColorPickerEditProps,
@@ -13,7 +13,7 @@ import {
     IRoundedProps
 } from "@foxy/interfaces"
 
-import { THSVA } from "@foxy/types"
+import type { THSVA } from "@foxy/types"
 
 export interface IColorPickerProps extends ICommonsComponentProps, IBorderProps, IRoundedProps, IElevationProps, IPaddingProps, IMarginProps, IPickerProps, IColorProps, IColorPickerCanvasProps, IColorPickerPreviewProps, IColorPickerEditProps, IColorPickerSwatchesProps {
     canvasHeight?: string | number

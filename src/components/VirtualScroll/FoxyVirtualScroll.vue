@@ -85,7 +85,7 @@
 
 	import { useDimension, useProps, useToggleScope, useVirtual } from '@foxy/composables'
 
-	import { IVirtualScrollProps } from '@foxy/interfaces'
+	import type { IVirtualScrollProps } from '@foxy/interfaces'
 
 	import { convertToUnit, getCurrentInstance, getScrollParent } from '@foxy/utils'
 

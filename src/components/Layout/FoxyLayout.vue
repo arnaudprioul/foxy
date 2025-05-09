@@ -20,7 +20,7 @@
 >
 	import { useCreateLayout, useProps } from '@foxy/composables'
 
-	import { ILayoutProps } from '@foxy/interfaces'
+	import type { ILayoutProps } from '@foxy/interfaces'
 	import { computed, StyleValue } from 'vue'
 
 	const props = withDefaults(defineProps<ILayoutProps>(), {})

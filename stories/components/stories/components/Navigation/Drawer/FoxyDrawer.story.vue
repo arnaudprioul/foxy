@@ -48,12 +48,12 @@
     lang="ts"
     setup
 >
-  import { FoxyDrawer, FoxyList, FoxyListItem } from "@foxy/components"
-  import { IDrawerProps } from '@foxy/interfaces'
+	import { FoxyApp, FoxyDrawer, FoxyList, FoxyListItem } from "@foxy/components"
+	import type { IDrawerProps } from '@foxy/interfaces'
 
-  import { reactive } from 'vue'
+	import { reactive } from 'vue'
 
-  const state = reactive<IDrawerProps>({
+	const state = reactive<IDrawerProps>({
     modelValue: false,
     order: 1
   })
@@ -63,6 +63,7 @@
   }, 500)
 
 </script>
+
 <docs lang="md">
 Drawer Documentation
 </docs>

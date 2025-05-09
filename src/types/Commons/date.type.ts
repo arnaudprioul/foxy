@@ -1,6 +1,8 @@
-import { IDateAdapter } from "@foxy/interfaces"
+import type { IDateAdapter } from "@foxy/interfaces"
 
-export type TCustomDateFormat = Intl.DateTimeFormatOptions | ((date: Date, formatString: string, locale: string) => string)
+export type TCustomDateFormat =
+    Intl.DateTimeFormatOptions
+    | ((date: Date, formatString: string, locale: string) => string)
 
 export type TAdapter = object
 

@@ -1,4 +1,4 @@
-import { TEventProp, TInnerVal } from '@foxy/types'
+import type { TEventProp, TInnerVal } from '@foxy/types'
 
 import { Ref } from 'vue'
 

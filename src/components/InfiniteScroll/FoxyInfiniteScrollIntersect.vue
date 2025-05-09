@@ -1,26 +1,33 @@
 <template>
-  <div ref="intersectionRef" class="foxy-infinite-scroll-intersect">&nbsp;</div>
+	<div
+			ref="intersectionRef"
+			class="foxy-infinite-scroll-intersect"
+	>&nbsp;
+	</div>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { useIntersectionObserver, useProps } from '@foxy/composables'
 
-  import { IInfiniteScrollIntersectProps } from '@foxy/interfaces'
+	import type { IInfiniteScrollIntersectProps } from '@foxy/interfaces'
 
-  import { watch } from 'vue'
+	import { watch } from 'vue'
 
-  const props = withDefaults(defineProps<IInfiniteScrollIntersectProps>(), {})
+	const props = withDefaults(defineProps<IInfiniteScrollIntersectProps>(), {})
 
-  const emits = defineEmits(['intersect'])
+	const emits = defineEmits(['intersect'])
 
-  const {filterProps} = useProps<IInfiniteScrollIntersectProps>(props)
+	const {filterProps} = useProps<IInfiniteScrollIntersectProps>(props)
 
-  const { intersectionRef, isIntersecting } = useIntersectionObserver(() => {
-  }, props.margin ? { rootMargin: props.margin } : undefined)
+	const {intersectionRef, isIntersecting} = useIntersectionObserver(() => {
+	}, props.margin ? {rootMargin: props.margin} : undefined)
 
-  watch(isIntersecting, async (val) => {
-    emits('intersect', props.side, val)
-  })
+	watch(isIntersecting, async (val) => {
+		emits('intersect', props.side, val)
+	})
 
 	// EXPOSE
 

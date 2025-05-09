@@ -1,9 +1,12 @@
-import {
+import type {
     IAvatarProps,
     IBorderProps,
     IColorProps,
     ICommonsComponentProps,
-    IDensityProps, IDirectionProps, IMarginProps, IPaddingProps,
+    IDensityProps,
+    IDirectionProps,
+    IMarginProps,
+    IPaddingProps,
     IRoundedProps,
     ISizeProps,
     ITagProps

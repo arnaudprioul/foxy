@@ -74,7 +74,7 @@
 
 	import { FoxyAvatar, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
 	import { ALIGN, JUSTIFY, MDI_ICONS } from "@foxy/enums"
-	import { IAvatarProps } from "@foxy/interfaces"
+	import type { IAvatarProps } from "@foxy/interfaces"
 
 	import { reactive, ref } from 'vue'
 

@@ -1,6 +1,12 @@
-import { ICommonsComponentProps, IDataTableGroup, IDataTableItem, IDisplayProps, ILoaderProps } from '@foxy/interfaces'
+import type {
+    ICommonsComponentProps,
+    IDataTableGroup,
+    IDataTableItem,
+    IDisplayProps,
+    ILoaderProps
+} from '@foxy/interfaces'
 
-import { TDataTableCell, TDataTableRow } from '@foxy/types'
+import type { TDataTableCell, TDataTableRow } from '@foxy/types'
 
 export interface IDataTableRowsProps extends ICommonsComponentProps, ILoaderProps, IDisplayProps {
     hideNoData?: boolean

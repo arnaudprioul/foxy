@@ -18,15 +18,25 @@
       </template>
 
       <template #controls>
-        <hst-checkbox
+	      <!--	      Alert          -->
+
+	      <foxy-title tag="h3">Alert</foxy-title>
+
+	      <hst-checkbox
             v-model="state.closable"
             title="Closable"
         />
 
-        <hst-checkbox
-            v-model="state.icon"
-            title="Hide/Show Icon"
-        />
+	      <hst-icon
+			      v-if="state.closable"
+			      v-model="state.closeIcon"
+			      title="Close Icon"
+	      />
+
+	      <hst-icon
+			      v-model="state.icon"
+			      title="Icon"
+	      />
 
         <hst-checkbox
             v-model="state.prominent"
@@ -43,16 +53,6 @@
             title="Text"
         />
 
-        <hst-icon
-            v-model="state.closeIcon"
-            title="Close Icon"
-        />
-
-        <hst-icon
-            v-model="state.icon"
-            title="Icon"
-        />
-
         <hst-select
             v-model="state.status"
             :options="[
@@ -64,6 +64,35 @@
             ]"
             title="Status"
         />
+
+	      <!--	      Color          -->
+
+	      <foxy-title tag="h3">Color</foxy-title>
+
+	      <hst-color-select
+			      v-model="state.color"
+			      title="Text Color"
+	      />
+
+	      <hst-color-select
+			      v-model="state.bgColor"
+			      title="Background Color"
+	      />
+
+	      <hst-color-select
+			      v-model="state.hoverColor"
+			      title="Text Color on Hover"
+	      />
+
+	      <hst-color-select
+			      v-model="state.hoverBgColor"
+			      title="Background Color on Hover"
+	      />
+
+	      <!--	      Border          -->
+
+	      <foxy-title tag="h3">Border</foxy-title>
+
       </template>
     </Variant>
   </Story>
@@ -74,15 +103,15 @@
     setup
 >
 
-  import { FoxyAlert, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
+	import { FoxyAlert, FoxyCol, FoxyContainer, FoxyRow, FoxyTitle } from '@foxy/components'
 
-  import { IAlertProps } from "@foxy/interfaces"
+	import type { IAlertProps } from "@foxy/interfaces"
 
-  import { HstIcon } from '@stories/components/controls'
+	import { HstIcon } from '@stories/components/controls'
 
-  import { reactive } from 'vue'
+	import { reactive } from 'vue'
 
-  const state: Partial<IAlertProps> = reactive({
+	const state: Partial<IAlertProps> = reactive({
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
     closable: false
   })

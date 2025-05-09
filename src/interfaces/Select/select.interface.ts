@@ -1,4 +1,4 @@
-import {
+import type {
     IAdjacentInnerProps,
     IAdjacentProps,
     IBorderProps,
@@ -21,7 +21,7 @@ import {
     ITransitionComponentProps
 } from '@foxy/interfaces'
 
-import { TIcon } from '@foxy/types'
+import type { TIcon } from '@foxy/types'
 
 export interface ISelectProps extends ICommonsComponentProps, IColorProps, ITextFieldProps, IDensityProps, IAdjacentProps, IAdjacentInnerProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IItemProps, ITransitionComponentProps, IFiltersProps, ILazyProps {
     chips?: boolean

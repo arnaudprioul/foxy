@@ -1,6 +1,6 @@
-import { ICommonsComponentProps } from "@foxy/interfaces"
+import type { ICommonsComponentProps } from "@foxy/interfaces"
 
-import { TDateMode, TIcon } from "@foxy/types"
+import type { TDateMode, TIcon } from "@foxy/types"
 
 export interface IDatePickerControlsProps extends ICommonsComponentProps {
     active?: string | Array<string>

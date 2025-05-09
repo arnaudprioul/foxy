@@ -2,16 +2,22 @@
 	<component
 			:is="tag"
 			:class="ratingFieldItemClasses"
-			:style="ratingFieldItemStyles">
+			:style="ratingFieldItemStyles"
+	>
 		<label :for="id">
 			<span class="foxy-rating-field-item__hidden">{{ t(itemAriaLabel, value, length) }}</span>
-			<slot v-if="showStar" name="item" v-bind="{props: ratingBtnProps, value}">
+			<slot
+					v-if="showStar"
+					name="item"
+					v-bind="{props: ratingBtnProps, value}"
+			>
 				<foxy-btn
 						ref="foxyBtnRef"
 						v-bind="{...ratingBtnProps}"
 						@click="handleClick"
 						@mouseenter="handleMouseEnter"
-						@mouseleave="handleMouseLeave"/>
+						@mouseleave="handleMouseLeave"
+				/>
 			</slot>
 		</label>
 
@@ -29,16 +35,19 @@
 	</component>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyBtn } from '@foxy/components'
 
 	import { useLocale, useProps } from "@foxy/composables"
 
 	import { MDI_ICONS } from "@foxy/enums"
 
-	import { IRatingFieldItemProps } from '@foxy/interfaces'
+	import type { IRatingFieldItemProps } from '@foxy/interfaces'
 
-	import { TFoxyBtn } from "@foxy/types"
+	import type { TFoxyBtn } from "@foxy/types"
 
 	import { computed, ref, StyleValue } from 'vue'
 
@@ -106,7 +115,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-rating-field-item {
 		&__label {
 			cursor: pointer;

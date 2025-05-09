@@ -40,7 +40,7 @@
 
 	import { COLOR_MODES_NAMES, MDI_ICONS } from "@foxy/enums"
 
-	import { IColorPickerEditProps } from "@foxy/interfaces"
+	import type { IColorPickerEditProps } from "@foxy/interfaces"
 
 	import { computed, StyleValue } from "vue"
 

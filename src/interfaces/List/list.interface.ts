@@ -1,4 +1,4 @@
-import {
+import type {
     IBorderProps,
     IColorProps,
     ICommonsComponentProps,
@@ -12,7 +12,7 @@ import {
     ITagProps
 } from '@foxy/interfaces'
 
-import { TLines, TSelectItemKey } from '@foxy/types'
+import type { TLines, TSelectItemKey } from '@foxy/types'
 
 import { deepEqual } from '@foxy/utils'
 

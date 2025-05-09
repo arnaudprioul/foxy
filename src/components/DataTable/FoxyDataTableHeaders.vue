@@ -1,7 +1,10 @@
 <template>
 	<template v-if="loading">
 		<tr class="foxy-data-table-headers foxy-data-table-headers--progress">
-			<th :colspan="columns.length" class="foxy-data-table-header-cell">
+			<th
+					:colspan="columns.length"
+					class="foxy-data-table-header-cell"
+			>
 				<slot name="loader">
 					<foxy-progress
 							:color="color"
@@ -17,37 +20,48 @@
 	</template>
 	<template v-else>
 		<template v-if="mobile">
-			<slot name="mobile" v-bind="slotProps">
+			<slot
+					name="mobile"
+					v-bind="slotProps"
+			>
 				<foxy-data-table-headers-cell-mobile
 						ref="foxyDataTableHeadersCellMobileRef"
 						:class="dataTableHeadersClasses"
 						:columns="columns"
 						:style="dataTableHeadersStyles"
-						v-bind="dataTableHeadersCellMobileProps"/>
+						v-bind="dataTableHeadersCellMobileProps"
+				/>
 			</slot>
 		</template>
 		<template v-else>
-			<slot name="default" v-bind="slotProps">
+			<slot
+					name="default"
+					v-bind="slotProps"
+			>
 				<foxy-data-table-headers-cell
 						ref="foxyDataTableHeadersCellRef"
 						:class="dataTableHeadersClasses"
 						:headers="headers"
 						:style="dataTableHeadersStyles"
-						v-bind="dataTableHeadersCellProps"/>
+						v-bind="dataTableHeadersCellProps"
+				/>
 			</slot>
 		</template>
 	</template>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyDataTableHeadersCell, FoxyDataTableHeadersCellMobile, FoxyProgress } from '@foxy/components'
 
 	import { useDisplay, useHeaders, useHeadersCell, useLoader, useProps, useSelection, useSort } from '@foxy/composables'
 
 	import { PROGRESS_TYPE } from '@foxy/enums'
 
-	import { IDataTableHeadersProps, IDataTableHeadersSlotProps } from '@foxy/interfaces'
-	import { TFoxyDataTableHeadersCell, TFoxyDataTableHeadersCellMobile } from "@foxy/types"
+	import type { IDataTableHeadersProps, IDataTableHeadersSlotProps } from '@foxy/interfaces'
+	import type { TFoxyDataTableHeadersCell, TFoxyDataTableHeadersCellMobile } from "@foxy/types"
 
 	import { computed, ref, StyleValue } from 'vue'
 
@@ -113,7 +127,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-data-table-headers {
 		&__progress {
 			> .foxy-data-table-headers-cell {

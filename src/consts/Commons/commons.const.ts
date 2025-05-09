@@ -1,4 +1,4 @@
-import { TEventProp } from '@foxy/types'
+import type { TEventProp } from '@foxy/types'
 
 import { PropType } from 'vue'
 

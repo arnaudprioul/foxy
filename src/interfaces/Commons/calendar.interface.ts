@@ -1,4 +1,4 @@
-import { TCalendarStrategy } from "@foxy/types"
+import type { TCalendarStrategy } from "@foxy/types"
 
 export interface ICalendarProps {
     allowedDates?: Array<unknown> | ((date: unknown) => boolean)

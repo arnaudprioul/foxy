@@ -25,6 +25,7 @@ export * from './Carousel/carousel.interface'
 export * from './Carousel/carousel-item.interface'
 
 export * from './Charts/chart.interface'
+export * from './Charts/chart-bar.interface'
 export * from './Charts/chart-line.interface'
 
 export * from './Checkbox/checkbox.interface'

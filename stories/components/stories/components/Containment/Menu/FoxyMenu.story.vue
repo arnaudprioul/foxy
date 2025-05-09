@@ -70,16 +70,15 @@
 >
 	import { FoxyBtn, FoxyCol, FoxyContainer, FoxyContextualMenu, FoxyMenu, FoxyRow } from '@foxy/components'
 
-  import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxy/enums'
+	import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxy/enums'
 
-  import { IMenuProps } from '@foxy/interfaces'
+	import type { IMenuProps } from '@foxy/interfaces'
 
-  import { HstLocation } from '@stories/components/controls'
-  import { logEvent } from "histoire/client"
+	import { HstLocation } from '@stories/components/controls'
 
-  import { reactive } from 'vue'
+	import { reactive } from 'vue'
 
-  const state: Partial<IMenuProps> = reactive({
+	const state: Partial<IMenuProps> = reactive({
     items: [
       {
         title: 'Management', prependIcon: 'mdi-account-multiple-outline', items: [

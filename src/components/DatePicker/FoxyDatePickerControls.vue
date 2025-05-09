@@ -62,7 +62,7 @@
 
 	import { DATE_MODE, MDI_ICONS } from "@foxy/enums"
 
-	import { IDatePickerControlsProps } from "@foxy/interfaces"
+	import type { IDatePickerControlsProps } from "@foxy/interfaces"
 
 	import { computed, StyleValue } from "vue"
 

@@ -1,4 +1,4 @@
-import {
+import type {
     IBorderProps,
     IColorProps,
     ICommonsComponentProps,
@@ -8,7 +8,7 @@ import {
     ITagProps
 } from '@foxy/interfaces'
 
-import { TIcon, TIconComponent } from '@foxy/types'
+import type { TIcon, TIconComponent } from '@foxy/types'
 
 export interface IIconProps {
     icon?: TIcon

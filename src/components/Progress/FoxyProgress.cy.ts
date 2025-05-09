@@ -1,9 +1,9 @@
-import FoxyProgress from './FoxyProgress.vue'
 import { h } from "vue"
+import FoxyProgress from './FoxyProgress.vue'
 
 describe('<FoxyProgress />', () => {
-  it('renders', () => {
-    // see: https://on.cypress.io/mounting-vue
-    cy.mount(h(FoxyProgress), {})
-  })
+    it('renders', () => {
+        // see: https://on.cypress.io/mounting-vue
+        cy.mount(h(FoxyProgress), {})
+    })
 })

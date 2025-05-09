@@ -57,15 +57,15 @@
     lang="ts"
     setup
 >
-  import { FoxyCol, FoxyContainer, FoxyProgress, FoxyRow } from '@foxy/components'
+	import { FoxyCol, FoxyContainer, FoxyProgress, FoxyRow } from '@foxy/components'
 
-  import { ALIGN, JUSTIFY, PROGRESS_TYPE } from '@foxy/enums'
+	import { ALIGN, JUSTIFY, PROGRESS_TYPE } from '@foxy/enums'
 
-  import { IProgressCircularProps, IProgressLinearProps } from '@foxy/interfaces'
+	import type { IProgressCircularProps, IProgressLinearProps } from '@foxy/interfaces'
 
-  import { computed, reactive } from 'vue'
+	import { computed, reactive } from 'vue'
 
-  const state: { [key: string]: any } = reactive({
+	const state: { [key: string]: any } = reactive({
     modelValue: 35,
     color: '#FFC529',
     bgColor: '#6A70A3'

@@ -1,13 +1,13 @@
-import { THSVA } from "@foxy/types"
+import type { THSVA } from "@foxy/types"
 
 import { has, HSVtoHex, HSVtoHSL, HSVtoRGB } from "@foxy/utils"
 
 export function stripAlpha (color: any, stripAlpha: boolean) {
     if (stripAlpha) {
-        const result = { ...color }
+        const result = {...color}
 
         delete result.a
-        
+
         return result
     }
 

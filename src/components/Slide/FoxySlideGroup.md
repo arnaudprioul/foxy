@@ -1,4 +1,5 @@
 # Foxyslidegroup
 
 ## Usage
+
     <FoxySlideGroup />

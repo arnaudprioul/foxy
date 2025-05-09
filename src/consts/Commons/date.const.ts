@@ -1,6 +1,6 @@
-import { IDateInstance, IDateOptions } from "@foxy/interfaces"
+import type { IDateInstance, IDateOptions } from "@foxy/interfaces"
 
-import { InjectionKey } from "vue"
+import type { InjectionKey } from "vue"
 
 export const FOXY_DATE_OPTIONS_KEY: InjectionKey<IDateOptions> = Symbol.for('foxy:date-options')
 export const FOXY_DATE_ADAPTER_KEY: InjectionKey<IDateInstance> = Symbol.for('foxy:date-adapter')
@@ -158,7 +158,7 @@ export const FIRST_DAY: Record<string, number> = {
     XK: 1,
     YE: 0,
     ZA: 0,
-    ZW: 0,
+    ZW: 0
 }
 
 export const DATE_2000_JUNARY_SUNDAY = new Date(2000, 0, 2)

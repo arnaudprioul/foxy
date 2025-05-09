@@ -84,17 +84,17 @@
     lang="ts"
     setup
 >
-  import { FoxyCarousel, FoxyCarouselItem, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
+	import { FoxyCarousel, FoxyCarouselItem, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
 
-  import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxy/enums'
 
-  import { ICarouselProps } from '@foxy/interfaces'
+	import type { ICarouselProps } from '@foxy/interfaces'
 
-  import { HstIcon } from '@stories/components/controls'
+	import { HstIcon } from '@stories/components/controls'
 
-  import { reactive } from 'vue'
+	import { reactive } from 'vue'
 
-  const state: Partial<ICarouselProps> = reactive({
+	const state: Partial<ICarouselProps> = reactive({
     continuous: true,
     showArrows: true,
     color: "#ffc529",

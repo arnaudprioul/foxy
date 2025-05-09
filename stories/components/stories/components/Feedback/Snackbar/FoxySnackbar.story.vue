@@ -64,14 +64,12 @@
     lang="ts"
     setup
 >
-  import { FoxySnackbar } from '@foxy/components'
+	import { FoxySnackbar } from '@foxy/components'
 
-  import { ISnackbarProps } from '@foxy/interfaces'
+	import { logEvent } from 'histoire/client'
+	import { reactive } from 'vue'
 
-  import { logEvent } from 'histoire/client'
-  import { reactive } from 'vue'
-
-  const state = reactive<ISnackbarProps>({
+	const state = reactive<ISnackbarProps>({
     modelValue: true,
     text: 'Test',
     status: '',

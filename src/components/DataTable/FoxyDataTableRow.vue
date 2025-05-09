@@ -88,7 +88,7 @@
 
 	import { MDI_ICONS, SIZES } from '@foxy/enums'
 
-	import { IDataTableHeaderCellColumnSlot, IDataTableItemKey, IDataTableRowProps } from '@foxy/interfaces'
+	import type { IDataTableHeaderCellColumnSlot, IDataTableItemKey, IDataTableRowProps } from '@foxy/interfaces'
 
 	import { getCurrentInstance, getObjectValueByPath } from '@foxy/utils'
 

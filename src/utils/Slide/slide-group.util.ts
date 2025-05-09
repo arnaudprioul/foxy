@@ -51,7 +51,7 @@ export function getScrollPosition (isHorizontal: boolean, isRtl: boolean, elemen
     const {
         scrollLeft,
         offsetWidth,
-        scrollWidth,
+        scrollWidth
     } = element
 
     if (isHorizontal) {

@@ -1,13 +1,14 @@
-import {
+import type {
     IBorderProps,
     IColorProps,
     ICommonsComponentProps,
     IElevationProps,
     IMarginProps,
-    IPaddingProps, ITagProps
+    IPaddingProps,
+    ITagProps
 } from "@foxy/interfaces"
 
-import { TIcon } from "@foxy/types"
+import type { TIcon } from "@foxy/types"
 
 export interface IPaginationProps extends ICommonsComponentProps, ITagProps, IColorProps, IBorderProps, IPaddingProps, IMarginProps, IElevationProps {
     start?: number

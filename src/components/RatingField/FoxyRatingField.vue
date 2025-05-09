@@ -136,9 +136,9 @@
 
 	import { BLOCK, DENSITY, SIZES } from '@foxy/enums'
 
-	import { IRatingFieldProps } from '@foxy/interfaces'
+	import type { IRatingFieldProps } from '@foxy/interfaces'
 
-	import { TFoxyInput, TFoxyRatingFieldItem } from "@foxy/types"
+	import type { TFoxyInput, TFoxyRatingFieldItem } from "@foxy/types"
 
 	import { clamp, createRange, filterInputAttrs, getUid } from '@foxy/utils'
 

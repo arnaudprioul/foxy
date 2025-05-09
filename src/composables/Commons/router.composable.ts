@@ -1,111 +1,113 @@
 import { IN_BROWSER } from '@foxy/consts'
-import { ILink, ILinkProps, ITagProps } from '@foxy/interfaces'
+
+import type { ILink, ILinkProps, ITagProps } from '@foxy/interfaces'
 
 import { deepEqual, getCurrentInstance, hasEvent } from '@foxy/utils'
 
 import { computed, nextTick, onScopeDispose, Ref, resolveDynamicComponent, SetupContext, toRef } from 'vue'
 import {
-  NavigationGuardNext,
-  RouteLocationNormalizedLoaded,
-  Router,
-  RouterLink as _RouterLink,
-  UseLinkOptions
+    NavigationGuardNext,
+    RouteLocationNormalizedLoaded,
+    Router,
+    RouterLink as _RouterLink,
+    UseLinkOptions
 } from 'vue-router'
 
 
 export function useRoute (): Ref<RouteLocationNormalizedLoaded | undefined> {
-  const vm = getCurrentInstance('useRoute')
+    const vm = getCurrentInstance('useRoute')
 
-  // @ts-expect-error TODO
-  return computed(() => vm?.proxy?.$route)
+    // @ts-expect-error TODO
+    return computed(() => vm?.proxy?.$route)
 }
 
 export function useRouter (): Router | undefined {
-  // @ts-expect-error TODO
-  return getCurrentInstance('useRouter')?.proxy?.$router
+    // @ts-expect-error TODO
+    return getCurrentInstance('useRouter')?.proxy?.$router
 }
 
 export function useLink (props: ILinkProps & ITagProps, attrs: SetupContext['attrs']): ILink {
-  const RouterLink = resolveDynamicComponent('RouterLink') as typeof _RouterLink | string
+    const RouterLink = resolveDynamicComponent('RouterLink') as typeof _RouterLink | string
 
-  const isLink = computed(() => !!(props.href || props.to))
-  const isClickable = computed(() => {
-    return isLink?.value || hasEvent(attrs, 'click') || hasEvent(props, 'click')
-  })
-  const tag = isLink.value ? 'a' : props.tag ?? 'div'
+    const isLink = computed(() => !!(props.href || props.to))
+    const isClickable = computed(() => {
+        return isLink?.value || hasEvent(attrs, 'click') || hasEvent(props, 'click')
+    })
+    const tag = isLink.value ? 'a' : props.tag ?? 'div'
 
-  if (typeof RouterLink === 'string') {
-    return {
-      tag,
-      isLink,
-      isClickable,
-      href: toRef(props, 'href'),
+    if (typeof RouterLink === 'string') {
+        return {
+            tag,
+            isLink,
+            isClickable,
+            href: toRef(props, 'href')
+        }
     }
-  }
 
-  const link = props.to ? RouterLink.useLink(props as UseLinkOptions) : undefined
-  const route = useRoute()
+    const link = props.to ? RouterLink.useLink(props as UseLinkOptions) : undefined
+    const route = useRoute()
 
-  return {
-    tag,
-    isLink,
-    isClickable,
-    route: link?.route,
-    navigate: link?.navigate,
-    isActive: link && computed(() => {
-      if (!props.exact) return link.isActive?.value
-      if (!route.value) return link.isExactActive?.value
+    return {
+        tag,
+        isLink,
+        isClickable,
+        route: link?.route,
+        navigate: link?.navigate,
+        isActive: link && computed(() => {
+            if (!props.exact) return link.isActive?.value
+            if (!route.value) return link.isExactActive?.value
 
-      return link.isExactActive?.value && deepEqual(link.route.value.query, route.value.query)
-    }),
-    href: computed(() => props.to ? link?.route.value.href : props.href),
-  }
+            return link.isExactActive?.value && deepEqual(link.route.value.query, route.value.query)
+        }),
+        href: computed(() => props.to ? link?.route.value.href : props.href)
+    }
 }
 
 let inTransition = false
+
 export function useBackButton (router: Router | undefined, cb: (next: NavigationGuardNext) => void) {
-  let popped = false
-  let removeBefore: (() => void) | undefined
-  let removeAfter: (() => void) | undefined
+    let popped = false
+    let removeBefore: (() => void) | undefined
+    let removeAfter: (() => void) | undefined
 
-  if (IN_BROWSER) {
-    nextTick(() => {
-      window.addEventListener('popstate', onPopstate)
-      if (router) {
-        removeBefore = router.beforeEach((_to, _from, next) => {
-          if (!inTransition) {
-            setTimeout(() => {
-              if (popped) {
-                cb(next)
-              } else {
-                next()
-              }
-            })
-          } else {
-            if (popped) {
-              cb(next)
-            } else {
-              next()
+    if (IN_BROWSER) {
+        nextTick(() => {
+            window.addEventListener('popstate', onPopstate)
+            if (router) {
+                removeBefore = router.beforeEach((_to, _from, next) => {
+                    if (!inTransition) {
+                        setTimeout(() => {
+                            if (popped) {
+                                cb(next)
+                            } else {
+                                next()
+                            }
+                        })
+                    } else {
+                        if (popped) {
+                            cb(next)
+                        } else {
+                            next()
+                        }
+                    }
+                    inTransition = true
+                })
+                removeAfter = router.afterEach(() => {
+                    inTransition = false
+                })
             }
-          }
-          inTransition = true
         })
-        removeAfter = router.afterEach(() => {
-          inTransition = false
+        onScopeDispose(() => {
+            window.removeEventListener('popstate', onPopstate)
+            removeBefore?.()
+            removeAfter?.()
         })
-      }
-    })
-    onScopeDispose(() => {
-      window.removeEventListener('popstate', onPopstate)
-      removeBefore?.()
-      removeAfter?.()
-    })
-  }
+    }
 
-  const onPopstate = (e: PopStateEvent) => {
-    if (e.state?.replaced) return
+    const onPopstate = (e: PopStateEvent) => {
+        if (e.state?.replaced) return
 
-    popped = true
-    setTimeout(() => (popped = false))
-  }
+        popped = true
+        setTimeout(() => (popped = false))
+    }
 }

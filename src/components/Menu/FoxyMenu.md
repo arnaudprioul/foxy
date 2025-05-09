@@ -1,4 +1,5 @@
 # Foxymenu
 
 ## Usage
+
     <FoxyMenu />

@@ -35,9 +35,9 @@
 		lang="ts"
 		setup
 >
-	import { FoxyHighlight, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
+	import { FoxyCol, FoxyContainer, FoxyHighlight, FoxyRow } from '@foxy/components'
 	import { ALIGN, JUSTIFY } from '@foxy/enums'
-	import { IHighlightProps } from '@foxy/interfaces'
+	import type { IHighlightProps } from '@foxy/interfaces'
 
 	import { HstRounded } from '@stories/components/controls'
 	import { reactive } from 'vue'

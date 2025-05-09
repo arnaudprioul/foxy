@@ -1,3 +1,3 @@
 export interface IElevationProps {
-  elevation?: number | string
+    elevation?: number | string
 }

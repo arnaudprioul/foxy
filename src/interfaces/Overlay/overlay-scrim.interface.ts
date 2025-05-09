@@ -1,9 +1,9 @@
-import { ICommonsComponentProps, ITagProps, ITransitionComponentProps } from '@foxy/interfaces'
+import type { ICommonsComponentProps, ITagProps, ITransitionComponentProps } from '@foxy/interfaces'
 
 export interface IOverlayScrimProps extends ICommonsComponentProps, ITagProps, ITransitionComponentProps, IScrimProps {
-  active?: boolean
+    active?: boolean
 }
 
 export interface IScrimProps {
-  scrim?: boolean | string
+    scrim?: boolean | string
 }

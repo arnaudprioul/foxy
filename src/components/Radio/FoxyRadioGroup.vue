@@ -67,8 +67,8 @@
 
 	import { DENSITY } from '@foxy/enums'
 
-	import { IRadioGroupProps } from '@foxy/interfaces'
-	import { TFoxyInput, TFoxyRadio, TFoxySelectionControlGroup } from "@foxy/types"
+	import type { IRadioGroupProps } from '@foxy/interfaces'
+	import type { TFoxyInput, TFoxyRadio, TFoxySelectionControlGroup } from "@foxy/types"
 
 	import { filterInputAttrs, getUid } from '@foxy/utils'
 

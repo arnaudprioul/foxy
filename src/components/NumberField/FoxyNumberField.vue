@@ -1,590 +1,590 @@
 <template>
-  <foxy-text-field
-      ref="foxyTextFieldRef"
-      v-model:model-value="inputText"
-      :class="numberFieldClasses"
-      :style="numberFieldStyles"
-      :validation-value="model"
-      inputmode="decimal"
-      v-bind="textFieldProps"
-      @beforeinput="handleBeforeInput"
-      @blur="handleBlur"
-      @click="handleClick"
-      @focus="handleFocus"
-      @keydown="handleKeydown"
-      @mousedown="handleMousedown"
-      @click:clear="handleClear"
-      @click:prepend-inner="handleClickPrependInner"
-      @click:append-inner="handleClickAppendInner"
-  >
-    <template
-        v-if="slots.prepend"
-        #prepend
-    >
-      <slot name="prepend"/>
-    </template>
+	<foxy-text-field
+			ref="foxyTextFieldRef"
+			v-model:model-value="inputText"
+			:class="numberFieldClasses"
+			:style="numberFieldStyles"
+			:validation-value="model"
+			inputmode="decimal"
+			v-bind="textFieldProps"
+			@beforeinput="handleBeforeInput"
+			@blur="handleBlur"
+			@click="handleClick"
+			@focus="handleFocus"
+			@keydown="handleKeydown"
+			@mousedown="handleMousedown"
+			@click:clear="handleClear"
+			@click:prepend-inner="handleClickPrependInner"
+			@click:append-inner="handleClickAppendInner"
+	>
+		<template
+				v-if="slots.prepend"
+				#prepend
+		>
+			<slot name="prepend"/>
+		</template>
 
-    <template
-        v-if="slots.field"
-        #field="{id, isDisabled, isDirty, isValid, isReadonly}"
-    >
-      <slot
-          name="field"
-          v-bind="{id, isDisabled, isDirty, isValid, isReadonly}"
-      />
-    </template>
+		<template
+				v-if="slots.field"
+				#field="{id, isDisabled, isDirty, isValid, isReadonly}"
+		>
+			<slot
+					name="field"
+					v-bind="{id, isDisabled, isDirty, isValid, isReadonly}"
+			/>
+		</template>
 
-    <template
-        v-if="slots.loader"
-        #loader
-    >
-      <slot name="loader"/>
-    </template>
+		<template
+				v-if="slots.loader"
+				#loader
+		>
+			<slot name="loader"/>
+		</template>
 
-    <template #prependInner>
-      <div
-          v-if="!hideControls"
-          class="foxy-number-field__control"
-      >
-        <template v-if="split">
-          <slot
-              name="increment"
-              v-bind="{canIncrease, onControlClick: () => handleControlClick, onUpControlMousedown: () => handleUpControlMousedown, onControlMouseup: () => handleControlMouseup}"
-          >
-            <foxy-btn
-                key="increment-btn"
-                :disabled="!canIncrease"
-                :icon="incrementIcon"
-                aria-hidden="true"
-                flat
-                height="100%"
-                tabindex="-1"
-                @click="handleControlClick"
-                @pointerdown="handleUpControlMousedown"
-                @pointerup="handleControlMouseup"
-            />
-          </slot>
+		<template #prependInner>
+			<div
+					v-if="!hideControls"
+					class="foxy-number-field__control"
+			>
+				<template v-if="split">
+					<slot
+							name="increment"
+							v-bind="{canIncrease, onControlClick: () => handleControlClick, onUpControlMousedown: () => handleUpControlMousedown, onControlMouseup: () => handleControlMouseup}"
+					>
+						<foxy-btn
+								key="increment-btn"
+								:disabled="!canIncrease"
+								:icon="incrementIcon"
+								aria-hidden="true"
+								flat
+								height="100%"
+								tabindex="-1"
+								@click="handleControlClick"
+								@pointerdown="handleUpControlMousedown"
+								@pointerup="handleControlMouseup"
+						/>
+					</slot>
 
-          <foxy-divider :direction="DIRECTION.VERTICAL"/>
-        </template>
-      </div>
+					<foxy-divider :direction="DIRECTION.VERTICAL"/>
+				</template>
+			</div>
 
-      <slot name="prependInner"/>
-    </template>
+			<slot name="prependInner"/>
+		</template>
 
-    <template
-        v-if="slots.floatingLabel"
-        #floatingLabel
-    >
-      <slot name="floatingLabel"/>
-    </template>
+		<template
+				v-if="slots.floatingLabel"
+				#floatingLabel
+		>
+			<slot name="floatingLabel"/>
+		</template>
 
-    <template
-        v-if="slots.label"
-        #label
-    >
-      <slot name="label"/>
-    </template>
+		<template
+				v-if="slots.label"
+				#label
+		>
+			<slot name="label"/>
+		</template>
 
-    <template
-        v-if="slots.prefix"
-        #prefix
-    >
-      <slot name="prefix"/>
-    </template>
+		<template
+				v-if="slots.prefix"
+				#prefix
+		>
+			<slot name="prefix"/>
+		</template>
 
-    <template
-        v-if="slots.default"
-        #default="slotProps"
-    >
-      <slot
-          name="default"
-          v-bind="slotProps"
-      />
-    </template>
+		<template
+				v-if="slots.default"
+				#default="slotProps"
+		>
+			<slot
+					name="default"
+					v-bind="slotProps"
+			/>
+		</template>
 
-    <template
-        v-if="slots.suffix"
-        #suffix
-    >
-      <slot name="suffix"/>
-    </template>
+		<template
+				v-if="slots.suffix"
+				#suffix
+		>
+			<slot name="suffix"/>
+		</template>
 
-    <template
-        v-if="hasAppendInner"
-        #appendInner
-    >
-      <div
-          v-if="!hideControls"
-          class="foxy-number-field__control"
-      >
-        <template v-if="!split">
-          <foxy-divider :direction="DIRECTION.VERTICAL"/>
+		<template
+				v-if="hasAppendInner"
+				#appendInner
+		>
+			<div
+					v-if="!hideControls"
+					class="foxy-number-field__control"
+			>
+				<template v-if="!split">
+					<foxy-divider :direction="DIRECTION.VERTICAL"/>
 
-          <slot
-              name="increment"
-              v-bind="{canIncrease, onControlClick: () => handleControlClick, onUpControlMousedown: () => handleUpControlMousedown, onControlMouseup: () => handleControlMouseup}"
-          >
-            <foxy-btn
-                key="increment-btn"
-                :disabled="!canIncrease"
-                :icon="incrementIcon"
-                aria-hidden="true"
-                flat
-                height="auto"
-                tabindex="-1"
-                @click="handleControlClick"
-                @pointerdown="handleUpControlMousedown"
-                @pointerup="handleControlMouseup"
-            />
-          </slot>
-        </template>
+					<slot
+							name="increment"
+							v-bind="{canIncrease, onControlClick: () => handleControlClick, onUpControlMousedown: () => handleUpControlMousedown, onControlMouseup: () => handleControlMouseup}"
+					>
+						<foxy-btn
+								key="increment-btn"
+								:disabled="!canIncrease"
+								:icon="incrementIcon"
+								aria-hidden="true"
+								flat
+								height="auto"
+								tabindex="-1"
+								@click="handleControlClick"
+								@pointerdown="handleUpControlMousedown"
+								@pointerup="handleControlMouseup"
+						/>
+					</slot>
+				</template>
 
-        <foxy-divider :direction="DIRECTION.VERTICAL"/>
+				<foxy-divider :direction="DIRECTION.VERTICAL"/>
 
-        <slot
-            name="decrement"
-            v-bind="{canDecrease, onControlClick: () => handleControlClick, onDownControlMousedown: () => handleDownControlMousedown, onControlMouseup: () => handleControlMouseup}"
-        >
-          <foxy-btn
-              key="decrement-btn"
-              :disabled="!canDecrease"
-              :icon="decrementIcon"
-              aria-hidden="true"
-              flat
-              height="auto"
-              tabindex="-1"
-              @click="handleControlClick"
-              @pointerdown="handleDownControlMousedown"
-              @pointerup="handleControlMouseup"
-          />
-        </slot>
-      </div>
+				<slot
+						name="decrement"
+						v-bind="{canDecrease, onControlClick: () => handleControlClick, onDownControlMousedown: () => handleDownControlMousedown, onControlMouseup: () => handleControlMouseup}"
+				>
+					<foxy-btn
+							key="decrement-btn"
+							:disabled="!canDecrease"
+							:icon="decrementIcon"
+							aria-hidden="true"
+							flat
+							height="auto"
+							tabindex="-1"
+							@click="handleControlClick"
+							@pointerdown="handleDownControlMousedown"
+							@pointerup="handleControlMouseup"
+					/>
+				</slot>
+			</div>
 
-      <slot name="appendInner"/>
-    </template>
+			<slot name="appendInner"/>
+		</template>
 
-    <template
-        v-if="slots.clear"
-        #clear
-    >
-      <slot name="clear"/>
-    </template>
+		<template
+				v-if="slots.clear"
+				#clear
+		>
+			<slot name="clear"/>
+		</template>
 
-    <template
-        v-if="slots.append"
-        #append
-    >
-      <slot name="append"/>
-    </template>
+		<template
+				v-if="slots.append"
+				#append
+		>
+			<slot name="append"/>
+		</template>
 
-    <template
-        v-if="slots.details"
-        #details="detailsSlotProps"
-    >
-      <slot
-          name="details"
-          v-bind="detailsSlotProps"
-      />
-    </template>
+		<template
+				v-if="slots.details"
+				#details="detailsSlotProps"
+		>
+			<slot
+					name="details"
+					v-bind="detailsSlotProps"
+			/>
+		</template>
 
-    <template
-        v-if="slots.messages"
-        #messages="{hasMessages, messages}"
-    >
-      <slot
-          name="messages"
-          v-bind="{hasMessages, messages}"
-      />
-    </template>
+		<template
+				v-if="slots.messages"
+				#messages="{hasMessages, messages}"
+		>
+			<slot
+					name="messages"
+					v-bind="{hasMessages, messages}"
+			/>
+		</template>
 
-    <template
-        v-if="slots.message"
-        #message="{message}"
-    >
-      <slot
-          name="message"
-          v-bind="{message}"
-      />
-    </template>
-  </foxy-text-field>
+		<template
+				v-if="slots.message"
+				#message="{message}"
+		>
+			<slot
+					name="message"
+					v-bind="{message}"
+			/>
+		</template>
+	</foxy-text-field>
 </template>
 
 <script
-    lang="ts"
-    setup
+		lang="ts"
+		setup
 >
-  import { FoxyBtn, FoxyDivider, FoxyTextField } from "@foxy/components"
+	import { FoxyBtn, FoxyDivider, FoxyTextField } from "@foxy/components"
 
-  import { useAdjacentInner, useFocus, useForm, useHold, useProps, useVModel } from "@foxy/composables"
+	import { useAdjacentInner, useFocus, useForm, useHold, useProps, useVModel } from "@foxy/composables"
 
-  import { DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from "@foxy/enums"
+	import { DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from "@foxy/enums"
 
-  import { INumberFieldProps } from "@foxy/interfaces"
+	import type { INumberFieldProps } from "@foxy/interfaces"
 
-  import { TFoxyTextField } from "@foxy/types"
+	import type { TFoxyTextField } from "@foxy/types"
 
-  import { clamp, forwardRefs, omit } from "@foxy/utils"
+	import { clamp, forwardRefs, omit } from "@foxy/utils"
 
-  import { computed, nextTick, onMounted, ref, shallowRef, StyleValue, watch, watchEffect, useSlots } from "vue"
+	import { computed, nextTick, onMounted, ref, shallowRef, StyleValue, useSlots, watch, watchEffect } from "vue"
 
-  const props = withDefaults(defineProps<INumberFieldProps>(), {
-    modelValue: null,
-    min: Number.MIN_SAFE_INTEGER,
-    max: Number.MAX_SAFE_INTEGER,
-    step: 1,
-    precision: 0,
-    incrementIcon: MDI_ICONS.PLUS,
-    decrementIcon: MDI_ICONS.MINUS,
-    holdDelay: 500,
-    holdRepeat: 50,
-    border: true,
-    rounded: true,
-    centerAffix: true,
-    split: false,
-    type: TEXT_FIELD_TYPE.NUMBER
-  })
+	const props = withDefaults(defineProps<INumberFieldProps>(), {
+		modelValue: null,
+		min: Number.MIN_SAFE_INTEGER,
+		max: Number.MAX_SAFE_INTEGER,
+		step: 1,
+		precision: 0,
+		incrementIcon: MDI_ICONS.PLUS,
+		decrementIcon: MDI_ICONS.MINUS,
+		holdDelay: 500,
+		holdRepeat: 50,
+		border: true,
+		rounded: true,
+		centerAffix: true,
+		split: false,
+		type: TEXT_FIELD_TYPE.NUMBER
+	})
 
-  const emits = defineEmits(['click:control', 'mousedown:control', 'update:focused', 'update:modelValue', 'click:prepend', 'click:prependInner', 'click:append', 'click:appendInner', 'click:clear'])
+	const emits = defineEmits(['click:control', 'mousedown:control', 'update:focused', 'update:modelValue', 'click:prepend', 'click:prependInner', 'click:append', 'click:appendInner', 'click:clear'])
 
-  const { filterProps } = useProps<INumberFieldProps>(props)
+	const {filterProps} = useProps<INumberFieldProps>(props)
 
-  const slots = useSlots()
+	const slots = useSlots()
 
-  const foxyTextFieldRef = ref<TFoxyTextField>()
+	const foxyTextFieldRef = ref<TFoxyTextField>()
 
-  const form = useForm(omit(props, ['modelValue']))
-  const controlsDisabled = computed(() => (
-      form.isDisabled.value || form.isReadonly.value
-  ))
+	const form = useForm(omit(props, ['modelValue']))
+	const controlsDisabled = computed(() => (
+			form.isDisabled.value || form.isReadonly.value
+	))
 
-  const model = useVModel(props, 'modelValue', null,
-      val => val ?? null,
-      val => val == null
-          ? val ?? null
-          : clamp(Number(val), props.min, props.max))
-  const { isFocused, onFocus, onBlur } = useFocus(props)
-  const {
-    onClickPrependInner: handleClickPrependInner,
-    onClickAppendInner: handleClickAppendInner
-  } = useAdjacentInner(props)
+	const model = useVModel(props, 'modelValue', null,
+			val => val ?? null,
+			val => val == null
+					? val ?? null
+					: clamp(Number(val), props.min, props.max))
+	const {isFocused, onFocus, onBlur} = useFocus(props)
+	const {
+		onClickPrependInner: handleClickPrependInner,
+		onClickAppendInner: handleClickAppendInner
+	} = useAdjacentInner(props)
 
-  const correctPrecision = (val: number, precision = props.precision) => {
-    const fixed = precision == null
-        ? String(val)
-        : val.toFixed(precision)
-    return isFocused.value
-        ? Number(fixed).toString() // trim zeros
-        : fixed
-  }
+	const correctPrecision = (val: number, precision = props.precision) => {
+		const fixed = precision == null
+				? String(val)
+				: val.toFixed(precision)
+		return isFocused.value
+				? Number(fixed).toString() // trim zeros
+				: fixed
+	}
 
-  const _inputText = shallowRef<string | null>(null)
-  watchEffect(() => {
-    if (isFocused.value && !controlsDisabled.value) {
-      // ignore external changes
-    } else if (model.value == null) {
-      _inputText.value = null
-    } else if (!isNaN(model.value)) {
-      _inputText.value = correctPrecision(model.value)
-    }
-  })
-  const inputText = computed<string | null>({
-    get: () => _inputText.value,
-    set (val) {
-      if (val === null || val === '') {
-        model.value = null
-        _inputText.value = null
-      } else if (!isNaN(Number(val)) && Number(val) <= props.max && Number(val) >= props.min) {
-        model.value = Number(val)
-        _inputText.value = val
-      }
-    }
-  })
+	const _inputText = shallowRef<string | null>(null)
+	watchEffect(() => {
+		if (isFocused.value && !controlsDisabled.value) {
+			// ignore external changes
+		} else if (model.value == null) {
+			_inputText.value = null
+		} else if (!isNaN(model.value)) {
+			_inputText.value = correctPrecision(model.value)
+		}
+	})
+	const inputText = computed<string | null>({
+		get: () => _inputText.value,
+		set (val) {
+			if (val === null || val === '') {
+				model.value = null
+				_inputText.value = null
+			} else if (!isNaN(Number(val)) && Number(val) <= props.max && Number(val) >= props.min) {
+				model.value = Number(val)
+				_inputText.value = val
+			}
+		}
+	})
 
-  const canIncrease = computed(() => {
-    if (controlsDisabled.value) return false
-    return (model.value ?? 0) as number + props.step <= props.max
-  })
-  const canDecrease = computed(() => {
-    if (controlsDisabled.value) return false
-    return (model.value ?? 0) as number - props.step >= props.min
-  })
+	const canIncrease = computed(() => {
+		if (controlsDisabled.value) return false
+		return (model.value ?? 0) as number + props.step <= props.max
+	})
+	const canDecrease = computed(() => {
+		if (controlsDisabled.value) return false
+		return (model.value ?? 0) as number - props.step >= props.min
+	})
 
-  watch(() => props.precision, () => formatInputValue())
+	watch(() => props.precision, () => formatInputValue())
 
-  onMounted(() => {
-    clampModel()
-  })
+	onMounted(() => {
+		clampModel()
+	})
 
-  const inferPrecision = (value: number | null) => {
-    if (value == null) return 0
+	const inferPrecision = (value: number | null) => {
+		if (value == null) return 0
 
-    const str = value.toString()
-    const idx = str.indexOf('.')
+		const str = value.toString()
+		const idx = str.indexOf('.')
 
-    return ~idx ? str.length - idx : 0
-  }
+		return ~idx ? str.length - idx : 0
+	}
 
-  const toggleUpDown = (increment = true) => {
-    if (controlsDisabled.value) return
+	const toggleUpDown = (increment = true) => {
+		if (controlsDisabled.value) return
 
-    if (model.value == null) {
-      inputText.value = correctPrecision(clamp(0, props.min, props.max))
-      return
-    }
+		if (model.value == null) {
+			inputText.value = correctPrecision(clamp(0, props.min, props.max))
+			return
+		}
 
-    let inferredPrecision = Math.max(inferPrecision(model.value), inferPrecision(props.step))
+		let inferredPrecision = Math.max(inferPrecision(model.value), inferPrecision(props.step))
 
-    if (props.precision != null) inferredPrecision = Math.max(inferredPrecision, props.precision)
+		if (props.precision != null) inferredPrecision = Math.max(inferredPrecision, props.precision)
 
-    if (increment) {
-      if (canIncrease.value) inputText.value = correctPrecision(model.value + props.step, inferredPrecision)
-    } else {
-      if (canDecrease.value) inputText.value = correctPrecision(model.value - props.step, inferredPrecision)
-    }
-  }
+		if (increment) {
+			if (canIncrease.value) inputText.value = correctPrecision(model.value + props.step, inferredPrecision)
+		} else {
+			if (canDecrease.value) inputText.value = correctPrecision(model.value - props.step, inferredPrecision)
+		}
+	}
 
-  const { holdStart, holdStop } = useHold({ toggleUpDown }, props.holdRepeat, props.holdDelay)
+	const {holdStart, holdStop} = useHold({toggleUpDown}, props.holdRepeat, props.holdDelay)
 
-  const handleBeforeInput = (e: InputEvent) => {
-    if (!e.data) return
+	const handleBeforeInput = (e: InputEvent) => {
+		if (!e.data) return
 
-    const existingTxt = (e.target as HTMLInputElement)?.value
-    const selectionStart = (e.target as HTMLInputElement)?.selectionStart
-    const selectionEnd = (e.target as HTMLInputElement)?.selectionEnd
-    const potentialNewInputVal =
-        existingTxt
-            ? existingTxt.slice(0, selectionStart as number | undefined) + e.data + existingTxt.slice(selectionEnd as number | undefined)
-            : e.data
+		const existingTxt = (e.target as HTMLInputElement)?.value
+		const selectionStart = (e.target as HTMLInputElement)?.selectionStart
+		const selectionEnd = (e.target as HTMLInputElement)?.selectionEnd
+		const potentialNewInputVal =
+				existingTxt
+						? existingTxt.slice(0, selectionStart as number | undefined) + e.data + existingTxt.slice(selectionEnd as number | undefined)
+						: e.data
 
-    if (!/^-?(\d+(\.\d*)?|(\.\d+)|\d*|\.)$/.test(potentialNewInputVal)) {
-      e.preventDefault()
-    }
+		if (!/^-?(\d+(\.\d*)?|(\.\d+)|\d*|\.)$/.test(potentialNewInputVal)) {
+			e.preventDefault()
+		}
 
-    if (props.precision == null) return
+		if (props.precision == null) return
 
-    // Ignore decimal digits above precision limit
-    if (potentialNewInputVal.split('.')[1]?.length > props.precision) {
-      e.preventDefault()
-    }
-    // Ignore decimal separator when precision = 0
-    if (props.precision === 0 && potentialNewInputVal.includes('.')) {
-      e.preventDefault()
-    }
-  }
-  const handleKeydown = async (e: KeyboardEvent) => {
-    if (
-        ['Enter', 'ArrowLeft', 'ArrowRight', 'Backspace', 'Delete', 'Tab'].includes(e.key) ||
-        e.ctrlKey
-    ) return
+		// Ignore decimal digits above precision limit
+		if (potentialNewInputVal.split('.')[1]?.length > props.precision) {
+			e.preventDefault()
+		}
+		// Ignore decimal separator when precision = 0
+		if (props.precision === 0 && potentialNewInputVal.includes('.')) {
+			e.preventDefault()
+		}
+	}
+	const handleKeydown = async (e: KeyboardEvent) => {
+		if (
+				['Enter', 'ArrowLeft', 'ArrowRight', 'Backspace', 'Delete', 'Tab'].includes(e.key) ||
+				e.ctrlKey
+		) return
 
-    if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
-      e.preventDefault()
-      clampModel()
-      // _model is controlled, so need to wait until props['modelValue'] is updated
-      await nextTick()
-      if (e.key === 'ArrowDown') {
-        toggleUpDown(false)
-      } else {
-        toggleUpDown()
-      }
-    }
-  }
-  const handleControlClick = (e: MouseEvent) => {
-    e.stopPropagation()
-  }
-  const handleControlMouseup = (e: PointerEvent) => {
-    const el = e.currentTarget as HTMLElement
+		if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+			e.preventDefault()
+			clampModel()
+			// _model is controlled, so need to wait until props['modelValue'] is updated
+			await nextTick()
+			if (e.key === 'ArrowDown') {
+				toggleUpDown(false)
+			} else {
+				toggleUpDown()
+			}
+		}
+	}
+	const handleControlClick = (e: MouseEvent) => {
+		e.stopPropagation()
+	}
+	const handleControlMouseup = (e: PointerEvent) => {
+		const el = e.currentTarget as HTMLElement
 
-    el?.releasePointerCapture(e.pointerId)
+		el?.releasePointerCapture(e.pointerId)
 
-    e.preventDefault()
-    e.stopPropagation()
+		e.preventDefault()
+		e.stopPropagation()
 
-    holdStop()
-  }
-  const handleUpControlMousedown = (e: PointerEvent) => {
-    const el = e.currentTarget as HTMLElement
+		holdStop()
+	}
+	const handleUpControlMousedown = (e: PointerEvent) => {
+		const el = e.currentTarget as HTMLElement
 
-    el?.setPointerCapture(e.pointerId)
+		el?.setPointerCapture(e.pointerId)
 
-    e.preventDefault()
-    e.stopPropagation()
+		e.preventDefault()
+		e.stopPropagation()
 
-    holdStart('up')
-  }
-  const handleDownControlMousedown = (e: PointerEvent) => {
-    const el = e.currentTarget as HTMLElement
+		holdStart('up')
+	}
+	const handleDownControlMousedown = (e: PointerEvent) => {
+		const el = e.currentTarget as HTMLElement
 
-    el?.setPointerCapture(e.pointerId)
+		el?.setPointerCapture(e.pointerId)
 
-    e.preventDefault()
-    e.stopPropagation()
+		e.preventDefault()
+		e.stopPropagation()
 
-    holdStart('down')
-  }
-  const handleMousedown = (e: MouseEvent) => {
-    emits('mousedown:control', e)
-  }
-  const handleClick = (e: MouseEvent) => {
-    emits('click:control', e)
-  }
-  const handleClear = (e: MouseEvent) => {
-    emits('click:clear', e)
-  }
+		holdStart('down')
+	}
+	const handleMousedown = (e: MouseEvent) => {
+		emits('mousedown:control', e)
+	}
+	const handleClick = (e: MouseEvent) => {
+		emits('click:control', e)
+	}
+	const handleClear = (e: MouseEvent) => {
+		emits('click:clear', e)
+	}
 
-  const clampModel = () => {
-    if (controlsDisabled.value) return
-    if (!foxyTextFieldRef.value) return
+	const clampModel = () => {
+		if (controlsDisabled.value) return
+		if (!foxyTextFieldRef.value) return
 
-    const actualText = foxyTextFieldRef.value.value
+		const actualText = foxyTextFieldRef.value.value
 
-    if (actualText && !isNaN(Number(actualText))) {
-      inputText.value = correctPrecision(clamp(Number(actualText), props.min, props.max))
-    } else {
-      inputText.value = null
-    }
-  }
-  const formatInputValue = () => {
-    if (controlsDisabled.value) return
+		if (actualText && !isNaN(Number(actualText))) {
+			inputText.value = correctPrecision(clamp(Number(actualText), props.min, props.max))
+		} else {
+			inputText.value = null
+		}
+	}
+	const formatInputValue = () => {
+		if (controlsDisabled.value) return
 
-    if (model.value === null || isNaN(model.value)) {
-      inputText.value = null
-      return
-    }
+		if (model.value === null || isNaN(model.value)) {
+			inputText.value = null
+			return
+		}
 
-    inputText.value = props.precision == null
-        ? String(model.value)
-        : model.value.toFixed(props.precision)
-  }
-  const trimDecimalZeros = () => {
-    if (controlsDisabled.value) return
+		inputText.value = props.precision == null
+				? String(model.value)
+				: model.value.toFixed(props.precision)
+	}
+	const trimDecimalZeros = () => {
+		if (controlsDisabled.value) return
 
-    if (model.value === null || isNaN(model.value)) {
-      inputText.value = null
-      return
-    }
+		if (model.value === null || isNaN(model.value)) {
+			inputText.value = null
+			return
+		}
 
-    inputText.value = model.value.toString()
-  }
+		inputText.value = model.value.toString()
+	}
 
-  const handleFocus = () => {
-    onFocus()
-    trimDecimalZeros()
-  }
-  const handleBlur = () => {
-    onBlur()
-    clampModel()
-  }
+	const handleFocus = () => {
+		onFocus()
+		trimDecimalZeros()
+	}
+	const handleBlur = () => {
+		onBlur()
+		clampModel()
+	}
 
-  const textFieldProps = computed(() => {
-    return foxyTextFieldRef.value?.filterProps(props, ['modelValue', 'class', 'style', 'validationValue'])
-  })
+	const textFieldProps = computed(() => {
+		return foxyTextFieldRef.value?.filterProps(props, ['modelValue', 'class', 'style', 'validationValue'])
+	})
 
-  const hasAppendInner = computed(() => {
-    return slots.appendInner || !props.hideControls
-  })
+	const hasAppendInner = computed(() => {
+		return slots.appendInner || !props.hideControls
+	})
 
-  // CLASS & STYLES
+	// CLASS & STYLES
 
-  const numberFieldClasses = computed(() => {
-    return [
-      'foxy-number-field',
-      {
-        'foxy-number-field--hide-input': props.hideInput,
-        'foxy-number-field--inset': props.inset,
-        'foxy-number-field--split': props.split,
-        'foxy-number-field--hide-controls': props.hideControls,
-        'foxy-number-field--reverse': props.reverse
-      },
-      props.class
-    ]
-  })
-  const numberFieldStyles = computed(() => {
-    return [
-      props.style
-    ] as StyleValue
-  })
+	const numberFieldClasses = computed(() => {
+		return [
+			'foxy-number-field',
+			{
+				'foxy-number-field--hide-input': props.hideInput,
+				'foxy-number-field--inset': props.inset,
+				'foxy-number-field--split': props.split,
+				'foxy-number-field--hide-controls': props.hideControls,
+				'foxy-number-field--reverse': props.reverse
+			},
+			props.class
+		]
+	})
+	const numberFieldStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
 
-  defineExpose(forwardRefs({ filterProps }, foxyTextFieldRef))
+	defineExpose(forwardRefs({filterProps}, foxyTextFieldRef))
 
 </script>
 
 <style
-    lang="scss"
-    scoped
+		lang="scss"
+		scoped
 >
-.foxy-number-field {
-  $this: &;
+	.foxy-number-field {
+		$this: &;
 
-  :deep(input[type=number]) {
-    -moz-appearance: textfield;
+		:deep(input[type=number]) {
+			-moz-appearance: textfield;
 
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-    }
-  }
+			&::-webkit-outer-spin-button,
+			&::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+			}
+		}
 
-  :deep(.foxy-field) {
-    .foxy-field__prepend-inner {
-      &:has(.foxy-number-field__control) {
-        > .foxy-icon {
-          margin-inline-end: 12px;
-        }
-      }
-    }
+		:deep(.foxy-field) {
+			.foxy-field__prepend-inner {
+				&:has(.foxy-number-field__control) {
+					> .foxy-icon {
+						margin-inline-end: 12px;
+					}
+				}
+			}
 
-    .foxy-field__append-inner {
-      &:has(.foxy-number-field__control) {
-        > .foxy-icon {
-          margin-inline-end: 12px;
-        }
-      }
-    }
-  }
+			.foxy-field__append-inner {
+				&:has(.foxy-number-field__control) {
+					> .foxy-icon {
+						margin-inline-end: 12px;
+					}
+				}
+			}
+		}
 
-  :deep(.foxy-field--appended) {
-    --foxy-field---padding-end: 0;
-  }
+		:deep(.foxy-field--appended) {
+			--foxy-field---padding-end: 0;
+		}
 
-  &__control {
-    display: flex;
-    height: 100%;
+		&__control {
+			display: flex;
+			height: 100%;
 
-    .foxy-btn {
-      background-color: transparent;
-      border-radius: 0;
-    }
-  }
+			.foxy-btn {
+				background-color: transparent;
+				border-radius: 0;
+			}
+		}
 
-  &--inset {
-    .foxy-divider {
-      height: 55%;
-      width: 55%;
-      align-self: center
-    }
-  }
+		&--inset {
+			.foxy-divider {
+				height: 55%;
+				width: 55%;
+				align-self: center
+			}
+		}
 
-  &--split {
-    :deep(.foxy-field__input) {
-      text-align: center;
-    }
+		&--split {
+			:deep(.foxy-field__input) {
+				text-align: center;
+			}
 
-	  :deep(.foxy-field--prepended) {
-		  --foxy-field---padding-start: 0;
-	  }
-  }
+			:deep(.foxy-field--prepended) {
+				--foxy-field---padding-start: 0;
+			}
+		}
 
-  &--hide-input {
-    :deep(.foxy-field) {
-      flex: none;
-    }
+		&--hide-input {
+			:deep(.foxy-field) {
+				flex: none;
+			}
 
-    :deep(.foxy-field__input) {
-      width: 0;
-      padding-inline: 0;
-    }
-  }
-}
+			:deep(.foxy-field__input) {
+				width: 0;
+				padding-inline: 0;
+			}
+		}
+	}
 </style>

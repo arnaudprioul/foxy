@@ -1,23 +1,23 @@
 import { getCurrentScope, onScopeDispose, Ref, unref } from 'vue'
 
 export function resolveUnref (r: Ref | (() => unknown)) {
-  return typeof r === 'function' ? r() : unref(r)
+    return typeof r === 'function' ? r() : unref(r)
 }
 
 export function unrefElement (elRef: Ref) {
-  let _a
+    let _a
 
-  const plain = resolveUnref(elRef)
+    const plain = resolveUnref(elRef)
 
-  return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain
+    return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain
 }
 
 export function tryOnScopeDispose (fn: () => void) {
-  if (getCurrentScope()) {
-    onScopeDispose(fn)
+    if (getCurrentScope()) {
+        onScopeDispose(fn)
 
-    return true
-  }
+        return true
+    }
 
-  return false
+    return false
 }

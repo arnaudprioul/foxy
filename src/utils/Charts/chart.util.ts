@@ -1,4 +1,4 @@
-import { IPoint } from "@foxy/interfaces"
+import type { IPoint } from "@foxy/interfaces"
 
 import { int } from "@foxy/utils"
 
@@ -55,9 +55,9 @@ export function getDistance (p1: IPoint, p2: IPoint): number {
 }
 
 export function moveTo (to: IPoint, from: IPoint, radius: number) {
-    const vector = { x: to.x - from.x, y: to.y - from.y }
+    const vector = {x: to.x - from.x, y: to.y - from.y}
     const length = Math.sqrt((vector.x * vector.x) + (vector.y * vector.y))
-    const unitVector = { x: vector.x / length, y: vector.y / length }
+    const unitVector = {x: vector.x / length, y: vector.y / length}
 
     return {
         x: from.x + unitVector.x * radius,

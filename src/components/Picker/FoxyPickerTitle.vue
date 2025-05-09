@@ -1,19 +1,22 @@
 <template>
 	<component
-		:is="tag"
-		:class="pickerTitleClasses"
-		:style="pickerTitleStyles"
-		>
+			:is="tag"
+			:class="pickerTitleClasses"
+			:style="pickerTitleStyles"
+	>
 		<slot name="default">
 			{{ title }}
 		</slot>
 	</component>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { useProps } from "@foxy/composables"
 
-	import { IPickerTitleProps } from "@foxy/interfaces"
+	import type { IPickerTitleProps } from "@foxy/interfaces"
 
 	import { computed, StyleValue } from "vue"
 
@@ -44,7 +47,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 	.foxy-picker-title {
 		text-transform: uppercase;
 		font-size: .75rem;

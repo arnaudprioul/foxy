@@ -3,8 +3,8 @@
 			ref="foxyMenuRef"
 			v-model:model-value="modelValue"
 			:class="contextualMenuClasses"
-			:style="contextualMenuStyles"
 			:open-on-click="false"
+			:style="contextualMenuStyles"
 			activator="cursor"
 			open-on-context-menu
 			target="cursor"
@@ -19,8 +19,8 @@
 	import { FoxyMenu, FoxyTranslateScale } from "@foxy/components"
 	import { useProps, useVModel } from "@foxy/composables"
 	import { INLINE, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from "@foxy/enums"
-	import { IContextualMenuProps } from "@foxy/interfaces"
-	import { TFoxyMenu, TTransitionProps } from "@foxy/types"
+	import type { IContextualMenuProps } from "@foxy/interfaces"
+	import type { TFoxyMenu, TTransitionProps } from "@foxy/types"
 	import { forwardRefs } from "@foxy/utils"
 
 	import { computed, ref, StyleValue } from "vue"

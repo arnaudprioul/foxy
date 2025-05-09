@@ -1,6 +1,6 @@
 import { BLOCK, INLINE, START_END } from '@foxy/enums'
 
-import { TBlock, TBlockStartEnd, TInline, TInlineStartEnd } from '@foxy/types'
+import type { TBlock, TBlockStartEnd, TInline, TInlineStartEnd } from '@foxy/types'
 
 export const BLOCK_ARRAY: Array<TBlock> = [BLOCK.TOP, BLOCK.BOTTOM]
 export const INLINE_ARRAY: Array<TInline> = [INLINE.LEFT, INLINE.RIGHT]

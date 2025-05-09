@@ -1,5 +1,5 @@
 import { useDate, useVModel } from "@foxy/composables"
-import { ICalendarProps, IDay } from "@foxy/interfaces"
+import type { ICalendarProps, IDay } from "@foxy/interfaces"
 import { DateAdapter } from "@foxy/services"
 import { getWeek, wrapInArray } from "@foxy/utils"
 import { computed } from "vue"

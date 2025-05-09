@@ -1,9 +1,9 @@
-import FoxyProgressLinear from './FoxyProgressLinear.vue'
 import { h } from "vue"
+import FoxyProgressLinear from './FoxyProgressLinear.vue'
 
 describe('<FoxyProgressLinear />', () => {
-  it('renders', () => {
-    // see: https://on.cypress.io/mounting-vue
-    cy.mount(h(FoxyProgressLinear), {})
-  })
+    it('renders', () => {
+        // see: https://on.cypress.io/mounting-vue
+        cy.mount(h(FoxyProgressLinear), {})
+    })
 })

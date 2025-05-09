@@ -1,18 +1,26 @@
 <template>
 	<foxy-transition
 			:disabled="!isBooted"
-			:transition="transition">
+			:transition="transition"
+	>
 		<div
 				v-show="isShown"
 				v-touch
 				:class="windowItemClasses"
-				:style="windowItemStyles">
-			<slot v-if="hasContent" name="default"/>
+				:style="windowItemStyles"
+		>
+			<slot
+					v-if="hasContent"
+					name="default"
+			/>
 		</div>
 	</foxy-transition>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyTransition } from '@foxy/components'
 
 	import { useGroupItem, useLazy, useProps, useSsrBoot } from '@foxy/composables'
@@ -21,7 +29,7 @@
 
 	import { vTouch } from '@foxy/directives'
 
-	import { IWindowItemProps } from '@foxy/interfaces'
+	import type { IWindowItemProps } from '@foxy/interfaces'
 
 	import { convertToUnit } from '@foxy/utils'
 

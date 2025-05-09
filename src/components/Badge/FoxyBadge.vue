@@ -43,8 +43,8 @@
 
 	import { useBorder, useBothColor, useLocale, useLocation, useProps, useRounded, useStatus } from '@foxy/composables'
 
-	import { IBadgeProps } from '@foxy/interfaces'
-	import { TTransitionProps } from "@foxy/types"
+	import type { IBadgeProps } from '@foxy/interfaces'
+	import type { TTransitionProps } from "@foxy/types"
 
 	import { omit, pick } from '@foxy/utils'
 

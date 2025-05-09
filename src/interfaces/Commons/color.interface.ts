@@ -1,4 +1,4 @@
-import {TColor} from "@foxy/types"
+import type { TColor } from "@foxy/types"
 
 export interface IColorProps {
     color?: TColor

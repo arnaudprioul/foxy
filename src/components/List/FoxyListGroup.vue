@@ -59,7 +59,7 @@
 
 	import { MDI_ICONS } from "@foxy/enums"
 
-	import { IListActivatorProps, IListGroupProps } from '@foxy/interfaces'
+	import type { IListActivatorProps, IListGroupProps } from '@foxy/interfaces'
 
 	import { computed, ref, StyleValue, toRef } from 'vue'
 

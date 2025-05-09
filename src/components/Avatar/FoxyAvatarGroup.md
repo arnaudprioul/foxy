@@ -1,4 +1,5 @@
 # FoxyAvatarGroup
 
 ## Usage
+
     <FoxyAvatarGroup />

@@ -1,22 +1,29 @@
 <template>
 	<template v-if="renderless">
-		<slot name="renderless" v-bind="{ itemRef: resizeRef }"/>
+		<slot
+				name="renderless"
+				v-bind="{ itemRef: resizeRef }"
+		/>
 	</template>
 	<template v-else>
 		<div
 				ref="resizeRef"
 				:class="virtualScrollItemClasses"
 				:style="virtualScrollItemStyles"
-				v-bind="{ ...attrs }">
+				v-bind="{ ...attrs }"
+		>
 			<slot name="default"/>
 		</div>
 	</template>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { useProps, useResizeObserver } from '@foxy/composables'
 
-	import { IVirtualScrollItemProps } from '@foxy/interfaces'
+	import type { IVirtualScrollItemProps } from '@foxy/interfaces'
 
 	import { computed, StyleValue, useAttrs, watch } from 'vue'
 

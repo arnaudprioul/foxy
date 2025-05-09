@@ -1,10 +1,13 @@
 <template>
-  <div class="foxy-section">
+	<div class="foxy-section">
 
-  </div>
+	</div>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 
 	// TODO - WIP
 

@@ -34,15 +34,15 @@
     lang="ts"
     setup
 >
-  import { FoxyBtn, FoxyCol, FoxyContainer, FoxyRow, FoxyTooltip } from '@foxy/components'
+	import { FoxyBtn, FoxyCol, FoxyContainer, FoxyRow, FoxyTooltip } from '@foxy/components'
 
-  import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxy/enums'
 
-  import { ITooltipProps } from '@foxy/interfaces'
+	import type { ITooltipProps } from '@foxy/interfaces'
 
-  import { reactive } from 'vue'
+	import { reactive } from 'vue'
 
-  const state: ITooltipProps = reactive({
+	const state: ITooltipProps = reactive({
     modelValue: true,
     text: 'this is a tooltip',
     location: 'right'

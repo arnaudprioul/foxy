@@ -100,7 +100,7 @@ export function destructComputed<T extends object> (getter: ComputedGetter<T>) {
         for (const key in base.value) {
             refs[key] = base.value[key]
         }
-    }, { flush: 'sync' })
+    }, {flush: 'sync'})
     return toRefs(refs)
 }
 
@@ -247,7 +247,7 @@ export function omit<
     T extends object,
     U extends Extract<keyof T, string>
 > (obj: T, exclude: Array<U>): Omit<T, U> {
-    const clone = { ...obj }
+    const clone = {...obj}
 
     exclude.forEach(prop => delete clone[prop])
 
@@ -508,13 +508,13 @@ export function isEmpty (val: any): boolean {
 }
 
 export function createRange (length: number, start = 0): number[] {
-    return Array.from({ length }, (_v, k) => start + k)
+    return Array.from({length}, (_v, k) => start + k)
 }
 
 export function getEventCoordinates (e: MouseEvent | TouchEvent) {
     if ('touches' in e) {
-        return { clientX: e.touches[0].clientX, clientY: e.touches[0].clientY }
+        return {clientX: e.touches[0].clientX, clientY: e.touches[0].clientY}
     }
 
-    return { clientX: e.clientX, clientY: e.clientY }
+    return {clientX: e.clientX, clientY: e.clientY}
 }

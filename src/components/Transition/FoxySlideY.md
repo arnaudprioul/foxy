@@ -1,4 +1,5 @@
 # FoxySlideX
 
 ## Usage
+
     <FoxySlideX />

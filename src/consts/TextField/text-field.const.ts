@@ -1,6 +1,6 @@
 import { TEXT_FIELD_TYPE } from "@foxy/enums"
 
-import { TTextFieldType } from "@foxy/types"
+import type { TTextFieldType } from "@foxy/types"
 
 export const ACTIVE_TEXT_FIELD_TYPE: Partial<Array<TTextFieldType>> = [
     TEXT_FIELD_TYPE.COLOR,

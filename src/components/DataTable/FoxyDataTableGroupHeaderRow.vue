@@ -8,7 +8,10 @@
 				:key="index"
 		>
 			<template v-if="column.key === 'data-table-group'">
-				<slot name="data-table-group" v-bind="{ ...slotGroupProps }">
+				<slot
+						name="data-table-group"
+						v-bind="{ ...slotGroupProps }"
+				>
 					<foxy-data-table-column-cell class="foxy-data-table-group-header-row__column">
 						<foxy-btn
 								:icon="groupIcon"
@@ -23,7 +26,10 @@
 			</template>
 
 			<template v-else-if="column.key === 'data-table-select'">
-				<slot name="data-table-select" v-bind="{...slotSelectGroupProps}">
+				<slot
+						name="data-table-select"
+						v-bind="{...slotSelectGroupProps}"
+				>
 					<td>
 						<foxy-checkbox-btn
 								:indeterminate="indeterminate"
@@ -41,13 +47,16 @@
 	</tr>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { FoxyBtn, FoxyCheckboxBtn, FoxyDataTableColumnCell } from "@foxy/components"
 
 	import { useGroupBy, useHeaders, useProps, useSelection } from "@foxy/composables"
 	import { MDI_ICONS } from "@foxy/enums"
 
-	import { IDataTableGroupHeaderRowProps } from "@foxy/interfaces"
+	import type { IDataTableGroupHeaderRowProps } from "@foxy/interfaces"
 
 	import { computed, StyleValue } from "vue"
 
@@ -121,7 +130,10 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 
 </style>
 

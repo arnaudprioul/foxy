@@ -1,5 +1,5 @@
-import { TPosition } from '@foxy/types'
+import type { TPosition } from '@foxy/types'
 
 export interface IPositionProps {
-  position?: TPosition
+    position?: TPosition
 }

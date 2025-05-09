@@ -2,15 +2,19 @@
 	<component
 			:is="tag"
 			:name="name"
-			v-bind="transitionProps">
+			v-bind="transitionProps"
+	>
 		<slot name="default"/>
 	</component>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 	import { useCssTransition, useProps } from '@foxy/composables'
 
-	import { ITransitionProps } from '@foxy/interfaces'
+	import type { ITransitionProps } from '@foxy/interfaces'
 
 	const props = withDefaults(defineProps<ITransitionProps>(), {
 		name: 'foxy-transition--translate-picker'

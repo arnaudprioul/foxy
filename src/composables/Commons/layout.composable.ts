@@ -2,7 +2,7 @@ import { useResizeObserver } from '@foxy/composables'
 
 import { FOXY_LAYOUT_ITEM_KEY, FOXY_LAYOUT_KEY, ROOT_ZINDEX } from '@foxy/consts'
 
-import { TDirectionBoth } from "@foxy/types"
+import type { TDirectionBoth } from "@foxy/types"
 
 import { convertToUnit, findChildrenWithProvide, generateLayers, getCurrentInstance, getUid, int } from '@foxy/utils'
 
@@ -55,7 +55,7 @@ export function useLayoutItem (options: {
 
     const vm = getCurrentInstance('useLayoutItem')
 
-    provide(FOXY_LAYOUT_ITEM_KEY, shallowRef({ id }))
+    provide(FOXY_LAYOUT_ITEM_KEY, shallowRef({id}))
 
     const isKeptAlive = shallowRef(false)
     onDeactivated(() => {
@@ -99,7 +99,7 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
     const priorities = reactive(new Map<string, Ref<number>>())
     const activeItems = reactive(new Map<string, Ref<boolean>>())
     const disabledTransitions = reactive(new Map<string, Ref<boolean>>())
-    const { resizeRef, contentRect: layoutRect } = useResizeObserver()
+    const {resizeRef, contentRect: layoutRect} = useResizeObserver()
 
     const computedOverlaps = computed(() => {
         const map = new Map<string, { position: TDirectionBoth, amount: number }>()
@@ -115,8 +115,8 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
 
             if (!topPosition || !bottomPosition || !topAmount || !bottomAmount) continue
 
-            map.set(bottom, { position: topPosition.value, amount: int(topAmount.value) })
-            map.set(top, { position: bottomPosition.value, amount: -int(bottomAmount.value) })
+            map.set(bottom, {position: topPosition.value, amount: int(topAmount.value)})
+            map.set(top, {position: bottomPosition.value, amount: -int(bottomAmount.value)})
         }
 
         return map
@@ -148,13 +148,13 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
             '--foxy-layout---position-right': convertToUnit(mainRect.value.right),
             '--foxy-layout---position-top': convertToUnit(mainRect.value.top),
             '--foxy-layout---position-bottom': convertToUnit(mainRect.value.bottom),
-            ...(transitionsEnabled.value ? undefined : { transition: 'none' })
+            ...(transitionsEnabled.value ? undefined : {transition: 'none'})
         }
     })
 
     const items = computed(() => {
-        return layers.value.slice(1).map(({ id }, index) => {
-            const { layer } = layers.value[index]
+        return layers.value.slice(1).map(({id}, index) => {
+            const {layer} = layers.value[index]
             const size = layoutSizes.get(id)
             const position = positions.get(id)
 
@@ -196,7 +196,7 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
             positions.set(id, position)
             layoutSizes.set(id, layoutSize)
             activeItems.set(id, active)
-            
+
             if (disableTransitions) {
                 disabledTransitions.set(id, disableTransitions)
             }
@@ -219,7 +219,7 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
                     '--foxy-layout---zIndex': zIndex.value,
                     '--foxy-layout---transform': `translate${isHorizontal ? 'X' : 'Y'}(${(active.value ? 0 : -110) * (isOppositeHorizontal || isOppositeVertical ? -1 : 1)}%)`,
                     '--foxy-layout---position': absolute.value || rootZIndex.value !== ROOT_ZINDEX ? 'absolute' : 'fixed',
-                    ...(transitionsEnabled.value ? undefined : { '--foxy-layout---transition': 'none' })
+                    ...(transitionsEnabled.value ? undefined : {'--foxy-layout---transition': 'none'})
                 } as const
 
                 if (!isMounted.value) return styles
@@ -255,7 +255,7 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
                 '--foxy-layout---zIndex': zIndex.value - 1
             }))
 
-            return { layoutItemStyles, layoutItemScrimStyles, zIndex }
+            return {layoutItemStyles, layoutItemScrimStyles, zIndex}
         },
         unregister: (id: string) => {
             priorities.delete(id)
@@ -277,7 +277,7 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
     const layoutClasses = computed(() => {
         return [
             'foxy-layout',
-            { 'foxy-layout--full-height': props.fullHeight }
+            {'foxy-layout--full-height': props.fullHeight}
         ]
     })
 

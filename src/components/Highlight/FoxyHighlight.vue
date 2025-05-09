@@ -24,8 +24,8 @@
 		useRounded,
 		useVModel
 	} from "@foxy/composables"
-	import { IHighlightProps } from "@foxy/interfaces"
-	import { TColorType } from "@foxy/types"
+	import type { IHighlightProps } from "@foxy/interfaces"
+	import type { TColorType } from "@foxy/types"
 	import { getContrast } from "@foxy/utils"
 	import { computed, StyleValue, toRef } from "vue"
 

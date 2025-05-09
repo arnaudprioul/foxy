@@ -49,8 +49,8 @@
 
 	import { DENSITY } from '@foxy/enums'
 
-	import { IMessagesProps } from '@foxy/interfaces'
-	import { TTransitionProps } from "@foxy/types"
+	import type { IMessagesProps } from '@foxy/interfaces'
+	import type { TTransitionProps } from "@foxy/types"
 
 	import { wrapInArray } from '@foxy/utils'
 

@@ -23,14 +23,14 @@
     lang="ts"
     setup
 >
-  import useTitle from '@stories/composables/title.composable'
+	import useTitle from '@stories/composables/title.composable'
 
-  import { locationList, multipleLocationList } from '@stories/const/location.const'
+	import { locationList, multipleLocationList } from '@stories/const/location.const'
 
-  import { TTitleProp } from '@stories/types/title.type'
-  import { computed, Ref, ref } from 'vue'
+	import type { TTitleProp } from '@stories/types/title.type'
+	import { computed, Ref, ref } from 'vue'
 
-  const props = defineProps<{
+	const props = defineProps<{
     modelValue?: string,
     multiple?: boolean
   } & TTitleProp>()

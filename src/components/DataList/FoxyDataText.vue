@@ -1,29 +1,34 @@
 <template>
 	<dd
 			:class="dataTextClasses"
-			:style="dataTextStyles">
+			:style="dataTextStyles"
+	>
     <span
 		    v-if="hasPrepend"
 		    key="prepend"
 		    class="foxy-data-text__prepend"
-		    @click="handleClickPrepend">
+		    @click="handleClickPrepend"
+    >
       <slot name="prepend">
         <foxy-avatar
 		        v-if="prependAvatar"
 		        key="prepend-avatar"
 		        :density="density"
-		        :image="prependAvatar"/>
+		        :image="prependAvatar"
+        />
         <foxy-icon
 		        v-if="prependIcon"
 		        key="prepend-icon"
 		        :density="density"
-		        :icon="prependIcon"/>
+		        :icon="prependIcon"
+        />
       </slot>
     </span>
 
 		<span
 				class="foxy-data-text__content"
-				data-no-activator="">
+				data-no-activator=""
+		>
       <slot name="default">
         {{ text }}
       </slot>
@@ -33,29 +38,35 @@
 				v-if="hasAppend"
 				key="append"
 				class="foxy-data-text__append"
-				@click="handleClickAppend">
+				@click="handleClickAppend"
+		>
       <slot name="append">
         <foxy-avatar
 		        v-if="appendAvatar"
 		        key="append-avatar"
 		        :density="density"
-		        :image="appendAvatar"/>
+		        :image="appendAvatar"
+        />
         <foxy-icon
 		        v-if="appendIcon"
 		        key="append-icon"
 		        :density="density"
-		        :icon="appendIcon"/>
+		        :icon="appendIcon"
+        />
      </slot>
     </span>
 	</dd>
 </template>
 
-<script lang="ts" setup>
+<script
+		lang="ts"
+		setup
+>
 
 	import { FoxyAvatar, FoxyIcon } from "@foxy/components"
 	import { useAdjacent, useBothColor, useDensity, useMargin, usePadding, useProps } from "@foxy/composables"
 
-	import { IDataTextProps } from "@foxy/interfaces"
+	import type { IDataTextProps } from "@foxy/interfaces"
 	import { computed, shallowRef, StyleValue } from "vue"
 
 	const props = withDefaults(defineProps<IDataTextProps>(), {})
@@ -117,6 +128,9 @@
 	})
 </script>
 
-<style lang="scss" scoped>
+<style
+		lang="scss"
+		scoped
+>
 
 </style>

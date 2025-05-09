@@ -66,16 +66,16 @@
     lang="ts"
     setup
 >
-  import { FoxyDialog } from '@foxy/components'
+	import { FoxyDialog } from '@foxy/components'
 
-  import { IDialogProps } from '@foxy/interfaces'
+	import type { IDialogProps } from '@foxy/interfaces'
 
-  import { HstIcon } from '@stories/components/controls'
+	import { HstIcon } from '@stories/components/controls'
 
-  import { logEvent } from 'histoire/client'
-  import { reactive } from 'vue'
+	import { logEvent } from 'histoire/client'
+	import { reactive } from 'vue'
 
-  const state = reactive<IDialogProps>({
+	const state = reactive<IDialogProps>({
     modelValue: true,
     title: 'My dialog Title',
     subtitle: 'My dialog Subtitle',

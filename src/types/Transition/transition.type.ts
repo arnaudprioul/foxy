@@ -6,7 +6,7 @@ import { Component, TransitionProps } from 'vue'
 export type TTransitionMode = `${TRANSITION_MODE}`
 
 export type TTransitionProps = TransitionProps & {
-  component?: Component
+    component?: Component
 }
 
 export type TFoxyTransition = InstanceType<typeof FoxyTransition>

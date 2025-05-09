@@ -95,7 +95,7 @@
 
 	import { MDI_ICONS } from "@foxy/enums"
 
-	import { IPaginationProps } from "@foxy/interfaces"
+	import type { IPaginationProps } from "@foxy/interfaces"
 
 	import { createRange, int } from "@foxy/utils"
 

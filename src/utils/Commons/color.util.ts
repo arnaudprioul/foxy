@@ -26,7 +26,7 @@ import {
     SRGB_REVERSE_TRANSFORM
 } from '@foxy/consts'
 
-import { TColorType, THex, THSLA, THSVA, TLAB, TRGBA, TXYZ } from '@foxy/types'
+import type { TColorType, THex, THSLA, THSVA, TLAB, TRGBA, TXYZ } from '@foxy/types'
 
 import { chunk, clamp, consoleWarn, has, int, padEnd } from '@foxy/utils'
 
@@ -50,8 +50,8 @@ export function parseColor (color: TColorType): TRGBA {
             b: (color & 0xFF)
         }
     } else if (typeof color === 'string' && CSS_COLOR_REGEX.test(color)) {
-        const { groups } = color.match(CSS_COLOR_REGEX)!
-        const { fn, values } = groups as { fn: keyof typeof COLOR_MAPPERS, values: string }
+        const {groups} = color.match(CSS_COLOR_REGEX)!
+        const {fn, values} = groups as { fn: keyof typeof COLOR_MAPPERS, values: string }
         const realValues = values.split(/,\s*/)
             .map(v => {
                 if (v.endsWith('%') && ['hsl', 'hsla', 'hsv', 'hsva'].includes(fn)) {
@@ -103,7 +103,7 @@ export function HSLtoRGB (hsla: THSLA): TRGBA {
 }
 
 export function RGBtoHSV (rgba: TRGBA): THSVA {
-    if (!rgba) return { h: 0, s: 1, v: 1, a: 1 }
+    if (!rgba) return {h: 0, s: 1, v: 1, a: 1}
 
     const r = rgba.r / 255
     const g = rgba.g / 255
@@ -128,30 +128,30 @@ export function RGBtoHSV (rgba: TRGBA): THSVA {
     const s = max === 0 ? 0 : (max - min) / max
     const hsv = [h, s, max]
 
-    return { h: hsv[0], s: hsv[1], v: hsv[2], a: rgba.a }
+    return {h: hsv[0], s: hsv[1], v: hsv[2], a: rgba.a}
 }
 
 export function HSVtoHSL (hsva: THSVA): THSLA {
-    const { h, s, v, a } = hsva
+    const {h, s, v, a} = hsva
 
     const l = v - (v * s / 2)
 
     const sprime = l === 1 || l === 0 ? 0 : (v - l) / Math.min(l, 1 - l)
 
-    return { h, s: sprime, l, a }
+    return {h, s: sprime, l, a}
 }
 
 export function HSLtoHSV (hsl: THSLA): THSVA {
-    const { h, s, l, a } = hsl
+    const {h, s, l, a} = hsl
 
     const v = l + s * Math.min(l, 1 - l)
 
     const sprime = v === 0 ? 0 : 2 - (2 * l / v)
 
-    return { h, s: sprime, v, a }
+    return {h, s: sprime, v, a}
 }
 
-export function RGBtoCSS ({ r, g, b, a }: TRGBA): string {
+export function RGBtoCSS ({r, g, b, a}: TRGBA): string {
     return a === undefined ? `rgb(${r}, ${g}, ${b})` : `rgba(${r}, ${g}, ${b}, ${a})`
 }
 
@@ -164,7 +164,7 @@ export function toHex (v: number) {
     return ('00'.substr(0, 2 - h.length) + h).toUpperCase()
 }
 
-export function RGBtoHex ({ r, g, b, a }: TRGBA): THex {
+export function RGBtoHex ({r, g, b, a}: TRGBA): THex {
     return `#${[
         toHex(r),
         toHex(g),
@@ -178,7 +178,7 @@ export function HexToRGB (hex: THex): TRGBA {
     const [r, g, b, a] = chunk(hex, 2).map((c: string) => int(c, 16))
     const alpha = a === undefined ? a : (a / 255)
 
-    return { r, g, b, a: alpha }
+    return {r, g, b, a: alpha}
 }
 
 export function HexToHSV (hex: THex): THSVA {
@@ -191,7 +191,7 @@ export function HSVtoHex (hsva: THSVA): THex {
 }
 
 export function HSVtoRGB (hsva: THSVA): TRGBA {
-    const { h, s, v, a } = hsva
+    const {h, s, v, a} = hsva
     const f = (n: number) => {
         const k = (n + (h / 60)) % 6
         return v - v * s * Math.max(Math.min(k, 4 - k, 1), 0)
@@ -199,7 +199,7 @@ export function HSVtoRGB (hsva: THSVA): TRGBA {
 
     const rgb = [f(5), f(3), f(1)].map(v => Math.round(v * 255))
 
-    return { r: rgb[0], g: rgb[1], b: rgb[2], a }
+    return {r: rgb[0], g: rgb[1], b: rgb[2], a}
 }
 
 export function parseHex (hex: string): THex {
@@ -302,7 +302,7 @@ export function XyzToRgb (xyz: TXYZ): TRGBA {
     }
 }
 
-export function RgbtoXyz ({ r, g, b }: TRGBA): TXYZ {
+export function RgbtoXyz ({r, g, b}: TRGBA): TXYZ {
     const xyz: TXYZ = [0, 0, 0]
     const transform = SRGB_REVERSE_TRANSFORM
     const matrix = SRGB_REVERSE_MATRIX

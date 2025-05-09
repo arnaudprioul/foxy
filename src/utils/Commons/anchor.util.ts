@@ -2,7 +2,7 @@ import { BLOCK_ARRAY, INLINE_ARRAY } from '@foxy/consts'
 
 import { AXIS } from '@foxy/enums'
 
-import { TAnchor, TBlock, TInline, TParsedAnchor } from '@foxy/types'
+import type { TAnchor, TBlock, TInline, TParsedAnchor } from '@foxy/types'
 
 export function parseAnchor (anchor: TAnchor) {
     const [side, initialAlign] = anchor.split(' ') as [TBlock | TInline | 'center', TBlock | TInline | 'center' | undefined]
@@ -13,7 +13,7 @@ export function parseAnchor (anchor: TAnchor) {
                 : 'center'
         : initialAlign
 
-    return { side, align } as TParsedAnchor
+    return {side, align} as TParsedAnchor
 }
 
 export function flipSide (anchor: TParsedAnchor) {

@@ -66,17 +66,17 @@
     lang="ts"
     setup
 >
-  import { FoxyCol, FoxyContainer, FoxyOtpInputField, FoxyRow } from '@foxy/components'
+	import { FoxyCol, FoxyContainer, FoxyOtpInputField, FoxyRow } from '@foxy/components'
 
-  import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxy/enums'
 
-  import { IOtpInputFieldProps } from "@foxy/interfaces"
-  import { HstRounded } from "@stories/components/controls"
+	import type { IOtpInputFieldProps } from "@foxy/interfaces"
+	import { HstRounded } from "@stories/components/controls"
 
-  import { logEvent } from 'histoire/client'
-  import { reactive } from 'vue'
+	import { logEvent } from 'histoire/client'
+	import { reactive } from 'vue'
 
-  const state: Partial<IOtpInputFieldProps> = reactive({
+	const state: Partial<IOtpInputFieldProps> = reactive({
     label: 'Otp Input Field',
     bgColor: '#fff'
   })

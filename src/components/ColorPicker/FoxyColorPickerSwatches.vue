@@ -42,8 +42,8 @@
 
 	import { MDI_ICONS } from "@foxy/enums"
 
-	import { IColorPickerSwatchesProps } from "@foxy/interfaces"
-	import { TRGBA } from "@foxy/types"
+	import type { IColorPickerSwatchesProps } from "@foxy/interfaces"
+	import type { TRGBA } from "@foxy/types"
 
 	import { convertToUnit, deepEqual, getContrast, parseColor, RGBtoCSS, RGBtoHSV } from "@foxy/utils"
 

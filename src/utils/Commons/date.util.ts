@@ -1,8 +1,8 @@
 import { DATE_2000_JUNARY_SUNDAY, FIRST_DAY, REGEX_DATE_YYYY_MM_DD } from "@foxy/consts"
 
-import { IDateAdapter, IDateOptions, ILocaleInstance } from "@foxy/interfaces"
+import type { IDateAdapter, IDateOptions, ILocaleInstance } from "@foxy/interfaces"
 import { DateAdapter } from "@foxy/services"
-import { TCustomDateFormat } from "@foxy/types"
+import type { TCustomDateFormat } from "@foxy/types"
 
 import { createRange, padStart } from "@foxy/utils"
 
@@ -11,7 +11,7 @@ import { reactive, watch } from "vue"
 export function createInstance (options: IDateOptions, locale: ILocaleInstance) {
     const instance = reactive(
         typeof options.adapter === 'function'
-             
+
             ? new options.adapter({
                 locale: options.locale[locale.current.value] ?? locale.current.value,
                 formats: options.formats

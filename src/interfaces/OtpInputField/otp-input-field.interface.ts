@@ -1,6 +1,6 @@
-import { ICommonsComponentProps, IDimensionProps, IFieldProps, IFocusProps, ILabelProps } from "@foxy/interfaces"
+import type { ICommonsComponentProps, IDimensionProps, IFieldProps, IFocusProps, ILabelProps } from "@foxy/interfaces"
 
-import { TOtpInputFieldType } from "@foxy/types"
+import type { TOtpInputFieldType } from "@foxy/types"
 
 export interface IOtpInputFieldProps extends ICommonsComponentProps, IDimensionProps, IFocusProps, IFieldProps, ILabelProps {
     autofocus?: boolean

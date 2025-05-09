@@ -1,6 +1,6 @@
 import { useDisplay, useResizeObserver } from '@foxy/composables'
 import { BUFFER_PX, DOWN, IN_BROWSER, UP } from '@foxy/consts'
-import { IVirtualProps } from '@foxy/interfaces'
+import type { IVirtualProps } from '@foxy/interfaces'
 import { binaryClosest, clamp, debounce, int } from '@foxy/utils'
 
 import { computed, nextTick, onScopeDispose, ref, Ref, shallowRef, watch, watchEffect } from 'vue'
@@ -27,7 +27,7 @@ export function useVirtual<T> (props: IVirtualProps, items: Ref<readonly T[]>) {
     /** markerRef's offsetTop, lazily evaluated */
     let markerOffset = 0
 
-    const { resizeRef, contentRect } = useResizeObserver()
+    const {resizeRef, contentRect} = useResizeObserver()
 
     watchEffect(() => {
         resizeRef.value = containerRef.value
@@ -43,8 +43,8 @@ export function useVirtual<T> (props: IVirtualProps, items: Ref<readonly T[]>) {
         return !!(containerRef.value && markerRef.value && viewportHeight.value && itemHeight.value)
     })
 
-    let sizes = Array.from<number | null>({ length: items.value.length })
-    let offsets = Array.from<number>({ length: items.value.length })
+    let sizes = Array.from<number | null>({length: items.value.length})
+    let offsets = Array.from<number>({length: items.value.length})
     const updateTime = shallowRef(0)
     let targetScrollIndex = -1
 
@@ -213,11 +213,11 @@ export function useVirtual<T> (props: IVirtualProps, items: Ref<readonly T[]>) {
     })
 
     watch(items, () => {
-        sizes = Array.from({ length: items.value.length })
-        offsets = Array.from({ length: items.value.length })
+        sizes = Array.from({length: items.value.length})
+        offsets = Array.from({length: items.value.length})
         updateOffsets.immediate()
         calculateVisibleItems()
-    }, { deep: true })
+    }, {deep: true})
 
     return {
         containerRef,

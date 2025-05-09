@@ -1,12 +1,12 @@
 import { useVModel } from "@foxy/composables"
 
-import { ILocaleI18n, ILocaleInstance, ILocaleMessages, ILocaleProps } from "@foxy/interfaces"
+import type { ILocaleI18n, ILocaleInstance, ILocaleMessages, ILocaleProps } from "@foxy/interfaces"
 
 import { ComputedRef, Ref, watch } from "vue"
 
 import { useI18n } from "vue-i18n"
 
-export function createVueI18nAdapter ({ i18n, useI18n }: ILocaleI18n): ILocaleInstance {
+export function createVueI18nAdapter ({i18n, useI18n}: ILocaleI18n): ILocaleInstance {
     const current = i18n.global.locale
     const fallback = i18n.global.fallbackLocale as Ref<string>
     const messages = i18n.global.messages as ComputedRef<ILocaleMessages>
@@ -18,7 +18,7 @@ export function createVueI18nAdapter ({ i18n, useI18n }: ILocaleI18n): ILocaleIn
         messages,
         t: (key: string, ...params: unknown[]) => i18n.global.t(key, params),
         n: i18n.global.n,
-        provide: createProvideFunction({ current, fallback, messages, useI18n }),
+        provide: createProvideFunction({current, fallback, messages, useI18n})
     }
 }
 
@@ -39,7 +39,7 @@ export function createProvideFunction (data: {
             messages: messages.value as unknown as Record<string, any>,
             useScope: 'local',
             legacy: false,
-            inheritLocale: false,
+            inheritLocale: false
         })
 
         watch(current, v => {
@@ -53,12 +53,12 @@ export function createProvideFunction (data: {
             messages,
             t: (key: string, ...params: unknown[]) => i18n.t(key, params),
             n: i18n.n,
-            provide: createProvideFunction({ current, fallback, messages, useI18n: data.useI18n }),
+            provide: createProvideFunction({current, fallback, messages, useI18n: data.useI18n})
         }
     }
 }
 
-export function useProvided <T> (props: any, prop: string, provided: Ref<T>): Ref<T> {
+export function useProvided<T> (props: any, prop: string, provided: Ref<T>): Ref<T> {
     const internal = useVModel(props, prop)
 
     internal.value = props[prop] ?? provided.value
