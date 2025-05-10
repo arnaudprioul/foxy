@@ -1,6 +1,6 @@
 import type { IInternalItem } from '@foxy/interfaces'
 
-import { TFilterFunction, TFilterKeyFunctions, TFilterKeys, TFilterMatch, TFilterMode } from '@foxy/types'
+import type { TFilterFunction, TFilterKeyFunctions, TFilterKeys, TFilterMatch, TFilterMode } from '@foxy/types'
 
 import { getPropertyFromItem, wrapInArray } from '@foxy/utils'
 

@@ -1,7 +1,7 @@
 import { useVModel } from '@foxy/composables'
 import { FOXY_DATA_TABLE_GROUP_KEY } from '@foxy/consts'
 
-import {
+import type {
     IDataTableGroup,
     IDataTableGroupableItem,
     IDataTableGroupProps,

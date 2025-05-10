@@ -1,6 +1,6 @@
 import { DELAY_RIPPLE, FOXY_RIPPLE_STOP_KEY, KEYCODES, RIPPLES } from '@foxy/consts'
 
-import { IRippleDirectiveBinding, IRippleHtmlElement, IRippleOptions } from '@foxy/interfaces'
+import type { IRippleDirectiveBinding, IRippleHtmlElement, IRippleOptions } from '@foxy/interfaces'
 
 import type { TRippleEvent } from '@foxy/types'
 

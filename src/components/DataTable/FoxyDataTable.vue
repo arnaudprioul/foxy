@@ -142,7 +142,7 @@
 
 	import { DENSITY } from '@foxy/enums'
 
-	import {
+	import type {
 		IDataTableGroup,
 		IDataTableGroupableItem,
 		IDataTableProps,

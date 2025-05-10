@@ -3,7 +3,7 @@ import { useVModel } from '@foxy/composables'
 import { FOXY_DATA_TABLE_SORT_KEY } from '@foxy/consts'
 import { SORT_DIRECTION } from '@foxy/enums'
 
-import {
+import type {
     IDataTableProvideSort,
     IDataTableSortItem,
     IDataTableSortProps,

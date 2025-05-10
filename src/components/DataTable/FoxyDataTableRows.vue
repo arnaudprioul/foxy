@@ -73,7 +73,7 @@
 
 	import { useDisplay, useExpanded, useGroupBy, useHeaders, useLocale, useProps, useSelection } from '@foxy/composables'
 
-	import {
+	import type {
 		IDataTableGroup,
 		IDataTableGroupHeaderSlot,
 		IDataTableItemBaseSlot,

@@ -104,7 +104,7 @@
 
 	import type { IColorPickerProps } from "@foxy/interfaces"
 
-	import {
+	import type {
 		TColorModes,
 		TFoxyColorPickerCanvas,
 		TFoxyColorPickerEdit,

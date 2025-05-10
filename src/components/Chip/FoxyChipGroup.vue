@@ -24,7 +24,7 @@
 
 	import { DIRECTION, MDI_ICONS } from '@foxy/enums'
 
-	import { IChipGroupProps } from '@foxy/interfaces'
+	import type { IChipGroupProps } from '@foxy/interfaces'
 
 	import type { TFoxySlideGroup } from "@foxy/types"
 

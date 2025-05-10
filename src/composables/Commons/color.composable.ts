@@ -1,4 +1,4 @@
-import { IColorProps } from "@foxy/interfaces"
+import type { IColorProps } from "@foxy/interfaces"
 import type { TColor } from '@foxy/types'
 
 import { getForeground, isCssColor, isParsableColor, parseColor } from '@foxy/utils'

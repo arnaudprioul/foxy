@@ -1,6 +1,6 @@
 import { BREAKPOINTS } from '@foxy/enums'
 
-import { IDisplayInstance, IDisplayOptions } from '@foxy/interfaces'
+import type { IDisplayInstance, IDisplayOptions } from '@foxy/interfaces'
 
 import type { TBreakpoint } from '@foxy/types'
 

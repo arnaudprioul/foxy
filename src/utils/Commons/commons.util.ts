@@ -2,7 +2,7 @@ import { IN_BROWSER, ON_REGEX } from '@foxy/consts'
 
 import { FOCUS_LOCATION } from '@foxy/enums'
 
-import {
+import type {
     TClientPosition,
     TFocusLocation,
     TNotAUnion,

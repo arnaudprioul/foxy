@@ -1,6 +1,6 @@
 import { useSteps } from '@foxy/composables'
 
-import {
+import type {
     IBorderProps,
     IColorProps,
     ICommonsComponentProps,

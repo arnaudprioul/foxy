@@ -1,4 +1,4 @@
-import { IStackProvide } from '@foxy/interfaces'
+import type { IStackProvide } from '@foxy/interfaces'
 
 import type { InjectionKey } from 'vue'
 import { reactive } from 'vue'

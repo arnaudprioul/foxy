@@ -116,7 +116,7 @@
 
 	import type { IDatePickerProps } from "@foxy/interfaces"
 
-	import {
+	import type {
 		TFoxyDatePickerControls,
 		TFoxyDatePickerHeader,
 		TFoxyDatePickerMonth,
