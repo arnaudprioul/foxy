@@ -1,10 +1,15 @@
 import vue from "@vitejs/plugin-vue"
+import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from "vitest/config"
 
 export default defineConfig({
-    plugins: [vue()],
+    plugins: [
+        vue(),
+        tsconfigPaths()
+    ],
     test: {
         include: ['**/*.spec.ts'],
-        globals: true
-    },
+        globals: true,
+        environment: 'jsdom'
+    }
 })

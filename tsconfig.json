@@ -32,10 +32,10 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@foxy": [
-        "./src"
+        "src"
       ],
       "@foxy/*": [
-        "./src/*"
+        "src/*"
       ]
     },
     "types": [
@@ -52,7 +52,6 @@
     ".history",
     "dist/**/*",
     "src/**/*.cy.ts",
-    "src/**/*.spec.ts",
     "node_modules"
   ],
   "references": [

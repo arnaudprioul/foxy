@@ -32,8 +32,6 @@ export function useBorder (props: IBorderProps | Ref<boolean | number | string |
 
                     if (key === 'color' && isEmpty(match[key])) values = ['currentColor']
 
-                    console.log(formatBorderStylesVar(values, key))
-
                     styles.push(...formatBorderStylesVar(values, key))
                 })
             }

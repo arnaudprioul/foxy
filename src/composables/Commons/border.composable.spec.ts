@@ -1,34 +1,40 @@
 // Composables
-import { mount } from "@vue/test-utils"
+import { useBorder } from '@foxy/composables'
 
 // Utilities
-import { keys } from "ts-transformer-keys"
-import type { IBorderProps } from '../../interfaces'
-import { useBorder } from './border.composable'
+import type { IBorderProps } from '@foxy/interfaces'
 
 describe('border.ts', () => {
-    it('should create border props', () => {
-        const wrapper = mount({
-            props: keys<IBorderProps>,
-            template: '<div/>'
-        }, {
-            propsData: {border: true}
-        })
-
-        expect(wrapper.props().border).toBeDefined()
-    })
-
     it.each([
         // Invalid or empty
-        [{}, []],
-        [{border: null}, []],
-        [{border: 1}, []],
-        // Border only
-        [{border: true}, ['test--border']],
-        [{border: ''}, ['test--border']]
-    ] as IBorderProps[])('should have the correct class using %s', (props: IBorderProps, expected: any) => {
-        const {borderClasses} = useBorder(props as IBorderProps, 'test')
+        [{}, {class: [], styles: []}],
+        [{border: null}, {class: [], styles: []}],
+        // Border number triggering parsing style
+        [{border: 1}, {class: [], styles: ['border-width: 1px']}],
+        // Border string triggering parsing style
+        [{border: '4px'}, {
+            class: [],
+            styles: ['border-width: 4px', 'border-style: solid', 'border-color: currentColor']
+        }],
+        [{border: '8px dashed'}, {
+            class: [],
+            styles: ['border-width: 8px', 'border-style: dashed', 'border-color: currentColor']
+        }],
+        [{border: '16px #6fb8f2'}, {
+            class: [],
+            styles: ['border-width: 16px', 'border-style: solid', 'border-color: #6fb8f2']
+        }],
+        [{border: '0 10px 0 0'}, {
+            class: [],
+            styles: ['border-block-start-width: 0', 'border-block-end-width: 0', 'border-inline-start-width: 10px', 'border-inline-end-width: 0', 'border-style: solid', 'border-color: currentColor']
+        }],
+        // Border Boolean triggering class
+        [{border: true}, {class: ['test--bordered'], styles: []}],
+        [{border: ''}, {class: ['test--bordered'], styles: []}]
+    ] as IBorderProps[])('should have the correct classes & styles using %s', (props: IBorderProps, expected: any) => {
+        const {borderClasses, borderStyles} = useBorder(props as IBorderProps, 'test')
 
-        expect(borderClasses.value).toEqual(expected)
+        expect(borderStyles.value).toEqual(expected.styles)
+        expect(borderClasses.value).toEqual(expected.class)
     })
 })
