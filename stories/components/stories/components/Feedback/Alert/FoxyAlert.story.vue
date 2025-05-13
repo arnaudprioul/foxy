@@ -133,7 +133,18 @@
 			</template>
 
 			<template #controls="{state}">
-
+				<hst-select
+						v-model="state.border"
+						:options="[
+				 { value: true, label: 'Bordered' },
+				 { value: false, label: 'No Bordered' },
+				 { value: '4px', label: '4px Border Solid Current Color' },
+				 { value: '8px dashed', label: '8px Border Dashed' },
+				 { value: '16px #6fb8f2', label: '16px Border Light Blue' },
+				 { value: '0 10px 0 0', label: '10px Border left Solid Current Color' },
+		 ]"
+						title="border"
+				/>
 			</template>
 		</Variant>
 
@@ -153,7 +164,14 @@
 			<template #controls="{state}">
 				<hst-select
 						v-model="state.padding"
-						:options="[0, 2, 4, 8, 16]"
+						:options="[
+				 { value: true, label: 'Padding' },
+				 { value: false, label: 'No Padding' },
+				 { value: '4px', label: '4px Padding' },
+				 { value: '8px', label: '8px Padding' },
+				 { value: '16px', label: '16px Padding' },
+				 { value: '0 10px 0 0', label: '10px Padding left' },
+		 ]"
 						title="Padding"
 				/>
 			</template>
@@ -175,7 +193,14 @@
 			<template #controls="{state}">
 				<hst-select
 						v-model="state.margin"
-						:options="[0, 2, 4, 8, 16]"
+						:options="[
+				 { value: true, label: 'Margin' },
+				 { value: false, label: 'No Margin' },
+				 { value: '4px', label: '4px Margin' },
+				 { value: '8px', label: '8px Margin' },
+				 { value: '16px', label: '16px Margin' },
+				 { value: '0 10px 0 0', label: '10px Margin left' },
+		 ]"
 						title="Margin"
 				/>
 			</template>

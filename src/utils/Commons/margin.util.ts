@@ -7,8 +7,8 @@ export function formatMarginStylesVar (values: Array<string>) {
             break
         case 4 :
             styles.push(`margin-block-start: ${values[0]}`)
-            styles.push(`margin-block-end: ${values[1]}`)
-            styles.push(`margin-inline-start: ${values[2]}`)
+            styles.push(`margin-block-end: ${values[2]}`)
+            styles.push(`margin-inline-start: ${values[1]}`)
             styles.push(`margin-inline-end: ${values[3]}`)
             break
     }

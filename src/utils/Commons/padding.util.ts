@@ -11,9 +11,9 @@ export function formatPaddingStylesVar (values: Array<string>) {
             break
         case 4 :
             styles.push(`padding-block-start: ${values[0]}`)
-            styles.push(`padding-block-end: ${values[1]}`)
+            styles.push(`padding-block-end: ${values[2]}`)
 
-            styles.push(`padding-inline-start: ${values[2]}`)
+            styles.push(`padding-inline-start: ${values[1]}`)
             styles.push(`padding-inline-end: ${values[3]}`)
             break
     }
