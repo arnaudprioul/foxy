@@ -1,4 +1,4 @@
-export enum CONTEXTUAL_TYPE {
+export enum STATUS {
     SUCCESS = 'success',
     INFO = 'info',
     WARNING = 'warning',
