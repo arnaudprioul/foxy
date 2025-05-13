@@ -1,4 +1,4 @@
-import { getCurrentScope, onScopeDispose, Ref, unref } from 'vue'
+import { Ref, unref } from 'vue'
 
 export function resolveUnref (r: Ref | (() => unknown)) {
     return typeof r === 'function' ? r() : unref(r)
@@ -10,14 +10,4 @@ export function unrefElement (elRef: Ref) {
     const plain = resolveUnref(elRef)
 
     return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain
-}
-
-export function tryOnScopeDispose (fn: () => void) {
-    if (getCurrentScope()) {
-        onScopeDispose(fn)
-
-        return true
-    }
-
-    return false
 }

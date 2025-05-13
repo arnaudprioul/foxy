@@ -8,5 +8,18 @@ export function usePosition (props: IPositionProps, name = getCurrentInstanceNam
         return props.position ? `${name}--${props.position}` : undefined
     })
 
-    return {positionClasses}
+    const positionStyles = computed(() => {
+        const styles: Array<string> = []
+        const layers = ['top', 'bottom', 'left', 'right']
+
+        layers.forEach((layer) => {
+            if (props[layer as keyof IPositionProps]) {
+                styles.push(`${layer}: ${props[layer as keyof IPositionProps]}`)
+            }
+        })
+
+        return styles
+    })
+
+    return {positionClasses, positionStyles}
 }

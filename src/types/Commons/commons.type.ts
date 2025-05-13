@@ -36,3 +36,8 @@ export type TWrapInArrayResult<T> = T extends Readonly<Array<any>>
     : Array<NonNullable<T>>
 
 export type TValueOf<T> = T[keyof T];
+
+/**
+ * Void function
+ */
+export type TFn = () => void

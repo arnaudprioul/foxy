@@ -1,8 +1,9 @@
 <template>
 	<component
 			:is="tag"
+			:id="id"
 			:class="alertClasses"
-			:style="alertStyles"
+			:data-elevation="elevation"
 			role="alert"
 			@mouseenter="handleMouseenter"
 			@mouseleave="handleMouseleave"
@@ -94,12 +95,13 @@
 		useStatus,
 		useVModel
 	} from '@foxy/composables'
+	import { useStyle } from "@foxy/composables/Commons/style.composable.ts"
 
 	import { DENSITY, MDI_ICONS } from '@foxy/enums'
 
 	import type { IAlertProps } from '@foxy/interfaces'
 
-	import { computed, StyleValue, useSlots } from 'vue'
+	import { computed, useSlots } from 'vue'
 
 	const props = withDefaults(defineProps<IAlertProps>(), {
 		tag: 'div',
@@ -124,7 +126,7 @@
 	const {dimensionStyles} = useDimension(props)
 	const {elevationClasses} = useElevation(props)
 	const {locationStyles} = useLocation(props)
-	const {positionClasses} = usePosition(props)
+	const {positionClasses, positionStyles} = usePosition(props)
 	const {roundedClasses, roundedStyles} = useRounded(props)
 	const {icon, statusClasses} = useStatus(props)
 	const slots = useSlots()
@@ -169,8 +171,9 @@
 			paddingStyles.value,
 			marginStyles.value,
 			roundedStyles.value,
+			positionStyles.value,
 			props.style
-		] as StyleValue
+		]
 	})
 	const alertClasses = computed(() => {
 		return [
@@ -191,10 +194,17 @@
 		]
 	})
 
+	const {id, css, load, isLoaded, unload} = useStyle(alertStyles)
+
 	// EXPOSE
 
 	defineExpose({
-		filterProps
+		filterProps,
+		css,
+		id,
+		load,
+		unload,
+		isLoaded
 	})
 </script>
 
@@ -209,15 +219,14 @@
 		flex: 1 1;
 		grid-template-areas: "prepend content append close" ". content . .";
 		grid-template-columns: max-content auto max-content max-content;
-		position: relative;
-		padding: 16px;
+		position: static;
+		padding: var(--foxy-alert---padding);
 		overflow: hidden;
 		border-color: var(--foxy-alert---border-color);
-		border-radius: 4px;
+		border-radius: var(--foxy-alert---border-radius);
 
 		background-color: var(--foxy-alert---background-color);
 		color: var(--foxy-alert---color);
-		box-shadow: var(--foxy-alert---box-shadow);
 
 		&--absolute {
 			position: absolute;
@@ -231,12 +240,20 @@
 			position: sticky;
 		}
 
+		&--relative {
+			position: relative;
+		}
+
 		&--prominent {
 			grid-template-areas: "prepend content append close" "prepend content . .";
 
 			#{$this}__prepend {
 				align-self: center;
 			}
+		}
+
+		&--elevated {
+
 		}
 
 		&--bordered {
@@ -272,6 +289,10 @@
 					border-bottom-right-radius: 0;
 				}
 			}
+		}
+
+		&--rounded {
+			--foxy-alert---border-radius: 4px;
 		}
 
 		&--density-default {
@@ -383,7 +404,9 @@
 	:root {
 		--foxy-alert---border-color: transparent;
 		--foxy-alert---color: rgba(0, 0, 0, 0.87);
-		--foxy-alert---box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+		--foxy-alert---box-shadow: rgba(0, 0, 0, 1);
 		--foxy-alert---background-color: rgb(255, 255, 255);
+		--foxy-alert---padding: 16px;
+		--foxy-alert---border-radius: 0;
 	}
 </style>

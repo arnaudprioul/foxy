@@ -51,3 +51,7 @@ export interface IFilterPropsOptions<PropsOptions extends {
         U extends Extract<keyof T, string>
     > (properties: T, excludes?: string[]): Partial<Pick<T, U>>
 }
+
+export interface IConfigurableDocument {
+    document?: Document
+}

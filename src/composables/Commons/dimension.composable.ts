@@ -12,7 +12,7 @@ export function useDimension (props: IDimensionProps) {
 
         DIMENSIONS_ARRAY.forEach((dimension) => {
             if (props[dimension]) {
-                dimensions.push(`${toKebabCase(dimension)}: ${convertToUnit(props[dimension])};`)
+                dimensions.push(`${toKebabCase(dimension)}: ${convertToUnit(props[dimension])}`)
             }
         })
 

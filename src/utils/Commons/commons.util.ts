@@ -2,14 +2,16 @@ import { IN_BROWSER, ON_REGEX } from '@foxy/consts'
 
 import { FOCUS_LOCATION } from '@foxy/enums'
 
-import type {
+import {
     TClientPosition,
+    TFn,
     TFocusLocation,
     TNotAUnion,
     TSelectItemKey,
     TTemplateRef,
     TWrapInArrayResult
 } from '@foxy/types'
+import { getLifeCycleTarget } from "@foxy/utils"
 
 import {
     capitalize,
@@ -18,8 +20,12 @@ import {
     computed,
     ComputedGetter,
     Fragment,
+    getCurrentScope,
     InjectionKey,
     MaybeRef,
+    nextTick,
+    onMounted,
+    onScopeDispose,
     reactive,
     shallowRef,
     ToRefs,
@@ -517,4 +523,35 @@ export function getEventCoordinates (e: MouseEvent | TouchEvent) {
     }
 
     return {clientX: e.clientX, clientY: e.clientY}
+}
+
+/**
+ * Call onMounted() if it's inside a component lifecycle, if not, just call the function
+ *
+ * @param fn
+ * @param sync if set to false, it will run in the nextTick() of Vue
+ * @param target
+ */
+export function tryOnMounted (fn: TFn, sync = true, target?: any) {
+    const instance = getLifeCycleTarget(target)
+    if (instance)
+        onMounted(fn, target)
+    else if (sync)
+        fn()
+    else
+        nextTick(fn)
+}
+
+/**
+ * Call onScopeDispose() if it's inside an effect scope lifecycle, if not, do nothing
+ *
+ * @param fn
+ */
+export function tryOnScopeDispose (fn: TFn) {
+    if (getCurrentScope()) {
+        onScopeDispose(fn)
+
+        return true
+    }
+    return false
 }

@@ -2,6 +2,10 @@ import { toKebabCase } from '@foxy/utils'
 import type { ComponentInternalInstance } from 'vue'
 import { getCurrentInstance as _getCurrentInstance } from 'vue'
 
+export function getLifeCycleTarget (target?: any) {
+    return target || _getCurrentInstance()
+}
+
 export function getCurrentInstance (name: string, message?: string) {
     const vm = _getCurrentInstance()
 
@@ -12,7 +16,7 @@ export function getCurrentInstance (name: string, message?: string) {
     return vm
 }
 
-export function getCurrentInstanceName (name = 'composables') {
+export function getCurrentInstanceName (name = 'composable') {
     const vm = getCurrentInstance(name).type
 
     return toKebabCase(vm?.aliasName || vm?.name || vm?.__name)

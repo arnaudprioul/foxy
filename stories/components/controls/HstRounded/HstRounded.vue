@@ -1,52 +1,34 @@
 <template>
-  <div>
-    <hst-checkbox
-        v-if="!props.tile"
-        v-model="rounded"
-        title="Rounded"
-        @update:model-value="handleRoundedChange"
-    />
-  </div>
+	<hst-select
+			v-model="rounded"
+			:options="[
+				 { value: true, label: 'Rounded' },
+				 { value: false, label: 'No Rounded' },
+				 { value: '50%', label: 'Half Rounded' },
+				 { value: '4px', label: '4px Rounded' },
+				 { value: '8px', label: '8px Rounded' },
+				 { value: '16px', label: '16px Rounded' },
+		 ]"
+			title="Rounded"
+	/>
 </template>
 
 <script
     lang="ts"
     setup
 >
-  import { ref, Ref } from 'vue'
+	import { useVModel } from "@foxy/composables"
 
-  const props = defineProps<{
+	const props = defineProps<{
     rounded?: boolean | number,
-    tile?: boolean,
     hideTile?: boolean
   }>()
 
   const emit = defineEmits(['update:rounded', 'update:tile'])
 
-  const rounded: Ref<boolean | string> = ref(false)
-  const tile: Ref<boolean> = ref(false)
-  const hideTile: Ref<boolean> = ref(false)
-
-  if (props.tile) {
-    tile.value = props.tile
-  }
-
-  if (props.hideTile) {
-    hideTile.value = props.hideTile
-  }
-
-  if (typeof props.rounded === 'boolean') {
-    rounded.value = Boolean(props.rounded)
-  }
+	const rounded = useVModel(props, 'rounded', 0)
 
   const handleRoundedChange = (value: boolean) => {
     emit('update:rounded', value)
-  }
-
-  const handleTileChange = (value: boolean) => {
-    rounded.value = value ? '0' : false
-
-    emit('update:rounded', value ? '0' : false)
-    emit('update:tile', value)
   }
 </script>

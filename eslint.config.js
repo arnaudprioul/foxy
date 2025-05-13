@@ -23,6 +23,7 @@ export default typescriptEslint.config(
 		},
 		rules: {
 			"@typescript-eslint/no-namespace": "off",
+			"@typescript-eslint/ban-ts-comment": "warn",
 			"@typescript-eslint/no-explicit-any": "off",
 			"@typescript-eslint/no-empty-object-type": ["error", {
 				"allowInterfaces": "with-single-extends"

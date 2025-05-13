@@ -2,7 +2,9 @@ import type { TEventProp } from '@foxy/types'
 
 import { PropType } from 'vue'
 
-export const IN_BROWSER = typeof window !== 'undefined'
+export const IN_BROWSER = typeof window !== 'undefined' && typeof document !== 'undefined'
+
+export const DEFAULT_DOCUMENT = /* #__PURE__ */ IN_BROWSER ? window.document : undefined
 
 export const EVENT_PROP = <T extends Array<any> = Array<any>> () => [Function as PropType<(e: Event, ...args: T) => void>, Array] as PropType<TEventProp<T>>
 
