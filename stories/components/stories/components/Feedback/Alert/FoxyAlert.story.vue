@@ -67,18 +67,7 @@
 			</template>
 
 			<template #controls="{state}">
-
-				<hst-select
-						v-model="state.status"
-						:options="[
-                {value: '', label: 'Default'},
-                {value: 'success', label: 'Success'},
-                {value: 'info', label: 'Info'},
-                {value: 'warning', label: 'Warning'},
-                {value: 'error', label: 'Error'},
-            ]"
-						title="Status"
-				/>
+				<hst-status v-model="state.status"/>
 			</template>
 		</Variant>
 
@@ -96,26 +85,13 @@
 			</template>
 
 			<template #controls="{state}">
-				<hst-color-select
-						v-model="state.color"
-						title="Text Color"
+				<hst-color
+						v-model:bg-color="state.bgColor"
+						v-model:color="state.color"
+						v-model:hover="state.hover"
+						v-model:hover-bg-color="state.hoverBgColor"
+						v-model:hover-color="state.hoverColor"
 				/>
-
-				<hst-color-select
-						v-model="state.bgColor"
-						title="Background Color"
-				/>
-
-				<hst-color-select
-						v-model="state.hoverColor"
-						title="Text Color on Hover"
-				/>
-
-				<hst-color-select
-						v-model="state.hoverBgColor"
-						title="Background Color on Hover"
-				/>
-
 			</template>
 		</Variant>
 
@@ -133,18 +109,7 @@
 			</template>
 
 			<template #controls="{state}">
-				<hst-select
-						v-model="state.border"
-						:options="[
-				 { value: true, label: 'Bordered' },
-				 { value: false, label: 'No Bordered' },
-				 { value: '4px', label: '4px Border Solid Current Color' },
-				 { value: '8px dashed', label: '8px Border Dashed' },
-				 { value: '16px #6fb8f2', label: '16px Border Light Blue' },
-				 { value: '0 10px 0 0', label: '10px Border left Solid Current Color' },
-		 ]"
-						title="border"
-				/>
+				<hst-border v-model="state.border"/>
 			</template>
 		</Variant>
 
@@ -162,18 +127,7 @@
 			</template>
 
 			<template #controls="{state}">
-				<hst-select
-						v-model="state.padding"
-						:options="[
-				 { value: true, label: 'Padding' },
-				 { value: false, label: 'No Padding' },
-				 { value: '4px', label: '4px Padding' },
-				 { value: '8px', label: '8px Padding' },
-				 { value: '16px', label: '16px Padding' },
-				 { value: '0 10px 0 0', label: '10px Padding left' },
-		 ]"
-						title="Padding"
-				/>
+				<hst-padding v-model="state.padding"/>
 			</template>
 		</Variant>
 
@@ -191,18 +145,7 @@
 			</template>
 
 			<template #controls="{state}">
-				<hst-select
-						v-model="state.margin"
-						:options="[
-				 { value: true, label: 'Margin' },
-				 { value: false, label: 'No Margin' },
-				 { value: '4px', label: '4px Margin' },
-				 { value: '8px', label: '8px Margin' },
-				 { value: '16px', label: '16px Margin' },
-				 { value: '0 10px 0 0', label: '10px Margin left' },
-		 ]"
-						title="Margin"
-				/>
+				<hst-margin v-model="state.margin"/>
 			</template>
 		</Variant>
 
@@ -220,29 +163,13 @@
 			</template>
 
 			<template #controls="{state}">
-				<hst-text
-						v-model="state.width"
-						title="Width"
-				/>
-				<hst-text
-						v-model="state.minWidth"
-						title="Min Width"
-				/>
-				<hst-text
-						v-model="state.maxWidth"
-						title="Max Width"
-				/>
-				<hst-text
-						v-model="state.height"
-						title="Height"
-				/>
-				<hst-text
-						v-model="state.minHeight"
-						title="Min Height"
-				/>
-				<hst-text
-						v-model="state.maxHeight"
-						title="Max Height"
+				<hst-dimension
+						v-model:height="state.height"
+						v-model:max-height="state.maxHeight"
+						v-model:max-width="state.maxWidth"
+						v-model:min-height="state.minHeight"
+						v-model:min-width="state.minWidth"
+						v-model:width="state.width"
 				/>
 			</template>
 		</Variant>
@@ -309,34 +236,12 @@
 			</template>
 
 			<template #controls="{state}">
-				<hst-select
-						v-model="state.position"
-						:options="['fixed', 'absolute', 'sticky', 'relative', 'default']"
-						title="Position"
-				/>
-
-				<hst-text
-						v-if="['fixed', 'absolute', 'relative'].includes(state.position)"
-						v-model="state.top"
-						title="Top"
-				/>
-
-				<hst-text
-						v-if="['fixed', 'absolute', 'relative'].includes(state.position)"
-						v-model="state.bottom"
-						title="Bottom"
-				/>
-
-				<hst-text
-						v-if="['fixed', 'absolute', 'relative'].includes(state.position)"
-						v-model="state.left"
-						title="Left"
-				/>
-
-				<hst-text
-						v-if="['fixed', 'absolute', 'relative'].includes(state.position)"
-						v-model="state.right"
-						title="Right"
+				<hst-position
+						v-model:bottom="state.bottom"
+						v-model:left="state.left"
+						v-model:position="state.position"
+						v-model:right="state.right"
+						v-model:top="state.top"
 				/>
 			</template>
 		</Variant>
@@ -354,7 +259,19 @@
 
 	import type { IAlertProps } from "@foxy/interfaces"
 
-	import { HstDensity, HstElevation, HstIcon, HstRounded } from '@stories/components/controls'
+	import {
+		HstBorder,
+		HstColor,
+		HstDensity,
+		HstDimension,
+		HstElevation,
+		HstIcon,
+		HstMargin,
+		HstPadding,
+		HstPosition,
+		HstRounded,
+		HstStatus
+	} from '@stories/components/controls'
 
 	import { reactive } from 'vue'
 
@@ -368,6 +285,7 @@
 		return state
 	}
 </script>
+
 <docs lang="md">
 
 </docs>
