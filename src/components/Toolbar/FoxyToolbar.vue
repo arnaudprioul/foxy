@@ -1,8 +1,8 @@
 <template>
 	<component
 			:is="tag"
-			:class="barClasses"
 			:id="id"
+			:class="barClasses"
 	>
 		<slot name="default">
 			<div class="foxy-toolbar__wrapper">
