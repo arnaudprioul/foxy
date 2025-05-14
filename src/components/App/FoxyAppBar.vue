@@ -1,58 +1,57 @@
 <template>
 	<foxy-toolbar
 			ref="foxyToolbarRef"
-			:class="toolbarClasses"
+			:class="appBarClasses"
 			:collapse="isCollapsed"
 			:flat="isFlat"
-			:style="toolbarStyles"
+			:style="appBarStyles"
 			v-bind="toolbarProps"
 	>
 		<template
 				v-if="hasAppend"
 				#append
 		>
-			<slot name="append"></slot>
+			<slot name="append"/>
 		</template>
 
 		<template
 				v-if="hasPrepend"
 				#prepend
 		>
-			<slot name="prepend">
-				<div
-						v-if="hasImage"
-						class="foxy-bar__img"
-				>
-					<slot name="title">
-						<foxy-img v-bind="image"/>
-					</slot>
-				</div>
-				<div
-						v-if="hasTitle"
-						class="foxy-bar__title"
-				>
-					<slot name="title">
-						<foxy-title
-								:text="title"
-								class="foxy-bar__title"
-						/>
-					</slot>
-				</div>
-			</slot>
+			<div
+					v-if="hasImage"
+					class="foxy-bar__img"
+			>
+				<slot name="img">
+					<foxy-img v-bind="image"/>
+				</slot>
+			</div>
+			<slot name="prepend"/>
 		</template>
 
 		<template
 				v-if="hasContent"
 				#content
 		>
-			<slot name="content"></slot>
+			<div
+					v-if="hasTitle"
+					class="foxy-bar__title"
+			>
+				<slot name="title">
+					<foxy-title
+							:text="title"
+							class="foxy-bar__title"
+					/>
+				</slot>
+			</div>
+			<slot name="content"/>
 		</template>
 
 		<template
 				v-if="slots.default"
 				#default
 		>
-			<slot name="default"></slot>
+			<slot name="default"/>
 		</template>
 	</foxy-toolbar>
 </template>
@@ -77,7 +76,6 @@
 
 	const props = withDefaults(defineProps<IAppBarProps>(), {
 		tag: 'header',
-		height: 64,
 		density: DENSITY.DEFAULT,
 		scrollThreshold: 300,
 		location: BLOCK.TOP,
@@ -190,14 +188,14 @@
 
 	// CLASS & STYLES
 
-	const toolbarStyles = computed(() => {
+	const appBarStyles = computed(() => {
 		return [
 			layoutItemStyles.value,
 			ssrBootStyles.value,
 			props.style
 		] as StyleValue
 	})
-	const toolbarClasses = computed(() => {
+	const appBarClasses = computed(() => {
 		return [
 			'foxy-app-bar',
 			`foxy-app-bar--${props.location}`,
@@ -210,4 +208,5 @@
 	defineExpose(forwardRefs({
 		filterProps
 	}, foxyToolbarRef))
+
 </script>

@@ -2,7 +2,7 @@
 	<component
 			:is="tag"
 			:class="barClasses"
-			:style="barStyles"
+			:id="id"
 	>
 		<slot name="default">
 			<div class="foxy-toolbar__wrapper">
@@ -37,25 +37,25 @@
 		useBorder,
 		useBothColor,
 		useDensity,
+		useDimension,
 		useElevation,
 		useMargin,
 		usePadding,
+		usePosition,
 		useProps,
 		useRounded,
-		useRtl
+		useRtl,
+		useStyle
 	} from '@foxy/composables'
 
 	import { DENSITY } from '@foxy/enums'
 
 	import type { IToolbarProps } from '@foxy/interfaces'
 
-	import { convertToUnit } from '@foxy/utils'
-
-	import { computed, StyleValue, toRef, useSlots } from 'vue'
+	import { computed, toRef, useSlots } from 'vue'
 
 	const props = withDefaults(defineProps<IToolbarProps>(), {
 		tag: 'header',
-		height: 64,
 		density: DENSITY.DEFAULT,
 		modelValue: true
 	})
@@ -71,6 +71,8 @@
 	const {paddingClasses, paddingStyles} = usePadding(props)
 	const {marginClasses, marginStyles} = useMargin(props)
 	const {densityClasses} = useDensity(props)
+	const {dimensionStyles} = useDimension(props)
+	const {positionStyles, positionClasses} = usePosition(props)
 
 	const slots = useSlots()
 
@@ -93,18 +95,18 @@
 			borderStyles.value,
 			paddingStyles.value,
 			marginStyles.value,
-			`--foxy-toolbar---height: ${convertToUnit(props.height)}`,
+			positionStyles.value,
+			dimensionStyles.value,
 			props.style
-		] as StyleValue
+		]
 	})
 	const barClasses = computed(() => {
 		return [
 			'foxy-toolbar',
 			{
-				'foxy-toolbar---absolute': props.absolute,
-				'foxy-toolbar---collapse': props.collapse,
-				'foxy-toolbar---flat': props.flat,
-				'foxy-toolbar---floating': props.floating
+				'foxy-toolbar--collapse': props.collapse,
+				'foxy-toolbar--flat': props.flat,
+				'foxy-toolbar--floating': props.floating
 			},
 			borderClasses.value,
 			paddingClasses.value,
@@ -113,16 +115,23 @@
 			elevationClasses.value,
 			roundedClasses.value,
 			rtlClasses.value,
+			positionClasses.value,
 			props.class
 		]
 	})
 
+	const {id, css, load, isLoaded, unload} = useStyle(barStyles)
+
 	// EXPOSE
 
 	defineExpose({
-		filterProps
+		filterProps,
+		css,
+		id,
+		load,
+		unload,
+		isLoaded
 	})
-
 </script>
 
 <style
@@ -139,10 +148,10 @@
 
 		overflow: var(--foxy-toolbar---overflow);
 
-		position: var(--foxy-layout---position, var(--foxy-toolbar---position));
-		z-index: var(--foxy-layout---zIndex, 1000);
+		position: var(--foxy-toolbar---position);
+		z-index: var(--foxy-toolbar---zIndex);
 
-		transform: var(--foxy-layout---transform);
+		transform: var(--foxy-toolbar---transform);
 		transition-duration: var(--foxy-toolbar---transition-duration);
 		transition-property: var(--foxy-toolbar---transition-property);
 		transition-timing-function: var(--foxy-toolbar---transition-timing-function);
@@ -167,6 +176,14 @@
 
 		&--absolute {
 			--foxy-toolbar---position: absolute;
+		}
+
+		&--fixed {
+			--foxy-toolbar---position: fixed;
+		}
+
+		&--sticky {
+			--foxy-toolbar---position: sticky;
 		}
 
 		&--collapse {
@@ -281,6 +298,7 @@
 
 		--foxy-toolbar---max-width: 100%;
 		--foxy-toolbar---width: 100%;
+		--foxy-toolbar---height: 64px;
 
 		--foxy-toolbar---box-sizing: border-box;
 
@@ -288,12 +306,14 @@
 
 		--foxy-toolbar---overflow: hidden;
 
+		--foxy-toolbar---zIndex: 1000;
+
 		--foxy-toolbar---transition-duration: 0.2s;
 		--foxy-toolbar---transition-property: height, width, transform, max-width, left, right, top, bottom, box-shadow;
 		--foxy-toolbar---transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		--foxy-toolbar---color: rgba(0, 0, 0, 0.87);
-		--foxy-toolbar---box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+		--foxy-toolbar---box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
 		--foxy-toolbar---background: rgb(255, 255, 255);
 
 		--foxy-toolbar__wrapper---flex: none;

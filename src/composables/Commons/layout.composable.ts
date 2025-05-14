@@ -144,10 +144,10 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
 
     const mainStyles = computed<CSSProperties>(() => {
         return {
-            '--foxy-layout---position-left': convertToUnit(mainRect.value.left),
-            '--foxy-layout---position-right': convertToUnit(mainRect.value.right),
-            '--foxy-layout---position-top': convertToUnit(mainRect.value.top),
-            '--foxy-layout---position-bottom': convertToUnit(mainRect.value.bottom),
+            'left': convertToUnit(mainRect.value.left),
+            'right': convertToUnit(mainRect.value.right),
+            'top': convertToUnit(mainRect.value.top),
+            'bottom': convertToUnit(mainRect.value.bottom),
             ...(transitionsEnabled.value ? undefined : {transition: 'none'})
         }
     })
@@ -216,10 +216,10 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
                 const isOppositeVertical = position.value === 'bottom'
                 const styles = {
                     [position.value]: 0,
-                    '--foxy-layout---zIndex': zIndex.value,
-                    '--foxy-layout---transform': `translate${isHorizontal ? 'X' : 'Y'}(${(active.value ? 0 : -110) * (isOppositeHorizontal || isOppositeVertical ? -1 : 1)}%)`,
-                    '--foxy-layout---position': absolute.value || rootZIndex.value !== ROOT_ZINDEX ? 'absolute' : 'fixed',
-                    ...(transitionsEnabled.value ? undefined : {'--foxy-layout---transition': 'none'})
+                    'z-index': zIndex.value,
+                    'transform': `translate${isHorizontal ? 'X' : 'Y'}(${(active.value ? 0 : -110) * (isOppositeHorizontal || isOppositeVertical ? -1 : 1)}%)`,
+                    'position': absolute.value || rootZIndex.value !== ROOT_ZINDEX ? 'absolute' : 'fixed',
+                    ...(transitionsEnabled.value ? undefined : {'transition': 'none'})
                 } as const
 
                 if (!isMounted.value) return styles
@@ -252,7 +252,7 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
             })
 
             const layoutItemScrimStyles = computed<CSSProperties>(() => ({
-                '--foxy-layout---zIndex': zIndex.value - 1
+                'z-index': zIndex.value - 1
             }))
 
             return {layoutItemStyles, layoutItemScrimStyles, zIndex}
@@ -283,9 +283,9 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
 
     const layoutStyles = computed(() => {
         return {
-            '--foxy-layout---zIndex': parentLayout ? rootZIndex.value : undefined,
-            '--foxy-layout---position': parentLayout ? 'relative' as const : undefined,
-            '--foxy-layout---overflow': parentLayout ? 'hidden' : undefined
+            'z-index': parentLayout ? rootZIndex.value : undefined,
+            'position': parentLayout ? 'relative' as const : undefined,
+            'overflow': parentLayout ? 'hidden' : undefined
         } as StyleValue
     })
 

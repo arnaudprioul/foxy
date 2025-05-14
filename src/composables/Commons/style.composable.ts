@@ -87,8 +87,21 @@ export function useStyle (styles: ComputedRef, uniq = undefined, name = getCurre
     })
 
     const customCss = computed(() => {
-        // @ts-expect-error
-        return `#${id.value} {${Object.values(styles.value).flat().filter((value) => value.length > 0).join(';')}}`
+        const stylesArray = styles.value
+            .map((value: any) => {
+                if (typeof value === 'object' && !Array.isArray(value)) {
+                    return Object.keys(value)
+                        .filter((key) => typeof value[key] !== 'undefined')
+                        .map((key) => `${key}: ${value[key]}`)
+                }
+
+                return value
+            })
+            .flat()
+            // @ts-expect-error
+            .filter((value) => value.length > 0)
+
+        return `#${id.value} {${stylesArray.join(';')}}`
     })
 
     const {id: styleTagId, css, load, unload, isLoaded} = useStyleTag(customCss)
