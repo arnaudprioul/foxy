@@ -119,6 +119,7 @@
 		useBorder,
 		useBothColor,
 		useDensity,
+		useElevation,
 		useGroup,
 		useMargin,
 		usePadding,
@@ -148,6 +149,7 @@
 	const {paddingClasses, paddingStyles} = usePadding(props)
 	const {marginClasses, marginStyles} = useMargin(props)
 	const {densityClasses} = useDensity(props)
+	const {elevationClasses} = useElevation(props, toRef(props, 'flat'))
 	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
 	const {roundedClasses, roundedStyles} = useRounded(props)
 
@@ -177,6 +179,7 @@
 			marginClasses.value,
 			densityClasses.value,
 			roundedClasses.value,
+			elevationClasses.value,
 			props.class
 		]
 	})

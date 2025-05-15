@@ -65,7 +65,7 @@
 	const {rtlClasses} = useRtl()
 
 	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
-	const {elevationClasses} = useElevation(props)
+	const {elevationClasses} = useElevation(props, toRef(props, 'flat'))
 	const {roundedClasses, roundedStyles} = useRounded(props)
 	const {borderClasses, borderStyles} = useBorder(props)
 	const {paddingClasses, paddingStyles} = usePadding(props)

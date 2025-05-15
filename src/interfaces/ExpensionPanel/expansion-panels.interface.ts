@@ -3,6 +3,7 @@ import type {
     IColorProps,
     ICommonsComponentProps,
     IDensityProps,
+    IElevationProps,
     IExpansionPanelProps,
     IGroupProps,
     ILazyProps,
@@ -15,7 +16,7 @@ import type {
 
 import type { TIcon } from '@foxy/types'
 
-export interface IExpansionPanelsProps extends IColorProps, ITagProps, ICommonsComponentProps, IGroupProps, IDensityProps, IRoundedProps, IBorderProps, IPaddingProps, IMarginProps, ILazyProps, ILoaderProps {
+export interface IExpansionPanelsProps extends IColorProps, ITagProps, ICommonsComponentProps, IGroupProps, IDensityProps, IRoundedProps, IBorderProps, IPaddingProps, IMarginProps, ILazyProps, ILoaderProps, IElevationProps {
     flat?: boolean
     items?: Array<IExpansionPanelProps>
     accordion?: boolean

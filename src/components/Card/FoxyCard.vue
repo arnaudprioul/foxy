@@ -155,7 +155,7 @@
 
 	import type { ICardProps } from '@foxy/interfaces'
 
-	import { computed, StyleValue, useAttrs, useSlots } from 'vue'
+	import { computed, StyleValue, toRef, useAttrs, useSlots } from 'vue'
 
 	const props = withDefaults(defineProps<ICardProps>(), {ripple: true, density: DENSITY.DEFAULT, tag: 'div'})
 
@@ -168,7 +168,7 @@
 	const {borderClasses, borderStyles} = useBorder(props)
 	const {densityClasses} = useDensity(props)
 	const {dimensionStyles} = useDimension(props)
-	const {elevationClasses} = useElevation(props)
+	const {elevationClasses} = useElevation(props, toRef(props, 'flat'))
 	const {loaderClasses} = useLoader(props)
 	const {locationStyles} = useLocation(props)
 	const {positionClasses} = usePosition(props)

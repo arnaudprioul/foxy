@@ -144,7 +144,7 @@
 
 	import type { TFoxyProgressCircular, TIcon } from "@foxy/types"
 
-	import { computed, ref, shallowRef, StyleValue, useAttrs, useSlots } from 'vue'
+	import { computed, ref, shallowRef, StyleValue, toRef, useAttrs, useSlots } from 'vue'
 
 	const attrs = useAttrs()
 
@@ -162,7 +162,7 @@
 
 	const {densityClasses} = useDensity(props)
 	const {dimensionStyles} = useDimension(props)
-	const {elevationClasses} = useElevation(props)
+	const {elevationClasses} = useElevation(props, toRef(props, 'flat'))
 	const {loaderClasses} = useLoader(props)
 	const {locationStyles} = useLocation(props)
 	const {positionClasses} = usePosition(props)

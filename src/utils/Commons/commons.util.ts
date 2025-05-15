@@ -133,6 +133,10 @@ export function getDecimals (value: number) {
         : 0
 }
 
+export function roundTo (value: number, places = 0) {
+    return Math.round(value * 10 ** places) / 10 ** places
+}
+
 export function chunk (str: string, size = 1) {
     const chunked: Array<string> = []
     let index = 0
@@ -554,4 +558,18 @@ export function tryOnScopeDispose (fn: TFn) {
         return true
     }
     return false
+}
+
+export function normalize (
+    number: number,
+    currentScaleMin: number,
+    currentScaleMax: number,
+    newScaleMin = 0,
+    newScaleMax = 1
+) {
+    // FIrst, normalize the value between 0 and 1.
+    const standardNormalization = (number - currentScaleMin) / (currentScaleMax - currentScaleMin);
+
+    // Next, transpose that value to our desired scale.
+    return ((newScaleMax - newScaleMin) * standardNormalization + newScaleMin)
 }
