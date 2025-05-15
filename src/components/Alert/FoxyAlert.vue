@@ -101,7 +101,7 @@
 
 	import type { IAlertProps } from '@foxy/interfaces'
 
-	import { computed, useSlots } from 'vue'
+	import { computed, ref, toRef, useSlots } from 'vue'
 
 	const props = withDefaults(defineProps<IAlertProps>(), {
 		tag: 'div',
@@ -124,7 +124,7 @@
 	const {paddingClasses, paddingStyles} = usePadding(props)
 	const {marginClasses, marginStyles} = useMargin(props)
 	const {dimensionStyles} = useDimension(props)
-	const {elevationClasses, elevationStyles} = useElevation(props)
+	const {elevationClasses, elevationStyles} = useElevation(props, ref(false), toRef(props, 'bgColor'))
 	const {locationStyles} = useLocation(props)
 	const {positionClasses, positionStyles} = usePosition(props)
 	const {roundedClasses, roundedStyles} = useRounded(props)

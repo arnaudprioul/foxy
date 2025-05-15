@@ -76,7 +76,7 @@
 				<slot
 						name="default"
 						v-bind="slotProps"
-				></slot>
+				/>
 			</div>
 
 			<div

@@ -186,13 +186,14 @@
 	import { reactive } from "vue"
 
 	const state: Partial<IAppBarProps> = reactive({
-		title: 'My Application',
+		title: 'Foxy',
 		image: {
 			alt: 'Foxy',
 			width: 36,
 			src: new URL('/public/logo.svg', import.meta.url).href
 		},
-		bgColor: '#E3E3E3'
+		bgColor: '#ff7a7a',
+		modelValue: true
 	})
 
 	const initialState = () => {

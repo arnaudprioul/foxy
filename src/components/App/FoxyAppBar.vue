@@ -33,17 +33,6 @@
 				v-if="hasContent"
 				#content
 		>
-			<div
-					v-if="hasTitle"
-					class="foxy-bar__title"
-			>
-				<slot name="title">
-					<foxy-title
-							:text="title"
-							class="foxy-bar__title"
-					/>
-				</slot>
-			</div>
 			<slot name="content"/>
 		</template>
 
@@ -60,7 +49,7 @@
 		lang="ts"
 		setup
 >
-	import { FoxyImg, FoxyTitle, FoxyToolbar } from '@foxy/components'
+	import { FoxyImg, FoxyToolbar } from '@foxy/components'
 
 	import { useLayoutItem, useProps, useScroll, useSsrBoot, useToggleScope, useVModel } from '@foxy/composables'
 
@@ -95,20 +84,17 @@
 		return foxyToolbarRef.value?.filterProps(props, ['class', 'style', 'collapse', 'flat'])
 	})
 
+	const hasImage = computed(() => {
+		return !!(props.image || slots.img)
+	})
 	const hasPrepend = computed(() => {
-		return hasTitle.value || hasImage.value || slots.prepend
+		return hasImage.value || slots.prepend
 	})
 	const hasContent = computed(() => {
 		return slots.content
 	})
 	const hasAppend = computed(() => {
 		return slots.append
-	})
-	const hasTitle = computed(() => {
-		return !!(props.title || slots.title)
-	})
-	const hasImage = computed(() => {
-		return !!(props.image || slots.img)
 	})
 
 	const isActive = useVModel(props, 'modelValue')

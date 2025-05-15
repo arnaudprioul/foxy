@@ -1,8 +1,9 @@
 import type { IElevationProps } from '@foxy/interfaces'
+import { TColor } from "@foxy/types"
 import { formatElevationStyle, getCurrentInstanceName } from "@foxy/utils"
 import { computed, isRef, ref, Ref } from 'vue'
 
-export function useElevation (props: IElevationProps | Ref<number | string | undefined>, flat: Ref<boolean> = ref(false), name = getCurrentInstanceName()) {
+export function useElevation (props: IElevationProps | Ref<number | string | undefined>, flat: Ref<boolean> = ref(false), bgColor: Ref<TColor> = ref('hsl(0deg 0% 0%)'), name = getCurrentInstanceName()) {
     const elevationClasses = computed(() => {
         const elevation = isRef(props) ? props.value : props.elevation
         const classes: Array<string> = []
@@ -20,7 +21,7 @@ export function useElevation (props: IElevationProps | Ref<number | string | und
 
         if (elevation == null || flat.value) return []
 
-        styles.push(formatElevationStyle(parseInt(elevation, 10)))
+        styles.push(formatElevationStyle(parseInt(elevation, 10), bgColor.value))
 
         return styles
     })
