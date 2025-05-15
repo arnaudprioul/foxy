@@ -10,7 +10,35 @@
 				<foxy-app-bar
 						:order="0"
 						v-bind="state"
-				/>
+				>
+					<template #prepend>
+						<foxy-btn
+								:bg-color="state.bgColor"
+								:icon="MDI_ICONS.MENU"
+								:rounded="0"
+						/>
+					</template>
+
+					<template #append>
+						<foxy-btn
+								:bg-color="state.bgColor"
+								:icon="MDI_ICONS.HEART"
+								:rounded="0"
+						/>
+
+						<foxy-btn
+								:bg-color="state.bgColor"
+								:icon="MDI_ICONS.MAGNIFY"
+								:rounded="0"
+						/>
+
+						<foxy-btn
+								:bg-color="state.bgColor"
+								:icon="MDI_ICONS.DOTS_VERTICAL"
+								:rounded="0"
+						/>
+					</template>
+				</foxy-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -51,7 +79,19 @@
 				<foxy-app-bar
 						:order="0"
 						v-bind="state"
-				/>
+				>
+					<template #prepend>
+						<foxy-btn :icon="MDI_ICONS.MENU"/>
+					</template>
+
+					<template #append>
+						<foxy-btn :icon="MDI_ICONS.HEART"/>
+
+						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+
+						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+					</template>
+				</foxy-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -70,7 +110,19 @@
 				<foxy-app-bar
 						:order="0"
 						v-bind="state"
-				/>
+				>
+					<template #prepend>
+						<foxy-btn :icon="MDI_ICONS.MENU"/>
+					</template>
+
+					<template #append>
+						<foxy-btn :icon="MDI_ICONS.HEART"/>
+
+						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+
+						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+					</template>
+				</foxy-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -83,7 +135,19 @@
 				<foxy-app-bar
 						:order="0"
 						v-bind="state"
-				/>
+				>
+					<template #prepend>
+						<foxy-btn :icon="MDI_ICONS.MENU"/>
+					</template>
+
+					<template #append>
+						<foxy-btn :icon="MDI_ICONS.HEART"/>
+
+						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+
+						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+					</template>
+				</foxy-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -96,7 +160,19 @@
 				<foxy-app-bar
 						:order="0"
 						v-bind="state"
-				/>
+				>
+					<template #prepend>
+						<foxy-btn :icon="MDI_ICONS.MENU"/>
+					</template>
+
+					<template #append>
+						<foxy-btn :icon="MDI_ICONS.HEART"/>
+
+						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+
+						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+					</template>
+				</foxy-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -109,7 +185,19 @@
 				<foxy-app-bar
 						:order="0"
 						v-bind="state"
-				/>
+				>
+					<template #prepend>
+						<foxy-btn :icon="MDI_ICONS.MENU"/>
+					</template>
+
+					<template #append>
+						<foxy-btn :icon="MDI_ICONS.HEART"/>
+
+						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+
+						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+					</template>
+				</foxy-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -129,7 +217,19 @@
 				<foxy-app-bar
 						:order="0"
 						v-bind="state"
-				/>
+				>
+					<template #prepend>
+						<foxy-btn :icon="MDI_ICONS.MENU"/>
+					</template>
+
+					<template #append>
+						<foxy-btn :icon="MDI_ICONS.HEART"/>
+
+						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+
+						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+					</template>
+				</foxy-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -142,7 +242,19 @@
 				<foxy-app-bar
 						:order="0"
 						v-bind="state"
-				/>
+				>
+					<template #prepend>
+						<foxy-btn :icon="MDI_ICONS.MENU"/>
+					</template>
+
+					<template #append>
+						<foxy-btn :icon="MDI_ICONS.HEART"/>
+
+						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+
+						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+					</template>
+				</foxy-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -155,7 +267,19 @@
 				<foxy-app-bar
 						:order="0"
 						v-bind="state"
-				/>
+				>
+					<template #prepend>
+						<foxy-btn :icon="MDI_ICONS.MENU"/>
+					</template>
+
+					<template #append>
+						<foxy-btn :icon="MDI_ICONS.HEART"/>
+
+						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+
+						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+					</template>
+				</foxy-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -169,7 +293,8 @@
 		lang="ts"
 		setup
 >
-	import { FoxyAppBar } from '@foxy/components'
+	import { FoxyAppBar, FoxyBtn } from '@foxy/components'
+	import { MDI_ICONS } from "@foxy/enums"
 
 	import type { IAppBarProps } from "@foxy/interfaces"
 	import {
@@ -192,7 +317,7 @@
 			width: 36,
 			src: new URL('/public/logo.svg', import.meta.url).href
 		},
-		bgColor: '#ff7a7a',
+		bgColor: '#E3E3E3',
 		modelValue: true
 	})
 

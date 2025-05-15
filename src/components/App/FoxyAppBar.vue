@@ -18,6 +18,7 @@
 				v-if="hasPrepend"
 				#prepend
 		>
+			<slot name="prepend"/>
 			<div
 					v-if="hasImage"
 					class="foxy-bar__img"
@@ -26,7 +27,6 @@
 					<foxy-img v-bind="image"/>
 				</slot>
 			</div>
-			<slot name="prepend"/>
 		</template>
 
 		<template
