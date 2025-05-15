@@ -124,7 +124,7 @@
 	const {paddingClasses, paddingStyles} = usePadding(props)
 	const {marginClasses, marginStyles} = useMargin(props)
 	const {dimensionStyles} = useDimension(props)
-	const {elevationClasses} = useElevation(props)
+	const {elevationClasses, elevationStyles} = useElevation(props)
 	const {locationStyles} = useLocation(props)
 	const {positionClasses, positionStyles} = usePosition(props)
 	const {roundedClasses, roundedStyles} = useRounded(props)
@@ -172,6 +172,7 @@
 			marginStyles.value,
 			roundedStyles.value,
 			positionStyles.value,
+			elevationStyles.value,
 			props.style
 		]
 	})
