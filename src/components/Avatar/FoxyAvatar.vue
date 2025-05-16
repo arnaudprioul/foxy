@@ -1,8 +1,11 @@
 <template>
 	<component
 			:is="tag"
+			:id="id"
 			:class="avatarClasses"
-			:style="avatarStyles"
+			@click="handleClick"
+			@mouseenter="handleMouseenter"
+			@mouseleave="handleMouseleave"
 	>
 		<div class="foxy-avatar__wrapper">
 			<slot name="default">
@@ -18,7 +21,7 @@
 					</div>
 				</template>
 
-				<template v-if="hasIcon">
+				<template v-else-if="hasIcon">
 					<div class="foxy-avatar__icon">
 						<slot name="icon">
 							<foxy-icon
@@ -48,19 +51,25 @@
 	import { FoxyIcon, FoxyImg } from '@foxy/components'
 
 	import {
+		useActive,
 		useBorder,
-		useBothColor,
+		useColorEffect,
 		useDensity,
+		useElevation,
+		useHover,
 		useMargin,
 		usePadding,
 		useProps,
 		useRounded,
-		useSize
+		useSize,
+		useStatus,
+		useStyle
 	} from '@foxy/composables'
 
 	import type { IAvatarProps, ISrcObject } from '@foxy/interfaces'
+	import { isEmpty } from "@foxy/utils"
 
-	import { computed, StyleValue, toRef, useSlots } from 'vue'
+	import { computed, ref, StyleValue, toRef, useSlots } from 'vue'
 
 	const props = withDefaults(defineProps<IAvatarProps>(), {tag: 'div', size: 'default'})
 
@@ -71,18 +80,22 @@
 	const {borderClasses, borderStyles} = useBorder(props)
 	const {paddingClasses, paddingStyles} = usePadding(props)
 	const {marginClasses, marginStyles} = useMargin(props)
+	const {elevationClasses, elevationStyles} = useElevation(props, ref(false), toRef(props, 'bgColor'))
 	const {sizeClasses, sizeStyles} = useSize(props)
-	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
+	const {hoverClasses, isHover, onMouseleave: handleMouseleave, onMouseenter: handleMouseenter} = useHover(props)
+	const {activeClasses, isActive, onClick: handleClick} = useActive(props)
+	const {colorStyles} = useColorEffect(props, isHover.value, isActive.value)
+	const {statusClasses} = useStatus(props)
 	const slots = useSlots()
 
 	const hasImage = computed(() => {
-		return !!props.image || slots.image
+		return !isEmpty(props.image) || slots.image
 	})
 	const hasIcon = computed(() => {
-		return !!props.icon || slots.icon
+		return !isEmpty(props.icon) || slots.icon
 	})
 	const hasText = computed(() => {
-		return !!props.text || slots.text
+		return !isEmpty(props.text) || slots.text
 	})
 
 	const imageProps = computed(() => {
@@ -110,6 +123,7 @@
 			marginStyles.value,
 			sizeStyles.value,
 			colorStyles.value,
+			elevationStyles.value,
 			props.style
 		] as StyleValue
 	})
@@ -126,14 +140,25 @@
 			paddingClasses.value,
 			marginClasses.value,
 			sizeClasses.value,
+			statusClasses.value,
+			elevationClasses.value,
+			hoverClasses.value,
+			activeClasses.value,
 			props.class
 		]
 	})
 
+	const {id, css, load, isLoaded, unload} = useStyle(avatarStyles)
+
 	// EXPOSE
 
 	defineExpose({
-		filterProps
+		filterProps,
+		css,
+		id,
+		load,
+		unload,
+		isLoaded
 	})
 </script>
 
@@ -170,46 +195,45 @@
 
 
 		&--bordered {
-			border-width: var(--foxy-avatar--bordered---border-width);
-			box-shadow: var(--foxy-avatar--bordered---box-shadow);
+			--foxy-avatar---border-width: thin;
 		}
 
 		&--rounded {
-			border-radius: var(--foxy-avatar--rounded---border-radius);
+			--foxy-avatar---border-radius: 50%;
 		}
 
 		&--size-x-small {
-			height: var(--foxy-avatar--size-x-small---height);
-			width: var(--foxy-avatar--size-x-small---width);
-			font-size: var(--foxy-avatar--size-x-small---font-size);
+			--foxy-avatar---height: 24px;
+			--foxy-avatar---width: 24px;
+			--foxy-avatar---font-size: 1rem;
 		}
 
 		&--size-small {
-			height: var(--foxy-avatar--size-small---height);
-			width: var(--foxy-avatar--size-small---width);
-			font-size: var(--foxy-avatar--size-small---font-size);
+			--foxy-avatar---height: 32px;
+			--foxy-avatar---width: 32px;
+			--foxy-avatar---font-size: 1.25rem;
 		}
 
 		&--size-default {
-			height: var(--foxy-avatar--size-default---height);
-			width: var(--foxy-avatar--size-default---width);
-			font-size: var(--foxy-avatar--size-default---font-size);
+			--foxy-avatar---height: 40px;
+			--foxy-avatar---width: 40px;
+			--foxy-avatar---font-size: 1.5rem;
 		}
 
 		&--size-large {
-			height: var(--foxy-avatar--size-large---height);
-			width: var(--foxy-avatar--size-large---width);
-			font-size: var(--foxy-avatar--size-large---font-size);
+			--foxy-avatar---height: 48px;
+			--foxy-avatar---width: 48px;
+			--foxy-avatar---font-size: 1.75rem;
 		}
 
 		&--size-x-large {
-			height: var(--foxy-avatar--size-x-large---height);
-			width: var(--foxy-avatar--size-x-large---width);
-			font-size: var(--foxy-avatar--size-x-large---font-size);
+			--foxy-avatar---height: 56px;
+			--foxy-avatar---width: 56px;
+			--foxy-avatar---font-size: 2rem;
 		}
 
 		&--density-default {
-			--foxy-avatar---density: 0;
+			--foxy-avatar---density: 0px;
 		}
 
 		&--density-compact {
@@ -251,7 +275,7 @@
 		--foxy-avatar---position: relative;
 		--foxy-avatar---height: 40px;
 		--foxy-avatar---width: 40px;
-		--foxy-avatar---density: 0;
+		--foxy-avatar---density: 0px;
 		--foxy-avatar---transition-duration: 0.2s;
 		--foxy-avatar---transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 		--foxy-avatar---transition-property: width, height, font-size;
@@ -263,43 +287,10 @@
 		--foxy-avatar---border-width: var(--foxy-avatar---border-top-width) var(--foxy-avatar---border-left-width) var(--foxy-avatar---border-bottom-width) var(--foxy-avatar---border-right-width);
 		--foxy-avatar---border-color: rgba(0, 0, 0, 0.87);
 		--foxy-avatar---border-style: solid;
-		--foxy-avatar---border-start-start-radius: 50%;
-		--foxy-avatar---border-start-end-radius: 50%;
-		--foxy-avatar---border-end-start-radius: 50%;
-		--foxy-avatar---border-end-end-radius: 50%;
-		--foxy-avatar---border-radius: var(--foxy-avatar---border-start-start-radius) var(--foxy-avatar---border-start-end-radius) var(--foxy-avatar---border-end-start-radius) var(--foxy-avatar---border-end-end-radius);
+		--foxy-avatar---border-radius: 0px;
 		--foxy-avatar---color: rgba(0, 0, 0, 0.87);
 		--foxy-avatar---box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
 		--foxy-avatar---background: rgb(255, 255, 255);
-
-		--foxy-avatar--bordered---border-top-width: thin;
-		--foxy-avatar--bordered---border-left-width: thin;
-		--foxy-avatar--bordered---border-bottom-width: thin;
-		--foxy-avatar--bordered---border-right-width: thin;
-		--foxy-avatar--bordered---border-width: var(--foxy-avatar---border-top-width) var(--foxy-avatar---border-left-width) var(--foxy-avatar---border-bottom-width) var(--foxy-avatar---border-right-width);
-		--foxy-avatar--bordered---box-shadow: none;
-
-		--foxy-avatar--rounded---border-radius: 4px;
-
-		--foxy-avatar--size-x-small---height: 24px;
-		--foxy-avatar--size-x-small---width: 24px;
-		--foxy-avatar--size-x-small---font-size: 1rem;
-
-		--foxy-avatar--size-small---height: 32px;
-		--foxy-avatar--size-small---width: 32px;
-		--foxy-avatar--size-small---font-size: 1.25rem;
-
-		--foxy-avatar--size-default---height: 40px;
-		--foxy-avatar--size-default---width: 40px;
-		--foxy-avatar--size-default---font-size: 1.5rem;
-
-		--foxy-avatar--size-large---height: 48px;
-		--foxy-avatar--size-large---width: 48px;
-		--foxy-avatar--size-large---font-size: 1.75rem;
-
-		--foxy-avatar--size-x-large---height: 56px;
-		--foxy-avatar--size-x-large---width: 56px;
-		--foxy-avatar--size-x-large---font-size: 2rem;
 
 		--foxy-avatar__wrapper---width: 100%;
 		--foxy-avatar__wrapper---height: 100%;

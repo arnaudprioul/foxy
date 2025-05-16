@@ -1,25 +1,18 @@
+import { useVModel } from "@foxy/composables"
 import type { IHoverProps } from "@foxy/interfaces"
 
 import { getCurrentInstanceName } from "@foxy/utils"
 
-import type { Ref } from "vue"
-import { computed, isRef, shallowRef } from "vue"
+import { computed } from "vue"
 
-export function useHover (props: IHoverProps | Ref<boolean | { class: string }>, name = getCurrentInstanceName()) {
-    const isHover = shallowRef(false)
+export function useHover (props: IHoverProps, name = getCurrentInstanceName()) {
+    const isHover = useVModel(props, 'hover', false)
 
     const hoverClasses = computed(() => {
-        const hover = isRef(props) ? props.value : props.hover
         const classes: Array<string> = []
 
         if (isHover.value) {
-            if (hover === true) {
-                classes.push(`${name}--hovered`)
-            }
-
-            if (typeof hover === 'object' && hover.class.length > 1) {
-                classes.push(hover.class)
-            }
+            classes.push(`${name}--hovered`)
         }
 
         return classes

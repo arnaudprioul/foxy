@@ -1,4 +1,5 @@
 <template>
+	<template v-if="useDimension">
 	<hst-text
 			v-model="width"
 			title="Width"
@@ -23,6 +24,15 @@
 			v-model="maxHeight"
 			title="Max Height"
 	/>
+	</template>
+
+	<template v-if="useSize">
+		<hst-select
+				v-model="size"
+				:options="sizeList"
+				title="Size"
+		/>
+	</template>
 </template>
 
 <script
@@ -30,9 +40,14 @@
 		setup
 >
 	import { useVModel } from "@foxy/composables"
-	import type { IDimensionProps } from "@foxy/interfaces"
+	import { SIZES } from "@foxy/enums"
+	import type { IDimensionProps, ISizeProps } from "@foxy/interfaces"
+	import { sizeList } from "@stories/const/size.const"
 
-	const props = defineProps<IDimensionProps>()
+	const props = defineProps<{
+		useSize?: boolean,
+		useDimension?: boolean,
+	} & IDimensionProps & ISizeProps>()
 
 	// WIDTH
 	const width = useVModel(props, 'width', '')
@@ -43,4 +58,7 @@
 	const height = useVModel(props, 'height', '')
 	const minHeight = useVModel(props, 'minHeight', '')
 	const maxHeight = useVModel(props, 'maxHeight', '')
+
+	// SIZE
+	const size = useVModel(props, 'size', SIZES.DEFAULT)
 </script>

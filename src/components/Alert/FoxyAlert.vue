@@ -118,7 +118,7 @@
 	const {t} = useLocale()
 
 	const {isHover, onMouseenter: handleMouseenter, onMouseleave: handleMouseleave, hoverClasses} = useHover(props)
-	const {colorStyles} = useColorEffect(props, isHover)
+	const {colorStyles} = useColorEffect(props, isHover.value)
 	const {densityClasses} = useDensity(props)
 	const {borderStyles, borderClasses} = useBorder(props)
 	const {paddingClasses, paddingStyles} = usePadding(props)

@@ -1,7 +1,7 @@
 import type { DirectiveBinding } from 'vue'
 
 export interface IHoverProps {
-    hover?: boolean | { class: string }
+    hover?: boolean
 }
 
 export interface IHoverDirectiveBinding extends Omit<DirectiveBinding, 'modifiers' | 'value'> {

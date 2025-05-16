@@ -3,7 +3,7 @@
 			:init-state="initialState"
 			auto-props-disabled
 			group="components"
-			title="Containment/AppBar"
+			title="AppBar"
 	>
 		<Variant title="Default">
 			<template #default="{state}">
@@ -208,6 +208,7 @@
 						v-model:min-height="state.minHeight"
 						v-model:min-width="state.minWidth"
 						v-model:width="state.width"
+						use-dimension
 				/>
 			</template>
 		</Variant>

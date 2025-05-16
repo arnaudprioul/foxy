@@ -2,7 +2,7 @@ import type { IColorProps } from "@foxy/interfaces"
 import type { TColor } from '@foxy/types'
 
 import { getForeground, isCssColor, isParsableColor, parseColor } from '@foxy/utils'
-import { computed, ComputedRef, isRef, ref, Ref } from 'vue'
+import { computed, ComputedRef, isRef, Ref } from 'vue'
 
 export function useColor (colors: Ref<{ background?: TColor, text?: TColor }>) {
     const colorStyles = computed(() => {
@@ -75,7 +75,7 @@ export function useBackgroundColor<T extends Record<K, TColor>, K extends string
     return {backgroundColorStyles}
 }
 
-export function useColorEffect (props: IColorProps, isHover: Ref<boolean> = ref(false), isActive: Ref<boolean> = ref(false)) {
+export function useColorEffect (props: IColorProps, isHover = false, isActive = false) {
     const activeColor = computed(() => {
         return props.activeColor ?? props.color
     })
@@ -83,7 +83,7 @@ export function useColorEffect (props: IColorProps, isHover: Ref<boolean> = ref(
         return props.hoverColor ?? props.color
     })
     const color = computed(() => {
-        return isHover.value ? hoverColor.value : isActive.value ? activeColor.value : props.color
+        return isHover ? hoverColor.value : isActive ? activeColor.value : props.color
     })
     const activeBgColor = computed(() => {
         return props.activeBgColor ?? props.color
@@ -92,7 +92,7 @@ export function useColorEffect (props: IColorProps, isHover: Ref<boolean> = ref(
         return props.hoverBgColor ?? props.color
     })
     const bgColor = computed(() => {
-        return isHover.value ? hoverBgColor.value : isActive.value ? activeBgColor.value : props.bgColor
+        return isHover ? hoverBgColor.value : isActive ? activeBgColor.value : props.bgColor
     })
 
     const {colorStyles} = useBothColor(bgColor, color)

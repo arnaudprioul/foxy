@@ -4,6 +4,7 @@
 			:class="avatarGroupClasses"
 			:style="avatarGroupStyles"
 			role="group"
+			@click="handleClick"
 			@mouseenter="handleMouseEnter"
 			@mouseleave="handleMouseLeave"
 	>
@@ -51,7 +52,7 @@
 >
 
 	import { FoxyAvatar } from "@foxy/components"
-	import { useProps, useRtl } from "@foxy/composables"
+	import { useActive, useHover, useMargin, usePadding, useProps, useRtl, useStyle } from "@foxy/composables"
 	import { DIRECTION } from "@foxy/enums"
 	import type { IAvatarGroupProps, IAvatarProps } from "@foxy/interfaces"
 	import type { TFoxyAvatar } from '@foxy/types'
@@ -90,30 +91,53 @@
 		return props.items
 	})
 
+	const {hoverClasses, isHover, onMouseleave, onMouseenter} = useHover(props)
+	const {activeClasses, isActive, onClick} = useActive(props)
+	const {marginClasses, marginStyles} = useMargin(props)
+	const {paddingClasses, paddingStyles} = usePadding(props)
+
 	const foxyAvatarRef = ref<TFoxyAvatar>()
 	const avatarProps = computed(() => {
-		return foxyAvatarRef.value?.[0]?.filterProps(props) || foxyAvatarRef.value?.filterProps(props)
+		return foxyAvatarRef.value?.[0]?.filterProps(props, ['margin', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom', 'padding', 'paddingLeft', 'paddingTop', 'paddingRight', 'paddingBottom']) || foxyAvatarRef.value?.filterProps(props, ['margin', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom', 'padding', 'paddingLeft', 'paddingTop', 'paddingRight', 'paddingBottom'])
 	})
 
 	const avatarDisplayProps = (item: IAvatarProps) => {
-		return mergeProps(item as VNodeProps, avatarProps.value)
+		return mergeProps(item as VNodeProps, avatarProps.value, {hover: isHover.value, active: isActive.value})
 	}
 
 	const handleMouseEnter = () => {
 		if (props.expandOnHover) {
 			max.value = props.items.length
 		}
+
+		onMouseenter()
 	}
 	const handleMouseLeave = () => {
 		if (props.expandOnHover) {
 			max.value = props.max
 		}
+
+		onMouseleave()
+	}
+
+	const handleClick = () => {
+		if (props.expandOnClick) {
+			if (isActive.value) {
+				max.value = props.max
+			} else {
+				max.value = props.items.length
+			}
+		}
+
+		onClick()
 	}
 
 	// CLASS & STYLES
 
 	const avatarGroupStyles = computed(() => {
 		return [
+			marginStyles.value,
+			paddingStyles.value,
 			props.style
 		] as StyleValue
 	})
@@ -123,16 +147,28 @@
 			`foxy-avatar-group--${props.direction}`,
 			{
 				'foxy-avatar-group--expand-on-hover': props.expandOnHover,
+				'foxy-avatar-group--expand-on-click': props.expandOnClick,
 				'foxy-avatar-group--rtl': isRtl
 			},
+			hoverClasses.value,
+			activeClasses.value,
+			marginClasses.value,
+			paddingClasses.value,
 			props.class
 		]
 	})
 
+	const {id, css, load, isLoaded, unload} = useStyle(avatarGroupStyles)
+
 	// EXPOSE
 
 	defineExpose({
-		filterProps
+		filterProps,
+		css,
+		id,
+		load,
+		unload,
+		isLoaded
 	})
 
 </script>
@@ -148,7 +184,8 @@
 		display: inline-flex;
 		position: relative;
 
-		&--expand-on-hover {
+		&--expand-on-hover,
+		&--expand-on-click {
 			.foxy-avatar {
 				&:not(:first-child) {
 					transition: margin .3s cubic-bezier(.4, 0, .2, 1);
@@ -174,6 +211,16 @@
 					}
 				}
 			}
+
+			&#{$this}--expand-on-click {
+				&#{$this}--active {
+					.foxy-avatar {
+						&:not(:first-child) {
+							margin-left: 0;
+						}
+					}
+				}
+			}
 		}
 
 		&--vertical {
@@ -187,6 +234,16 @@
 
 			&#{$this}--expand-on-hover {
 				&:hover {
+					.foxy-avatar {
+						&:not(:first-child) {
+							margin-top: 0;
+						}
+					}
+				}
+			}
+
+			&#{$this}--expand-on-click {
+				&#{$this}--active {
 					.foxy-avatar {
 						&:not(:first-child) {
 							margin-top: 0;

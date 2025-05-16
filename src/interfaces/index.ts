@@ -43,6 +43,7 @@ export * from './ColorPicker/color-picker-swatches.interface'
 export * from './ColorPickerField/color-picker-field.interface'
 
 export * from './Commons/activator.interface'
+export * from './Commons/active.interface'
 export * from './Commons/adjacent.interface'
 export * from './Commons/align.interface'
 export * from './Commons/audio.interface'
