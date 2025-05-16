@@ -1,5 +1,7 @@
+import { TDirectionBoth } from "@foxy/types"
+
 export interface IBorderProps {
-    border?: boolean | number | string
+    border?: boolean | number | string | TDirectionBoth | Array<TDirectionBoth>
     borderTop?: boolean | number | string
     borderLeft?: boolean | number | string
     borderBottom?: boolean | number | string

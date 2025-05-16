@@ -183,7 +183,7 @@
 		border-width: var(--foxy-card-header---border-width);
 		border-radius: var(--foxy-card-header---border-radius);
 
-		&--bordered {
+		&--border {
 			--foxy-card-header---border-width: thin;
 			--foxy-card-header---box-shadow: none;
 		}

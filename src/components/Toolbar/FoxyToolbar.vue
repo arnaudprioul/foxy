@@ -172,7 +172,7 @@
 		box-shadow: var(--foxy-toolbar---box-shadow);
 		color: var(--foxy-toolbar---color);
 
-		&--bordered {
+		&--border {
 			--foxy-toolbar---border-width: thin;
 			--foxy-toolbar---box-shadow: none;
 		}

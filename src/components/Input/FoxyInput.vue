@@ -326,7 +326,7 @@
 			--foxy-input---density: -8px;
 		}
 
-		&--bordered {
+		&--border {
 			#{$this}__control {
 				border: 1px solid currentColor;
 			}

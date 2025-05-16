@@ -11,8 +11,8 @@
 			<foxy-transition :transition="transition">
         <span
 		        v-show="modelValue"
+		        :id="id"
 		        :aria-label="t(label, content)"
-		        :style="badgeContentStyles"
 		        aria-atomic="true"
 		        aria-live="polite"
 		        class="foxy-badge__badge"
@@ -41,7 +41,16 @@
 >
 	import { FoxyIcon, FoxyScaleRotate, FoxyTransition } from '@foxy/components'
 
-	import { useBorder, useBothColor, useLocale, useLocation, useProps, useRounded, useStatus } from '@foxy/composables'
+	import {
+		useBorder,
+		useBothColor,
+		useLocale,
+		useLocation,
+		useProps,
+		useRounded,
+		useStatus,
+		useStyle
+	} from '@foxy/composables'
 
 	import type { IBadgeProps } from '@foxy/interfaces'
 	import type { TTransitionProps } from "@foxy/types"
@@ -144,10 +153,17 @@
 		]
 	})
 
+	const {id, css, load, isLoaded, unload} = useStyle(badgeContentStyles)
+
 	// EXPOSE
 
 	defineExpose({
-		filterProps
+		filterProps,
+		css,
+		id,
+		load,
+		unload,
+		isLoaded
 	})
 </script>
 
@@ -158,30 +174,31 @@
 	.foxy-badge {
 		$this: &;
 
-		display: inline-block;
+		display: inline-flex;
 		line-height: 1;
-
-		&__wrapper {
-			display: flex;
-			position: relative;
-		}
 
 		&__badge {
 			align-items: center;
-			display: inline-flex;
-			border-radius: 10px;
-			font-size: 0.75rem;
-			font-weight: 500;
-			height: 1.25rem;
 			justify-content: center;
-			min-width: 20px;
-			padding: 4px 6px;
-			pointer-events: auto;
-			position: absolute;
-			text-align: center;
-			text-indent: 0;
-			transition: 0.225s cubic-bezier(0.4, 0, 0.2, 1);
-			white-space: nowrap;
+			display: inline-flex;
+			position: var(--foxy-badge__badge---position);
+			border-width: var(--foxy-badge__badge---border-width);
+			border-radius: var(--foxy-badge__badge---border-radius);
+			font-size: var(--foxy-badge__badge---font-size);
+			font-weight: var(--foxy-badge__badge---font-weight);
+			text-align: var(--foxy-badge__badge---text-align);
+			text-indent: var(--foxy-badge__badge---text-indent);
+			white-space: var(--foxy-badge__badge---white-space);
+			height: var(--foxy-badge__badge---height);
+			min-width: var(--foxy-badge__badge---min-width);
+			pointer-events: var(--foxy-badge__badge---pointer-events);
+			transition: var(--foxy-badge__badge---transition);
+			padding-block: var(--foxy-badge__badge---padding-block);
+			padding-inline: var(--foxy-badge__badge---padding-inline);
+			margin-block: var(--foxy-badge__badge---margin-block);
+			margin-inline: var(--foxy-badge__badge---margin-inline);
+			background-color: var(--foxy-badge__badge---background-color);
+			color: var(--foxy-badge__badge---color);
 
 			:deep(.foxy-icon) {
 				color: inherit;
@@ -196,56 +213,118 @@
 			}
 		}
 
-		&--bordered {
+		&__wrapper {
+			position: relative;
+			display: var(--foxy-badge__wrapper---display);
+			align-items: var(--foxy-badge__wrapper---align-items);
+			justify-content: var(--foxy-badge__wrapper---justify-content);
+			padding-block: var(--foxy-badge__wrapper---padding-block);
+			padding-inline: var(--foxy-badge__wrapper---padding-inline);
+			margin-block: var(--foxy-badge__wrapper---margin-block);
+			margin-inline: var(--foxy-badge__wrapper---margin-inline);
+		}
+
+		&--border {
 			#{$this}__badge {
-				&:after {
-					border-radius: inherit;
-					border-style: solid;
-					border-width: 2px;
-					bottom: 0;
-					color: rgb(var(--v-theme-background));
-					content: "";
-					left: 0;
-					position: absolute;
-					right: 0;
-					top: 0;
-					transform: scale(1.05);
-				}
+				--foxy-badge__badge---border-width: 2px;
 			}
 		}
 
 		&--dot {
 			#{$this}__badge {
-				border-radius: 4.5px;
-				height: 9px;
-				min-width: 0;
-				padding: 0;
-				width: 9px;
-
-				&:after {
-					border-width: 1.5px;
-				}
+				--foxy-badge__badge---border-width: 1.5px;
+				--foxy-badge__badge---border-radius: 4.5px;
+				--foxy-badge__badge---height: 9px;
+				--foxy-badge__badge---width: 9px;
+				--foxy-badge__badge---min-width: 0;
+				--foxy-badge__badge---padding-block: 0;
+				--foxy-badge__badge---padding-inline: 0;
+				--foxy-badge__badge---text-indent: -9999px;
 			}
 		}
 
 		&--inline {
 			#{$this}__badge {
-				position: relative;
+				--foxy-badge__badge---position: relative;
 				vertical-align: middle;
 			}
 
 			#{$this}__wrapper {
-				align-items: center;
-				display: inline-flex;
-				justify-content: center;
-				margin: 0 4px;
+				--foxy-badge__wrapper---display: inline-flex;
+				--foxy-badge__wrapper---align-items: center;
+				--foxy-badge__wrapper---justify-content: center;
+				--foxy-badge__wrapper---margin-inline: 4px;
 			}
+		}
+
+		&--warning {
+			--foxy-badge__badge---background-color: var(--foxy-status--warning---background-color, rgb(251, 140, 0));
+			--foxy-badge__badge---color: var(--foxy-status--warning---color, #ffffff);
+		}
+
+		&--success {
+			--foxy-badge__badge---background-color: var(--foxy-status--success---background-color, rgb(76, 175, 80));
+			--foxy-badge__badge---color: var(--foxy-status--success---color, #ffffff);
+		}
+
+		&--info {
+			--foxy-badge__badge---background-color: var(--foxy-status--info---background-color, rgb(33, 150, 243));
+			--foxy-badge__badge---color: var(--foxy-status--info---color, #ffffff);
+		}
+
+		&--error {
+			--foxy-badge__badge---background-color: var(--foxy-status--error---background-color, rgb(207, 102, 121));
+			--foxy-badge__badge---color: var(--foxy-status--error---color, #ffffff);
 		}
 	}
 </style>
 
 <style>
 	:root {
+		--foxy-badge__wrapper---display: flex;
+		--foxy-badge__wrapper---align-items: stretch;
+		--foxy-badge__wrapper---justify-content: start;
+		--foxy-badge__wrapper---margin-inline-start: 0;
+		--foxy-badge__wrapper---margin-inline-end: 0;
+		--foxy-badge__wrapper---margin-inline: var(--foxy-badge__wrapper---margin-inline-start) var(--foxy-badge__wrapper---margin-inline-end);
+		--foxy-badge__wrapper---margin-block-start: 0;
+		--foxy-badge__wrapper---margin-block-end: 0;
+		--foxy-badge__wrapper---margin-block: var(--foxy-badge__wrapper---margin-inline-start) var(--foxy-badge__wrapper---margin-inline-end);
+		--foxy-badge__wrapper---padding-block-start: 0;
+		--foxy-badge__wrapper---padding-block-end: 0;
+		--foxy-badge__wrapper---padding-block: var(--foxy-badge__wrapper---padding-block-start) var(--foxy-badge__wrapper---padding-block-end);
+		--foxy-badge__wrapper---padding-inline-start: 0;
+		--foxy-badge__wrapper---padding-inline-end: 0;
+		--foxy-badge__wrapper---padding-inline: var(--foxy-badge__wrapper---padding-inline-start) var(--foxy-badge__wrapper---padding-inline-end);
 
+		--foxy-badge__badge---align-items: center;
+		--foxy-badge__badge---justify-content: center;
+		--foxy-badge__badge---display: inline-flex;
+		--foxy-badge__badge---position: absolute;
+		--foxy-badge__badge---border-radius: 10px;
+		--foxy-badge__badge---font-size: 0.75rem;
+		--foxy-badge__badge---font-weight: 500;
+		--foxy-badge__badge---text-align: center;
+		--foxy-badge__badge---text-indent: 0;
+		--foxy-badge__badge---white-space: nowrap;
+		--foxy-badge__badge---height: 1.25rem;
+		--foxy-badge__badge---min-width: 20px;
+		--foxy-badge__badge---pointer-events: auto;
+		--foxy-badge__badge---transition: 0.225s cubic-bezier(0.4, 0, 0.2, 1);
+		--foxy-badge__badge---margin-inline-start: 0;
+		--foxy-badge__badge---margin-inline-end: 0;
+		--foxy-badge__badge---margin-inline: var(--foxy-badge__badge---margin-inline-start) var(--foxy-badge__badge---margin-inline-end);
+		--foxy-badge__badge---margin-block-start: 0;
+		--foxy-badge__badge---margin-block-end: 0;
+		--foxy-badge__badge---margin-block: var(--foxy-badge__badge---margin-inline-start) var(--foxy-badge__badge---margin-inline-end);
+		--foxy-badge__badge---padding-block-start: 4px;
+		--foxy-badge__badge---padding-block-end: 4px;
+		--foxy-badge__badge---padding-block: var(--foxy-badge__badge---padding-block-start) var(--foxy-badge__badge---padding-block-end);
+		--foxy-badge__badge---padding-inline-start: 6px;
+		--foxy-badge__badge---padding-inline-end: 6px;
+		--foxy-badge__badge---padding-inline: var(--foxy-badge__badge---padding-inline-start) var(--foxy-badge__badge---padding-inline-end);
+		--foxy-badge__badge---color: rgba(0, 0, 0, 0.87);
+		--foxy-badge__badge---background-color: rgb(230, 230, 230);
+		--foxy-badge__badge---border-width: 0;
 	}
 </style>

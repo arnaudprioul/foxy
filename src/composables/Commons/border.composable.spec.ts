@@ -29,8 +29,8 @@ describe('border.ts', () => {
             styles: ['border-block-start-width: 0', 'border-block-end-width: 0', 'border-inline-start-width: 10px', 'border-inline-end-width: 0', 'border-style: solid', 'border-color: currentColor']
         }],
         // Border Boolean triggering class
-        [{border: true}, {class: ['test--bordered'], styles: []}],
-        [{border: ''}, {class: ['test--bordered'], styles: []}]
+        [{border: true}, {class: ['test--border'], styles: []}],
+        [{border: ''}, {class: ['test--border'], styles: []}]
     ] as IBorderProps[])('should have the correct classes & styles using %s', (props: IBorderProps, expected: any) => {
         const {borderClasses, borderStyles} = useBorder(props as IBorderProps, 'test')
 

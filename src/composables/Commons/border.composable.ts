@@ -1,18 +1,23 @@
-import { BORDER_REGEX } from '@foxy/consts'
+import { BORDER_REGEX, DIRECTION_ARRAY } from '@foxy/consts'
 
 import type { IBorderProps } from '@foxy/interfaces'
+import { TDirectionBoth } from "@foxy/types"
 
 import { convertToUnit, formatBorderStylesVar, getCurrentInstanceName, isEmpty } from '@foxy/utils'
 import { computed, isRef, Ref } from 'vue'
 
 // TODO Create composable for border position
-export function useBorder (props: IBorderProps | Ref<boolean | number | string | null | undefined>, name = getCurrentInstanceName()) {
+export function useBorder (props: IBorderProps | Ref<boolean | number | string | TDirectionBoth | Array<TDirectionBoth> | null | undefined>, name = getCurrentInstanceName()) {
     const borderClasses = computed(() => {
         const border = isRef(props) ? props.value : props.border
         const classes: Array<string> = []
 
-        if (border === true || border === '') {
-            classes.push(`${name}--bordered`)
+        if (border !== null && typeof border !== 'undefined') {
+            classes.push(`${name}--border`)
+
+            if (DIRECTION_ARRAY.includes(border as TDirectionBoth) || (Array.isArray(border) && border.some((bord) => DIRECTION_ARRAY.includes(bord)))) {
+                classes.push(`${name}--border-${border}`)
+            }
         }
 
         return classes

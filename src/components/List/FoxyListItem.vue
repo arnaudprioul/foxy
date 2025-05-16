@@ -342,7 +342,7 @@
 		border-width: var(--foxy-list-item---border-width);
 		border-radius: var(--foxy-list-item---border-radius);
 
-		&--bordered {
+		&--border {
 			--foxy-list-item---border-width: thin;
 			--foxy-list-item---box-shadow: none;
 		}

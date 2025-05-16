@@ -2,7 +2,7 @@
   <Story
       auto-props-disabled
       group="components"
-      title="Picker/ColorPicker"
+      title="ColorPicker"
   >
     <Variant title="Default">
       <template #default>
@@ -33,12 +33,12 @@
     setup
 >
 
-  import { FoxyCol, FoxyColorPicker, FoxyContainer, FoxyRow } from '@foxy/components'
-  import { logEvent } from "histoire/client"
+	import { FoxyCol, FoxyColorPicker, FoxyContainer, FoxyRow } from '@foxy/components'
+	import { logEvent } from "histoire/client"
 
-  import { reactive } from 'vue'
+	import { reactive } from 'vue'
 
-  const state: { [key: string]: any } = reactive({
+	const state: { [key: string]: any } = reactive({
     showSwatches: true
   })
 </script>

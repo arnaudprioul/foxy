@@ -20,6 +20,7 @@ import type {
 import type {
     TAlways,
     TColor,
+    TDirectionBoth,
     TFoxySliderFieldThumb,
     TFoxySliderFieldTrack,
     TSize,
@@ -58,7 +59,7 @@ export interface ISliderFieldProvide {
     error: Ref<boolean | null | undefined>
     elevation: Ref<string | number | undefined>
     rounded: Ref<string | number | boolean | null | undefined>
-    border: Ref<string | number | boolean | null | undefined>
+    border: Ref<string | number | boolean | TDirectionBoth | Array<TDirectionBoth> | null | undefined>
     ripple: Ref<boolean | { class: string } | undefined>
     color: Ref<TColor>
     hoverColor: Ref<TColor>

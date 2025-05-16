@@ -431,7 +431,7 @@
 			position: absolute;
 		}
 
-		&--bordered {
+		&--border {
 			border-width: thin;
 		}
 

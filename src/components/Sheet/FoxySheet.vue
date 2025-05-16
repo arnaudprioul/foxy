@@ -112,9 +112,9 @@
 		box-shadow: var(--foxy-sheet---box-shadow);
 		color: var(--foxy-sheet---color);
 
-		&--bordered {
-			border-width: var(--foxy-sheet--bordered---border-width);
-			box-shadow: var(--foxy-sheet--bordered---box-shadow);
+		&--border {
+			border-width: var(--foxy-sheet--border---border-width);
+			box-shadow: var(--foxy-sheet--border---box-shadow);
 		}
 
 		&--rounded {
@@ -180,12 +180,12 @@
 		--foxy-sheet---margin-inline-end: 0;
 		--foxy-sheet---margin-inline-start: 0;
 
-		--foxy-sheet--bordered---border-top-width: thin;
-		--foxy-sheet--bordered---border-left-width: thin;
-		--foxy-sheet--bordered---border-bottom-width: thin;
-		--foxy-sheet--bordered---border-right-width: thin;
-		--foxy-sheet--bordered---border-width: var(--foxy-sheet---border-top-width) var(--foxy-sheet---border-left-width) var(--foxy-sheet---border-bottom-width) var(--foxy-sheet---border-right-width);
-		--foxy-sheet--bordered---box-shadow: none;
+		--foxy-sheet--border---border-top-width: thin;
+		--foxy-sheet--border---border-left-width: thin;
+		--foxy-sheet--border---border-bottom-width: thin;
+		--foxy-sheet--border---border-right-width: thin;
+		--foxy-sheet--border---border-width: var(--foxy-sheet---border-top-width) var(--foxy-sheet---border-left-width) var(--foxy-sheet---border-bottom-width) var(--foxy-sheet---border-right-width);
+		--foxy-sheet--border---box-shadow: none;
 
 		--foxy-sheet--rounded---border-radius: 4px;
 	}

@@ -350,7 +350,7 @@
 			}
 		}
 
-		&--bordered {
+		&--border {
 			:deep(#{$this}__wrapper) {
 				border-width: thin;
 				border-style: solid;

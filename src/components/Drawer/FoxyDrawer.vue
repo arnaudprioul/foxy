@@ -308,7 +308,7 @@
 		box-shadow: var(--foxy-drawer--box-shadow);
 		color: var(--foxy-drawer--color);
 
-		&--bordered {
+		&--border {
 			--foxy-drawer--border-width: thin;
 			--foxy-drawer--box-shadow: none;
 		}

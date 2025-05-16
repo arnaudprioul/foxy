@@ -2,7 +2,7 @@
   <Story
       auto-props-disabled
       group="components"
-      title="Picker/DatePicker"
+      title="DatePicker"
   >
     <Variant title="Default">
       <template #default>
@@ -40,12 +40,12 @@
     setup
 >
 
-  import { FoxyCol, FoxyContainer, FoxyDatePicker, FoxyRow } from '@foxy/components'
-  import { logEvent } from "histoire/client"
+	import { FoxyCol, FoxyContainer, FoxyDatePicker, FoxyRow } from '@foxy/components'
+	import { logEvent } from "histoire/client"
 
-  import { reactive } from 'vue'
+	import { reactive } from 'vue'
 
-  const state: { [key: string]: any } = reactive({})
+	const state: { [key: string]: any } = reactive({})
 </script>
 <docs lang="md">
 

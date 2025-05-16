@@ -408,7 +408,7 @@
 			--foxy-btn---density: -8px;
 		}
 
-		&--bordered {
+		&--border {
 			border-width: thin;
 			box-shadow: none;
 		}

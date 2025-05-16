@@ -90,9 +90,9 @@
 		margin-inline-start: var(--foxy-container---margin-inline-start);
 		margin-inline-end: var(--foxy-container---margin-inline-end);
 
-		&--bordered {
-			border-width: var(--foxy-container--bordered---border-width);
-			box-shadow: var(--foxy-container--bordered---box-shadow);
+		&--border {
+			border-width: var(--foxy-container--border---border-width);
+			box-shadow: var(--foxy-container--border---box-shadow);
 		}
 
 		&--rounded {

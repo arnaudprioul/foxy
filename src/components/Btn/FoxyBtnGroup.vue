@@ -112,7 +112,7 @@
 		border-radius: 4px;
 		min-height: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
 
-		&--bordered {
+		&--border {
 			border-width: thin;
 			box-shadow: none;
 		}

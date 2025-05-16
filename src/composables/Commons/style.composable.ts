@@ -2,7 +2,7 @@ import { DEFAULT_DOCUMENT } from "@foxy/consts"
 import type { IStyleTagOptions } from "@foxy/interfaces"
 import { getCurrentInstanceName, getUid, tryOnMounted, tryOnScopeDispose } from "@foxy/utils"
 
-import { computed, ComputedRef, MaybeRef, readonly, shallowRef, watch } from 'vue'
+import { computed, ComputedRef, MaybeRef, onMounted, readonly, shallowRef, watch } from 'vue'
 
 let _id = 0
 
@@ -106,11 +106,8 @@ export function useStyle (styles: ComputedRef, uniq = undefined, name = getCurre
 
     const {id: styleTagId, css, load, unload, isLoaded} = useStyleTag(customCss)
 
-    watch(css, (newValue, oldValue) => {
-        if (newValue !== oldValue) {
-            unload()
-            setTimeout(() => load(), 200)
-        }
+    onMounted(() => {
+        load()
     })
 
     return {

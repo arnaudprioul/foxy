@@ -124,9 +124,9 @@
 			}
 		}
 
-		&--bordered {
-			border-width: var(--foxy-row--bordered---border-width);
-			box-shadow: var(--foxy-row--bordered---box-shadow);
+		&--border {
+			border-width: var(--foxy-row--border---border-width);
+			box-shadow: var(--foxy-row--border---box-shadow);
 		}
 
 		@each $align, $alignAttr in $aligns {

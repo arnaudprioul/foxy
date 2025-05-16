@@ -194,7 +194,7 @@
 		color: var(--foxy-avatar---color);
 
 
-		&--bordered {
+		&--border {
 			--foxy-avatar---border-width: thin;
 		}
 
@@ -238,6 +238,26 @@
 
 		&--density-compact {
 			--foxy-avatar---density: -8px;
+		}
+
+		&--warning {
+			--foxy-avatar---background-color: var(--foxy-status--warning---background-color, rgb(251, 140, 0));
+			--foxy-avatar---color: var(--foxy-status--warning---color, #ffffff);
+		}
+
+		&--success {
+			--foxy-avatar---background-color: var(--foxy-status--success---background-color, rgb(76, 175, 80));
+			--foxy-avatar---color: var(--foxy-status--success---color, #ffffff);
+		}
+
+		&--info {
+			--foxy-avatar---background-color: var(--foxy-status--info---background-color, rgb(33, 150, 243));
+			--foxy-avatar---color: var(--foxy-status--info---color, #ffffff);
+		}
+
+		&--error {
+			--foxy-avatar---background-color: var(--foxy-status--error---background-color, rgb(207, 102, 121));
+			--foxy-avatar---color: var(--foxy-status--error---color, #ffffff);
 		}
 
 		&__wrapper {

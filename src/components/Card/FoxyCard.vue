@@ -319,7 +319,7 @@
 			opacity: var(--foxy-card---opacity);
 		}
 
-		&--bordered {
+		&--border {
 			--foxy-card---border-width: thin;
 			--foxy-card---box-shadow: none;
 		}

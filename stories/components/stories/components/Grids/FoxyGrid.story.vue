@@ -1,7 +1,7 @@
 <template>
   <Story
       group="components"
-      title="Grids/Columns"
+      title="Columns"
   >
     <Variant title="Default">
       <template #default>
@@ -303,7 +303,7 @@
 </template>
 
 <script setup>
-  import { FoxyCol, FoxyContainer, FoxyRow, FoxySheet, FoxySpacer } from '@foxy/components'
+	import { FoxyCol, FoxyContainer, FoxyRow, FoxySheet, FoxySpacer } from '@foxy/components'
 </script>
 
 <docs lang="md">

@@ -287,7 +287,7 @@
 		pointer-events: var(--foxy-list---pointer-events);
 		user-select: var(--foxy-list---user-select);
 
-		&--bordered {
+		&--border {
 			--foxy-list---border-width: thin;
 			--foxy-list---box-shadow: none;
 		}
