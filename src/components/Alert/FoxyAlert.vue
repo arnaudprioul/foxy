@@ -220,12 +220,20 @@
 		flex: 1 1;
 		grid-template-areas: "prepend content append close" ". content . .";
 		grid-template-columns: max-content auto max-content max-content;
-		position: var(--foxy-alert---position);
-		padding-block: var(--foxy-alert---padding-block);
-		padding-inline: var(--foxy-alert---padding-inline);
-		margin-block: var(--foxy-alert---margin-block);
-		margin-inline: var(--foxy-alert---margin-inline);
 		overflow: hidden;
+		position: var(--foxy-alert---position);
+
+		padding-block-start: calc(var(--foxy-alert---padding-block-start) - var(--foxy-alert---density));
+		padding-block-end: calc(var(--foxy-alert---padding-block-end) - var(--foxy-alert---density));
+		padding-inline-start: calc(var(--foxy-alert---padding-inline-start) - var(--foxy-alert---density));
+		padding-inline-end: calc(var(--foxy-alert---padding-inline-end) - var(--foxy-alert---density));
+		margin-block-start: var(--foxy-alert---margin-block-start);
+		margin-block-end: var(--foxy-alert---margin-block-end);
+		margin-inline-start: var(--foxy-alert---margin-inline-start);
+		margin-inline-end: var(--foxy-alert---margin-inline-end);
+
+		border-width: var(--foxy-alert---border-width);
+		border-style: var(--foxy-alert---border-style);
 		border-color: var(--foxy-alert---border-color);
 		border-radius: var(--foxy-alert---border-radius);
 
@@ -261,8 +269,8 @@
 		}
 
 		&--border {
-			&#{$this}--border-start {
-				--foxy-alert---padding-inline-start: 24px;
+			&#{$this}--border-left {
+				--foxy-alert---border-left-width: calc(24px - var(--foxy-alert---density));
 
 				#{$this}__underlay {
 					--foxy-alert__underlay---border-top-left-radius: 0;
@@ -270,8 +278,8 @@
 				}
 			}
 
-			&#{$this}--border-end {
-				--foxy-alert---padding-inline-end: 24px;
+			&#{$this}--border-right {
+				--foxy-alert---border-right-width: calc(24px - var(--foxy-alert---density));
 
 				#{$this}__underlay {
 					--foxy-alert__underlay---border-top-right-radius: 0;
@@ -280,7 +288,7 @@
 			}
 
 			&#{$this}--border-top {
-				--foxy-alert---border-block-start: 24px;
+				--foxy-alert---border-top-width: calc(24px - var(--foxy-alert---density));
 
 				#{$this}__underlay {
 					--foxy-alert__underlay---border-top-left-radius: 0;
@@ -289,7 +297,7 @@
 			}
 
 			&#{$this}--border-bottom {
-				--foxy-alert---border-block-end: 24px;
+				--foxy-alert---border-bottom-width: calc(24px - var(--foxy-alert---density));
 
 				#{$this}__underlay {
 					--foxy-alert__underlay---border-bottom-left-radius: 0;
@@ -307,26 +315,7 @@
 		}
 
 		&--density-compact {
-			--foxy-alert---density: -8px;
-			--foxy-alert__prepend---margin-inline-end: 8px;
-			--foxy-alert__append---margin-inline-start: 8px;
-			--foxy-alert__close---margin-inline-start: 8px;
-
-			&#{$this}--border-top {
-				--foxy-alert---padding-block-start: 16px;
-			}
-
-			&#{$this}--border-bottom {
-				--foxy-alert---padding-block-end: 16px;
-			}
-
-			&#{$this}--border-left {
-				--foxy-alert---padding-inline-start: 16px;
-			}
-
-			&#{$this}--border-right {
-				--foxy-alert---padding-inline-end: 16px;
-			}
+			--foxy-alert---density: 8px;
 		}
 
 		&--warning {
@@ -353,10 +342,14 @@
 			align-self: flex-start;
 			flex: 0 1 auto;
 			grid-area: close;
-			padding-block: var(--foxy-alert__close---padding-block);
-			padding-inline: var(--foxy-alert__close---padding-inline);
-			margin-block: var(--foxy-alert__close---margin-block);
-			margin-inline: var(--foxy-alert__close---margin-inline);
+			padding-block-start: var(--foxy-alert__close---padding-block-start);
+			padding-block-end: var(--foxy-alert__close---padding-block-end);
+			padding-inline-start: var(--foxy-alert__close---padding-inline-start);
+			padding-inline-end: var(--foxy-alert__close---padding-inline-end);
+			margin-block-start: var(--foxy-alert__close---margin-block-start);
+			margin-block-end: var(--foxy-alert__close---margin-block-end);
+			margin-inline-start: calc(var(--foxy-alert__close---margin-inline-start) - var(--foxy-alert---density));
+			margin-inline-end: var(--foxy-alert__close---margin-inline-end);
 		}
 
 		&__content {
@@ -370,10 +363,14 @@
 			display: flex;
 			grid-area: append;
 			align-items: var(--foxy-alert__append---align-items);
-			padding-block: var(--foxy-alert__append---padding-block);
-			padding-inline: var(--foxy-alert__append---padding-inline);
-			margin-block: var(--foxy-alert__append---margin-block);
-			margin-inline: var(--foxy-alert__append---margin-inline);
+			padding-block-start: var(--foxy-alert__append---padding-block-start);
+			padding-block-end: var(--foxy-alert__append---padding-block-end);
+			padding-inline-start: var(--foxy-alert__append---padding-inline-start);
+			padding-inline-end: var(--foxy-alert__append---padding-inline-end);
+			margin-block-start: var(--foxy-alert__append---margin-block-start);
+			margin-block-end: var(--foxy-alert__append---margin-block-end);
+			margin-inline-start: calc(var(--foxy-alert__append---margin-inline-start) - var(--foxy-alert---density));
+			margin-inline-end: var(--foxy-alert__append---margin-inline-end);
 		}
 
 		&__prepend {
@@ -381,10 +378,14 @@
 			display: flex;
 			grid-area: prepend;
 			align-items: var(--foxy-alert__prepend---align-items);
-			padding-block: var(--foxy-alert__prepend---padding-block);
-			padding-inline: var(--foxy-alert__prepend---padding-inline);
-			margin-block: var(--foxy-alert__prepend---margin-block);
-			margin-inline: var(--foxy-alert__prepend---margin-inline);
+			padding-block-start: var(--foxy-alert__prepend---padding-block-start);
+			padding-block-end: var(--foxy-alert__prepend---padding-block-end);
+			padding-inline-start: var(--foxy-alert__prepend---padding-inline-start);
+			padding-inline-end: var(--foxy-alert__prepend---padding-inline-end);
+			margin-block-start: var(--foxy-alert__prepend---margin-block-start);
+			margin-block-end: var(--foxy-alert__prepend---margin-block-end);
+			margin-inline-start: var(--foxy-alert__prepend---margin-inline-start);
+			margin-inline-end: calc(var(--foxy-alert__prepend---margin-inline-end) - var(--foxy-alert---density));
 		}
 
 		&__underlay {
@@ -413,64 +414,54 @@
 
 <style>
 	:root {
+		--foxy-alert---border-top-width: 0;
+		--foxy-alert---border-left-width: 0;
+		--foxy-alert---border-bottom-width: 0;
+		--foxy-alert---border-right-width: 0;
+		--foxy-alert---border-width: var(--foxy-alert---border-top-width) var(--foxy-alert---border-left-width) var(--foxy-alert---border-bottom-width) var(--foxy-alert---border-right-width);
 		--foxy-alert---border-color: transparent;
+		--foxy-alert---border-style: solid;
+		--foxy-alert---border-radius: 0px;
 		--foxy-alert---color: rgba(0, 0, 0, 0.87);
 		--foxy-alert---background-color: rgb(230, 230, 230);
-		--foxy-alert---border-radius: 0;
 		--foxy-alert---position: static;
 		--foxy-alert---margin-inline-start: 0;
 		--foxy-alert---margin-inline-end: 0;
-		--foxy-alert---margin-inline: var(--foxy-alert---margin-inline-start) var(--foxy-alert---margin-inline-end);
 		--foxy-alert---margin-block-start: 0;
 		--foxy-alert---margin-block-end: 0;
-		--foxy-alert---margin-block: var(--foxy-alert---margin-inline-start) var(--foxy-alert---margin-inline-end);
 		--foxy-alert---padding-block-start: 16px;
 		--foxy-alert---padding-block-end: 16px;
-		--foxy-alert---padding-block: calc(var(--foxy-alert---padding-block-start) + var(--foxy-alert---density)) calc(var(--foxy-alert---padding-block-end) + var(--foxy-alert---density));
 		--foxy-alert---padding-inline-start: 16px;
 		--foxy-alert---padding-inline-end: 16px;
-		--foxy-alert---padding-inline: calc(var(--foxy-alert---padding-inline-start) + var(--foxy-alert---density)) calc(var(--foxy-alert---padding-inline-end) + var(--foxy-alert---density));
 
 		--foxy-alert__prepend---align-items: center;
 		--foxy-alert__prepend---margin-inline-start: 0;
 		--foxy-alert__prepend---margin-inline-end: 16px;
-		--foxy-alert__prepend---margin-inline: var(--foxy-alert__prepend---margin-inline-start) var(--foxy-alert__prepend---margin-inline-end);
 		--foxy-alert__prepend---margin-block-start: 0;
 		--foxy-alert__prepend---margin-block-end: 0;
-		--foxy-alert__prepend---margin-block: var(--foxy-alert__prepend---margin-inline-start) var(--foxy-alert__prepend---margin-inline-end);
 		--foxy-alert__prepend---padding-block-start: 0;
 		--foxy-alert__prepend---padding-block-end: 0;
-		--foxy-alert__prepend---padding-block: var(--foxy-alert__prepend---padding-block-start) var(--foxy-alert__prepend---padding-block-end);
 		--foxy-alert__prepend---padding-inline-start: 0;
 		--foxy-alert__prepend---padding-inline-end: 0;
-		--foxy-alert__prepend---padding-inline: var(--foxy-alert__prepend---padding-inline-start) var(--foxy-alert__prepend---padding-inline-end);
 
 		--foxy-alert__append---align-items: center;
 		--foxy-alert__append---margin-inline-start: 16px;
 		--foxy-alert__append---margin-inline-end: 0;
-		--foxy-alert__append---margin-inline: var(--foxy-alert__append---margin-inline-start) var(--foxy-alert__append---margin-inline-end);
 		--foxy-alert__append---margin-block-start: 0;
 		--foxy-alert__append---margin-block-end: 0;
-		--foxy-alert__append---margin-block: var(--foxy-alert__append---margin-inline-start) var(--foxy-alert__append---margin-inline-end);
 		--foxy-alert__append---padding-block-start: 0;
 		--foxy-alert__append---padding-block-end: 0;
-		--foxy-alert__append---padding-block: var(--foxy-alert__append---padding-block-start) var(--foxy-alert__append---padding-block-end);
 		--foxy-alert__append---padding-inline-start: 0;
 		--foxy-alert__append---padding-inline-end: 0;
-		--foxy-alert__append---padding-inline: var(--foxy-alert__append---padding-inline-start) var(--foxy-alert__append---padding-inline-end);
 
 		--foxy-alert__close---margin-inline-start: 16px;
 		--foxy-alert__close---margin-inline-end: 0;
-		--foxy-alert__close---margin-inline: var(--foxy-alert__close---margin-inline-start) var(--foxy-alert__close---margin-inline-end);
 		--foxy-alert__close---margin-block-start: 0;
 		--foxy-alert__close---margin-block-end: 0;
-		--foxy-alert__close---margin-block: var(--foxy-alert__close---margin-inline-start) var(--foxy-alert__close---margin-inline-end);
 		--foxy-alert__close---padding-block-start: 0;
 		--foxy-alert__close---padding-block-end: 0;
-		--foxy-alert__close---padding-block: var(--foxy-alert__close---padding-block-start) var(--foxy-alert__close---padding-block-end);
 		--foxy-alert__close---padding-inline-start: 0;
 		--foxy-alert__close---padding-inline-end: 0;
-		--foxy-alert__close---padding-inline: var(--foxy-alert__close---padding-inline-start) var(--foxy-alert__close---padding-inline-end);
 
 		--foxy-alert__title---align-items: center;
 		--foxy-alert__title---font-size: 1.25rem;

@@ -52,7 +52,7 @@
 >
 
 	import { FoxyAvatar } from "@foxy/components"
-	import { useActive, useHover, useMargin, usePadding, useProps, useRtl, useStyle } from "@foxy/composables"
+	import { useActive, useDensity, useHover, useMargin, usePadding, useProps, useRtl, useStyle } from "@foxy/composables"
 	import { DIRECTION } from "@foxy/enums"
 	import type { IAvatarGroupProps, IAvatarProps } from "@foxy/interfaces"
 	import type { TFoxyAvatar } from '@foxy/types'
@@ -95,6 +95,7 @@
 	const {activeClasses, isActive, onClick} = useActive(props)
 	const {marginClasses, marginStyles} = useMargin(props)
 	const {paddingClasses, paddingStyles} = usePadding(props)
+	const {densityClasses} = useDensity(props)
 
 	const foxyAvatarRef = ref<TFoxyAvatar>()
 	const avatarProps = computed(() => {
@@ -154,6 +155,7 @@
 			activeClasses.value,
 			marginClasses.value,
 			paddingClasses.value,
+			densityClasses.value,
 			props.class
 		]
 	})
@@ -180,44 +182,66 @@
 	.foxy-avatar-group {
 		$this: &;
 
+		position: var(--foxy-avatar-group---position);
+
 		flex-wrap: nowrap;
 		display: inline-flex;
-		position: relative;
+		flex-direction: var(--foxy-avatar-group---flex-direction);
+
+		padding-block-start: var(--foxy-avatar-group---padding-block-start);
+		padding-block-end: var(--foxy-avatar-group---padding-block-end);
+		padding-inline-start: var(--foxy-avatar-group---padding-inline-start);
+		padding-inline-end: var(--foxy-avatar-group---padding-inline-end);
+		margin-block-start: var(--foxy-avatar-group---margin-block-start);
+		margin-block-end: var(--foxy-avatar-group---margin-block-end);
+		margin-inline-start: var(--foxy-avatar-group---margin-inline-start);
+		margin-inline-end: var(--foxy-avatar-group---margin-inline-end);
+
+		&___item {
+			margin-block-start: var(--foxy-avatar-group__item---margin-block-start);
+			margin-block-end: var(--foxy-avatar-group__item---margin-block-end);
+			margin-inline-start: var(--foxy-avatar-group__item---margin-inline-start);
+			margin-inline-end: var(--foxy-avatar-group__item---margin-inline-end);
+		}
 
 		&--expand-on-hover,
 		&--expand-on-click {
-			.foxy-avatar {
+			#{$this}___item {
 				&:not(:first-child) {
-					transition: margin .3s cubic-bezier(.4, 0, .2, 1);
+					transition: var(--foxy-avatar-group__avatar---transition);
 				}
 			}
 		}
 
-		&--horizontal {
-			flex-direction: row;
+		&--density-default {
+			--foxy-avatar-group---density: 0px;
+		}
 
-			.foxy-avatar {
+		&--density-compact {
+			--foxy-avatar-group---density: 8px;
+		}
+
+		&--horizontal {
+			--foxy-avatar-group---flex-direction: row;
+
+			#{$this}___item {
 				&:not(:first-child) {
-					margin-left: -18px;
+					--foxy-avatar-group---margin-inline-start: calc(-18px + var(--foxy-avatar-group---density));
 				}
 			}
 
 			&#{$this}--expand-on-hover {
 				&:hover {
-					.foxy-avatar {
-						&:not(:first-child) {
-							margin-left: 0;
-						}
+					#{$this}___item {
+						--foxy-avatar-group---margin-inline-start: 0;
 					}
 				}
 			}
 
 			&#{$this}--expand-on-click {
 				&#{$this}--active {
-					.foxy-avatar {
-						&:not(:first-child) {
-							margin-left: 0;
-						}
+					#{$this}___item {
+						--foxy-avatar-group---margin-inline-start: 0;
 					}
 				}
 			}
@@ -226,31 +250,52 @@
 		&--vertical {
 			flex-direction: column;
 
-			.foxy-avatar {
+			#{$this}___item {
 				&:not(:first-child) {
-					margin-top: -18px;
+					--foxy-avatar-group---margin-block-start: calc(-18px + var(--foxy-avatar-group---density));
 				}
 			}
 
 			&#{$this}--expand-on-hover {
 				&:hover {
-					.foxy-avatar {
-						&:not(:first-child) {
-							margin-top: 0;
-						}
+					#{$this}___item {
+						--foxy-avatar-group---margin-block-start: 0;
 					}
 				}
 			}
 
 			&#{$this}--expand-on-click {
 				&#{$this}--active {
-					.foxy-avatar {
-						&:not(:first-child) {
-							margin-top: 0;
-						}
+					#{$this}___item {
+						--foxy-avatar-group---margin-block-start: 0;
 					}
 				}
 			}
 		}
+	}
+</style>
+
+<style>
+	:root {
+		--foxy-avatar-group---flex-direction: row;
+		--foxy-avatar-group---position: relative;
+		--foxy-avatar-group---density: 0;
+		--foxy-avatar-group---margin-inline-start: 0;
+		--foxy-avatar-group---margin-inline-end: 0;
+		--foxy-avatar-group---margin-block-start: 0;
+		--foxy-avatar-group---margin-block-end: 0;
+		--foxy-avatar-group---padding-block-start: 0;
+		--foxy-avatar-group---padding-block-end: 0;
+		--foxy-avatar-group---padding-inline-start: 0;
+		--foxy-avatar-group---padding-inline-end: 0;
+
+		--foxy-avatar-group__avatar---transition-duration: 0.2s;
+		--foxy-avatar-group__avatar---transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		--foxy-avatar-group__avatar---transition-property: margin;
+		--foxy-avatar-group__avatar---transition: var(--foxy-avatar-group__avatar---transition-property) var(--foxy-avatar-group__avatar---transition-duration) var(--foxy-avatar-group__avatar---transition-timing-function);
+		--foxy-avatar-group__avatar---margin-inline-start: 0;
+		--foxy-avatar-group__avatar---margin-inline-end: 0;
+		--foxy-avatar-group__avatar---margin-block-start: 0;
+		--foxy-avatar-group__avatar---margin-block-end: 0;
 	}
 </style>

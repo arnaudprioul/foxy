@@ -176,8 +176,8 @@
 		letter-spacing: var(--foxy-avatar---letter-spacing);
 		text-transform: var(--foxy-avatar---text-transform);
 
-		height: calc(var(--foxy-avatar---height) + var(--foxy-avatar---density));
-		width: calc(var(--foxy-avatar---width) + var(--foxy-avatar---density));
+		height: calc(var(--foxy-avatar---height) - var(--foxy-avatar---density));
+		width: calc(var(--foxy-avatar---width) - var(--foxy-avatar---density));
 
 		overflow: var(--foxy-avatar---overflow);
 		position: var(--foxy-avatar---position);
@@ -193,6 +193,42 @@
 		box-shadow: var(--foxy-avatar---box-shadow);
 		color: var(--foxy-avatar---color);
 
+		padding-block-start: var(--foxy-avatar---padding-block-start);
+		padding-block-end: var(--foxy-avatar---padding-block-end);
+		padding-inline-start: var(--foxy-avatar---padding-inline-start);
+		padding-inline-end: var(--foxy-avatar---padding-inline-end);
+		margin-block-start: var(--foxy-avatar---margin-block-start);
+		margin-block-end: var(--foxy-avatar---margin-block-end);
+		margin-inline-start: var(--foxy-avatar---margin-inline-start);
+		margin-inline-end: var(--foxy-avatar---margin-inline-end);
+
+		&__wrapper {
+			flex: var(--foxy-avatar__wrapper---flex);
+			align-items: var(--foxy-avatar__wrapper---align-items);
+			display: var(--foxy-avatar__wrapper---display);
+			justify-content: var(--foxy-avatar__wrapper---justify-content);
+			vertical-align: var(--foxy-avatar__wrapper---vertical-align);
+			width: var(--foxy-avatar__wrapper---width);
+			height: var(--foxy-avatar__wrapper---height);
+			padding-block-start: var(--foxy-avatar__wrapper---padding-block-start);
+			padding-block-end: var(--foxy-avatar__wrapper---padding-block-end);
+			padding-inline-start: var(--foxy-avatar__wrapper---padding-inline-start);
+			padding-inline-end: var(--foxy-avatar__wrapper---padding-inline-end);
+			margin-block-start: var(--foxy-avatar__wrapper---margin-block-start);
+			margin-block-end: var(--foxy-avatar__wrapper---margin-block-end);
+			margin-inline-start: var(--foxy-avatar__wrapper---margin-inline-start);
+			margin-inline-end: var(--foxy-avatar__wrapper---margin-inline-end);
+		}
+
+		&__image {
+			width: var(--foxy-avatar__image---width);
+			height: var(--foxy-avatar__image---height);
+
+			&:deep(.foxy-img) {
+				--foxy-img---height: 100%;
+				--foxy-img---width: 100%;
+			}
+		}
 
 		&--border {
 			--foxy-avatar---border-width: thin;
@@ -237,7 +273,7 @@
 		}
 
 		&--density-compact {
-			--foxy-avatar---density: -8px;
+			--foxy-avatar---density: 8px;
 		}
 
 		&--warning {
@@ -258,26 +294,6 @@
 		&--error {
 			--foxy-avatar---background-color: var(--foxy-status--error---background-color, rgb(207, 102, 121));
 			--foxy-avatar---color: var(--foxy-status--error---color, #ffffff);
-		}
-
-		&__wrapper {
-			flex: var(--foxy-avatar__wrapper---flex);
-			align-items: var(--foxy-avatar__wrapper---align-items);
-			display: var(--foxy-avatar__wrapper---display);
-			justify-content: var(--foxy-avatar__wrapper---justify-content);
-			vertical-align: var(--foxy-avatar__wrapper---vertical-align);
-			width: var(--foxy-avatar__wrapper---width);
-			height: var(--foxy-avatar__wrapper---height);
-		}
-
-		&__image {
-			width: var(--foxy-avatar__image---width);
-			height: var(--foxy-avatar__image---height);
-		}
-
-		&:deep(.foxy-img) {
-			--foxy-img---height: 100%;
-			--foxy-img---width: 100%;
 		}
 	}
 </style>
@@ -311,6 +327,14 @@
 		--foxy-avatar---color: rgba(0, 0, 0, 0.87);
 		--foxy-avatar---box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
 		--foxy-avatar---background: rgb(255, 255, 255);
+		--foxy-avatar---margin-inline-start: 0;
+		--foxy-avatar---margin-inline-end: 0;
+		--foxy-avatar---margin-block-start: 0;
+		--foxy-avatar---margin-block-end: 0;
+		--foxy-avatar---padding-block-start: 0;
+		--foxy-avatar---padding-block-end: 0;
+		--foxy-avatar---padding-inline-start: 0;
+		--foxy-avatar---padding-inline-end: 0;
 
 		--foxy-avatar__wrapper---width: 100%;
 		--foxy-avatar__wrapper---height: 100%;
@@ -319,6 +343,14 @@
 		--foxy-avatar__wrapper---display: inline-flex;
 		--foxy-avatar__wrapper---justify-content: center;
 		--foxy-avatar__wrapper---vertical-align: middle;
+		--foxy-avatar__wrapper---margin-inline-start: 0;
+		--foxy-avatar__wrapper---margin-inline-end: 0;
+		--foxy-avatar__wrapper---margin-block-start: 0;
+		--foxy-avatar__wrapper---margin-block-end: 0;
+		--foxy-avatar__padding---margin-block-start: 0;
+		--foxy-avatar__padding---margin-block-end: 0;
+		--foxy-avatar__padding---margin-inline-start: 0;
+		--foxy-avatar__padding---margin-inline-end: 0;
 
 		--foxy-avatar__image---width: 100%;
 		--foxy-avatar__image---height: 100%;
