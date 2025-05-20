@@ -20,7 +20,7 @@
 						:id="`avatar-${index}`"
 						ref="foxyAvatarRef"
 						class="foxy-avatar-group__item"
-						v-bind="avatarDisplayProps(item)"
+						v-bind="avatarProps(item)"
 				/>
 			</slot>
 		</template>
@@ -57,7 +57,8 @@
 	import type { IAvatarGroupProps, IAvatarProps } from "@foxy/interfaces"
 	import type { TFoxyAvatar } from '@foxy/types'
 
-	import { computed, mergeProps, ref, StyleValue, VNodeProps } from "vue"
+	import type { StyleValue, VNodeProps } from 'vue'
+	import { computed, mergeProps, ref } from "vue"
 
 	const props = withDefaults(defineProps<IAvatarGroupProps>(), {
 		items: () => [],
@@ -65,6 +66,8 @@
 		tag: 'div',
 		direction: DIRECTION.HORIZONTAL
 	})
+
+	defineEmits(['update:active', 'update:hover'])
 
 	const {filterProps} = useProps<IAvatarGroupProps>(props)
 
@@ -92,18 +95,17 @@
 	})
 
 	const {hoverClasses, isHover, onMouseleave, onMouseenter} = useHover(props)
-	const {activeClasses, isActive, onClick} = useActive(props)
+	const {activeClasses, isActive, onActive} = useActive(props)
 	const {marginClasses, marginStyles} = useMargin(props)
 	const {paddingClasses, paddingStyles} = usePadding(props)
 	const {densityClasses} = useDensity(props)
 
 	const foxyAvatarRef = ref<TFoxyAvatar>()
-	const avatarProps = computed(() => {
-		return foxyAvatarRef.value?.[0]?.filterProps(props, ['margin', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom', 'padding', 'paddingLeft', 'paddingTop', 'paddingRight', 'paddingBottom']) || foxyAvatarRef.value?.filterProps(props, ['margin', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom', 'padding', 'paddingLeft', 'paddingTop', 'paddingRight', 'paddingBottom'])
-	})
+	const avatarProps = (item: IAvatarProps = {}) => {
+		const ignoreProps = ['margin', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom', 'padding', 'paddingLeft', 'paddingTop', 'paddingRight', 'paddingBottom']
+		const avatarDefaultProps = foxyAvatarRef.value?.[0]?.filterProps(props, ignoreProps) || foxyAvatarRef.value?.filterProps(props, ignoreProps)
 
-	const avatarDisplayProps = (item: IAvatarProps) => {
-		return mergeProps(item as VNodeProps, avatarProps.value, {hover: isHover.value, active: isActive.value})
+		return mergeProps(item as VNodeProps, avatarDefaultProps, {hover: isHover.value, active: isActive.value})
 	}
 
 	const handleMouseEnter = () => {
@@ -130,7 +132,7 @@
 			}
 		}
 
-		onClick()
+		onActive()
 	}
 
 	// CLASS & STYLES
@@ -211,6 +213,10 @@
 					transition: var(--foxy-avatar-group__avatar---transition);
 				}
 			}
+		}
+
+		&--elevated {
+			box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 		}
 
 		&--density-default {

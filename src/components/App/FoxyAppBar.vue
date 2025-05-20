@@ -51,7 +51,7 @@
 >
 	import { FoxyImg, FoxyToolbar } from '@foxy/components'
 
-	import { useLayoutItem, useProps, useScroll, useSsrBoot, useToggleScope, useVModel } from '@foxy/composables'
+	import { useActive, useLayoutItem, useProps, useScroll, useSsrBoot, useToggleScope } from '@foxy/composables'
 
 	import { BLOCK, DENSITY } from '@foxy/enums'
 
@@ -61,7 +61,7 @@
 
 	import { forwardRefs, int } from "@foxy/utils"
 
-	import { computed, ref, shallowRef, StyleValue, toRef, useSlots, watchEffect } from 'vue'
+	import { computed, ComputedRef, ref, shallowRef, StyleValue, toRef, useSlots, watchEffect } from 'vue'
 
 	const props = withDefaults(defineProps<IAppBarProps>(), {
 		tag: 'header',
@@ -79,7 +79,6 @@
 	const slots = useSlots()
 
 	const foxyToolbarRef = ref<TFoxyToolbar>()
-
 	const toolbarProps = computed(() => {
 		return foxyToolbarRef.value?.filterProps(props, ['class', 'style', 'collapse', 'flat'])
 	})
@@ -97,7 +96,7 @@
 		return slots.append
 	})
 
-	const isActive = useVModel(props, 'modelValue')
+	const {isActive, activeClasses} = useActive(props, 'modelValue')
 
 	// SCROLL
 	const scrollBehavior = computed(() => {
@@ -168,7 +167,7 @@
 		position: toRef(props, 'location'),
 		layoutSize: height,
 		elementSize: shallowRef(undefined),
-		active: isActive,
+		active: isActive as unknown as ComputedRef,
 		absolute: toRef(props, 'absolute')
 	})
 
@@ -185,6 +184,7 @@
 		return [
 			'foxy-app-bar',
 			`foxy-app-bar--${props.location}`,
+			activeClasses.value,
 			props.class
 		]
 	})

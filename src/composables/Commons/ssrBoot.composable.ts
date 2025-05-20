@@ -13,7 +13,7 @@ export function useSsrBoot () {
 
     const ssrBootStyles = computed(() => !isBooted.value ? ({
         transition: 'none !important'
-    }) : undefined)
+    }) : [])
 
     return {ssrBootStyles, isBooted: readonly(isBooted)}
 }

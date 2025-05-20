@@ -1,12 +1,12 @@
-import { useVModel } from "@foxy/composables"
 import type { IHoverProps } from "@foxy/interfaces"
 
 import { getCurrentInstanceName } from "@foxy/utils"
 
-import { computed } from "vue"
+import { computed, ref, watch } from "vue"
 
 export function useHover (props: IHoverProps, name = getCurrentInstanceName()) {
-    const isHover = useVModel(props, 'hover', false)
+    const hoverable = ref(false)
+    const isHover = ref(false)
 
     const hoverClasses = computed(() => {
         const classes: Array<string> = []
@@ -19,11 +19,21 @@ export function useHover (props: IHoverProps, name = getCurrentInstanceName()) {
     })
 
     const onMouseenter = () => {
-        isHover.value = true
+        if (hoverable.value) {
+            isHover.value = true
+        }
     }
     const onMouseleave = () => {
-        isHover.value = false
+        if (hoverable.value) {
+            isHover.value = false
+        }
     }
+
+    watch(() => props.hover, () => {
+        if (props.hover) {
+            hoverable.value = true
+        }
+    }, {immediate: true})
 
     return {
         isHover,

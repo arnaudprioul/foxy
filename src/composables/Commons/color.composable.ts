@@ -1,10 +1,11 @@
 import type { IColorProps } from "@foxy/interfaces"
 import type { TColor } from '@foxy/types'
-
 import { getForeground, isCssColor, isParsableColor, parseColor } from '@foxy/utils'
-import { computed, ComputedRef, isRef, Ref } from 'vue'
 
-export function useColor (colors: Ref<{ background?: TColor, text?: TColor }>) {
+import type { ComputedRef, Ref } from 'vue'
+import { computed, isRef, ref } from 'vue'
+
+export function useColor (colors: ComputedRef<{ background?: TColor, text?: TColor }>) {
     const colorStyles = computed(() => {
         const styles = []
 
@@ -38,15 +39,15 @@ export function useColor (colors: Ref<{ background?: TColor, text?: TColor }>) {
     return {colorStyles}
 }
 
-export function useBothColor<T extends Record<K, TColor>, K extends string> (bgColorProps: T | Ref<TColor>, colorProps: T | Ref<TColor> | ComputedRef<TColor>, name?: K) {
-    const colors = computed(() => {
+export function useBothColor<T extends Record<K, TColor>, K extends string> (bgColorProps: T | Ref<TColor> | ComputedRef<TColor>, colorProps: T | Ref<TColor> | ComputedRef<TColor>, name?: K) {
+    const bothColors = computed(() => {
         return {
             text: isRef(colorProps) ? colorProps.value : (name ? colorProps[name] : null),
             background: isRef(bgColorProps) ? bgColorProps.value : (name ? bgColorProps[name] : null)
         }
     })
 
-    return useColor(colors)
+    return useColor(bothColors)
 }
 
 export function useTextColor<T extends Record<K, TColor>, K extends string> (
@@ -75,27 +76,27 @@ export function useBackgroundColor<T extends Record<K, TColor>, K extends string
     return {backgroundColorStyles}
 }
 
-export function useColorEffect (props: IColorProps, isHover = false, isActive = false) {
+export function useColorEffect (props: IColorProps, isHover: Ref<boolean> | ComputedRef<boolean> = ref(false), isActive: Ref<boolean> | ComputedRef<boolean> = ref(false)) {
     const activeColor = computed(() => {
-        return props.activeColor ?? props.color
+        return props.activeColor ? props.activeColor : props.color
     })
     const hoverColor = computed(() => {
-        return props.hoverColor ?? props.color
+        return props.hoverColor ? props.hoverColor : props.color
     })
     const color = computed(() => {
-        return isHover ? hoverColor.value : isActive ? activeColor.value : props.color
+        return isHover.value ? hoverColor.value : isActive.value ? activeColor.value : props.color
     })
     const activeBgColor = computed(() => {
-        return props.activeBgColor ?? props.color
+        return props.activeBgColor ? props.activeBgColor : props.bgColor
     })
     const hoverBgColor = computed(() => {
-        return props.hoverBgColor ?? props.color
+        return props.hoverBgColor ? props.hoverBgColor : props.bgColor
     })
     const bgColor = computed(() => {
-        return isHover ? hoverBgColor.value : isActive ? activeBgColor.value : props.bgColor
+        return isHover.value ? hoverBgColor.value : isActive.value ? activeBgColor.value : props.bgColor
     })
 
     const {colorStyles} = useBothColor(bgColor, color)
 
-    return {colorStyles}
+    return {colorStyles, color, bgColor}
 }

@@ -12,7 +12,7 @@ export function useBorder (props: IBorderProps | Ref<boolean | number | string |
         const border = isRef(props) ? props.value : props.border
         const classes: Array<string> = []
 
-        if (border !== null && typeof border !== 'undefined') {
+        if (border && typeof border !== 'undefined') {
             classes.push(`${name}--border`)
 
             if (DIRECTION_ARRAY.includes(border as TDirectionBoth) || (Array.isArray(border) && border.some((bord) => DIRECTION_ARRAY.includes(bord)))) {

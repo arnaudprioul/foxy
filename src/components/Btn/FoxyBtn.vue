@@ -335,37 +335,47 @@
 	.foxy-btn {
 		$this: &;
 
-		align-items: center;
-		border-radius: 4px;
-		display: inline-grid;
-		grid-template-areas: "prepend content append";
-		grid-template-columns: max-content auto max-content;
-		font-weight: 500;
-		justify-content: center;
-		letter-spacing: 0.0892857143em;
-		line-height: 1;;
-		max-width: 100%;
-		outline: none;
 		position: relative;
+		vertical-align: middle;
+		flex-shrink: 0;
+
+		font-weight: 500;
+		letter-spacing: 0.0892857143em;
+		line-height: 1;
 		text-decoration: none;
 		text-indent: 0.0892857143em;
+
 		transition-property: box-shadow, transform, opacity, background;
 		transition-duration: 0.28s;
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		width: var(--foxy-btn---width, auto);
+		min-width: var(--foxy-btn---min-width, calc(var(--foxy-btn---width, 36px) + var(--foxy-btn---density, 0)));
+		max-width: var(--foxy-btn---max-width, 100%);
+		height: var(--foxy-btn---height, 36px);
+		min-height: var(--foxy-btn---min-height, calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0)));
+		max-height: var(--foxy-btn---max-height, 100%);
+		border-radius: var(--foxy-btn---border-radius, 4px);
+
+		background-color: var(--foxy-btn---background-color, rgb(230, 230, 230));
+		color: var(--foxy-btn---color, rgba(30, 30, 30, 0.87));
+
+		outline: none;
+		cursor: pointer;
 		user-select: none;
-		vertical-align: middle;
-		flex-shrink: 0;
 		border-color: currentColor;
 		border-style: solid;
 		border-width: 0;
-		min-height: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
-		cursor: pointer;
 
 		&--size-x-small {
 			--foxy-btn---height: 20px;
 			font-size: 0.625rem;
 			min-width: 36px;
 			padding: 0 8px;
+
+			:deep(.foxy-icon) {
+				font-size: 16px;
+			}
 		}
 
 		&--size-small {
@@ -373,6 +383,10 @@
 			font-size: 0.75rem;
 			min-width: 50px;
 			padding: 0 12px;
+
+			:deep(.foxy-icon) {
+				font-size: 20px;
+			}
 		}
 
 		&--size-default {
@@ -380,6 +394,10 @@
 			font-size: 0.875rem;
 			min-width: 64px;
 			padding: 0 16px;
+
+			:deep(.foxy-icon) {
+				font-size: 24px;
+			}
 		}
 
 		&--size-large {
@@ -387,6 +405,10 @@
 			font-size: 1rem;
 			min-width: 78px;
 			padding: 0 20px;
+
+			:deep(.foxy-icon) {
+				font-size: 28px;
+			}
 		}
 
 		&--size-x-large {
@@ -394,6 +416,10 @@
 			font-size: 1.125rem;
 			min-width: 92px;
 			padding: 0 24px;
+
+			:deep(.foxy-icon) {
+				font-size: 32px;
+			}
 		}
 
 		&--density-comfortable {
@@ -450,14 +476,6 @@
 			padding: 0;
 			width: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
 			height: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
-
-			&#{$this}--density-default {
-
-			}
-
-			&#{$this}--density-compact {
-
-			}
 		}
 
 		&--flat {
@@ -490,11 +508,13 @@
 		}
 
 		&--stacked {
-			grid-template-areas: "prepend" "content" "append";
-			grid-template-columns: auto;
-			grid-template-rows: max-content max-content max-content;
-			justify-items: center;
-			align-content: center;
+			#{$this}__loader {
+				grid-template-areas: "prepend" "content" "append";
+				grid-template-columns: auto;
+				grid-template-rows: max-content max-content max-content;
+				justify-items: center;
+				align-content: center;
+			}
 
 			#{$this}__content {
 				flex-direction: column;
@@ -578,9 +598,12 @@
 			}
 		}
 
-		&__loader {
+		#{$this}__loader {
 			align-items: center;
-			display: flex;
+			justify-content: center;
+			display: inline-grid;
+			grid-template-areas: "prepend content append";
+			grid-template-columns: max-content auto max-content;
 			height: 100%;
 			justify-content: center;
 			width: 100%;
@@ -601,25 +624,35 @@
 
 		&__prepend {
 			grid-area: prepend;
-			margin-inline: calc(var(--foxy-btn---height) / -9) calc(var(--foxy-btn---height) / 4.5);
+			--foxy-btn__prepend---margin-inline-start: calc(var(--foxy-btn---height) / -9);
+			--foxy-btn__prepend---margin-inline-end: calc(var(--foxy-btn---height) / 4.5);
+			margin-inline-start: var(--foxy-btn__prepend---margin-inline-start);
+			margin-inline-end: var(--foxy-btn__prepend---margin-inline-end);
 		}
 
 		&__append {
 			grid-area: append;
-			margin-inline: calc(var(--foxy-btn---height) / 4.5) calc(var(--foxy-btn---height) / -9);
+			--foxy-btn__append---margin-inline-end: calc(var(--foxy-btn---height) / -9);
+			--foxy-btn__append---margin-inline-start: calc(var(--foxy-btn---height) / 4.5);
+			margin-inline-start: var(--foxy-btn__append---margin-inline-start);
+			margin-inline-end: var(--foxy-btn__append---margin-inline-end);
 		}
 
 		&__content {
 			grid-area: content;
 			justify-content: center;
 			white-space: nowrap;
+			margin-inline-start: var(--foxy-btn__content---margin-inline-start);
+			margin-inline-end: var(--foxy-btn__content---margin-inline-end);
 
 			> :deep(.foxy-icon--start) {
-				margin-inline: calc(var(--foxy-btn---height) / -9) calc(var(--foxy-btn---height) / 4.5);
+				--foxy-btn__content---margin-inline-start: calc(var(--foxy-btn---height) / -9);
+				--foxy-btn__content---margin-inline-end: calc(var(--foxy-btn---height) / 4.5);
 			}
 
 			> :deep(.foxy-icon--end) {
-				margin-inline: calc(var(--foxy-btn---height) / 4.5) calc(var(--foxy-btn---height) / -9);
+				--foxy-btn__content---margin-inline-start: calc(var(--foxy-btn---height) / 4.5);
+				--foxy-btn__content---margin-inline-end: calc(var(--foxy-btn---height) / -9);
 			}
 		}
 

@@ -2,6 +2,8 @@ import type {
     IBorderProps,
     IColorProps,
     ICommonsComponentProps,
+    IElevationProps,
+    IHoverProps,
     ILocationProps,
     IRoundedProps,
     IStatusProps,
@@ -9,7 +11,7 @@ import type {
     ITransitionComponentProps
 } from '@foxy/interfaces'
 
-export interface IBadgeProps extends ICommonsComponentProps, ITagProps, IBorderProps, IColorProps, ILocationProps, IRoundedProps, ITransitionComponentProps, IStatusProps {
+export interface IBadgeProps extends ICommonsComponentProps, ITagProps, IBorderProps, IColorProps, ILocationProps, IRoundedProps, ITransitionComponentProps, IStatusProps, IHoverProps, IElevationProps {
     content?: number | string
     dot?: boolean
     floating?: boolean

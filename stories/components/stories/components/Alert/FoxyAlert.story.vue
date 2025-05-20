@@ -256,8 +256,6 @@
 
 	import { FoxyAlert, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
 
-	import { STATUS } from "@foxy/enums"
-
 	import type { IAlertProps } from "@foxy/interfaces"
 
 	import {
@@ -278,8 +276,7 @@
 
 	const state: Partial<IAlertProps> = reactive({
 		text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
-		title: 'Alert Title',
-		status: STATUS.INFO
+		title: 'Alert Title'
 	})
 
 	const initialState = () => {

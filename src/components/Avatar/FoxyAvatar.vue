@@ -69,9 +69,12 @@
 	import type { IAvatarProps, ISrcObject } from '@foxy/interfaces'
 	import { isEmpty } from "@foxy/utils"
 
-	import { computed, ref, StyleValue, toRef, useSlots } from 'vue'
+	import type { ComputedRef, StyleValue } from 'vue'
+	import { computed, ref, useSlots } from 'vue'
 
 	const props = withDefaults(defineProps<IAvatarProps>(), {tag: 'div', size: 'default'})
+
+	defineEmits(['update:active', 'update:hover'])
 
 	const {filterProps} = useProps<IAvatarProps>(props)
 
@@ -80,11 +83,11 @@
 	const {borderClasses, borderStyles} = useBorder(props)
 	const {paddingClasses, paddingStyles} = usePadding(props)
 	const {marginClasses, marginStyles} = useMargin(props)
-	const {elevationClasses, elevationStyles} = useElevation(props, ref(false), toRef(props, 'bgColor'))
-	const {sizeClasses, sizeStyles} = useSize(props)
 	const {hoverClasses, isHover, onMouseleave: handleMouseleave, onMouseenter: handleMouseenter} = useHover(props)
-	const {activeClasses, isActive, onClick: handleClick} = useActive(props)
-	const {colorStyles} = useColorEffect(props, isHover.value, isActive.value)
+	const {activeClasses, isActive, onActive: handleClick} = useActive(props)
+	const {colorStyles, bgColor} = useColorEffect(props, isHover, isActive as unknown as ComputedRef<boolean>)
+	const {elevationClasses, elevationStyles} = useElevation(props, ref(false), bgColor)
+	const {sizeClasses, sizeStyles} = useSize(props)
 	const {statusClasses} = useStatus(props)
 	const slots = useSlots()
 
@@ -230,12 +233,24 @@
 			}
 		}
 
+		&--elevated {
+			--foxy-avatar---box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+		}
+
 		&--border {
 			--foxy-avatar---border-width: thin;
 		}
 
 		&--rounded {
 			--foxy-avatar---border-radius: 50%;
+		}
+
+		&--density-default {
+			--foxy-avatar---density: 0px;
+		}
+
+		&--density-compact {
+			--foxy-avatar---density: 8px;
 		}
 
 		&--size-x-small {
@@ -266,14 +281,6 @@
 			--foxy-avatar---height: 56px;
 			--foxy-avatar---width: 56px;
 			--foxy-avatar---font-size: 2rem;
-		}
-
-		&--density-default {
-			--foxy-avatar---density: 0px;
-		}
-
-		&--density-compact {
-			--foxy-avatar---density: 8px;
 		}
 
 		&--warning {
@@ -321,12 +328,12 @@
 		--foxy-avatar---border-bottom-width: 0;
 		--foxy-avatar---border-right-width: 0;
 		--foxy-avatar---border-width: var(--foxy-avatar---border-top-width) var(--foxy-avatar---border-left-width) var(--foxy-avatar---border-bottom-width) var(--foxy-avatar---border-right-width);
-		--foxy-avatar---border-color: rgba(0, 0, 0, 0.87);
+		--foxy-avatar---border-color: currentColor;
 		--foxy-avatar---border-style: solid;
 		--foxy-avatar---border-radius: 0px;
-		--foxy-avatar---color: rgba(0, 0, 0, 0.87);
-		--foxy-avatar---box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
-		--foxy-avatar---background: rgb(255, 255, 255);
+		--foxy-avatar---box-shadow: none;
+		--foxy-avatar---color: rgba(30, 30, 30, 0.87);
+		--foxy-avatar---background: rgb(230, 230, 230);
 		--foxy-avatar---margin-inline-start: 0;
 		--foxy-avatar---margin-inline-end: 0;
 		--foxy-avatar---margin-block-start: 0;

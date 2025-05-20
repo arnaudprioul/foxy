@@ -4,6 +4,8 @@
 			:class="badgeClasses"
 			:style="badgeStyles"
 			v-bind="restAttrs"
+			@mouseenter="handleMouseenter"
+			@mouseleave="handleMouseleave"
 	>
 		<div class="foxy-badge__wrapper">
 			<slot name="default"/>
@@ -42,8 +44,11 @@
 	import { FoxyIcon, FoxyScaleRotate, FoxyTransition } from '@foxy/components'
 
 	import {
+		useActive,
 		useBorder,
-		useBothColor,
+		useColorEffect,
+		useElevation,
+		useHover,
 		useLocale,
 		useLocation,
 		useProps,
@@ -57,7 +62,7 @@
 
 	import { omit, pick } from '@foxy/utils'
 
-	import { computed, StyleValue, toRef, useAttrs } from 'vue'
+	import { computed, ComputedRef, ref, StyleValue, useAttrs } from 'vue'
 
 	const props = withDefaults(defineProps<IBadgeProps>(), {
 		tag: 'div',
@@ -71,9 +76,12 @@
 
 	const attrs = useAttrs()
 
-	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
+	const {hoverClasses, isHover, onMouseleave: handleMouseleave, onMouseenter: handleMouseenter} = useHover(props)
+	const {activeClasses, isActive} = useActive(props, 'modelValue')
+	const {colorStyles, bgColor} = useColorEffect(props, isHover, isActive as unknown as ComputedRef<boolean>)
 	const {roundedClasses, roundedStyles} = useRounded(props)
 	const {borderClasses, borderStyles} = useBorder(props)
+	const {elevationClasses, elevationStyles} = useElevation(props, ref(false), bgColor)
 	const {icon, statusClasses} = useStatus(props)
 	const {locationStyles} = useLocation(props, true, side => {
 		const base = props.floating
@@ -137,6 +145,9 @@
 				'foxy-badge--floating': props.floating,
 				'foxy-badge--inline': props.inline
 			},
+			elevationClasses.value,
+			activeClasses.value,
+			hoverClasses.value,
 			roundedClasses.value,
 			borderClasses.value,
 			statusClasses.value,
@@ -146,11 +157,12 @@
 
 	const badgeContentStyles = computed(() => {
 		return [
+			elevationStyles.value,
 			colorStyles.value,
 			roundedStyles.value,
 			borderStyles.value,
 			props.inline ? {} : locationStyles.value
-		]
+		] as StyleValue
 	})
 
 	const {id, css, load, isLoaded, unload} = useStyle(badgeContentStyles)
@@ -240,6 +252,12 @@
 			margin-block-end: var(--foxy-badge__wrapper---margin-block-end);
 			margin-inline-start: var(--foxy-badge__wrapper---margin-inline-start);
 			margin-inline-end: var(--foxy-badge__wrapper---margin-inline-end);
+		}
+
+		&--elevated {
+			#{$this}__badge {
+				--foxy-badge__badge---box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+			}
 		}
 
 		&--border {
@@ -335,14 +353,14 @@
 		--foxy-badge__badge---padding-block-end: 4px;
 		--foxy-badge__badge---padding-inline-start: 6px;
 		--foxy-badge__badge---padding-inline-end: 6px;
-		--foxy-badge__badge---color: rgba(0, 0, 0, 0.87);
+		--foxy-badge__badge---color: rgba(30, 30, 30, 0.87);
 		--foxy-badge__badge---background-color: rgb(230, 230, 230);
 		--foxy-badge__badge---border-top-width: 0;
 		--foxy-badge__badge---border-left-width: 0;
 		--foxy-badge__badge---border-bottom-width: 0;
 		--foxy-badge__badge---border-right-width: 0;
 		--foxy-badge__badge---border-width: var(--foxy-badge__badge---border-top-width) var(--foxy-badge__badge---border-left-width) var(--foxy-badge__badge---border-bottom-width) var(--foxy-badge__badge---border-right-width);
-		--foxy-badge__badge---border-color: rgba(0, 0, 0, 0.87);
+		--foxy-badge__badge---border-color: currentColor;
 		--foxy-badge__badge---border-style: solid;
 		--foxy-badge__badge---border-radius: 10px;
 	}

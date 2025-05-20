@@ -172,6 +172,30 @@
 			</template>
 		</Variant>
 
+		<Variant title="Elevation">
+			<template #default="{state}">
+				<foxy-container>
+					<foxy-row :justify="JUSTIFY.CENTER">
+						<foxy-col cols="auto">
+							<foxy-badge
+									content="A+"
+									v-bind="state"
+							>
+								<foxy-icon
+										:icon="MDI_ICONS.ACCOUNT"
+										size="x-large"
+								/>
+							</foxy-badge>
+						</foxy-col>
+					</foxy-row>
+				</foxy-container>
+			</template>
+
+			<template #controls="{state}">
+				<hst-elevation v-model="state.elevation"/>
+			</template>
+		</Variant>
+
 		<Variant title="Rounded">
 			<template #default="{state}">
 				<foxy-container>
@@ -207,7 +231,7 @@
 	import { ALIGN, BLOCK, INLINE, JUSTIFY, MDI_ICONS } from '@foxy/enums'
 	import type { IBadgeProps } from "@foxy/interfaces"
 
-	import { HstBorder, HstColor, HstLocation, HstRounded, HstStatus } from '@stories/components/controls'
+	import { HstBorder, HstColor, HstElevation, HstLocation, HstRounded, HstStatus } from '@stories/components/controls'
 
 	import { reactive } from 'vue'
 

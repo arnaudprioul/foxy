@@ -79,6 +79,7 @@
 	import { FoxyBtn, FoxyIcon } from '@foxy/components'
 
 	import {
+		useActive,
 		useBorder,
 		useColorEffect,
 		useDensity,
@@ -92,8 +93,7 @@
 		usePosition,
 		useProps,
 		useRounded,
-		useStatus,
-		useVModel
+		useStatus
 	} from '@foxy/composables'
 	import { useStyle } from "@foxy/composables/Commons/style.composable.ts"
 
@@ -101,7 +101,8 @@
 
 	import type { IAlertProps } from '@foxy/interfaces'
 
-	import { computed, ref, toRef, useSlots } from 'vue'
+	import type { ComputedRef, StyleValue } from 'vue'
+	import { computed, ref, useSlots } from 'vue'
 
 	const props = withDefaults(defineProps<IAlertProps>(), {
 		tag: 'div',
@@ -112,29 +113,28 @@
 		hover: true
 	})
 
-	const emits = defineEmits(['click:close', 'update:modelValue'])
+	const emits = defineEmits(['click:close', 'update:modelValue', 'update:hover'])
 
 	const {filterProps} = useProps<IAlertProps>(props)
 	const {t} = useLocale()
 
+	const {activeClasses, isActive, onActive} = useActive(props, 'modelValue')
 	const {isHover, onMouseenter: handleMouseenter, onMouseleave: handleMouseleave, hoverClasses} = useHover(props)
-	const {colorStyles} = useColorEffect(props, isHover.value)
+	const {colorStyles, bgColor} = useColorEffect(props, isHover, isActive as unknown as ComputedRef<boolean>)
 	const {densityClasses} = useDensity(props)
 	const {borderStyles, borderClasses} = useBorder(props)
 	const {paddingClasses, paddingStyles} = usePadding(props)
 	const {marginClasses, marginStyles} = useMargin(props)
 	const {dimensionStyles} = useDimension(props)
-	const {elevationClasses, elevationStyles} = useElevation(props, ref(false), toRef(props, 'bgColor'))
+	const {elevationClasses, elevationStyles} = useElevation(props, ref(false), bgColor)
 	const {locationStyles} = useLocation(props)
 	const {positionClasses, positionStyles} = usePosition(props)
 	const {roundedClasses, roundedStyles} = useRounded(props)
 	const {icon, statusClasses} = useStatus(props)
 	const slots = useSlots()
 
-	const isActive = useVModel(props, 'modelValue', true)
-
 	const handleClose = (e: MouseEvent) => {
-		isActive.value = false
+		onActive()
 
 		emits('click:close', e)
 	}
@@ -174,7 +174,7 @@
 			positionStyles.value,
 			elevationStyles.value,
 			props.style
-		]
+		] as StyleValue
 	})
 	const alertClasses = computed(() => {
 		return [
@@ -183,6 +183,7 @@
 				'foxy-alert--prominent': props.prominent
 			},
 			hoverClasses.value,
+			activeClasses.value,
 			statusClasses.value,
 			densityClasses.value,
 			borderClasses.value,
@@ -240,32 +241,8 @@
 		background-color: var(--foxy-alert---background-color);
 		color: var(--foxy-alert---color);
 
-		&--absolute {
-			--foxy-alert---position: absolute;
-		}
-
-		&--fixed {
-			--foxy-alert---position: fixed;
-		}
-
-		&--sticky {
-			--foxy-alert---position: sticky;
-		}
-
-		&--relative {
-			--foxy-alert---position: relative;
-		}
-
-		&--prominent {
-			grid-template-areas: "prepend content append close" "prepend content . .";
-
-			#{$this}__prepend {
-				--foxy-alert__prepend---align-self: center;
-			}
-		}
-
 		&--elevated {
-
+			box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 		}
 
 		&--border {
@@ -336,6 +313,30 @@
 		&--error {
 			--foxy-alert---background-color: var(--foxy-status--error---background-color, rgb(207, 102, 121));
 			--foxy-alert---color: var(--foxy-status--error---color, #ffffff);
+		}
+
+		&--absolute {
+			--foxy-alert---position: absolute;
+		}
+
+		&--fixed {
+			--foxy-alert---position: fixed;
+		}
+
+		&--sticky {
+			--foxy-alert---position: sticky;
+		}
+
+		&--relative {
+			--foxy-alert---position: relative;
+		}
+
+		&--prominent {
+			grid-template-areas: "prepend content append close" "prepend content . .";
+
+			#{$this}__prepend {
+				--foxy-alert__prepend---align-self: center;
+			}
 		}
 
 		&__close {
@@ -422,7 +423,7 @@
 		--foxy-alert---border-color: transparent;
 		--foxy-alert---border-style: solid;
 		--foxy-alert---border-radius: 0px;
-		--foxy-alert---color: rgba(0, 0, 0, 0.87);
+		--foxy-alert---color: rgba(30, 30, 30, 0.87);
 		--foxy-alert---background-color: rgb(230, 230, 230);
 		--foxy-alert---position: static;
 		--foxy-alert---margin-inline-start: 0;

@@ -1,11 +1,13 @@
 import type {
     IBorderProps,
+    IBtnProps,
     IColorProps,
     ICommonsComponentProps,
     IDensityProps,
     IDimensionProps,
     IElevationProps,
     IGroupProps,
+    IHoverProps,
     ILayoutItemProps,
     IMarginProps,
     IPaddingProps,
@@ -15,8 +17,8 @@ import type {
 
 import type { TMode } from '@foxy/types'
 
-export interface IBottomNavProps extends ITagProps, ICommonsComponentProps, IColorProps, IPaddingProps, IBorderProps, IElevationProps, IMarginProps, IDimensionProps, IDensityProps, IRoundedProps, ILayoutItemProps, IGroupProps {
+export interface IBottomNavProps extends ITagProps, ICommonsComponentProps, IColorProps, IPaddingProps, IBorderProps, IElevationProps, IMarginProps, IDimensionProps, IDensityProps, IRoundedProps, ILayoutItemProps, IGroupProps, IHoverProps {
     grow?: boolean
     mode?: TMode
-    active?: boolean
+    items?: Array<IBtnProps>
 }

@@ -69,7 +69,13 @@ export function useGroupItem (
         return group.isSelected(id)
     })
 
-    const selectedClass = computed(() => isSelected.value && [group.selectedClass.value, props.selectedClass])
+    const selectedClass = computed(() => {
+        if (isSelected.value) {
+            return [group.selectedClass.value ? group.selectedClass.value : props.selectedClass]
+        }
+
+        return []
+    })
 
     watch(isSelected, (value) => {
         vm.emit('group:selected', {value})
