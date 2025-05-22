@@ -1,8 +1,6 @@
 import { DENSITY } from '@foxy/enums'
 
-import { ref } from 'vue'
-
-export const densityList = ref([
+export const densityList = [
     {
         label: 'Default',
         value: DENSITY.DEFAULT
@@ -11,4 +9,4 @@ export const densityList = ref([
         label: 'Compact',
         value: DENSITY.COMPACT
     }
-])
+]

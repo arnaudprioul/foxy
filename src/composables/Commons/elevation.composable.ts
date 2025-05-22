@@ -3,7 +3,7 @@ import { TColor } from "@foxy/types"
 import { formatElevationStyle, getCurrentInstanceName } from "@foxy/utils"
 import { computed, isRef, ref, Ref } from 'vue'
 
-export function useElevation (props: IElevationProps | Ref<number | string | undefined>, flat: Ref<boolean> = ref(false), bgColor: Ref<TColor> = ref('hsl(0deg 0% 0%)'), name = getCurrentInstanceName()) {
+export function useElevation (props: IElevationProps | Ref<number | string | undefined>, flat: Ref<boolean> = ref(false), bgColor: Ref<TColor> = ref('rgb(0,0,0)'), name = getCurrentInstanceName()) {
     const elevationClasses = computed(() => {
         const elevation = isRef(props) ? props.value : props.elevation
         const classes: Array<string> = []

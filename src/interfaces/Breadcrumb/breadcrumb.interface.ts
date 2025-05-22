@@ -3,6 +3,7 @@ import type {
     IColorProps,
     ICommonsComponentProps,
     IDensityProps,
+    IElevationProps,
     IMarginProps,
     IPaddingProps,
     IRoundedProps,
@@ -11,7 +12,7 @@ import type {
 
 import type { TBreadcrumbItem, TIcon } from '@foxy/types'
 
-export interface IBreadcrumbProps extends IColorProps, ITagProps, ICommonsComponentProps, IDensityProps, IRoundedProps, IPaddingProps, IMarginProps, IBorderProps {
+export interface IBreadcrumbProps extends IColorProps, ITagProps, ICommonsComponentProps, IDensityProps, IRoundedProps, IPaddingProps, IMarginProps, IBorderProps, IElevationProps {
     activeClass?: string
     disabled?: boolean
     divider?: string | TIcon

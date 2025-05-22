@@ -12,12 +12,21 @@
 						v-for="(item, index) in items"
 						:key="index"
 				>
-					<foxy-btn
-							:id="`foxy-btn-${index}`"
-							ref="foxyBtnRef"
-							class="foxy-bottom-nav__btn"
-							v-bind="btnProps(item)"
-					/>
+					<slot
+							:name="`item.${index}`"
+							v-bind="{props: item}"
+					>
+						<slot
+								name="item"
+								v-bind="{props: item, index}"
+						>
+							<foxy-btn
+									ref="foxyBtnRef"
+									class="foxy-bottom-nav__btn"
+									v-bind="item"
+							/>
+						</slot>
+					</slot>
 				</template>
 			</slot>
 		</div>
@@ -49,19 +58,20 @@
 	import { FOXY_BTN_TOGGLE_KEY } from '@foxy/consts'
 	import { MODE } from "@foxy/enums"
 
-	import type { IBottomNavProps, IBtnProps } from '@foxy/interfaces'
+	import type { IBottomNavProps, IBreadcrumbItemProps } from '@foxy/interfaces'
 	import type { TFoxyBtn } from "@foxy/types"
 
 	import { convertToUnit, int } from '@foxy/utils'
 
-	import { computed, ComputedRef, mergeProps, Ref, ref, StyleValue, toRef, type VNodeProps } from 'vue'
+	import { computed, ComputedRef, Ref, StyleValue, toRef } from 'vue'
 
 	const props = withDefaults(defineProps<IBottomNavProps>(), {
 		tag: 'nav',
 		name: 'bottom-navigation',
 		modelValue: true,
 		selectedClass: 'foxy-bottom-nav__btn--selected',
-		mode: MODE.VERTICAL
+		mode: MODE.VERTICAL,
+		items: () => [] as Array<TFoxyBtn>
 	})
 
 	defineEmits(['update:modelValue', 'update:active', 'update:hover'])
@@ -97,13 +107,20 @@
 		absolute: toRef(props, 'absolute')
 	})
 
-	const foxyBtnRef = ref<TFoxyBtn>()
-	const btnProps = (item: IBtnProps) => {
-		const ignoreProps = ['margin', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom', 'padding', 'paddingLeft', 'paddingTop', 'paddingRight', 'paddingBottom', 'rounded', 'border', 'borderTop', 'borderBottom', 'borderLeft', 'borderRight', 'elevation', 'width', 'minWidth', 'maxWidth', 'height', 'minHeight', 'maxHeight']
-		const btnDefaultProps = foxyBtnRef.value?.[0]?.filterProps(props, ignoreProps) || foxyBtnRef.value?.filterProps(props, ignoreProps)
-
-		return mergeProps(item as VNodeProps, btnDefaultProps)
-	}
+	const items = computed(() => {
+		return props.items.map((item) => {
+			return {
+				...item,
+				density: props.density ?? item.density,
+				color: props.color ?? item.color,
+				bgColor: props.bgColor ?? item.bgColor,
+				hoverColor: props.hoverColor ?? item.hoverColor,
+				hoverBgColor: props.hoverBgColor ?? item.hoverBgColor,
+				activeColor: props.activeColor ?? item.activeColor,
+				activeBgColor: props.activeBgColor ?? item.activeBgColor
+			}
+		}) as Array<IBreadcrumbItemProps>
+	})
 
 	useGroup(props, FOXY_BTN_TOGGLE_KEY)
 
@@ -171,7 +188,7 @@
 
 		transition: var(--foxy-bottom-bar---transition);
 
-		max-width: 100%;
+		max-width: var(--foxy-bottom-bar---max-width);
 		height: calc(var(--foxy-bottom-bar---height) - var(--foxy-bottom-bar---density));
 
 		background: var(--foxy-bottom-bar---background);
@@ -236,11 +253,11 @@
 		}
 
 		&--density-default {
-			--foxy-alert---density: 0px;
+			--foxy-bottom-bar---density: 0px;
 		}
 
 		&--density-compact {
-			--foxy-alert---density: 8px;
+			--foxy-bottom-bar---density: 8px;
 		}
 
 		&--active {
@@ -320,6 +337,7 @@
 		--foxy-bottom-bar---border-style: solid;
 		--foxy-bottom-bar---border-radius: 0;
 		--foxy-bottom-bar---density: 0;
+		--foxy-bottom-bar---max-width: 100%;
 		--foxy-bottom-bar---height: 48px;
 		--foxy-bottom-bar---box-shadow: none;
 		--foxy-bottom-bar---color: rgba(0, 0, 0, 0.87);

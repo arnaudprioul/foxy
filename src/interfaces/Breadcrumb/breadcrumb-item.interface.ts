@@ -16,4 +16,5 @@ export interface IBreadcrumbItemProps extends ICommonsComponentProps, ITagProps,
     disabled?: boolean
     active?: boolean
     activeClass?: string
+    isLast?: boolean
 }

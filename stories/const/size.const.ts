@@ -1,6 +1,4 @@
-import { ref } from 'vue'
-
-export const sizeList = ref([
+export const sizeList = [
     {
         label: 'Extra Small',
         value: 'x-small'
@@ -21,4 +19,4 @@ export const sizeList = ref([
         label: 'Extra Large',
         value: 'x-large'
     }
-])
+]
