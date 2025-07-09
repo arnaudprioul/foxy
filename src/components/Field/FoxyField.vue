@@ -163,9 +163,7 @@
 
 	import { useAdjacentInner, useBothColor, useDensity, useFocus, useLoader, useProps, useRtl } from '@foxy/composables'
 
-	import { KEYBOARD_VALUES } from '@foxy/consts'
-
-	import { EASING, PROGRESS_TYPE } from '@foxy/enums'
+	import { EASING, KEYBOARD_VALUES, PROGRESS_TYPE } from '@foxy/enums'
 
 	import type { IFieldProps } from '@foxy/interfaces'
 

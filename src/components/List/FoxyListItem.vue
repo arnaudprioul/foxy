@@ -129,9 +129,9 @@
 		useRounded
 	} from '@foxy/composables'
 
-	import { KEYBOARD_VALUES } from '@foxy/consts'
-
 	import { vRipple } from '@foxy/directives'
+
+	import { KEYBOARD_VALUES } from '@foxy/enums'
 
 	import type { IListItemProps } from '@foxy/interfaces'
 

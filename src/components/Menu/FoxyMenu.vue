@@ -79,9 +79,9 @@
 
 	import { useProps, useScopeId, useVModel } from '@foxy/composables'
 
-	import { FOXY_MENU_KEY, KEYBOARD_VALUES } from '@foxy/consts'
+	import { FOXY_MENU_KEY } from '@foxy/consts'
 
-	import { INLINE, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@foxy/enums'
+	import { INLINE, KEYBOARD_VALUES, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@foxy/enums'
 
 	import type { IItemProps, IMenuProps } from '@foxy/interfaces'
 

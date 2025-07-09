@@ -276,9 +276,18 @@
 
 	import { useFilter, useItems, useLocale, useProps, useScrolling, useTextColor, useVModel } from '@foxy/composables'
 
-	import { FOXY_FORM_KEY, IN_BROWSER, KEYBOARD_VALUES } from '@foxy/consts'
+	import { FOXY_FORM_KEY, IN_BROWSER } from '@foxy/consts'
 
-	import { BLOCK, DENSITY, DIRECTION, FILTERS_MODE, MDI_ICONS, SELECT_STRATEGY, TEXT_FIELD_TYPE } from '@foxy/enums'
+	import {
+		BLOCK,
+		DENSITY,
+		DIRECTION,
+		FILTERS_MODE,
+		KEYBOARD_VALUES,
+		MDI_ICONS,
+		SELECT_STRATEGY,
+		TEXT_FIELD_TYPE
+	} from '@foxy/enums'
 
 	import type { IInternalListItem, IItemProps, ISelectProps } from '@foxy/interfaces'
 
@@ -554,7 +563,7 @@
 				foxyListRef.value?.focus('next')
 			}
 
-			const keyBack = [KEYBOARD_VALUES.BACKSPACE, KEYBOARD_VALUES.DEL]
+			const keyBack = [KEYBOARD_VALUES.BACKSPACE, KEYBOARD_VALUES.DELETE]
 			if (keyBack.includes(e.key as typeof keyBack[number])) {
 				if (
 						!props.multiple &&

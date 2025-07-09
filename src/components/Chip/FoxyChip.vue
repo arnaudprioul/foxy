@@ -140,11 +140,11 @@
 		useVModel
 	} from '@foxy/composables'
 
-	import { FOXY_CHIP_GROUP_KEY, KEYBOARD_VALUES } from '@foxy/consts'
+	import { FOXY_CHIP_GROUP_KEY } from '@foxy/consts'
 
 	import { vRipple } from '@foxy/directives'
 
-	import { MDI_ICONS } from '@foxy/enums'
+	import { KEYBOARD_VALUES, MDI_ICONS } from '@foxy/enums'
 
 	import type { IChipProps } from '@foxy/interfaces'
 

@@ -91,9 +91,7 @@
 
 	import { useDisplay, useLocale, useProps, useRefs, useResizeObserver, useVModel } from "@foxy/composables"
 
-	import { KEYBOARD_VALUES } from "@foxy/consts"
-
-	import { MDI_ICONS } from "@foxy/enums"
+	import { KEYBOARD_VALUES, MDI_ICONS } from "@foxy/enums"
 
 	import type { IPaginationProps } from "@foxy/interfaces"
 

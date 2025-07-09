@@ -102,9 +102,7 @@
 		useRounded
 	} from '@foxy/composables'
 
-	import { KEYBOARD_VALUES } from '@foxy/consts'
-
-	import { DENSITY, LINES, OPEN_STRATEGY, SELECT_STRATEGY } from '@foxy/enums'
+	import { DENSITY, KEYBOARD_VALUES, LINES, OPEN_STRATEGY, SELECT_STRATEGY } from '@foxy/enums'
 
 	import type { IListProps } from '@foxy/interfaces'
 

@@ -48,9 +48,11 @@
 
 	import { useBorder, useElevation, useProps, useRounded, useTextColor } from '@foxy/composables'
 
-	import { FOXY_SLIDER_FIELD_KEY, KEYBOARD_VALUES } from '@foxy/consts'
+	import { FOXY_SLIDER_FIELD_KEY } from '@foxy/consts'
 
 	import { vRipple } from '@foxy/directives'
+
+	import { KEYBOARD_VALUES } from '@foxy/enums'
 
 	import type { ISliderFieldThumbProps } from "@foxy/interfaces"
 

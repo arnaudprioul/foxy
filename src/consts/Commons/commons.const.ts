@@ -18,24 +18,3 @@ export const ON_REGEX = /^on[^a-z]/
 export const SUPPORTS_TOUCH = IN_BROWSER && ('ontouchstart' in window || window.navigator.maxTouchPoints > 0)
 
 export const SUPPORTS_EYE_DROPPER = IN_BROWSER && 'EyeDropper' in window
-
-export const KEYBOARD_VALUES = Object.freeze({
-    ENTER: 'Enter',
-    TAB: 'Tab',
-    DELETE: 'Delete',
-    ESC: 'Escape',
-    SPACE: 'Space',
-    UP: 'ArrowUp',
-    DOWN: 'ArrowDown',
-    LEFT: 'ArrowLeft',
-    RIGHT: 'ArrowRight',
-    END: 'End',
-    HOME: 'Home',
-    DEL: 'Delete',
-    BACKSPACE: 'Backspace',
-    INSERT: 'Insert',
-    PAGEUP: 'PageUp',
-    PAGEDOWN: 'PageDown',
-    SHIFT: 'Shift',
-    EMPTY: ' '
-})

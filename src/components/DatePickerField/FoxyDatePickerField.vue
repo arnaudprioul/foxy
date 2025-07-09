@@ -186,9 +186,9 @@
 
 	import { useDate, useLocale, useProps, useTextColor, useVModel } from "@foxy/composables"
 
-	import { FOXY_FORM_KEY, KEYBOARD_VALUES } from "@foxy/consts"
+	import { FOXY_FORM_KEY } from "@foxy/consts"
 
-	import { BLOCK, DENSITY, DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from "@foxy/enums"
+	import { BLOCK, DENSITY, DIRECTION, KEYBOARD_VALUES, MDI_ICONS, TEXT_FIELD_TYPE } from "@foxy/enums"
 
 	import type { IDatePickerFieldProps } from "@foxy/interfaces"
 

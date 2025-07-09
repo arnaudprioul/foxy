@@ -71,11 +71,11 @@
 		useVModel
 	} from '@foxy/composables'
 
-	import { IN_BROWSER, KEYBOARD_VALUES } from '@foxy/consts'
+	import { IN_BROWSER } from '@foxy/consts'
 
 	import { vClickOutside } from '@foxy/directives'
 
-	import { BLOCK, EASING, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@foxy/enums'
+	import { BLOCK, EASING, KEYBOARD_VALUES, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@foxy/enums'
 
 	import type { IOverlayProps } from '@foxy/interfaces'
 
