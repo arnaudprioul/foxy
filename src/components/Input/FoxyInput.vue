@@ -167,7 +167,7 @@
 		hasAppend,
 		onClickPrepend: handleClickPrepend,
 		onClickAppend: handleClickAppend
-	} = useAdjacent(props)
+	} = useAdjacent(props, toRef(props, 'prependIcon'), toRef(props, 'appendIcon'))
 
 	const messages = computed(() => {
 		if (props.errorMessages?.length || (!isPristine.value && errorMessages.value.length)) {

@@ -67,7 +67,10 @@
 			</template>
 
 			<template #controls="{state}">
-				<hst-status v-model="state.status"/>
+				<hst-status
+						v-model:status="state.status"
+						v-model:status-icon-position="state.statusIconPosition"
+				/>
 			</template>
 		</Variant>
 
@@ -246,6 +249,23 @@
 				/>
 			</template>
 		</Variant>
+
+		<Variant title="Adjacent">
+			<template #default="{state}">
+				<foxy-alert
+						v-bind="state"
+				/>
+			</template>
+
+			<template #controls="{state}">
+				<hst-adjacent
+						v-model:append-avatar="state.appendAvatar"
+						v-model:append-icon="state.appendIcon"
+						v-model:prepend-avatar="state.prependAvatar"
+						v-model:prepend-icon="state.prependIcon"
+				/>
+			</template>
+		</Variant>
 	</Story>
 </template>
 
@@ -271,6 +291,7 @@
 		HstRounded,
 		HstStatus
 	} from '@stories/components/controls'
+	import HstAdjacent from "@stories/components/controls/HstAdjacent/HstAdjacent.vue"
 
 	import { reactive } from 'vue'
 

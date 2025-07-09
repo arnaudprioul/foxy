@@ -47,7 +47,10 @@
 			</template>
 
 			<template #controls="{state}">
-				<hst-status v-model="state.status"/>
+				<hst-status
+						v-model:status="state.status"
+						v-model:status-icon-position="state.statusIconPosition"
+				/>
 			</template>
 		</Variant>
 

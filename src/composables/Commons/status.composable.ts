@@ -1,24 +1,38 @@
-import type { IStatusProps } from "@foxy/interfaces"
+import { STATUS_POSITION } from "@foxy/enums"
+import type { IAdjacentProps, IStatusProps } from "@foxy/interfaces"
 import { getCurrentInstanceName } from '@foxy/utils'
-import { computed, isRef } from 'vue'
+import { computed } from 'vue'
 
-export function useStatus (props: IStatusProps, name = getCurrentInstanceName()) {
+export function useStatus (props: IStatusProps & IAdjacentProps, name = getCurrentInstanceName()) {
+    const statusIcon = computed(() => {
+        return `$${props.status}`
+    })
+
+    const prependIcon = computed(() => {
+        if (!props.status || (Boolean(props.statusIconPosition) && ![`${STATUS_POSITION.PREPEND}`, `${STATUS_POSITION.BOTH}`].includes(props.statusIconPosition as string)) || props.prependIcon) return props.prependIcon
+
+        return statusIcon.value
+    })
+    const appendIcon = computed(() => {
+        if (!props.status || (props.statusIconPosition && ![`${STATUS_POSITION.APPEND}`, `${STATUS_POSITION.BOTH}`].includes(props.statusIconPosition)) || props.appendIcon) return props.appendIcon
+
+        return statusIcon.value
+    })
     const icon = computed(() => {
-        if (!props.status) return props.icon
+        if (!props.status || !props.statusIconPosition || props.statusIconPosition !== 'replace' || props.icon) return props.icon
 
-        return typeof props.icon === 'string' ? props.icon : `$${props.status}`
+        return statusIcon.value
     })
 
     const statusClasses = computed(() => {
-        const status = isRef(props) ? props.value : props.status
         const classes: Array<string> = []
 
-        if (status) {
-            classes.push(`${name}--${status}`)
+        if (props.status) {
+            classes.push(`${name}--${props.status}`)
         }
 
         return classes
     })
 
-    return {icon, statusClasses}
+    return {icon, appendIcon, prependIcon, statusClasses}
 }

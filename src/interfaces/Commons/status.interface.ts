@@ -1,7 +1,8 @@
 import type { IIconProps } from '@foxy/interfaces'
 
-import type { TStatus } from '@foxy/types'
+import { TStatus, TStatusPosition } from '@foxy/types'
 
 export interface IStatusProps extends IIconProps {
     status?: TStatus
+    statusIconPosition?: TStatusPosition
 }

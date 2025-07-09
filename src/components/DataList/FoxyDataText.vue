@@ -67,7 +67,7 @@
 	import { useAdjacent, useBothColor, useDensity, useMargin, usePadding, useProps } from "@foxy/composables"
 
 	import type { IDataTextProps } from "@foxy/interfaces"
-	import { computed, shallowRef, StyleValue } from "vue"
+	import { computed, shallowRef, StyleValue, toRef } from "vue"
 
 	const props = withDefaults(defineProps<IDataTextProps>(), {})
 
@@ -82,7 +82,7 @@
 		onClickAppend: handleClickAppend,
 		hasAppend,
 		hasPrepend
-	} = useAdjacent(props)
+	} = useAdjacent(props, toRef(props, 'prependIcon'), toRef(props, 'appendIcon'))
 
 	const isHover = shallowRef(false)
 

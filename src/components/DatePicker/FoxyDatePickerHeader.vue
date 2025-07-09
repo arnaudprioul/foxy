@@ -78,7 +78,7 @@
 
 	import type { IDatePickerHeaderProps } from "@foxy/interfaces"
 
-	import { computed, StyleValue, useSlots } from "vue"
+	import { computed, StyleValue, toRef, useSlots } from "vue"
 
 	const props = withDefaults(defineProps<IDatePickerHeaderProps>(), {})
 
@@ -95,7 +95,7 @@
 		onClickAppend: handleClickAppend,
 		hasAppend,
 		hasPrepend
-	} = useAdjacent(props)
+	} = useAdjacent(props, toRef(props, 'prependIcon'), toRef(props, 'appendIcon'))
 
 	const hasContent = computed(() => {
 		return !!(slots.default || props.header)

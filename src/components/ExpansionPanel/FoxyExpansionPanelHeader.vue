@@ -130,7 +130,8 @@
 		hasPrepend,
 		onClickPrepend: handleClickPrepend,
 		onClickAppend: handleClickAppend
-	} = useAdjacent(props)
+	} = useAdjacent(props, toRef(props, 'prependIcon'), toRef(props, 'appendIcon'))
+
 	const {borderClasses, borderStyles} = useBorder(props)
 	const {paddingClasses, paddingStyles} = usePadding(props)
 	const {marginClasses, marginStyles} = useMargin(props)

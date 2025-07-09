@@ -7,6 +7,7 @@ import type {
     IDimensionProps,
     IElevationProps,
     IGroupItemProps,
+    IHoverProps,
     ILinkProps,
     ILoaderProps,
     ILocationProps,
@@ -16,12 +17,13 @@ import type {
     IRippleProps,
     IRoundedProps,
     ISizeProps,
+    IStatusProps,
     ITagProps
 } from '@foxy/interfaces'
 
 import type { TIcon } from '@foxy/types'
 
-export interface IBtnProps extends ICommonsComponentProps, IColorProps, IBorderProps, IDensityProps, IDimensionProps, IElevationProps, IRoundedProps, ITagProps, ISizeProps, ILinkProps, IRippleProps, ILoaderProps, IPositionProps, ILocationProps, IGroupItemProps, IPaddingProps, IMarginProps, IAdjacentProps {
+export interface IBtnProps extends ICommonsComponentProps, IColorProps, IBorderProps, IDensityProps, IDimensionProps, IElevationProps, IRoundedProps, ITagProps, ISizeProps, ILinkProps, IRippleProps, ILoaderProps, IPositionProps, ILocationProps, IGroupItemProps, IPaddingProps, IMarginProps, IAdjacentProps, IStatusProps, IHoverProps {
     active?: boolean
     flat?: boolean,
     icon?: boolean | TIcon

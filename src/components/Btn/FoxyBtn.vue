@@ -115,13 +115,15 @@
 	import { FoxyAvatar, FoxyIcon, FoxyLoader, FoxyProgressCircular } from '@foxy/components'
 
 	import {
+		useActive,
 		useAdjacent,
 		useBorder,
-		useBothColor,
+		useColorEffect,
 		useDensity,
 		useDimension,
 		useElevation,
 		useGroupItem,
+		useHover,
 		useLink,
 		useLoader,
 		useLocation,
@@ -131,7 +133,8 @@
 		useProps,
 		useRounded,
 		useSelectLink,
-		useSize
+		useSize,
+		useStatus
 	} from '@foxy/composables'
 
 	import { FOXY_BTN_TOGGLE_KEY } from '@foxy/consts'
@@ -144,7 +147,7 @@
 
 	import type { TFoxyProgressCircular, TIcon } from "@foxy/types"
 
-	import { computed, ref, shallowRef, StyleValue, toRef, useAttrs, useSlots } from 'vue'
+	import { computed, ref, StyleValue, toRef, useAttrs, useSlots } from 'vue'
 
 	const attrs = useAttrs()
 
@@ -160,35 +163,20 @@
 
 	const {filterProps} = useProps<IBtnProps>(props)
 
-	const {densityClasses} = useDensity(props)
-	const {dimensionStyles} = useDimension(props)
-	const {elevationClasses} = useElevation(props, toRef(props, 'flat'))
-	const {loaderClasses} = useLoader(props)
-	const {locationStyles} = useLocation(props)
-	const {positionClasses} = usePosition(props)
-	const {roundedClasses, roundedStyles} = useRounded(props)
-	const {borderClasses, borderStyles} = useBorder(props)
-	const {paddingClasses, paddingStyles} = usePadding(props)
-	const {marginClasses, marginStyles} = useMargin(props)
-	const {sizeClasses, sizeStyles} = useSize(props)
-
 	const foxyProgressRef = ref<TFoxyProgressCircular>()
 
-	const {
-		onClickPrepend: handleClickPrepend,
-		onClickAppend: handleClickAppend,
-		hasAppend,
-		hasPrepend
-	} = useAdjacent(props)
 	const group = useGroupItem(props, FOXY_BTN_TOGGLE_KEY, false)
 	const link = useLink(props, attrs)
 	const slots = useSlots()
 
 	useSelectLink(link, group?.select)
 
+	const {isHover, onMouseenter: handleMouseenter, onMouseleave: handleMouseleave} = useHover(props)
+	const {isActive: active} = useActive(props)
+
 	const isActive = computed(() => {
-		if (props.active !== undefined) {
-			return props.active
+		if (active.value !== undefined) {
+			return active.value
 		}
 
 		if (link.isLink.value) {
@@ -198,9 +186,6 @@
 		return group?.isSelected.value
 	})
 	const isDisabled = computed(() => group?.disabled.value || props.disabled)
-	const isElevated = computed(() => {
-		return !!props.elevation
-	})
 	const valueAttr = computed(() => {
 		if (props.value === undefined || typeof props.value === 'symbol') return undefined
 
@@ -216,35 +201,25 @@
 		]
 	})
 
-	const isHover = shallowRef(false)
-
-	const activeColor = computed(() => {
-		return props.activeColor ?? props.color
-	})
-	const hoverColor = computed(() => {
-		return props.hoverColor ?? props.color
-	})
-	const color = computed(() => {
-		return isHover.value ? hoverColor.value : isActive.value ? activeColor.value : props.color
-	})
-	const activeBgColor = computed(() => {
-		return props.activeBgColor ?? props.color
-	})
-	const hoverBgColor = computed(() => {
-		return props.hoverBgColor ?? props.color
-	})
-	const bgColor = computed(() => {
-		return isHover.value ? hoverBgColor.value : isActive.value ? activeBgColor.value : props.bgColor
-	})
-
-	const {colorStyles} = useBothColor(bgColor, color)
-
-	const handleMouseenter = () => {
-		isHover.value = true
-	}
-	const handleMouseleave = () => {
-		isHover.value = false
-	}
+	const {densityClasses} = useDensity(props)
+	const {dimensionStyles} = useDimension(props)
+	const {loaderClasses} = useLoader(props)
+	const {locationStyles} = useLocation(props)
+	const {positionClasses} = usePosition(props)
+	const {roundedClasses, roundedStyles} = useRounded(props)
+	const {borderClasses, borderStyles} = useBorder(props)
+	const {paddingClasses, paddingStyles} = usePadding(props)
+	const {marginClasses, marginStyles} = useMargin(props)
+	const {sizeClasses, sizeStyles} = useSize(props)
+	const {icon, prependIcon, appendIcon, statusClasses} = useStatus(props)
+	const {colorStyles, bgColor} = useColorEffect(props, isHover, isActive)
+	const {elevationClasses} = useElevation(props, toRef(props, 'flat'), bgColor)
+	const {
+		onClickPrepend: handleClickPrepend,
+		onClickAppend: handleClickAppend,
+		hasAppend,
+		hasPrepend
+	} = useAdjacent(props, prependIcon, appendIcon)
 
 	const handleClick = (e: MouseEvent) => {
 		if (
@@ -263,7 +238,7 @@
 	}
 
 	const hasIcon = computed(() => {
-		return !!(props.icon && props.icon !== true)
+		return !!(icon.value && props.icon !== true)
 	})
 	const hasLoader = computed(() => {
 		return slots.loader || props.loading
@@ -300,7 +275,6 @@
 				'foxy-btn--active': isActive.value,
 				'foxy-btn--block': props.block,
 				'foxy-btn--disabled': isDisabled.value,
-				'foxy-btn--elevated': isElevated.value,
 				'foxy-btn--flat': props.flat,
 				'foxy-btn--icon': !!props.icon,
 				'foxy-btn--loading': props.loading,
@@ -316,6 +290,7 @@
 			positionClasses.value,
 			roundedClasses.value,
 			sizeClasses.value,
+			statusClasses.value,
 			props.class
 		]
 	})

@@ -14,27 +14,48 @@
     />
 
 		<slot name="wrapper">
-			<div
-					v-if="hasPrepend"
-					key="prepend"
-					class="foxy-alert__prepend"
-			>
-				<slot name="prepend">
-					<foxy-icon
-							v-if="hasIcon"
-							key="prepend-icon"
-							:icon="icon"
-							:size="iconSize"
-					/>
-				</slot>
-			</div>
+			<template v-if="hasPrepend">
+				<div
+						key="prepend"
+						class="foxy-alert__prepend"
+						@click="handleClickPrepend"
+				>
+					<slot name="prepend">
+						<foxy-avatar
+								v-if="prependAvatar"
+								key="prepend-avatar"
+								:density="density"
+								:image="prependAvatar"
+								:size="size"
+						/>
+						<foxy-icon
+								v-if="prependIcon"
+								key="prepend-icon"
+								:density="density"
+								:icon="prependIcon"
+								:size="size"
+						/>
+					</slot>
+				</div>
+			</template>
 
 			<div class="foxy-alert__content">
 				<div
-						v-if="hasTitle"
-						class="foxy-alert__title"
+						v-if="hasHeader"
+						class="foxy-alert__header"
 				>
-					<slot name="title">{{ title }}</slot>
+					<template v-if="hasIcon">
+						<foxy-icon
+								key="content-icon"
+								:icon="icon as TIcon"
+								:size="size"
+						/>
+					</template>
+					<template v-if="hasTitle">
+						<span class="foxy-alert__title">
+							<slot name="title">{{ title }}</slot>
+						</span>
+					</template>
 				</div>
 
 				<div class="foxy-alert__body">
@@ -44,13 +65,30 @@
 				<slot name="default"/>
 			</div>
 
-			<div
-					v-if="hasAppend"
-					key="append"
-					class="foxy-alert__append"
-			>
-				<slot name="append"/>
-			</div>
+			<template v-if="hasAppend">
+				<div
+						key="append"
+						class="foxy-alert__append"
+						@click="handleClickAppend"
+				>
+					<slot name="append">
+						<foxy-avatar
+								v-if="appendAvatar"
+								key="append-avatar"
+								:density="density"
+								:image="appendAvatar"
+								:size="size"
+						/>
+						<foxy-icon
+								v-if="appendIcon"
+								key="append-icon"
+								:density="density"
+								:icon="appendIcon"
+								:size="size"
+						/>
+					</slot>
+				</div>
+			</template>
 		</slot>
 
 		<div
@@ -76,10 +114,11 @@
 		lang="ts"
 		setup
 >
-	import { FoxyBtn, FoxyIcon } from '@foxy/components'
+	import { FoxyAvatar, FoxyBtn, FoxyIcon } from '@foxy/components'
 
 	import {
 		useActive,
+		useAdjacent,
 		useBorder,
 		useColorEffect,
 		useDensity,
@@ -100,6 +139,7 @@
 	import { DENSITY, MDI_ICONS } from '@foxy/enums'
 
 	import type { IAlertProps } from '@foxy/interfaces'
+	import type { TIcon } from "@foxy/types"
 
 	import type { ComputedRef, StyleValue } from 'vue'
 	import { computed, ref, useSlots } from 'vue'
@@ -118,6 +158,8 @@
 	const {filterProps} = useProps<IAlertProps>(props)
 	const {t} = useLocale()
 
+	const slots = useSlots()
+
 	const {activeClasses, isActive, onActive} = useActive(props, 'modelValue')
 	const {isHover, onMouseenter: handleMouseenter, onMouseleave: handleMouseleave, hoverClasses} = useHover(props)
 	const {colorStyles, bgColor} = useColorEffect(props, isHover, isActive as unknown as ComputedRef<boolean>)
@@ -130,34 +172,37 @@
 	const {locationStyles} = useLocation(props)
 	const {positionClasses, positionStyles} = usePosition(props)
 	const {roundedClasses, roundedStyles} = useRounded(props)
-	const {icon, statusClasses} = useStatus(props)
-	const slots = useSlots()
+	const {icon, prependIcon, appendIcon, statusClasses} = useStatus(props)
+
+	const {
+		onClickPrepend: handleClickPrepend,
+		onClickAppend: handleClickAppend,
+		hasAppend,
+		hasPrepend
+	} = useAdjacent(props, prependIcon, appendIcon)
 
 	const handleClose = (e: MouseEvent) => {
 		onActive()
 
 		emits('click:close', e)
 	}
-	const iconSize = computed(() => {
+	const size = computed(() => {
 		return props.prominent ? 44 : 28
 	})
 
 	// SLOTS
 
-	const hasPrepend = computed(() => {
-		return !!(slots.prepend || icon.value)
-	})
-	const hasAppend = computed(() => {
-		return slots.append
+	const hasIcon = computed(() => {
+		return !!(props.icon || props.status)
 	})
 	const hasTitle = computed(() => {
 		return !!(slots.title || props.title)
 	})
+	const hasHeader = computed(() => {
+		return hasTitle.value || hasIcon.value
+	})
 	const hasClose = computed(() => {
 		return slots.close || props.closable
-	})
-	const hasIcon = computed(() => {
-		return !!(props.icon || props.status)
 	})
 
 	// CLASS & STYLES

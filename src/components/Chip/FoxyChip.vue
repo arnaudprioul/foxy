@@ -184,7 +184,7 @@
 		onClickAppend: handleClickAppend,
 		hasPrepend,
 		hasAppend
-	} = useAdjacent(props)
+	} = useAdjacent(props, toRef(props, 'prependIcon'), toRef(props, 'appendIcon'))
 
 	const isLink = computed(() => {
 		return props.link && link.isLink.value

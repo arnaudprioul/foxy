@@ -1,9 +1,11 @@
 import type {
+    IActiveProps,
     IAdjacentProps,
     IBorderProps,
     IColorProps,
     ICommonsComponentProps,
     IDensityProps,
+    IHoverProps,
     ILinkProps,
     IMarginProps,
     IPaddingProps,
@@ -11,10 +13,7 @@ import type {
     ITagProps
 } from '@foxy/interfaces'
 
-export interface IBreadcrumbItemProps extends ICommonsComponentProps, ITagProps, IBorderProps, IPaddingProps, IMarginProps, IRoundedProps, ILinkProps, IColorProps, IDensityProps, IAdjacentProps {
+export interface IBreadcrumbItemProps extends ICommonsComponentProps, ITagProps, IBorderProps, IPaddingProps, IMarginProps, IRoundedProps, ILinkProps, IColorProps, IDensityProps, IAdjacentProps, IHoverProps, IActiveProps {
     title: string
     disabled?: boolean
-    active?: boolean
-    activeClass?: string
-    isLast?: boolean
 }

@@ -1,4 +1,5 @@
 import type {
+    IAdjacentProps,
     IBorderProps,
     IColorProps,
     ICommonsComponentProps,
@@ -17,7 +18,7 @@ import type {
 
 import type { TIcon } from '@foxy/types'
 
-export interface IAlertProps extends ICommonsComponentProps, ITagProps, IColorProps, IBorderProps, IDimensionProps, IPaddingProps, IMarginProps, IDensityProps, IElevationProps, ILocationProps, IPositionProps, IRoundedProps, IStatusProps, IHoverProps {
+export interface IAlertProps extends ICommonsComponentProps, ITagProps, IColorProps, IBorderProps, IDimensionProps, IPaddingProps, IMarginProps, IDensityProps, IElevationProps, ILocationProps, IPositionProps, IRoundedProps, IStatusProps, IHoverProps, IAdjacentProps {
     closable?: boolean
     closeIcon?: TIcon
     closeLabel?: string

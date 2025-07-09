@@ -187,6 +187,7 @@
 
 		&__item {
 			display: flex;
+			align-items: center;
 		}
 
 		&--elevated {

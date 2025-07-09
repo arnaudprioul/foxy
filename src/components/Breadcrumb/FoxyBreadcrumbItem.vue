@@ -6,6 +6,8 @@
 			:href="link.href"
 			:style="breadcrumbItemStyles"
 			@click="link.navigate"
+			@mouseenter="handleMouseenter"
+			@mouseleave="handleMouseleave"
 	>
 		<template v-if="hasPrepend">
       <span
@@ -66,22 +68,25 @@
 	import { FoxyAvatar, FoxyIcon } from '@foxy/components'
 
 	import {
+		useActive,
 		useAdjacent,
 		useBorder,
-		useBothColor,
+		useColorEffect,
 		useDensity,
+		useHover,
 		useLink,
 		useMargin,
 		usePadding,
 		useProps,
-		useRounded
+		useRounded,
+		useStyle
 	} from '@foxy/composables'
 
 	import { DENSITY } from '@foxy/enums'
 
 	import type { IBreadcrumbItemProps } from '@foxy/interfaces'
 
-	import { computed, StyleValue, toRef, useAttrs } from 'vue'
+	import { computed, ComputedRef, StyleValue, toRef, useAttrs } from 'vue'
 
 	const props = withDefaults(defineProps<IBreadcrumbItemProps>(), {tag: 'span', density: DENSITY.DEFAULT})
 
@@ -91,7 +96,16 @@
 
 	const attrs = useAttrs()
 
-	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
+	const link = useLink(props, attrs)
+
+	const {isHover, onMouseenter: handleMouseenter, onMouseleave: handleMouseleave} = useHover(props)
+	const {isActive: active, activeClasses} = useActive(props)
+
+	const isActive = computed(() => {
+		return active.value || link.isActive?.value
+	})
+
+	const {colorStyles} = useColorEffect(props, isHover, isActive as unknown as ComputedRef<boolean>)
 	const {densityClasses} = useDensity(props)
 	const {roundedClasses, roundedStyles} = useRounded(props)
 	const {borderClasses, borderStyles} = useBorder(props)
@@ -103,10 +117,7 @@
 		hasPrepend,
 		onClickPrepend: handleClickPrepend,
 		onClickAppend: handleClickAppend
-	} = useAdjacent(props)
-	const link = useLink(props, attrs)
-
-	const isActive = computed(() => props.active || link.isActive?.value)
+	} = useAdjacent(props, toRef(props, 'prependIcon'), toRef(props, 'appendIcon'))
 
 	// CLASS & STYLES
 
@@ -124,11 +135,10 @@
 		return [
 			'foxy-breadcrumb-item',
 			{
-				'foxy-breadcrumb-item--active': isActive.value,
 				'foxy-breadcrumb-item--link': !!link.href.value,
 				'foxy-breadcrumb-item--disabled': props.disabled,
-				[`${props.activeClass}`]: isActive.value && props.activeClass
 			},
+			activeClasses.value,
 			densityClasses.value,
 			roundedClasses.value,
 			borderClasses.value,
@@ -138,10 +148,17 @@
 		]
 	})
 
+	const {id, css, load, isLoaded, unload} = useStyle(breadcrumbItemStyles)
+
 	// EXPOSE
 
 	defineExpose({
-		filterProps
+		filterProps,
+		css,
+		id,
+		load,
+		unload,
+		isLoaded
 	})
 </script>
 
@@ -151,33 +168,48 @@
 >
 	.foxy-breadcrumb-item {
 		align-items: center;
-		color: inherit;
 		display: inline-flex;
-		text-decoration: none;
 		vertical-align: middle;
 
+		text-decoration: var(--foxy-breadcrumb-item---text-decoration);
+
+		transition: var(--foxy-breadcrumb-item---transition);
+
+		background: var(--foxy-breadcrumb-item---background);
+		box-shadow: var(--foxy-breadcrumb-item---box-shadow);
+		color: var(--foxy-breadcrumb-item---color);
+		opacity: var(--foxy-breadcrumb-item---opacity);
+
+		border-color: var(--foxy-breadcrumb-item---border-color);
+		border-style: var(--foxy-breadcrumb-item---border-style);
+		border-width: var(--foxy-breadcrumb-item---border-width);
+		border-radius: var(--foxy-breadcrumb-item---border-radius);
+
+		padding-block-start: calc(var(--foxy-breadcrumb-item---padding-block-start) - var(--foxy-breadcrumb-item---density));
+		padding-block-end: calc(var(--foxy-breadcrumb-item---padding-block-end) - var(--foxy-breadcrumb-item---density));
+		padding-inline-start: calc(var(--foxy-breadcrumb-item---padding-inline-start) - var(--foxy-breadcrumb-item---density));
+		padding-inline-end: calc(var(--foxy-breadcrumb-item---padding-inline-end) - var(--foxy-breadcrumb-item---density));
+
+		margin-block-start: var(--foxy-breadcrumb-item---margin-block-start);
+		margin-block-end: var(--foxy-breadcrumb-item---margin-block-end);
+		margin-inline-start: var(--foxy-breadcrumb-item---margin-inline-start);
+		margin-inline-end: var(--foxy-breadcrumb-item---margin-inline-end);
+
 		&--disabled {
-			opacity: 0.5;
+			--foxy-breadcrumb-item---opacity: 0.5;
 			pointer-events: none;
 		}
 
 		&--link {
-			color: inherit;
-			text-decoration: none;
 
-			&:hover {
-				text-decoration: underline;
-			}
 		}
 
 		&--density-default {
-			padding-left: 4px;
-			padding-right: 4px;
+			--foxy-breadcrumb-item---density: 0px;
 		}
 
 		&--density-compact {
-			padding-left: 0;
-			padding-right: 0;
+			--foxy-breadcrumb-item---density: 8px;
 		}
 
 		&__prepend,
@@ -185,16 +217,36 @@
 			align-items: center;
 			display: inline-flex;
 		}
-
-		:deep(.foxy-icon) {
-			font-size: 1rem;
-			margin-inline: -4px 2px;
-		}
 	}
 </style>
 
 <style>
 	:root {
-
+		--foxy-breadcrumb-item---text-decoration: none;
+		--foxy-breadcrumb-item---border-top-width: 0;
+		--foxy-breadcrumb-item---border-left-width: 0;
+		--foxy-breadcrumb-item---border-bottom-width: 0;
+		--foxy-breadcrumb-item---border-right-width: 0;
+		--foxy-breadcrumb-item---border-width: var(--foxy-breadcrumb-item---border-top-width) var(--foxy-breadcrumb-item---border-left-width) var(--foxy-breadcrumb-item---border-bottom-width) var(--foxy-breadcrumb-item---border-right-width);
+		--foxy-breadcrumb-item---border-color: currentColor;
+		--foxy-breadcrumb-item---border-style: solid;
+		--foxy-breadcrumb-item---border-radius: 0;
+		--foxy-breadcrumb-item---density: 0;
+		--foxy-breadcrumb-item---box-shadow: none;
+		--foxy-breadcrumb-item---color: inherit;
+		--foxy-breadcrumb-item---opacity: 1;
+		--foxy-breadcrumb-item---background: transparent;
+		--foxy-breadcrumb-item---margin-inline-start: 0;
+		--foxy-breadcrumb-item---margin-inline-end: 0;
+		--foxy-breadcrumb-item---margin-block-start: 0;
+		--foxy-breadcrumb-item---margin-block-end: 0;
+		--foxy-breadcrumb-item---padding-block-start: 8px;
+		--foxy-breadcrumb-item---padding-block-end: 8px;
+		--foxy-breadcrumb-item---padding-inline-start: 8px;
+		--foxy-breadcrumb-item---padding-inline-end: 8px;
+		--foxy-breadcrumb-item---transition-duration: 0.2s, 0.1s;
+		--foxy-breadcrumb-item---transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		--foxy-breadcrumb-item---transition-property: transform, color;
+		--foxy-breadcrumb-item---transition: var(--foxy-breadcrumb-item---transition-property) var(--foxy-breadcrumb-item---transition-duration) var(--foxy-breadcrumb-item---transition-timing-function);
 	}
 </style>

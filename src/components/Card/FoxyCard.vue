@@ -165,6 +165,8 @@
 
 	const attrs = useAttrs()
 
+	const link = useLink(props, attrs)
+
 	const {borderClasses, borderStyles} = useBorder(props)
 	const {densityClasses} = useDensity(props)
 	const {dimensionStyles} = useDimension(props)
@@ -181,8 +183,7 @@
 		onClickAppend: handleClickAppend,
 		hasAppend,
 		hasPrepend
-	} = useAdjacent(props)
-	const link = useLink(props, attrs)
+	} = useAdjacent(props, toRef(props, 'prependIcon'), toRef(props, 'appendIcon'))
 
 	const isClickable = computed(() => {
 		return !props.disabled && props.link && (props.link || link.isClickable.value)

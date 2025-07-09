@@ -232,7 +232,7 @@
 
 	import { filterInputAttrs, forwardRefs, humanReadableFileSize, wrapInArray } from '@foxy/utils'
 
-	import { computed, nextTick, ref, StyleValue, useAttrs, useSlots, watch } from 'vue'
+	import { computed, nextTick, ref, StyleValue, toRef, useAttrs, useSlots, watch } from 'vue'
 
 	const props = withDefaults(defineProps<IFileFieldProps>(), {
 		prependInnerIcon: MDI_ICONS.PAPERCLIP,
@@ -264,7 +264,10 @@
 			val => (props.multiple || Array.isArray(props.modelValue)) ? val : (val[0] ?? null)
 	)
 	const {isFocused, onFocus, onBlur: handleBlur} = useFocus(props)
-	const {onClickPrepend, onClickAppend: handleClickAppend} = useAdjacent(props)
+	const {
+		onClickPrepend,
+		onClickAppend: handleClickAppend
+	} = useAdjacent(props, toRef(props, 'prependIcon'), toRef(props, 'appendIcon'))
 	const {
 		onClickPrependInner: handleClickPrependInner,
 		onClickAppendInner: handleClickAppendInner

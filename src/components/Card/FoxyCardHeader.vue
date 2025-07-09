@@ -99,7 +99,7 @@
 
 	import type { ICardHeaderProps } from '@foxy/interfaces'
 
-	import { computed, StyleValue, useSlots } from 'vue'
+	import { computed, StyleValue, toRef, useSlots } from 'vue'
 
 	const props = withDefaults(defineProps<ICardHeaderProps>(), {tag: 'FoxyToolbar'})
 
@@ -115,7 +115,7 @@
 		onClickAppend: handleClickAppend,
 		hasPrepend,
 		hasAppend
-	} = useAdjacent(props)
+	} = useAdjacent(props, toRef(props, 'prependIcon'), toRef(props, 'appendIcon'))
 
 	const hasTitle = computed(() => {
 		return slots.title || props.title != null

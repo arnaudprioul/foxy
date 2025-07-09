@@ -174,7 +174,7 @@
 		onClickAppend: handleClickAppend,
 		hasAppend,
 		hasPrepend
-	} = useAdjacent(props)
+	} = useAdjacent(props, toRef(props, 'prependIcon'), toRef(props, 'appendIcon'))
 
 	const isActive = computed(() => {
 		return props.active || link.isActive?.value || isSelected.value

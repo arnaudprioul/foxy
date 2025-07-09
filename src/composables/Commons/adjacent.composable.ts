@@ -2,21 +2,21 @@ import type { IAdjacentInnerProps, IAdjacentProps } from '@foxy/interfaces'
 
 import { getCurrentInstance } from "@foxy/utils"
 
-import { computed, useSlots } from 'vue'
+import { computed, ComputedRef, Ref, useSlots } from 'vue'
 
-export function useAdjacent (props: IAdjacentProps) {
+export function useAdjacent (props: IAdjacentProps, prependIcon: Ref | ComputedRef, appendIcon: Ref | ComputedRef) {
     const vm = getCurrentInstance('FoxyAdjacent')
 
     const slots = useSlots()
 
     const hasPrependMedia = computed(() => {
-        return !!(props.prependAvatar || props.prependIcon)
+        return !!(props.prependAvatar || prependIcon.value)
     })
     const hasPrepend = computed(() => {
         return !!slots.prepend || hasPrependMedia.value
     })
     const hasAppendMedia = computed(() => {
-        return !!(props.appendAvatar || props.appendIcon)
+        return !!(props.appendAvatar || appendIcon.value)
     })
     const hasAppend = computed(() => {
         return !!slots.append || hasAppendMedia.value

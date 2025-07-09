@@ -3,25 +3,19 @@
 			:init-state="initialState"
 			auto-props-disabled
 			group="components"
-			title="Breadcrumbs/Breadcrumbs"
+			title="Breadcrumbs/Breadcrumbs Item"
 	>
 		<Variant title="Default">
 			<template #default="{state}">
 				<foxy-container fluid>
 					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
+						<foxy-col cols="auto">
+							<foxy-breadcrumb-item v-bind="state"/>
 						</foxy-col>
 					</foxy-row>
 				</foxy-container>
 			</template>
 			<template #controls="{state}">
-				<hst-icon
-						v-model="state.divider"
-						:more-options="[{value: '/', label: 'Slash (/)'}, {value: '->', label: 'Arrow (->)'}, {value: '|', label: 'Pipe (|)'}]"
-						title="divider"
-				/>
-
 				<hst-checkbox
 						v-model="state.disabled"
 						title="disabled"
@@ -35,8 +29,8 @@
 					<foxy-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
+						<foxy-col cols="auto">
+							<foxy-breadcrumb-item v-bind="state"/>
 						</foxy-col>
 					</foxy-row>
 				</foxy-container>
@@ -44,6 +38,9 @@
 
 			<template #controls="{state}">
 				<hst-color
+						v-model:active="state.active"
+						v-model:active-bg-color="state.activeBgColor"
+						v-model:active-color="state.activeColor"
 						v-model:bg-color="state.bgColor"
 						v-model:color="state.color"
 						v-model:hover="state.hover"
@@ -59,8 +56,8 @@
 					<foxy-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
+						<foxy-col cols="auto">
+							<foxy-breadcrumb-item v-bind="state"/>
 						</foxy-col>
 					</foxy-row>
 				</foxy-container>
@@ -77,8 +74,8 @@
 					<foxy-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
+						<foxy-col cols="auto">
+							<foxy-breadcrumb-item v-bind="state"/>
 						</foxy-col>
 					</foxy-row>
 				</foxy-container>
@@ -95,8 +92,8 @@
 					<foxy-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
+						<foxy-col cols="auto">
+							<foxy-breadcrumb-item v-bind="state"/>
 						</foxy-col>
 					</foxy-row>
 				</foxy-container>
@@ -113,8 +110,8 @@
 					<foxy-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
+						<foxy-col cols="auto">
+							<foxy-breadcrumb-item v-bind="state"/>
 						</foxy-col>
 					</foxy-row>
 				</foxy-container>
@@ -125,32 +122,14 @@
 			</template>
 		</Variant>
 
-		<Variant title="Elevation">
-			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row
-							:justify="JUSTIFY.CENTER"
-					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
-			</template>
-
-			<template #controls="{state}">
-				<hst-elevation v-model="state.elevation"/>
-			</template>
-		</Variant>
-
 		<Variant title="Rounded">
 			<template #default="{state}">
 				<foxy-container fluid>
 					<foxy-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
+						<foxy-col cols="auto">
+							<foxy-breadcrumb-item v-bind="state"/>
 						</foxy-col>
 					</foxy-row>
 				</foxy-container>
@@ -160,6 +139,29 @@
 				<hst-rounded v-model="state.rounded"/>
 			</template>
 		</Variant>
+
+		<Variant title="Adjacent">
+			<template #default="{state}">
+				<foxy-container fluid>
+					<foxy-row
+							:justify="JUSTIFY.CENTER"
+					>
+						<foxy-col cols="auto">
+							<foxy-breadcrumb-item v-bind="state"/>
+						</foxy-col>
+					</foxy-row>
+				</foxy-container>
+			</template>
+
+			<template #controls="{state}">
+				<hst-adjacent
+						v-model:append-avatar="state.appendAvatar"
+						v-model:append-icon="state.appendIcon"
+						v-model:prepend-avatar="state.prependAvatar"
+						v-model:prepend-icon="state.prependIcon"
+				/>
+			</template>
+		</Variant>
 	</Story>
 </template>
 
@@ -167,25 +169,17 @@
 		lang="ts"
 		setup
 >
-	import { FoxyBreadcrumb, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
+	import { FoxyBreadcrumbItem, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
 	import { JUSTIFY } from '@foxy/enums'
-	import type { IBreadcrumbProps } from "@foxy/interfaces"
+	import type { IBreadcrumbItemProps } from "@foxy/interfaces"
 
-	import {
-		HstBorder,
-		HstColor,
-		HstDensity,
-		HstElevation,
-		HstIcon,
-		HstMargin,
-		HstPadding,
-		HstRounded
-	} from "@stories/components/controls"
+	import { HstBorder, HstColor, HstDensity, HstMargin, HstPadding, HstRounded } from "@stories/components/controls"
+	import HstAdjacent from "@stories/components/controls/HstAdjacent/HstAdjacent.vue"
 
 	import { reactive } from 'vue'
 
-	const state: Partial<IBreadcrumbProps> = reactive({
-		items: ['Foo', 'Bar', 'Fizz']
+	const state: Partial<IBreadcrumbItemProps> = reactive({
+		title: 'FooBar'
 	})
 
 	const initialState = () => {
