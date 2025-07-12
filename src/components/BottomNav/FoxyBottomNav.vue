@@ -252,6 +252,10 @@
 			--foxy-bottom-bar---border-radius: 4px;
 		}
 
+		&--density-comfortable {
+			--foxy-bottom-bar---density: 8px;
+		}
+
 		&--density-default {
 			--foxy-bottom-bar---density: 0px;
 		}

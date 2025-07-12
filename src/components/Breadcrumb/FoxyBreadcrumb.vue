@@ -202,6 +202,10 @@
 			--foxy-breadcrumb---border-radius: 4px;
 		}
 
+		&--density-comfortable {
+			--foxy-breadcrumb---density: 8px;
+		}
+
 		&--density-default {
 			--foxy-breadcrumb---density: 0px;
 		}

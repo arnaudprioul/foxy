@@ -6,7 +6,7 @@ import { getCurrentInstanceName } from "@foxy/utils"
 import { computed } from "vue"
 
 export function useActive (props: IActiveProps & Record<string, any>, prop = 'active', name = getCurrentInstanceName()) {
-    const isActive = useVModel(props, prop as keyof typeof props, false)
+    const isActive = useVModel(props, prop as keyof typeof props)
 
     const activeClasses = computed(() => {
         const classes: Array<string> = []

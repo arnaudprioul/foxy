@@ -110,6 +110,10 @@
 		margin-inline-start: var(--foxy-breadcrumb-divider---margin-inline-start);
 		margin-inline-end: var(--foxy-breadcrumb-divider---margin-inline-end);
 
+		&--density-comfortable {
+			--foxy-breadcrumb-divider---density: 8px;
+		}
+
 		&--density-default {
 			--foxy-breadcrumb-divider---density: 0px;
 		}

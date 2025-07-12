@@ -204,6 +204,10 @@
 
 		}
 
+		&--density-comfortable {
+			--foxy-breadcrumb-item---density: 8px;
+		}
+
 		&--density-default {
 			--foxy-breadcrumb-item---density: 0px;
 		}

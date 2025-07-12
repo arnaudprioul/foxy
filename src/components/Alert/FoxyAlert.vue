@@ -3,7 +3,6 @@
 			:is="tag"
 			:id="id"
 			:class="alertClasses"
-			:data-elevation="elevation"
 			role="alert"
 			@mouseenter="handleMouseenter"
 			@mouseleave="handleMouseleave"
@@ -330,6 +329,10 @@
 
 		&--rounded {
 			--foxy-alert---border-radius: 4px;
+		}
+
+		&--density-comfortable {
+			--foxy-alert---density: 8px;
 		}
 
 		&--density-default {

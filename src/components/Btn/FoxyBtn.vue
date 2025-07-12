@@ -5,9 +5,9 @@
 			:class="btnClasses"
 			:disabled="isDisabled || undefined"
 			:href="link.href.value"
-			:style="btnStyles"
 			:type="link.tag === 'a' ? undefined : 'button'"
 			:value="valueAttr"
+			:id="id"
 			@click="handleClick"
 			@mouseenter="handleMouseenter"
 			@mouseleave="handleMouseleave"
@@ -134,7 +134,8 @@
 		useRounded,
 		useSelectLink,
 		useSize,
-		useStatus
+		useStatus,
+		useStyle
 	} from '@foxy/composables'
 
 	import { FOXY_BTN_TOGGLE_KEY } from '@foxy/consts'
@@ -213,7 +214,7 @@
 	const {sizeClasses, sizeStyles} = useSize(props)
 	const {icon, prependIcon, appendIcon, statusClasses} = useStatus(props)
 	const {colorStyles, bgColor} = useColorEffect(props, isHover, isActive)
-	const {elevationClasses} = useElevation(props, toRef(props, 'flat'), bgColor)
+	const {elevationClasses, elevationStyles} = useElevation(props, toRef(props, 'flat'), bgColor)
 	const {
 		onClickPrepend: handleClickPrepend,
 		onClickAppend: handleClickAppend,
@@ -264,6 +265,7 @@
 			locationStyles.value,
 			roundedStyles.value,
 			sizeStyles.value,
+			elevationStyles.value,
 			props.style
 		] as StyleValue
 	})
@@ -295,11 +297,18 @@
 		]
 	})
 
+	const {id, css, load, isLoaded, unload} = useStyle(btnStyles)
+
 	// EXPOSE
 
 	defineExpose({
 		group,
-		filterProps
+		filterProps,
+		css,
+		id,
+		load,
+		unload,
+		isLoaded
 	})
 </script>
 
@@ -310,27 +319,29 @@
 	.foxy-btn {
 		$this: &;
 
-		position: relative;
+		position: var(--foxy-btn---position, relative);
 		vertical-align: middle;
 		flex-shrink: 0;
 
-		font-weight: 500;
-		letter-spacing: 0.0892857143em;
-		line-height: 1;
-		text-decoration: none;
-		text-indent: 0.0892857143em;
+		font-size: var(--foxy-btn---font-size);
+		font-weight: var(--foxy-btn---font-weight);
+		letter-spacing: var(--foxy-btn---letter-spacing);
+		line-height: var(--foxy-btn---line-height);
+		text-decoration: var(--foxy-btn---text-decoration);
+		text-indent: var(--foxy-btn---text-indent);
 
 		transition-property: box-shadow, transform, opacity, background;
 		transition-duration: 0.28s;
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
+		padding: 0 16px;
+
 		width: var(--foxy-btn---width, auto);
-		min-width: var(--foxy-btn---min-width, calc(var(--foxy-btn---width, 36px) + var(--foxy-btn---density, 0)));
+		min-width: var(--foxy-btn---min-width, calc(var(--foxy-btn---width, 64px) + var(--foxy-btn---density, 0)));
 		max-width: var(--foxy-btn---max-width, 100%);
 		height: var(--foxy-btn---height, 36px);
 		min-height: var(--foxy-btn---min-height, calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0)));
 		max-height: var(--foxy-btn---max-height, 100%);
-		border-radius: var(--foxy-btn---border-radius, 4px);
 
 		background-color: var(--foxy-btn---background-color, rgb(230, 230, 230));
 		color: var(--foxy-btn---color, rgba(30, 30, 30, 0.87));
@@ -338,62 +349,65 @@
 		outline: none;
 		cursor: pointer;
 		user-select: none;
-		border-color: currentColor;
-		border-style: solid;
-		border-width: 0;
+		opacity: var(--foxy-btn---opacity, 1);
+
+		border-width: var(--foxy-btn-group---border-width);
+		border-style: var(--foxy-btn-group---border-style);
+		border-color: var(--foxy-btn-group---border-color);
+		border-radius: var(--foxy-btn-group---border-radius, 4px);
 
 		&--size-x-small {
 			--foxy-btn---height: 20px;
-			font-size: 0.625rem;
-			min-width: 36px;
+			--foxy-btn---font-size: 0.625rem;
+			--foxy-btn---min-width: 36px;
 			padding: 0 8px;
 
 			:deep(.foxy-icon) {
-				font-size: 16px;
+				--foxy-btn---font-size: 16px;
 			}
 		}
 
 		&--size-small {
 			--foxy-btn---height: 28px;
-			font-size: 0.75rem;
-			min-width: 50px;
+			--foxy-btn---font-size: 0.75rem;
+			--foxy-btn---min-width: 50px;
 			padding: 0 12px;
 
 			:deep(.foxy-icon) {
-				font-size: 20px;
+				--foxy-btn---font-size: 20px;
 			}
 		}
 
 		&--size-default {
 			--foxy-btn---height: 36px;
-			font-size: 0.875rem;
-			min-width: 64px;
+			--foxy-btn---font-size: 0.875rem;
+			--foxy-btn---min-width: 64px;
 			padding: 0 16px;
 
 			:deep(.foxy-icon) {
-				font-size: 24px;
+				--foxy-btn---font-size: 24px;
 			}
 		}
 
 		&--size-large {
 			--foxy-btn---height: 44px;
-			font-size: 1rem;
-			min-width: 78px;
+			--foxy-btn---font-size: 1rem;
+			--foxy-btn---min-width: 78px;
 			padding: 0 20px;
 
 			:deep(.foxy-icon) {
-				font-size: 28px;
+				--foxy-btn---font-size: 28px;
 			}
 		}
 
 		&--size-x-large {
 			--foxy-btn---height: 52px;
-			font-size: 1.125rem;
-			min-width: 92px;
+			--foxy-btn---font-size: 1.125rem;
+			--foxy-btn---min-width: 92px;
 			padding: 0 24px;
 
 			:deep(.foxy-icon) {
-				font-size: 32px;
+				--foxy-btn---font-size: 32px;
 			}
 		}
 
@@ -410,47 +424,48 @@
 		}
 
 		&--border {
-			border-width: thin;
-			box-shadow: none;
+			--foxy-btn---border-width: thin;
 		}
 
 		&--absolute {
-			position: absolute;
+			--foxy-btn---position: absolute;
 		}
 
 		&--fixed {
-			position: fixed;
+			--foxy-btn---position: fixed;
 		}
 
 		&:hover,
 		&:focus-visible,
 		&:focus {
 			> #{$this}__overlay {
-				opacity: calc(0.12 * 1);
+				--foxy-btn__overlay---opacity: calc(0.12 * 1);
 			}
 		}
 
 		&--active,
 		[aria-haspopup=menu][aria-expanded=true] {
 			> #{$this}__overlay {
-				opacity: calc(0.12 * 1);
+				--foxy-btn__overlay---opacity: calc(0.12 * 1);
 			}
 
 			&:hover,
 			&:focus-visible,
 			&:focus {
 				> #{$this}__overlay {
-					opacity: calc(0.12 * 1);
+					--foxy-btn__overlay---opacity: calc(0.12 * 1);
 				}
 			}
 		}
 
 		&--icon {
-			border-radius: 50%;
-			min-width: 0;
+			--foxy-btn---border-radius: 50%;
+
+			--foxy-btn---min-width: 0;
+			--foxy-btn---width: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
+			--foxy-btn---height: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
+
 			padding: 0;
-			width: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
-			height: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
 		}
 
 		&--flat {
@@ -460,15 +475,16 @@
 		&--block {
 			display: flex;
 			flex: 1 0 auto;
-			min-width: 100%;
+
+			--foxy-btn---min-width: 100%;
 		}
 
 		&--disabled {
 			pointer-events: none;
-			opacity: 0.26;
+			--foxy-btn---opacity: 0.26;
 
 			&:hover {
-				opacity: 0.26;
+				--foxy-btn---opacity: 0.26;
 			}
 		}
 
@@ -566,10 +582,10 @@
 		}
 
 		&--rounded {
-			border-radius: 24px;
+			--foxy-btn---border-radius: 24px;
 
 			&#{$this}--icon {
-				border-radius: 4px;
+				--foxy-btn---border-radius: 4px;
 			}
 		}
 
@@ -580,7 +596,6 @@
 			grid-template-areas: "prepend content append";
 			grid-template-columns: max-content auto max-content;
 			height: 100%;
-			justify-content: center;
 			width: 100%;
 
 			:deep(.foxy-progress--circular) {
@@ -594,21 +609,20 @@
 		&__append {
 			align-items: center;
 			display: flex;
+
 			transition: transform, opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 		}
 
 		&__prepend {
 			grid-area: prepend;
-			--foxy-btn__prepend---margin-inline-start: calc(var(--foxy-btn---height) / -9);
-			--foxy-btn__prepend---margin-inline-end: calc(var(--foxy-btn---height) / 4.5);
+
 			margin-inline-start: var(--foxy-btn__prepend---margin-inline-start);
 			margin-inline-end: var(--foxy-btn__prepend---margin-inline-end);
 		}
 
 		&__append {
 			grid-area: append;
-			--foxy-btn__append---margin-inline-end: calc(var(--foxy-btn---height) / -9);
-			--foxy-btn__append---margin-inline-start: calc(var(--foxy-btn---height) / 4.5);
+
 			margin-inline-start: var(--foxy-btn__append---margin-inline-start);
 			margin-inline-end: var(--foxy-btn__append---margin-inline-end);
 		}
@@ -617,6 +631,7 @@
 			grid-area: content;
 			justify-content: center;
 			white-space: nowrap;
+
 			margin-inline-start: var(--foxy-btn__content---margin-inline-start);
 			margin-inline-end: var(--foxy-btn__content---margin-inline-end);
 
@@ -634,7 +649,7 @@
 		&__overlay {
 			background-color: #000;
 			border-radius: inherit;
-			opacity: 0;
+			opacity: var(--foxy-btn__overlay---opacity, 0);
 			transition: opacity 0.2s ease-in-out;
 		}
 
@@ -652,6 +667,42 @@
 
 <style>
 	:root {
+		--foxy-btn---position: relative;
 
+		--foxy-btn---density: 0;
+
+		--foxy-btn---border-radius: 4px;
+		--foxy-btn---border-width: 0;
+		--foxy-btn---border-style: solid;
+		--foxy-btn---border-color: currentColor;
+
+		--foxy-btn---background-color: rgb(230, 230, 230);
+		--foxy-btn---color: rgba(30, 30, 30, 0.87);
+
+		--foxy-btn---width: auto;
+		--foxy-btn---min-width: calc(var(--foxy-btn---width, 36px) + var(--foxy-btn---density, 0));
+		--foxy-btn---max-width: 100%;
+		--foxy-btn---height: 36px;
+		--foxy-btn---min-height: calc(var(--foxy-btn---height, 36px) + var(--foxy-btn---density, 0));
+		--foxy-btn---max-height: 100%;
+
+		--foxy-btn---font-size: 0.875rem;
+		--foxy-btn---font-weight: 500;
+		--foxy-btn---letter-spacing: 0.0892857143em;
+		--foxy-btn---line-height: 1;
+		--foxy-btn---text-decoration: none;
+		--foxy-btn---text-indent: 0.0892857143em;
+		--foxy-btn---opacity: 1;
+
+		--foxy-btn__overlay---opacity: 0;
+
+		--foxy-btn__content---margin-inline-start: 0;
+		--foxy-btn__content---margin-inline-end: 0;
+
+		--foxy-btn__append---margin-inline-end: calc(var(--foxy-btn---height) / -9);
+		--foxy-btn__append---margin-inline-start: calc(var(--foxy-btn---height) / 4.5);
+
+		--foxy-btn__prepend---margin-inline-start: calc(var(--foxy-btn---height) / -9);
+		--foxy-btn__prepend---margin-inline-end: calc(var(--foxy-btn---height) / 4.5);
 	}
 </style>

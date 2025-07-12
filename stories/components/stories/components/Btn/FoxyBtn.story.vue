@@ -12,14 +12,14 @@
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col cols>
+						<foxy-col cols="auto">
 							<foxy-btn
 									:text="text"
 									v-bind="state"
 							/>
 						</foxy-col>
 
-						<foxy-col cols>
+						<foxy-col cols="auto">
 							<foxy-btn
 									:icon="icon"
 									v-bind="state"

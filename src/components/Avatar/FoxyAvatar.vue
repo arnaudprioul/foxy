@@ -245,6 +245,10 @@
 			--foxy-avatar---border-radius: 50%;
 		}
 
+		&--density-comfortable {
+			--foxy-avatar---density: 8px;
+		}
+
 		&--density-default {
 			--foxy-avatar---density: 0px;
 		}
