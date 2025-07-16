@@ -3,7 +3,7 @@
 			:init-state="initialState"
 			auto-props-disabled
 			group="components"
-			title="Avatar"
+			title="Avatar/Avatar"
 	>
 		<Variant title="Default">
 			<template #default="{state}">

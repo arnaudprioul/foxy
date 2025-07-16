@@ -3,7 +3,7 @@
 		  :init-state="initialState"
       auto-props-disabled
       group="components"
-      title="Btn Toggle"
+		  title="Btn/Btn Toggle"
   >
     <Variant title="Default">
 	    <template #default="{state}">
