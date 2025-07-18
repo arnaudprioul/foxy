@@ -1,6 +1,6 @@
-import { FoxyParallaxElement } from "@foxy/components"
-import { PARALLAX_ELEMENT_TYPE } from '@foxy/enums'
+import { FoxuiParallaxElement } from "@foxui/components"
+import { PARALLAX_ELEMENT_TYPE } from '@foxui/enums'
 
 export type TParallaxElementType = `${PARALLAX_ELEMENT_TYPE}`
 
-export type TFoxyParallaxElement = InstanceType<typeof FoxyParallaxElement>
+export type TFoxuiParallaxElement = InstanceType<typeof FoxuiParallaxElement>

@@ -14,7 +14,7 @@ import type {
     IRoundedProps,
     ITextFieldProps,
     ITransitionComponentProps
-} from "@foxy/interfaces"
+} from "@foxui/interfaces"
 
 export interface IColorPickerFieldProps extends ICommonsComponentProps, IColorProps, ITextFieldProps, IDensityProps, IAdjacentProps, IAdjacentInnerProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, ITransitionComponentProps {
     menu?: boolean,

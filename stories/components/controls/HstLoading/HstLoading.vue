@@ -9,8 +9,8 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxy/composables"
-	import { ILoaderProps } from "@foxy/interfaces"
+	import { useVModel } from "@foxui/composables"
+	import { ILoaderProps } from "@foxui/interfaces"
 
 	const props = defineProps<ILoaderProps>()
 

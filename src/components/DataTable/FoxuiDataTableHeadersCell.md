@@ -1,0 +1,5 @@
+# Foxuidatatableheaderscell
+
+## Usage
+
+    <FoxuiDataTableHeadersCell />

@@ -1,0 +1,5 @@
+# Foxuibreadcrumbdivider
+
+## Usage
+
+    <FoxuiBreadcrumbDivider />

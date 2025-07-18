@@ -1,6 +1,6 @@
-import type { IFilterPropsOptions } from "@foxy/interfaces"
+import type { IFilterPropsOptions } from "@foxui/interfaces"
 
-import { pick } from "@foxy/utils"
+import { pick } from "@foxui/utils"
 
 import { ExtractPropTypes } from "vue"
 

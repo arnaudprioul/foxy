@@ -1,1 +1,1 @@
-export { default as FoxyTable } from './FoxyTable.vue'
+export { default as FoxuiTable } from './FoxuiTable.vue'

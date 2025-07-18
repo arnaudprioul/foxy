@@ -1,5 +1,0 @@
-# Foxychipgroup
-
-## Usage
-
-    <FoxyChipGroup />

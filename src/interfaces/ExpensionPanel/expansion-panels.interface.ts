@@ -12,9 +12,9 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
-import type { TIcon } from '@foxy/types'
+import type { TIcon } from '@foxui/types'
 
 export interface IExpansionPanelsProps extends IColorProps, ITagProps, ICommonsComponentProps, IGroupProps, IDensityProps, IRoundedProps, IBorderProps, IPaddingProps, IMarginProps, ILazyProps, ILoaderProps, IElevationProps {
     flat?: boolean

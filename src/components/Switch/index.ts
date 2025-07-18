@@ -1,1 +1,1 @@
-export { default as FoxySwitch } from './FoxySwitch.vue'
+export { default as FoxuiSwitch } from './FoxuiSwitch.vue'

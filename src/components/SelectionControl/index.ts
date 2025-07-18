@@ -1,2 +1,2 @@
-export { default as FoxySelectionControl } from './FoxySelectionControl.vue'
-export { default as FoxySelectionControlGroup } from './FoxySelectionControlGroup.vue'
+export { default as FoxuiSelectionControl } from './FoxuiSelectionControl.vue'
+export { default as FoxuiSelectionControlGroup } from './FoxuiSelectionControlGroup.vue'

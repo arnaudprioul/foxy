@@ -1,6 +1,6 @@
-import type { IInternalListItem, IInternalListItemChildren, IItemProps } from '@foxy/interfaces'
+import type { IInternalListItem, IInternalListItemChildren, IItemProps } from '@foxui/interfaces'
 
-import { getPropertyFromItem, omit } from '@foxy/utils'
+import { getPropertyFromItem, omit } from '@foxui/utils'
 
 export function transformListItems (props: IItemProps & { itemType?: string }, items: Array<(string | object)>) {
     const array: Array<IInternalListItemChildren> = []

@@ -1,1 +1,1 @@
-export { default as FoxyInput } from './FoxyInput.vue'
+export { default as FoxuiInput } from './FoxuiInput.vue'

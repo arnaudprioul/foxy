@@ -6,9 +6,9 @@ import type {
     IMarginProps,
     IPaddingProps,
     ITagProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
-import type { TCols } from '@foxy/types'
+import type { TCols } from '@foxui/types'
 
 export interface IColProps extends IColorProps, ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IBorderProps, IAlignProps {
     cols?: TCols,

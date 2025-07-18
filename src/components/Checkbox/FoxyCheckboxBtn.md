@@ -1,5 +1,0 @@
-# Foxycheckboxbtn
-
-## Usage
-
-    <FoxyCheckboxBtn />

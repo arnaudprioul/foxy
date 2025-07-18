@@ -1,5 +1,0 @@
-# Foxybtn
-
-## Usage
-
-    <FoxyBtn />

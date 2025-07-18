@@ -6,32 +6,32 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-app id="test">
-          <foxy-drawer
+	      <foxui-app id="test">
+		      <foxui-drawer
               v-model:model-value="state.modelValue"
               v-bind="state"
           >
             <template #default>
-              <foxy-list>
-                <foxy-list-item
+	            <foxui-list>
+		            <foxui-list-item
                     prepend-icon="mdi-home"
                     title="Home"
                 />
 
-                <foxy-list-item
+		            <foxui-list-item
                     prepend-icon="mdi-account-circle"
                     title="Users"
                     value="Users"
                 />
 
-                <foxy-list-item
+		            <foxui-list-item
                     title="Admin"
                     value="Admin"
                 />
-              </foxy-list>
+	            </foxui-list>
             </template>
-          </foxy-drawer>
-        </foxy-app>
+		      </foxui-drawer>
+	      </foxui-app>
       </template>
 
       <template #controls>
@@ -48,8 +48,8 @@
     lang="ts"
     setup
 >
-	import { FoxyApp, FoxyDrawer, FoxyList, FoxyListItem } from "@foxy/components"
-	import type { IDrawerProps } from '@foxy/interfaces'
+	import { FoxuiApp, FoxuiDrawer, FoxuiList, FoxuiListItem } from "@foxui/components"
+	import type { IDrawerProps } from '@foxui/interfaces'
 
 	import { reactive } from 'vue'
 

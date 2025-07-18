@@ -1,10 +1,10 @@
-import { FOXY_HOVER_STOP_KEY, HOVER } from '@foxy/consts'
+import { FOXUI_HOVER_STOP_KEY, HOVER } from '@foxui/consts'
 
-import type { IHoverDirectiveBinding, IHoverHtmlElement, IHoverOptions } from '@foxy/interfaces'
+import type { IHoverDirectiveBinding, IHoverHtmlElement, IHoverOptions } from '@foxui/interfaces'
 
-import type { THoverEvent } from '@foxy/types'
+import type { THoverEvent } from '@foxui/types'
 
-import { isObject, isTouchEvent } from '@foxy/utils'
+import { isObject, isTouchEvent } from '@foxui/utils'
 
 export function updateHover (el: IHoverHtmlElement, binding: IHoverDirectiveBinding, wasEnabled: boolean, name: string) {
     const {value, modifiers} = binding
@@ -49,10 +49,10 @@ export function hoverShow (e: THoverEvent) {
     const value: IHoverOptions = {class: ''}
     const element = e.currentTarget as IHoverHtmlElement | undefined
 
-    if (!element?._hover || element._hover.touched || e[FOXY_HOVER_STOP_KEY]) return
+    if (!element?._hover || element._hover.touched || e[FOXUI_HOVER_STOP_KEY]) return
 
     // Don't allow the event to trigger ripples on any other elements
-    e[FOXY_HOVER_STOP_KEY] = true
+    e[FOXUI_HOVER_STOP_KEY] = true
 
     if (isTouchEvent(e)) {
         element._hover.touched = true
@@ -73,7 +73,7 @@ export function hoverShow (e: THoverEvent) {
 }
 
 export function hoverStop (e: THoverEvent) {
-    e[FOXY_HOVER_STOP_KEY] = true
+    e[FOXUI_HOVER_STOP_KEY] = true
 }
 
 export function hoverHide (e: Event) {

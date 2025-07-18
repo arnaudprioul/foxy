@@ -1,3 +1,3 @@
-import { FoxySelectionControlGroup } from "@foxy/components"
+import { FoxuiSelectionControlGroup } from "@foxui/components"
 
-export type TFoxySelectionControlGroup = InstanceType<typeof FoxySelectionControlGroup>
+export type TFoxuiSelectionControlGroup = InstanceType<typeof FoxuiSelectionControlGroup>

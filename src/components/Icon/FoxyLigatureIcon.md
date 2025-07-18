@@ -1,5 +1,0 @@
-# Foxyligatureicon
-
-## Usage
-
-    <FoxyLigatureIcon />

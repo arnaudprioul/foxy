@@ -1,4 +1,4 @@
-import { COMPOSITION_IGNORE_KEYS } from '@foxy/consts'
+import { COMPOSITION_IGNORE_KEYS } from '@foxui/consts'
 
 export function isComposingIgnoreKey (e: KeyboardEvent): boolean {
     return e.isComposing && COMPOSITION_IGNORE_KEYS.includes(e.key as typeof COMPOSITION_IGNORE_KEYS[number])

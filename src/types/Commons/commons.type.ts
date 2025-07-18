@@ -1,4 +1,4 @@
-import { CLIENT_POSITION, FOCUS_LOCATION } from '@foxy/enums'
+import { CLIENT_POSITION, FOCUS_LOCATION } from '@foxui/enums'
 import { ComponentPublicInstance } from 'vue'
 
 export type TNotAUnion<T> = [T] extends [infer U] ? _TNotAUnion<U, U> : never

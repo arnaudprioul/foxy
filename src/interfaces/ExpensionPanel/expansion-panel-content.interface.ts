@@ -9,7 +9,7 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
 import { Component } from 'vue'
 

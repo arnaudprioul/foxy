@@ -1,3 +1,3 @@
-import { FoxyMain } from "@foxy/components"
+import { FoxuiMain } from "@foxui/components"
 
-export type TFoxyMain = InstanceType<typeof FoxyMain>
+export type TFoxuiMain = InstanceType<typeof FoxuiMain>

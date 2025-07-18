@@ -1,3 +1,3 @@
-import { FoxyPagination } from '@foxy/components'
+import { FoxuiPagination } from '@foxui/components'
 
-export type TFoxyPagination = InstanceType<typeof FoxyPagination>
+export type TFoxuiPagination = InstanceType<typeof FoxuiPagination>

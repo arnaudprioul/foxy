@@ -1,3 +1,3 @@
-export { default as FoxyCard } from './FoxyCard.vue'
-export { default as FoxyCardText } from './FoxyCardText.vue'
-export { default as FoxyCardHeader } from './FoxyCardHeader.vue'
+export { default as FoxuiCard } from './FoxuiCard.vue'
+export { default as FoxuiCardText } from './FoxuiCardText.vue'
+export { default as FoxuiCardHeader } from './FoxuiCardHeader.vue'

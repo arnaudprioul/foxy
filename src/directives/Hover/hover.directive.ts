@@ -1,6 +1,6 @@
-import type { IHoverDirectiveBinding, IHoverHtmlElement } from '@foxy/interfaces'
+import type { IHoverDirectiveBinding, IHoverHtmlElement } from '@foxui/interfaces'
 
-import { getCurrentInstanceName, hoverRemoveListeners, isHoverEnabled, updateHover } from '@foxy/utils'
+import { getCurrentInstanceName, hoverRemoveListeners, isHoverEnabled, updateHover } from '@foxui/utils'
 
 export const Hover = {
     mounted: (el: IHoverHtmlElement, binding: IHoverDirectiveBinding, name = getCurrentInstanceName()) => {

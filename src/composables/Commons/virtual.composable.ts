@@ -1,7 +1,7 @@
-import { useDisplay, useResizeObserver } from '@foxy/composables'
-import { BUFFER_PX, DOWN, IN_BROWSER, UP } from '@foxy/consts'
-import type { IVirtualProps } from '@foxy/interfaces'
-import { binaryClosest, clamp, debounce, int } from '@foxy/utils'
+import { useDisplay, useResizeObserver } from '@foxui/composables'
+import { BUFFER_PX, DOWN, IN_BROWSER, UP } from '@foxui/consts'
+import type { IVirtualProps } from '@foxui/interfaces'
+import { binaryClosest, clamp, debounce, int } from '@foxui/utils'
 
 import { computed, nextTick, onScopeDispose, ref, Ref, shallowRef, watch, watchEffect } from 'vue'
 

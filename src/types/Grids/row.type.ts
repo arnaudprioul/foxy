@@ -1,6 +1,6 @@
-import { FoxyRow } from "@foxy/components"
-import { FLEX_DIRECTION } from '@foxy/enums'
+import { FoxuiRow } from "@foxui/components"
+import { FLEX_DIRECTION } from '@foxui/enums'
 
 export type TFlexDirection = `${FLEX_DIRECTION}`
 
-export type TFoxyRow = InstanceType<typeof FoxyRow>
+export type TFoxuiRow = InstanceType<typeof FoxuiRow>

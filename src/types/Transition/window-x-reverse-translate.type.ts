@@ -1,3 +1,3 @@
-import { FoxyWindowXReverseTranslate } from "@foxy/components"
+import { FoxuiWindowXReverseTranslate } from "@foxui/components"
 
-export type TFoxyWindowXReverseTranslate = InstanceType<typeof FoxyWindowXReverseTranslate>
+export type TFoxuiWindowXReverseTranslate = InstanceType<typeof FoxuiWindowXReverseTranslate>

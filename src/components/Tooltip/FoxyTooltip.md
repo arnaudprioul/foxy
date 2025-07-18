@@ -1,5 +1,0 @@
-# Foxytooltip
-
-## Usage
-
-    <FoxyTooltip />

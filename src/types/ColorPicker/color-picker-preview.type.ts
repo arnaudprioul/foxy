@@ -1,3 +1,3 @@
-import { FoxyColorPickerPreview } from "@foxy/components"
+import { FoxuiColorPickerPreview } from "@foxui/components"
 
-export type TFoxyColorPickerPreview = InstanceType<typeof FoxyColorPickerPreview>
+export type TFoxuiColorPickerPreview = InstanceType<typeof FoxuiColorPickerPreview>

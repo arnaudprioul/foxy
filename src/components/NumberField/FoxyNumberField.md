@@ -1,5 +1,0 @@
-# Foxynumberfield
-
-## Usage
-
-    <FoxyNumberField />

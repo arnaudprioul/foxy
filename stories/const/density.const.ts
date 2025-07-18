@@ -1,4 +1,4 @@
-import { DENSITY } from '@foxy/enums'
+import { DENSITY } from '@foxui/enums'
 
 export const densityList = [
     {

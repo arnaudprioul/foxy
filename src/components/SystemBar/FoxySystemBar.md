@@ -1,5 +1,0 @@
-# Foxysystembar
-
-## Usage
-
-    <FoxySystemBar />

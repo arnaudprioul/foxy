@@ -2,11 +2,11 @@
     lang="ts"
     setup
 >
-  import { FoxyApp } from '@foxy/components'
+	import { FoxuiApp } from '@foxui/components'
 </script>
 
 <template>
-  <foxy-app style="min-height: 300px; width: 100%;">
+	<foxui-app style="min-height: 300px; width: 100%;">
     <slot/>
-  </foxy-app>
+	</foxui-app>
 </template>

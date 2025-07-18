@@ -1,0 +1,5 @@
+# Foxuitranslatebottom
+
+## Usage
+
+    <FoxuiTranslateBottom />

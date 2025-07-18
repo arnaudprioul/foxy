@@ -6,13 +6,13 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container fullscreen>
-          <foxy-row
+	      <foxui-container fullscreen>
+		      <foxui-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col>
-              <foxy-number-field
+			      <foxui-col>
+				      <foxui-number-field
                   v-bind="state"
                   @click:control="logEvent('click control', $event)"
                   @mousedown:control="logEvent('mousedown control', $event)"
@@ -24,9 +24,9 @@
                   @click:append-inner="logEvent('click append inner', $event)"
                   @click:prepend-inner="logEvent('click prepend inner', $event)"
               />
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
 
       <template #controls>
@@ -97,11 +97,11 @@
     lang="ts"
     setup
 >
-	import { FoxyCol, FoxyContainer, FoxyNumberField, FoxyRow } from '@foxy/components'
+	import { FoxuiCol, FoxuiContainer, FoxuiNumberField, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxui/enums'
 
-	import type { INumberFieldProps } from '@foxy/interfaces'
+	import type { INumberFieldProps } from '@foxui/interfaces'
 
 	import { HstIcon } from '@stories/components/controls'
 

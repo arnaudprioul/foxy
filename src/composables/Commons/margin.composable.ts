@@ -1,8 +1,8 @@
-import { MARGIN_REGEX } from '@foxy/consts'
+import { MARGIN_REGEX } from '@foxui/consts'
 
-import type { IMarginProps } from '@foxy/interfaces'
+import type { IMarginProps } from '@foxui/interfaces'
 
-import { convertToUnit, formatMarginStylesVar, getCurrentInstanceName } from '@foxy/utils'
+import { convertToUnit, formatMarginStylesVar, getCurrentInstanceName } from '@foxui/utils'
 
 import { computed } from 'vue'
 

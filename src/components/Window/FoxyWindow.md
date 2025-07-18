@@ -1,5 +1,0 @@
-# Foxywindow
-
-## Usage
-
-    <FoxyWindow />

@@ -1,7 +1,7 @@
-import { FoxyList } from '@foxy/components'
+import { FoxuiList } from '@foxui/components'
 
-import { LINES } from '@foxy/enums'
+import { LINES } from '@foxui/enums'
 
 export type TLines = `${LINES}`
 
-export type TFoxyList = InstanceType<typeof FoxyList>
+export type TFoxuiList = InstanceType<typeof FoxuiList>

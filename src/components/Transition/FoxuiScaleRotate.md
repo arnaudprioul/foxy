@@ -1,0 +1,5 @@
+# Foxuiscalerotate
+
+## Usage
+
+    <FoxuiScaleRotate />

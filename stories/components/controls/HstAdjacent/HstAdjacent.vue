@@ -24,8 +24,8 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxy/composables"
-	import type { IAdjacentProps } from "@foxy/interfaces"
+	import { useVModel } from "@foxui/composables"
+	import type { IAdjacentProps } from "@foxui/interfaces"
 
 	import { HstIcon } from "@stories/components/controls"
 

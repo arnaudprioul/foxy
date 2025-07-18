@@ -1,0 +1,5 @@
+# Foxuiinput
+
+## Usage
+
+    <FoxuiInput />

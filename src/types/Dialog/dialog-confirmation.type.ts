@@ -1,3 +1,3 @@
-import { FoxyDialogConfirmation } from '@foxy/components'
+import { FoxuiDialogConfirmation } from '@foxui/components'
 
-export type TFoxyDialogConfirmation = InstanceType<typeof FoxyDialogConfirmation>
+export type TFoxuiDialogConfirmation = InstanceType<typeof FoxuiDialogConfirmation>

@@ -1,3 +1,3 @@
-export { default as FoxyBtn } from './FoxyBtn.vue'
-export { default as FoxyBtnGroup } from './FoxyBtnGroup.vue'
-export { default as FoxyBtnToggle } from './FoxyBtnToggle.vue'
+export { default as FoxuiBtn } from './FoxuiBtn.vue'
+export { default as FoxuiBtnGroup } from './FoxuiBtnGroup.vue'
+export { default as FoxuiBtnToggle } from './FoxuiBtnToggle.vue'

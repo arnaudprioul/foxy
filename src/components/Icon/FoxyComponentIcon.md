@@ -1,5 +1,0 @@
-# Foxycomponenticon
-
-## Usage
-
-    <FoxyComponentIcon />

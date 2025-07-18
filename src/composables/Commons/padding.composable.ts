@@ -1,8 +1,8 @@
-import { PADDING_REGEX } from '@foxy/consts'
+import { PADDING_REGEX } from '@foxui/consts'
 
-import type { IPaddingProps } from '@foxy/interfaces'
+import type { IPaddingProps } from '@foxui/interfaces'
 
-import { convertToUnit, formatPaddingStylesVar, getCurrentInstanceName } from '@foxy/utils'
+import { convertToUnit, formatPaddingStylesVar, getCurrentInstanceName } from '@foxui/utils'
 
 import { computed } from 'vue'
 

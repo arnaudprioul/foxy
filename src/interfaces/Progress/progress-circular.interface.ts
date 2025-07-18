@@ -1,4 +1,4 @@
-import type { IProgressTypeProps, ISizeProps } from '@foxy/interfaces'
+import type { IProgressTypeProps, ISizeProps } from '@foxui/interfaces'
 
 export interface IProgressCircularProps extends IProgressTypeProps, ISizeProps {
     rotate?: string | number

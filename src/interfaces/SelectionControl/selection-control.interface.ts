@@ -1,4 +1,4 @@
-import type { IColorProps, ICommonsComponentProps, ISelectionControlGroupProps } from '@foxy/interfaces'
+import type { IColorProps, ICommonsComponentProps, ISelectionControlGroupProps } from '@foxui/interfaces'
 
 export interface ISelectionControlProps extends ICommonsComponentProps, Partial<Omit<ISelectionControlGroupProps, 'items'>>, IColorProps {
     label?: string

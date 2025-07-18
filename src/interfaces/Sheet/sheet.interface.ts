@@ -10,7 +10,7 @@ import type {
     IPositionProps,
     IRoundedProps,
     ITagProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
 export interface ISheetProps extends ITagProps, ICommonsComponentProps, IPaddingProps, IMarginProps, IColorProps, IBorderProps, IRoundedProps, IElevationProps, IDimensionProps, ILocationProps, IPositionProps {
 

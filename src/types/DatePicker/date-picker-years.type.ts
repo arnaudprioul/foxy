@@ -1,3 +1,3 @@
-import { FoxyDatePickerYears } from "@foxy/components"
+import { FoxuiDatePickerYears } from "@foxui/components"
 
-export type TFoxyDatePickerYears = InstanceType<typeof FoxyDatePickerYears>
+export type TFoxuiDatePickerYears = InstanceType<typeof FoxuiDatePickerYears>

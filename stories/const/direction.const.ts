@@ -1,4 +1,4 @@
-import { DIRECTION } from '@foxy/enums'
+import { DIRECTION } from '@foxui/enums'
 
 export const directionList = [
     {value: DIRECTION.HORIZONTAL, label: 'Horizontal'},

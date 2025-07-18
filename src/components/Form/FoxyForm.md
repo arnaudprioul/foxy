@@ -1,5 +1,0 @@
-# Foxyform
-
-## Usage
-
-    <FoxyForm />

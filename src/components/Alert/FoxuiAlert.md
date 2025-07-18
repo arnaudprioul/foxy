@@ -1,0 +1,5 @@
+# Foxuialert
+
+## Usage
+
+    <FoxuiAlert />

@@ -1,8 +1,8 @@
 // Composables
-import { useBorder } from '@foxy/composables'
+import { useBorder } from '@foxui/composables'
 
 // Utilities
-import type { IBorderProps } from '@foxy/interfaces'
+import type { IBorderProps } from '@foxui/interfaces'
 
 describe('border.ts', () => {
     it.each([

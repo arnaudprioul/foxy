@@ -1,9 +1,9 @@
 import { warn } from 'vue'
 
 export function consoleWarn (message: string): void {
-    warn(`Foxy: ${message}`)
+    warn(`Foxui: ${message}`)
 }
 
 export function consoleError (message: string): void {
-    warn(`Foxy error: ${message}`)
+    warn(`Foxui error: ${message}`)
 }

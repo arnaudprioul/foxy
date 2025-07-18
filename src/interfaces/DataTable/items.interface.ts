@@ -4,9 +4,9 @@ import type {
     IDataTableSortItem,
     IInternalDataTableHeader,
     IInternalItem
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
-import type { TDataTableCell, TDataTableRow, TIcon, TSelectItemKey } from '@foxy/types'
+import type { TDataTableCell, TDataTableRow, TIcon, TSelectItemKey } from '@foxui/types'
 import type { ComputedRef, Ref } from 'vue'
 
 export interface IDataTableItemsProps {

@@ -1,21 +1,21 @@
-import { FoxyComponentIcon, FoxySvgIcon } from '@foxy/components'
+import { FoxuiComponentIcon, FoxuiSvgIcon } from '@foxui/components'
 
-import { DEFAULT_SETS, FOXY_ICONS_KEY, MDI, MDI_ALIASES } from '@foxy/consts'
+import { DEFAULT_SETS, FOXUI_ICONS_KEY, MDI, MDI_ALIASES } from '@foxui/consts'
 
-import type { TIcon, TIconInstance, TIconOptions } from '@foxy/types'
+import type { TIcon, TIconInstance, TIconOptions } from '@foxui/types'
 
-import { mergeDeep } from '@foxy/utils'
+import { mergeDeep } from '@foxui/utils'
 import { computed, inject, Ref, unref } from 'vue'
 
 export const useIcon = (props: Ref<TIcon | undefined>) => {
-    const icons = inject(FOXY_ICONS_KEY)
+    const icons = inject(FOXUI_ICONS_KEY)
 
-    if (!icons) throw new Error('Missing Foxy Icons provide!')
+    if (!icons) throw new Error('Missing Foxui Icons provide!')
 
     const iconData = computed<TIconInstance>(() => {
         const iconAlias = unref(props)
 
-        if (!iconAlias) return {component: FoxyComponentIcon}
+        if (!iconAlias) return {component: FoxuiComponentIcon}
 
         let icon: TIcon | undefined = iconAlias
 
@@ -31,12 +31,12 @@ export const useIcon = (props: Ref<TIcon | undefined>) => {
 
         if (Array.isArray(icon)) {
             return {
-                component: FoxySvgIcon,
+                component: FoxuiSvgIcon,
                 icon
             }
         } else if (typeof icon !== 'string') {
             return {
-                component: FoxyComponentIcon,
+                component: FoxuiComponentIcon,
                 icon
             }
         }

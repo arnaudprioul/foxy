@@ -1,3 +1,3 @@
-import { FoxyDataTableHeaders } from "@foxy/components"
+import { FoxuiDataTableHeaders } from "@foxui/components"
 
-export type TFoxyDataTableHeaders = InstanceType<typeof FoxyDataTableHeaders>
+export type TFoxuiDataTableHeaders = InstanceType<typeof FoxuiDataTableHeaders>

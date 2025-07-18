@@ -5,16 +5,16 @@
 	>
 		<Variant title="Default">
 			<template #default>
-				<foxy-system-bar
+				<foxui-system-bar
 						order="0"
 						v-bind="state"
 				>
-					<foxy-icon :icon="MDI_ICONS.WIFI_STRENGTH_4"/>
-					<foxy-icon :icon="MDI_ICONS.SIGNAL"/>
-					<foxy-icon :icon="MDI_ICONS.BATTERY"/>
+					<foxui-icon :icon="MDI_ICONS.WIFI_STRENGTH_4"/>
+					<foxui-icon :icon="MDI_ICONS.SIGNAL"/>
+					<foxui-icon :icon="MDI_ICONS.BATTERY"/>
 
 					<span>3:13PM</span>
-				</foxy-system-bar>
+				</foxui-system-bar>
 			</template>
 		</Variant>
 	</Story>
@@ -24,8 +24,8 @@
 		lang="ts"
 		setup
 >
-	import { FoxyIcon, FoxySystemBar } from '@foxy/components'
-	import { MDI_ICONS } from "@foxy/enums"
+	import { FoxuiIcon, FoxuiSystemBar } from '@foxui/components'
+	import { MDI_ICONS } from "@foxui/enums"
 	import { reactive } from "vue"
 
 	const state: Partial<ISystemBarProps> = reactive({})

@@ -10,8 +10,8 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxy/composables"
-	import type { IBorderProps } from "@foxy/interfaces"
+	import { useVModel } from "@foxui/composables"
+	import type { IBorderProps } from "@foxui/interfaces"
 
 	import { borderList } from "@stories/const/border.const"
 

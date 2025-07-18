@@ -9,7 +9,7 @@ import type {
     IPaddingProps,
     IRadioBtnProps,
     IRoundedProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
 export interface IRadioProps extends ICommonsComponentProps, IInputProps, IRadioBtnProps, IDensityProps, IPaddingProps, IMarginProps, IRoundedProps, IColorProps, IBorderProps, IElevationProps {
 

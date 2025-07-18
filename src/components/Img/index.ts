@@ -1,1 +1,1 @@
-export { default as FoxyImg } from './FoxyImg.vue'
+export { default as FoxuiImg } from './FoxuiImg.vue'

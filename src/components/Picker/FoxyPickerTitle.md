@@ -1,5 +1,0 @@
-# Foxypickertitle
-
-## Usage
-
-    <FoxyPickerTitle />

@@ -1,2 +1,2 @@
-export { default as FoxyInfiniteScroll } from './FoxyInfiniteScroll.vue'
-export { default as FoxyInfiniteScrollIntersect } from './FoxyInfiniteScrollIntersect.vue'
+export { default as FoxuiInfiniteScroll } from './FoxuiInfiniteScroll.vue'
+export { default as FoxuiInfiniteScrollIntersect } from './FoxuiInfiniteScrollIntersect.vue'

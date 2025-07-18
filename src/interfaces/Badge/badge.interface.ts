@@ -9,7 +9,7 @@ import type {
     IStatusProps,
     ITagProps,
     ITransitionComponentProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
 export interface IBadgeProps extends ICommonsComponentProps, ITagProps, IBorderProps, IColorProps, ILocationProps, IRoundedProps, ITransitionComponentProps, IStatusProps, IHoverProps, IElevationProps {
     content?: number | string

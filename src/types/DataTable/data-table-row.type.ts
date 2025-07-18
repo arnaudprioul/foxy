@@ -1,3 +1,3 @@
-import { FoxyDataTableRow } from "@foxy/components"
+import { FoxuiDataTableRow } from "@foxui/components"
 
-export type TFoxyDataTableRow = InstanceType<typeof FoxyDataTableRow>
+export type TFoxuiDataTableRow = InstanceType<typeof FoxuiDataTableRow>

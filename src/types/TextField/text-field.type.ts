@@ -1,7 +1,7 @@
-import { FoxyTextField } from '@foxy/components'
+import { FoxuiTextField } from '@foxui/components'
 
-import { TEXT_FIELD_TYPE } from "@foxy/enums"
+import { TEXT_FIELD_TYPE } from "@foxui/enums"
 
 export type TTextFieldType = `${TEXT_FIELD_TYPE}`
 
-export type TFoxyTextField = InstanceType<typeof FoxyTextField>
+export type TFoxuiTextField = InstanceType<typeof FoxuiTextField>

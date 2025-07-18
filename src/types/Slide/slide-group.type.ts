@@ -1,3 +1,3 @@
-import { FoxySlideGroup } from "@foxy/components"
+import { FoxuiSlideGroup } from "@foxui/components"
 
-export type TFoxySlideGroup = InstanceType<typeof FoxySlideGroup>
+export type TFoxuiSlideGroup = InstanceType<typeof FoxuiSlideGroup>

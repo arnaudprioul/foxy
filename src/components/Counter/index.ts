@@ -1,1 +1,1 @@
-export { default as FoxyCounter } from './FoxyCounter.vue'
+export { default as FoxuiCounter } from './FoxuiCounter.vue'

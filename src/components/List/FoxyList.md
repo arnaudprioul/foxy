@@ -1,5 +1,0 @@
-# Foxylist
-
-## Usage
-
-    <FoxyList />

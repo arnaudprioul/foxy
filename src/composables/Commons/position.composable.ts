@@ -1,6 +1,6 @@
-import type { IPositionProps } from '@foxy/interfaces'
+import type { IPositionProps } from '@foxui/interfaces'
 
-import { getCurrentInstanceName } from '@foxy/utils'
+import { getCurrentInstanceName } from '@foxui/utils'
 import { computed } from 'vue'
 
 export function usePosition (props: IPositionProps, name = getCurrentInstanceName()) {

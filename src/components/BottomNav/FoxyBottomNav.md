@@ -1,5 +1,0 @@
-# Foxybottomnav
-
-## Usage
-
-    <FoxyBottomNav />

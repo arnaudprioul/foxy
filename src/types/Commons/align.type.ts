@@ -1,3 +1,3 @@
-import { ALIGN } from '@foxy/enums'
+import { ALIGN } from '@foxui/enums'
 
 export type TAlign = `${ALIGN}`

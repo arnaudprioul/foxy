@@ -1,1 +1,1 @@
-export { default as FoxyForm } from './FoxyForm.vue'
+export { default as FoxuiForm } from './FoxuiForm.vue'

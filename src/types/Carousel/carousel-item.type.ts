@@ -1,3 +1,3 @@
-import { FoxyCarouselItem } from "@foxy/components"
+import { FoxuiCarouselItem } from "@foxui/components"
 
-export type TFoxyCarouselItem = InstanceType<typeof FoxyCarouselItem>
+export type TFoxuiCarouselItem = InstanceType<typeof FoxuiCarouselItem>

@@ -1,1 +1,1 @@
-export { default as FoxyNumberField } from './FoxyNumberField.vue'
+export { default as FoxuiNumberField } from './FoxuiNumberField.vue'

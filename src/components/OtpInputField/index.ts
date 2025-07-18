@@ -1,1 +1,1 @@
-export { default as FoxyOtpInputField } from './FoxyOtpInputField.vue'
+export { default as FoxuiOtpInputField } from './FoxuiOtpInputField.vue'

@@ -1,4 +1,4 @@
-import type { TNestedProvide, TStrategyOpen } from '@foxy/types'
+import type { TNestedProvide, TStrategyOpen } from '@foxui/types'
 
 import type { InjectionKey } from 'vue'
 import { ref, shallowRef } from 'vue'
@@ -64,7 +64,7 @@ export const LIST_OPEN_STRATEGY: TStrategyOpen = {
     }
 }
 
-export const FOXY_NESTED_KEY: InjectionKey<TNestedProvide> = Symbol.for('foxy:nested')
+export const FOXUI_NESTED_KEY: InjectionKey<TNestedProvide> = Symbol.for('foxui:nested')
 
 export const EMPTY_NESTED: TNestedProvide = {
     id: shallowRef(),

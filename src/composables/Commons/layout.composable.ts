@@ -1,10 +1,10 @@
-import { useResizeObserver } from '@foxy/composables'
+import { useResizeObserver } from '@foxui/composables'
 
-import { FOXY_LAYOUT_ITEM_KEY, FOXY_LAYOUT_KEY, ROOT_ZINDEX } from '@foxy/consts'
+import { FOXUI_LAYOUT_ITEM_KEY, FOXUI_LAYOUT_KEY, ROOT_ZINDEX } from '@foxui/consts'
 
-import type { TDirectionBoth } from "@foxy/types"
+import type { TDirectionBoth } from "@foxui/types"
 
-import { convertToUnit, findChildrenWithProvide, generateLayers, getCurrentInstance, getUid, int } from '@foxy/utils'
+import { convertToUnit, findChildrenWithProvide, generateLayers, getCurrentInstance, getUid, int } from '@foxui/utils'
 
 import type { ComponentInternalInstance, ComputedRef, CSSProperties, Ref, StyleValue } from 'vue'
 import {
@@ -21,10 +21,10 @@ import {
 } from 'vue'
 
 export function useLayout () {
-    const layout = inject(FOXY_LAYOUT_KEY)
+    const layout = inject(FOXUI_LAYOUT_KEY)
 
     if (!layout) {
-        throw new Error('[Foxy] Could not find injected layout')
+        throw new Error('[Foxui] Could not find injected layout')
     }
 
     return {
@@ -45,17 +45,17 @@ export function useLayoutItem (options: {
     disableTransitions?: Ref<boolean>
     absolute: Ref<boolean | undefined>
 }) {
-    const layout = inject(FOXY_LAYOUT_KEY)
+    const layout = inject(FOXUI_LAYOUT_KEY)
 
     if (!layout) {
-        throw new Error('[Foxy] Could not find injected layout')
+        throw new Error('[Foxui] Could not find injected layout')
     }
 
     const id = options.id ?? `layout-item-${getUid()}`
 
     const vm = getCurrentInstance('useLayoutItem')
 
-    provide(FOXY_LAYOUT_ITEM_KEY, shallowRef({id}))
+    provide(FOXUI_LAYOUT_ITEM_KEY, shallowRef({id}))
 
     const isKeptAlive = shallowRef(false)
     onDeactivated(() => {
@@ -87,7 +87,7 @@ export function useLayoutItem (options: {
 }
 
 export function useCreateLayout (props: { id?: string, overlaps?: Array<string>, fullHeight?: boolean }) {
-    const parentLayout = inject(FOXY_LAYOUT_KEY, null)
+    const parentLayout = inject(FOXUI_LAYOUT_KEY, null)
 
     const uid = getUid()
     const layoutId = computed(() => props.id || `layout-${uid}`)
@@ -178,7 +178,7 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
         isMounted.value = true
     })
 
-    provide(FOXY_LAYOUT_KEY, {
+    provide(FOXUI_LAYOUT_KEY, {
         register: (
             vm: ComponentInternalInstance,
             {
@@ -201,7 +201,7 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
                 disabledTransitions.set(id, disableTransitions)
             }
 
-            const instances = findChildrenWithProvide(FOXY_LAYOUT_KEY, rootVm?.vnode)
+            const instances = findChildrenWithProvide(FOXUI_LAYOUT_KEY, rootVm?.vnode)
             const instanceIndex = instances.indexOf(vm)
 
             if (instanceIndex > -1) registered.value.splice(instanceIndex, 0, id)
@@ -226,7 +226,7 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
 
                 const item = items.value[index.value]
 
-                if (!item) throw new Error(`[Foxy] Could not find layout item "${id}"`)
+                if (!item) throw new Error(`[Foxui] Could not find layout item "${id}"`)
 
                 const overlap = computedOverlaps.value.get(id)
 
@@ -276,8 +276,8 @@ export function useCreateLayout (props: { id?: string, overlaps?: Array<string>,
 
     const layoutClasses = computed(() => {
         return [
-            'foxy-layout',
-            {'foxy-layout--full-height': props.fullHeight}
+            'foxui-layout',
+            {'foxui-layout--full-height': props.fullHeight}
         ]
     })
 

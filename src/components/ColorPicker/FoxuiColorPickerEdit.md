@@ -1,0 +1,5 @@
+# FoxuiColorPickerEdit
+
+## Usage
+
+    <FoxuiColorPickerEdit />

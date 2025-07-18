@@ -1,5 +1,0 @@
-# FoxyColorPickerEdit
-
-## Usage
-
-    <FoxyColorPickerEdit />

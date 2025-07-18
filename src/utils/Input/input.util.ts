@@ -1,5 +1,5 @@
-import { BUBBLING_EVENTS, ON_REGEX } from '@foxy/consts'
-import { omit, pickWithRest } from '@foxy/utils'
+import { BUBBLING_EVENTS, ON_REGEX } from '@foxui/consts'
+import { omit, pickWithRest } from '@foxui/utils'
 
 /**
  * Filter attributes that should be applied to

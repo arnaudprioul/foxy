@@ -1,5 +1,0 @@
-# Foxyfilefield
-
-## Usage
-
-    <FoxyFileField />

@@ -1,3 +1,3 @@
-import { FoxyMessages } from "@foxy/components"
+import { FoxuiMessages } from "@foxui/components"
 
-export type TFoxyMessages = InstanceType<typeof FoxyMessages>
+export type TFoxuiMessages = InstanceType<typeof FoxuiMessages>

@@ -1,1 +1,1 @@
-export { default as FoxyBadge } from './FoxyBadge.vue'
+export { default as FoxuiBadge } from './FoxuiBadge.vue'

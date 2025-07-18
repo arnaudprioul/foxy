@@ -6,9 +6,9 @@ import type {
     IPaddingProps,
     ISizeProps,
     ITagProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
-import type { TIcon } from '@foxy/types'
+import type { TIcon } from '@foxui/types'
 
 export interface IBreadcrumbDividerProps extends ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IDensityProps, IColorProps, ISizeProps {
     divider: string | TIcon

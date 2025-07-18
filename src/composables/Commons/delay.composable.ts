@@ -1,5 +1,5 @@
-import type { IDelayProps } from '@foxy/interfaces'
-import { defer } from '@foxy/utils'
+import type { IDelayProps } from '@foxui/interfaces'
+import { defer } from '@foxui/utils'
 
 export function useDelay (props: IDelayProps, cb?: (value: boolean) => void) {
     let clearDelay: (() => void) = () => {

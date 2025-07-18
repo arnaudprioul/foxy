@@ -1,12 +1,12 @@
-import { useVModel } from '@foxy/composables'
+import { useVModel } from '@foxui/composables'
 
-import { allSelectStrategy, FOXY_DATA_TABLE_SELECT_KEY, pageSelectStrategy, singleSelectStrategy } from '@foxy/consts'
+import { allSelectStrategy, FOXUI_DATA_TABLE_SELECT_KEY, pageSelectStrategy, singleSelectStrategy } from '@foxui/consts'
 
-import { DATATABLE_SELECT_STRATEGY } from '@foxy/enums'
+import { DATATABLE_SELECT_STRATEGY } from '@foxui/enums'
 
-import type { IDataTableProvideSelection, IDataTableSelectableItem, IDataTableSelectProps } from '@foxy/interfaces'
+import type { IDataTableProvideSelection, IDataTableSelectableItem, IDataTableSelectProps } from '@foxui/interfaces'
 
-import { deepEqual, wrapInArray } from '@foxy/utils'
+import { deepEqual, wrapInArray } from '@foxui/utils'
 
 import { computed, inject, provide, Ref } from 'vue'
 
@@ -98,13 +98,13 @@ export function provideSelection (
         showSelectAll
     }
 
-    provide(FOXY_DATA_TABLE_SELECT_KEY, data)
+    provide(FOXUI_DATA_TABLE_SELECT_KEY, data)
 
     return data
 }
 
 export function useSelection () {
-    const data = inject(FOXY_DATA_TABLE_SELECT_KEY)
+    const data = inject(FOXUI_DATA_TABLE_SELECT_KEY)
 
     if (!data) throw new Error('Missing selection!')
 

@@ -1,3 +1,3 @@
-import { FoxyResponsive } from "@foxy/components"
+import { FoxuiResponsive } from "@foxui/components"
 
-export type TFoxyResponsive = InstanceType<typeof FoxyResponsive>
+export type TFoxuiResponsive = InstanceType<typeof FoxuiResponsive>

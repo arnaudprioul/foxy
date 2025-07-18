@@ -1,6 +1,6 @@
-import { DENSITY } from '@foxy/enums'
+import { DENSITY } from '@foxui/enums'
 
-import type { TDensity } from '@foxy/types'
+import type { TDensity } from '@foxui/types'
 
 export const PREDIFINED_DENSITY: Array<TDensity> = [
     DENSITY.DEFAULT,

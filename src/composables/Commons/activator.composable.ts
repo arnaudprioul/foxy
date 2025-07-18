@@ -1,10 +1,10 @@
-import { useDelay } from '@foxy/composables'
+import { useDelay } from '@foxui/composables'
 
-import { FOXY_MENU_KEY, IN_BROWSER } from '@foxy/consts'
+import { FOXUI_MENU_KEY, IN_BROWSER } from '@foxui/consts'
 
-import type { IActivatorProps } from '@foxy/interfaces'
+import type { IActivatorProps } from '@foxui/interfaces'
 
-import { activator, getCurrentInstance, getTargetActivator, matchesSelector, refElement } from '@foxy/utils'
+import { activator, getCurrentInstance, getTargetActivator, matchesSelector, refElement } from '@foxui/utils'
 
 import { computed, effectScope, EffectScope, inject, nextTick, onScopeDispose, ref, Ref, watch, watchEffect } from 'vue'
 
@@ -152,7 +152,7 @@ export function useActivator (props: IActivatorProps, {isActive, isTop}: {
         }
 
         if (props.closeOnContentClick) {
-            const menu = inject(FOXY_MENU_KEY, null)
+            const menu = inject(FOXUI_MENU_KEY, null)
             events.onClick = () => {
                 isActive.value = false
                 menu?.closeParents()

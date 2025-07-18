@@ -1,6 +1,6 @@
-import type { IWindowProvide } from '@foxy/interfaces'
+import type { IWindowProvide } from '@foxui/interfaces'
 
-import type { TTransitionMode, TTransitionProps } from '@foxy/types'
+import type { TTransitionMode, TTransitionProps } from '@foxui/types'
 
 export interface ITransitionComponentProps {
     transition?: boolean | string | TTransitionProps

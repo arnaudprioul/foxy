@@ -1,5 +1,5 @@
-import { SCROLL_STRATEGIES } from '@foxy/enums'
-import type { IScrollStrategyData, IScrollStrategyProps } from '@foxy/interfaces'
+import { SCROLL_STRATEGIES } from '@foxui/enums'
+import type { IScrollStrategyData, IScrollStrategyProps } from '@foxui/interfaces'
 
 import { EffectScope } from 'vue'
 

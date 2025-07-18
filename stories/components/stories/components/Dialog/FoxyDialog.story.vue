@@ -6,7 +6,7 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-dialog
+	      <foxui-dialog
             v-model="state.modelValue"
             :max-height="state.fullscreen ? undefined : '300px'"
             v-bind="state"
@@ -66,9 +66,9 @@
     lang="ts"
     setup
 >
-	import { FoxyDialog } from '@foxy/components'
+	import { FoxuiDialog } from '@foxui/components'
 
-	import type { IDialogProps } from '@foxy/interfaces'
+	import type { IDialogProps } from '@foxui/interfaces'
 
 	import { HstIcon } from '@stories/components/controls'
 

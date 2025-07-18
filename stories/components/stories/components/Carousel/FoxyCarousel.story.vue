@@ -6,29 +6,29 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container>
-          <foxy-row
+	      <foxui-container>
+		      <foxui-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col cols="12">
-              <foxy-carousel v-bind="state">
-                <foxy-carousel-item
+			      <foxui-col cols="12">
+				      <foxui-carousel v-bind="state">
+					      <foxui-carousel-item
                     cover
                     src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
                 />
-                <foxy-carousel-item
+					      <foxui-carousel-item
                     cover
                     src="https://cdn.vuetifyjs.com/images/cards/hotel.jpg"
                 />
-                <foxy-carousel-item
+					      <foxui-carousel-item
                     cover
                     src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
                 />
-              </foxy-carousel>
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+				      </foxui-carousel>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
 
       <template #controls>
@@ -84,11 +84,11 @@
     lang="ts"
     setup
 >
-	import { FoxyCarousel, FoxyCarouselItem, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
+	import { FoxuiCarousel, FoxuiCarouselItem, FoxuiCol, FoxuiContainer, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxui/enums'
 
-	import type { ICarouselProps } from '@foxy/interfaces'
+	import type { ICarouselProps } from '@foxui/interfaces'
 
 	import { HstIcon } from '@stories/components/controls'
 

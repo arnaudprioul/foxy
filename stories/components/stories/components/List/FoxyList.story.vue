@@ -6,31 +6,31 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container fullscreen>
-          <foxy-row
+	      <foxui-container fullscreen>
+		      <foxui-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col cols="auto">
-              <foxy-list
+			      <foxui-col cols="auto">
+				      <foxui-list
                   v-bind="state"
                   @update:selected="logEvent('update:selected', $event)"
                   @update:opened="logEvent('update:opened', $event)"
                   @click:open="logEvent('click:open', $event)"
                   @click:select="logEvent('click:select', $event)"
               >
-                <foxy-list-item
+					      <foxui-list-item
                     prepend-icon="mdi-home"
                     title="Home"
                 />
 
-                <foxy-list-group
+					      <foxui-list-group
                     value="Users"
                     @click:activator="logEvent('click:activator - Users', $event)"
                 >
 
                   <template #activator="{isOpen, props, events, toggleIcon}">
-                    <foxy-list-item
+	                  <foxui-list-item
                         :active="isOpen"
                         :append-icon="toggleIcon"
                         prepend-icon="mdi-account-circle"
@@ -42,13 +42,13 @@
                   </template>
 
                   <template #items>
-                    <foxy-list-group
+	                  <foxui-list-group
                         value="Admin"
                         @click:activator="logEvent('click:activator - Admin', $event)"
                     >
 
                       <template #activator="{isOpen, props, events,  toggleIcon}">
-                        <foxy-list-item
+	                      <foxui-list-item
                             :active="isOpen"
                             :append-icon="toggleIcon"
                             title="Admin"
@@ -59,7 +59,7 @@
                       </template>
 
                       <template #items>
-                        <foxy-list-item
+	                      <foxui-list-item
                             v-for="([title, icon], i) in admins"
                             :key="i"
                             :prepend-icon="icon"
@@ -67,16 +67,16 @@
                             :value="title"
                         />
                       </template>
-                    </foxy-list-group>
+	                  </foxui-list-group>
 
-                    <foxy-list-group
+	                  <foxui-list-group
                         title="Actions"
                         value="Actions"
                         @click:activator="logEvent('click:activator - Actions', $event)"
                     >
 
                       <template #activator="{isOpen, props, events,  toggleIcon}">
-                        <foxy-list-item
+	                      <foxui-list-item
                             :active="isOpen"
                             :append-icon="toggleIcon"
                             title="Actions"
@@ -87,7 +87,7 @@
                       </template>
 
                       <template #items>
-                        <foxy-list-item
+	                      <foxui-list-item
                             v-for="([title, icon], i) in cruds"
                             :key="i"
                             :prepend-icon="icon"
@@ -95,13 +95,13 @@
                             :value="title"
                         />
                       </template>
-                    </foxy-list-group>
+	                  </foxui-list-group>
                   </template>
-                </foxy-list-group>
-              </foxy-list>
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+					      </foxui-list-group>
+				      </foxui-list>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
       <template #controls>
         <hst-checkbox
@@ -125,9 +125,9 @@
     lang="ts"
     setup
 >
-	import { FoxyCol, FoxyContainer, FoxyList, FoxyListGroup, FoxyListItem, FoxyRow } from '@foxy/components'
+	import { FoxuiCol, FoxuiContainer, FoxuiList, FoxuiListGroup, FoxuiListItem, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxui/enums'
 
 	import { HstElevation, HstRounded } from '@stories/components/controls'
 

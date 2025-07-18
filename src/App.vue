@@ -2,29 +2,29 @@
 		lang="ts"
 		setup
 >
-	import { FoxyDrawer, FoxyList, FoxyListItem, FoxyMain, FoxyPageBuilder, FoxyToolbar } from './components'
+	import { FoxuiDrawer, FoxuiList, FoxuiListItem, FoxuiMain, FoxuiPageBuilder, FoxuiToolbar } from './components'
 </script>
 
 <template>
-	<foxy-page-builder>
-		<foxy-toolbar
+	<foxui-page-builder>
+		<foxui-toolbar
 				:order="1"
 				title="Application bar"
-		></foxy-toolbar>
+		></foxui-toolbar>
 
-		<foxy-drawer :order="2">
-			<foxy-list>
-				<foxy-list-item title="Navigation drawer"/>
-			</foxy-list>
-		</foxy-drawer>
+		<foxui-drawer :order="2">
+			<foxui-list>
+				<foxui-list-item title="Navigation drawer"/>
+			</foxui-list>
+		</foxui-drawer>
 
-		<foxy-main
+		<foxui-main
 				:order="3"
 				style="min-height: 300px;"
 		>
 
-		</foxy-main>
-	</foxy-page-builder>
+		</foxui-main>
+	</foxui-page-builder>
 </template>
 
 <style scoped>

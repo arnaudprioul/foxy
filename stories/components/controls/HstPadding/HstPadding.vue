@@ -10,8 +10,8 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxy/composables"
-	import type { IPaddingProps } from "@foxy/interfaces"
+	import { useVModel } from "@foxui/composables"
+	import type { IPaddingProps } from "@foxui/interfaces"
 
 	import { paddingList } from "@stories/const/padding.const"
 

@@ -1,5 +1,0 @@
-# Foxydatepickermonths
-
-## Usage
-
-    <FoxyDatePickerMonths />

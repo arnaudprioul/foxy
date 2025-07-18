@@ -1,3 +1,3 @@
-import { FoxyAvatarGroup } from '@foxy/components'
+import { FoxuiAvatarGroup } from '@foxui/components'
 
-export type TFoxyAvatarGroup = InstanceType<typeof FoxyAvatarGroup>
+export type TFoxuiAvatarGroup = InstanceType<typeof FoxuiAvatarGroup>

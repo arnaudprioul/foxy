@@ -1,1 +1,1 @@
-export { default as FoxyMain } from './FoxyMain.vue'
+export { default as FoxuiMain } from './FoxuiMain.vue'

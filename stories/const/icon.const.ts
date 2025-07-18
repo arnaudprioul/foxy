@@ -1,4 +1,4 @@
-import { MDI_ICONS } from '@foxy/enums'
+import { MDI_ICONS } from '@foxui/enums'
 
 export const iconList = [
     {

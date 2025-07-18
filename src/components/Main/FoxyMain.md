@@ -1,5 +1,0 @@
-# Foxycontent
-
-## Usage
-
-    <FoxyContent />

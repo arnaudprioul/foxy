@@ -1,6 +1,6 @@
-import { FoxyImg } from '@foxy/components'
+import { FoxuiImg } from '@foxui/components'
 
-import { CROSS_ORIGIN, IMG_STATE, REFERRER_POLICY } from '@foxy/enums'
+import { CROSS_ORIGIN, IMG_STATE, REFERRER_POLICY } from '@foxui/enums'
 
 export type TCrossOrigin = `${CROSS_ORIGIN}` | ''
 
@@ -8,4 +8,4 @@ export type TReferrerPolicy = `${REFERRER_POLICY}`
 
 export type TImgState = `${IMG_STATE}`
 
-export type TFoxyImg = InstanceType<typeof FoxyImg>
+export type TFoxuiImg = InstanceType<typeof FoxuiImg>

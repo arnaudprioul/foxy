@@ -1,1 +1,1 @@
-export { default as FoxyColorPickerField } from './FoxyColorPickerField.vue'
+export { default as FoxuiColorPickerField } from './FoxuiColorPickerField.vue'

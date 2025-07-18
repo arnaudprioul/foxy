@@ -1,0 +1,5 @@
+# Foxuiloader
+
+## Usage
+
+    <FoxuiLoader />

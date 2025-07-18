@@ -1,1 +1,1 @@
-export { default as FoxySelect } from './FoxySelect.vue'
+export { default as FoxuiSelect } from './FoxuiSelect.vue'

@@ -1,1 +1,1 @@
-export { default as FoxyTextareaField } from './FoxyTextareaField.vue'
+export { default as FoxuiTextareaField } from './FoxuiTextareaField.vue'

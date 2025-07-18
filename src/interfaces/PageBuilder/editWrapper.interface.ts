@@ -1,4 +1,4 @@
-import type { ICommonsComponentProps } from '@foxy/interfaces'
+import type { ICommonsComponentProps } from '@foxui/interfaces'
 
 export interface IEditWrapperProps extends ICommonsComponentProps {
     slotName?: string

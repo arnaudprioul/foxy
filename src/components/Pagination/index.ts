@@ -1,1 +1,1 @@
-export { default as FoxyPagination } from './FoxyPagination.vue'
+export { default as FoxuiPagination } from './FoxuiPagination.vue'

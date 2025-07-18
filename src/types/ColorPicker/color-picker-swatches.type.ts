@@ -1,3 +1,3 @@
-import { FoxyColorPickerSwatches } from "@foxy/components"
+import { FoxuiColorPickerSwatches } from "@foxui/components"
 
-export type TFoxyColorPickerSwatches = InstanceType<typeof FoxyColorPickerSwatches>
+export type TFoxuiColorPickerSwatches = InstanceType<typeof FoxuiColorPickerSwatches>

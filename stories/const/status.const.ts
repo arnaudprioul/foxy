@@ -1,4 +1,4 @@
-import { STATUS, STATUS_POSITION } from '@foxy/enums'
+import { STATUS, STATUS_POSITION } from '@foxui/enums'
 
 export const statusList = [
     {value: '', label: 'Default'},

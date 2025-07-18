@@ -9,16 +9,16 @@
         title="Circle"
     >
       <template #default>
-        <foxy-container>
-          <foxy-row
+	      <foxui-container>
+		      <foxui-row
               :align-content="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col cols="auto">
-              <foxy-progress v-bind="stateCircle"/>
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+			      <foxui-col cols="auto">
+				      <foxui-progress v-bind="stateCircle"/>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
     </Variant>
     <Variant
@@ -26,16 +26,16 @@
         title="Line"
     >
       <template #default>
-        <foxy-container>
-          <foxy-row
+	      <foxui-container>
+		      <foxui-row
               :align-content="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col cols="12">
-              <foxy-progress v-bind="stateLinear"/>
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+			      <foxui-col cols="12">
+				      <foxui-progress v-bind="stateLinear"/>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
     </Variant>
 
@@ -57,11 +57,11 @@
     lang="ts"
     setup
 >
-	import { FoxyCol, FoxyContainer, FoxyProgress, FoxyRow } from '@foxy/components'
+	import { FoxuiCol, FoxuiContainer, FoxuiProgress, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY, PROGRESS_TYPE } from '@foxy/enums'
+	import { ALIGN, JUSTIFY, PROGRESS_TYPE } from '@foxui/enums'
 
-	import type { IProgressCircularProps, IProgressLinearProps } from '@foxy/interfaces'
+	import type { IProgressCircularProps, IProgressLinearProps } from '@foxui/interfaces'
 
 	import { computed, reactive } from 'vue'
 

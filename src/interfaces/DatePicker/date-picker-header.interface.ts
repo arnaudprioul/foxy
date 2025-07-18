@@ -1,6 +1,6 @@
-import type { IAdjacentProps, IColorProps, ICommonsComponentProps, IDensityProps } from "@foxy/interfaces"
+import type { IAdjacentProps, IColorProps, ICommonsComponentProps, IDensityProps } from "@foxui/interfaces"
 
-import type { TTransitionProps } from "@foxy/types"
+import type { TTransitionProps } from "@foxui/types"
 
 export interface IDatePickerHeaderProps extends ICommonsComponentProps, IColorProps, IAdjacentProps, IDensityProps {
     header?: string

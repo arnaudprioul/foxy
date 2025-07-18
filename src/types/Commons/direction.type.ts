@@ -1,3 +1,3 @@
-import { DIRECTION } from '@foxy/enums'
+import { DIRECTION } from '@foxui/enums'
 
 export type TDirection = `${DIRECTION}`

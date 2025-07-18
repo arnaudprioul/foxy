@@ -1,3 +1,3 @@
-import { FoxyChipGroup } from "@foxy/components"
+import { FoxuiChipGroup } from "@foxui/components"
 
-export type TFoxyChipGroup = InstanceType<typeof FoxyChipGroup>
+export type TFoxuiChipGroup = InstanceType<typeof FoxuiChipGroup>

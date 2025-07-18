@@ -1,1 +1,1 @@
-export { default as FoxyPasswordField } from './FoxyPasswordField.vue'
+export { default as FoxuiPasswordField } from './FoxuiPasswordField.vue'

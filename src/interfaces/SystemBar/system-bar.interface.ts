@@ -7,7 +7,7 @@ import type {
     ILayoutItemProps,
     IRoundedProps,
     ITagProps
-} from "@foxy/interfaces"
+} from "@foxui/interfaces"
 
 export interface ISystemBarProps extends ICommonsComponentProps, ITagProps, IElevationProps, IColorProps, ILayoutItemProps, IRoundedProps, IBorderProps, IDimensionProps {
     window?: boolean

@@ -1,0 +1,5 @@
+# Foxuislidertrack
+
+## Usage
+
+    <FoxuiSliderFieldTrack />

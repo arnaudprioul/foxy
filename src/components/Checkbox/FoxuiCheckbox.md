@@ -1,0 +1,5 @@
+# Foxuicheckbox
+
+## Usage
+
+    <FoxuiCheckbox />

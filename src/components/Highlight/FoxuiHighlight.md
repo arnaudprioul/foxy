@@ -1,0 +1,5 @@
+# FoxuiHighlight
+
+## Usage
+
+    <FoxuiHighlight />

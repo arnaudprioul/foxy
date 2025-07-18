@@ -6,19 +6,19 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container fullscreen>
-          <foxy-row
+	      <foxui-container fullscreen>
+		      <foxui-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col>
-              <foxy-date-picker-field
+			      <foxui-col>
+				      <foxui-date-picker-field
                   v-bind="state"
                   @update:model-value="logEvent('update modelValue', {$event})"
               />
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
 
       <template #controls>
@@ -39,9 +39,9 @@
     lang="ts"
     setup
 >
-	import { FoxyCol, FoxyContainer, FoxyDatePickerField, FoxyRow } from '@foxy/components'
+	import { FoxuiCol, FoxuiContainer, FoxuiDatePickerField, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxui/enums'
 	import { logEvent } from "histoire/client"
 
 	import { reactive } from 'vue'

@@ -1,3 +1,3 @@
-import { FoxyHighlight } from '@foxy/components'
+import { FoxuiHighlight } from '@foxui/components'
 
-export type TFoxyHighlight = InstanceType<typeof FoxyHighlight>
+export type TFoxuiHighlight = InstanceType<typeof FoxuiHighlight>

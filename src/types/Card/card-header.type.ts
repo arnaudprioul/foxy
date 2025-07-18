@@ -1,3 +1,3 @@
-import { FoxyCardHeader } from '@foxy/components'
+import { FoxuiCardHeader } from '@foxui/components'
 
-export type TFoxyCardHeader = InstanceType<typeof FoxyCardHeader>
+export type TFoxuiCardHeader = InstanceType<typeof FoxuiCardHeader>

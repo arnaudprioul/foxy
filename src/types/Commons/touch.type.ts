@@ -1,5 +1,5 @@
-import { TOUCH_EVENTS } from '@foxy/enums'
-import type { ITouchData, ITouchHandlers } from '@foxy/interfaces'
+import { TOUCH_EVENTS } from '@foxui/enums'
+import type { ITouchData, ITouchHandlers } from '@foxui/interfaces'
 
 export type TTouchWrapper = ITouchHandlers & ITouchData
 

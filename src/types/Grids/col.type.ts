@@ -1,6 +1,6 @@
-import { FoxyCol } from "@foxy/components"
-import { COLS } from '@foxy/enums'
+import { FoxuiCol } from "@foxui/components"
+import { COLS } from '@foxui/enums'
 
 export type TCols = `${COLS}` | true | 'auto'
 
-export type TFoxyCol = InstanceType<typeof FoxyCol>
+export type TFoxuiCol = InstanceType<typeof FoxuiCol>

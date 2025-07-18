@@ -1,8 +1,8 @@
-import { useVModel } from '@foxy/composables'
+import { useVModel } from '@foxui/composables'
 
-import { FOXY_DATA_TABLE_EXPAND_KEY } from '@foxy/consts'
+import { FOXUI_DATA_TABLE_EXPAND_KEY } from '@foxui/consts'
 
-import type { IDataTableExpandProps, IDataTableItem, IDataTableProvideExpanded } from '@foxy/interfaces'
+import type { IDataTableExpandProps, IDataTableItem, IDataTableProvideExpanded } from '@foxui/interfaces'
 
 import { inject, provide, toRef } from 'vue'
 
@@ -34,13 +34,13 @@ export function provideExpanded (props: IDataTableExpandProps): IDataTableProvid
 
     const data = {expand, expanded, expandOnClick, isExpanded, toggleExpand}
 
-    provide(FOXY_DATA_TABLE_EXPAND_KEY, data)
+    provide(FOXUI_DATA_TABLE_EXPAND_KEY, data)
 
     return data
 }
 
 export function useExpanded () {
-    const data = inject(FOXY_DATA_TABLE_EXPAND_KEY)
+    const data = inject(FOXUI_DATA_TABLE_EXPAND_KEY)
 
     if (!data) throw new Error('Missing expand!')
 

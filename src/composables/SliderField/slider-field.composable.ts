@@ -1,12 +1,12 @@
-import { FOXY_SLIDER_FIELD_KEY } from '@foxy/consts'
+import { FOXUI_SLIDER_FIELD_KEY } from '@foxui/consts'
 
-import { BLOCK, CLIENT_POSITION, DIMENSIONS, DIRECTION, INLINE } from '@foxy/enums'
+import { BLOCK, CLIENT_POSITION, DIMENSIONS, DIRECTION, INLINE } from '@foxui/enums'
 
-import type { ISliderField, ISliderFieldProps, ISliderFieldProvide } from '@foxy/interfaces'
+import type { ISliderField, ISliderFieldProps, ISliderFieldProvide } from '@foxui/interfaces'
 
-import type { TTick } from '@foxy/types'
+import type { TTick } from '@foxui/types'
 
-import { clamp, createRange, getDecimals, getPosition, getSliderFieldOffset, int } from '@foxy/utils'
+import { clamp, createRange, getDecimals, getPosition, getSliderFieldOffset, int } from '@foxui/utils'
 
 import { computed, provide, ref, shallowRef, toRef } from 'vue'
 
@@ -42,10 +42,10 @@ export function useSteps (props: ISliderFieldProps) {
 }
 
 export function useSlider ({
-                               foxySliderFieldTrackRef,
-                               foxySliderFieldThumbRef,
-                               foxySliderFieldStartThumbRef,
-                               foxySliderFieldStopThumbRef,
+                               foxuiSliderFieldTrackRef,
+                               foxuiSliderFieldThumbRef,
+                               foxuiSliderFieldStartThumbRef,
+                               foxuiSliderFieldStopThumbRef,
                                props,
                                steps,
                                onSliderStart,
@@ -140,12 +140,12 @@ export function useSlider ({
         const length = isVertical.value ? DIMENSIONS.HEIGHT : DIMENSIONS.WIDTH
         const position = isVertical.value ? CLIENT_POSITION.Y : CLIENT_POSITION.X
 
-        if (!foxySliderFieldTrackRef.value) return 0
+        if (!foxuiSliderFieldTrackRef.value) return 0
 
         const {
             [start]: trackStart,
             [length]: trackLength
-        } = foxySliderFieldTrackRef.value.$el.getBoundingClientRect()
+        } = foxuiSliderFieldTrackRef.value.$el.getBoundingClientRect()
         const clickOffset = getPosition(e, position)
 
         // It is possible for left to be NaN, force to number
@@ -260,14 +260,14 @@ export function useSlider ({
         step,
         ticks,
         tickSize,
-        foxySliderFieldTrackRef,
-        foxySliderFieldThumbRef,
-        foxySliderFieldStartThumbRef,
-        foxySliderFieldStopThumbRef,
+        foxuiSliderFieldTrackRef,
+        foxuiSliderFieldThumbRef,
+        foxuiSliderFieldStartThumbRef,
+        foxuiSliderFieldStopThumbRef,
         isVertical
     }
 
-    provide(FOXY_SLIDER_FIELD_KEY, data)
+    provide(FOXUI_SLIDER_FIELD_KEY, data)
 
     return data
 }

@@ -1,5 +1,0 @@
-# Foxycarouselitem
-
-## Usage
-
-    <FoxyCarouselItem />

@@ -10,8 +10,8 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxy/composables"
-	import type { IIconProps } from "@foxy/interfaces"
+	import { useVModel } from "@foxui/composables"
+	import type { IIconProps } from "@foxui/interfaces"
 
 	import useTitle from '@stories/composables/title.composable'
 

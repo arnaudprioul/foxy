@@ -1,2 +1,2 @@
-export { default as FoxyDialog } from './FoxyDialog.vue'
-export { default as FoxyDialogConfirmation } from './FoxyDialogConfirmation.vue'
+export { default as FoxuiDialog } from './FoxuiDialog.vue'
+export { default as FoxuiDialogConfirmation } from './FoxuiDialogConfirmation.vue'

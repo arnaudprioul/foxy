@@ -1,2 +1,2 @@
-export { default as FoxyCheckbox } from './FoxyCheckbox.vue'
-export { default as FoxyCheckboxBtn } from './FoxyCheckboxBtn.vue'
+export { default as FoxuiCheckbox } from './FoxuiCheckbox.vue'
+export { default as FoxuiCheckboxBtn } from './FoxuiCheckboxBtn.vue'

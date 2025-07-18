@@ -1,3 +1,3 @@
-import { FoxySheet } from "@foxy/components"
+import { FoxuiSheet } from "@foxui/components"
 
-export type TFoxySheet = InstanceType<typeof FoxySheet>
+export type TFoxuiSheet = InstanceType<typeof FoxuiSheet>

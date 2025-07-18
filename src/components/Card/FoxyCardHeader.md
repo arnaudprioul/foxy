@@ -1,5 +1,0 @@
-# Foxycardheader
-
-## Usage
-
-    <FoxyCardHeader />

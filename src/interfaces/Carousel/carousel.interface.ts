@@ -1,5 +1,5 @@
-import type { IColorProps, ICommonsComponentProps, IDimensionProps, ITagProps, IWindowProps } from '@foxy/interfaces'
-import type { TIcon, TInline } from '@foxy/types'
+import type { IColorProps, ICommonsComponentProps, IDimensionProps, ITagProps, IWindowProps } from '@foxui/interfaces'
+import type { TIcon, TInline } from '@foxui/types'
 
 export interface ICarouselProps extends IWindowProps, IColorProps, ICommonsComponentProps, ITagProps, IDimensionProps {
     cycle?: boolean

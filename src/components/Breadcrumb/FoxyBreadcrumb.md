@@ -1,5 +1,0 @@
-# Foxybreadcrumb
-
-## Usage
-
-    <FoxyBreadcrumb />

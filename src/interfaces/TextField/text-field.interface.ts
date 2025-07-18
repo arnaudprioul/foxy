@@ -9,9 +9,9 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
-import type { TTextFieldType } from '@foxy/types'
+import type { TTextFieldType } from '@foxui/types'
 
 export interface ITextFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps {
     autofocus?: boolean

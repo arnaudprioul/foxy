@@ -1,1 +1,1 @@
-export { default as FoxyLayout } from './FoxyLayout.vue'
+export { default as FoxuiLayout } from './FoxuiLayout.vue'

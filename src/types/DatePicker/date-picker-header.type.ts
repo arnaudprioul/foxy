@@ -1,3 +1,3 @@
-import { FoxyDatePickerHeader } from "@foxy/components"
+import { FoxuiDatePickerHeader } from "@foxui/components"
 
-export type TFoxyDatePickerHeader = InstanceType<typeof FoxyDatePickerHeader>
+export type TFoxuiDatePickerHeader = InstanceType<typeof FoxuiDatePickerHeader>

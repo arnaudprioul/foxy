@@ -1,1 +1,1 @@
-export { default as FoxyMessages } from './FoxyMessages.vue'
+export { default as FoxuiMessages } from './FoxuiMessages.vue'

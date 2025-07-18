@@ -1,3 +1,3 @@
-import { FoxyBreadcrumbItem } from '@foxy/components'
+import { FoxuiBreadcrumbItem } from '@foxui/components'
 
-export type TFoxyBreadcrumbItem = InstanceType<typeof FoxyBreadcrumbItem>
+export type TFoxuiBreadcrumbItem = InstanceType<typeof FoxuiBreadcrumbItem>

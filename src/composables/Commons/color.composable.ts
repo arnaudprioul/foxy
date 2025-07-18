@@ -1,6 +1,6 @@
-import type { IColorProps } from "@foxy/interfaces"
-import type { TColor } from '@foxy/types'
-import { getForeground, isCssColor, isParsableColor, parseColor } from '@foxy/utils'
+import type { IColorProps } from "@foxui/interfaces"
+import type { TColor } from '@foxui/types'
+import { getForeground, isCssColor, isParsableColor, parseColor } from '@foxui/utils'
 
 import type { ComputedRef, Ref } from 'vue'
 import { computed, isRef, ref } from 'vue'

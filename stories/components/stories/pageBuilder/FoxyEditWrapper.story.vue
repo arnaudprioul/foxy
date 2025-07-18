@@ -4,11 +4,11 @@
       title="Edit Wrapper"
   >
     <template #default>
-      <foxy-main>
-        <foxy-edit-wrapper>
-          <foxy-btn text="test"/>
-        </foxy-edit-wrapper>
-      </foxy-main>
+	    <foxui-main>
+		    <foxui-edit-wrapper>
+			    <foxui-btn text="test"/>
+		    </foxui-edit-wrapper>
+	    </foxui-main>
     </template>
   </Story>
 </template>
@@ -17,7 +17,7 @@
     lang="ts"
     setup
 >
-  import { FoxyBtn, FoxyEditWrapper } from '@foxy/components'
+	import { FoxuiBtn, FoxuiEditWrapper } from '@foxui/components'
 </script>
 <docs lang="md">
 Css Box Documentation

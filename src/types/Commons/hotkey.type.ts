@@ -1,3 +1,3 @@
-import { KEYBOARD_MODIFIERS_KEY } from "@foxy/enums"
+import { KEYBOARD_MODIFIERS_KEY } from "@foxui/enums"
 
 export type TKeyboardModifiers = `${KEYBOARD_MODIFIERS_KEY}`

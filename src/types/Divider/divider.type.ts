@@ -1,3 +1,3 @@
-import { FoxyDivider } from "@foxy/components"
+import { FoxuiDivider } from "@foxui/components"
 
-export type TFoxyDivider = InstanceType<typeof FoxyDivider>
+export type TFoxuiDivider = InstanceType<typeof FoxuiDivider>

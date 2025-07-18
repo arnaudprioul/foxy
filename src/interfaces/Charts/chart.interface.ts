@@ -5,9 +5,9 @@ import type {
     ICommonsComponentProps,
     IDimensionProps,
     IPaddingProps
-} from "@foxy/interfaces"
+} from "@foxui/interfaces"
 
-import type { TChartItem, TChartType, TDirectionBoth } from "@foxy/types"
+import type { TChartItem, TChartType, TDirectionBoth } from "@foxui/types"
 
 export interface IChartProps extends ICommonsComponentProps, IChartLineProps, IChartBarProps {
     type?: TChartType

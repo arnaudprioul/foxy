@@ -1,0 +1,5 @@
+# Foxuidivider
+
+## Usage
+
+    <FoxuiDivider />

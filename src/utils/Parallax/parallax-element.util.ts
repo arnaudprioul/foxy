@@ -1,6 +1,6 @@
-import type { IParallaxElementCicle, IParallaxElementMovement } from '@foxy/interfaces'
+import type { IParallaxElementCicle, IParallaxElementMovement } from '@foxui/interfaces'
 
-import type { TPoint } from '@foxy/types'
+import type { TPoint } from '@foxui/types'
 
 export function elementMovement (action: IParallaxElementMovement) {
     const {y, x, target, strength = 10, event = null, minX, minY, maxX, maxY} = action

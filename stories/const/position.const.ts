@@ -1,4 +1,4 @@
-import { POSITION } from '@foxy/enums'
+import { POSITION } from '@foxui/enums'
 
 export const positionList = [
     {value: POSITION.STATIC, label: 'Static'},

@@ -1,3 +1,3 @@
-import { FoxyVirtualScrollItem } from "@foxy/components"
+import { FoxuiVirtualScrollItem } from "@foxui/components"
 
-export type TFoxyVirtualScrollItem = InstanceType<typeof FoxyVirtualScrollItem>
+export type TFoxuiVirtualScrollItem = InstanceType<typeof FoxuiVirtualScrollItem>

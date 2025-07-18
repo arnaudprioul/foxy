@@ -1,4 +1,4 @@
-import type { TStrategySelect } from '@foxy/types'
+import type { TStrategySelect } from '@foxui/types'
 import { toRaw } from 'vue'
 
 export function independentSelectStrategy (mandatory?: boolean): TStrategySelect {

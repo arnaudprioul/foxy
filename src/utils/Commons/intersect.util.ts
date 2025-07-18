@@ -1,4 +1,4 @@
-import type { IIntersectDirectiveBinding, IIntersectHtmlElement } from '@foxy/interfaces'
+import type { IIntersectDirectiveBinding, IIntersectHtmlElement } from '@foxui/interfaces'
 
 export function unmountIntersect (el: IIntersectHtmlElement, binding: IIntersectDirectiveBinding) {
     const observe = el._observe?.[binding.instance!.$.uid]

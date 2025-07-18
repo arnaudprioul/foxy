@@ -1,2 +1,2 @@
-export { default as FoxyWindow } from './FoxyWindow.vue'
-export { default as FoxyWindowItem } from './FoxyWindowItem.vue'
+export { default as FoxuiWindow } from './FoxuiWindow.vue'
+export { default as FoxuiWindowItem } from './FoxuiWindowItem.vue'

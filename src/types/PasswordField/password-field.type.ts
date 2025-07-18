@@ -1,3 +1,3 @@
-import { FoxyPasswordField } from "@foxy/components"
+import { FoxuiPasswordField } from "@foxui/components"
 
-export type TFoxyPasswordField = InstanceType<typeof FoxyPasswordField>
+export type TFoxuiPasswordField = InstanceType<typeof FoxuiPasswordField>

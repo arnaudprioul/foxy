@@ -1,6 +1,6 @@
-import type { IDataTableGroup, IDataTableGroupableItem } from '@foxy/interfaces'
+import type { IDataTableGroup, IDataTableGroupableItem } from '@foxui/interfaces'
 
-import { getObjectValueByPath } from '@foxy/utils'
+import { getObjectValueByPath } from '@foxui/utils'
 
 export function groupItemsByProperty<T extends IDataTableGroupableItem> (items: Array<T>, groupBy: string) {
     if (!items.length) return []

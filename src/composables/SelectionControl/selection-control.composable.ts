@@ -1,15 +1,15 @@
-import { useBackgroundColor, useDensity, useTextColor, useVModel } from '@foxy/composables'
+import { useBackgroundColor, useDensity, useTextColor, useVModel } from '@foxui/composables'
 
-import { FOXY_SELECTION_CONTROL_GROUP_KEY } from '@foxy/consts'
+import { FOXUI_SELECTION_CONTROL_GROUP_KEY } from '@foxui/consts'
 
-import type { ISelectionControlProps } from "@foxy/interfaces"
+import type { ISelectionControlProps } from "@foxui/interfaces"
 
-import { deepEqual, wrapInArray } from '@foxy/utils'
+import { deepEqual, wrapInArray } from '@foxui/utils'
 
 import { computed, inject } from 'vue'
 
 export function useSelectionControl (props: ISelectionControlProps) {
-    const group = inject(FOXY_SELECTION_CONTROL_GROUP_KEY, undefined)
+    const group = inject(FOXUI_SELECTION_CONTROL_GROUP_KEY, undefined)
 
     const {densityClasses} = useDensity(props)
 

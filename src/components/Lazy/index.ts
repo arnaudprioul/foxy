@@ -1,1 +1,1 @@
-export { default as FoxyLazy } from './FoxyLazy.vue'
+export { default as FoxuiLazy } from './FoxuiLazy.vue'

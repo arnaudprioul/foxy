@@ -1,5 +1,0 @@
-# Foxydatatableheadercell
-
-## Usage
-
-    <FoxyDataTableHeaderCell />

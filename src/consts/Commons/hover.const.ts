@@ -1,8 +1,8 @@
-import type { IHoverHtmlElement, IHoverOptions } from '@foxy/interfaces'
+import type { IHoverHtmlElement, IHoverOptions } from '@foxui/interfaces'
 
-import type { THoverEvent } from '@foxy/types'
+import type { THoverEvent } from '@foxui/types'
 
-export const FOXY_HOVER_STOP_KEY = Symbol('foxy:hoverStop')
+export const FOXUI_HOVER_STOP_KEY = Symbol('foxui:hoverStop')
 
 export const HOVER = {
     show (

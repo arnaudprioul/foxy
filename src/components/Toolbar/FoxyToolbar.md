@@ -1,5 +1,0 @@
-# Foxybar
-
-## Usage
-
-    <FoxyBar />

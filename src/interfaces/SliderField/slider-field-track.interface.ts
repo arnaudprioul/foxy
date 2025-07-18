@@ -1,4 +1,4 @@
-import type { IColorProps, ICommonsComponentProps, IRoundedProps, ISizeProps } from '@foxy/interfaces'
+import type { IColorProps, ICommonsComponentProps, IRoundedProps, ISizeProps } from '@foxui/interfaces'
 
 export interface ISliderFieldTrackProps extends ICommonsComponentProps, IColorProps, ISizeProps, IRoundedProps {
     start?: number

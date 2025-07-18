@@ -6,13 +6,13 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-dialog-confirmation
+	      <foxui-dialog-confirmation
             v-model="state.modelValue"
             v-bind="state"
             @update:model-value="logEvent('update:model-value', $event)"
             @is-read="logEvent('is-read', $event)"
         >
-        </foxy-dialog-confirmation>
+	      </foxui-dialog-confirmation>
       </template>
 
       <template #controls>
@@ -66,9 +66,9 @@
     lang="ts"
     setup
 >
-	import { FoxyDialogConfirmation } from '@foxy/components'
+	import { FoxuiDialogConfirmation } from '@foxui/components'
 
-	import type { IDialogConfirmationProps } from '@foxy/interfaces'
+	import type { IDialogConfirmationProps } from '@foxui/interfaces'
 
 	import { logEvent } from 'histoire/client'
 	import { reactive } from 'vue'

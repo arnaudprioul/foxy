@@ -1,9 +1,9 @@
-import { IN_BROWSER, SCROLL_STRATEGIES } from '@foxy/consts'
+import { IN_BROWSER, SCROLL_STRATEGIES } from '@foxui/consts'
 
-import type { IScrollArguments, IScrollProps, IScrollStrategyData, IScrollStrategyProps } from '@foxy/interfaces'
-import type { TFoxyList, TFoxyTextField } from '@foxy/types'
+import type { IScrollArguments, IScrollProps, IScrollStrategyData, IScrollStrategyProps } from '@foxui/interfaces'
+import type { TFoxuiList, TFoxuiTextField } from '@foxui/types'
 
-import { clamp, consoleWarn } from '@foxy/utils'
+import { clamp, consoleWarn } from '@foxui/utils'
 
 import {
     computed,
@@ -127,7 +127,7 @@ export function useScrollStrategies (
     })
 }
 
-export function useScrolling (listRef: Ref<TFoxyList | undefined>, textFieldRef: Ref<TFoxyTextField | undefined>) {
+export function useScrolling (listRef: Ref<TFoxuiList | undefined>, textFieldRef: Ref<TFoxuiTextField | undefined>) {
     const isScrolling = shallowRef(false)
     let scrollTimeout: number
 
@@ -171,7 +171,7 @@ export function useScrolling (listRef: Ref<TFoxyList | undefined>, textFieldRef:
 
         await finishScrolling()
 
-        const children = el.querySelectorAll(':scope > :not(.foxy-virtual-scroll__spacer)')
+        const children = el.querySelectorAll(':scope > :not(.foxui-virtual-scroll__spacer)')
 
         if (e.key === 'PageDown' || e.key === 'Home') {
             const top = el.getBoundingClientRect().top

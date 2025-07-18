@@ -1,0 +1,5 @@
+# Foxuisliderthumb
+
+## Usage
+
+    <FoxuiSliderFieldThumb />

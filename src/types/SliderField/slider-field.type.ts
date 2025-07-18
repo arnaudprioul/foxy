@@ -1,4 +1,4 @@
-import { FoxySliderField } from '@foxy/components'
+import { FoxuiSliderField } from '@foxui/components'
 
 export type TAlways = boolean | 'always'
 
@@ -12,4 +12,4 @@ export type TTick = {
     label?: string
 }
 
-export type TFoxySliderField = InstanceType<typeof FoxySliderField>
+export type TFoxuiSliderField = InstanceType<typeof FoxuiSliderField>

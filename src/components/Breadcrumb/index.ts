@@ -1,3 +1,3 @@
-export { default as FoxyBreadcrumb } from './FoxyBreadcrumb.vue'
-export { default as FoxyBreadcrumbItem } from './FoxyBreadcrumbItem.vue'
-export { default as FoxyBreadcrumbDivider } from './FoxyBreadcrumbDivider.vue'
+export { default as FoxuiBreadcrumb } from './FoxuiBreadcrumb.vue'
+export { default as FoxuiBreadcrumbItem } from './FoxuiBreadcrumbItem.vue'
+export { default as FoxuiBreadcrumbDivider } from './FoxuiBreadcrumbDivider.vue'

@@ -1,5 +1,0 @@
-# FoxySlideX
-
-## Usage
-
-    <FoxySlideX />

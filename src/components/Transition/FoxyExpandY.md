@@ -1,5 +1,0 @@
-# Foxyexpand
-
-## Usage
-
-    <FoxyExpand />

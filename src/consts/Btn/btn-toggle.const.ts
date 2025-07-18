@@ -1,5 +1,5 @@
-import type { IGroupProvide } from '@foxy/interfaces'
+import type { IGroupProvide } from '@foxui/interfaces'
 
 import type { InjectionKey } from 'vue'
 
-export const FOXY_BTN_TOGGLE_KEY: InjectionKey<IGroupProvide> = Symbol.for('foxy:btn-toggle')
+export const FOXUI_BTN_TOGGLE_KEY: InjectionKey<IGroupProvide> = Symbol.for('foxui:btn-toggle')

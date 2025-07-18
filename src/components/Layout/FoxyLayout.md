@@ -1,5 +1,0 @@
-# Foxylayout
-
-## Usage
-
-    <FoxyLayout />

@@ -1,3 +1,3 @@
-import { FoxyProgressCircular } from "@foxy/components"
+import { FoxuiProgressCircular } from "@foxui/components"
 
-export type TFoxyProgressCircular = InstanceType<typeof FoxyProgressCircular>
+export type TFoxuiProgressCircular = InstanceType<typeof FoxuiProgressCircular>

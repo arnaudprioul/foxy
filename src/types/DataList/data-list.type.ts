@@ -1,3 +1,3 @@
-import { FoxyDataList } from "@foxy/components"
+import { FoxuiDataList } from "@foxui/components"
 
-export type TFoxyDataList = InstanceType<typeof FoxyDataList>
+export type TFoxuiDataList = InstanceType<typeof FoxuiDataList>

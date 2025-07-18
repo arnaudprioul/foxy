@@ -1,10 +1,10 @@
-import type { IDateOptions, IDisplayOptions, IGoToOptions, ILocaleOptions, IRtlOptions } from '@foxy/interfaces'
+import type { IDateOptions, IDisplayOptions, IGoToOptions, ILocaleOptions, IRtlOptions } from '@foxui/interfaces'
 
-import type { TIconOptions, TSSROptions } from '@foxy/types'
+import type { TIconOptions, TSSROptions } from '@foxui/types'
 
 import type { ExtractPropTypes, StyleValue } from 'vue'
 
-export interface IFoxyOptions {
+export interface IFoxuiOptions {
     aliases?: any
     blueprint?: IBlueprint
     components?: any
@@ -17,7 +17,7 @@ export interface IFoxyOptions {
     locale?: ILocaleOptions & IRtlOptions
 }
 
-export interface IBlueprint extends Omit<IFoxyOptions, 'blueprint'> {
+export interface IBlueprint extends Omit<IFoxuiOptions, 'blueprint'> {
 }
 
 export interface ICommonsComponentProps {

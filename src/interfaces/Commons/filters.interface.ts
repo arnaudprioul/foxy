@@ -1,4 +1,4 @@
-import type { TFilterFunction, TFilterKeyFunctions, TFilterKeys, TFilterMode } from '@foxy/types'
+import type { TFilterFunction, TFilterKeyFunctions, TFilterKeys, TFilterMode } from '@foxui/types'
 
 export interface IFiltersProps {
     customFilter?: TFilterFunction

@@ -1,7 +1,7 @@
-import { FoxyCard } from '@foxy/components'
+import { FoxuiCard } from '@foxui/components'
 
-import { CARD_TYPE } from '@foxy/enums'
+import { CARD_TYPE } from '@foxui/enums'
 
 export type TCardType = `${CARD_TYPE}`
 
-export type TFoxyCard = InstanceType<typeof FoxyCard>
+export type TFoxuiCard = InstanceType<typeof FoxuiCard>

@@ -1,5 +1,0 @@
-# FoxyColorPickerSwatches
-
-## Usage
-
-    <FoxyColorPickerSwatches />

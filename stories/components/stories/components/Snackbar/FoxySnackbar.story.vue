@@ -6,7 +6,7 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-snackbar
+	      <foxui-snackbar
             v-model="state.modelValue"
             v-bind="state"
             @update:model-value="logEvent('update:model-value', $event)"
@@ -64,7 +64,7 @@
     lang="ts"
     setup
 >
-	import { FoxySnackbar } from '@foxy/components'
+	import { FoxuiSnackbar } from '@foxui/components'
 
 	import { logEvent } from 'histoire/client'
 	import { reactive } from 'vue'

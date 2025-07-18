@@ -1,6 +1,6 @@
-import type { IElevationProps } from '@foxy/interfaces'
-import { TColor } from "@foxy/types"
-import { formatElevationStyle, getCurrentInstanceName } from "@foxy/utils"
+import type { IElevationProps } from '@foxui/interfaces'
+import { TColor } from "@foxui/types"
+import { formatElevationStyle, getCurrentInstanceName } from "@foxui/utils"
 import { computed, isRef, ref, Ref } from 'vue'
 
 export function useElevation (props: IElevationProps | Ref<number | string | undefined>, flat: Ref<boolean> = ref(false), bgColor: Ref<TColor> = ref('rgb(0,0,0)'), name = getCurrentInstanceName()) {

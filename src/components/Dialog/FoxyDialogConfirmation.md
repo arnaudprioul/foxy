@@ -1,5 +1,0 @@
-# Foxydialogconfirmation
-
-## Usage
-
-    <FoxyDialogConfirmation />

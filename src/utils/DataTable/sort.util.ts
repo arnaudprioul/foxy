@@ -1,7 +1,7 @@
-import { SORT_DIRECTION } from '@foxy/enums'
-import type { IDataTableSortItem, IInternalItem } from '@foxy/interfaces'
-import type { TDataTableCompareFunction } from '@foxy/types'
-import { isEmpty } from '@foxy/utils'
+import { SORT_DIRECTION } from '@foxui/enums'
+import type { IDataTableSortItem, IInternalItem } from '@foxui/interfaces'
+import type { TDataTableCompareFunction } from '@foxui/types'
+import { isEmpty } from '@foxui/utils'
 
 export function sortItems<T extends IInternalItem> (
     items: T[],

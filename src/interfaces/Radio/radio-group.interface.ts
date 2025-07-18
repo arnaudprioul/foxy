@@ -8,7 +8,7 @@ import type {
     IRadioProps,
     IRoundedProps,
     ISelectionControlGroupProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
 export interface IRadioGroupProps extends ICommonsComponentProps, Partial<Omit<IRadioProps, 'trueValue' | 'falseValue'>>, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IInputProps, Partial<Omit<ISelectionControlGroupProps, 'multiple'>> {
 

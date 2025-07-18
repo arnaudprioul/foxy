@@ -1,5 +1,0 @@
-# Foxylistsubheader
-
-## Usage
-
-    <FoxyListSubheader />

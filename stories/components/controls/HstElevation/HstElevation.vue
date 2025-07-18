@@ -11,8 +11,8 @@
     lang="ts"
     setup
 >
-	import { useVModel } from "@foxy/composables"
-	import type { IElevationProps } from "@foxy/interfaces"
+	import { useVModel } from "@foxui/composables"
+	import type { IElevationProps } from "@foxui/interfaces"
 
 	import useTitle from '@stories/composables/title.composable'
 	import type { TTitleProp } from "@stories/types/title.type"

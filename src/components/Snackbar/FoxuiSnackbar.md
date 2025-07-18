@@ -1,0 +1,5 @@
+# Foxuisnackbar
+
+## Usage
+
+    <FoxuiSnackbar />

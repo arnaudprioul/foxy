@@ -1,10 +1,10 @@
-import { DELAY_RIPPLE, FOXY_RIPPLE_STOP_KEY, KEYCODES, RIPPLES } from '@foxy/consts'
+import { DELAY_RIPPLE, FOXUI_RIPPLE_STOP_KEY, KEYCODES, RIPPLES } from '@foxui/consts'
 
-import type { IRippleDirectiveBinding, IRippleHtmlElement, IRippleOptions } from '@foxy/interfaces'
+import type { IRippleDirectiveBinding, IRippleHtmlElement, IRippleOptions } from '@foxui/interfaces'
 
-import type { TRippleEvent } from '@foxy/types'
+import type { TRippleEvent } from '@foxui/types'
 
-import { isObject } from '@foxy/utils'
+import { isObject } from '@foxui/utils'
 
 export function updateRipple (el: IRippleHtmlElement, binding: IRippleDirectiveBinding, wasEnabled: boolean) {
     const {value, modifiers} = binding
@@ -100,10 +100,10 @@ export function rippleShow (e: TRippleEvent) {
     const value: IRippleOptions = {}
     const element = e.currentTarget as IRippleHtmlElement | undefined
 
-    if (!element?._ripple || element._ripple.touched || e[FOXY_RIPPLE_STOP_KEY]) return
+    if (!element?._ripple || element._ripple.touched || e[FOXUI_RIPPLE_STOP_KEY]) return
 
     // Don't allow the event to trigger ripples on any other elements
-    e[FOXY_RIPPLE_STOP_KEY] = true
+    e[FOXUI_RIPPLE_STOP_KEY] = true
 
     if (isTouchEvent(e)) {
         element._ripple.touched = true
@@ -141,7 +141,7 @@ export function rippleShow (e: TRippleEvent) {
 }
 
 export function rippleStop (e: TRippleEvent) {
-    e[FOXY_RIPPLE_STOP_KEY] = true
+    e[FOXUI_RIPPLE_STOP_KEY] = true
 }
 
 export function rippleHide (e: Event) {

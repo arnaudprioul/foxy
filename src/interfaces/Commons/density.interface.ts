@@ -1,4 +1,4 @@
-import type { TDensity } from '@foxy/types'
+import type { TDensity } from '@foxui/types'
 
 export interface IDensityProps {
     density?: TDensity

@@ -5,20 +5,20 @@
 	>
 		<Variant title="default">
 			<template #default="{ state }">
-				<foxy-img v-bind="state.props"/>
+				<foxui-img v-bind="state.props"/>
 			</template>
 		</Variant>
 
 		<Variant title="cover">
 			<template #default>
-				<foxy-img
+				<foxui-img
 						:cover="true"
 						:width="300"
 						alt="image example"
 						aspect-ratio="1"
 						src="https://picsum.photos/350/165?random"
 				/>
-				<foxy-img
+				<foxui-img
 						:cover="false"
 						:width="300"
 						alt="image example"
@@ -30,24 +30,24 @@
 
 		<Variant title="height">
 			<template #default>
-				<foxy-img
+				<foxui-img
 						alt="image example"
 						cover
 						height="125"
 						src="https://picsum.photos/350/165?random"
 				/>
-				<foxy-img
+				<foxui-img
 						alt="image example"
 						height="125"
 						src="https://picsum.photos/350/165?random"
 				/>
-				<foxy-img
+				<foxui-img
 						alt="image example"
 						cover
 						max-height="125"
 						src="https://picsum.photos/350/165?random"
 				/>
-				<foxy-img
+				<foxui-img
 						alt="image example"
 						max-height="125"
 						src="https://picsum.photos/350/165?random"
@@ -57,21 +57,21 @@
 
 		<Variant title="Slots / Placeholder">
 			<template #default>
-				<foxy-img
+				<foxui-img
 						height="300"
 						lazy-src="https://picsum.photos/id/11/100/60"
 						max-width="500"
 						src="https://bad.src/not/valid"
 				>
 					<template #placeholder>
-						<foxy-progress
+						<foxui-progress
 								bg-color="#fff"
 								color="#7d6fa1"
 								indeterminate
 								type="circular"
 						/>
 					</template>
-				</foxy-img>
+				</foxui-img>
 			</template>
 		</Variant>
 	</Story>
@@ -81,8 +81,8 @@
 		lang="ts"
 		setup
 >
-	import { FoxyImg, FoxyProgress } from '@foxy/components'
-	import type { IImgProps } from "@foxy/interfaces"
+	import { FoxuiImg, FoxuiProgress } from '@foxui/components'
+	import type { IImgProps } from "@foxui/interfaces"
 
 	import { reactive } from 'vue'
 

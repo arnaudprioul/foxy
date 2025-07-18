@@ -1,34 +1,34 @@
-import * as foxyComponents from '@foxy/components'
+import * as foxuiComponents from '@foxui/components'
 
-import { createDate, createDisplay, createGoTo, createIcons, createLocale } from '@foxy/composables'
+import { createDate, createDisplay, createGoTo, createIcons, createLocale } from '@foxui/composables'
 
 import {
-    FOXY_DATE_ADAPTER_KEY,
-    FOXY_DATE_OPTIONS_KEY,
-    FOXY_DISPLAY_KEY,
-    FOXY_GO_TO_KEY,
-    FOXY_ICONS_KEY,
-    FOXY_LOCALE_KEY,
+    FOXUI_DATE_ADAPTER_KEY,
+    FOXUI_DATE_OPTIONS_KEY,
+    FOXUI_DISPLAY_KEY,
+    FOXUI_GO_TO_KEY,
+    FOXUI_ICONS_KEY,
+    FOXUI_LOCALE_KEY,
     IN_BROWSER
-} from '@foxy/consts'
+} from '@foxui/consts'
 
-import * as foxyDirectives from '@foxy/directives'
+import * as foxuiDirectives from '@foxui/directives'
 
-import type { IFoxyOptions } from '@foxy/interfaces'
-import type { TIconOptions } from '@foxy/types'
-import { getUid, mergeDeep } from '@foxy/utils'
+import type { IFoxuiOptions } from '@foxui/interfaces'
+import type { TIconOptions } from '@foxui/types'
+import { getUid, mergeDeep } from '@foxui/utils'
 
 import '@mdi/font/css/materialdesignicons.css'
 
 import { App, ComponentPublicInstance, defineComponent, effectScope, InjectionKey, nextTick, reactive } from 'vue'
 
-export function createFoxy (foxy: IFoxyOptions = {}) {
-    const {blueprint, ...rest} = foxy
-    const options: IFoxyOptions = mergeDeep(blueprint, rest)
+export function createFoxui (foxui: IFoxuiOptions = {}) {
+    const {blueprint, ...rest} = foxui
+    const options: IFoxuiOptions = mergeDeep(blueprint, rest)
     const {
         aliases = {},
-        components = foxyComponents,
-        directives = foxyDirectives
+        components = foxuiComponents,
+        directives = foxuiDirectives
     } = options
 
     const scope = effectScope()
@@ -60,12 +60,12 @@ export function createFoxy (foxy: IFoxyOptions = {}) {
             const appScope = effectScope()
             app.onUnmount(() => appScope.stop())
 
-            app.provide(FOXY_ICONS_KEY, icons as Required<TIconOptions>)
-            app.provide(FOXY_DISPLAY_KEY, display)
-            app.provide(FOXY_LOCALE_KEY, locale)
-            app.provide(FOXY_DATE_OPTIONS_KEY, date.options)
-            app.provide(FOXY_DATE_ADAPTER_KEY, date.instance)
-            app.provide(FOXY_GO_TO_KEY, goTo)
+            app.provide(FOXUI_ICONS_KEY, icons as Required<TIconOptions>)
+            app.provide(FOXUI_DISPLAY_KEY, display)
+            app.provide(FOXUI_LOCALE_KEY, locale)
+            app.provide(FOXUI_DATE_OPTIONS_KEY, date.options)
+            app.provide(FOXUI_DATE_ADAPTER_KEY, date.instance)
+            app.provide(FOXUI_GO_TO_KEY, goTo)
 
             if (IN_BROWSER && options.ssr) {
                 if (app.$nuxt) {
@@ -88,12 +88,12 @@ export function createFoxy (foxy: IFoxyOptions = {}) {
             if (typeof __VUE_OPTIONS_API__ !== 'boolean' || __VUE_OPTIONS_API__) {
                 app.mixin({
                     computed: {
-                        $foxy () {
+                        $foxui () {
                             return reactive({
-                                display: inject.call(this as unknown as ComponentPublicInstance, FOXY_DISPLAY_KEY),
-                                icons: inject.call(this as unknown as ComponentPublicInstance, FOXY_ICONS_KEY),
-                                locale: inject.call(this as unknown as ComponentPublicInstance, FOXY_LOCALE_KEY),
-                                date: inject.call(this as unknown as ComponentPublicInstance, FOXY_DATE_ADAPTER_KEY)
+                                display: inject.call(this as unknown as ComponentPublicInstance, FOXUI_DISPLAY_KEY),
+                                icons: inject.call(this as unknown as ComponentPublicInstance, FOXUI_ICONS_KEY),
+                                locale: inject.call(this as unknown as ComponentPublicInstance, FOXUI_LOCALE_KEY),
+                                date: inject.call(this as unknown as ComponentPublicInstance, FOXUI_DATE_ADAPTER_KEY)
                             })
                         }
                     }

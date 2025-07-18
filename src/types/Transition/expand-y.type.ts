@@ -1,3 +1,3 @@
-import { FoxyExpandY } from "@foxy/components"
+import { FoxuiExpandY } from "@foxui/components"
 
-export type TFoxyExpandY = InstanceType<typeof FoxyExpandY>
+export type TFoxuiExpandY = InstanceType<typeof FoxuiExpandY>

@@ -1,0 +1,5 @@
+# Foxuicarouselitem
+
+## Usage
+
+    <FoxuiCarouselItem />

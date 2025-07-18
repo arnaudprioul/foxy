@@ -1,1 +1,1 @@
-export { default as FoxyMenu } from './FoxyMenu.vue'
+export { default as FoxuiMenu } from './FoxuiMenu.vue'

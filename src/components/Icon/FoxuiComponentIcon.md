@@ -1,0 +1,5 @@
+# Foxuicomponenticon
+
+## Usage
+
+    <FoxuiComponentIcon />

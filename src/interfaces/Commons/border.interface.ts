@@ -1,4 +1,4 @@
-import { TDirectionBoth } from "@foxy/types"
+import { TDirectionBoth } from "@foxui/types"
 
 export interface IBorderProps {
     border?: boolean | number | string | TDirectionBoth | Array<TDirectionBoth>

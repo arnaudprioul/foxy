@@ -7,27 +7,27 @@
 	>
 		<Variant title="Default">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row
+				<foxui-container>
+					<foxui-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col cols="auto">
-							<foxy-btn-group
+						<foxui-col cols="auto">
+							<foxui-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxy-btn
+									<foxui-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxy-btn-group>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-btn-group>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -40,27 +40,27 @@
 
 		<Variant title="Color">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row
+				<foxui-container>
+					<foxui-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col cols="auto">
-							<foxy-btn-group
+						<foxui-col cols="auto">
+							<foxui-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxy-btn
+									<foxui-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxy-btn-group>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-btn-group>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -79,27 +79,27 @@
 
 		<Variant title="Border">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row
+				<foxui-container>
+					<foxui-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col cols="auto">
-							<foxy-btn-group
+						<foxui-col cols="auto">
+							<foxui-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxy-btn
+									<foxui-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxy-btn-group>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-btn-group>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -109,27 +109,27 @@
 
 		<Variant title="Padding">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row
+				<foxui-container>
+					<foxui-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col cols="auto">
-							<foxy-btn-group
+						<foxui-col cols="auto">
+							<foxui-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxy-btn
+									<foxui-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxy-btn-group>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-btn-group>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -139,27 +139,27 @@
 
 		<Variant title="Margin">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row
+				<foxui-container>
+					<foxui-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col cols="auto">
-							<foxy-btn-group
+						<foxui-col cols="auto">
+							<foxui-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxy-btn
+									<foxui-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxy-btn-group>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-btn-group>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -169,27 +169,27 @@
 
 		<Variant title="Density">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row
+				<foxui-container>
+					<foxui-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col cols="auto">
-							<foxy-btn-group
+						<foxui-col cols="auto">
+							<foxui-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxy-btn
+									<foxui-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxy-btn-group>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-btn-group>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -199,27 +199,27 @@
 
 		<Variant title="Elevation">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row
+				<foxui-container>
+					<foxui-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col cols="auto">
-							<foxy-btn-group
+						<foxui-col cols="auto">
+							<foxui-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxy-btn
+									<foxui-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxy-btn-group>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-btn-group>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -229,27 +229,27 @@
 
 		<Variant title="Rounded">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row
+				<foxui-container>
+					<foxui-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col cols="auto">
-							<foxy-btn-group
+						<foxui-col cols="auto">
+							<foxui-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxy-btn
+									<foxui-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxy-btn-group>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-btn-group>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -263,10 +263,10 @@
 		lang="ts"
 		setup
 >
-	import { FoxyBtn, FoxyBtnGroup, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
+	import { FoxuiBtn, FoxuiBtnGroup, FoxuiCol, FoxuiContainer, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxy/enums'
-	import { IBtnGroupProps } from "@foxy/interfaces"
+	import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxui/enums'
+	import { IBtnGroupProps } from "@foxui/interfaces"
 	import {
 		HstBorder,
 		HstColor,

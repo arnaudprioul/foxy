@@ -1,0 +1,5 @@
+# Foxuipagebuilder
+
+## Usage
+
+    <FoxuiPageBuilder />

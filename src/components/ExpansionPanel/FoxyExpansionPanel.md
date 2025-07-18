@@ -1,5 +1,0 @@
-# Foxyexpansionpanel
-
-## Usage
-
-    <FoxyExpansionPanel />

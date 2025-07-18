@@ -6,9 +6,9 @@ import type {
     IPaddingProps,
     ISizeProps,
     ITagProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
-import type { TIcon, TIconComponent } from '@foxy/types'
+import type { TIcon, TIconComponent } from '@foxui/types'
 
 export interface IIconProps {
     icon?: TIcon

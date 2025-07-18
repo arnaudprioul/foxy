@@ -1,1 +1,1 @@
-export { default as FoxyFileField } from './FoxyFileField.vue'
+export { default as FoxuiFileField } from './FoxuiFileField.vue'

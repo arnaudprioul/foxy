@@ -1,17 +1,23 @@
-import { useSort } from '@foxy/composables'
-import { FOXY_DATA_TABLE_HEADERS_KEY } from '@foxy/consts'
-import { SORT_DIRECTION } from '@foxy/enums'
+import { useSort } from '@foxui/composables'
+import { FOXUI_DATA_TABLE_HEADERS_KEY } from '@foxui/consts'
+import { SORT_DIRECTION } from '@foxui/enums'
 import type {
     IDataTableHeader,
     IDataTableHeaderProps,
     IDataTableSortItem,
     IHeaderCellProps,
     IInternalDataTableHeader
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
-import type { TDataTableCompareFunction, TFilterKeyFunctions } from '@foxy/types'
+import type { TDataTableCompareFunction, TFilterKeyFunctions } from '@foxui/types'
 
-import { convertToInternalHeaders, extractKeys, getHeaderDepth, parseFixedColumns, parseHeaderItems } from '@foxy/utils'
+import {
+    convertToInternalHeaders,
+    extractKeys,
+    getHeaderDepth,
+    parseFixedColumns,
+    parseHeaderItems
+} from '@foxui/utils'
 
 import { capitalize, inject, provide, ref, Ref, watchEffect } from 'vue'
 
@@ -81,13 +87,13 @@ export function createHeaders (
 
     const data = {headers, columns, sortFunctions, sortRawFunctions, filterFunctions}
 
-    provide(FOXY_DATA_TABLE_HEADERS_KEY, data)
+    provide(FOXUI_DATA_TABLE_HEADERS_KEY, data)
 
     return data
 }
 
 export function useHeaders () {
-    const data = inject(FOXY_DATA_TABLE_HEADERS_KEY)
+    const data = inject(FOXUI_DATA_TABLE_HEADERS_KEY)
 
     if (!data) throw new Error('Missing headers!')
 

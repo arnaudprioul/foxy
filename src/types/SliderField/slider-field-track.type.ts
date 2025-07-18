@@ -1,3 +1,3 @@
-import { FoxySliderFieldTrack } from '@foxy/components'
+import { FoxuiSliderFieldTrack } from '@foxui/components'
 
-export type TFoxySliderFieldTrack = InstanceType<typeof FoxySliderFieldTrack>
+export type TFoxuiSliderFieldTrack = InstanceType<typeof FoxuiSliderFieldTrack>

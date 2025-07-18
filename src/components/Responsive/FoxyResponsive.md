@@ -1,5 +1,0 @@
-# Foxyresponsive
-
-## Usage
-
-    <FoxyResponsive />

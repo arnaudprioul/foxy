@@ -1,3 +1,3 @@
-import { FoxyWindowItem } from '@foxy/components'
+import { FoxuiWindowItem } from '@foxui/components'
 
-export type TFoxyWindowItem = InstanceType<typeof FoxyWindowItem>
+export type TFoxuiWindowItem = InstanceType<typeof FoxuiWindowItem>

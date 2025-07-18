@@ -1,3 +1,3 @@
-import { FoxySpacer } from "@foxy/components"
+import { FoxuiSpacer } from "@foxui/components"
 
-export type TFoxySpacer = InstanceType<typeof FoxySpacer>
+export type TFoxuiSpacer = InstanceType<typeof FoxuiSpacer>

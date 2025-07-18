@@ -1,3 +1,3 @@
-import { FoxyCounter } from "@foxy/components"
+import { FoxuiCounter } from "@foxui/components"
 
-export type TFoxyCounter = InstanceType<typeof FoxyCounter>
+export type TFoxuiCounter = InstanceType<typeof FoxuiCounter>

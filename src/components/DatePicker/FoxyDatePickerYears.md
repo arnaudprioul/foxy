@@ -1,5 +1,0 @@
-# Foxydatepickeryears
-
-## Usage
-
-    <FoxyDatePickerYears />

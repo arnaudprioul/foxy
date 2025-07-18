@@ -1,6 +1,6 @@
-import * as foxyMessages from "@foxy/assets/locales"
+import * as foxuiMessages from "@foxui/assets/locales"
 
-import { FOXY_LOCALE_KEY, LOCALE_RTL_DEFAULT } from "@foxy/consts"
+import { FOXUI_LOCALE_KEY, LOCALE_RTL_DEFAULT } from "@foxui/consts"
 
 import type {
     ILocaleInstance,
@@ -9,9 +9,9 @@ import type {
     IRtlInstance,
     IRtlOptions,
     IRtlProps
-} from "@foxy/interfaces"
+} from "@foxui/interfaces"
 
-import { createVueI18nAdapter, getCurrentInstanceName, mergeDeep } from "@foxy/utils"
+import { createVueI18nAdapter, getCurrentInstanceName, mergeDeep } from "@foxui/utils"
 
 import { computed, inject, provide, ref } from "vue"
 import { createI18n, I18n, useI18n } from "vue-i18n"
@@ -20,7 +20,7 @@ export function createLocale (options?: ILocaleOptions & IRtlOptions) {
     const i18nOptions = mergeDeep({
         locale: 'en',
         fallbackLocale: 'en',
-        messages: JSON.parse(JSON.stringify(foxyMessages)), // Fix problems with json file imported
+        messages: JSON.parse(JSON.stringify(foxuiMessages)), // Fix problems with json file imported
         legacy: false
     }, options as unknown as Record<string, unknown>) as Record<string, unknown>
     const i18n = createI18n(i18nOptions) as unknown as I18n<Record<string, unknown>, Record<string, unknown>, Record<string, unknown>, string, false>
@@ -32,24 +32,24 @@ export function createLocale (options?: ILocaleOptions & IRtlOptions) {
 }
 
 export function useLocale () {
-    const locale = inject(FOXY_LOCALE_KEY)
+    const locale = inject(FOXUI_LOCALE_KEY)
 
-    if (!locale) throw new Error('[Foxy] Could not find injected locale instance')
+    if (!locale) throw new Error('[Foxui] Could not find injected locale instance')
 
     return locale
 }
 
 export function provideLocale (props: ILocaleProps & IRtlProps) {
-    const locale = inject(FOXY_LOCALE_KEY)
+    const locale = inject(FOXUI_LOCALE_KEY)
 
-    if (!locale) throw new Error('[Foxy] Could not find injected locale instance')
+    if (!locale) throw new Error('[Foxui] Could not find injected locale instance')
 
     const i18n = locale.provide(props)
     const rtl = provideRtl(i18n, locale.rtl, props)
 
     const data = {...i18n, ...rtl}
 
-    provide(FOXY_LOCALE_KEY, data)
+    provide(FOXUI_LOCALE_KEY, data)
 
     return data
 }
@@ -65,9 +65,9 @@ export function createRtl (i18n: ILocaleInstance, options?: IRtlOptions): IRtlIn
 }
 
 export function useRtl (name = getCurrentInstanceName()) {
-    const locale = inject(FOXY_LOCALE_KEY)
+    const locale = inject(FOXUI_LOCALE_KEY)
 
-    if (!locale) throw new Error('[Foxy] Could not find injected rtl instance')
+    if (!locale) throw new Error('[Foxui] Could not find injected rtl instance')
 
     const rtlClasses = computed(() => {
         return `${name}--is-${locale.isRtl.value ? 'rtl' : 'ltr'}`

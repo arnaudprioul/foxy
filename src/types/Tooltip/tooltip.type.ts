@@ -1,3 +1,3 @@
-import { FoxyTooltip } from "@foxy/components"
+import { FoxuiTooltip } from "@foxui/components"
 
-export type TFoxyTooltip = InstanceType<typeof FoxyTooltip>
+export type TFoxuiTooltip = InstanceType<typeof FoxuiTooltip>

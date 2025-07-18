@@ -1,6 +1,12 @@
-import type { IColorProps, ICommonsComponentProps, IDimensionProps, IDirectionProps, ITagProps } from '@foxy/interfaces'
+import type {
+    IColorProps,
+    ICommonsComponentProps,
+    IDimensionProps,
+    IDirectionProps,
+    ITagProps
+} from '@foxui/interfaces'
 
-import type { TInfiniteScrollMode, TInfiniteScrollSide } from '@foxy/types'
+import type { TInfiniteScrollMode, TInfiniteScrollSide } from '@foxui/types'
 
 export interface IInfiniteScrollProps extends ICommonsComponentProps, IColorProps, IDimensionProps, ITagProps, IDirectionProps {
     side?: TInfiniteScrollSide

@@ -1,1 +1,1 @@
-export { default as FoxyDivider } from './FoxyDivider.vue'
+export { default as FoxuiDivider } from './FoxuiDivider.vue'

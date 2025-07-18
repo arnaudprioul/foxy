@@ -1,5 +1,0 @@
-# Foxysection
-
-## Usage
-
-    <FoxySection />

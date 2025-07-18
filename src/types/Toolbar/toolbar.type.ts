@@ -1,6 +1,6 @@
-import { FoxyToolbar } from "@foxy/components"
-import { SCROLL_BEHAVIOR } from '@foxy/enums'
+import { FoxuiToolbar } from "@foxui/components"
+import { SCROLL_BEHAVIOR } from '@foxui/enums'
 
 export type TScrollBehavior = `${SCROLL_BEHAVIOR}`
 
-export type TFoxyToolbar = InstanceType<typeof FoxyToolbar>
+export type TFoxuiToolbar = InstanceType<typeof FoxuiToolbar>

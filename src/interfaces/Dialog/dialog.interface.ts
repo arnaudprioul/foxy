@@ -1,4 +1,4 @@
-import type { ICardProps, ICommonsComponentProps, IOverlayProps, IStatusProps } from '@foxy/interfaces'
+import type { ICardProps, ICommonsComponentProps, IOverlayProps, IStatusProps } from '@foxui/interfaces'
 
 export interface IDialogProps extends ICommonsComponentProps, IOverlayProps, ICardProps, IStatusProps {
     fullscreen?: boolean

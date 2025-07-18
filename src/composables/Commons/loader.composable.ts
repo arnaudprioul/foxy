@@ -1,6 +1,6 @@
-import type { ILoaderProps } from '@foxy/interfaces'
+import type { ILoaderProps } from '@foxui/interfaces'
 
-import { getCurrentInstanceName } from '@foxy/utils'
+import { getCurrentInstanceName } from '@foxui/utils'
 
 import { computed } from 'vue'
 

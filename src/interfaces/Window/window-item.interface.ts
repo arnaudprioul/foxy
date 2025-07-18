@@ -1,4 +1,4 @@
-import type { ICommonsComponentProps, IGroupItemProps, ILazyProps, ITransitionComponentProps } from '@foxy/interfaces'
+import type { ICommonsComponentProps, IGroupItemProps, ILazyProps, ITransitionComponentProps } from '@foxui/interfaces'
 
 export interface IWindowItemProps extends ICommonsComponentProps, ILazyProps, IGroupItemProps, ITransitionComponentProps {
     transition?: boolean | string

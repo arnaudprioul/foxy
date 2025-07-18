@@ -1,3 +1,3 @@
-import { FoxyListSubheader } from "@foxy/components"
+import { FoxuiListSubheader } from "@foxui/components"
 
-export type TFoxyListSubheader = InstanceType<typeof FoxyListSubheader>
+export type TFoxuiListSubheader = InstanceType<typeof FoxuiListSubheader>

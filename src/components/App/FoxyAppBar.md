@@ -1,5 +1,0 @@
-# Foxytoolbar
-
-## Usage
-
-    <FoxyToolbar />

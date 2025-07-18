@@ -1,0 +1,5 @@
+# FoxuiFade
+
+## Usage
+
+    <FoxuiFade />

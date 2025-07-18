@@ -1,0 +1,5 @@
+# Foxuiwindowxreversetranslate
+
+## Usage
+
+    <FoxuiWindowXReverseTranslate />

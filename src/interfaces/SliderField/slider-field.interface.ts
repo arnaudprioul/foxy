@@ -1,4 +1,4 @@
-import { useSteps } from '@foxy/composables'
+import { useSteps } from '@foxui/composables'
 
 import type {
     IBorderProps,
@@ -15,18 +15,18 @@ import type {
     IRoundedProps,
     ISliderFieldThumbProps,
     ISliderFieldTrackProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
 import type {
     TAlways,
     TColor,
     TDirectionBoth,
-    TFoxySliderFieldThumb,
-    TFoxySliderFieldTrack,
+    TFoxuiSliderFieldThumb,
+    TFoxuiSliderFieldTrack,
     TSize,
     TSliderData,
     TTick
-} from '@foxy/types'
+} from '@foxui/types'
 
 import { Ref } from 'vue'
 
@@ -81,10 +81,10 @@ export interface ISliderFieldProvide {
     step: Ref<number>
     ticks: Ref<number[] | string | undefined>
     tickSize: Ref<number>
-    foxySliderFieldTrackRef: Ref<TFoxySliderFieldTrack | null | undefined>
-    foxySliderFieldThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>
-    foxySliderFieldStartThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>
-    foxySliderFieldStopThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>
+    foxuiSliderFieldTrackRef: Ref<TFoxuiSliderFieldTrack | null | undefined>
+    foxuiSliderFieldThumbRef: Ref<TFoxuiSliderFieldThumb | null | undefined>
+    foxuiSliderFieldStartThumbRef: Ref<TFoxuiSliderFieldThumb | null | undefined>
+    foxuiSliderFieldStopThumbRef: Ref<TFoxuiSliderFieldThumb | null | undefined>
     isVertical: Ref<boolean>
     parsedTicks: Ref<Array<TTick>>
     hasLabels: Ref<boolean>
@@ -93,10 +93,10 @@ export interface ISliderFieldProvide {
 }
 
 export interface ISliderField {
-    foxySliderFieldTrackRef: Ref<TFoxySliderFieldTrack | null | undefined>
-    foxySliderFieldThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>
-    foxySliderFieldStartThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>
-    foxySliderFieldStopThumbRef: Ref<TFoxySliderFieldThumb | null | undefined>
+    foxuiSliderFieldTrackRef: Ref<TFoxuiSliderFieldTrack | null | undefined>
+    foxuiSliderFieldThumbRef: Ref<TFoxuiSliderFieldThumb | null | undefined>
+    foxuiSliderFieldStartThumbRef: Ref<TFoxuiSliderFieldThumb | null | undefined>
+    foxuiSliderFieldStopThumbRef: Ref<TFoxuiSliderFieldThumb | null | undefined>
     props: ISliderFieldProps
     steps: ReturnType<typeof useSteps>
     onSliderEnd: (data: TSliderData) => void

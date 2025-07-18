@@ -1,3 +1,3 @@
-export { default as FoxyProgress } from './FoxyProgress.vue'
-export { default as FoxyProgressCircular } from './FoxyProgressCircular.vue'
-export { default as FoxyProgressLinear } from './FoxyProgressLinear.vue'
+export { default as FoxuiProgress } from './FoxuiProgress.vue'
+export { default as FoxuiProgressCircular } from './FoxuiProgressCircular.vue'
+export { default as FoxuiProgressLinear } from './FoxuiProgressLinear.vue'

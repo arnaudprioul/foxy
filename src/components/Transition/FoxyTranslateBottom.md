@@ -1,5 +1,0 @@
-# Foxytranslatebottom
-
-## Usage
-
-    <FoxyTranslateBottom />

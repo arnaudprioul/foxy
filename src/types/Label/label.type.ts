@@ -1,3 +1,3 @@
-import { FoxyLabel } from "@foxy/components"
+import { FoxuiLabel } from "@foxui/components"
 
-export type TFoxyLabel = InstanceType<typeof FoxyLabel>
+export type TFoxuiLabel = InstanceType<typeof FoxuiLabel>

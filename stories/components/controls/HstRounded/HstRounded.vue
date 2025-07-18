@@ -10,8 +10,8 @@
     lang="ts"
     setup
 >
-	import { useVModel } from "@foxy/composables"
-	import { IRoundedProps } from "@foxy/interfaces"
+	import { useVModel } from "@foxui/composables"
+	import { IRoundedProps } from "@foxui/interfaces"
 
 	import { roundedList } from "@stories/const/rounded.const"
 

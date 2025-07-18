@@ -1,0 +1,5 @@
+# FoxuiSlideX
+
+## Usage
+
+    <FoxuiSlideX />

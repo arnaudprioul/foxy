@@ -1,4 +1,4 @@
-import { SUPPORTS_INTERSECTION } from '@foxy/consts'
+import { SUPPORTS_INTERSECTION } from '@foxui/consts'
 
 import { onBeforeUnmount, ref, shallowRef, watch } from 'vue'
 

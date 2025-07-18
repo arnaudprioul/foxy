@@ -1,0 +1,5 @@
+# FoxuiColorPickerCanvas
+
+## Usage
+
+    <FoxuiColorPickerCanvas />

@@ -1,5 +1,5 @@
-import type { ICommonsComponentProps } from '@foxy/interfaces'
-import type { TValidateOn } from '@foxy/types'
+import type { ICommonsComponentProps } from '@foxui/interfaces'
+import type { TValidateOn } from '@foxui/types'
 
 import type { ComponentInternalInstance, ComputedRef, Raw, Ref } from 'vue'
 

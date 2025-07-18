@@ -1,5 +1,0 @@
-# Foxyradiobtn
-
-## Usage
-
-    <FoxyRadioBtn />

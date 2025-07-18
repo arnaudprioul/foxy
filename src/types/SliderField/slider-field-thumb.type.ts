@@ -1,3 +1,3 @@
-import { FoxySliderFieldThumb } from '@foxy/components'
+import { FoxuiSliderFieldThumb } from '@foxui/components'
 
-export type TFoxySliderFieldThumb = InstanceType<typeof FoxySliderFieldThumb>
+export type TFoxuiSliderFieldThumb = InstanceType<typeof FoxuiSliderFieldThumb>

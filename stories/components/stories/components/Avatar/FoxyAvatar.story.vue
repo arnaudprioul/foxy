@@ -7,28 +7,28 @@
 	>
 		<Variant title="Default">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col>
-							<foxy-avatar
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col>
+							<foxui-avatar
 									:icon="icon"
 									v-bind="state"
 							/>
-						</foxy-col>
-						<foxy-col>
-							<foxy-avatar
+						</foxui-col>
+						<foxui-col>
+							<foxui-avatar
 									:image="image"
 									v-bind="state"
 							/>
-						</foxy-col>
-						<foxy-col>
-							<foxy-avatar
+						</foxui-col>
+						<foxui-col>
+							<foxui-avatar
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 			<template #controls>
 
@@ -37,16 +37,16 @@
 
 		<Variant title="Status">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-avatar
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-avatar
 									:icon="icon"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -59,16 +59,16 @@
 
 		<Variant title="Color">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-avatar
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-avatar
 									:icon="icon"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -84,16 +84,16 @@
 
 		<Variant title="Border">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-avatar
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-avatar
 									:icon="icon"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -103,16 +103,16 @@
 
 		<Variant title="Padding">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-avatar
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-avatar
 									:icon="icon"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -122,16 +122,16 @@
 
 		<Variant title="Margin">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-avatar
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-avatar
 									:icon="icon"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -141,16 +141,16 @@
 
 		<Variant title="Dimension">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-avatar
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-avatar
 									:icon="icon"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -169,16 +169,16 @@
 
 		<Variant title="Density">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-avatar
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-avatar
 									:icon="icon"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -188,16 +188,16 @@
 
 		<Variant title="Elevation">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-avatar
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-avatar
 									:icon="icon"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -207,16 +207,16 @@
 
 		<Variant title="Rounded">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-avatar
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-avatar
 									:icon="icon"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -230,9 +230,9 @@
 		lang="ts"
 		setup
 >
-	import { FoxyAvatar, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
-	import { JUSTIFY, MDI_ICONS } from "@foxy/enums"
-	import type { IAvatarProps } from "@foxy/interfaces"
+	import { FoxuiAvatar, FoxuiCol, FoxuiContainer, FoxuiRow } from '@foxui/components'
+	import { JUSTIFY, MDI_ICONS } from "@foxui/enums"
+	import type { IAvatarProps } from "@foxui/interfaces"
 	import {
 		HstBorder,
 		HstColor,

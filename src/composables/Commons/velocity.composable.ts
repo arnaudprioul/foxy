@@ -1,9 +1,9 @@
-import { HISTORY, HORIZON } from '@foxy/consts'
-import type { ISample } from "@foxy/interfaces"
+import { HISTORY, HORIZON } from '@foxui/consts'
+import type { ISample } from "@foxui/interfaces"
 
-import { CircularBuffer } from '@foxy/services'
+import { CircularBuffer } from '@foxui/services'
 
-import { calculateImpulseVelocity, oops } from '@foxy/utils'
+import { calculateImpulseVelocity, oops } from '@foxui/utils'
 
 export function useVelocity () {
     const touches: Record<number, CircularBuffer<[number, Touch]> | undefined> = {}

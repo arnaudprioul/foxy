@@ -7,7 +7,7 @@ import type {
     IScrimProps,
     IScrollStrategyProps,
     ITransitionComponentProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
 export interface IOverlayProps extends ICommonsComponentProps, IDimensionProps, IActivatorProps, ILocationStrategyProps, IScrollStrategyProps, ILazyProps, ITransitionComponentProps, IScrimProps {
     absolute?: boolean

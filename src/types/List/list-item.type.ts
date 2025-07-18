@@ -1,5 +1,5 @@
-import { FoxyListItem } from "@foxy/components"
-import { LIST_ITEM_TYPE } from '@foxy/enums'
+import { FoxuiListItem } from "@foxui/components"
+import { LIST_ITEM_TYPE } from '@foxui/enums'
 
 export type TListItemType = `${LIST_ITEM_TYPE}`
 
@@ -10,4 +10,4 @@ export type TListItemSlot = {
     select: (value: boolean) => void
 }
 
-export type TFoxyListItem = InstanceType<typeof FoxyListItem>
+export type TFoxuiListItem = InstanceType<typeof FoxuiListItem>

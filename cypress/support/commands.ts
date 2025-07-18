@@ -1,25 +1,25 @@
-import { FoxyApp } from "@foxy/components"
+import { FoxuiApp } from "@foxui/components"
 
-import { createFoxy } from "@foxy/foxy"
+import { createFoxui } from "@foxui/foxui"
 
-import type { IFoxyOptions } from "@foxy/interfaces"
+import type { IFoxuiOptions } from "@foxui/interfaces"
 import { mount } from "cypress/vue"
 import { h } from "vue"
 
-const foxyOptions: IFoxyOptions = {}
+const foxuiOptions: IFoxuiOptions = {}
 
 Cypress.Commands.add('mount', (component, options = {}) => {
     options.global = options.global || {}
     options.global.plugins = options.global.plugins || []
     options.global.plugins.push({
         install(app) {
-            app.use(createFoxy(foxyOptions))
+            app.use(createFoxui(foxuiOptions))
         }
     })
 
     return mount(
         () => {
-            return h(FoxyApp, {}, component)
+            return h(FoxuiApp, {}, component)
         },
         options
     )

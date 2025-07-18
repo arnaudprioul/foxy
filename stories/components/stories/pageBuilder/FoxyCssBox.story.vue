@@ -5,7 +5,7 @@
       title="CssBox"
   >
     <template #default="{ state }">
-      <foxy-css-box v-bind="state.props"/>
+	    <foxui-css-box v-bind="state.props"/>
     </template>
   </Story>
 </template>
@@ -14,9 +14,9 @@
     lang="ts"
     setup
 >
-  import { FoxyCssBox } from '@foxy/components'
+	import { FoxuiCssBox } from '@foxui/components'
 
-  function initState () {
+	function initState () {
     return {
       props: {}
     }

@@ -1,6 +1,6 @@
-import { useVelocity } from '@foxy/composables'
+import { useVelocity } from '@foxui/composables'
 
-import { oops } from '@foxy/utils'
+import { oops } from '@foxui/utils'
 
 import { computed, onBeforeUnmount, onMounted, Ref, shallowRef } from 'vue'
 

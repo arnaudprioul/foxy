@@ -1,7 +1,7 @@
-import { useVModel } from "@foxy/composables"
-import { IActiveProps } from "@foxy/interfaces"
+import { useVModel } from "@foxui/composables"
+import { IActiveProps } from "@foxui/interfaces"
 
-import { getCurrentInstanceName } from "@foxy/utils"
+import { getCurrentInstanceName } from "@foxui/utils"
 
 import { computed } from "vue"
 

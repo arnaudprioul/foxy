@@ -1,0 +1,5 @@
+# Foxuidatatitle
+
+## Usage
+
+    <FoxuiDataTitle />

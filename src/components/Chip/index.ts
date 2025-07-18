@@ -1,2 +1,2 @@
-export { default as FoxyChip } from './FoxyChip.vue';
-export { default as FoxyChipGroup } from './FoxyChipGroup.vue';
+export { default as FoxuiChip } from './FoxuiChip.vue';
+export { default as FoxuiChipGroup } from './FoxuiChipGroup.vue';

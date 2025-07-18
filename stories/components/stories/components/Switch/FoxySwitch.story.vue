@@ -6,16 +6,16 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container fullscreen>
-          <foxy-row
+	      <foxui-container fullscreen>
+		      <foxui-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col cols="auto">
-              <foxy-switch v-bind="state"/>
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+			      <foxui-col cols="auto">
+				      <foxui-switch v-bind="state"/>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
       <template #controls>
         <hst-checkbox
@@ -60,9 +60,9 @@
     lang="ts"
     setup
 >
-	import { FoxyCol, FoxyContainer, FoxyRow, FoxySwitch } from '@foxy/components'
+	import { FoxuiCol, FoxuiContainer, FoxuiRow, FoxuiSwitch } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxui/enums'
 	import { HstIcon } from '@stories/components/controls'
 
 	import { reactive } from 'vue'

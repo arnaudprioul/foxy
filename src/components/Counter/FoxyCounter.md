@@ -1,5 +1,0 @@
-# Foxycounter
-
-## Usage
-
-    <FoxyCounter />

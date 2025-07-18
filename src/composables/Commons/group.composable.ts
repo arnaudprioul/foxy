@@ -1,5 +1,5 @@
-import { useVModel } from '@foxy/composables'
-import type { IGroupItem, IGroupItemProps, IGroupItemProvide, IGroupProps, IGroupProvide } from '@foxy/interfaces'
+import { useVModel } from '@foxui/composables'
+import type { IGroupItem, IGroupItemProps, IGroupItemProvide, IGroupProps, IGroupProvide } from '@foxui/interfaces'
 
 import {
     consoleWarn,
@@ -10,7 +10,7 @@ import {
     getUid,
     getValues,
     wrapInArray
-} from '@foxy/utils'
+} from '@foxui/utils'
 
 import {
     ComponentInternalInstance,
@@ -36,7 +36,7 @@ export function useGroupItem (
 
     if (!vm) {
         throw new Error(
-            '[Foxy] useGroupItem composable must be used inside a component setup function'
+            '[Foxui] useGroupItem composable must be used inside a component setup function'
         )
     }
 
@@ -49,7 +49,7 @@ export function useGroupItem (
     if (!group) {
         if (!required) return group
 
-        throw new Error(`[Foxy] Could not find useGroup injection with symbol ${injectKey.description}`)
+        throw new Error(`[Foxui] Could not find useGroup injection with symbol ${injectKey.description}`)
     }
 
     const value = toRef(props, 'value')

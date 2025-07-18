@@ -1,2 +1,2 @@
-export { default as FoxyCarousel } from './FoxyCarousel.vue'
-export { default as FoxyCarouselItem } from './FoxyCarouselItem.vue'
+export { default as FoxuiCarousel } from './FoxuiCarousel.vue'
+export { default as FoxuiCarouselItem } from './FoxuiCarouselItem.vue'

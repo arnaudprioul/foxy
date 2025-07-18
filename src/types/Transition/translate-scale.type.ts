@@ -1,3 +1,3 @@
-import { FoxyTranslateScale } from "@foxy/components"
+import { FoxuiTranslateScale } from "@foxui/components"
 
-export type TFoxyTranslateScale = InstanceType<typeof FoxyTranslateScale>
+export type TFoxuiTranslateScale = InstanceType<typeof FoxuiTranslateScale>

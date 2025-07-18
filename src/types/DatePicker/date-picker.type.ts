@@ -1,7 +1,7 @@
-import { FoxyDatePicker } from "@foxy/components"
+import { FoxuiDatePicker } from "@foxui/components"
 
-import { DATE_MODE } from "@foxy/enums"
+import { DATE_MODE } from "@foxui/enums"
 
 export type TDateMode = `${DATE_MODE}`
 
-export type TFoxyDatePicker = InstanceType<typeof FoxyDatePicker>
+export type TFoxuiDatePicker = InstanceType<typeof FoxuiDatePicker>

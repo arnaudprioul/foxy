@@ -1,3 +1,3 @@
-import { FoxyBadge } from '@foxy/components'
+import { FoxuiBadge } from '@foxui/components'
 
-export type TFoxyBadge = InstanceType<typeof FoxyBadge>
+export type TFoxuiBadge = InstanceType<typeof FoxuiBadge>

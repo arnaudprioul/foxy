@@ -7,15 +7,15 @@
 	>
 		<Variant title="Default">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row>
-						<foxy-col cols="12">
-							<foxy-alert
+				<foxui-container fluid>
+					<foxui-row>
+						<foxui-col cols="12">
+							<foxui-alert
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -55,15 +55,15 @@
 
 		<Variant title="Status">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row>
-						<foxy-col cols="12">
-							<foxy-alert
+				<foxui-container fluid>
+					<foxui-row>
+						<foxui-col cols="12">
+							<foxui-alert
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -76,15 +76,15 @@
 
 		<Variant title="Color">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row>
-						<foxy-col cols="12">
-							<foxy-alert
+				<foxui-container fluid>
+					<foxui-row>
+						<foxui-col cols="12">
+							<foxui-alert
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -100,15 +100,15 @@
 
 		<Variant title="Border">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row>
-						<foxy-col cols="12">
-							<foxy-alert
+				<foxui-container fluid>
+					<foxui-row>
+						<foxui-col cols="12">
+							<foxui-alert
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -118,15 +118,15 @@
 
 		<Variant title="Padding">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row>
-						<foxy-col cols="12">
-							<foxy-alert
+				<foxui-container fluid>
+					<foxui-row>
+						<foxui-col cols="12">
+							<foxui-alert
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -136,15 +136,15 @@
 
 		<Variant title="Margin">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row>
-						<foxy-col cols="12">
-							<foxy-alert
+				<foxui-container fluid>
+					<foxui-row>
+						<foxui-col cols="12">
+							<foxui-alert
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -154,15 +154,15 @@
 
 		<Variant title="Dimension">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row>
-						<foxy-col cols="12">
-							<foxy-alert
+				<foxui-container fluid>
+					<foxui-row>
+						<foxui-col cols="12">
+							<foxui-alert
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -180,15 +180,15 @@
 
 		<Variant title="Density">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row>
-						<foxy-col cols="12">
-							<foxy-alert
+				<foxui-container fluid>
+					<foxui-row>
+						<foxui-col cols="12">
+							<foxui-alert
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -198,15 +198,15 @@
 
 		<Variant title="Elevation">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row>
-						<foxy-col cols="12">
-							<foxy-alert
+				<foxui-container fluid>
+					<foxui-row>
+						<foxui-col cols="12">
+							<foxui-alert
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -216,15 +216,15 @@
 
 		<Variant title="Rounded">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row>
-						<foxy-col cols="12">
-							<foxy-alert
+				<foxui-container fluid>
+					<foxui-row>
+						<foxui-col cols="12">
+							<foxui-alert
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -234,7 +234,7 @@
 
 		<Variant title="Position">
 			<template #default="{state}">
-				<foxy-alert
+				<foxui-alert
 						v-bind="state"
 				/>
 			</template>
@@ -252,7 +252,7 @@
 
 		<Variant title="Adjacent">
 			<template #default="{state}">
-				<foxy-alert
+				<foxui-alert
 						v-bind="state"
 				/>
 			</template>
@@ -274,9 +274,9 @@
 		setup
 >
 
-	import { FoxyAlert, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
+	import { FoxuiAlert, FoxuiCol, FoxuiContainer, FoxuiRow } from '@foxui/components'
 
-	import type { IAlertProps } from "@foxy/interfaces"
+	import type { IAlertProps } from "@foxui/interfaces"
 
 	import {
 		HstBorder,

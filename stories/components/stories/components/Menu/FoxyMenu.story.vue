@@ -6,23 +6,23 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container>
-          <foxy-row
+	      <foxui-container>
+		      <foxui-row
               :align-content="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col cols="auto">
-              <foxy-menu v-bind="state">
+			      <foxui-col cols="auto">
+				      <foxui-menu v-bind="state">
                 <template #activator="{ props }">
-                  <foxy-btn
+	                <foxui-btn
                       :icon="MDI_ICONS.MENU"
                       v-bind="props"
                   />
                 </template>
-              </foxy-menu>
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+				      </foxui-menu>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
       <template #controls>
         <hst-location
@@ -43,16 +43,16 @@
     </Variant>
 	  <Variant title="Contextual">
 		  <template #default>
-			  <foxy-container>
-				  <foxy-row
+			  <foxui-container>
+				  <foxui-row
 						  :align-content="ALIGN.CENTER"
 						  :justify="JUSTIFY.CENTER"
 				  >
-					  <foxy-col cols="auto">
-						  <foxy-contextual-menu v-bind="state"/>
-					  </foxy-col>
-				  </foxy-row>
-			  </foxy-container>
+					  <foxui-col cols="auto">
+						  <foxui-contextual-menu v-bind="state"/>
+					  </foxui-col>
+				  </foxui-row>
+			  </foxui-container>
 		  </template>
 		  <template #controls>
 			  <hst-location
@@ -68,11 +68,11 @@
     lang="ts"
     setup
 >
-	import { FoxyBtn, FoxyCol, FoxyContainer, FoxyContextualMenu, FoxyMenu, FoxyRow } from '@foxy/components'
+	import { FoxuiBtn, FoxuiCol, FoxuiContainer, FoxuiContextualMenu, FoxuiMenu, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxy/enums'
+	import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxui/enums'
 
-	import type { IMenuProps } from '@foxy/interfaces'
+	import type { IMenuProps } from '@foxui/interfaces'
 
 	import { HstLocation } from '@stories/components/controls'
 

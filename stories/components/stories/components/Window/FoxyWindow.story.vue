@@ -6,34 +6,34 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container>
-          <foxy-row
+	      <foxui-container>
+		      <foxui-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col cols="6">
-              <foxy-window v-bind="state">
-                <foxy-window-item
+			      <foxui-col cols="6">
+				      <foxui-window v-bind="state">
+					      <foxui-window-item
                     v-for="n in 3"
                     :key="n"
                 >
-                  <foxy-sheet height="200px">
-                    <foxy-container fullscreen>
-                      <foxy-row
+						      <foxui-sheet height="200px">
+							      <foxui-container fullscreen>
+								      <foxui-row
                           :align="ALIGN.CENTER"
                           :justify="JUSTIFY.CENTER"
                       >
-                        <foxy-col cols="12">
-                          <foxy-title tag="h3">Card {{ n }}</foxy-title>
-                        </foxy-col>
-                      </foxy-row>
-                    </foxy-container>
-                  </foxy-sheet>
-                </foxy-window-item>
-              </foxy-window>
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+									      <foxui-col cols="12">
+										      <foxui-title tag="h3">Card {{ n }}</foxui-title>
+									      </foxui-col>
+								      </foxui-row>
+							      </foxui-container>
+						      </foxui-sheet>
+					      </foxui-window-item>
+				      </foxui-window>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
       <template #controls>
 
@@ -46,11 +46,19 @@
     lang="ts"
     setup
 >
-	import { FoxyCol, FoxyContainer, FoxyRow, FoxySheet, FoxyTitle, FoxyWindow, FoxyWindowItem } from '@foxy/components'
+	import {
+		FoxuiCol,
+		FoxuiContainer,
+		FoxuiRow,
+		FoxuiSheet,
+		FoxuiTitle,
+		FoxuiWindow,
+		FoxuiWindowItem
+	} from '@foxui/components'
 
-	import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxui/enums'
 
-	import type { IWindowProps } from '@foxy/interfaces'
+	import type { IWindowProps } from '@foxui/interfaces'
 
 	import { reactive } from 'vue'
 

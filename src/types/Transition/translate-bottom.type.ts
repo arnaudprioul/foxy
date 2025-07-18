@@ -1,3 +1,3 @@
-import { FoxyTranslateBottom } from "@foxy/components"
+import { FoxuiTranslateBottom } from "@foxui/components"
 
-export type TFoxyTranslateBottom = InstanceType<typeof FoxyTranslateBottom>
+export type TFoxuiTranslateBottom = InstanceType<typeof FoxuiTranslateBottom>

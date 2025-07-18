@@ -1,5 +1,0 @@
-# Foxytextareafield
-
-## Usage
-
-    <FoxyTextareaField />

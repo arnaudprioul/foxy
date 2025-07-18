@@ -1,0 +1,5 @@
+# Foxuinumberfield
+
+## Usage
+
+    <FoxuiNumberField />

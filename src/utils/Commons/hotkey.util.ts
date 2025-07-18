@@ -1,5 +1,5 @@
-import { KEYBOARD_ALIASES } from "@foxy/consts/Commons/hotkey.const.ts"
-import { consoleWarn } from "@foxy/utils"
+import { KEYBOARD_ALIASES } from "@foxui/consts/Commons/hotkey.const.ts"
+import { consoleWarn } from "@foxui/utils"
 
 /**
  * Splits a single combination string into individual key parts.

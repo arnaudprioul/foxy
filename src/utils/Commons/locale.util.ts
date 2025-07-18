@@ -1,6 +1,6 @@
-import { useVModel } from "@foxy/composables"
+import { useVModel } from "@foxui/composables"
 
-import type { ILocaleI18n, ILocaleInstance, ILocaleMessages, ILocaleProps } from "@foxy/interfaces"
+import type { ILocaleI18n, ILocaleInstance, ILocaleMessages, ILocaleProps } from "@foxui/interfaces"
 
 import { ComputedRef, Ref, watch } from "vue"
 

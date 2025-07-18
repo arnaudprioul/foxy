@@ -1,0 +1,5 @@
+# Foxuislidegroup
+
+## Usage
+
+    <FoxuiSlideGroup />

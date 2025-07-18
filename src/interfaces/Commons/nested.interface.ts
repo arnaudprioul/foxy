@@ -1,4 +1,4 @@
-import type { TOpenStrategy, TOpenStrategyFns, TSelectStrategy, TSelectStrategyFn } from '@foxy/types'
+import type { TOpenStrategy, TOpenStrategyFns, TSelectStrategy, TSelectStrategyFn } from '@foxui/types'
 
 export interface INestedProps {
     selectStrategy?: TSelectStrategy | TSelectStrategyFn

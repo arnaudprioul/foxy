@@ -1,0 +1,5 @@
+# FoxuiColorPickerPreview
+
+## Usage
+
+    <FoxuiColorPickerPreview />

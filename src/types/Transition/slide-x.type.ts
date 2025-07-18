@@ -1,3 +1,3 @@
-import { FoxySlideX } from "@foxy/components"
+import { FoxuiSlideX } from "@foxui/components"
 
-export type TFoxySlideX = InstanceType<typeof FoxySlideX>
+export type TFoxuiSlideX = InstanceType<typeof FoxuiSlideX>

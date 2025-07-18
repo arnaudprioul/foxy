@@ -1,5 +1,0 @@
-# Foxylistchildren
-
-## Usage
-
-    <FoxyListChildren />

@@ -1,5 +1,0 @@
-# Foxyslidertrack
-
-## Usage
-
-    <FoxySliderFieldTrack />

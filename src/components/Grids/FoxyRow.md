@@ -1,5 +1,0 @@
-# Foxyrow
-
-## Usage
-
-    <FoxyRow />

@@ -6,13 +6,13 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container fullscreen>
-          <foxy-row
+	      <foxui-container fullscreen>
+		      <foxui-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col>
-              <foxy-slider-field
+			      <foxui-col>
+				      <foxui-slider-field
                   v-bind="state"
                   @end="logEvent('update end', {$event})"
                   @start="logEvent('update start', {$event})"
@@ -22,9 +22,9 @@
                   @click:append-inner="logEvent('click append inner', $event)"
                   @click:prepend-inner="logEvent('click prepend inner', $event)"
               />
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
       <template #controls>
         <hst-checkbox
@@ -84,9 +84,9 @@
     lang="ts"
     setup
 >
-	import { FoxyCol, FoxyContainer, FoxyRow, FoxySliderField } from '@foxy/components'
+	import { FoxuiCol, FoxuiContainer, FoxuiRow, FoxuiSliderField } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxui/enums'
 	import { logEvent } from 'histoire/client'
 
 	import { reactive } from 'vue'

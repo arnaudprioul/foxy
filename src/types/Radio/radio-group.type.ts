@@ -1,3 +1,3 @@
-import { FoxyRadioGroup } from "@foxy/components"
+import { FoxuiRadioGroup } from "@foxui/components"
 
-export type TFoxyRadioGroup = InstanceType<typeof FoxyRadioGroup>
+export type TFoxuiRadioGroup = InstanceType<typeof FoxuiRadioGroup>

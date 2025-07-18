@@ -1,5 +1,0 @@
-# Foxyselectioncontrolgroup
-
-## Usage
-
-    <FoxySelectionControlGroup />

@@ -1,5 +1,0 @@
-# Foxyvirtualscrollitem
-
-## Usage
-
-    <FoxyVirtualScrollItem />

@@ -1,0 +1,5 @@
+# Foxuitable
+
+## Usage
+
+    <FoxuiTable />

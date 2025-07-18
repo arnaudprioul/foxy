@@ -1,7 +1,7 @@
-import { FoxyProgress } from '@foxy/components'
+import { FoxuiProgress } from '@foxui/components'
 
-import { PROGRESS_TYPE } from '@foxy/enums'
+import { PROGRESS_TYPE } from '@foxui/enums'
 
 export type TProgressType = `${PROGRESS_TYPE}`
 
-export type TFoxyProgress = InstanceType<typeof FoxyProgress>
+export type TFoxuiProgress = InstanceType<typeof FoxuiProgress>

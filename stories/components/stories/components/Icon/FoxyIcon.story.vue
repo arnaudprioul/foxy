@@ -5,7 +5,7 @@
   >
     <Variant title="MDI Icons">
       <template #default>
-        <foxy-icon v-bind="state"/>
+	      <foxui-icon v-bind="state"/>
       </template>
     </Variant>
   </Story>
@@ -15,9 +15,9 @@
     lang="ts"
     setup
 >
-	import { FoxyIcon } from '@foxy/components'
+	import { FoxuiIcon } from '@foxui/components'
 
-	import { MDI_ICONS } from '@foxy/enums'
+	import { MDI_ICONS } from '@foxui/enums'
 
 	import { reactive } from 'vue'
 

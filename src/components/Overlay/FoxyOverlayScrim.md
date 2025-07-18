@@ -1,5 +1,0 @@
-# Foxyoverlayscrim
-
-## Usage
-
-    <FoxyOverlayScrim />

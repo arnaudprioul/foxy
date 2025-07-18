@@ -1,3 +1,3 @@
-import { FoxyDrawer } from "@foxy/components"
+import { FoxuiDrawer } from "@foxui/components"
 
-export type TFoxyDrawer = InstanceType<typeof FoxyDrawer>
+export type TFoxuiDrawer = InstanceType<typeof FoxuiDrawer>

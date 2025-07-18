@@ -1,8 +1,8 @@
-import { useToggleScope } from '@foxy/composables'
+import { useToggleScope } from '@foxui/composables'
 
-import type { TEventProp, TInnerVal, TVModel } from '@foxy/types'
+import type { TEventProp, TInnerVal, TVModel } from '@foxui/types'
 
-import { getCurrentInstance, toKebabCase } from '@foxy/utils'
+import { getCurrentInstance, toKebabCase } from '@foxui/utils'
 
 import { computed, ref, Ref, toRaw, watch } from 'vue'
 

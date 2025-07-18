@@ -7,9 +7,9 @@ import type {
     IRippleProps,
     IRoundedProps,
     ISizeProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
-import type { TAlways } from '@foxy/types'
+import type { TAlways } from '@foxui/types'
 
 export interface ISliderFieldThumbProps extends ICommonsComponentProps, IColorProps, ISizeProps, IRippleProps, IElevationProps, IRoundedProps, IBorderProps, IDirectionProps {
     label?: TAlways

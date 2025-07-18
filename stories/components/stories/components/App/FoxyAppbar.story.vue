@@ -7,12 +7,12 @@
 	>
 		<Variant title="Default">
 			<template #default="{state}">
-				<foxy-app-bar
+				<foxui-app-bar
 						:order="0"
 						v-bind="state"
 				>
 					<template #prepend>
-						<foxy-btn
+						<foxui-btn
 								:bg-color="state.bgColor"
 								:icon="MDI_ICONS.MENU"
 								:rounded="0"
@@ -20,25 +20,25 @@
 					</template>
 
 					<template #append>
-						<foxy-btn
+						<foxui-btn
 								:bg-color="state.bgColor"
 								:icon="MDI_ICONS.HEART"
 								:rounded="0"
 						/>
 
-						<foxy-btn
+						<foxui-btn
 								:bg-color="state.bgColor"
 								:icon="MDI_ICONS.MAGNIFY"
 								:rounded="0"
 						/>
 
-						<foxy-btn
+						<foxui-btn
 								:bg-color="state.bgColor"
 								:icon="MDI_ICONS.DOTS_VERTICAL"
 								:rounded="0"
 						/>
 					</template>
-				</foxy-app-bar>
+				</foxui-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -76,22 +76,22 @@
 
 		<Variant title="Color">
 			<template #default="{state}">
-				<foxy-app-bar
+				<foxui-app-bar
 						:order="0"
 						v-bind="state"
 				>
 					<template #prepend>
-						<foxy-btn :icon="MDI_ICONS.MENU"/>
+						<foxui-btn :icon="MDI_ICONS.MENU"/>
 					</template>
 
 					<template #append>
-						<foxy-btn :icon="MDI_ICONS.HEART"/>
+						<foxui-btn :icon="MDI_ICONS.HEART"/>
 
-						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+						<foxui-btn :icon="MDI_ICONS.MAGNIFY"/>
 
-						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+						<foxui-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
 					</template>
-				</foxy-app-bar>
+				</foxui-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -107,22 +107,22 @@
 
 		<Variant title="Border">
 			<template #default="{state}">
-				<foxy-app-bar
+				<foxui-app-bar
 						:order="0"
 						v-bind="state"
 				>
 					<template #prepend>
-						<foxy-btn :icon="MDI_ICONS.MENU"/>
+						<foxui-btn :icon="MDI_ICONS.MENU"/>
 					</template>
 
 					<template #append>
-						<foxy-btn :icon="MDI_ICONS.HEART"/>
+						<foxui-btn :icon="MDI_ICONS.HEART"/>
 
-						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+						<foxui-btn :icon="MDI_ICONS.MAGNIFY"/>
 
-						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+						<foxui-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
 					</template>
-				</foxy-app-bar>
+				</foxui-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -132,22 +132,22 @@
 
 		<Variant title="Padding">
 			<template #default="{state}">
-				<foxy-app-bar
+				<foxui-app-bar
 						:order="0"
 						v-bind="state"
 				>
 					<template #prepend>
-						<foxy-btn :icon="MDI_ICONS.MENU"/>
+						<foxui-btn :icon="MDI_ICONS.MENU"/>
 					</template>
 
 					<template #append>
-						<foxy-btn :icon="MDI_ICONS.HEART"/>
+						<foxui-btn :icon="MDI_ICONS.HEART"/>
 
-						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+						<foxui-btn :icon="MDI_ICONS.MAGNIFY"/>
 
-						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+						<foxui-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
 					</template>
-				</foxy-app-bar>
+				</foxui-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -157,22 +157,22 @@
 
 		<Variant title="Margin">
 			<template #default="{state}">
-				<foxy-app-bar
+				<foxui-app-bar
 						:order="0"
 						v-bind="state"
 				>
 					<template #prepend>
-						<foxy-btn :icon="MDI_ICONS.MENU"/>
+						<foxui-btn :icon="MDI_ICONS.MENU"/>
 					</template>
 
 					<template #append>
-						<foxy-btn :icon="MDI_ICONS.HEART"/>
+						<foxui-btn :icon="MDI_ICONS.HEART"/>
 
-						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+						<foxui-btn :icon="MDI_ICONS.MAGNIFY"/>
 
-						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+						<foxui-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
 					</template>
-				</foxy-app-bar>
+				</foxui-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -182,22 +182,22 @@
 
 		<Variant title="Dimension">
 			<template #default="{state}">
-				<foxy-app-bar
+				<foxui-app-bar
 						:order="0"
 						v-bind="state"
 				>
 					<template #prepend>
-						<foxy-btn :icon="MDI_ICONS.MENU"/>
+						<foxui-btn :icon="MDI_ICONS.MENU"/>
 					</template>
 
 					<template #append>
-						<foxy-btn :icon="MDI_ICONS.HEART"/>
+						<foxui-btn :icon="MDI_ICONS.HEART"/>
 
-						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+						<foxui-btn :icon="MDI_ICONS.MAGNIFY"/>
 
-						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+						<foxui-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
 					</template>
-				</foxy-app-bar>
+				</foxui-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -215,22 +215,22 @@
 
 		<Variant title="Density">
 			<template #default="{state}">
-				<foxy-app-bar
+				<foxui-app-bar
 						:order="0"
 						v-bind="state"
 				>
 					<template #prepend>
-						<foxy-btn :icon="MDI_ICONS.MENU"/>
+						<foxui-btn :icon="MDI_ICONS.MENU"/>
 					</template>
 
 					<template #append>
-						<foxy-btn :icon="MDI_ICONS.HEART"/>
+						<foxui-btn :icon="MDI_ICONS.HEART"/>
 
-						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+						<foxui-btn :icon="MDI_ICONS.MAGNIFY"/>
 
-						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+						<foxui-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
 					</template>
-				</foxy-app-bar>
+				</foxui-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -240,22 +240,22 @@
 
 		<Variant title="Elevation">
 			<template #default="{state}">
-				<foxy-app-bar
+				<foxui-app-bar
 						:order="0"
 						v-bind="state"
 				>
 					<template #prepend>
-						<foxy-btn :icon="MDI_ICONS.MENU"/>
+						<foxui-btn :icon="MDI_ICONS.MENU"/>
 					</template>
 
 					<template #append>
-						<foxy-btn :icon="MDI_ICONS.HEART"/>
+						<foxui-btn :icon="MDI_ICONS.HEART"/>
 
-						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+						<foxui-btn :icon="MDI_ICONS.MAGNIFY"/>
 
-						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+						<foxui-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
 					</template>
-				</foxy-app-bar>
+				</foxui-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -265,22 +265,22 @@
 
 		<Variant title="Rounded">
 			<template #default="{state}">
-				<foxy-app-bar
+				<foxui-app-bar
 						:order="0"
 						v-bind="state"
 				>
 					<template #prepend>
-						<foxy-btn :icon="MDI_ICONS.MENU"/>
+						<foxui-btn :icon="MDI_ICONS.MENU"/>
 					</template>
 
 					<template #append>
-						<foxy-btn :icon="MDI_ICONS.HEART"/>
+						<foxui-btn :icon="MDI_ICONS.HEART"/>
 
-						<foxy-btn :icon="MDI_ICONS.MAGNIFY"/>
+						<foxui-btn :icon="MDI_ICONS.MAGNIFY"/>
 
-						<foxy-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
+						<foxui-btn :icon="MDI_ICONS.DOTS_VERTICAL"/>
 					</template>
-				</foxy-app-bar>
+				</foxui-app-bar>
 			</template>
 
 			<template #controls="{state}">
@@ -294,10 +294,10 @@
 		lang="ts"
 		setup
 >
-	import { FoxyAppBar, FoxyBtn } from '@foxy/components'
-	import { MDI_ICONS } from "@foxy/enums"
+	import { FoxuiAppBar, FoxuiBtn } from '@foxui/components'
+	import { MDI_ICONS } from "@foxui/enums"
 
-	import type { IAppBarProps } from "@foxy/interfaces"
+	import type { IAppBarProps } from "@foxui/interfaces"
 	import {
 		HstBorder,
 		HstColor,
@@ -312,9 +312,9 @@
 	import { reactive } from "vue"
 
 	const state: Partial<IAppBarProps> = reactive({
-		title: 'Foxy',
+		title: 'Foxui',
 		image: {
-			alt: 'Foxy',
+			alt: 'Foxui',
 			width: 36,
 			src: new URL('/public/logo.svg', import.meta.url).href
 		},

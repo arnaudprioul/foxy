@@ -1,13 +1,13 @@
-import { FoxyClassIcon } from '@foxy/components'
+import { FoxuiClassIcon } from '@foxui/components'
 
-import { MDI_ICONS } from '@foxy/enums'
+import { MDI_ICONS } from '@foxui/enums'
 
-import type { IIconAliases, IIconSet } from '@foxy/interfaces'
+import type { IIconAliases, IIconSet } from '@foxui/interfaces'
 import { h } from 'vue'
 
 export const MDI: IIconSet = {
     // Not using mergeProps here, functional components merge props by default (?)
-    component: (props: any) => h(FoxyClassIcon, {...props, class: 'mdi'})
+    component: (props: any) => h(FoxuiClassIcon, {...props, class: 'mdi'})
 }
 
 export const MDI_ALIASES: IIconAliases = {

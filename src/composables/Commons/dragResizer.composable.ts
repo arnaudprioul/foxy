@@ -1,10 +1,10 @@
-import { useEventListener } from '@foxy/composables'
+import { useEventListener } from '@foxui/composables'
 
-import { AXIS, CLIENT_POSITION } from '@foxy/enums'
+import { AXIS, CLIENT_POSITION } from '@foxui/enums'
 
-import type { TAxis } from '@foxy/types'
+import type { TAxis } from '@foxui/types'
 
-import { addWindowListener, clamp, getPosition } from '@foxy/utils'
+import { addWindowListener, clamp, getPosition } from '@foxui/utils'
 
 import { computed, onUnmounted, Ref, ref } from 'vue'
 

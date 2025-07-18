@@ -19,7 +19,7 @@ import type {
     IFiltersProps,
     IInternalDataTableHeader,
     ITableProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
 import type { UnwrapRef } from 'vue'
 

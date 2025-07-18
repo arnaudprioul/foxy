@@ -1,3 +1,3 @@
-import { FoxyListGroupActivator } from "@foxy/components"
+import { FoxuiListGroupActivator } from "@foxui/components"
 
-export type TFoxyListGroupActivator = InstanceType<typeof FoxyListGroupActivator>
+export type TFoxuiListGroupActivator = InstanceType<typeof FoxuiListGroupActivator>

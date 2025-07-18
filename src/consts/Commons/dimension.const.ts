@@ -1,6 +1,6 @@
-import { DIMENSIONS } from '@foxy/enums'
+import { DIMENSIONS } from '@foxui/enums'
 
-import type { TDimensions } from '@foxy/types'
+import type { TDimensions } from '@foxui/types'
 
 export const DIMENSIONS_ARRAY: Array<TDimensions> = [
     DIMENSIONS.HEIGHT,

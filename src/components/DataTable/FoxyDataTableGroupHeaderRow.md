@@ -1,5 +1,0 @@
-# Foxydatatablegroupheaderrow
-
-## Usage
-
-    <FoxyDataTableGroupHeaderRow />

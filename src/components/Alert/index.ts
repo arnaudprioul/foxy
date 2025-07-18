@@ -1,1 +1,1 @@
-export { default as FoxyAlert } from './FoxyAlert.vue'
+export { default as FoxuiAlert } from './FoxuiAlert.vue'

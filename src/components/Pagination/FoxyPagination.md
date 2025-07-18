@@ -1,5 +1,0 @@
-# Foxypagination
-
-## Usage
-
-    <FoxyPagination />

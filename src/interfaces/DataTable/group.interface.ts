@@ -7,7 +7,7 @@ import type {
     IDataTableSortItem,
     IInternalDataTableHeader,
     IPaddingProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 import type { ComputedRef, Ref } from 'vue'
 
 export interface IDataTableGroupProps {

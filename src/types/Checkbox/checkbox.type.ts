@@ -1,3 +1,3 @@
-import { FoxyCheckbox } from "@foxy/components"
+import { FoxuiCheckbox } from "@foxui/components"
 
-export type TFoxyCheckbox = InstanceType<typeof FoxyCheckbox>
+export type TFoxuiCheckbox = InstanceType<typeof FoxuiCheckbox>

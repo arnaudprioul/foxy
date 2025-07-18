@@ -1,1 +1,1 @@
-export { default as FoxySheet } from './FoxySheet.vue'
+export { default as FoxuiSheet } from './FoxuiSheet.vue'

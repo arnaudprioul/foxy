@@ -1,4 +1,4 @@
-import type { ICommonsComponentProps, IDimensionProps, ITagProps, ITransitionComponentProps } from '@foxy/interfaces'
+import type { ICommonsComponentProps, IDimensionProps, ITagProps, ITransitionComponentProps } from '@foxui/interfaces'
 
 export interface ILazyProps {
     eager?: boolean

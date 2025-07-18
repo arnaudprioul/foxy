@@ -1,3 +1,3 @@
-import { FoxyScaleRotate } from "@foxy/components"
+import { FoxuiScaleRotate } from "@foxui/components"
 
-export type TFoxyScaleRotate = InstanceType<typeof FoxyScaleRotate>
+export type TFoxuiScaleRotate = InstanceType<typeof FoxuiScaleRotate>

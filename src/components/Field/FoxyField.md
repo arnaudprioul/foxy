@@ -1,5 +1,0 @@
-# Foxyfield
-
-## Usage
-
-    <FoxyField />

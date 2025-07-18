@@ -1,6 +1,6 @@
-import type { IGoToInstance, IGoToOptions, IGoToOptionsPatterns } from '@foxy/interfaces'
+import type { IGoToInstance, IGoToOptions, IGoToOptionsPatterns } from '@foxui/interfaces'
 
-import { clamp, consoleWarn, int, mergeDeep, refElement } from '@foxy/utils'
+import { clamp, consoleWarn, int, mergeDeep, refElement } from '@foxui/utils'
 
 import { ComponentPublicInstance } from 'vue'
 
@@ -105,7 +105,7 @@ export async function scrollTo (
 
         if (options.layout) {
             const styles = window.getComputedStyle(target)
-            const layoutOffset = styles.getPropertyValue('--foxy-layout-top')
+            const layoutOffset = styles.getPropertyValue('--foxui-layout-top')
 
             if (layoutOffset) targetLocation -= int(layoutOffset)
         }

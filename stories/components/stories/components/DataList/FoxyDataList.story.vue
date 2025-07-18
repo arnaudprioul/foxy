@@ -6,16 +6,16 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container fullscreen>
-          <foxy-row
+	      <foxui-container fullscreen>
+		      <foxui-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col cols="auto">
-              <foxy-data-list v-bind="state"/>
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+			      <foxui-col cols="auto">
+				      <foxui-data-list v-bind="state"/>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
       <template #controls>
 
@@ -29,9 +29,9 @@
     lang="ts"
     setup
 >
-	import { FoxyCol, FoxyContainer, FoxyDataList, FoxyRow } from '@foxy/components'
+	import { FoxuiCol, FoxuiContainer, FoxuiDataList, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxui/enums'
 
 	import { reactive } from 'vue'
 

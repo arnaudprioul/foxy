@@ -1,4 +1,4 @@
-import { blockScrollStrategy, closeScrollStrategy, repositionScrollStrategy } from '@foxy/utils'
+import { blockScrollStrategy, closeScrollStrategy, repositionScrollStrategy } from '@foxui/utils'
 
 export const SCROLL_STRATEGIES = {
     none: null,

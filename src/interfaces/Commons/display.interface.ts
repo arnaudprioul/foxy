@@ -1,4 +1,4 @@
-import type { TBreakpoint, TDisplayThresholds } from '@foxy/types'
+import type { TBreakpoint, TDisplayThresholds } from '@foxui/types'
 
 import type { Ref } from 'vue'
 

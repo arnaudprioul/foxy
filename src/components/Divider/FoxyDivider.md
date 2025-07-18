@@ -1,5 +1,0 @@
-# Foxydivider
-
-## Usage
-
-    <FoxyDivider />

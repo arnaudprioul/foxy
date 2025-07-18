@@ -1,5 +1,0 @@
-# Foxyratingfield
-
-## Usage
-
-    <FoxyRatingField />

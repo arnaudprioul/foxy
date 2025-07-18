@@ -1,3 +1,3 @@
-import { FoxyLigatureIcon } from "@foxy/components"
+import { FoxuiLigatureIcon } from "@foxui/components"
 
-export type TFoxyLigatureIcon = InstanceType<typeof FoxyLigatureIcon>
+export type TFoxuiLigatureIcon = InstanceType<typeof FoxuiLigatureIcon>

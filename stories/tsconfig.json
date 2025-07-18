@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "paths": {
-      "@foxy": [
+      "@foxui": [
         "../src/"
       ],
-      "@foxy/*": [
+      "@foxui/*": [
         "../src/*"
       ],
       "@stories": [

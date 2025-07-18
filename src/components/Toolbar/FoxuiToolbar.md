@@ -1,0 +1,5 @@
+# Foxuibar
+
+## Usage
+
+    <FoxuiBar />

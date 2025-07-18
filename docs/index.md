@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "Foxy documentations"
-  text: "Foxy is a site builder and design system developed in vuejs 3, composition api and typescript"
+  name: "Foxui documentations"
+  text: "Foxui is a site builder and design system developed in vuejs 3, composition api and typescript"
   tagline: My great project tagline
   actions:
     - theme: brand

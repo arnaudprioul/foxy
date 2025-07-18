@@ -1,4 +1,4 @@
-import type { TInternalAdapter } from "@foxy/types"
+import type { TInternalAdapter } from "@foxui/types"
 
 export interface IDateInstance extends TInternalAdapter {
     locale?: any

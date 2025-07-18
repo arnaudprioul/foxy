@@ -8,8 +8,8 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@foxy/interfaces'
-import type { TIcon } from '@foxy/types'
+} from '@foxui/interfaces'
+import type { TIcon } from '@foxui/types'
 
 export interface ISlideGroupProps extends ICommonsComponentProps, ITagProps, IDirectionProps, IGroupProps, IPaddingProps, IMarginProps, IRoundedProps, IBorderProps, IDisplayProps {
     centerActive?: boolean

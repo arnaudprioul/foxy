@@ -1,1 +1,1 @@
-export { default as FoxySystemBar } from './FoxySystemBar.vue'
+export { default as FoxuiSystemBar } from './FoxuiSystemBar.vue'

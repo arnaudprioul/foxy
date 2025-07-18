@@ -1,3 +1,3 @@
-import { FoxyProgressLinear } from "@foxy/components"
+import { FoxuiProgressLinear } from "@foxui/components"
 
-export type TFoxyProgressLinear = InstanceType<typeof FoxyProgressLinear>
+export type TFoxuiProgressLinear = InstanceType<typeof FoxuiProgressLinear>

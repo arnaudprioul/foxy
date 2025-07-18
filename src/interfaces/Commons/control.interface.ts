@@ -1,4 +1,4 @@
-import type { TIcon } from '@foxy/types'
+import type { TIcon } from '@foxui/types'
 
 export interface IControlProps {
     icon: TIcon

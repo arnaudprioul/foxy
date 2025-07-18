@@ -1,5 +1,0 @@
-# Foxyprogresscircular
-
-## Usage
-
-    <FoxyProgressCircular />

@@ -1,4 +1,4 @@
-import type { IFormProvide } from '@foxy/interfaces'
+import type { IFormProvide } from '@foxui/interfaces'
 import type { InjectionKey } from 'vue'
 
-export const FOXY_FORM_KEY: InjectionKey<IFormProvide> = Symbol.for('foxy:form')
+export const FOXUI_FORM_KEY: InjectionKey<IFormProvide> = Symbol.for('foxui:form')

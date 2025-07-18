@@ -1,5 +1,0 @@
-# Foxypicker
-
-## Usage
-
-    <FoxyPicker />

@@ -1,4 +1,4 @@
-import type { TObserveHandler } from '@foxy/types'
+import type { TObserveHandler } from '@foxui/types'
 
 import type { DirectiveBinding } from 'vue'
 

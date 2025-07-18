@@ -1,7 +1,7 @@
+import vue from '@vitejs/plugin-vue'
 import { fileURLToPath } from 'node:url'
 import path from 'path'
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
 
 const resolve = (file: string) => path.resolve(__dirname, file)
 
@@ -10,8 +10,8 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: [
-      { find: /^foxy$/, replacement: resolve('./src/foxy.ts') },
-      { find: /^@foxy/, replacement: fileURLToPath(new URL("./src", import.meta.url)) },
+        {find: /^foxui$/, replacement: resolve('./src/foxui.ts')},
+        {find: /^@foxui/, replacement: fileURLToPath(new URL("./src", import.meta.url))},
       { find: /^@stories/, replacement: fileURLToPath(new URL("./stories", import.meta.url)) },
     ],
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']

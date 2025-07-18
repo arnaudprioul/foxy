@@ -1,4 +1,4 @@
-import { getCurrentInstance } from '@foxy/utils'
+import { getCurrentInstance } from '@foxui/utils'
 
 export function useScopeId () {
     const vm = getCurrentInstance('useScopeId')

@@ -7,57 +7,57 @@
     <Variant title="Default">
       <template #default>
         <div style="height: 1500px;">
-          <foxy-container fullscreen>
-            <foxy-row
+	        <foxui-container fullscreen>
+		        <foxui-row
                 :align="ALIGN.CENTER"
                 :justify="JUSTIFY.CENTER"
             >
-              <foxy-col cols>
-                <foxy-parallax v-bind="state">
-                  <foxy-container fullscreen>
-                    <foxy-row
+			        <foxui-col cols>
+				        <foxui-parallax v-bind="state">
+					        <foxui-container fullscreen>
+						        <foxui-row
                         :align="ALIGN.CENTER"
                         :justify="JUSTIFY.CENTER"
                     >
-                      <foxy-col cols="auto">
-                        <foxy-title tag="h2">Parallax</foxy-title>
-                      </foxy-col>
-                    </foxy-row>
-                  </foxy-container>
-                  <foxy-parallax-element
+							        <foxui-col cols="auto">
+								        <foxui-title tag="h2">Parallax</foxui-title>
+							        </foxui-col>
+						        </foxui-row>
+					        </foxui-container>
+					        <foxui-parallax-element
                       :strength="-20"
                       :type="stateElement.type"
                       class="circle circle-blue"
                   />
-                  <foxy-parallax-element
+					        <foxui-parallax-element
                       :strength="10"
                       :type="stateElement.type"
                       class="circle circle-purple"
                   />
-                  <foxy-parallax-element
+					        <foxui-parallax-element
                       :strength="25"
                       :type="stateElement.type"
                       class="circle circle-yellow"
                   />
-                  <foxy-parallax-element
+					        <foxui-parallax-element
                       :strength="30"
                       :type="stateElement.type"
                       class="circle circle-green"
                   />
-                  <foxy-parallax-element
+					        <foxui-parallax-element
                       :strength="15"
                       :type="stateElement.type"
                       class="circle circle-orange"
                   />
-                  <foxy-parallax-element
+					        <foxui-parallax-element
                       :strength="-15"
                       :type="stateElement.type"
                       class="circle circle-red"
                   />
-                </foxy-parallax>
-              </foxy-col>
-            </foxy-row>
-          </foxy-container>
+				        </foxui-parallax>
+			        </foxui-col>
+		        </foxui-row>
+	        </foxui-container>
         </div>
       </template>
       <template #controls>
@@ -105,9 +105,16 @@
     lang="ts"
     setup
 >
-	import { FoxyCol, FoxyContainer, FoxyParallax, FoxyParallaxElement, FoxyRow, FoxyTitle } from '@foxy/components'
+	import {
+		FoxuiCol,
+		FoxuiContainer,
+		FoxuiParallax,
+		FoxuiParallaxElement,
+		FoxuiRow,
+		FoxuiTitle
+	} from '@foxui/components'
 
-	import { ALIGN, JUSTIFY, PARALLAX_ELEMENT_TYPE, PARALLAX_EVENT } from '@foxy/enums'
+	import { ALIGN, JUSTIFY, PARALLAX_ELEMENT_TYPE, PARALLAX_EVENT } from '@foxui/enums'
 
 	import { reactive } from 'vue'
 
@@ -179,7 +186,7 @@
   }
 }
 
-.foxy-title {
+.foxui-title {
   z-index: 99;
   position: relative;
 }

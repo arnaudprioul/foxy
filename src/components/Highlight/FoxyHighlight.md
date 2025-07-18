@@ -1,5 +1,0 @@
-# FoxyHighlight
-
-## Usage
-
-    <FoxyHighlight />

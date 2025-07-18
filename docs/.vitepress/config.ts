@@ -1,13 +1,13 @@
 import markdownItCodetabs from 'markdown-it-codetabs'
 import markdownItDeflist from 'markdown-it-deflist'
 import markdownItFootnote from 'markdown-it-footnote'
+import { Highlighter } from 'shiki'
 
 import Components from 'unplugin-vue-components/vite'
-import { Highlighter } from 'shiki'
 
 import { defineConfig } from 'vitepress'
 
-import {version} from '../../package.json'
+import { version } from '../../package.json'
 
 const VERSIONS = [
     {text: `v${version} (current)`, link: '/'},
@@ -18,8 +18,8 @@ const VERSIONS = [
 export default defineConfig({
     appearance: undefined,
 
-    title: "Foxy",
-    description: "Foxy is a site builder and design system developed in VueJs 3, composition api and typescript",
+    title: "Foxui",
+    description: "Foxui is a site builder and design system developed in VueJs 3, composition api and typescript",
 
     vite: {
         plugins: [
@@ -75,7 +75,7 @@ export default defineConfig({
                 text: 'Getting Started',
                 items: [
                     {
-                        text: 'About Foxy',
+                        text: 'About Foxui',
                         link: '/getting-started/about',
                     },
                     {

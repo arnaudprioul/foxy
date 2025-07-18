@@ -1,7 +1,7 @@
-import { FoxyOtpInputField } from '@foxy/components'
+import { FoxuiOtpInputField } from '@foxui/components'
 
-import { OTP_INPUT_FIELD_TYPE } from "@foxy/enums"
+import { OTP_INPUT_FIELD_TYPE } from "@foxui/enums"
 
 export type TOtpInputFieldType = `${OTP_INPUT_FIELD_TYPE}`
 
-export type TFoxyOtpInputField = InstanceType<typeof FoxyOtpInputField>
+export type TFoxuiOtpInputField = InstanceType<typeof FoxuiOtpInputField>

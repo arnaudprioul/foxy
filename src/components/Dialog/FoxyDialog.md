@@ -1,5 +1,0 @@
-# Foxydialog
-
-## Usage
-
-    <FoxyDialog />

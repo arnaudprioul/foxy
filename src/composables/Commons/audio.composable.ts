@@ -1,4 +1,4 @@
-import type { IAudioProps } from '@foxy/interfaces'
+import type { IAudioProps } from '@foxui/interfaces'
 
 import { ref, shallowRef, watch } from 'vue'
 

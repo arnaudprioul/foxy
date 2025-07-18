@@ -1,0 +1,5 @@
+# Foxuiinfinitescroll
+
+## Usage
+
+    <FoxuiInfiniteScroll />

@@ -1,0 +1,5 @@
+# FoxuiAvatarGroup
+
+## Usage
+
+    <FoxuiAvatarGroup />

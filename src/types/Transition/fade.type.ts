@@ -1,3 +1,3 @@
-import { FoxyFade } from "@foxy/components"
+import { FoxuiFade } from "@foxui/components"
 
-export type TFoxyFade = InstanceType<typeof FoxyFade>
+export type TFoxuiFade = InstanceType<typeof FoxuiFade>

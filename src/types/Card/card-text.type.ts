@@ -1,3 +1,3 @@
-import { FoxyCardText } from '@foxy/components'
+import { FoxuiCardText } from '@foxui/components'
 
-export type TFoxyCardText = InstanceType<typeof FoxyCardText>
+export type TFoxuiCardText = InstanceType<typeof FoxuiCardText>

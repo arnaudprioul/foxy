@@ -1,3 +1,3 @@
-import FoxyDataTableFooter from "@foxy/components/DataTable/FoxyDataTableFooter.vue"
+import FoxuiDataTableFooter from "@foxui/components/DataTable/FoxuiDataTableFooter.vue"
 
-export type TFoxyDataTableFooter = InstanceType<typeof FoxyDataTableFooter>
+export type TFoxuiDataTableFooter = InstanceType<typeof FoxuiDataTableFooter>

@@ -7,26 +7,26 @@
 	>
 		<Variant title="Default">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row
+				<foxui-container>
+					<foxui-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col cols="auto">
-							<foxy-btn
+						<foxui-col cols="auto">
+							<foxui-btn
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
+						</foxui-col>
 
-						<foxy-col cols="auto">
-							<foxy-btn
+						<foxui-col cols="auto">
+							<foxui-btn
 									:icon="icon"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -54,16 +54,16 @@
 
 		<Variant title="Status">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-btn
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-btn
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -76,16 +76,16 @@
 
 		<Variant title="Color">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-btn
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-btn
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -104,16 +104,16 @@
 
 		<Variant title="Border">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-btn
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-btn
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -123,16 +123,16 @@
 
 		<Variant title="Padding">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-btn
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-btn
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -142,16 +142,16 @@
 
 		<Variant title="Margin">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-btn
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-btn
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -161,16 +161,16 @@
 
 		<Variant title="Dimension">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-btn
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-btn
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -189,16 +189,16 @@
 
 		<Variant title="Density">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-btn
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-btn
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -208,16 +208,16 @@
 
 		<Variant title="Elevation">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-btn
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-btn
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -227,16 +227,16 @@
 
 		<Variant title="Rounded">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-btn
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-btn
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -246,16 +246,16 @@
 
 		<Variant title="Loading">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-btn
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-btn
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -265,16 +265,16 @@
 
 		<Variant title="Position">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-btn
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-btn
 									:text="text"
 									v-bind="state"
 							/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -295,10 +295,10 @@
 		setup
 >
 
-	import { FoxyBtn, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
+	import { FoxuiBtn, FoxuiCol, FoxuiContainer, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxy/enums'
-	import { IBtnProps } from "@foxy/interfaces"
+	import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxui/enums'
+	import { IBtnProps } from "@foxui/interfaces"
 	import {
 		HstBorder,
 		HstColor,

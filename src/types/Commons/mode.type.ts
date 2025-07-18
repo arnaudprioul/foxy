@@ -1,3 +1,3 @@
-import { MODE } from '@foxy/enums'
+import { MODE } from '@foxui/enums'
 
 export type TMode = `${MODE}`

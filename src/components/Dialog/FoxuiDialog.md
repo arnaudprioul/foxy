@@ -1,0 +1,5 @@
+# Foxuidialog
+
+## Usage
+
+    <FoxuiDialog />

@@ -1,5 +1,5 @@
-import type { IDataTableItem } from '@foxy/interfaces'
-import type { TVModel } from '@foxy/types'
+import type { IDataTableItem } from '@foxui/interfaces'
+import type { TVModel } from '@foxui/types'
 import type { Ref } from 'vue'
 
 export interface IDataTableExpandProps {

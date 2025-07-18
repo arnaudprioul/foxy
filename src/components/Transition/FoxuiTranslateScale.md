@@ -1,0 +1,5 @@
+# FoxuiTranslateScale
+
+## Usage
+
+    <FoxuiTranslateScale />

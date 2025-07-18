@@ -1,3 +1,3 @@
-import { FoxyAlert } from '@foxy/components'
+import { FoxuiAlert } from '@foxui/components'
 
-export type TFoxyAlert = InstanceType<typeof FoxyAlert>
+export type TFoxuiAlert = InstanceType<typeof FoxuiAlert>

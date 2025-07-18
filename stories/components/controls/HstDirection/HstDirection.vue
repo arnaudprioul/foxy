@@ -10,9 +10,9 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxy/composables"
-	import { DIRECTION } from "@foxy/enums"
-	import type { IDirectionProps } from "@foxy/interfaces"
+	import { useVModel } from "@foxui/composables"
+	import { DIRECTION } from "@foxui/enums"
+	import type { IDirectionProps } from "@foxui/interfaces"
 
 	import useTitle from '@stories/composables/title.composable'
 	import { directionList } from '@stories/const/direction.const'

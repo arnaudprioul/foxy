@@ -1,8 +1,8 @@
-import { useIntersectionObserver, useMargin, usePadding, useVModel } from '@foxy/composables'
+import { useIntersectionObserver, useMargin, usePadding, useVModel } from '@foxui/composables'
 
-import type { IProgressTypeProps } from '@foxy/interfaces'
+import type { IProgressTypeProps } from '@foxui/interfaces'
 
-import { int } from "@foxy/utils"
+import { int } from "@foxui/utils"
 
 import { computed, useSlots } from 'vue'
 
@@ -26,13 +26,13 @@ export function useProgress (props: IProgressTypeProps) {
 
     const progressClasses = computed(() => {
         return [
-            'foxy-progress',
+            'foxui-progress',
             {
-                'foxy-progress--indeterminate': props.indeterminate,
-                'foxy-progress--visible': isIntersecting.value,
-                'foxy-progress--active': props.active,
-                'foxy-progress--striped': props.striped,
-                'foxy-progress--absolute': props.absolute
+                'foxui-progress--indeterminate': props.indeterminate,
+                'foxui-progress--visible': isIntersecting.value,
+                'foxui-progress--active': props.active,
+                'foxui-progress--striped': props.striped,
+                'foxui-progress--absolute': props.absolute
             },
             paddingClasses.value,
             marginClasses.value

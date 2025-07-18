@@ -1,4 +1,4 @@
-import type { TAlign } from '@foxy/types'
+import type { TAlign } from '@foxui/types'
 
 export interface IAlignProps {
     align?: TAlign,

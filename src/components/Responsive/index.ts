@@ -1,1 +1,1 @@
-export { default as FoxyResponsive } from './FoxyResponsive.vue'
+export { default as FoxuiResponsive } from './FoxuiResponsive.vue'

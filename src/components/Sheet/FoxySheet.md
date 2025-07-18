@@ -1,5 +1,0 @@
-# Foxysheet
-
-## Usage
-
-    <FoxySheet />

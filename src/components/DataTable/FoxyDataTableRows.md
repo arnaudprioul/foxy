@@ -1,5 +1,0 @@
-# Foxydatatablerows
-
-## Usage
-
-    <FoxyDataTableRows />

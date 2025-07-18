@@ -1,0 +1,5 @@
+# Foxuiswitch
+
+## Usage
+
+    <FoxuiSwitch />

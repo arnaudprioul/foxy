@@ -1,6 +1,6 @@
-import type { IDateAdapter } from "@foxy/interfaces"
+import type { IDateAdapter } from "@foxui/interfaces"
 
-import type { TCustomDateFormat } from "@foxy/types"
+import type { TCustomDateFormat } from "@foxui/types"
 
 import {
     addDays,
@@ -43,7 +43,7 @@ import {
     startOfWeek,
     startOfYear,
     toISO
-} from '@foxy/utils'
+} from '@foxui/utils'
 
 export class DateAdapter implements IDateAdapter<Date> {
     locale: string

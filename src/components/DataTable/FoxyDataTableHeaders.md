@@ -1,5 +1,0 @@
-# Foxydatatableheaders
-
-## Usage
-
-    <FoxyDataTableHeaders />

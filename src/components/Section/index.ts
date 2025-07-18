@@ -1,1 +1,1 @@
-export { default as FoxySection } from './FoxySection.vue'
+export { default as FoxuiSection } from './FoxuiSection.vue'

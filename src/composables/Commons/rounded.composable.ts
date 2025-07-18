@@ -1,8 +1,8 @@
-import { BORDER_RADIUS_REGEX } from '@foxy/consts'
+import { BORDER_RADIUS_REGEX } from '@foxui/consts'
 
-import type { IRoundedProps } from '@foxy/interfaces'
+import type { IRoundedProps } from '@foxui/interfaces'
 
-import { convertToUnit, formatRoundedStylesVar, getCurrentInstanceName } from '@foxy/utils'
+import { convertToUnit, formatRoundedStylesVar, getCurrentInstanceName } from '@foxui/utils'
 
 import { computed, isRef, Ref } from 'vue'
 

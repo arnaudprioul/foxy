@@ -1,3 +1,3 @@
-import { FoxyOverlayScrim } from "@foxy/components"
+import { FoxuiOverlayScrim } from "@foxui/components"
 
-export type TFoxyOverlayScrim = InstanceType<typeof FoxyOverlayScrim>
+export type TFoxuiOverlayScrim = InstanceType<typeof FoxuiOverlayScrim>

@@ -1,4 +1,4 @@
-import { HSLtoRGB, HSVtoRGB } from '@foxy/utils'
+import { HSLtoRGB, HSVtoRGB } from '@foxui/utils'
 
 export const CSS_COLOR_REGEX = /^(?<fn>(?:rgb|hsl)a?)\((?<values>.+)\)/
 

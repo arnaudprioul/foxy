@@ -1,9 +1,9 @@
-import type { IDateInstance, IDateOptions } from "@foxy/interfaces"
+import type { IDateInstance, IDateOptions } from "@foxui/interfaces"
 
 import type { InjectionKey } from "vue"
 
-export const FOXY_DATE_OPTIONS_KEY: InjectionKey<IDateOptions> = Symbol.for('foxy:date-options')
-export const FOXY_DATE_ADAPTER_KEY: InjectionKey<IDateInstance> = Symbol.for('foxy:date-adapter')
+export const FOXUI_DATE_OPTIONS_KEY: InjectionKey<IDateOptions> = Symbol.for('foxui:date-options')
+export const FOXUI_DATE_ADAPTER_KEY: InjectionKey<IDateInstance> = Symbol.for('foxui:date-adapter')
 
 export const REGEX_DATE_YYYY_MM_DD = /^([12]\d{3}-([1-9]|0[1-9]|1[0-2])-([1-9]|0[1-9]|[12]\d|3[01]))$/
 

@@ -1,8 +1,8 @@
-import { IN_BROWSER } from "@foxy/consts"
-import { KEYBOARD_MODIFIERS } from "@foxy/consts/Commons/hotkey.const.ts"
-import { IHotkeyOptions } from "@foxy/interfaces"
-import { TKeyboardModifiers } from "@foxy/types"
-import { consoleWarn, getCurrentInstance, splitKeyCombination, splitKeySequence } from "@foxy/utils"
+import { IN_BROWSER } from "@foxui/consts"
+import { KEYBOARD_MODIFIERS } from "@foxui/consts/Commons/hotkey.const.ts"
+import { IHotkeyOptions } from "@foxui/interfaces"
+import { TKeyboardModifiers } from "@foxui/types"
+import { consoleWarn, getCurrentInstance, splitKeyCombination, splitKeySequence } from "@foxui/utils"
 
 import { MaybeRef, onBeforeUnmount, toValue, watch } from "vue"
 

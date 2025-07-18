@@ -1,5 +1,0 @@
-# Foxybadge
-
-## Usage
-
-    <FoxyBadge />

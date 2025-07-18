@@ -1,0 +1,5 @@
+# Foxuichip
+
+## Usage
+
+    <FoxuiChip />

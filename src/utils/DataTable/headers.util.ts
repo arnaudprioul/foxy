@@ -1,8 +1,8 @@
-import { DEFAULT_ACTION_HEADER, DEFAULT_HEADER } from '@foxy/consts'
+import { DEFAULT_ACTION_HEADER, DEFAULT_HEADER } from '@foxui/consts'
 
-import type { IDataTableHeader, IInternalDataTableHeader } from '@foxy/interfaces'
+import type { IDataTableHeader, IInternalDataTableHeader } from '@foxui/interfaces'
 
-import { consoleError } from '@foxy/utils'
+import { consoleError } from '@foxui/utils'
 
 export function extractKeys (headers: Array<IDataTableHeader>, keys = new Set<string>()) {
     for (const item of headers) {

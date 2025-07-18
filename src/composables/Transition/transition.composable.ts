@@ -1,6 +1,6 @@
-import { FOXY_WINDOW_KEY } from '@foxy/consts'
-import type { ITransitionProps } from '@foxy/interfaces'
-import { convertToUnit } from '@foxy/utils'
+import { FOXUI_WINDOW_KEY } from '@foxui/consts'
+import type { ITransitionProps } from '@foxui/interfaces'
+import { convertToUnit } from '@foxui/utils'
 
 import { Component, computed, inject, nextTick, ShallowRef, shallowRef, Transition, TransitionGroup } from 'vue'
 
@@ -87,7 +87,7 @@ export function useWindowTransition (props: ITransitionProps) {
 
     const tag: ShallowRef<Component> = props.group ? shallowRef(TransitionGroup) : shallowRef(Transition)
 
-    const window = inject(FOXY_WINDOW_KEY)
+    const window = inject(FOXUI_WINDOW_KEY)
 
     const isTransitioning = shallowRef(false)
 

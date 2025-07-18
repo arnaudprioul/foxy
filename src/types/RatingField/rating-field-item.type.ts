@@ -1,3 +1,3 @@
-import { FoxyRatingFieldItem } from "@foxy/components"
+import { FoxuiRatingFieldItem } from "@foxui/components"
 
-export type TFoxyRatingFieldItem = InstanceType<typeof FoxyRatingFieldItem>
+export type TFoxuiRatingFieldItem = InstanceType<typeof FoxuiRatingFieldItem>

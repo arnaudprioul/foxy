@@ -1,16 +1,16 @@
-import { useVModel } from '@foxy/composables'
+import { useVModel } from '@foxui/composables'
 import {
     EMPTY_NESTED,
-    FOXY_NESTED_KEY,
+    FOXUI_NESTED_KEY,
     LIST_OPEN_STRATEGY,
     MULTIPLE_OPEN_STRATEGY,
     SINGLE_OPEN_STRATEGY
-} from '@foxy/consts'
-import { OPEN_STRATEGY, SELECT_STRATEGY } from '@foxy/enums'
+} from '@foxui/consts'
+import { OPEN_STRATEGY, SELECT_STRATEGY } from '@foxui/enums'
 
-import type { INestedProps } from '@foxy/interfaces'
+import type { INestedProps } from '@foxui/interfaces'
 
-import type { TNestedProvide } from '@foxy/types'
+import type { TNestedProvide } from '@foxui/types'
 
 import {
     classicSelectStrategy,
@@ -20,7 +20,7 @@ import {
     independentSingleSelectStrategy,
     leafSelectStrategy,
     leafSingleSelectStrategy
-} from '@foxy/utils'
+} from '@foxui/utils'
 
 import { computed, inject, onBeforeUnmount, provide, Ref, ref, shallowRef, toRaw } from 'vue'
 
@@ -188,13 +188,13 @@ export const useNested = (props: INestedProps) => {
         }
     }
 
-    provide(FOXY_NESTED_KEY, nested)
+    provide(FOXUI_NESTED_KEY, nested)
 
     return nested.root
 }
 
 export function useNestedItem (id: Ref<unknown>, isGroup: boolean) {
-    const parent = inject(FOXY_NESTED_KEY, EMPTY_NESTED)
+    const parent = inject(FOXUI_NESTED_KEY, EMPTY_NESTED)
 
     const uidSymbol = Symbol(getUid())
     const computedId = computed(() => id.value !== undefined ? id.value : uidSymbol)
@@ -240,19 +240,19 @@ export function useNestedItem (id: Ref<unknown>, isGroup: boolean) {
     })
 
     if (isGroup) {
-        provide(FOXY_NESTED_KEY, item)
+        provide(FOXUI_NESTED_KEY, item)
     }
 
     return item
 }
 
 export function useNestedGroupActivator () {
-    const parent = inject(FOXY_NESTED_KEY, EMPTY_NESTED)
+    const parent = inject(FOXUI_NESTED_KEY, EMPTY_NESTED)
 
     const item = {
         ...parent,
         isGroupActivator: true
     }
 
-    provide(FOXY_NESTED_KEY, item)
+    provide(FOXUI_NESTED_KEY, item)
 }

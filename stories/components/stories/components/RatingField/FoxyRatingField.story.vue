@@ -6,19 +6,19 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container fullscreen>
-          <foxy-row
+	      <foxui-container fullscreen>
+		      <foxui-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col cols="auto">
-              <foxy-rating-field
+			      <foxui-col cols="auto">
+				      <foxui-rating-field
                   v-bind="state"
                   @update:model-value="logEvent('update modelValue', $event)"
               />
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
       <template #controls>
         <hst-checkbox
@@ -54,9 +54,9 @@
     lang="ts"
     setup
 >
-	import { FoxyCol, FoxyContainer, FoxyRatingField, FoxyRow } from '@foxy/components'
+	import { FoxuiCol, FoxuiContainer, FoxuiRatingField, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxui/enums'
 
 	import { logEvent } from 'histoire/client'
 

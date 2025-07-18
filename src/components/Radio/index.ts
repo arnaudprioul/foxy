@@ -1,3 +1,3 @@
-export { default as FoxyRadio } from './FoxyRadio.vue'
-export { default as FoxyRadioBtn } from './FoxyRadioBtn.vue'
-export { default as FoxyRadioGroup } from './FoxyRadioGroup.vue'
+export { default as FoxuiRadio } from './FoxuiRadio.vue'
+export { default as FoxuiRadioBtn } from './FoxuiRadioBtn.vue'
+export { default as FoxuiRadioGroup } from './FoxuiRadioGroup.vue'

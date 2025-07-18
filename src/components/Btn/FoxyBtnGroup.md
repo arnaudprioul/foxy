@@ -1,5 +1,0 @@
-# Foxybtngroup
-
-## Usage
-
-    <FoxyBtnGroup />

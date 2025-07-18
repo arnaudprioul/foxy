@@ -1,3 +1,3 @@
-import { FoxyMenu } from '@foxy/components'
+import { FoxuiMenu } from '@foxui/components'
 
-export type TFoxyMenu = InstanceType<typeof FoxyMenu>
+export type TFoxuiMenu = InstanceType<typeof FoxuiMenu>

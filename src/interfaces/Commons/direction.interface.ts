@@ -1,4 +1,4 @@
-import type { TDirection } from '@foxy/types'
+import type { TDirection } from '@foxui/types'
 
 export interface IDirectionProps {
     direction?: TDirection

@@ -1,0 +1,5 @@
+# Foxuiwindowytranslate
+
+## Usage
+
+    <FoxuiWindowYTranslate />

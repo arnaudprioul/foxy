@@ -1,5 +1,0 @@
-# Foxyloader
-
-## Usage
-
-    <FoxyLoader />

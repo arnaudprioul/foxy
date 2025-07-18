@@ -1,3 +1,3 @@
-import { FoxyDialog } from '@foxy/components'
+import { FoxuiDialog } from '@foxui/components'
 
-export type TFoxyDialog = InstanceType<typeof FoxyDialog>
+export type TFoxuiDialog = InstanceType<typeof FoxuiDialog>

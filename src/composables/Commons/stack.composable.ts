@@ -1,8 +1,8 @@
-import { useToggleScope } from '@foxy/composables'
-import { FOXY_STACK_KEY, GLOBAL_STACK } from '@foxy/consts'
-import type { IStackProvide } from "@foxy/interfaces"
+import { useToggleScope } from '@foxui/composables'
+import { FOXUI_STACK_KEY, GLOBAL_STACK } from '@foxui/consts'
+import type { IStackProvide } from "@foxui/interfaces"
 
-import { getCurrentInstance } from '@foxy/utils'
+import { getCurrentInstance } from '@foxui/utils'
 
 import { computed, inject, onScopeDispose, provide, reactive, readonly, Ref, shallowRef, toRaw, watchEffect } from 'vue'
 
@@ -14,11 +14,11 @@ export function useStack (
     const vm = getCurrentInstance('useStack')
     const createStackEntry = !disableGlobalStack
 
-    const parent = inject(FOXY_STACK_KEY, undefined)
+    const parent = inject(FOXUI_STACK_KEY, undefined)
     const stack: IStackProvide = reactive({
         activeChildren: new Set<number>()
     })
-    provide(FOXY_STACK_KEY, stack)
+    provide(FOXUI_STACK_KEY, stack)
 
     const _zIndex = shallowRef(+zIndex.value)
     useToggleScope(isActive, () => {

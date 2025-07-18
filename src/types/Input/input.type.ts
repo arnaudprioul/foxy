@@ -1,3 +1,3 @@
-import { FoxyInput } from '@foxy/components'
+import { FoxuiInput } from '@foxui/components'
 
-export type TFoxyInput = InstanceType<typeof FoxyInput>
+export type TFoxuiInput = InstanceType<typeof FoxuiInput>

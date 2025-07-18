@@ -6,22 +6,22 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container>
-          <foxy-row
+	      <foxui-container>
+		      <foxui-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col cols="auto">
-              <foxy-tooltip v-bind="state">
+			      <foxui-col cols="auto">
+				      <foxui-tooltip v-bind="state">
                 <template #activator="{ props }">
-                  <foxy-btn v-bind="props">
+	                <foxui-btn v-bind="props">
                     Hover me
-                  </foxy-btn>
+	                </foxui-btn>
                 </template>
-              </foxy-tooltip>
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+				      </foxui-tooltip>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
       <template #controls>
 
@@ -34,11 +34,11 @@
     lang="ts"
     setup
 >
-	import { FoxyBtn, FoxyCol, FoxyContainer, FoxyRow, FoxyTooltip } from '@foxy/components'
+	import { FoxuiBtn, FoxuiCol, FoxuiContainer, FoxuiRow, FoxuiTooltip } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxui/enums'
 
-	import type { ITooltipProps } from '@foxy/interfaces'
+	import type { ITooltipProps } from '@foxui/interfaces'
 
 	import { reactive } from 'vue'
 

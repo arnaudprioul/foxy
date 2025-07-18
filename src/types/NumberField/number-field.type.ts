@@ -1,3 +1,3 @@
-import { FoxyNumberField } from '@foxy/components'
+import { FoxuiNumberField } from '@foxui/components'
 
-export type TFoxyNumberField = InstanceType<typeof FoxyNumberField>
+export type TFoxuiNumberField = InstanceType<typeof FoxuiNumberField>

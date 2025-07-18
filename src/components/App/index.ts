@@ -1,2 +1,2 @@
-export { default as FoxyApp } from './FoxyApp.vue'
-export { default as FoxyAppBar } from './FoxyAppBar.vue'
+export { default as FoxuiApp } from './FoxuiApp.vue'
+export { default as FoxuiAppBar } from './FoxuiAppBar.vue'

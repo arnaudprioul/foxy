@@ -1,4 +1,4 @@
-import type { IBox } from '@foxy/interfaces'
+import type { IBox } from '@foxui/interfaces'
 
 export class Box implements IBox {
     x: number

@@ -1,5 +1,0 @@
-# Foxydrawer
-
-## Usage
-
-    <FoxyDrawer />

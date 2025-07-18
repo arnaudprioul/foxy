@@ -10,7 +10,7 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from "@foxy/interfaces"
+} from "@foxui/interfaces"
 
 export interface IDataListProps extends ICommonsComponentProps, IAdjacentProps, IColorProps, IMarginProps, IPaddingProps, IDensityProps, IBorderProps, IRoundedProps, IElevationProps {
     items?: Array<IDataItem> | { [key: string]: IDataItem }

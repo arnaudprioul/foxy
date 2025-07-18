@@ -13,7 +13,7 @@ export default defineConfig({
         HstVue()
     ],
     theme: {
-        title: 'Foxy Page Builder',
+        title: 'Foxui Page Builder',
         favicon: 'favicon.ico',
         logo: {
             square: './public/logo.svg',

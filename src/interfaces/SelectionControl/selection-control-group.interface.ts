@@ -1,5 +1,5 @@
-import type { IColorProps, ICommonsComponentProps, IDensityProps, IRippleProps } from '@foxy/interfaces'
-import type { TIcon } from '@foxy/types'
+import type { IColorProps, ICommonsComponentProps, IDensityProps, IRippleProps } from '@foxui/interfaces'
+import type { TIcon } from '@foxui/types'
 
 import { Ref } from 'vue'
 

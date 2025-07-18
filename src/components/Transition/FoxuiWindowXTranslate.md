@@ -1,0 +1,5 @@
+# Foxuiwindowxtranslate
+
+## Usage
+
+    <FoxuiWindowXTranslate />

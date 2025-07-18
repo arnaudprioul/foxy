@@ -1,5 +1,0 @@
-# Foxyexpansionpanelheader
-
-## Usage
-
-    <FoxyExpansionPanelHeader />

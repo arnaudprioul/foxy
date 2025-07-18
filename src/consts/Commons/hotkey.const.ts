@@ -1,5 +1,5 @@
-import { KEYBOARD_MODIFIERS_KEY } from "@foxy/enums"
-import { TKeyboardModifiers } from "@foxy/types"
+import { KEYBOARD_MODIFIERS_KEY } from "@foxui/enums"
+import { TKeyboardModifiers } from "@foxui/types"
 
 export const KEYBOARD_MODIFIERS: TKeyboardModifiers[] = [KEYBOARD_MODIFIERS_KEY.CONTROL, KEYBOARD_MODIFIERS_KEY.SHIFT, KEYBOARD_MODIFIERS_KEY.ALT, KEYBOARD_MODIFIERS_KEY.META, KEYBOARD_MODIFIERS_KEY.COMMAND]
 

@@ -1,3 +1,3 @@
-import { FoxyAppBar } from '@foxy/components'
+import { FoxuiAppBar } from '@foxui/components'
 
-export type TFoxyAppBar = InstanceType<typeof FoxyAppBar>
+export type TFoxuiAppBar = InstanceType<typeof FoxuiAppBar>

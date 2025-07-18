@@ -1,0 +1,5 @@
+# Foxuicardtext
+
+## Usage
+
+    <FoxuiCardText />

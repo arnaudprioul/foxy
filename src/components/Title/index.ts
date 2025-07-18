@@ -1,1 +1,1 @@
-export { default as FoxyTitle } from './FoxyTitle.vue'
+export { default as FoxuiTitle } from './FoxuiTitle.vue'

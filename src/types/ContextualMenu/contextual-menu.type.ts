@@ -1,3 +1,3 @@
-import { FoxyContextualMenu } from '@foxy/components'
+import { FoxuiContextualMenu } from '@foxui/components'
 
-export type TFoxyContextualMenu = InstanceType<typeof FoxyContextualMenu>
+export type TFoxuiContextualMenu = InstanceType<typeof FoxuiContextualMenu>

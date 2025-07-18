@@ -1,17 +1,17 @@
-import { FoxyClassIcon, FoxySvgIcon } from '@foxy/components/Icon'
+import { FoxuiClassIcon, FoxuiSvgIcon } from '@foxui/components/Icon'
 
-import type { IIconSet } from '@foxy/interfaces'
+import type { IIconSet } from '@foxui/interfaces'
 
-import type { TIconOptions } from '@foxy/types'
+import type { TIconOptions } from '@foxui/types'
 import type { InjectionKey } from 'vue'
 
-export const FOXY_ICONS_KEY: InjectionKey<Required<TIconOptions>> = Symbol.for('foxy:icons')
+export const FOXUI_ICONS_KEY: InjectionKey<Required<TIconOptions>> = Symbol.for('foxui:icons')
 
 export const DEFAULT_SETS: Record<string, IIconSet> = {
     svg: {
-        component: FoxySvgIcon
+        component: FoxuiSvgIcon
     },
     class: {
-        component: FoxyClassIcon
+        component: FoxuiClassIcon
     }
 }

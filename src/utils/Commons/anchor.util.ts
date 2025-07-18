@@ -1,8 +1,8 @@
-import { BLOCK_ARRAY, INLINE_ARRAY } from '@foxy/consts'
+import { BLOCK_ARRAY, INLINE_ARRAY } from '@foxui/consts'
 
-import { AXIS } from '@foxy/enums'
+import { AXIS } from '@foxui/enums'
 
-import type { TAnchor, TBlock, TInline, TParsedAnchor } from '@foxy/types'
+import type { TAnchor, TBlock, TInline, TParsedAnchor } from '@foxui/types'
 
 export function parseAnchor (anchor: TAnchor) {
     const [side, initialAlign] = anchor.split(' ') as [TBlock | TInline | 'center', TBlock | TInline | 'center' | undefined]

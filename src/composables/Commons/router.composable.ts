@@ -1,8 +1,8 @@
-import { IN_BROWSER } from '@foxy/consts'
+import { IN_BROWSER } from '@foxui/consts'
 
-import type { ILink, ILinkProps, ITagProps } from '@foxy/interfaces'
+import type { ILink, ILinkProps, ITagProps } from '@foxui/interfaces'
 
-import { deepEqual, getCurrentInstance, hasEvent } from '@foxy/utils'
+import { deepEqual, getCurrentInstance, hasEvent } from '@foxui/utils'
 
 import { computed, nextTick, onScopeDispose, Ref, resolveDynamicComponent, SetupContext, toRef } from 'vue'
 import {

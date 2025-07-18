@@ -1,4 +1,4 @@
-import type { TScrollBehavior, TScrollStrategy, TScrollStrategyFn } from '@foxy/types'
+import type { TScrollBehavior, TScrollStrategy, TScrollStrategyFn } from '@foxui/types'
 import type { Ref } from 'vue'
 
 export interface IScrollProps {

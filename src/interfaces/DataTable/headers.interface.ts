@@ -1,4 +1,4 @@
-import { ALIGN } from '@foxy/enums'
+import { ALIGN } from '@foxui/enums'
 import type {
     IColorProps,
     ICommonsComponentProps,
@@ -6,7 +6,7 @@ import type {
     IDataTableSortItem,
     IDisplayProps,
     ILoaderProps
-} from '@foxy/interfaces'
+} from '@foxui/interfaces'
 
 import type {
     TAlign,
@@ -15,7 +15,7 @@ import type {
     TFilterFunction,
     TIcon,
     TSelectItemKey
-} from '@foxy/types'
+} from '@foxui/types'
 import type { ComputedRef, Ref, UnwrapRef } from 'vue'
 
 export interface IHeaderCellProps extends ICommonsComponentProps, IColorProps {

@@ -1,5 +1,0 @@
-# Foxyscalerotate
-
-## Usage
-
-    <FoxyScaleRotate />

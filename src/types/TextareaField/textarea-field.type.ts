@@ -1,3 +1,3 @@
-import { FoxyTextareaField } from "@foxy/components"
+import { FoxuiTextareaField } from "@foxui/components"
 
-export type TFoxyTextareaField = InstanceType<typeof FoxyTextareaField>
+export type TFoxuiTextareaField = InstanceType<typeof FoxuiTextareaField>

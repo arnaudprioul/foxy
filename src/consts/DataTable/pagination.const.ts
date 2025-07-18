@@ -1,6 +1,6 @@
 import type { InjectionKey, Ref } from 'vue'
 
-export const FOXY_DATA_TABLE_PAGINATION_KEY: InjectionKey<{
+export const FOXUI_DATA_TABLE_PAGINATION_KEY: InjectionKey<{
     page: Ref<number>
     itemsPerPage: Ref<number>
     startIndex: Ref<number>
@@ -11,4 +11,4 @@ export const FOXY_DATA_TABLE_PAGINATION_KEY: InjectionKey<{
     nextPage: () => void
     setPage: (value: number) => void
     setItemsPerPage: (value: number) => void
-}> = Symbol.for('foxy:data-table-pagination')
+}> = Symbol.for('foxui:data-table-pagination')

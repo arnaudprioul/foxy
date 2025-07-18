@@ -1,4 +1,4 @@
-import type { TJustify } from '@foxy/types'
+import type { TJustify } from '@foxui/types'
 
 export interface IJustifyProps {
     justify?: TJustify,

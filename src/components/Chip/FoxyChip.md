@@ -1,5 +1,0 @@
-# Foxychip
-
-## Usage
-
-    <FoxyChip />

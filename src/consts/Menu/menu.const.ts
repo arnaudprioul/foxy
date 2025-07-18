@@ -1,5 +1,5 @@
-import type { IMenuProvide } from '@foxy/interfaces'
+import type { IMenuProvide } from '@foxui/interfaces'
 
 import type { InjectionKey } from 'vue'
 
-export const FOXY_MENU_KEY: InjectionKey<IMenuProvide> = Symbol.for('foxy:menu')
+export const FOXUI_MENU_KEY: InjectionKey<IMenuProvide> = Symbol.for('foxui:menu')

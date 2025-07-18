@@ -1,12 +1,12 @@
-import { useToggleScope } from '@foxy/composables'
+import { useToggleScope } from '@foxui/composables'
 
-import { IN_BROWSER, LOCATION_STRATEGIES, OPPOSITE_MAP } from '@foxy/consts'
+import { IN_BROWSER, LOCATION_STRATEGIES, OPPOSITE_MAP } from '@foxui/consts'
 
-import type { ILocationProps, ILocationStrategyData, ILocationStrategyProps } from '@foxy/interfaces'
+import type { ILocationProps, ILocationStrategyData, ILocationStrategyProps } from '@foxui/interfaces'
 
-import type { TAnchor } from '@foxy/types'
+import type { TAnchor } from '@foxui/types'
 
-import { parseAnchor } from '@foxy/utils'
+import { parseAnchor } from '@foxui/utils'
 
 import { computed, onScopeDispose, ref, watch } from 'vue'
 

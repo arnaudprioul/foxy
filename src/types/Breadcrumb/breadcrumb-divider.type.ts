@@ -1,3 +1,3 @@
-import { FoxyBreadcrumbDivider } from '@foxy/components'
+import { FoxuiBreadcrumbDivider } from '@foxui/components'
 
-export type TFoxyBreadcrumbDivider = InstanceType<typeof FoxyBreadcrumbDivider>
+export type TFoxuiBreadcrumbDivider = InstanceType<typeof FoxuiBreadcrumbDivider>

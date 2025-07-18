@@ -1,4 +1,4 @@
-import type { TListItemType } from '@foxy/types'
+import type { TListItemType } from '@foxui/types'
 
 export interface IListItemChildren {
     items: Array<IInternalListItemChildren>

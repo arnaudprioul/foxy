@@ -6,16 +6,16 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container fluid>
-          <foxy-row>
-            <foxy-col cols="12">
-              <foxy-color-picker
+	      <foxui-container fluid>
+		      <foxui-row>
+			      <foxui-col cols="12">
+				      <foxui-color-picker
                   v-bind="state"
                   @update:model-value="logEvent('update model value', $event)"
               />
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
 
       <template #controls>
@@ -33,7 +33,7 @@
     setup
 >
 
-	import { FoxyCol, FoxyColorPicker, FoxyContainer, FoxyRow } from '@foxy/components'
+	import { FoxuiCol, FoxuiColorPicker, FoxuiContainer, FoxuiRow } from '@foxui/components'
 	import { logEvent } from "histoire/client"
 
 	import { reactive } from 'vue'

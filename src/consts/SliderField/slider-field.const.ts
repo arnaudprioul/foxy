@@ -1,4 +1,4 @@
-import type { ISliderFieldProvide } from "@foxy/interfaces"
+import type { ISliderFieldProvide } from "@foxui/interfaces"
 import type { InjectionKey } from 'vue'
 
-export const FOXY_SLIDER_FIELD_KEY: InjectionKey<ISliderFieldProvide> = Symbol.for('foxy:range-slider')
+export const FOXUI_SLIDER_FIELD_KEY: InjectionKey<ISliderFieldProvide> = Symbol.for('foxui:range-slider')

@@ -1,5 +1,0 @@
-# Foxysvgicon
-
-## Usage
-
-    <FoxySvgIcon />

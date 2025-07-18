@@ -1,19 +1,18 @@
 {
-  "name": "foxy",
-  "private": true,
+  "name": "foxui",
   "version": "0.1.0",
   "type": "module",
   "exports": {
     ".": {
       "scss": "./dist/assets/scss/main.scss",
       "style": "./dist/assets/css/main.css",
-      "default": "./dist/foxy.mjs"
+      "default": "./dist/foxui.mjs"
     },
     "./styles": {
       "scss": "./dist/assets/scss/main.scss",
       "style": "./dist/assets/css/main.css"
     },
-    "./foxy": "./dist/foxy.js",
+    "./foxui": "./dist/foxui.js",
     "./components": "./dist/components/index.mjs",
     "./components/*": "./dist/components/*/index.mjs",
     "./composables": "./dist/composables/index.mjs",

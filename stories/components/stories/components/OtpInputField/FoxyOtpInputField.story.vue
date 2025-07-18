@@ -6,21 +6,21 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container fullscreen>
-          <foxy-row
+	      <foxui-container fullscreen>
+		      <foxui-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col>
-              <foxy-otp-input-field
+			      <foxui-col>
+				      <foxui-otp-input-field
                   v-bind="state"
                   @finish="logEvent('finish', $event)"
                   @update:focused="logEvent('update focused', $event)"
                   @update:model-value="logEvent('update modelValue', $event)"
               />
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
 
       <template #controls>
@@ -66,11 +66,11 @@
     lang="ts"
     setup
 >
-	import { FoxyCol, FoxyContainer, FoxyOtpInputField, FoxyRow } from '@foxy/components'
+	import { FoxuiCol, FoxuiContainer, FoxuiOtpInputField, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxui/enums'
 
-	import type { IOtpInputFieldProps } from "@foxy/interfaces"
+	import type { IOtpInputFieldProps } from "@foxui/interfaces"
 	import { HstRounded } from "@stories/components/controls"
 
 	import { logEvent } from 'histoire/client'

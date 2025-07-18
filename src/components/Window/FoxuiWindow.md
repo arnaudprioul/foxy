@@ -1,0 +1,5 @@
+# Foxuiwindow
+
+## Usage
+
+    <FoxuiWindow />

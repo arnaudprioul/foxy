@@ -1,3 +1,3 @@
-import { FoxySnackbar } from "@foxy/components"
+import { FoxuiSnackbar } from "@foxui/components"
 
-export type TFoxySnackbar = InstanceType<typeof FoxySnackbar>
+export type TFoxuiSnackbar = InstanceType<typeof FoxuiSnackbar>

@@ -1,10 +1,10 @@
-import { DATE_2000_JUNARY_SUNDAY, FIRST_DAY, REGEX_DATE_YYYY_MM_DD } from "@foxy/consts"
+import { DATE_2000_JUNARY_SUNDAY, FIRST_DAY, REGEX_DATE_YYYY_MM_DD } from "@foxui/consts"
 
-import type { IDateAdapter, IDateOptions, ILocaleInstance } from "@foxy/interfaces"
-import { DateAdapter } from "@foxy/services"
-import type { TCustomDateFormat } from "@foxy/types"
+import type { IDateAdapter, IDateOptions, ILocaleInstance } from "@foxui/interfaces"
+import { DateAdapter } from "@foxui/services"
+import type { TCustomDateFormat } from "@foxui/types"
 
-import { createRange, padStart } from "@foxy/utils"
+import { createRange, padStart } from "@foxui/utils"
 
 import { reactive, watch } from "vue"
 

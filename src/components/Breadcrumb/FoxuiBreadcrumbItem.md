@@ -1,0 +1,5 @@
+# Foxuibreadcrumbitem
+
+## Usage
+
+    <FoxuiBreadcrumbItem />

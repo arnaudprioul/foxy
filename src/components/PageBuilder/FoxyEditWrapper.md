@@ -1,5 +1,0 @@
-# Foxyeditorwrapper
-
-## Usage
-
-    <FoxyEditorWrapper />

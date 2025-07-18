@@ -1,9 +1,9 @@
-import { SIZES_ARRAY } from '@foxy/consts'
-import type { ISizeProps } from "@foxy/interfaces"
+import { SIZES_ARRAY } from '@foxui/consts'
+import type { ISizeProps } from "@foxui/interfaces"
 
-import type { TSize } from '@foxy/types'
+import type { TSize } from '@foxui/types'
 
-import { convertToUnit, getCurrentInstanceName } from '@foxy/utils'
+import { convertToUnit, getCurrentInstanceName } from '@foxui/utils'
 import { computed, isRef } from 'vue'
 
 export function useSize (props: ISizeProps, name = getCurrentInstanceName()) {

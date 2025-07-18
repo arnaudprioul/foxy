@@ -1,5 +1,0 @@
-# Foxypasswordfield
-
-## Usage
-
-    <FoxyPasswordField />

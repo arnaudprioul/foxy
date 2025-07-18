@@ -1,3 +1,3 @@
-import { FoxyInfiniteScrollIntersect } from "@foxy/components"
+import { FoxuiInfiniteScrollIntersect } from "@foxui/components"
 
-export type TFoxyInfiniteScrollIntersect = InstanceType<typeof FoxyInfiniteScrollIntersect>
+export type TFoxuiInfiniteScrollIntersect = InstanceType<typeof FoxuiInfiniteScrollIntersect>

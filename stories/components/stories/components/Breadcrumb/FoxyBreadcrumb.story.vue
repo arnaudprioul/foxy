@@ -7,13 +7,13 @@
 	>
 		<Variant title="Default">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+				<foxui-container fluid>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col>
+							<foxui-breadcrumb v-bind="state"/>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 			<template #controls="{state}">
 				<hst-icon
@@ -31,15 +31,15 @@
 
 		<Variant title="Color">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row
+				<foxui-container fluid>
+					<foxui-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						<foxui-col>
+							<foxui-breadcrumb v-bind="state"/>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -55,15 +55,15 @@
 
 		<Variant title="Border">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row
+				<foxui-container fluid>
+					<foxui-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						<foxui-col>
+							<foxui-breadcrumb v-bind="state"/>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -73,15 +73,15 @@
 
 		<Variant title="Padding">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row
+				<foxui-container fluid>
+					<foxui-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						<foxui-col>
+							<foxui-breadcrumb v-bind="state"/>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -91,15 +91,15 @@
 
 		<Variant title="Margin">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row
+				<foxui-container fluid>
+					<foxui-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						<foxui-col>
+							<foxui-breadcrumb v-bind="state"/>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -109,15 +109,15 @@
 
 		<Variant title="Density">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row
+				<foxui-container fluid>
+					<foxui-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						<foxui-col>
+							<foxui-breadcrumb v-bind="state"/>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -127,15 +127,15 @@
 
 		<Variant title="Elevation">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row
+				<foxui-container fluid>
+					<foxui-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						<foxui-col>
+							<foxui-breadcrumb v-bind="state"/>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -145,15 +145,15 @@
 
 		<Variant title="Rounded">
 			<template #default="{state}">
-				<foxy-container fluid>
-					<foxy-row
+				<foxui-container fluid>
+					<foxui-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-breadcrumb v-bind="state"/>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+						<foxui-col>
+							<foxui-breadcrumb v-bind="state"/>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -167,9 +167,9 @@
 		lang="ts"
 		setup
 >
-	import { FoxyBreadcrumb, FoxyCol, FoxyContainer, FoxyRow } from '@foxy/components'
-	import { JUSTIFY } from '@foxy/enums'
-	import type { IBreadcrumbProps } from "@foxy/interfaces"
+	import { FoxuiBreadcrumb, FoxuiCol, FoxuiContainer, FoxuiRow } from '@foxui/components'
+	import { JUSTIFY } from '@foxui/enums'
+	import type { IBreadcrumbProps } from "@foxui/interfaces"
 
 	import {
 		HstBorder,

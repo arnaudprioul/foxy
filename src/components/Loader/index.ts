@@ -1,1 +1,1 @@
-export { default as FoxyLoader } from './FoxyLoader.vue'
+export { default as FoxuiLoader } from './FoxuiLoader.vue'

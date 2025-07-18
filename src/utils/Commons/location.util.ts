@@ -1,10 +1,10 @@
-import { AXIS } from '@foxy/enums'
+import { AXIS } from '@foxui/enums'
 
-import type { IBox, ILocationStrategyData, ILocationStrategyProps } from '@foxy/interfaces'
+import type { IBox, ILocationStrategyData, ILocationStrategyProps } from '@foxui/interfaces'
 
-import { Box } from '@foxy/services'
+import { Box } from '@foxui/services'
 
-import type { TAnchor } from '@foxy/types'
+import type { TAnchor } from '@foxui/types'
 
 import {
     anchorToPoint,
@@ -22,7 +22,7 @@ import {
     getTargetBox,
     nullifyTransforms,
     parseAnchor
-} from '@foxy/utils'
+} from '@foxui/utils'
 
 import { computed, nextTick, onScopeDispose, Ref, watch } from 'vue'
 
@@ -114,8 +114,8 @@ export function connectedLocationStrategy (data: ILocationStrategyData, props: I
         if (!scrollParents.length) {
             scrollParents.push(document.documentElement)
             if (!(data.contentEl.value.style.top && data.contentEl.value.style.left)) {
-                contentBox.x -= parseFloat(document.documentElement.style.getPropertyValue('--foxy-body-scroll-x') || '0')
-                contentBox.y -= parseFloat(document.documentElement.style.getPropertyValue('--foxy-body-scroll-y') || '0')
+                contentBox.x -= parseFloat(document.documentElement.style.getPropertyValue('--foxui-body-scroll-x') || '0')
+                contentBox.y -= parseFloat(document.documentElement.style.getPropertyValue('--foxui-body-scroll-y') || '0')
             }
         }
 
@@ -284,7 +284,7 @@ export function connectedLocationStrategy (data: ILocationStrategyData, props: I
         const axis = getAxis(placement.anchor)
 
         Object.assign(contentStyles.value, {
-            '--foxy-overlay-anchor-origin': `${placement.anchor.side} ${placement.anchor.align}`,
+            '--foxui-overlay-anchor-origin': `${placement.anchor.side} ${placement.anchor.align}`,
             transformOrigin: `${placement.origin.side} ${placement.origin.align}`,
             top: convertToUnit(pixelRound(y)),
             left: convertToUnit(pixelRound(x)),

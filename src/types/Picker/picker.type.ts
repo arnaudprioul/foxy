@@ -1,3 +1,3 @@
-import { FoxyPicker } from "@foxy/components"
+import { FoxuiPicker } from "@foxui/components"
 
-export type TFoxyPicker = InstanceType<typeof FoxyPicker>
+export type TFoxuiPicker = InstanceType<typeof FoxuiPicker>

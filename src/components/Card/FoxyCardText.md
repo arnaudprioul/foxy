@@ -1,5 +1,0 @@
-# Foxycardtext
-
-## Usage
-
-    <FoxyCardText />

@@ -1,6 +1,6 @@
-import { FoxyParallax } from "@foxy/components"
-import { PARALLAX_EVENT } from '@foxy/enums'
+import { FoxuiParallax } from "@foxui/components"
+import { PARALLAX_EVENT } from '@foxui/enums'
 
 export type TParallaxEvent = `${PARALLAX_EVENT}`
 
-export type TFoxyParallax = InstanceType<typeof FoxyParallax>
+export type TFoxuiParallax = InstanceType<typeof FoxuiParallax>

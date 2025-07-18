@@ -1,5 +1,0 @@
-# Foxydatepickerheader
-
-## Usage
-
-    <FoxyDatePickerHeader />

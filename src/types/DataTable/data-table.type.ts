@@ -1,8 +1,8 @@
-import { FoxyDataTable } from "@foxy/components"
+import { FoxuiDataTable } from "@foxui/components"
 
-import { DATATABLE_SELECT_STRATEGY } from '@foxy/enums'
+import { DATATABLE_SELECT_STRATEGY } from '@foxui/enums'
 
-import type { IDataTableItemKey } from '@foxy/interfaces'
+import type { IDataTableItemKey } from '@foxui/interfaces'
 
 export type TDataTableCompareFunction<T = any> = (a: T, b: T) => number | null
 
@@ -20,4 +20,4 @@ export type TDataTableCell<T> =
 
 export type TDataTableSelectStrategy = `${DATATABLE_SELECT_STRATEGY}`
 
-export type TFoxyDataTable = InstanceType<typeof FoxyDataTable>
+export type TFoxuiDataTable = InstanceType<typeof FoxuiDataTable>

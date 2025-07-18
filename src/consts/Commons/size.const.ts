@@ -1,6 +1,6 @@
-import { SIZES } from '@foxy/enums'
+import { SIZES } from '@foxui/enums'
 
-import type { TSize } from '@foxy/types'
+import type { TSize } from '@foxui/types'
 
 export const SIZES_ARRAY: Array<TSize> = [
     SIZES.X_SMALL,

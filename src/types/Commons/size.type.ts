@@ -1,3 +1,3 @@
-import { SIZES } from '@foxy/enums'
+import { SIZES } from '@foxui/enums'
 
 export type TSize = `${SIZES}`

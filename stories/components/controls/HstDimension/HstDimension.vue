@@ -39,9 +39,9 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxy/composables"
-	import { SIZES } from "@foxy/enums"
-	import type { IDimensionProps, ISizeProps } from "@foxy/interfaces"
+	import { useVModel } from "@foxui/composables"
+	import { SIZES } from "@foxui/enums"
+	import type { IDimensionProps, ISizeProps } from "@foxui/interfaces"
 	import { sizeList } from "@stories/const/size.const"
 
 	const props = defineProps<{

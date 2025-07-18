@@ -1,8 +1,8 @@
-import type { ILayer } from '@foxy/interfaces'
+import type { ILayer } from '@foxui/interfaces'
 
-import type { TDirectionBoth } from '@foxy/types'
+import type { TDirectionBoth } from '@foxui/types'
 
-import { int } from "@foxy/utils"
+import { int } from "@foxui/utils"
 
 import type { Ref } from 'vue'
 

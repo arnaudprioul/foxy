@@ -1,10 +1,10 @@
-import { useToggleScope, useVModel } from '@foxy/composables'
+import { useToggleScope, useVModel } from '@foxui/composables'
 
-import { FOXY_FORM_KEY } from '@foxy/consts'
+import { FOXUI_FORM_KEY } from '@foxui/consts'
 
-import type { IValidationProps } from '@foxy/interfaces'
+import type { IValidationProps } from '@foxui/interfaces'
 
-import { getCurrentInstance, getCurrentInstanceName, getUid, wrapInArray } from '@foxy/utils'
+import { getCurrentInstance, getCurrentInstanceName, getUid, wrapInArray } from '@foxui/utils'
 
 import {
     computed,
@@ -25,7 +25,7 @@ export function useValidation (props: IValidationProps, name = getCurrentInstanc
     const validationModel = computed(() => {
         return props.validationValue === undefined ? model.value : props.validationValue
     })
-    const form = inject(FOXY_FORM_KEY, null)
+    const form = inject(FOXUI_FORM_KEY, null)
     const internalErrorMessages = ref<Array<string>>([])
     const isPristine = shallowRef(true)
     const isDirty = computed(() => {

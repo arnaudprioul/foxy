@@ -1,4 +1,4 @@
-import { toKebabCase } from '@foxy/utils'
+import { toKebabCase } from '@foxui/utils'
 import type { ComponentInternalInstance } from 'vue'
 import { getCurrentInstance as _getCurrentInstance } from 'vue'
 
@@ -10,7 +10,7 @@ export function getCurrentInstance (name: string, message?: string) {
     const vm = _getCurrentInstance()
 
     if (!vm) {
-        throw new Error(`[Foxy] ${name} ${message || 'must be called from inside a setup function'}`)
+        throw new Error(`[Foxui] ${name} ${message || 'must be called from inside a setup function'}`)
     }
 
     return vm

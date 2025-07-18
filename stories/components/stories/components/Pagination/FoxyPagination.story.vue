@@ -6,16 +6,16 @@
   >
     <Variant title="Default">
       <template #default>
-        <foxy-container fullscreen>
-          <foxy-row
+	      <foxui-container fullscreen>
+		      <foxui-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-            <foxy-col>
-              <foxy-pagination v-bind="state"/>
-            </foxy-col>
-          </foxy-row>
-        </foxy-container>
+			      <foxui-col>
+				      <foxui-pagination v-bind="state"/>
+			      </foxui-col>
+		      </foxui-row>
+	      </foxui-container>
       </template>
       <template #controls>
         <hst-text
@@ -93,9 +93,9 @@
     lang="ts"
     setup
 >
-	import { FoxyCol, FoxyContainer, FoxyPagination, FoxyRow } from '@foxy/components'
+	import { FoxuiCol, FoxuiContainer, FoxuiPagination, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, JUSTIFY } from '@foxy/enums'
+	import { ALIGN, JUSTIFY } from '@foxui/enums'
 	import { HstIcon } from "@stories/components/controls"
 
 	import { reactive } from 'vue'

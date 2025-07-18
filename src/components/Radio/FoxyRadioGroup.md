@@ -1,5 +1,0 @@
-# Foxyradiogroup
-
-## Usage
-
-    <FoxyRadioGroup />

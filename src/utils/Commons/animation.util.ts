@@ -1,5 +1,5 @@
-import type { IBox } from '@foxy/interfaces'
-import { Box } from '@foxy/services'
+import type { IBox } from '@foxui/interfaces'
+import { Box } from '@foxui/services'
 
 export function nullifyTransforms (el: HTMLElement): IBox {
     const rect = el.getBoundingClientRect()

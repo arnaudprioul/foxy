@@ -1,5 +1,0 @@
-# Foxyprogresslinear
-
-## Usage
-
-    <FoxyProgressLinear />

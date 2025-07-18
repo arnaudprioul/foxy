@@ -1,3 +1,3 @@
-import { FoxySvgIcon } from "@foxy/components"
+import { FoxuiSvgIcon } from "@foxui/components"
 
-export type TFoxySvgIcon = InstanceType<typeof FoxySvgIcon>
+export type TFoxuiSvgIcon = InstanceType<typeof FoxuiSvgIcon>

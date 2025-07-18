@@ -1,5 +1,0 @@
-# Foxycard
-
-## Usage
-
-    <FoxyCard />

@@ -1,3 +1,3 @@
-import { FoxyListChildren } from "@foxy/components"
+import { FoxuiListChildren } from "@foxui/components"
 
-export type TFoxyListChildren = InstanceType<typeof FoxyListChildren>
+export type TFoxuiListChildren = InstanceType<typeof FoxuiListChildren>

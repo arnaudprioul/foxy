@@ -7,47 +7,47 @@
 	>
 		<Variant title="Default">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row
+				<foxui-container>
+					<foxui-row
 							:align-content="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxy-col>
-							<foxy-badge
+						<foxui-col>
+							<foxui-badge
 									:content="20"
 									v-bind="state"
 							>
-								<foxy-icon
+								<foxui-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxy-badge>
-						</foxy-col>
-						<foxy-col>
-							<foxy-badge
+							</foxui-badge>
+						</foxui-col>
+						<foxui-col>
+							<foxui-badge
 									:content="20"
 									:max="10"
 									v-bind="state"
 							>
-								<foxy-icon
+								<foxui-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxy-badge>
-						</foxy-col>
-						<foxy-col>
-							<foxy-badge
+							</foxui-badge>
+						</foxui-col>
+						<foxui-col>
+							<foxui-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxy-icon
+								<foxui-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxy-badge>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-badge>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 			<template #controls="{state}">
 				<hst-checkbox
@@ -69,21 +69,21 @@
 
 		<Variant title="Location">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-badge
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxy-icon
+								<foxui-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxy-badge>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-badge>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -96,21 +96,21 @@
 
 		<Variant title="Status">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-badge
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxy-icon
+								<foxui-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxy-badge>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-badge>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -123,21 +123,21 @@
 
 		<Variant title="Color">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-badge
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxy-icon
+								<foxui-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxy-badge>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-badge>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -153,21 +153,21 @@
 
 		<Variant title="Border">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-badge
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxy-icon
+								<foxui-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxy-badge>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-badge>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -177,21 +177,21 @@
 
 		<Variant title="Elevation">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-badge
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxy-icon
+								<foxui-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxy-badge>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-badge>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -201,21 +201,21 @@
 
 		<Variant title="Rounded">
 			<template #default="{state}">
-				<foxy-container>
-					<foxy-row :justify="JUSTIFY.CENTER">
-						<foxy-col cols="auto">
-							<foxy-badge
+				<foxui-container>
+					<foxui-row :justify="JUSTIFY.CENTER">
+						<foxui-col cols="auto">
+							<foxui-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxy-icon
+								<foxui-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxy-badge>
-						</foxy-col>
-					</foxy-row>
-				</foxy-container>
+							</foxui-badge>
+						</foxui-col>
+					</foxui-row>
+				</foxui-container>
 			</template>
 
 			<template #controls="{state}">
@@ -229,10 +229,10 @@
 		lang="ts"
 		setup
 >
-	import { FoxyBadge, FoxyCol, FoxyContainer, FoxyIcon, FoxyRow } from '@foxy/components'
+	import { FoxuiBadge, FoxuiCol, FoxuiContainer, FoxuiIcon, FoxuiRow } from '@foxui/components'
 
-	import { ALIGN, BLOCK, INLINE, JUSTIFY, MDI_ICONS } from '@foxy/enums'
-	import type { IBadgeProps } from "@foxy/interfaces"
+	import { ALIGN, BLOCK, INLINE, JUSTIFY, MDI_ICONS } from '@foxui/enums'
+	import type { IBadgeProps } from "@foxui/interfaces"
 
 	import { HstBorder, HstColor, HstElevation, HstLocation, HstRounded, HstStatus } from '@stories/components/controls'
 
