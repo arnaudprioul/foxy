@@ -1,69 +1,65 @@
 import { DELAY_RIPPLE, FOXY_RIPPLE_STOP_KEY, KEYCODES, RIPPLES } from '@foxy/consts'
 
-import {
-  IRippleDirectiveBinding,
-  IRippleHtmlElement,
-  IRippleOptions
-} from '@foxy/interfaces'
+import type { IRippleDirectiveBinding, IRippleHtmlElement, IRippleOptions } from '@foxy/interfaces'
 
-import { TRippleEvent } from '@foxy/types'
+import type { TRippleEvent } from '@foxy/types'
 
 import { isObject } from '@foxy/utils'
 
 export function updateRipple (el: IRippleHtmlElement, binding: IRippleDirectiveBinding, wasEnabled: boolean) {
-  const { value, modifiers } = binding
-  const enabled = isRippleEnabled(value)
+    const {value, modifiers} = binding
+    const enabled = isRippleEnabled(value)
 
-  if (!enabled) {
-    RIPPLES.hide(el)
-  }
-
-  el._ripple = el._ripple ?? {}
-  el._ripple.enabled = enabled
-  el._ripple.centered = modifiers.center
-  el._ripple.circle = modifiers.circle
-  if (isObject(value) && value.class) {
-    el._ripple.class = value.class
-  }
-
-  if (enabled && !wasEnabled) {
-    if (modifiers.stop) {
-      el.addEventListener('touchstart', rippleStop, { passive: true })
-      el.addEventListener('mousedown', rippleStop)
-      return
+    if (!enabled) {
+        RIPPLES.hide(el)
     }
 
-    el.addEventListener('touchstart', rippleShow, { passive: true })
-    el.addEventListener('touchend', rippleHide, { passive: true })
-    el.addEventListener('touchmove', rippleCancelShow, { passive: true })
-    el.addEventListener('touchcancel', rippleHide)
+    el._ripple = el._ripple ?? {}
+    el._ripple.enabled = enabled
+    el._ripple.centered = modifiers.center
+    el._ripple.circle = modifiers.circle
+    if (isObject(value) && value.class) {
+        el._ripple.class = value.class
+    }
 
-    el.addEventListener('mousedown', rippleShow)
-    el.addEventListener('mouseup', rippleHide)
-    el.addEventListener('mouseleave', rippleHide)
+    if (enabled && !wasEnabled) {
+        if (modifiers.stop) {
+            el.addEventListener('touchstart', rippleStop, {passive: true})
+            el.addEventListener('mousedown', rippleStop)
+            return
+        }
 
-    el.addEventListener('keydown', keyboardRippleShow)
-    el.addEventListener('keyup', keyboardRippleHide)
+        el.addEventListener('touchstart', rippleShow, {passive: true})
+        el.addEventListener('touchend', rippleHide, {passive: true})
+        el.addEventListener('touchmove', rippleCancelShow, {passive: true})
+        el.addEventListener('touchcancel', rippleHide)
 
-    el.addEventListener('blur', focusRippleHide)
+        el.addEventListener('mousedown', rippleShow)
+        el.addEventListener('mouseup', rippleHide)
+        el.addEventListener('mouseleave', rippleHide)
 
-    // Anchor tags can be dragged, causes other hides to fail - #1537
-    el.addEventListener('dragstart', rippleHide, { passive: true })
-  } else if (!enabled && wasEnabled) {
-    rippleRemoveListeners(el)
-  }
+        el.addEventListener('keydown', keyboardRippleShow)
+        el.addEventListener('keyup', keyboardRippleHide)
+
+        el.addEventListener('blur', focusRippleHide)
+
+        // Anchor tags can be dragged, causes other hides to fail - #1537
+        el.addEventListener('dragstart', rippleHide, {passive: true})
+    } else if (!enabled && wasEnabled) {
+        rippleRemoveListeners(el)
+    }
 }
 
 export function isRippleEnabled (value: any): value is true {
-  return typeof value === 'undefined' || !!value
+    return typeof value === 'undefined' || !!value
 }
 
 export function isTouchEvent (e: TRippleEvent): e is TouchEvent {
-  return e.constructor.name === 'TouchEvent'
+    return e.constructor.name === 'TouchEvent'
 }
 
 export function isKeyboardEvent (e: TRippleEvent): e is KeyboardEvent {
-  return e.constructor.name === 'KeyboardEvent'
+    return e.constructor.name === 'KeyboardEvent'
 }
 
 export function calculate (
@@ -71,158 +67,158 @@ export function calculate (
     el: IRippleHtmlElement,
     value: IRippleOptions = {}
 ) {
-  let localX = 0
-  let localY = 0
+    let localX = 0
+    let localY = 0
 
-  if (!isKeyboardEvent(e)) {
-    const offset = el.getBoundingClientRect()
-    const target = isTouchEvent(e) ? e.touches[e.touches.length - 1] : e
+    if (!isKeyboardEvent(e)) {
+        const offset = el.getBoundingClientRect()
+        const target = isTouchEvent(e) ? e.touches[e.touches.length - 1] : e
 
-    localX = target.clientX - offset.left
-    localY = target.clientY - offset.top
-  }
+        localX = target.clientX - offset.left
+        localY = target.clientY - offset.top
+    }
 
-  let radius = Math.sqrt(el.clientWidth ** 2 + el.clientHeight ** 2) / 2
-  let scale = 0.3
+    let radius = Math.sqrt(el.clientWidth ** 2 + el.clientHeight ** 2) / 2
+    let scale = 0.3
 
-  if (el._ripple?.circle) {
-    scale = 0.15
-    radius = el.clientWidth / 2
-    radius = value.center ? radius : radius + Math.sqrt((localX - radius) ** 2 + (localY - radius) ** 2) / 4
-  }
+    if (el._ripple?.circle) {
+        scale = 0.15
+        radius = el.clientWidth / 2
+        radius = value.center ? radius : radius + Math.sqrt((localX - radius) ** 2 + (localY - radius) ** 2) / 4
+    }
 
-  const centerX = `${(el.clientWidth - (radius * 2)) / 2}px`
-  const centerY = `${(el.clientHeight - (radius * 2)) / 2}px`
+    const centerX = `${(el.clientWidth - (radius * 2)) / 2}px`
+    const centerY = `${(el.clientHeight - (radius * 2)) / 2}px`
 
-  const x = value.center ? centerX : `${localX - radius}px`
-  const y = value.center ? centerY : `${localY - radius}px`
+    const x = value.center ? centerX : `${localX - radius}px`
+    const y = value.center ? centerY : `${localY - radius}px`
 
-  return { radius, scale, x, y, centerX, centerY }
+    return {radius, scale, x, y, centerX, centerY}
 }
 
 export function rippleShow (e: TRippleEvent) {
-  const value: IRippleOptions = {}
-  const element = e.currentTarget as IRippleHtmlElement | undefined
+    const value: IRippleOptions = {}
+    const element = e.currentTarget as IRippleHtmlElement | undefined
 
-  if (!element?._ripple || element._ripple.touched || e[FOXY_RIPPLE_STOP_KEY]) return
+    if (!element?._ripple || element._ripple.touched || e[FOXY_RIPPLE_STOP_KEY]) return
 
-  // Don't allow the event to trigger ripples on any other elements
-  e[FOXY_RIPPLE_STOP_KEY] = true
+    // Don't allow the event to trigger ripples on any other elements
+    e[FOXY_RIPPLE_STOP_KEY] = true
 
-  if (isTouchEvent(e)) {
-    element._ripple.touched = true
-    element._ripple.isTouch = true
-  } else {
-    // It's possible for touch events to fire
-    // as mouse events on Android/iOS, this
-    // will skip the event call if it has
-    // already been registered as touch
-    if (element._ripple.isTouch) return
-  }
-
-  value.center = element._ripple.centered || isKeyboardEvent(e)
-  if (element._ripple.class) {
-    value.class = element._ripple.class
-  }
-
-  if (isTouchEvent(e)) {
-    // already queued that shows or hides the ripple
-    if (element._ripple.showTimerCommit) return
-
-    element._ripple.showTimerCommit = () => {
-      RIPPLES.show(e, element, value)
+    if (isTouchEvent(e)) {
+        element._ripple.touched = true
+        element._ripple.isTouch = true
+    } else {
+        // It's possible for touch events to fire
+        // as mouse events on Android/iOS, this
+        // will skip the event call if it has
+        // already been registered as touch
+        if (element._ripple.isTouch) return
     }
 
-    element._ripple.showTimer = window.setTimeout(() => {
-      if (element?._ripple?.showTimerCommit) {
-        element._ripple.showTimerCommit()
-        element._ripple.showTimerCommit = null
-      }
-    }, DELAY_RIPPLE)
-  } else {
-    RIPPLES.show(e, element, value)
-  }
+    value.center = element._ripple.centered || isKeyboardEvent(e)
+    if (element._ripple.class) {
+        value.class = element._ripple.class
+    }
+
+    if (isTouchEvent(e)) {
+        // already queued that shows or hides the ripple
+        if (element._ripple.showTimerCommit) return
+
+        element._ripple.showTimerCommit = () => {
+            RIPPLES.show(e, element, value)
+        }
+
+        element._ripple.showTimer = window.setTimeout(() => {
+            if (element?._ripple?.showTimerCommit) {
+                element._ripple.showTimerCommit()
+                element._ripple.showTimerCommit = null
+            }
+        }, DELAY_RIPPLE)
+    } else {
+        RIPPLES.show(e, element, value)
+    }
 }
 
 export function rippleStop (e: TRippleEvent) {
-  e[FOXY_RIPPLE_STOP_KEY] = true
+    e[FOXY_RIPPLE_STOP_KEY] = true
 }
 
 export function rippleHide (e: Event) {
-  const element = e.currentTarget as IRippleHtmlElement | null
-  if (!element?._ripple) return
+    const element = e.currentTarget as IRippleHtmlElement | null
+    if (!element?._ripple) return
 
-  window.clearTimeout(element._ripple.showTimer)
+    window.clearTimeout(element._ripple.showTimer)
 
-  // The touch interaction occurs before the show timer is triggered.
-  // We still want to show ripple effect.
-  if (e.type === 'touchend' && element._ripple.showTimerCommit) {
-    element._ripple.showTimerCommit()
-    element._ripple.showTimerCommit = null
+    // The touch interaction occurs before the show timer is triggered.
+    // We still want to show ripple effect.
+    if (e.type === 'touchend' && element._ripple.showTimerCommit) {
+        element._ripple.showTimerCommit()
+        element._ripple.showTimerCommit = null
 
-    // re-queue ripple hiding
-    element._ripple.showTimer = window.setTimeout(() => {
-      rippleHide(e)
-    })
-    return
-  }
-
-  window.setTimeout(() => {
-    if (element._ripple) {
-      element._ripple.touched = false
+        // re-queue ripple hiding
+        element._ripple.showTimer = window.setTimeout(() => {
+            rippleHide(e)
+        })
+        return
     }
-  })
-  RIPPLES.hide(element)
+
+    window.setTimeout(() => {
+        if (element._ripple) {
+            element._ripple.touched = false
+        }
+    })
+    RIPPLES.hide(element)
 }
 
 export function rippleCancelShow (e: MouseEvent | TouchEvent) {
-  const element = e.currentTarget as IRippleHtmlElement | undefined
+    const element = e.currentTarget as IRippleHtmlElement | undefined
 
-  if (!element?._ripple) return
+    if (!element?._ripple) return
 
-  if (element._ripple.showTimerCommit) {
-    element._ripple.showTimerCommit = null
-  }
+    if (element._ripple.showTimerCommit) {
+        element._ripple.showTimerCommit = null
+    }
 
-  window.clearTimeout(element._ripple.showTimer)
+    window.clearTimeout(element._ripple.showTimer)
 }
 
 export function rippleRemoveListeners (el: IRippleHtmlElement) {
-  el.removeEventListener('mousedown', rippleShow)
-  el.removeEventListener('touchstart', rippleShow)
-  el.removeEventListener('touchend', rippleHide)
-  el.removeEventListener('touchmove', rippleCancelShow)
-  el.removeEventListener('touchcancel', rippleHide)
-  el.removeEventListener('mouseup', rippleHide)
-  el.removeEventListener('mouseleave', rippleHide)
-  el.removeEventListener('keydown', keyboardRippleShow)
-  el.removeEventListener('keyup', keyboardRippleHide)
-  el.removeEventListener('dragstart', rippleHide)
-  el.removeEventListener('blur', focusRippleHide)
+    el.removeEventListener('mousedown', rippleShow)
+    el.removeEventListener('touchstart', rippleShow)
+    el.removeEventListener('touchend', rippleHide)
+    el.removeEventListener('touchmove', rippleCancelShow)
+    el.removeEventListener('touchcancel', rippleHide)
+    el.removeEventListener('mouseup', rippleHide)
+    el.removeEventListener('mouseleave', rippleHide)
+    el.removeEventListener('keydown', keyboardRippleShow)
+    el.removeEventListener('keyup', keyboardRippleHide)
+    el.removeEventListener('dragstart', rippleHide)
+    el.removeEventListener('blur', focusRippleHide)
 }
 
 export function rippleTransform (el: IRippleHtmlElement, value: string) {
-  el.style.transform = value
-  el.style.webkitTransform = value
+    el.style.transform = value
+    el.style.webkitTransform = value
 }
 
 let keyboardRipple = false
 
 export function keyboardRippleShow (e: KeyboardEvent) {
-  if (!keyboardRipple && ((e.keyCode === KEYCODES.enter || e.keyCode === KEYCODES.space) || (e.code === KEYCODES.enter.toString() || e.code === KEYCODES.space.toString()))) {
-    keyboardRipple = true
-    rippleShow(e)
-  }
+    if (!keyboardRipple && ((e.keyCode === KEYCODES.enter || e.keyCode === KEYCODES.space) || (e.code === KEYCODES.enter.toString() || e.code === KEYCODES.space.toString()))) {
+        keyboardRipple = true
+        rippleShow(e)
+    }
 }
 
 export function keyboardRippleHide (e: KeyboardEvent) {
-  keyboardRipple = false
-  rippleHide(e)
+    keyboardRipple = false
+    rippleHide(e)
 }
 
 export function focusRippleHide (e: FocusEvent) {
-  if (keyboardRipple) {
-    keyboardRipple = false
-    rippleHide(e)
-  }
+    if (keyboardRipple) {
+        keyboardRipple = false
+        rippleHide(e)
+    }
 }

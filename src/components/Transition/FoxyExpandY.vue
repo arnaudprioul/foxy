@@ -1,152 +1,165 @@
 <template>
-  <transition
-      :css="!disabled"
-      :name="name"
-      @enter="handleEnter"
-      @leave="handleLeave"
-      @before-enter="handleBeforeEnter"
-      @after-enter="handleAfterEnter"
-      @enter-cancelled="handleEnterCancelled"
-      @after-leave="handleAfterLeave"
-      @leave-cancelled="handleLeaveCancelled">
-    <slot name="default"/>
-  </transition>
+	<transition
+			:css="!disabled"
+			:name="name"
+			@enter="handleEnter"
+			@leave="handleLeave"
+			@before-enter="handleBeforeEnter"
+			@after-enter="handleAfterEnter"
+			@enter-cancelled="handleEnterCancelled"
+			@after-leave="handleAfterLeave"
+			@leave-cancelled="handleLeaveCancelled"
+	>
+		<slot name="default"/>
+	</transition>
 </template>
 
-<script lang="ts" setup>
-  import { TRANSITION_MODE } from '@foxy/enums'
+<script
+		lang="ts"
+		setup
+>
+	import { useProps } from "@foxy/composables"
+	import { TRANSITION_MODE } from '@foxy/enums'
 
-  import { IHTMLExpandElement, ITransitionProps } from '@foxy/interfaces'
+	import type { IHTMLExpandElement, ITransitionProps } from '@foxy/interfaces'
 
-  import { camelize } from 'vue'
+	import { camelize } from 'vue'
 
-  withDefaults(defineProps<ITransitionProps>(), {
-    name: 'foxy-transition--expand-y',
-    mode: TRANSITION_MODE.IN_OUT
-  })
+	const props = withDefaults(defineProps<ITransitionProps>(), {
+		name: 'foxy-transition--expand-y',
+		mode: TRANSITION_MODE.IN_OUT
+	})
 
-  const expandedParentClass = ''
-  const sizeProperty = 'height' as 'height'
-  const offsetProperty = camelize(`offset-${sizeProperty}`) as 'offsetHeight'
+	const {filterProps} = useProps<ITransitionProps>(props)
 
-  const resetStyles = (el: IHTMLExpandElement) => {
-    const size = el._initialStyle![sizeProperty]
+	const expandedParentClass = ''
+	const sizeProperty = 'height' as const
+	const offsetProperty = camelize(`offset-${sizeProperty}`) as 'offsetHeight'
 
-    el.style.overflow = el._initialStyle!.overflow
+	const resetStyles = (el: IHTMLExpandElement) => {
+		const size = el._initialStyle![sizeProperty]
 
-    if (size != null) el.style[sizeProperty] = size
+		el.style.overflow = el._initialStyle!.overflow
 
-    delete el._initialStyle
-  }
-  const onAfterLeave = (el: IHTMLExpandElement) => {
-    if (expandedParentClass && el._parent) {
-      el._parent.classList.remove(expandedParentClass)
-    }
-    resetStyles(el)
-  }
+		if (size != null) el.style[sizeProperty] = size
 
-  const handleBeforeEnter = (el: Element) => {
-    const element = el as IHTMLExpandElement
+		delete el._initialStyle
+	}
+	const onAfterLeave = (el: IHTMLExpandElement) => {
+		if (expandedParentClass && el._parent) {
+			el._parent.classList.remove(expandedParentClass)
+		}
+		resetStyles(el)
+	}
 
-    element._parent = element.parentNode as (Node & ParentNode & HTMLElement) | null
-    element._initialStyle = {
-      transition: element.style.transition,
-      overflow: element.style.overflow,
-      [sizeProperty]: element.style[sizeProperty],
-    }
-  }
-  const handleEnter = (el: Element) => {
-    const element = el as IHTMLExpandElement
-    const initialStyle = element._initialStyle!
+	const handleBeforeEnter = (el: Element) => {
+		const element = el as IHTMLExpandElement
 
-    element.style.setProperty('transition', 'none', 'important')
-    // Hide overflow to account for collapsed margins in the calculated height
-    element.style.overflow = 'hidden'
-    const offset = `${element[offsetProperty]}px`
+		element._parent = element.parentNode as (Node & ParentNode & HTMLElement) | null
+		element._initialStyle = {
+			transition: element.style.transition,
+			overflow: element.style.overflow,
+			[sizeProperty]: element.style[sizeProperty]
+		}
+	}
+	const handleEnter = (el: Element) => {
+		const element = el as IHTMLExpandElement
+		const initialStyle = element._initialStyle!
 
-    element.style[sizeProperty] = '0'
+		element.style.setProperty('transition', 'none', 'important')
+		// Hide overflow to account for collapsed margins in the calculated height
+		element.style.overflow = 'hidden'
+		const offset = `${element[offsetProperty]}px`
 
-    void element.offsetHeight // force reflow
+		element.style[sizeProperty] = '0'
 
-    element.style.transition = initialStyle.transition
+		void element.offsetHeight // force reflow
 
-    if (expandedParentClass && element._parent) {
-      element._parent.classList.add(expandedParentClass)
-    }
+		element.style.transition = initialStyle.transition
 
-    requestAnimationFrame(() => {
-      element.style[sizeProperty] = offset
-    })
-  }
-  const handleAfterEnter = (el: Element) => {
-    const element = el as IHTMLExpandElement
+		if (expandedParentClass && element._parent) {
+			element._parent.classList.add(expandedParentClass)
+		}
 
-    resetStyles(element)
-  }
-  const handleEnterCancelled = (el: Element) => {
-    const element = el as IHTMLExpandElement
+		requestAnimationFrame(() => {
+			element.style[sizeProperty] = offset
+		})
+	}
+	const handleAfterEnter = (el: Element) => {
+		const element = el as IHTMLExpandElement
 
-    resetStyles(element)
-  }
-  const handleLeave = (el: Element) => {
-    const element = el as IHTMLExpandElement
+		resetStyles(element)
+	}
+	const handleEnterCancelled = (el: Element) => {
+		const element = el as IHTMLExpandElement
 
-    element._initialStyle = {
-      transition: '',
-      overflow: element.style.overflow,
-      [sizeProperty]: element.style[sizeProperty],
-    }
+		resetStyles(element)
+	}
+	const handleLeave = (el: Element) => {
+		const element = el as IHTMLExpandElement
 
-    element.style.overflow = 'hidden'
-    element.style[sizeProperty] = `${element[offsetProperty]}px`
-    void element.offsetHeight // force reflow
+		element._initialStyle = {
+			transition: '',
+			overflow: element.style.overflow,
+			[sizeProperty]: element.style[sizeProperty]
+		}
 
-    requestAnimationFrame(() => (element.style[sizeProperty] = '0'))
-  }
-  const handleAfterLeave = (el: Element) => {
-    const element = el as IHTMLExpandElement
+		element.style.overflow = 'hidden'
+		element.style[sizeProperty] = `${element[offsetProperty]}px`
+		void element.offsetHeight // force reflow
 
-    onAfterLeave(element)
-  }
-  const handleLeaveCancelled = (el: Element) => {
-    const element = el as IHTMLExpandElement
+		requestAnimationFrame(() => (element.style[sizeProperty] = '0'))
+	}
+	const handleAfterLeave = (el: Element) => {
+		const element = el as IHTMLExpandElement
 
-    onAfterLeave(element)
-  }
+		onAfterLeave(element)
+	}
+	const handleLeaveCancelled = (el: Element) => {
+		const element = el as IHTMLExpandElement
+
+		onAfterLeave(element)
+	}
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
+
 </script>
 
 <style lang="scss">
-  .foxy-transition--expand-y-enter-active {
-    transition-duration: var(--foxy-transition--expand-y-enter-active---transition-duration);
-    transition-timing-function: var(--foxy-transition--expand-y-enter-active---transition-timing-function);
-    transition-property: var(--foxy-transition--expand-y-enter-active---transition-property);
-  }
+	.foxy-transition--expand-y-enter-active {
+		transition-duration: var(--foxy-transition--expand-y-enter-active---transition-duration);
+		transition-timing-function: var(--foxy-transition--expand-y-enter-active---transition-timing-function);
+		transition-property: var(--foxy-transition--expand-y-enter-active---transition-property);
+	}
 
-  .foxy-transition--expand-y-leave-active {
-    transition-duration: var(--foxy-transition--expand-y-enter-leave---transition-duration);
-    transition-timing-function: var(--foxy-transition--expand-y-enter-leave---transition-timing-function);
-    transition-property: var(--foxy-transition--expand-y-enter-leave---transition-property);
-  }
+	.foxy-transition--expand-y-leave-active {
+		transition-duration: var(--foxy-transition--expand-y-enter-leave---transition-duration);
+		transition-timing-function: var(--foxy-transition--expand-y-enter-leave---transition-timing-function);
+		transition-property: var(--foxy-transition--expand-y-enter-leave---transition-property);
+	}
 
-  .foxy-transition--expand-y-move {
-    transition-duration: var(--foxy-transition--expand-y-move---transition-duration);
-    transition-property: var(--foxy-transition--expand-y-move---transition-property);
-    transition-timing-function: var(--foxy-transition--expand-y-move---transition-timing-function);
-  }
+	.foxy-transition--expand-y-move {
+		transition-duration: var(--foxy-transition--expand-y-move---transition-duration);
+		transition-property: var(--foxy-transition--expand-y-move---transition-property);
+		transition-timing-function: var(--foxy-transition--expand-y-move---transition-timing-function);
+	}
 </style>
 
 <style>
-  :root {
-    --foxy-transition--expand-y-enter-active---transition-duration: .5s;
-    --foxy-transition--expand-y-enter-active---transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    --foxy-transition--expand-y-enter-active---transition-property: height;
+	:root {
+		--foxy-transition--expand-y-enter-active---transition-duration: .5s;
+		--foxy-transition--expand-y-enter-active---transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		--foxy-transition--expand-y-enter-active---transition-property: height;
 
-    --foxy-transition--expand-y-enter-leave---transition-duration: .5s;
-    --foxy-transition--expand-y-enter-leave---transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    --foxy-transition--expand-y-enter-leave---transition-property: height;
+		--foxy-transition--expand-y-enter-leave---transition-duration: .5s;
+		--foxy-transition--expand-y-enter-leave---transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		--foxy-transition--expand-y-enter-leave---transition-property: height;
 
-    --foxy-transition--expand-y-move---transition-duration: .5s;
-    --foxy-transition--expand-y-move---transition-property: transform;
-    --foxy-transition--expand-y-move---transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
+		--foxy-transition--expand-y-move---transition-duration: .5s;
+		--foxy-transition--expand-y-move---transition-property: transform;
+		--foxy-transition--expand-y-move---transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
 </style>

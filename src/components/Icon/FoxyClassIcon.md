@@ -1,4 +1,5 @@
 # Foxyclassicon
 
 ## Usage
+
     <FoxyClassIcon />

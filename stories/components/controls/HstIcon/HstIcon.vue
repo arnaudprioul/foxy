@@ -1,38 +1,35 @@
 <template>
-  <hst-select
-      v-model="icon"
-      :options="iconList"
-      :title="getTitle"
-      @update:model-value="handleChange"
-  ></hst-select>
+	<hst-select
+			v-model="icon"
+			:options="optionsList"
+			:title="getTitle"
+	/>
 </template>
 
-<script lang="ts" setup>
-  import { TIcon } from '@foxy/types'
+<script
+		lang="ts"
+		setup
+>
+	import { useVModel } from "@foxy/composables"
+	import type { IIconProps } from "@foxy/interfaces"
 
-  import useTitle from '@stories/composables/title.composable'
+	import useTitle from '@stories/composables/title.composable'
 
-  import { iconList } from '@stories/const/icon.const'
+	import { iconList } from '@stories/const/icon.const'
+	import { TMoreOptionsProp } from "@stories/types/options.type"
+	import type { TTitleProp } from '@stories/types/title.type'
 
-  import { TTitleProp } from '@stories/types/title.type'
+	import { computed } from 'vue'
 
-  import { Ref, ref } from 'vue'
+	const props = defineProps<IIconProps & TTitleProp & TMoreOptionsProp>()
 
-  const props = defineProps<{
-    modelValue?: string,
-  } & TTitleProp>()
+	const {getTitle} = useTitle(props.title, 'Icon')
 
-  const emit = defineEmits(['update:modelValue'])
+	const icon = useVModel(props, 'icon', '')
 
-  const { getTitle } = useTitle(props.title, 'Icon')
+	const optionsList = computed(() => {
+		if (props.moreOptions) return [].concat(iconList, props.moreOptions)
 
-  const icon: Ref<TIcon> = ref('')
-
-  if (props.modelValue) {
-    icon.value = props.modelValue
-  }
-
-  const handleChange = (value: string) => {
-    emit('update:modelValue', value || undefined)
-  }
+		return iconList
+	})
 </script>

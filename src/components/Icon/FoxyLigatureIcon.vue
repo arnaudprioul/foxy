@@ -1,26 +1,42 @@
 <template>
-  <component :is="tag" :class="iconClasses" :style="iconStyles">
-    {{ icon }}
-  </component>
+	<component
+			:is="tag"
+			:class="iconClasses"
+			:style="iconStyles"
+	>
+		{{ icon }}
+	</component>
 </template>
 
-<script lang="ts" setup>
-  import { computed, StyleValue } from 'vue'
+<script
+		lang="ts"
+		setup
+>
+	import { useProps } from "@foxy/composables"
 
-  import { IIconComponentProps } from '@foxy/interfaces'
+	import type { IIconComponentProps } from '@foxy/interfaces'
+	import { computed, StyleValue } from 'vue'
 
-  const props = withDefaults(defineProps<IIconComponentProps>(), { tag: 'div' })
+	const props = withDefaults(defineProps<IIconComponentProps>(), {tag: 'div'})
 
-  // CLASS & STYLES
+	const {filterProps} = useProps<IIconComponentProps>(props)
 
-  const iconStyles = computed(() => {
-    return [
-      props.style
-    ] as StyleValue
-  })
-  const iconClasses = computed(() => {
-    return [
-      props.class
-    ]
-  })
+	// CLASS & STYLES
+
+	const iconStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const iconClasses = computed(() => {
+		return [
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

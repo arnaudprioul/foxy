@@ -1,168 +1,256 @@
 <template>
-  <component
-      :is="link.tag"
-      :aria-current="isActive ? 'page' : undefined"
-      :class="breadcrumbItemClasses"
-      :href="link.href"
-      :style="breadcrumbItemStyles"
-      @click="link.navigate">
-    <template v-if="hasPrepend">
-      <span key="prepend" class="foxy-breadcrumbs__prepend" @click="handleClickPrepend">
+	<component
+			:is="link.tag"
+			:aria-current="isActive ? 'page' : undefined"
+			:class="breadcrumbItemClasses"
+			:href="link.href"
+			:style="breadcrumbItemStyles"
+			@click="link.navigate"
+			@mouseenter="handleMouseenter"
+			@mouseleave="handleMouseleave"
+	>
+		<template v-if="hasPrepend">
+      <span
+		      key="prepend"
+		      class="foxy-breadcrumbs__prepend"
+		      @click="handleClickPrepend"
+      >
         <slot name="prepend">
           <foxy-avatar
-              v-if="prependAvatar"
-              key="prepend-avatar"
-              :density="density"
-              :image="prependAvatar"/>
+		          v-if="prependAvatar"
+		          key="prepend-avatar"
+		          :density="density"
+		          :image="prependAvatar"
+          />
           <foxy-icon
-              v-if="prependIcon"
-              key="prepend-icon"
-              :density="density"
-              :icon="prependIcon"/>
+		          v-if="prependIcon"
+		          key="prepend-icon"
+		          :density="density"
+		          :icon="prependIcon"
+          />
         </slot>
       </span>
-    </template>
+		</template>
 
-    <slot name="default">
-      <span>{{ title }}</span>
-    </slot>
+		<slot name="default">
+			<span>{{ title }}</span>
+		</slot>
 
-    <template v-if="hasAppend">
-      <span key="append" class="foxy-breadcrumbs__append" @click="handleClickAppend">
+		<template v-if="hasAppend">
+      <span
+		      key="append"
+		      class="foxy-breadcrumbs__append"
+		      @click="handleClickAppend"
+      >
        <slot name="append">
          <foxy-avatar
-             v-if="appendAvatar"
-             key="append-avatar"
-             :density="density"
-             :image="appendAvatar"/>
+		         v-if="appendAvatar"
+		         key="append-avatar"
+		         :density="density"
+		         :image="appendAvatar"
+         />
          <foxy-icon
-             v-if="appendIcon"
-             key="append-icon"
-             :density="density"
-             :icon="appendIcon"/>
+		         v-if="appendIcon"
+		         key="append-icon"
+		         :density="density"
+		         :icon="appendIcon"
+         />
        </slot>
       </span>
-    </template>
-  </component>
+		</template>
+	</component>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyAvatar, FoxyIcon } from '@foxy/components'
+<script
+		lang="ts"
+		setup
+>
+	import { FoxyAvatar, FoxyIcon } from '@foxy/components'
 
-  import {
-    useAdjacent,
-    useBorder,
-    useBothColor,
-    useDensity,
-    useLink,
-    useMargin,
-    usePadding,
-    useRounded
-  } from '@foxy/composables'
+	import {
+		useActive,
+		useAdjacent,
+		useBorder,
+		useColorEffect,
+		useDensity,
+		useHover,
+		useLink,
+		useMargin,
+		usePadding,
+		useProps,
+		useRounded,
+		useStyle
+	} from '@foxy/composables'
 
-  import { DENSITY } from '@foxy/enums'
+	import { DENSITY } from '@foxy/enums'
 
-  import { IBreadcrumbItemProps } from '@foxy/interfaces'
+	import type { IBreadcrumbItemProps } from '@foxy/interfaces'
 
-  import { computed, StyleValue, toRef, useAttrs } from 'vue'
+	import { computed, ComputedRef, StyleValue, toRef, useAttrs } from 'vue'
 
-  const props = withDefaults(defineProps<IBreadcrumbItemProps>(), { tag: 'span', density: DENSITY.DEFAULT })
+	const props = withDefaults(defineProps<IBreadcrumbItemProps>(), {tag: 'span', density: DENSITY.DEFAULT})
 
-  const emits = defineEmits(['click:append', 'click:prepend'])
+	defineEmits(['click:append', 'click:prepend', 'click:append'])
 
-  const attrs = useAttrs()
+	const {filterProps} = useProps<IBreadcrumbItemProps>(props)
 
-  const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
-  const { densityClasses } = useDensity(props)
-  const { roundedClasses, roundedStyles } = useRounded(props)
-  const { borderClasses, borderStyles } = useBorder(props)
-  const { paddingClasses, paddingStyles } = usePadding(props)
-  const { marginClasses, marginStyles } = useMargin(props)
+	const attrs = useAttrs()
 
-  const {hasAppend, hasPrepend, onClickPrepend: handleClickPrepend, onClickAppend: handleClickAppend} = useAdjacent(props, emits)
-  const link = useLink(props, attrs)
+	const link = useLink(props, attrs)
 
-  const isActive = computed(() => props.active || link.isActive?.value)
+	const {isHover, onMouseenter: handleMouseenter, onMouseleave: handleMouseleave} = useHover(props)
+	const {isActive: active, activeClasses} = useActive(props)
 
+	const isActive = computed(() => {
+		return active.value || link.isActive?.value
+	})
 
-  // CLASS & STYLES
+	const {colorStyles} = useColorEffect(props, isHover, isActive as unknown as ComputedRef<boolean>)
+	const {densityClasses} = useDensity(props)
+	const {roundedClasses, roundedStyles} = useRounded(props)
+	const {borderClasses, borderStyles} = useBorder(props)
+	const {paddingClasses, paddingStyles} = usePadding(props)
+	const {marginClasses, marginStyles} = useMargin(props)
 
-  const breadcrumbItemStyles = computed(() => {
-    return [
-      colorStyles.value,
-      roundedStyles.value,
-      borderStyles.value,
-      paddingStyles.value,
-      marginStyles.value,
-      props.style
-    ] as StyleValue
-  })
-  const breadcrumbItemClasses = computed(() => {
-    return [
-      'foxy-breadcrumb-item',
-      {
-        'foxy-breadcrumb-item--active': isActive.value,
-        'foxy-breadcrumb-item--link': !!link.href.value,
-        'foxy-breadcrumb-item--disabled': props.disabled,
-        [`${props.activeClass}`]: isActive.value && props.activeClass,
-      },
-      densityClasses.value,
-      roundedClasses.value,
-      borderClasses.value,
-      paddingClasses.value,
-      marginClasses.value,
-      props.class,
-    ]
-  })
+	const {
+		hasAppend,
+		hasPrepend,
+		onClickPrepend: handleClickPrepend,
+		onClickAppend: handleClickAppend
+	} = useAdjacent(props, toRef(props, 'prependIcon'), toRef(props, 'appendIcon'))
+
+	// CLASS & STYLES
+
+	const breadcrumbItemStyles = computed(() => {
+		return [
+			colorStyles.value,
+			roundedStyles.value,
+			borderStyles.value,
+			paddingStyles.value,
+			marginStyles.value,
+			props.style
+		] as StyleValue
+	})
+	const breadcrumbItemClasses = computed(() => {
+		return [
+			'foxy-breadcrumb-item',
+			{
+				'foxy-breadcrumb-item--link': !!link.href.value,
+				'foxy-breadcrumb-item--disabled': props.disabled,
+			},
+			activeClasses.value,
+			densityClasses.value,
+			roundedClasses.value,
+			borderClasses.value,
+			paddingClasses.value,
+			marginClasses.value,
+			props.class
+		]
+	})
+
+	const {id, css, load, isLoaded, unload} = useStyle(breadcrumbItemStyles)
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps,
+		css,
+		id,
+		load,
+		unload,
+		isLoaded
+	})
 </script>
 
-<style lang="scss" scoped>
-  .foxy-breadcrumb-item {
-    align-items: center;
-    color: inherit;
-    display: inline-flex;
-    text-decoration: none;
-    vertical-align: middle;
+<style
+		lang="scss"
+		scoped
+>
+	.foxy-breadcrumb-item {
+		align-items: center;
+		display: inline-flex;
+		vertical-align: middle;
 
-    &--disabled {
-      opacity: 0.5;
-      pointer-events: none;
-    }
+		text-decoration: var(--foxy-breadcrumb-item---text-decoration);
 
-    &--link {
-      color: inherit;
-      text-decoration: none;
+		transition: var(--foxy-breadcrumb-item---transition);
 
-      &:hover {
-        text-decoration: underline;
-      }
-    }
+		background: var(--foxy-breadcrumb-item---background);
+		box-shadow: var(--foxy-breadcrumb-item---box-shadow);
+		color: var(--foxy-breadcrumb-item---color);
+		opacity: var(--foxy-breadcrumb-item---opacity);
 
-    &--density-default {
-      padding-left: 4px;
-      padding-right: 4px;
-    }
+		border-color: var(--foxy-breadcrumb-item---border-color);
+		border-style: var(--foxy-breadcrumb-item---border-style);
+		border-width: var(--foxy-breadcrumb-item---border-width);
+		border-radius: var(--foxy-breadcrumb-item---border-radius);
 
-    &--density-compact {
-      padding-left: 0;
-      padding-right: 0;
-    }
+		padding-block-start: calc(var(--foxy-breadcrumb-item---padding-block-start) - var(--foxy-breadcrumb-item---density));
+		padding-block-end: calc(var(--foxy-breadcrumb-item---padding-block-end) - var(--foxy-breadcrumb-item---density));
+		padding-inline-start: calc(var(--foxy-breadcrumb-item---padding-inline-start) - var(--foxy-breadcrumb-item---density));
+		padding-inline-end: calc(var(--foxy-breadcrumb-item---padding-inline-end) - var(--foxy-breadcrumb-item---density));
 
-    &__prepend,
-    &__append {
-      align-items: center;
-      display: inline-flex;
-    }
+		margin-block-start: var(--foxy-breadcrumb-item---margin-block-start);
+		margin-block-end: var(--foxy-breadcrumb-item---margin-block-end);
+		margin-inline-start: var(--foxy-breadcrumb-item---margin-inline-start);
+		margin-inline-end: var(--foxy-breadcrumb-item---margin-inline-end);
 
-    :deep(.foxy-icon) {
-      font-size: 1rem;
-      margin-inline: -4px 2px;
-    }
-  }
+		&--disabled {
+			--foxy-breadcrumb-item---opacity: 0.5;
+			pointer-events: none;
+		}
+
+		&--link {
+
+		}
+
+		&--density-comfortable {
+			--foxy-breadcrumb-item---density: 8px;
+		}
+
+		&--density-default {
+			--foxy-breadcrumb-item---density: 0px;
+		}
+
+		&--density-compact {
+			--foxy-breadcrumb-item---density: 8px;
+		}
+
+		&__prepend,
+		&__append {
+			align-items: center;
+			display: inline-flex;
+		}
+	}
 </style>
 
 <style>
-  :root {
-
-  }
+	:root {
+		--foxy-breadcrumb-item---text-decoration: none;
+		--foxy-breadcrumb-item---border-top-width: 0;
+		--foxy-breadcrumb-item---border-left-width: 0;
+		--foxy-breadcrumb-item---border-bottom-width: 0;
+		--foxy-breadcrumb-item---border-right-width: 0;
+		--foxy-breadcrumb-item---border-width: var(--foxy-breadcrumb-item---border-top-width) var(--foxy-breadcrumb-item---border-left-width) var(--foxy-breadcrumb-item---border-bottom-width) var(--foxy-breadcrumb-item---border-right-width);
+		--foxy-breadcrumb-item---border-color: currentColor;
+		--foxy-breadcrumb-item---border-style: solid;
+		--foxy-breadcrumb-item---border-radius: 0;
+		--foxy-breadcrumb-item---density: 0;
+		--foxy-breadcrumb-item---box-shadow: none;
+		--foxy-breadcrumb-item---color: inherit;
+		--foxy-breadcrumb-item---opacity: 1;
+		--foxy-breadcrumb-item---background: transparent;
+		--foxy-breadcrumb-item---margin-inline-start: 0;
+		--foxy-breadcrumb-item---margin-inline-end: 0;
+		--foxy-breadcrumb-item---margin-block-start: 0;
+		--foxy-breadcrumb-item---margin-block-end: 0;
+		--foxy-breadcrumb-item---padding-block-start: 8px;
+		--foxy-breadcrumb-item---padding-block-end: 8px;
+		--foxy-breadcrumb-item---padding-inline-start: 8px;
+		--foxy-breadcrumb-item---padding-inline-end: 8px;
+		--foxy-breadcrumb-item---transition-duration: 0.2s, 0.1s;
+		--foxy-breadcrumb-item---transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		--foxy-breadcrumb-item---transition-property: transform, color;
+		--foxy-breadcrumb-item---transition: var(--foxy-breadcrumb-item---transition-property) var(--foxy-breadcrumb-item---transition-duration) var(--foxy-breadcrumb-item---transition-timing-function);
+	}
 </style>

@@ -1,6 +1,6 @@
 import { FILTERS_MODE } from '@foxy/enums'
 
-import { IInternalItem } from '@foxy/interfaces'
+import type { IInternalItem } from '@foxy/interfaces'
 
 export type TFilterMatch = boolean | number | [number, number] | [number, number][]
 export type TFilterFunction = (value: string, query: string, item?: IInternalItem) => TFilterMatch

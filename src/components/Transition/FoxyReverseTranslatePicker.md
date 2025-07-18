@@ -1,0 +1,5 @@
+# FoxyReverseTranslatePicker
+
+## Usage
+
+    <FoxyReverseTranslatePicker />

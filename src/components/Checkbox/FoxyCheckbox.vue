@@ -1,110 +1,150 @@
 <template>
-  <foxy-input
-      :id="id"
-      v-model="model"
-      :class="checkboxClasses"
-      :focused="isFocused"
-      :style="checkboxStyles"
-      v-bind="{...rootAttrs, ...inputProps}">
-    <template #default="{id,messagesId,isDisabled,isReadonly,isValid}">
-      <slot name="default" v-bind="{id,messagesId,isDisabled,isReadonly,isValid}">
-        <foxy-checkbox-btn
-            :id="id"
-            v-model="model"
-            :aria-describedby="messagesId"
-            :disabled="isDisabled"
-            :error="!isValid"
-            :readonly="isReadonly"
-            v-bind="{ ...checkboxBtnProps, ...controlAttrs }"
-            @click:label="handleClickLabel"
-            @blur="handleBlur"
-            @focus="handleFocus">
-          <template v-if="hasSlot('default')" #default>
-            <slot name="default"/>
-          </template>
+	<foxy-input
+			:id="id"
+			ref="foxyInputRef"
+			v-model="model"
+			:class="checkboxClasses"
+			:focused="isFocused"
+			:style="checkboxStyles"
+			v-bind="{...rootAttrs, ...inputProps}"
+	>
+		<template #default="{id,messagesId,isDisabled,isReadonly,isValid}">
+			<slot
+					name="default"
+					v-bind="{id,messagesId,isDisabled,isReadonly,isValid}"
+			>
+				<foxy-checkbox-btn
+						:id="id"
+						ref="foxyCheckboxBtnRef"
+						v-model="model"
+						:aria-describedby="messagesId"
+						:disabled="isDisabled"
+						:error="!isValid"
+						:readonly="isReadonly"
+						v-bind="{ ...checkboxBtnProps, ...controlAttrs }"
+						@blur="handleBlur"
+						@focus="handleFocus"
+						@click:label="handleClickLabel"
+				>
+					<template
+							v-if="slots.default"
+							#default
+					>
+						<slot name="default"/>
+					</template>
 
-          <template v-if="hasSlot('input')" #input="{props, icon, textColorStyles, backgroundColorStyles, model}">
-            <slot name="input" v-bind="{props, icon, textColorStyles, backgroundColorStyles, model}"/>
-          </template>
+					<template
+							v-if="slots.input"
+							#input="{props, icon, textColorStyles, backgroundColorStyles, model}"
+					>
+						<slot
+								name="input"
+								v-bind="{props, icon, textColorStyles, backgroundColorStyles, model}"
+						/>
+					</template>
 
-          <template v-if="hasSlot('label')" #label>
-            <slot name="label"/>
-          </template>
-        </foxy-checkbox-btn>
-      </slot>
-    </template>
-  </foxy-input>
+					<template
+							v-if="slots.label"
+							#label
+					>
+						<slot name="label"/>
+					</template>
+				</foxy-checkbox-btn>
+			</slot>
+		</template>
+	</foxy-input>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyCheckboxBtn, FoxyInput } from '@foxy/components'
+<script
+		lang="ts"
+		setup
+>
+	import { FoxyCheckboxBtn, FoxyInput } from '@foxy/components'
 
-  import { useFocus, useSlots } from '@foxy/composables'
+	import { useFocus, useProps, useVModel } from '@foxy/composables'
 
-  import { CHECKBOX_BTN_PROPS, INPUT_PROPS } from '@foxy/consts'
+	import { DENSITY } from '@foxy/enums'
 
-  import { DENSITY } from '@foxy/enums'
+	import type { ICheckboxProps } from '@foxy/interfaces'
 
-  import { ICheckboxProps } from '@foxy/interfaces'
+	import type { TFoxyCheckboxBtn, TFoxyInput } from "@foxy/types"
 
-  import { filterInputAttrs, getUid, keys, omit, pick, useProxiedModel } from '@foxy/utils'
+	import { filterInputAttrs, getUid } from '@foxy/utils'
 
-  import { computed, StyleValue, useAttrs } from 'vue'
+	import { computed, ref, StyleValue, useAttrs, useSlots } from 'vue'
 
-  const props = withDefaults(defineProps<ICheckboxProps>(), { density: DENSITY.DEFAULT })
+	const props = withDefaults(defineProps<ICheckboxProps>(), {
+		density: DENSITY.DEFAULT
+	})
 
-  const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])
+	const emits = defineEmits(['update:modelValue', 'update:focused', 'click:label'])
 
-  const model = useProxiedModel(props, 'modelValue')
-  const { isFocused, onFocus: handleFocus, onBlur: handleBlur } = useFocus(props)
-  const attrs = useAttrs()
-  const { hasSlot } = useSlots()
+	const {filterProps} = useProps<ICheckboxProps>(props)
 
-  const uid = getUid()
-  const id = computed(() => props.id || `checkbox-${uid}`)
+	const foxyInputRef = ref<TFoxyInput>()
+	const foxyCheckboxBtnRef = ref<TFoxyCheckboxBtn>()
 
-  const handleClickLabel = (e: Event) => {
-    emits('click:label', e)
-  }
+	const model = useVModel(props, 'modelValue')
+	const {isFocused, onFocus: handleFocus, onBlur: handleBlur} = useFocus(props)
+	const attrs = useAttrs()
+	const slots = useSlots()
 
-  const [rootAttrs, controlAttrs] = filterInputAttrs(attrs)
+	const uid = getUid()
+	const id = computed(() => {
+		return props.id || `checkbox-${uid}`
+	})
 
-  const inputProps = computed(() => {
-    return omit(pick(props, keys(INPUT_PROPS)), ['modelValue', 'id', 'focused'])
-  })
-  const checkboxBtnProps = computed(() => {
-    return omit(pick(props, keys(CHECKBOX_BTN_PROPS)), ['modelValue', 'id', 'disabled', 'readonly', 'error'])
-  })
+	const handleClickLabel = (e: Event) => {
+		emits('click:label', e)
+	}
 
-  // CLASS & STYLES
+	const [rootAttrs, controlAttrs] = filterInputAttrs(attrs)
 
-  const checkboxStyles = computed(() => {
-    return [
-      props.style,
-    ] as StyleValue
-  })
-  const checkboxClasses = computed(() => {
-    return [
-      'foxy-checkbox',
-      props.class,
-    ]
-  })
+	const inputProps = computed(() => {
+		return foxyInputRef.value?.filterProps(props, ['modelValue', 'class', 'style', 'id', 'focused'])
+	})
+	const checkboxBtnProps = computed(() => {
+		return foxyCheckboxBtnRef.value?.filterProps(props, ['class', 'style', 'modelValue', 'id', 'disabled', 'readonly', 'error'])
+	})
+
+	// CLASS & STYLES
+
+	const checkboxStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const checkboxClasses = computed(() => {
+		return [
+			'foxy-checkbox',
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
-<style lang="scss" scoped>
-  .foxy-checkbox {
-    &.foxy-input {
-      flex: 0 1 auto;
-    }
+<style
+		lang="scss"
+		scoped
+>
+	.foxy-checkbox {
+		&.foxy-input {
+			flex: 0 1 auto;
+		}
 
-    .foxy-selection-control {
-      min-height: calc(56px + 2 * var(--foxy-input---density));
-    }
-  }
+		.foxy-selection-control {
+			min-height: calc(56px + 2 * var(--foxy-input---density));
+		}
+	}
 </style>
 
 <style>
-  :root {
+	:root {
 
-  }
+	}
 </style>

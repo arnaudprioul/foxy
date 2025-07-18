@@ -1,423 +1,469 @@
 <template>
-  <foxy-responsive
-      v-intersect="intersect"
-      :aria-label="props.alt"
-      :aspect-ratio="aspectRatio"
-      :class="imgClasses"
-      :role="props.alt ? 'img' : undefined"
-      :style="imgStyles"
-      v-bind="responsiveProps"
-  >
-    <template #additional>
-      <foxy-transition :transition="transition" appear>
-        <img
-            v-show="isLoaded"
-            ref="image"
-            :alt="alt"
-            :class="imgPictureClasses"
-            :crossorigin="crossorigin"
-            :draggable="draggable"
-            :referrerpolicy="referrerpolicy"
-            :sizes="sizes"
-            :src="normalisedSrc.src"
-            :srcset="normalisedSrc.srcset"
-            :style="imgContentStyles"
-            @error="handleError"
-            @load="handleLoad"
-        />
-      </foxy-transition>
-      <foxy-transition :transition="transition">
-        <img
-            v-if="normalisedSrc.lazySrc && !isLoaded"
-            :alt="alt"
-            :class="imgPictureClasses"
-            :crossorigin="crossorigin"
-            :draggable="draggable"
-            :referrerpolicy="referrerpolicy"
-            :src="normalisedSrc.lazySrc"
-            :style="imgContentStyles"
-        />
-      </foxy-transition>
-      <foxy-transition :transition="transition" appear>
-        <div v-if="(isLoading || (isError && !hasSlot('error'))) && hasSlot('placeholder')"
-             class="foxy-img__placeholder">
-          <slot name="placeholder"></slot>
-        </div>
-      </foxy-transition>
-      <foxy-transition :transition="transition" appear>
-        <div v-if="isError && hasSlot('error')" class="foxy-img__error">
-          <slot name="error"></slot>
-        </div>
-      </foxy-transition>
-      <div v-if="gradient" :style="imgGradientStyles" class="foxy-img__gradient"/>
-    </template>
+	<foxy-responsive
+			v-intersect="intersect"
+			:aria-label="props.alt"
+			:aspect-ratio="aspectRatio"
+			:class="imgClasses"
+			:role="props.alt ? 'img' : undefined"
+			:style="imgStyles"
+			v-bind="responsiveProps"
+	>
+		<template #additional>
+			<foxy-transition
+					:transition="transition"
+					appear
+			>
+				<img
+						v-show="isLoaded"
+						ref="image"
+						:alt="alt"
+						:class="imgPictureClasses"
+						:crossorigin="crossorigin"
+						:draggable="draggable"
+						:referrerpolicy="referrerpolicy"
+						:sizes="sizes"
+						:src="normalisedSrc.src"
+						:srcset="normalisedSrc.srcset"
+						:style="imgContentStyles"
+						@error="handleError"
+						@load="handleLoad"
+				/>
+			</foxy-transition>
+			<foxy-transition :transition="transition">
+				<img
+						v-if="normalisedSrc.lazySrc && !isLoaded"
+						:alt="alt"
+						:class="imgPictureClasses"
+						:crossorigin="crossorigin"
+						:draggable="draggable"
+						:referrerpolicy="referrerpolicy"
+						:src="normalisedSrc.lazySrc"
+						:style="imgContentStyles"
+				/>
+			</foxy-transition>
+			<foxy-transition
+					:transition="transition"
+					appear
+			>
+				<div
+						v-if="(isLoading || (isError && !slots.error)) && slots.placeholder"
+						class="foxy-img__placeholder"
+				>
+					<slot name="placeholder"/>
+				</div>
+			</foxy-transition>
+			<foxy-transition
+					:transition="transition"
+					appear
+			>
+				<div
+						v-if="isError && slots.error"
+						class="foxy-img__error"
+				>
+					<slot name="error"/>
+				</div>
+			</foxy-transition>
+			<div
+					v-if="gradient"
+					:style="imgGradientStyles"
+					class="foxy-img__gradient"
+			/>
+		</template>
 
-    <template v-if="hasContent" #default>
-      <slot name="default"/>
-    </template>
-  </foxy-responsive>
+		<template
+				v-if="hasContent"
+				#default
+		>
+			<slot name="default"/>
+		</template>
+	</foxy-responsive>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyTransition, FoxyResponsive } from '@foxy/components'
+<script
+		lang="ts"
+		setup
+>
+	import { FoxyResponsive, FoxyTransition } from '@foxy/components'
 
-  import { vIntersect } from '@foxy/directives'
+	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '@foxy/composables'
 
-  import { useBorder, useBothColor, useMargin, usePadding, useRounded, useSlots } from '@foxy/composables'
+	import { SUPPORTS_INTERSECTION } from '@foxy/consts'
 
-  import { SUPPORTS_INTERSECTION } from '@foxy/consts'
+	import { vIntersect } from '@foxy/directives'
 
-  import { IMG_STATE } from '@foxy/enums'
+	import { IMG_STATE } from '@foxy/enums'
 
-  import { IImgProps, ISrcObject } from '@foxy/interfaces'
+	import type { IImgProps, ISrcObject } from '@foxy/interfaces'
 
-  import { TImgState } from '@foxy/types'
+	import type { TImgState } from '@foxy/types'
 
-  import { convertToUnit, getCurrentInstance, pick } from '@foxy/utils'
+	import { convertToUnit, getCurrentInstance, pick } from '@foxy/utils'
 
-  import { computed, nextTick, onBeforeMount, onBeforeUnmount, ref, shallowRef, StyleValue, toRef, watch } from 'vue'
+	import {
+		computed,
+		nextTick,
+		onBeforeMount,
+		onBeforeUnmount,
+		ref,
+		shallowRef,
+		StyleValue,
+		toRef,
+		useSlots,
+		watch
+	} from 'vue'
 
-  const props = withDefaults(defineProps<IImgProps>(), {})
+	const props = withDefaults(defineProps<IImgProps>(), {})
 
-  const emits = defineEmits(['loadstart', 'load', 'error'])
+	const emits = defineEmits(['loadstart', 'load', 'error'])
 
-  const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
-  const { roundedClasses, roundedStyles } = useRounded(props)
-  const { borderClasses, borderStyles } = useBorder(props)
-  const { paddingClasses, paddingStyles } = usePadding(props)
-  const { marginClasses, marginStyles } = useMargin(props)
-  const { hasSlot } = useSlots()
+	const {filterProps} = useProps<IImgProps>(props)
 
-  const vm = getCurrentInstance('FoxyImg')
-  const currentSrc = shallowRef('') // Set from srcset
-  const image = ref<HTMLImageElement>()
-  const state = shallowRef<TImgState>(props.eager ? IMG_STATE.LOADING : IMG_STATE.IDLE)
-  const naturalWidth = shallowRef<number>()
-  const naturalHeight = shallowRef<number>()
+	const {colorStyles} = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
+	const {roundedClasses, roundedStyles} = useRounded(props)
+	const {borderClasses, borderStyles} = useBorder(props)
+	const {paddingClasses, paddingStyles} = usePadding(props)
+	const {marginClasses, marginStyles} = useMargin(props)
+	const slots = useSlots()
 
-  const normalisedSrc = computed<ISrcObject>(() => {
-    return props.src && typeof props.src === 'object'
-        ? {
-          src: props.src.src,
-          srcset: props.srcset || props.src.srcset,
-          lazySrc: props.lazySrc || props.src.lazySrc,
-          aspect: Number(props.aspectRatio || props.src.aspect || 0),
-        } : {
-          src: props.src,
-          srcset: props.srcset,
-          lazySrc: props.lazySrc,
-          aspect: Number(props.aspectRatio || 0),
-        }
-  })
-  const aspectRatio = computed(() => {
-    return normalisedSrc.value.aspect || naturalWidth.value! / naturalHeight.value! || 0
-  })
+	const vm = getCurrentInstance('FoxyImg')
+	const currentSrc = shallowRef('') // Set from srcset
+	const image = ref<HTMLImageElement>()
+	const state = shallowRef<TImgState>(props.eager ? IMG_STATE.LOADING : IMG_STATE.IDLE)
+	const naturalWidth = shallowRef<number>()
+	const naturalHeight = shallowRef<number>()
 
-  const responsiveProps = pick(props, ['aspectRatio', 'contentClass', 'inline', 'height', 'maxHeight', 'maxWidth', 'minHeight', 'minWidth', 'width', 'class', 'style'])
+	const normalisedSrc = computed<ISrcObject>(() => {
+		return props.src && typeof props.src === 'object'
+				? {
+					src: props.src.src,
+					srcset: props.srcset || props.src.srcset,
+					lazySrc: props.lazySrc || props.src.lazySrc,
+					aspectRatio: Number(props.aspectRatio || props.src.aspectRatio || 0)
+				} : {
+					src: props.src,
+					srcset: props.srcset,
+					lazySrc: props.lazySrc,
+					aspectRatio: Number(props.aspectRatio || 0)
+				}
+	})
+	const aspectRatio = computed(() => {
+		return normalisedSrc.value.aspectRatio || naturalWidth.value! / naturalHeight.value! || 0
+	})
 
-  watch(() => props.src, () => {
-    init(state.value !== IMG_STATE.IDLE)
-  })
-  watch(aspectRatio, (val, oldVal) => {
-    if (!val && oldVal && image.value) {
-      pollForSize(image.value)
-    }
-  })
+	const responsiveProps = pick(props, ['aspectRatio', 'contentClass', 'inline', 'height', 'maxHeight', 'maxWidth', 'minHeight', 'minWidth', 'width', 'class', 'style'])
 
-  onBeforeMount(() => init())
+	watch(() => props.src, () => {
+		init(state.value !== IMG_STATE.IDLE)
+	})
+	watch(aspectRatio, (val, oldVal) => {
+		if (!val && oldVal && image.value) {
+			pollForSize(image.value)
+		}
+	})
 
-  const init = (isIntersecting?: boolean) => {
-    if (props.eager && isIntersecting) return
-    if (SUPPORTS_INTERSECTION && !isIntersecting && !props.eager) return
+	onBeforeMount(() => init())
 
-    state.value = IMG_STATE.LOADING
+	const init = (isIntersecting?: boolean) => {
+		if (props.eager && isIntersecting) return
+		if (SUPPORTS_INTERSECTION && !isIntersecting && !props.eager) return
 
-    if (normalisedSrc.value.lazySrc) {
-      const lazyImg = new Image()
-      lazyImg.src = normalisedSrc.value.lazySrc
-      pollForSize(lazyImg, null)
-    }
+		state.value = IMG_STATE.LOADING
 
-    if (!normalisedSrc.value.src) return
+		if (normalisedSrc.value.lazySrc) {
+			const lazyImg = new Image()
+			lazyImg.src = normalisedSrc.value.lazySrc
+			pollForSize(lazyImg, null)
+		}
 
-    nextTick(() => {
-      emits('loadstart', image.value?.currentSrc || normalisedSrc.value.src)
+		if (!normalisedSrc.value.src) return
 
-      setTimeout(() => {
-        if (vm.isUnmounted) return
+		nextTick(() => {
+			emits('loadstart', image.value?.currentSrc || normalisedSrc.value.src)
 
-        if (image.value?.complete) {
-          if (!image.value.naturalWidth) {
-            onError()
-          }
+			setTimeout(() => {
+				if (vm.isUnmounted) return
 
-          if (state.value === IMG_STATE.ERROR) return
+				if (image.value?.complete) {
+					if (!image.value.naturalWidth) {
+						onError()
+					}
 
-          if (!aspectRatio.value) pollForSize(image.value, null)
-          if (state.value === IMG_STATE.LOADING) onLoad()
-        } else {
-          if (!aspectRatio.value) pollForSize(image.value!)
-          getSrc()
-        }
-      })
-    })
-  }
+					if (state.value === IMG_STATE.ERROR) return
 
-  const onLoad = () => {
-    if (vm.isUnmounted) return
+					if (!aspectRatio.value) pollForSize(image.value, null)
+					if (state.value === IMG_STATE.LOADING) onLoad()
+				} else {
+					if (!aspectRatio.value) pollForSize(image.value!)
+					getSrc()
+				}
+			})
+		})
+	}
 
-    getSrc()
-    pollForSize(image.value!)
+	const onLoad = () => {
+		if (vm.isUnmounted) return
 
-    state.value = 'loaded'
+		getSrc()
+		pollForSize(image.value!)
 
-    emits('load', image.value?.currentSrc || normalisedSrc.value.src)
-  }
+		state.value = 'loaded'
 
-  const handleLoad = () => {
-    onLoad()
-  }
+		emits('load', image.value?.currentSrc || normalisedSrc.value.src)
+	}
 
-  const onError = () => {
-    if (vm.isUnmounted) return
+	const handleLoad = () => {
+		onLoad()
+	}
 
-    state.value = 'error'
+	const onError = () => {
+		if (vm.isUnmounted) return
 
-    emits('error', image.value?.currentSrc || normalisedSrc.value.src)
-  }
+		state.value = 'error'
 
-  const handleError = () => {
-    onError()
-  }
+		emits('error', image.value?.currentSrc || normalisedSrc.value.src)
+	}
 
-  const getSrc = () => {
-    const img = image.value
+	const handleError = () => {
+		onError()
+	}
 
-    if (img) currentSrc.value = img.currentSrc || img.src
-  }
+	const getSrc = () => {
+		const img = image.value
 
-  let timer = -1
+		if (img) currentSrc.value = img.currentSrc || img.src
+	}
 
-  onBeforeUnmount(() => {
-    clearTimeout(timer)
-  })
+	let timer = -1
 
-  const pollForSize = (img: HTMLImageElement, timeout: number | null = 100) => {
-    const poll = () => {
-      clearTimeout(timer)
-      if (vm.isUnmounted) return
+	onBeforeUnmount(() => {
+		clearTimeout(timer)
+	})
 
-      const { naturalHeight: imgHeight, naturalWidth: imgWidth } = img
+	const pollForSize = (img: HTMLImageElement, timeout: number | null = 100) => {
+		const poll = () => {
+			clearTimeout(timer)
+			if (vm.isUnmounted) return
 
-      if (imgHeight || imgWidth) {
-        naturalWidth.value = imgWidth
-        naturalHeight.value = imgHeight
-      } else if (!img.complete && state.value === IMG_STATE.LOADING && timeout != null) {
-        timer = window.setTimeout(poll, timeout)
-      } else if (img.currentSrc.endsWith('.svg') || img.currentSrc.startsWith('data:image/svg+xml')) {
-        naturalWidth.value = 1
-        naturalHeight.value = 1
-      }
-    }
+			const {naturalHeight: imgHeight, naturalWidth: imgWidth} = img
 
-    poll()
-  }
+			if (imgHeight || imgWidth) {
+				naturalWidth.value = imgWidth
+				naturalHeight.value = imgHeight
+			} else if (!img.complete && state.value === IMG_STATE.LOADING && timeout != null) {
+				timer = window.setTimeout(poll, timeout)
+			} else if (img.currentSrc.endsWith('.svg') || img.currentSrc.startsWith('data:image/svg+xml')) {
+				naturalWidth.value = 1
+				naturalHeight.value = 1
+			}
+		}
 
-  const isBooted = shallowRef(false)
+		poll()
+	}
 
-  const stop = watch(aspectRatio, (val) => {
-    if (val) {
-      // Doesn't work with nextTick, idk why
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          isBooted.value = true
-        })
-      })
-      stop()
-    }
-  })
+	const isBooted = shallowRef(false)
 
-  const intersect = ref([{
-    handler: init,
-    options: props.options,
-  }, null, ['once']])
+	const stop = watch(aspectRatio, (val) => {
+		if (val) {
+			// Doesn't work with nextTick, idk why
+			requestAnimationFrame(() => {
+				requestAnimationFrame(() => {
+					isBooted.value = true
+				})
+			})
+			stop()
+		}
+	})
 
-  // STATE
+	const intersect = ref([{
+		handler: init,
+		options: props.options
+	}, null, ['once']])
 
-  const isLoaded = computed(() => {
-    return state.value === IMG_STATE.LOADED
-  })
-  const isLoading = computed(() => {
-    return state.value === IMG_STATE.LOADING
-  })
-  const isError = computed(() => {
-    return state.value === IMG_STATE.ERROR && !hasSlot('error')
-  })
-  const hasContent = computed(() => {
-    return hasSlot('default')
-  })
+	// STATE
 
-  // CLASS & STYLES
+	const isLoaded = computed(() => {
+		return state.value === IMG_STATE.LOADED
+	})
+	const isLoading = computed(() => {
+		return state.value === IMG_STATE.LOADING
+	})
+	const isError = computed(() => {
+		return state.value === IMG_STATE.ERROR && !slots.error
+	})
+	const hasContent = computed(() => {
+		return slots.default
+	})
 
-  const imgStyles = computed(() => {
-    return [
-      { 'width': convertToUnit(props.width === 'auto' ? naturalWidth.value : props.width) },
-      colorStyles.value,
-      roundedStyles.value,
-      borderStyles.value,
-      paddingStyles.value,
-      marginStyles.value,
-      props.style
-    ] as StyleValue
-  })
-  const imgClasses = computed(() => {
-    return [
-      'foxy-img',
-      { 'foxy-img--booting': !isBooted.value },
-      roundedClasses.value,
-      borderClasses.value,
-      paddingClasses.value,
-      marginClasses.value,
-      props.class,
-    ]
-  })
-  const imgPictureClasses = computed(() => {
-    return [
-      'foxy-img__picture',
-      {
-        'foxy-img__picture--cover': props.cover,
-        'foxy-img__picture--contain': !props.cover,
-        'foxy-img__picture--preload': normalisedSrc.value.lazySrc && !isLoaded.value
-      }
-    ]
-  })
-  const imgContentStyles = computed(() => {
-    return [
-      { objectPosition: props.position }
-    ]
-  })
-  const imgGradientStyles = computed(() => {
-    return [
-      `backgroundImage: linear-gradient(${props.gradient})`
-    ]
-  })
+	// CLASS & STYLES
+
+	const imgStyles = computed(() => {
+		return [
+			{'width': convertToUnit(props.width === 'auto' ? naturalWidth.value : props.width)},
+			colorStyles.value,
+			roundedStyles.value,
+			borderStyles.value,
+			paddingStyles.value,
+			marginStyles.value,
+			props.style
+		] as StyleValue
+	})
+	const imgClasses = computed(() => {
+		return [
+			'foxy-img',
+			{'foxy-img--booting': !isBooted.value},
+			roundedClasses.value,
+			borderClasses.value,
+			paddingClasses.value,
+			marginClasses.value,
+			props.class
+		]
+	})
+	const imgPictureClasses = computed(() => {
+		return [
+			'foxy-img__picture',
+			{
+				'foxy-img__picture--cover': props.cover,
+				'foxy-img__picture--contain': !props.cover,
+				'foxy-img__picture--preload': normalisedSrc.value.lazySrc && !isLoaded.value
+			}
+		]
+	})
+	const imgContentStyles = computed(() => {
+		return [
+			{objectPosition: props.position}
+		]
+	})
+	const imgGradientStyles = computed(() => {
+		return [
+			`backgroundImage: linear-gradient(${props.gradient})`
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
-<style lang="scss" scoped>
-  .foxy-img {
-    $this: &;
+<style
+		lang="scss"
+		scoped
+>
+	.foxy-img {
+		$this: &;
 
-    z-index: var(--foxy-img---z-index);
+		z-index: var(--foxy-img---z-index);
 
-    &--booting {
-      &:deep(.foxy-responsive__sizer) {
-        transition: var(--foxy-img--booting---transition);
-      }
-    }
+		&--booting {
+			&:deep(.foxy-responsive__sizer) {
+				transition: var(--foxy-img--booting---transition);
+			}
+		}
 
-    &--rounded {
-      border-radius: var(--foxy-img--rounded---border-radius);
-    }
+		&--rounded {
+			border-radius: var(--foxy-img--rounded---border-radius);
+		}
 
-    &__picture {
-      z-index: var(--foxy-img__picture---z-index);
-      position: var(--foxy-img__picture---position);
-      top: var(--foxy-img__picture---top);
-      left: var(--foxy-img__picture---left);
-      width: var(--foxy-img__picture---width);
-      height: var(--foxy-img__picture---height);
+		&__picture {
+			z-index: var(--foxy-img__picture---z-index);
+			position: var(--foxy-img__picture---position);
+			top: var(--foxy-img__picture---top);
+			left: var(--foxy-img__picture---left);
+			width: var(--foxy-img__picture---width);
+			height: var(--foxy-img__picture---height);
 
-      &--preload {
-        filter: var(--foxy-img__picture--preload---filter);
-      }
+			&--preload {
+				filter: var(--foxy-img__picture--preload---filter);
+			}
 
-      &--contain {
-        object-fit: var(--foxy-img__picture--contain---object-fit);
-      }
+			&--contain {
+				object-fit: var(--foxy-img__picture--contain---object-fit);
+			}
 
-      &--cover {
-        object-fit: var(--foxy-img__picture--cover---object-fit);
-      }
-    }
+			&--cover {
+				object-fit: var(--foxy-img__picture--cover---object-fit);
+			}
+		}
 
-    &__gradient {
-      z-index: var(--foxy-img__gradient---z-index);
-      position: var(--foxy-img__gradient---position);
-      top: var(--foxy-img__gradient---top);
-      left: var(--foxy-img__gradient---left);
-      width: var(--foxy-img__gradient---width);
-      height: var(--foxy-img__gradient---height);
-      background-repeat: var(--foxy-img__gradient---background-repeat);
-    }
+		&__gradient {
+			z-index: var(--foxy-img__gradient---z-index);
+			position: var(--foxy-img__gradient---position);
+			top: var(--foxy-img__gradient---top);
+			left: var(--foxy-img__gradient---left);
+			width: var(--foxy-img__gradient---width);
+			height: var(--foxy-img__gradient---height);
+			background-repeat: var(--foxy-img__gradient---background-repeat);
+		}
 
-    &__placeholder {
-      z-index: var(--foxy-img__placeholder---z-index);
-      position: var(--foxy-img__placeholder---position);
-      top: var(--foxy-img__placeholder---top);
-      left: var(--foxy-img__placeholder---left);
-      width: var(--foxy-img__placeholder---width);
-      height: var(--foxy-img__placeholder---height);
-    }
+		&__placeholder {
+			z-index: var(--foxy-img__placeholder---z-index);
+			position: var(--foxy-img__placeholder---position);
+			top: var(--foxy-img__placeholder---top);
+			left: var(--foxy-img__placeholder---left);
+			width: var(--foxy-img__placeholder---width);
+			height: var(--foxy-img__placeholder---height);
+		}
 
-    &__error {
-      z-index: var(--foxy-img__error---z-index);
-      position: var(--foxy-img__error---position);
-      top: var(--foxy-img__error---top);
-      left: var(--foxy-img__error---left);
-      width: var(--foxy-img__error---width);
-      height: var(--foxy-img__error---height);
-    }
-  }
+		&__error {
+			z-index: var(--foxy-img__error---z-index);
+			position: var(--foxy-img__error---position);
+			top: var(--foxy-img__error---top);
+			left: var(--foxy-img__error---left);
+			width: var(--foxy-img__error---width);
+			height: var(--foxy-img__error---height);
+		}
+	}
 </style>
 
 <style>
-  :root {
-    --foxy-img---z-index: 0;
+	:root {
+		--foxy-img---z-index: 0;
 
-    --foxy-img--booting---transition: none;
+		--foxy-img--booting---transition: none;
 
-    --foxy-img--rounded---border-radius: 4px;
+		--foxy-img--rounded---border-radius: 4px;
 
-    --foxy-img__content---z-index: -1;
-    --foxy-img__content---position: absolute;
-    --foxy-img__content---top: 0;
-    --foxy-img__content---left: 0;
-    --foxy-img__content---width: 100%;
-    --foxy-img__content---height: 100%;
+		--foxy-img__content---z-index: -1;
+		--foxy-img__content---position: absolute;
+		--foxy-img__content---top: 0;
+		--foxy-img__content---left: 0;
+		--foxy-img__content---width: 100%;
+		--foxy-img__content---height: 100%;
 
-    --foxy-img__picture---z-index: -1;
-    --foxy-img__picture---position: absolute;
-    --foxy-img__picture---top: 0;
-    --foxy-img__picture---left: 0;
-    --foxy-img__picture---width: 100%;
-    --foxy-img__picture---height: 100%;
+		--foxy-img__picture---z-index: -1;
+		--foxy-img__picture---position: absolute;
+		--foxy-img__picture---top: 0;
+		--foxy-img__picture---left: 0;
+		--foxy-img__picture---width: 100%;
+		--foxy-img__picture---height: 100%;
 
-    --foxy-img__picture--preload---filter: blur(4px);
+		--foxy-img__picture--preload---filter: blur(4px);
 
-    --foxy-img__picture--contain---object-fit: contain;
+		--foxy-img__picture--contain---object-fit: contain;
 
-    --foxy-img__picture--cover---object-fit: cover;
+		--foxy-img__picture--cover---object-fit: cover;
 
-    --foxy-img__gradient---z-index: -1;
-    --foxy-img__gradient---position: absolute;
-    --foxy-img__gradient---top: 0;
-    --foxy-img__gradient---left: 0;
-    --foxy-img__gradient---width: 100%;
-    --foxy-img__gradient---height: 100%;
-    --foxy-img__gradient---background-repeat: no-repeat;
+		--foxy-img__gradient---z-index: -1;
+		--foxy-img__gradient---position: absolute;
+		--foxy-img__gradient---top: 0;
+		--foxy-img__gradient---left: 0;
+		--foxy-img__gradient---width: 100%;
+		--foxy-img__gradient---height: 100%;
+		--foxy-img__gradient---background-repeat: no-repeat;
 
-    --foxy-img__placeholder---z-index: -1;
-    --foxy-img__placeholder---position: absolute;
-    --foxy-img__placeholder---top: 0;
-    --foxy-img__placeholder---left: 0;
-    --foxy-img__placeholder---width: 100%;
-    --foxy-img__placeholder---height: 100%;
+		--foxy-img__placeholder---z-index: -1;
+		--foxy-img__placeholder---position: absolute;
+		--foxy-img__placeholder---top: 0;
+		--foxy-img__placeholder---left: 0;
+		--foxy-img__placeholder---width: 100%;
+		--foxy-img__placeholder---height: 100%;
 
-    --foxy-img__error---z-index: -1;
-    --foxy-img__error---position: absolute;
-    --foxy-img__error---top: 0;
-    --foxy-img__error---left: 0;
-    --foxy-img__error---width: 100%;
-    --foxy-img__error---height: 100%;
-  }
+		--foxy-img__error---z-index: -1;
+		--foxy-img__error---position: absolute;
+		--foxy-img__error---top: 0;
+		--foxy-img__error---left: 0;
+		--foxy-img__error---width: 100%;
+		--foxy-img__error---height: 100%;
+	}
 </style>

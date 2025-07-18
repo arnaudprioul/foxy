@@ -3,34 +3,26 @@
       v-model="align"
       :options="alignList"
       :title="getTitle"
-      @update:model-value="handleChange"
   />
 </template>
 
-<script lang="ts" setup>
-import { Ref, ref } from 'vue'
+<script
+    lang="ts"
+    setup
+>
+	import { useVModel } from "@foxy/composables"
+	import { ALIGN } from "@foxy/enums"
+	import type { IAlignProps } from "@foxy/interfaces"
 
-import { alignList } from '@stories/const/align.const'
+	import useTitle from '@stories/composables/title.composable'
+	import { alignList } from '@stories/const/align.const'
+	import type { TTitleProp } from '@stories/types/title.type'
 
-import { TTitleProp } from '@stories/types/title.type'
+	const props = defineProps<IAlignProps & TTitleProp>()
 
-import useTitle from '@stories/composables/title.composable'
+	const {getTitle} = useTitle(props.title, 'Align')
 
-const props = defineProps<{
-  modelValue?: string
-} & TTitleProp>()
+	const align = useVModel(props, 'align', ALIGN.STRETCH)
 
-const emit = defineEmits(['update:modelValue'])
-
-const { getTitle } = useTitle(props.title, 'Variant')
-
-const variant: Ref<string> = ref('start')
-
-if (props.modelValue) {
-  variant.value = props.modelValue
-}
-
-const handleChange = (value: string) => {
-  emit('update:modelValue', value)
-}
+	// TODO - Manage specific Align Breackpoint
 </script>

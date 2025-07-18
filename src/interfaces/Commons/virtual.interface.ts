@@ -1,4 +1,4 @@
 export interface IVirtualProps {
-  itemHeight?: number | string
-  height?: number | string
+    itemHeight?: number | string
+    height?: number | string
 }

@@ -1,5 +1,10 @@
-import { TPosition } from '@foxy/types'
+import type { TPosition } from '@foxy/types'
 
 export interface IPositionProps {
-  position?: TPosition | undefined
+    position?: TPosition
+
+    top?: number | string
+    bottom?: number | string
+    left?: number | string
+    right?: number | string
 }

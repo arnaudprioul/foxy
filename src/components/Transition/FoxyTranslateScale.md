@@ -1,4 +1,5 @@
 # FoxyTranslateScale
 
 ## Usage
+
     <FoxyTranslateScale />

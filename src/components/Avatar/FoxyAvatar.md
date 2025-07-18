@@ -1,4 +1,5 @@
 # Foxyavatar
 
 ## Usage
+
     <FoxyAvatar />

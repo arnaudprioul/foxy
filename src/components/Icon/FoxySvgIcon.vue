@@ -1,50 +1,72 @@
 <template>
-  <component :is="tag" :class="iconClasses" :style="iconStyles">
-    <svg
-        aria-hidden="true"
-        class="foxy-icon__svg"
-        role="img"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-      <template v-if="!isArray(icon)">
-        <path :d="icon as string"></path>
-      </template>
-      <template v-else>
-        <template v-for="(path, index) in icon" :key="index">
-          <template v-if="!isArray(path)">
-            <path :d="path[0] as string" :fill-opacity="path[1]"></path>
-          </template>
-          <template v-else>
-            <path :d="path as string"></path>
-          </template>
-        </template>
-      </template>
-    </svg>
-  </component>
+	<component
+			:is="tag"
+			:class="iconClasses"
+			:style="iconStyles"
+	>
+		<svg
+				aria-hidden="true"
+				class="foxy-icon__svg"
+				role="img"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+		>
+			<template v-if="!isArray(icon)">
+				<path :d="icon as string"></path>
+			</template>
+			<template v-else>
+				<template
+						v-for="(path, index) in icon"
+						:key="index"
+				>
+					<template v-if="!isArray(path)">
+						<path
+								:d="path[0] as string"
+								:fill-opacity="path[1]"
+						></path>
+					</template>
+					<template v-else>
+						<path :d="path as string"></path>
+					</template>
+				</template>
+			</template>
+		</svg>
+	</component>
 </template>
 
-<script lang="ts" setup>
-  import { computed, StyleValue } from 'vue'
+<script
+		lang="ts"
+		setup
+>
+	import { useProps } from "@foxy/composables"
 
-  import { IIconComponentProps } from '@foxy/interfaces'
+	import type { IIconComponentProps } from '@foxy/interfaces'
+	import { computed, StyleValue } from 'vue'
 
-  const props = withDefaults(defineProps<IIconComponentProps>(), { tag: 'div' })
+	const props = withDefaults(defineProps<IIconComponentProps>(), {tag: 'div'})
 
-  const isArray = (data: any) => {
-    return Array.isArray(data)
-  }
+	const {filterProps} = useProps<IIconComponentProps>(props)
 
-  // CLASS & STYLES
+	const isArray = (data: any) => {
+		return Array.isArray(data)
+	}
 
-  const iconStyles = computed(() => {
-    return [
-      props.style
-    ] as StyleValue
-  })
-  const iconClasses = computed(() => {
-    return [
-      props.class
-    ]
-  })
+	// CLASS & STYLES
+
+	const iconStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const iconClasses = computed(() => {
+		return [
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

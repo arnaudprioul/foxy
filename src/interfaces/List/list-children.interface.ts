@@ -1,25 +1,25 @@
-import { TListItemType } from '@foxy/types'
+import type { TListItemType } from '@foxy/types'
 
 export interface IListItemChildren {
-  items: Readonly<Array<IInternalListItemChildren>>
-  returnObject?: boolean
+    items: Array<IInternalListItemChildren>
+    returnObject?: boolean
 }
 
 export interface IInternalListItemChildren<T = any> extends IInternalListItem<T> {
-  type?: TListItemType
+    type?: TListItemType
 }
 
 export interface IInternalListItem<T = any> extends IInternalItem<T> {
-  title?: string
-  props?: {
-    [key: string]: any
     title?: string
-    value?: any
-  }
-  children?: Array<IInternalListItem<T>>
+    props?: {
+        [key: string]: any
+        title?: string
+        value?: any
+    }
+    children?: Array<IInternalListItem<T>>
 }
 
 export interface IInternalItem<T = any> {
-  value?: any
-  raw: T
+    value?: any
+    raw: T
 }

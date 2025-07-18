@@ -1,0 +1,5 @@
+# FoxyColorpickerfield
+
+## Usage
+
+    <FoxyColorPickerField />

@@ -1,5 +1,6 @@
-import {
-    IBorderProps, IChipProps,
+import type {
+    IBorderProps,
+    IChipProps,
     IColorProps,
     ICommonsComponentProps,
     IDensityProps,
@@ -11,11 +12,13 @@ import {
     IRoundedProps
 } from "@foxy/interfaces"
 
-import { TFile, TFileSize } from "@foxy/types"
+import type { TFile, TFileSize } from "@foxy/types"
 
 export interface IFileFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps {
     chips?: boolean
     counter?: boolean
+    counterSizeString?: string
+    counterString?: string
     placeholder?: string
     persistentPlaceholder?: boolean
     persistentCounter?: boolean

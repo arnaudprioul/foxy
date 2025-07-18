@@ -1,3 +1,3 @@
 export interface IStackProvide {
-  activeChildren: Set<number>
+    activeChildren: Set<number>
 }

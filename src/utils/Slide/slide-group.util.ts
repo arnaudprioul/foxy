@@ -1,10 +1,11 @@
-export function calculateUpdatedTarget ({selectedElement, containerElement, isHorizontal}: {
+export function calculateUpdatedTarget ({selectedElement, containerElement, isRtl, isHorizontal}: {
     selectedElement: HTMLElement
     containerElement: HTMLElement
+    isRtl: boolean
     isHorizontal: boolean
 }): number {
     const containerSize = getOffsetSize(isHorizontal, containerElement)
-    const scrollPosition = getScrollPosition(isHorizontal, containerElement)
+    const scrollPosition = getScrollPosition(isHorizontal, isRtl, containerElement)
 
     const childrenSize = getOffsetSize(isHorizontal, selectedElement)
     const childrenStartPosition = getOffsetPosition(isHorizontal, selectedElement)
@@ -42,17 +43,21 @@ export function getClientSize (isHorizontal: boolean, element?: HTMLElement) {
     return element?.[key] || 0
 }
 
-export function getScrollPosition (isHorizontal: boolean, element?: HTMLElement) {
+export function getScrollPosition (isHorizontal: boolean, isRtl: boolean, element?: HTMLElement) {
     if (!element) {
         return 0
     }
 
     const {
-        scrollLeft
+        scrollLeft,
+        offsetWidth,
+        scrollWidth
     } = element
 
     if (isHorizontal) {
-        return scrollLeft
+        return isRtl
+            ? scrollWidth - offsetWidth + scrollLeft
+            : scrollLeft
     }
 
     return element.scrollTop

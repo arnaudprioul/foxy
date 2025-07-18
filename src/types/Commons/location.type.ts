@@ -1,6 +1,6 @@
 import { LOCATION_STRATEGIES } from '@foxy/enums'
 
-import { ILocationStrategyData, ILocationStrategyProps } from '@foxy/interfaces'
+import type { ILocationStrategyData, ILocationStrategyProps } from '@foxy/interfaces'
 
 import { Ref } from 'vue'
 

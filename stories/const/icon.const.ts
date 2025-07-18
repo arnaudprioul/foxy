@@ -1,8 +1,6 @@
 import { MDI_ICONS } from '@foxy/enums'
 
-import { ref } from 'vue'
-
-export const iconList = ref([
+export const iconList = [
     {
         label: 'Empty',
         value: ''
@@ -111,4 +109,4 @@ export const iconList = ref([
         label: 'Calendar',
         value: MDI_ICONS.CALENDAR
     }
-])
+]

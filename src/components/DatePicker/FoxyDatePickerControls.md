@@ -1,0 +1,5 @@
+# Foxydatepickercontrols
+
+## Usage
+
+    <FoxyDatePickerControls />

@@ -1,0 +1,1 @@
+export { default as FoxySnackbar } from './FoxySnackbar.vue'

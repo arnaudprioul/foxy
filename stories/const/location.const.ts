@@ -1,6 +1,4 @@
 export const locationList = [
-    { value: 'start', label: 'Start' },
-    { value: 'end', label: 'End' },
     { value: 'left', label: 'Left' },
     { value: 'right', label: 'Right' },
     { value: 'top', label: 'Top' },
@@ -8,12 +6,12 @@ export const locationList = [
 ]
 
 export const multipleLocationList = [
-    'start',
-    'top start',
+    'left',
+    'top left',
     'top',
-    'top end',
-    'end',
-    'bottom end',
+    'top right',
+    'right',
+    'bottom right',
     'bottom',
-    'bottom start'
+    'bottom left'
 ]

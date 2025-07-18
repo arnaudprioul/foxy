@@ -1,49 +1,23 @@
 <template>
-  <div>
-    <hst-checkbox
-        v-if="!props.tile"
-        v-model="rounded"
-        title="Rounded"
-        @update:model-value="handleRoundedChange"
-    />
-  </div>
+	<hst-select
+			v-model="rounded"
+			:options="roundedList"
+			title="Rounded"
+	/>
 </template>
 
-<script lang="ts" setup>
-import { ref, Ref } from 'vue'
+<script
+    lang="ts"
+    setup
+>
+	import { useVModel } from "@foxy/composables"
+	import { IRoundedProps } from "@foxy/interfaces"
 
-const props = defineProps<{
-  rounded?: boolean | number,
-  tile?: boolean,
-  hideTile?: boolean
-}>()
+	import { roundedList } from "@stories/const/rounded.const"
 
-const emit = defineEmits(['update:rounded', 'update:tile'])
+	const props = defineProps<IRoundedProps>()
 
-const rounded: Ref<boolean | string> = ref(false)
-const tile: Ref<boolean> = ref(false)
-const hideTile: Ref<boolean> = ref(false)
+	const rounded = useVModel(props, 'rounded', 0)
 
-if (props.tile) {
-  tile.value = props.tile
-}
-
-if (props.hideTile) {
-  hideTile.value = props.hideTile
-}
-
-if (typeof props.rounded === 'boolean') {
-  rounded.value = Boolean(props.rounded)
-}
-
-const handleRoundedChange = (value: boolean) => {
-  emit('update:rounded', value)
-}
-
-const handleTileChange = (value: boolean) => {
-  rounded.value = value ? '0' : false
-
-  emit('update:rounded', value ? '0' : false)
-  emit('update:tile', value)
-}
+	// TODO - Manage specific rounded position
 </script>

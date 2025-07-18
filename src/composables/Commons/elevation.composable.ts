@@ -1,18 +1,30 @@
-import { computed, isRef, Ref } from 'vue'
+import type { IElevationProps } from '@foxy/interfaces'
+import { TColor } from "@foxy/types"
+import { formatElevationStyle, getCurrentInstanceName } from "@foxy/utils"
+import { computed, isRef, ref, Ref } from 'vue'
 
-import { IElevationProps } from '@foxy/interfaces'
+export function useElevation (props: IElevationProps | Ref<number | string | undefined>, flat: Ref<boolean> = ref(false), bgColor: Ref<TColor> = ref('rgb(0,0,0)'), name = getCurrentInstanceName()) {
+    const elevationClasses = computed(() => {
+        const elevation = isRef(props) ? props.value : props.elevation
+        const classes: Array<string> = []
 
-export function useElevation (props: IElevationProps | Ref<number | string | undefined>) {
-  const elevationClasses = computed(() => {
-    const elevation = isRef(props) ? props.value : props.elevation
-    const classes: Array<string> = []
+        if (elevation == null || flat.value) return classes
 
-    if (elevation == null) return classes
+        classes.push(`${name}--elevated`)
 
-    classes.push(`elevation-${elevation}`)
+        return classes
+    })
 
-    return classes
-  })
+    const elevationStyles = computed(() => {
+        const elevation = isRef(props) ? props.value : props.elevation
+        const styles: Array<string> = []
 
-  return { elevationClasses }
+        if (elevation == null || flat.value) return []
+
+        styles.push(formatElevationStyle(parseInt(elevation, 10), bgColor.value))
+
+        return styles
+    })
+
+    return {elevationClasses, elevationStyles}
 }

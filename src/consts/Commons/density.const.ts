@@ -1,14 +1,9 @@
 import { DENSITY } from '@foxy/enums'
 
-import { IDensityProps } from '@foxy/interfaces'
-
-import { TDensity } from '@foxy/types'
+import type { TDensity } from '@foxy/types'
 
 export const PREDIFINED_DENSITY: Array<TDensity> = [
-  DENSITY.DEFAULT,
-  DENSITY.COMPACT
+    DENSITY.DEFAULT,
+    DENSITY.COMPACT,
+    DENSITY.COMFORTABLE
 ]
-
-export const DENSITY_PROPS: IDensityProps = {
-  density: undefined
-}

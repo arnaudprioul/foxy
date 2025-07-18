@@ -1,4 +1,5 @@
 # Foxywindow
 
 ## Usage
+
     <FoxyWindow />

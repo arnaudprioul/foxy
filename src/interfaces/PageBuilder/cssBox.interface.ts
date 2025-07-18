@@ -1,5 +1,5 @@
-import { IBorderProps, IMarginProps, IPaddingProps } from '@foxy/interfaces'
+import type { IBorderProps, IMarginProps, IPaddingProps } from '@foxy/interfaces'
 
-export interface ICssBoxProps extends IPaddingProps, IMarginProps, IBorderProps{
+export interface ICssBoxProps extends IPaddingProps, IMarginProps, IBorderProps {
 
 }

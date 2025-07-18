@@ -1,0 +1,5 @@
+# Foxydatepickerfield
+
+## Usage
+
+    <FoxyDatePickerField />

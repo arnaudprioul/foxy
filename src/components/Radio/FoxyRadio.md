@@ -1,0 +1,5 @@
+# Foxyradio
+
+## Usage
+
+    <FoxyRadio />

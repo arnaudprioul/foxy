@@ -1,343 +1,528 @@
 <template>
-  <component
-      :is="tag"
-      :class="alertClasses"
-      :style="alertStyles"
-      role="alert">
-    <span key="underlay" class="foxy-alert__underlay"/>
+	<component
+			:is="tag"
+			:id="id"
+			:class="alertClasses"
+			role="alert"
+			@mouseenter="handleMouseenter"
+			@mouseleave="handleMouseleave"
+	>
+    <span
+		    key="underlay"
+		    class="foxy-alert__underlay"
+    />
 
-    <slot name="wrapper">
-      <div v-if="hasPrepend" key="prepend" class="foxy-alert__prepend">
-        <slot name="prepend">
-          <foxy-icon v-if="hasIcon" key="prepend-icon" :icon="icon" :size="iconSize"/>
-        </slot>
-      </div>
+		<slot name="wrapper">
+			<template v-if="hasPrepend">
+				<div
+						key="prepend"
+						class="foxy-alert__prepend"
+						@click="handleClickPrepend"
+				>
+					<slot name="prepend">
+						<foxy-avatar
+								v-if="prependAvatar"
+								key="prepend-avatar"
+								:density="density"
+								:image="prependAvatar"
+								:size="size"
+						/>
+						<foxy-icon
+								v-if="prependIcon"
+								key="prepend-icon"
+								:density="density"
+								:icon="prependIcon"
+								:size="size"
+						/>
+					</slot>
+				</div>
+			</template>
 
-      <div class="foxy-alert__content">
-        <div v-if="hasTitle" class="foxy-alert__title">
-          <slot name="title">{{ title }}</slot>
-        </div>
+			<div class="foxy-alert__content">
+				<div
+						v-if="hasHeader"
+						class="foxy-alert__header"
+				>
+					<template v-if="hasIcon">
+						<foxy-icon
+								key="content-icon"
+								:icon="icon as TIcon"
+								:size="size"
+						/>
+					</template>
+					<template v-if="hasTitle">
+						<span class="foxy-alert__title">
+							<slot name="title">{{ title }}</slot>
+						</span>
+					</template>
+				</div>
 
-        <div class="foxy-alert__body">
-          <slot name="text">{{ text }}</slot>
-        </div>
+				<div class="foxy-alert__body">
+					<slot name="text">{{ text }}</slot>
+				</div>
 
-        <slot name="default"/>
-      </div>
+				<slot name="default"/>
+			</div>
 
-      <div v-if="hasAppend" key="append" class="foxy-alert__append">
-        <slot name="append"/>
-      </div>
-    </slot>
+			<template v-if="hasAppend">
+				<div
+						key="append"
+						class="foxy-alert__append"
+						@click="handleClickAppend"
+				>
+					<slot name="append">
+						<foxy-avatar
+								v-if="appendAvatar"
+								key="append-avatar"
+								:density="density"
+								:image="appendAvatar"
+								:size="size"
+						/>
+						<foxy-icon
+								v-if="appendIcon"
+								key="append-icon"
+								:density="density"
+								:icon="appendIcon"
+								:size="size"
+						/>
+					</slot>
+				</div>
+			</template>
+		</slot>
 
-    <div v-if="hasClose" key="close" class="foxy-alert__close">
-      <slot name="close">
-        <foxy-btn
-            key="close-btn"
-            :icon="closeIcon"
-            size="x-small"
-            v-on="closeEvent"/>
-      </slot>
-    </div>
-  </component>
+		<div
+				v-if="hasClose"
+				key="close"
+				class="foxy-alert__close"
+		>
+			<slot name="close">
+				<foxy-btn
+						key="close-btn"
+						:aria-label="t(closeLabel)"
+						:icon="closeIcon"
+						data-cy="close"
+						size="x-small"
+						@click="handleClose"
+				/>
+			</slot>
+		</div>
+	</component>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyBtn, FoxyIcon } from '@foxy/components'
+<script
+		lang="ts"
+		setup
+>
+	import { FoxyAvatar, FoxyBtn, FoxyIcon } from '@foxy/components'
 
-  import {
-    useBorder,
-    useBothColor,
-    useDensity,
-    useDimension,
-    useElevation,
-    useLocation,
-    useMargin,
-    usePadding,
-    usePosition,
-    useRounded,
-    useSlots,
-    useStatus
-  } from '@foxy/composables'
+	import {
+		useActive,
+		useAdjacent,
+		useBorder,
+		useColorEffect,
+		useDensity,
+		useDimension,
+		useElevation,
+		useHover,
+		useLocale,
+		useLocation,
+		useMargin,
+		usePadding,
+		usePosition,
+		useProps,
+		useRounded,
+		useStatus
+	} from '@foxy/composables'
+	import { useStyle } from "@foxy/composables/Commons/style.composable.ts"
 
-  import { DENSITY } from '@foxy/enums'
+	import { DENSITY, MDI_ICONS } from '@foxy/enums'
 
-  import { IAlertProps } from '@foxy/interfaces'
-  import { useProxiedModel } from '@foxy/utils'
+	import type { IAlertProps } from '@foxy/interfaces'
+	import type { TIcon } from "@foxy/types"
 
-  import { computed, StyleValue, toRef } from 'vue'
+	import type { ComputedRef, StyleValue } from 'vue'
+	import { computed, ref, useSlots } from 'vue'
 
-  const props = withDefaults(defineProps<IAlertProps>(), {
-    tag: 'div',
-    density: DENSITY.DEFAULT,
-    closeIcon: '$close',
-    modelValue: true
-  })
+	const props = withDefaults(defineProps<IAlertProps>(), {
+		tag: 'div',
+		density: DENSITY.DEFAULT,
+		closeIcon: MDI_ICONS.CLOSE,
+		closeLabel: 'foxy.close',
+		modelValue: true,
+		hover: true
+	})
 
-  const emits = defineEmits(['click:close', 'update:modelValue'])
+	const emits = defineEmits(['click:close', 'update:modelValue', 'update:hover'])
 
-  const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
-  const { densityClasses } = useDensity(props)
-  const { borderStyles, borderClasses } = useBorder(props)
-  const { paddingClasses, paddingStyles } = usePadding(props)
-  const { marginClasses, marginStyles } = useMargin(props)
-  const { dimensionStyles } = useDimension(props)
-  const { elevationClasses } = useElevation(props)
-  const { locationStyles } = useLocation(props)
-  const { positionClasses } = usePosition(props)
-  const { roundedClasses, roundedStyles } = useRounded(props)
-  const { icon, statusClasses } = useStatus(props)
-  const { hasSlot } = useSlots()
+	const {filterProps} = useProps<IAlertProps>(props)
+	const {t} = useLocale()
 
-  const isActive = useProxiedModel(props, 'modelValue')
+	const slots = useSlots()
 
-  const closeEvent = computed(() => {
-    return {
-      click (e: MouseEvent) {
-        isActive.value = false
+	const {activeClasses, isActive, onActive} = useActive(props, 'modelValue')
+	const {isHover, onMouseenter: handleMouseenter, onMouseleave: handleMouseleave, hoverClasses} = useHover(props)
+	const {colorStyles, bgColor} = useColorEffect(props, isHover, isActive as unknown as ComputedRef<boolean>)
+	const {densityClasses} = useDensity(props)
+	const {borderStyles, borderClasses} = useBorder(props)
+	const {paddingClasses, paddingStyles} = usePadding(props)
+	const {marginClasses, marginStyles} = useMargin(props)
+	const {dimensionStyles} = useDimension(props)
+	const {elevationClasses, elevationStyles} = useElevation(props, ref(false), bgColor)
+	const {locationStyles} = useLocation(props)
+	const {positionClasses, positionStyles} = usePosition(props)
+	const {roundedClasses, roundedStyles} = useRounded(props)
+	const {icon, prependIcon, appendIcon, statusClasses} = useStatus(props)
 
-        emits('click:close', e)
-      },
-    }
-  })
-  const iconSize = computed(() => {
-    return props.prominent ? 44 : 28
-  })
+	const {
+		onClickPrepend: handleClickPrepend,
+		onClickAppend: handleClickAppend,
+		hasAppend,
+		hasPrepend
+	} = useAdjacent(props, prependIcon, appendIcon)
 
-  // SLOTS
+	const handleClose = (e: MouseEvent) => {
+		onActive()
 
-  const hasPrepend = computed(() => {
-    return !!(hasSlot('prepend') || icon.value)
-  })
-  const hasAppend = computed(() => {
-    return hasSlot('append')
-  })
-  const hasTitle = computed(() => {
-    return !!(hasSlot('title') || props.title)
-  })
-  const hasClose = computed(() => {
-    return hasSlot('close') || props.closable
-  })
-  const hasIcon = computed(() => {
-    return !!(props.icon || props.status)
-  })
+		emits('click:close', e)
+	}
+	const size = computed(() => {
+		return props.prominent ? 44 : 28
+	})
 
-  // CLASS & STYLES
+	// SLOTS
 
-  const alertStyles = computed(() => {
-    return [
-      dimensionStyles.value,
-      colorStyles.value,
-      locationStyles.value,
-      borderStyles.value,
-      paddingStyles.value,
-      marginStyles.value,
-      roundedStyles.value,
-      props.style
-    ] as StyleValue
-  })
-  const alertClasses = computed(() => {
-    return [
-      'foxy-alert',
-      {
-        'foxy-alert--prominent': props.prominent,
-      },
-      statusClasses.value,
-      densityClasses.value,
-      borderClasses.value,
-      paddingClasses.value,
-      marginClasses.value,
-      elevationClasses.value,
-      positionClasses.value,
-      roundedClasses.value,
-      props.class,
-    ]
-  })
+	const hasIcon = computed(() => {
+		return !!(props.icon || props.status)
+	})
+	const hasTitle = computed(() => {
+		return !!(slots.title || props.title)
+	})
+	const hasHeader = computed(() => {
+		return hasTitle.value || hasIcon.value
+	})
+	const hasClose = computed(() => {
+		return slots.close || props.closable
+	})
+
+	// CLASS & STYLES
+
+	const alertStyles = computed(() => {
+		return [
+			dimensionStyles.value,
+			colorStyles.value,
+			locationStyles.value,
+			borderStyles.value,
+			paddingStyles.value,
+			marginStyles.value,
+			roundedStyles.value,
+			positionStyles.value,
+			elevationStyles.value,
+			props.style
+		] as StyleValue
+	})
+	const alertClasses = computed(() => {
+		return [
+			'foxy-alert',
+			{
+				'foxy-alert--prominent': props.prominent
+			},
+			hoverClasses.value,
+			activeClasses.value,
+			statusClasses.value,
+			densityClasses.value,
+			borderClasses.value,
+			paddingClasses.value,
+			marginClasses.value,
+			elevationClasses.value,
+			positionClasses.value,
+			roundedClasses.value,
+			props.class
+		]
+	})
+
+	const {id, css, load, isLoaded, unload} = useStyle(alertStyles)
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps,
+		css,
+		id,
+		load,
+		unload,
+		isLoaded
+	})
 </script>
 
-<style lang="scss" scoped>
-  .foxy-alert {
-    $this: &;
+<style
+		lang="scss"
+		scoped
+>
+	.foxy-alert {
+		$this: &;
 
-    display: grid;
-    flex: 1 1;
-    grid-template-areas: "prepend content append close" ". content . .";
-    grid-template-columns: max-content auto max-content max-content;
-    position: relative;
-    padding: 16px;
-    overflow: hidden;
-    border-color: var(--foxy-alert---border-color);
-    border-radius: 4px;
+		display: grid;
+		flex: 1 1;
+		grid-template-areas: "prepend content append close" ". content . .";
+		grid-template-columns: max-content auto max-content max-content;
+		overflow: hidden;
+		position: var(--foxy-alert---position);
 
-    background-color: var(--foxy-alert---background-color);
-    color: var(--foxy-alert---color);
-    box-shadow: var(--foxy-alert---box-shadow);
+		padding-block-start: calc(var(--foxy-alert---padding-block-start) - var(--foxy-alert---density));
+		padding-block-end: calc(var(--foxy-alert---padding-block-end) - var(--foxy-alert---density));
+		padding-inline-start: calc(var(--foxy-alert---padding-inline-start) - var(--foxy-alert---density));
+		padding-inline-end: calc(var(--foxy-alert---padding-inline-end) - var(--foxy-alert---density));
+		margin-block-start: var(--foxy-alert---margin-block-start);
+		margin-block-end: var(--foxy-alert---margin-block-end);
+		margin-inline-start: var(--foxy-alert---margin-inline-start);
+		margin-inline-end: var(--foxy-alert---margin-inline-end);
 
-    &--absolute {
-      position: absolute;
-    }
+		border-width: var(--foxy-alert---border-width);
+		border-style: var(--foxy-alert---border-style);
+		border-color: var(--foxy-alert---border-color);
+		border-radius: var(--foxy-alert---border-radius);
 
-    &--fixed {
-      position: fixed;
-    }
+		background-color: var(--foxy-alert---background-color);
+		color: var(--foxy-alert---color);
 
-    &--sticky {
-      position: sticky;
-    }
+		&--elevated {
+			box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+		}
 
-    &--prominent {
-      grid-template-areas: "prepend content append close" "prepend content . .";
+		&--border {
+			&#{$this}--border-left {
+				--foxy-alert---border-left-width: calc(24px - var(--foxy-alert---density));
 
-      #{$this}__prepend {
-        align-self: center;
-      }
-    }
+				#{$this}__underlay {
+					--foxy-alert__underlay---border-top-left-radius: 0;
+					--foxy-alert__underlay---border-bottom-left-radius: 0;
+				}
+			}
 
-    &--bordered {
+			&#{$this}--border-right {
+				--foxy-alert---border-right-width: calc(24px - var(--foxy-alert---density));
 
-      &#{$this}--border-start {
-        padding-inline-start: 24px;
+				#{$this}__underlay {
+					--foxy-alert__underlay---border-top-right-radius: 0;
+					--foxy-alert__underlay---border-bottom-right-radius: 0;
+				}
+			}
 
-        #{$this}__underlay {
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-        }
-      }
+			&#{$this}--border-top {
+				--foxy-alert---border-top-width: calc(24px - var(--foxy-alert---density));
 
-      &#{$this}--border-end {
-        padding-inline-end: 24px;
+				#{$this}__underlay {
+					--foxy-alert__underlay---border-top-left-radius: 0;
+					--foxy-alert__underlay---border-top-right-radius: 0;
+				}
+			}
 
-        #{$this}__underlay {
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
-        }
-      }
+			&#{$this}--border-bottom {
+				--foxy-alert---border-bottom-width: calc(24px - var(--foxy-alert---density));
 
-      &#{$this}--border-top {
-        #{$this}__underlay {
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-        }
-      }
+				#{$this}__underlay {
+					--foxy-alert__underlay---border-bottom-left-radius: 0;
+					--foxy-alert__underlay---border-bottom-right-radius: 0;
+				}
+			}
+		}
 
-      &#{$this}--border-bottom {
-        #{$this}__underlay {
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-        }
-      }
-    }
+		&--rounded {
+			--foxy-alert---border-radius: 4px;
+		}
 
-    &--density-default {
-      padding-bottom: 16px;
-      padding-top: 16px;
+		&--density-comfortable {
+			--foxy-alert---density: 8px;
+		}
 
-      &#{$this}--border-top {
-        padding-top: 24px;
-      }
+		&--density-default {
+			--foxy-alert---density: 0px;
+		}
 
-      &#{$this}--border-bottom {
-        padding-bottom: 24px;
-      }
-    }
+		&--density-compact {
+			--foxy-alert---density: 8px;
+		}
 
-    &--density-compact {
-      padding-bottom: 8px;
-      padding-top: 8px;
+		&--warning {
+			--foxy-alert---background-color: var(--foxy-status--warning---background-color, rgb(251, 140, 0));
+			--foxy-alert---color: var(--foxy-status--warning---color, #ffffff);
+		}
 
-      &#{$this}--border-top {
-        padding-top: 16px;
-      }
+		&--success {
+			--foxy-alert---background-color: var(--foxy-status--success---background-color, rgb(76, 175, 80));
+			--foxy-alert---color: var(--foxy-status--success---color, #ffffff);
+		}
 
-      &#{$this}--border-bottom {
-        padding-bottom: 16px;
-      }
-    }
+		&--info {
+			--foxy-alert---background-color: var(--foxy-status--info---background-color, rgb(33, 150, 243));
+			--foxy-alert---color: var(--foxy-status--info---color, #ffffff);
+		}
 
-    &--warning {
-      --foxy-alert---background-color: rgb(251,140,0);
-      --foxy-alert---color: #ffffff;
-    }
+		&--error {
+			--foxy-alert---background-color: var(--foxy-status--error---background-color, rgb(207, 102, 121));
+			--foxy-alert---color: var(--foxy-status--error---color, #ffffff);
+		}
 
-    &--success {
-      --foxy-alert---background-color: rgb(76,175,80);
-      --foxy-alert---color: #ffffff;
-    }
+		&--absolute {
+			--foxy-alert---position: absolute;
+		}
 
-    &--info {
-      --foxy-alert---background-color: rgb(33,150,243);
-      --foxy-alert---color: #ffffff;
-    }
+		&--fixed {
+			--foxy-alert---position: fixed;
+		}
 
-    &--error {
-      --foxy-alert---background-color: rgb(207,102,121);
-      --foxy-alert---color: #ffffff;
-    }
+		&--sticky {
+			--foxy-alert---position: sticky;
+		}
 
-    &__close {
-      flex: 0 1 auto;
-      grid-area: close;
-    }
+		&--relative {
+			--foxy-alert---position: relative;
+		}
 
-    &__content {
-      align-self: center;
-      grid-area: content;
-      overflow: hidden;
-    }
+		&--prominent {
+			grid-template-areas: "prepend content append close" "prepend content . .";
 
-    &__append,
-    &__close {
-      align-self: flex-start;
-      margin-inline-start: 16px;
-    }
+			#{$this}__prepend {
+				--foxy-alert__prepend---align-self: center;
+			}
+		}
 
-    &__append {
-      align-self: flex-start;
-      grid-area: append;
-    }
+		&__close {
+			align-self: flex-start;
+			flex: 0 1 auto;
+			grid-area: close;
+			padding-block-start: var(--foxy-alert__close---padding-block-start);
+			padding-block-end: var(--foxy-alert__close---padding-block-end);
+			padding-inline-start: var(--foxy-alert__close---padding-inline-start);
+			padding-inline-end: var(--foxy-alert__close---padding-inline-end);
+			margin-block-start: var(--foxy-alert__close---margin-block-start);
+			margin-block-end: var(--foxy-alert__close---margin-block-end);
+			margin-inline-start: calc(var(--foxy-alert__close---margin-inline-start) - var(--foxy-alert---density));
+			margin-inline-end: var(--foxy-alert__close---margin-inline-end);
+		}
 
-    &__append {
-      + #{$this}__close {
-        margin-inline-start: 16px;
-      }
-    }
+		&__content {
+			align-self: center;
+			grid-area: content;
+			overflow: hidden;
+		}
 
-    &__prepend {
-      align-self: flex-start;
-      display: flex;
-      align-items: center;
-      grid-area: prepend;
-      margin-inline-end: 16px;
-    }
+		&__append {
+			align-self: flex-start;
+			display: flex;
+			grid-area: append;
+			align-items: var(--foxy-alert__append---align-items);
+			padding-block-start: var(--foxy-alert__append---padding-block-start);
+			padding-block-end: var(--foxy-alert__append---padding-block-end);
+			padding-inline-start: var(--foxy-alert__append---padding-inline-start);
+			padding-inline-end: var(--foxy-alert__append---padding-inline-end);
+			margin-block-start: var(--foxy-alert__append---margin-block-start);
+			margin-block-end: var(--foxy-alert__append---margin-block-end);
+			margin-inline-start: calc(var(--foxy-alert__append---margin-inline-start) - var(--foxy-alert---density));
+			margin-inline-end: var(--foxy-alert__append---margin-inline-end);
+		}
 
-    &__underlay {
-      grid-area: none;
-      position: absolute;
-    }
+		&__prepend {
+			align-self: flex-start;
+			display: flex;
+			grid-area: prepend;
+			align-items: var(--foxy-alert__prepend---align-items);
+			padding-block-start: var(--foxy-alert__prepend---padding-block-start);
+			padding-block-end: var(--foxy-alert__prepend---padding-block-end);
+			padding-inline-start: var(--foxy-alert__prepend---padding-inline-start);
+			padding-inline-end: var(--foxy-alert__prepend---padding-inline-end);
+			margin-block-start: var(--foxy-alert__prepend---margin-block-start);
+			margin-block-end: var(--foxy-alert__prepend---margin-block-end);
+			margin-inline-start: var(--foxy-alert__prepend---margin-inline-start);
+			margin-inline-end: calc(var(--foxy-alert__prepend---margin-inline-end) - var(--foxy-alert---density));
+		}
 
-    &__title {
-      align-items: center;
-      align-self: center;
-      display: flex;
-      font-size: 1.25rem;
-      font-weight: 500;
-      hyphens: auto;
-      letter-spacing: 0.0125em;
-      line-height: 1.75rem;
-      overflow-wrap: normal;
-      text-transform: none;
-      word-break: normal;
-      word-wrap: break-word;
-    }
-  }
+		&__underlay {
+			grid-area: none;
+			position: absolute;
+			border-radius: var(--foxy-alert__underlay---border-radius)
+		}
+
+		&__title {
+			align-self: center;
+			display: flex;
+			align-items: var(--foxy-alert__title---align-items);
+			font-size: var(--foxy-alert__title---font-size);
+			font-weight: var(--foxy-alert__title---font-weight);
+			hyphens: var(--foxy-alert__title---hyphens);
+			letter-spacing: var(--foxy-alert__title---letter-spacing);
+			line-height: var(--foxy-alert__title---line-height);
+			overflow-wrap: var(--foxy-alert__title---overflow-wrap);
+			text-transform: var(--foxy-alert__title---text-transform);
+			word-break: var(--foxy-alert__title---word-break);
+			word-wrap: var(--foxy-alert__title---word-wrap);
+		}
+	}
 
 </style>
 
 <style>
-  :root {
-    --foxy-alert---border-color: transparent;
-    --foxy-alert---color: rgba(0, 0, 0, 0.87);
-    --foxy-alert---box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
-    --foxy-alert---background-color: rgb(255, 255, 255);
-  }
+	:root {
+		--foxy-alert---border-top-width: 0;
+		--foxy-alert---border-left-width: 0;
+		--foxy-alert---border-bottom-width: 0;
+		--foxy-alert---border-right-width: 0;
+		--foxy-alert---border-width: var(--foxy-alert---border-top-width) var(--foxy-alert---border-left-width) var(--foxy-alert---border-bottom-width) var(--foxy-alert---border-right-width);
+		--foxy-alert---border-color: transparent;
+		--foxy-alert---border-style: solid;
+		--foxy-alert---border-radius: 0px;
+		--foxy-alert---color: rgba(30, 30, 30, 0.87);
+		--foxy-alert---background-color: rgb(230, 230, 230);
+		--foxy-alert---position: static;
+		--foxy-alert---margin-inline-start: 0;
+		--foxy-alert---margin-inline-end: 0;
+		--foxy-alert---margin-block-start: 0;
+		--foxy-alert---margin-block-end: 0;
+		--foxy-alert---padding-block-start: 16px;
+		--foxy-alert---padding-block-end: 16px;
+		--foxy-alert---padding-inline-start: 16px;
+		--foxy-alert---padding-inline-end: 16px;
+
+		--foxy-alert__prepend---align-items: center;
+		--foxy-alert__prepend---margin-inline-start: 0;
+		--foxy-alert__prepend---margin-inline-end: 16px;
+		--foxy-alert__prepend---margin-block-start: 0;
+		--foxy-alert__prepend---margin-block-end: 0;
+		--foxy-alert__prepend---padding-block-start: 0;
+		--foxy-alert__prepend---padding-block-end: 0;
+		--foxy-alert__prepend---padding-inline-start: 0;
+		--foxy-alert__prepend---padding-inline-end: 0;
+
+		--foxy-alert__append---align-items: center;
+		--foxy-alert__append---margin-inline-start: 16px;
+		--foxy-alert__append---margin-inline-end: 0;
+		--foxy-alert__append---margin-block-start: 0;
+		--foxy-alert__append---margin-block-end: 0;
+		--foxy-alert__append---padding-block-start: 0;
+		--foxy-alert__append---padding-block-end: 0;
+		--foxy-alert__append---padding-inline-start: 0;
+		--foxy-alert__append---padding-inline-end: 0;
+
+		--foxy-alert__close---margin-inline-start: 16px;
+		--foxy-alert__close---margin-inline-end: 0;
+		--foxy-alert__close---margin-block-start: 0;
+		--foxy-alert__close---margin-block-end: 0;
+		--foxy-alert__close---padding-block-start: 0;
+		--foxy-alert__close---padding-block-end: 0;
+		--foxy-alert__close---padding-inline-start: 0;
+		--foxy-alert__close---padding-inline-end: 0;
+
+		--foxy-alert__title---align-items: center;
+		--foxy-alert__title---font-size: 1.25rem;
+		--foxy-alert__title---font-weight: 500;
+		--foxy-alert__title---hyphens: auto;
+		--foxy-alert__title---letter-spacing: 0.0125em;
+		--foxy-alert__title---line-height: 1.75rem;
+		--foxy-alert__title---overflow-wrap: normal;
+		--foxy-alert__title---text-transform: none;
+		--foxy-alert__title---word-break: normal;
+		--foxy-alert__title---word-wrap: break-word;
+
+		--foxy-alert__underlay---border-radius: 4px;
+	}
 </style>

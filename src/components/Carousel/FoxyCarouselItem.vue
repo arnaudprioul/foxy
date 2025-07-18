@@ -1,89 +1,115 @@
 <template>
-  <foxy-window-item
-      :class="carouselItemClasses"
-      :style="carouselItemStyles"
-      v-bind="windowItemProps">
-    <template #default>
-      <slot name="default">
-        <foxy-img v-bind="{ ...attrs , ...imgProps }">
-          <template v-if="hasSlot('content')" #default>
-            <slot name="content"/>
-          </template>
+	<foxy-window-item
+			ref="foxyWindowItemRef"
+			:class="carouselItemClasses"
+			:style="carouselItemStyles"
+			v-bind="windowItemProps"
+	>
+		<template #default>
+			<slot name="default">
+				<foxy-img
+						ref="foxyImgRef"
+						v-bind="{...attrs , ...imgProps}"
+				>
+					<template
+							v-if="slots.content"
+							#default
+					>
+						<slot name="content"/>
+					</template>
 
-          <template v-if="hasSlot('error')" #error>
-            <slot name="error"/>
-          </template>
+					<template
+							v-if="slots.error"
+							#error
+					>
+						<slot name="error"/>
+					</template>
 
-          <template v-if="hasSlot('placeholder')" #placeholder>
-            <slot name="placeholder"/>
-          </template>
-        </foxy-img>
-      </slot>
-    </template>
-  </foxy-window-item>
+					<template
+							v-if="slots.placeholder"
+							#placeholder
+					>
+						<slot name="placeholder"/>
+					</template>
+				</foxy-img>
+			</slot>
+		</template>
+	</foxy-window-item>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyImg, FoxyWindowItem } from '@foxy/components'
-  import { useSlots } from '@foxy/composables'
+<script
+		lang="ts"
+		setup
+>
+	import { FoxyImg, FoxyWindowItem } from '@foxy/components'
 
-  import { IMG_PROPS, WINDOW_ITEM_PROPS } from '@foxy/consts'
+	import { useProps } from '@foxy/composables'
 
-  import { ICarouselItemProps } from '@foxy/interfaces'
+	import type { ICarouselItemProps } from '@foxy/interfaces'
 
-  import { keys, omit, pick } from '@foxy/utils'
+	import type { TFoxyImg, TFoxyWindowItem } from "@foxy/types"
 
-  import { computed, StyleValue, useAttrs } from 'vue'
+	import { computed, ref, StyleValue, useAttrs, useSlots } from 'vue'
 
-  const props = withDefaults(defineProps<ICarouselItemProps>(), {
-    transition: undefined,
-    reverseTransition: undefined
-  })
+	const props = withDefaults(defineProps<ICarouselItemProps>(), {
+		transition: undefined,
+		reverseTransition: undefined
+	})
 
-  const attrs = useAttrs()
+	const {filterProps} = useProps<ICarouselItemProps>(props)
 
-  const windowItemProps = computed(() => {
-    const windowItemProp = pick(props, keys(WINDOW_ITEM_PROPS))
+	const attrs = useAttrs()
 
-    return omit(windowItemProp, ['class', 'style'])
-  })
-  const imgProps = computed(() => {
-    const imgProp = pick(props, keys(IMG_PROPS))
+	const foxyWindowItemRef = ref<TFoxyWindowItem>()
+	const foxyImgRef = ref<TFoxyImg>()
 
-    return omit(imgProp, ['class', 'style'])
-  })
+	const windowItemProps = computed(() => {
+		return foxyWindowItemRef.value?.filterProps(props)
+	})
+	const imgProps = computed(() => {
+		return foxyImgRef.value?.filterProps(props)
+	})
 
-  const { hasSlot } = useSlots()
+	const slots = useSlots()
 
-  // CLASS & STYLES
+	// CLASS & STYLES
 
-  const carouselItemStyles = computed(() => {
-    return [
-      props.style
-    ] as StyleValue
-  })
-  const carouselItemClasses = computed(() => {
-    return [
-      'foxy-carousel-item',
-      props.class,
-    ]
-  })
+	const carouselItemStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const carouselItemClasses = computed(() => {
+		return [
+			'foxy-carousel-item',
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>
 
-<style lang="scss" scoped>
-  .foxy-carousel-item {
-    display: block;
-    height: inherit;
-    text-decoration: none;
+<style
+		lang="scss"
+		scoped
+>
+	.foxy-carousel-item {
+		display: block;
+		height: inherit;
+		text-decoration: none;
 
-    > .foxy-img {
-      height: inherit;
-    }
-  }
+		> .foxy-img {
+			height: inherit;
+		}
+	}
 </style>
 
 <style>
-  :root {
+	:root {
 
-  }
+	}
 </style>

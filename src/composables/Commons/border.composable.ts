@@ -1,41 +1,51 @@
-import { BORDER_REGEX } from '@foxy/consts'
+import { BORDER_REGEX, DIRECTION_ARRAY } from '@foxy/consts'
 
-import { IBorderProps } from '@foxy/interfaces'
+import type { IBorderProps } from '@foxy/interfaces'
+import { TDirectionBoth } from "@foxy/types"
 
-import { convertToUnit, formatBorderStylesVar, getCurrentInstanceName } from '@foxy/utils'
-import { computed, isRef } from 'vue'
+import { convertToUnit, formatBorderStylesVar, getCurrentInstanceName, isEmpty } from '@foxy/utils'
+import { computed, isRef, Ref } from 'vue'
 
-export function useBorder (props: IBorderProps, name = getCurrentInstanceName()) {
-  const borderClasses = computed(() => {
-    const border = isRef(props) ? props.value : props.border
-    const classes: Array<string> = []
+// TODO Create composable for border position
+export function useBorder (props: IBorderProps | Ref<boolean | number | string | TDirectionBoth | Array<TDirectionBoth> | null | undefined>, name = getCurrentInstanceName()) {
+    const borderClasses = computed(() => {
+        const border = isRef(props) ? props.value : props.border
+        const classes: Array<string> = []
 
-    if (border === true || border === '') {
-      classes.push(`${name}--bordered`)
-    }
+        if (border && typeof border !== 'undefined') {
+            classes.push(`${name}--border`)
 
-    return classes
-  })
+            if (DIRECTION_ARRAY.includes(border as TDirectionBoth) || (Array.isArray(border) && border.some((bord) => DIRECTION_ARRAY.includes(bord)))) {
+                classes.push(`${name}--border-${border}`)
+            }
+        }
 
-  const borderStyles = computed(() => {
-    const border = isRef(props) ? props.value : props.border
-    const styles: Array<string> = []
+        return classes
+    })
 
-    if (typeof border === 'string' && border !== '') {
-      const match = BORDER_REGEX.exec(border)?.groups
-      if (match) {
-        Object.keys(match).forEach((key) => {
-          const values = String(match[key]).split(' ')
+    const borderStyles = computed(() => {
+        const border = isRef(props) ? props.value : props.border
+        const styles: Array<string> = []
 
-          styles.push(...formatBorderStylesVar(values, key))
-        })
-      }
-    } else if (typeof border === 'number') {
-      styles.push(`border-width: ${convertToUnit(border)}`)
-    }
+        if (typeof border === 'string' && border !== '') {
+            const match = BORDER_REGEX.exec(border)?.groups
+            if (match) {
+                Object.keys(match).forEach((key) => {
+                    let values = String(match[key]).split(' ')
 
-    return styles
-  })
+                    if (key === 'style' && isEmpty(match[key])) values = ['solid']
 
-  return { borderClasses, borderStyles }
+                    if (key === 'color' && isEmpty(match[key])) values = ['currentColor']
+
+                    styles.push(...formatBorderStylesVar(values, key))
+                })
+            }
+        } else if (typeof border === 'number') {
+            styles.push(`border-width: ${convertToUnit(border)}`)
+        }
+
+        return styles
+    })
+
+    return {borderClasses, borderStyles}
 }

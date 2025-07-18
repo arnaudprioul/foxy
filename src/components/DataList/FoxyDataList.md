@@ -1,0 +1,5 @@
+# Foxydatalist
+
+## Usage
+
+    <FoxyDataList />

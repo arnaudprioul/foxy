@@ -1,38 +1,26 @@
 <template>
-  <hst-select
-      v-model="state.density"
-      :options="densityList"
-      :title="getTitle"
-      @update:model-value="handleChange"
-  ></hst-select>
+	<hst-select
+			v-model="density"
+			:options="densityList"
+			:title="getTitle"
+	/>
 </template>
 
-<script lang="ts" setup>
-import { Ref, ref } from 'vue'
+<script
+		lang="ts"
+		setup
+>
+	import { useVModel } from "@foxy/composables"
+	import { DENSITY } from "@foxy/enums"
+	import type { IDensityProps } from "@foxy/interfaces"
 
-import { densityList } from '@stories/const/density.const'
-import { TTitleProp } from '@stories/types/title.type'
-import useTitle from '@stories/composables/title.composable'
+	import useTitle from '@stories/composables/title.composable'
+	import { densityList } from '@stories/const/density.const'
+	import type { TTitleProp } from '@stories/types/title.type'
 
-const props = defineProps<{
-  modelValue?: string
-} & TTitleProp>()
+	const props = defineProps<IDensityProps & TTitleProp>()
 
-const emit = defineEmits(['update:modelValue'])
+	const {getTitle} = useTitle(props.title, 'Density')
 
-const { getTitle } = useTitle(props.title, 'Density')
-
-const state: {
-  density?: Ref<string>
-} = {
-  density: ref('default')
-}
-
-if (props.modelValue) {
-  state.density = ref(props.modelValue)
-}
-
-const handleChange = (value: string) => {
-  emit('update:modelValue', value)
-}
+	const density = useVModel(props, 'density', DENSITY.DEFAULT)
 </script>

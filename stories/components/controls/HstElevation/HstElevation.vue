@@ -1,46 +1,37 @@
 <template>
   <hst-slider
-      v-model="state.elevation"
-      :max="24"
-      :min="0"
+		  v-model="elevation"
+		  :max="max"
+		  :min="min"
       :title="getTitle"
-      @update:model-value="handleChange"
-  ></hst-slider>
+  />
 </template>
 
-<script lang="ts" setup>
-import { Ref, ref } from 'vue'
+<script
+    lang="ts"
+    setup
+>
+	import { useVModel } from "@foxy/composables"
+	import type { IElevationProps } from "@foxy/interfaces"
 
-import { titleProp } from '@stories/const/title.const'
+	import useTitle from '@stories/composables/title.composable'
+	import type { TTitleProp } from "@stories/types/title.type"
+	import { computed } from "vue"
 
-import useTitle from '@stories/composables/title.composable'
+	const props = defineProps<{
+		max?: string | number,
+		min?: string | number,
+	} & IElevationProps & TTitleProp>()
 
-const props = defineProps({
-  modelValue: {
-    type: [Number, String],
-    validator (v) {
-      const value = parseInt(v)
-      return !isNaN(value) && value >= 0 && value <= 24
-    }
-  },
-  ...titleProp
-})
+  const { getTitle } = useTitle(props.title, 'Elevation')
 
-const emit = defineEmits(['update:modelValue'])
+	const elevation = useVModel(props, 'elevation', 0)
 
-const { getTitle } = useTitle(props.title, 'Elevation')
+	const min = computed(() => {
+		return props.min ?? 0
+	})
 
-const state: {
-  elevation?: Ref<string | number>
-} = {
-  elevation: ref('')
-}
-
-if (props.modelValue) {
-  state.elevation = ref(props.modelValue)
-}
-
-const handleChange = (value: string) => {
-  emit('update:modelValue', value || undefined)
-}
+	const max = computed(() => {
+		return props.min ?? 24
+	})
 </script>

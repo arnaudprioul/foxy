@@ -1,4 +1,5 @@
 # Foxytitle
 
 ## Usage
+
     <foxyTitle />

@@ -1,3 +1,4 @@
+import { FoxyTransition } from "@foxy/components"
 import { TRANSITION_MODE } from '@foxy/enums'
 
 import { Component, TransitionProps } from 'vue'
@@ -5,5 +6,7 @@ import { Component, TransitionProps } from 'vue'
 export type TTransitionMode = `${TRANSITION_MODE}`
 
 export type TTransitionProps = TransitionProps & {
-  component?: Component
+    component?: Component
 }
+
+export type TFoxyTransition = InstanceType<typeof FoxyTransition>

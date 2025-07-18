@@ -1,150 +1,200 @@
 <template>
-  <component
-    :is="tag"
-    :class="btnGroupClasses"
-    :style="btnGroupStyles">
-    <slot name="default">
-      <template v-if="hasItems">
-        <template v-for="(item, index) in items" :key="index">
-          <slot name="item" v-bind="{item, index}">
-            <foxy-btn v-bind="item"/>
-          </slot>
-        </template>
-      </template>
-    </slot>
-  </component>
+	<component
+			:is="tag"
+			:id="id"
+			:class="btnGroupClasses"
+	>
+		<slot name="default">
+			<template v-if="hasItems">
+				<template
+						v-for="(item, index) in items"
+						:key="index"
+				>
+					<slot
+							name="item"
+							v-bind="{item, index}"
+					>
+						<foxy-btn v-bind="item"/>
+					</slot>
+				</template>
+			</template>
+		</slot>
+	</component>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyBtn } from '@foxy/components'
-  import {
-    useBorder,
-    useDensity,
-    useElevation,
-    useRounded, useSlots
-  } from '@foxy/composables'
+<script
+		lang="ts"
+		setup
+>
+	import { FoxyBtn } from '@foxy/components'
+	import {
+		useBorder,
+		useColorEffect,
+		useDensity,
+		useElevation,
+		useMargin,
+		usePadding,
+		useProps,
+		useRounded,
+		useStyle
+	} from '@foxy/composables'
 
-  import { DENSITY } from '@foxy/enums'
+	import { DENSITY } from '@foxy/enums'
 
-  import { IBtnGroupProps, IBtnProps } from '@foxy/interfaces'
+	import type { IBtnGroupProps, IBtnProps } from '@foxy/interfaces'
 
-  import { computed, StyleValue } from 'vue'
+	import { computed, ref, StyleValue, useSlots } from 'vue'
 
-  const props = withDefaults(defineProps<IBtnGroupProps>(), { tag: 'div', density: DENSITY.DEFAULT, items: [] })
+	const props = withDefaults(defineProps<IBtnGroupProps>(), {tag: 'div', density: DENSITY.DEFAULT, items: () => []})
 
-  const { densityClasses } = useDensity(props)
-  const { elevationClasses } = useElevation(props)
-  const { roundedClasses, roundedStyles } = useRounded(props)
-  const { borderClasses, borderStyles } = useBorder(props)
+	const {filterProps} = useProps<IBtnGroupProps>(props)
 
-  const items = computed(() => {
-    return props.items?.map((item) => {
-      return {
-        ...item,
-        density: props.density ?? item.density,
-        color: props.color ?? item.color,
-        bgColor: props.bgColor ?? item.bgColor,
-        activeColor: props.activeColor ?? item.activeColor,
-        activeBgColor: props.activeBgColor ?? item.activeBgColor,
-        hoverColor: props.hoverColor ?? item.hoverColor,
-        hoverBgColor: props.hoverBgColor ?? item.hoverBgColor,
-      }
-    }) as Array<IBtnProps>
-  })
+	const {densityClasses} = useDensity(props)
+	const {roundedClasses, roundedStyles} = useRounded(props)
+	const {borderClasses, borderStyles} = useBorder(props)
+	const {colorStyles, bgColor} = useColorEffect(props)
+	const {elevationClasses, elevationStyles} = useElevation(props, ref(false), bgColor)
+	const {paddingClasses, paddingStyles} = usePadding(props)
+	const {marginClasses, marginStyles} = useMargin(props)
 
-  const { hasSlot } = useSlots()
-  const hasItems = computed(() => {
-    return hasSlot('default') || !!items.value
-  })
+	const items = computed(() => {
+		return props.items?.map((item) => {
+			return {
+				...item,
+				density: props.density ?? item.density,
+				color: props.color ?? item.color,
+				bgColor: props.bgColor ?? item.bgColor,
+				activeColor: props.activeColor ?? item.activeColor,
+				activeBgColor: props.activeBgColor ?? item.activeBgColor,
+				hoverColor: props.hoverColor ?? item.hoverColor,
+				hoverBgColor: props.hoverBgColor ?? item.hoverBgColor
+			}
+		}) as Array<IBtnProps>
+	})
 
-  // CLASS & STYLES
+	const slots = useSlots()
+	const hasItems = computed(() => {
+		return slots.default || !!items.value
+	})
 
-  const btnGroupStyles = computed(() => {
-    return [
-      borderStyles.value,
-      roundedStyles.value,
-      props.style
-    ] as StyleValue
-  })
-  const btnGroupClasses = computed(() => {
-    return [
-      'foxy-btn-group',
-      {
-        'foxy-btn-group--divided': props.divided,
-      },
-      borderClasses.value,
-      densityClasses.value,
-      elevationClasses.value,
-      roundedClasses.value,
-      props.class,
-    ]
-  })
+	// CLASS & STYLES
+
+	const btnGroupStyles = computed(() => {
+		return [
+			borderStyles.value,
+			roundedStyles.value,
+			colorStyles.value,
+			marginStyles.value,
+			paddingStyles.value,
+			elevationStyles.value,
+			props.style
+		] as StyleValue
+	})
+	const btnGroupClasses = computed(() => {
+		return [
+			'foxy-btn-group',
+			{
+				'foxy-btn-group--divided': props.divided
+			},
+			borderClasses.value,
+			densityClasses.value,
+			elevationClasses.value,
+			roundedClasses.value,
+			marginClasses.value,
+			paddingClasses.value,
+			props.class
+		]
+	})
+
+	const {id, css, load, isLoaded, unload} = useStyle(btnGroupStyles)
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps,
+		css,
+		id,
+		load,
+		unload,
+		isLoaded
+	})
 </script>
 
-<style lang="scss" scoped>
-  .foxy-btn-group {
-    display: inline-flex;
-    flex-wrap: nowrap;
-    max-width: 100%;
-    min-width: 0;
-    overflow: hidden;
-    vertical-align: middle;
-    border-color: currentColor;
-    border-style: solid;
-    border-width: 0;
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
+<style
+		lang="scss"
+		scoped
+>
+	.foxy-btn-group {
+		display: inline-flex;
+		flex-wrap: nowrap;
+		overflow: hidden;
+		vertical-align: middle;
 
-    &--bordered {
-      border-width: thin;
-      box-shadow: none;
-    }
+		max-width: 100%;
+		min-width: 0;
+		min-height: calc(var(--foxy-btn-group---height, 36px) + var(--foxy-btn-group---density, 0));
 
-    &--density-default {
-      height: 48px;
-    }
+		border-width: var(--foxy-btn-group---border-width);
+		border-style: var(--foxy-btn-group---border-style);
+		border-color: var(--foxy-btn-group---border-color);
+		border-radius: var(--foxy-btn-group---border-radius, 4px);
 
-    &--density-compact {
-      height: 36px;
-    }
+		background-color: var(--foxy-btn-group---background-color);
+		color: var(--foxy-btn-group---color);
 
-    :deep(.foxy-btn) {
-      border-radius: 0;
-      border-color: inherit;
+		&--border {
+			--foxy-btn-group---border-width: thin;
+		}
 
-      &:not(:last-child) {
-        border-inline-end: none;
-      }
+		&--rounded {
+			--foxy-btn-group---border-radius: 24px;
+		}
 
-      &:not(:first-child) {
-        border-inline-start: none;
-      }
+		&--density-comfortable {
+			--foxy-btn-group---density: 8px;
+		}
 
-      &:first-child {
-        border-start-start-radius: inherit;
-        border-end-start-radius: inherit;
-      }
+		&--density-default {
+			--foxy-btn-group---density: 0px;
+		}
 
-      &:last-child {
-        border-start-end-radius: inherit;
-        border-end-end-radius: inherit;
-      }
-    }
+		&--density-compact {
+			--foxy-btn-group---density: 8px;
+		}
 
-    &--divided {
-      :deep(.foxy-btn) {
-        &:not(:last-child) {
-          border-inline-end-width: thin;
-          border-inline-end-style: solid;
-          border-inline-end-color: rgba(var(--v-border-color), var(--v-border-opacity));
-        }
-      }
-    }
-  }
+		:deep(.foxy-btn) {
+			border-radius: 0;
+			border-color: inherit;
+
+			&:not(:last-child) {
+				border-inline-end: none;
+			}
+
+			&:not(:first-child) {
+				border-inline-start: none;
+			}
+		}
+
+		&--divided {
+			:deep(.foxy-btn) {
+				&:not(:last-child) {
+					border-inline-end-width: thin;
+					border-inline-end-style: solid;
+					border-inline-end-color: rgba(var(--v-border-color), var(--v-border-opacity));
+				}
+			}
+		}
+	}
 </style>
 
 <style>
-  :root {
+	:root {
+		--foxy-btn-group---density: 0;
 
-  }
+		--foxy-btn-group---border-radius: 4px;
+		--foxy-btn-group---border-width: 0;
+		--foxy-btn-group---border-style: solid;
+		--foxy-btn-group---border-color: currentColor;
+
+	}
 </style>

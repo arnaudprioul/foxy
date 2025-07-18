@@ -1,22 +1,26 @@
 <template>
-  <component
-      :is="tag"
-      :class="badgeClasses"
-      :style="badgeStyles"
-      v-bind="restAttrs">
-    <div class="foxy-badge__wrapper">
-      <slot name="default"/>
+	<component
+			:is="tag"
+			:class="badgeClasses"
+			:style="badgeStyles"
+			v-bind="restAttrs"
+			@mouseenter="handleMouseenter"
+			@mouseleave="handleMouseleave"
+	>
+		<div class="foxy-badge__wrapper">
+			<slot name="default"/>
 
-      <foxy-transition :transition="transition">
+			<foxy-transition :transition="transition">
         <span
-            v-show="modelValue"
-            :aria-label="label"
-            :class="badgeContentClasses"
-            :style="badgeContentStyles"
-            aria-atomic="true"
-            aria-live="polite"
-            role="status"
-            v-bind="badgeAttrs">
+		        v-show="modelValue"
+		        :id="id"
+		        :aria-label="t(label, content)"
+		        aria-atomic="true"
+		        aria-live="polite"
+		        class="foxy-badge__badge"
+		        role="status"
+		        v-bind="badgeAttrs"
+        >
           <template v-if="!dot">
             <slot name="badge">
               <template v-if="hasIcon">
@@ -28,210 +32,336 @@
             </slot>
           </template>
         </span>
-      </foxy-transition>
-    </div>
-  </component>
+			</foxy-transition>
+		</div>
+	</component>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyIcon, FoxyScaleRotate, FoxyTransition } from '@foxy/components'
+<script
+		lang="ts"
+		setup
+>
+	import { FoxyIcon, FoxyScaleRotate, FoxyTransition } from '@foxy/components'
 
-  import { useBorder, useBothColor, useLocation, useRounded, useStatus } from '@foxy/composables'
+	import {
+		useActive,
+		useBorder,
+		useColorEffect,
+		useElevation,
+		useHover,
+		useLocale,
+		useLocation,
+		useProps,
+		useRounded,
+		useStatus,
+		useStyle
+	} from '@foxy/composables'
 
-  import { IBadgeProps } from '@foxy/interfaces'
+	import type { IBadgeProps } from '@foxy/interfaces'
+	import type { TTransitionProps } from "@foxy/types"
 
-  import { omit, pick } from '@foxy/utils'
+	import { omit, pick } from '@foxy/utils'
 
-  import { computed, StyleValue, toRef, useAttrs } from 'vue'
+	import { computed, ComputedRef, ref, StyleValue, useAttrs } from 'vue'
 
-  const props = withDefaults(defineProps<IBadgeProps>(), {
-    tag: 'div',
-    location: 'top end',
-    transition: { component: FoxyScaleRotate }
-  })
+	const props = withDefaults(defineProps<IBadgeProps>(), {
+		tag: 'div',
+		location: 'top right',
+		label: 'foxy.badge',
+		transition: () => ({component: FoxyScaleRotate}) as unknown as TTransitionProps
+	})
 
-  const attrs = useAttrs()
+	const {filterProps} = useProps<IBadgeProps>(props)
+	const {t} = useLocale()
 
-  const { colorStyles } = useBothColor(toRef(props, 'bgColor'), toRef(props, 'color'))
-  const { roundedClasses, roundedStyles } = useRounded(props)
-  const { borderClasses, borderStyles } = useBorder(props)
-  const { icon, statusClasses } = useStatus(props)
-  const { locationStyles } = useLocation(props, true, side => {
-    const base = props.floating
-        ? (props.dot ? 2 : 4)
-        : (props.dot ? 8 : 12)
+	const attrs = useAttrs()
 
-    return base + (
-        ['top', 'bottom'].includes(side) ? +(props.offsetY ?? 0)
-            : ['left', 'right'].includes(side) ? +(props.offsetX ?? 0)
-                : 0
-    )
-  })
+	const {hoverClasses, isHover, onMouseleave: handleMouseleave, onMouseenter: handleMouseenter} = useHover(props)
+	const {activeClasses, isActive} = useActive(props, 'modelValue')
+	const {colorStyles, bgColor} = useColorEffect(props, isHover, isActive as unknown as ComputedRef<boolean>)
+	const {roundedClasses, roundedStyles} = useRounded(props)
+	const {borderClasses, borderStyles} = useBorder(props)
+	const {elevationClasses, elevationStyles} = useElevation(props, ref(false), bgColor)
+	const {icon, statusClasses} = useStatus(props)
+	const {locationStyles} = useLocation(props, true, side => {
+		const base = props.floating
+				? (props.dot ? 2 : 4)
+				: (props.dot ? 8 : 12)
 
-  const hasIcon = computed(() => {
-    return !!icon.value
-  })
+		return base + (
+				['top', 'bottom'].includes(side) ? +(props.offsetY ?? 0)
+						: ['left', 'right'].includes(side) ? +(props.offsetX ?? 0)
+								: 0
+		)
+	})
 
-  const content = computed(() => {
-    const value = Number(props.content)
+	const hasIcon = computed(() => {
+		return !!icon.value
+	})
 
-    if (!props.max || isNaN(value)) {
-      return props.content
-    } else if (value <= +props.max) {
-      return value
-    }
+	const content = computed(() => {
+		const value = Number(props.content)
 
-    return `${props.max}+`
-  })
+		if (!props.max || isNaN(value)) {
+			return props.content
+		} else if (value <= +props.max) {
+			return value
+		}
 
-  const badgeAttrs = computed(() => {
-    return pick(attrs as Record<string, any>, [
-      'aria-atomic',
-      'aria-label',
-      'aria-live',
-      'role',
-      'title',
-    ])
-  })
-  const restAttrs = computed(() => {
-    return omit(attrs as Record<string, any>, [
-      'aria-atomic',
-      'aria-label',
-      'aria-live',
-      'role',
-      'title',
-    ])
-  })
+		return `${props.max}+`
+	})
 
-  // CLASS & STYLES
+	const badgeAttrs = computed(() => {
+		return pick(attrs as Record<string, any>, [
+			'aria-atomic',
+			'aria-label',
+			'aria-live',
+			'role',
+			'title'
+		])
+	})
+	const restAttrs = computed(() => {
+		return omit(attrs as Record<string, any>, [
+			'aria-atomic',
+			'aria-label',
+			'aria-live',
+			'role',
+			'title'
+		])
+	})
 
-  const badgeStyles = computed(() => {
-    return [
-      props.style
-    ] as StyleValue
-  })
-  const badgeClasses = computed(() => {
-    return [
-      'foxy-badge',
-      {
-        'foxy-badge--dot': props.dot,
-        'foxy-badge--floating': props.floating,
-        'foxy-badge--inline': props.inline,
-      },
-      roundedClasses.value,
-      borderClasses.value,
-      statusClasses.value,
-      props.class,
-    ]
-  })
+	// CLASS & STYLES
 
-  const badgeContentStyles = computed(() => {
-    return [
-      colorStyles.value,
-      roundedStyles.value,
-      borderStyles.value,
-      props.inline ? {} : locationStyles.value,
-    ]
-  })
-  const badgeContentClasses = computed(() => {
-    return [
-      'foxy-badge__badge'
-    ]
-  })
+	const badgeStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const badgeClasses = computed(() => {
+		return [
+			'foxy-badge',
+			{
+				'foxy-badge--dot': props.dot,
+				'foxy-badge--floating': props.floating,
+				'foxy-badge--inline': props.inline
+			},
+			elevationClasses.value,
+			activeClasses.value,
+			hoverClasses.value,
+			roundedClasses.value,
+			borderClasses.value,
+			statusClasses.value,
+			props.class
+		]
+	})
+
+	const badgeContentStyles = computed(() => {
+		return [
+			elevationStyles.value,
+			colorStyles.value,
+			roundedStyles.value,
+			borderStyles.value,
+			props.inline ? {} : locationStyles.value
+		] as StyleValue
+	})
+
+	const {id, css, load, isLoaded, unload} = useStyle(badgeContentStyles)
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps,
+		css,
+		id,
+		load,
+		unload,
+		isLoaded
+	})
 </script>
 
-<style lang="scss" scoped>
-  .foxy-badge {
-    $this: &;
+<style
+		lang="scss"
+		scoped
+>
+	.foxy-badge {
+		$this: &;
 
-    display: inline-block;
-    line-height: 1;
+		display: inline-flex;
+		line-height: 1;
 
-    &__wrapper {
-      display: flex;
-      position: relative;
-    }
+		&__badge {
+			align-items: center;
+			justify-content: center;
+			display: inline-flex;
 
-    &__badge {
-      align-items: center;
-      display: inline-flex;
-      border-radius: 10px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      height: 1.25rem;
-      justify-content: center;
-      min-width: 20px;
-      padding: 4px 6px;
-      pointer-events: auto;
-      position: absolute;
-      text-align: center;
-      text-indent: 0;
-      transition: 0.225s cubic-bezier(0.4, 0, 0.2, 1);
-      white-space: nowrap;
+			position: var(--foxy-badge__badge---position);
+			pointer-events: var(--foxy-badge__badge---pointer-events);
+			transition: var(--foxy-badge__badge---transition);
 
-      :deep(.foxy-icon) {
-        color: inherit;
-        font-size: 0.75rem;
-        margin: 0 -2px;
-      }
+			border-width: var(--foxy-badge__badge---border-width);
+			border-style: var(--foxy-badge__badge---border-style);
+			border-color: var(--foxy-badge__badge---border-color);
+			border-radius: var(--foxy-badge__badge---border-radius);
 
-      :deep(img),
-      :deep(.foxy-img) {
-        height: 100%;
-        width: 100%;
-      }
-    }
+			font-size: var(--foxy-badge__badge---font-size);
+			font-weight: var(--foxy-badge__badge---font-weight);
+			text-align: var(--foxy-badge__badge---text-align);
+			text-indent: var(--foxy-badge__badge---text-indent);
+			white-space: var(--foxy-badge__badge---white-space);
 
-    &--bordered {
-      #{$this}__badge {
-        &:after {
-          border-radius: inherit;
-          border-style: solid;
-          border-width: 2px;
-          bottom: 0;
-          color: rgb(var(--v-theme-background));
-          content: "";
-          left: 0;
-          position: absolute;
-          right: 0;
-          top: 0;
-          transform: scale(1.05);
-        }
-      }
-    }
+			height: var(--foxy-badge__badge---height);
+			min-width: var(--foxy-badge__badge---min-width);
 
-    &--dot {
-      #{$this}__badge {
-        border-radius: 4.5px;
-        height: 9px;
-        min-width: 0;
-        padding: 0;
-        width: 9px;
+			padding-block-start: var(--foxy-badge__badge---padding-block-start);
+			padding-block-end: var(--foxy-badge__badge---padding-block-end);
+			padding-inline-start: var(--foxy-badge__badge---padding-inline-start);
+			padding-inline-end: var(--foxy-badge__badge---padding-inline-end);
+			margin-block-start: var(--foxy-badge__badge---margin-block-start);
+			margin-block-end: var(--foxy-badge__badge---margin-block-end);
+			margin-inline-start: var(--foxy-badge__badge---margin-inline-start);
+			margin-inline-end: var(--foxy-badge__badge---margin-inline-end);
 
-        &:after {
-          border-width: 1.5px;
-        }
-      }
-    }
+			background-color: var(--foxy-badge__badge---background-color);
+			color: var(--foxy-badge__badge---color);
 
-    &--inline {
-      #{$this}__badge {
-        position: relative;
-        vertical-align: middle;
-      }
+			:deep(.foxy-icon) {
+				color: inherit;
+				font-size: 0.75rem;
+				margin: 0 -2px;
+			}
 
-      #{$this}__wrapper {
-        align-items: center;
-        display: inline-flex;
-        justify-content: center;
-        margin: 0 4px;
-      }
-    }
-  }
+			:deep(img),
+			:deep(.foxy-img) {
+				height: 100%;
+				width: 100%;
+			}
+		}
+
+		&__wrapper {
+			position: relative;
+
+			display: var(--foxy-badge__wrapper---display);
+			align-items: var(--foxy-badge__wrapper---align-items);
+			justify-content: var(--foxy-badge__wrapper---justify-content);
+
+			padding-block-start: var(--foxy-badge__wrapper---padding-block-start);
+			padding-block-end: var(--foxy-badge__wrapper---padding-block-end);
+			padding-inline-start: var(--foxy-badge__wrapper---padding-inline-start);
+			padding-inline-end: var(--foxy-badge__wrapper---padding-inline-end);
+			margin-block-start: var(--foxy-badge__wrapper---margin-block-start);
+			margin-block-end: var(--foxy-badge__wrapper---margin-block-end);
+			margin-inline-start: var(--foxy-badge__wrapper---margin-inline-start);
+			margin-inline-end: var(--foxy-badge__wrapper---margin-inline-end);
+		}
+
+		&--elevated {
+			#{$this}__badge {
+				--foxy-badge__badge---box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+			}
+		}
+
+		&--border {
+			#{$this}__badge {
+				--foxy-badge__badge---border-width: 2px;
+			}
+		}
+
+		&--dot {
+			#{$this}__badge {
+				--foxy-badge__badge---border-width: 1.5px;
+				--foxy-badge__badge---border-radius: 4.5px;
+				--foxy-badge__badge---height: 9px;
+				--foxy-badge__badge---width: 9px;
+				--foxy-badge__badge---min-width: 0;
+				--foxy-badge__badge---padding-block: 0;
+				--foxy-badge__badge---padding-inline: 0;
+				--foxy-badge__badge---text-indent: -9999px;
+			}
+		}
+
+		&--inline {
+			#{$this}__badge {
+				--foxy-badge__badge---position: relative;
+				vertical-align: middle;
+			}
+
+			#{$this}__wrapper {
+				--foxy-badge__wrapper---display: inline-flex;
+				--foxy-badge__wrapper---align-items: center;
+				--foxy-badge__wrapper---justify-content: center;
+				--foxy-badge__wrapper---margin-inline: 4px;
+			}
+		}
+
+		&--warning {
+			--foxy-badge__badge---background-color: var(--foxy-status--warning---background-color, rgb(251, 140, 0));
+			--foxy-badge__badge---color: var(--foxy-status--warning---color, #ffffff);
+		}
+
+		&--success {
+			--foxy-badge__badge---background-color: var(--foxy-status--success---background-color, rgb(76, 175, 80));
+			--foxy-badge__badge---color: var(--foxy-status--success---color, #ffffff);
+		}
+
+		&--info {
+			--foxy-badge__badge---background-color: var(--foxy-status--info---background-color, rgb(33, 150, 243));
+			--foxy-badge__badge---color: var(--foxy-status--info---color, #ffffff);
+		}
+
+		&--error {
+			--foxy-badge__badge---background-color: var(--foxy-status--error---background-color, rgb(207, 102, 121));
+			--foxy-badge__badge---color: var(--foxy-status--error---color, #ffffff);
+		}
+	}
 </style>
 
 <style>
-  :root {
+	:root {
+		--foxy-badge__wrapper---display: flex;
+		--foxy-badge__wrapper---align-items: stretch;
+		--foxy-badge__wrapper---justify-content: start;
+		--foxy-badge__wrapper---margin-inline-start: 0;
+		--foxy-badge__wrapper---margin-inline-end: 0;
+		--foxy-badge__wrapper---margin-block-start: 0;
+		--foxy-badge__wrapper---margin-block-end: 0;
+		--foxy-badge__wrapper---padding-block-start: 0;
+		--foxy-badge__wrapper---padding-block-end: 0;
+		--foxy-badge__wrapper---padding-inline-start: 0;
+		--foxy-badge__wrapper---padding-inline-end: 0;
 
-  }
+		--foxy-badge__badge---align-items: center;
+		--foxy-badge__badge---justify-content: center;
+		--foxy-badge__badge---display: inline-flex;
+		--foxy-badge__badge---position: absolute;
+		--foxy-badge__badge---font-size: 0.75rem;
+		--foxy-badge__badge---font-weight: 500;
+		--foxy-badge__badge---text-align: center;
+		--foxy-badge__badge---text-indent: 0;
+		--foxy-badge__badge---white-space: nowrap;
+		--foxy-badge__badge---height: 1.25rem;
+		--foxy-badge__badge---min-width: 20px;
+		--foxy-badge__badge---pointer-events: auto;
+		--foxy-badge__badge---transition-duration: 0.225s;
+		--foxy-badge__badge---transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		--foxy-badge__badge---transition-property: all;
+		--foxy-badge__badge---transition: var(--foxy-badge__badge---transition-property) var(--foxy-badge__badge---transition-duration) var(--foxy-badge__badge---transition-timing-function);
+		--foxy-badge__badge---margin-inline-start: 0;
+		--foxy-badge__badge---margin-inline-end: 0;
+		--foxy-badge__badge---margin-block-start: 0;
+		--foxy-badge__badge---margin-block-end: 0;
+		--foxy-badge__badge---padding-block-start: 4px;
+		--foxy-badge__badge---padding-block-end: 4px;
+		--foxy-badge__badge---padding-inline-start: 6px;
+		--foxy-badge__badge---padding-inline-end: 6px;
+		--foxy-badge__badge---color: rgba(30, 30, 30, 0.87);
+		--foxy-badge__badge---background-color: rgb(230, 230, 230);
+		--foxy-badge__badge---border-top-width: 0;
+		--foxy-badge__badge---border-left-width: 0;
+		--foxy-badge__badge---border-bottom-width: 0;
+		--foxy-badge__badge---border-right-width: 0;
+		--foxy-badge__badge---border-width: var(--foxy-badge__badge---border-top-width) var(--foxy-badge__badge---border-left-width) var(--foxy-badge__badge---border-bottom-width) var(--foxy-badge__badge---border-right-width);
+		--foxy-badge__badge---border-color: currentColor;
+		--foxy-badge__badge---border-style: solid;
+		--foxy-badge__badge---border-radius: 10px;
+	}
 </style>

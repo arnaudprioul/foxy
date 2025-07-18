@@ -1,0 +1,5 @@
+# Foxylazy
+
+## Usage
+
+    <FoxyLazy />

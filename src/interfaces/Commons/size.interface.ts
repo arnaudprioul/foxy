@@ -1,5 +1,5 @@
-import { TSize } from '@foxy/types'
+import type { TSize } from '@foxy/types'
 
 export interface ISizeProps {
-  size?: TSize | number
+    size?: TSize | number
 }

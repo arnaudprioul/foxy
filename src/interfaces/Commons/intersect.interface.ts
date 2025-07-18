@@ -1,11 +1,19 @@
-import { TObserveHandler } from '@foxy/types'
+import type { TObserveHandler } from '@foxy/types'
 
-import { DirectiveBinding } from 'vue'
+import type { DirectiveBinding } from 'vue'
 
-export interface IObserveDirectiveBinding extends Omit<DirectiveBinding, 'modifiers' | 'value'> {
-  value?: TObserveHandler | { handler: TObserveHandler, options?: IntersectionObserverInit }
-  modifiers: {
-    once?: boolean
-    quiet?: boolean
-  }
+export interface IIntersectDirectiveBinding extends Omit<DirectiveBinding, 'modifiers' | 'value'> {
+    value?: TObserveHandler | { handler: TObserveHandler, options?: IntersectionObserverInit }
+    modifiers: {
+        once?: boolean
+        quiet?: boolean
+    }
+}
+
+export interface IIntersectHtmlElement extends HTMLElement {
+    _observe?: IIntersectHtmlElementObserve
+}
+
+export interface IIntersectHtmlElementObserve {
+    [key: string]: any
 }

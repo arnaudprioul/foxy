@@ -1,0 +1,5 @@
+# Foxyparallaxelement
+
+## Usage
+
+    <FoxyParallaxElement />

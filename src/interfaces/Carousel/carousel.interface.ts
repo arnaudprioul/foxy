@@ -1,13 +1,12 @@
-import { IColorProps, ICommonsComponentProps, ITagProps, IWindowProps } from '@foxy/interfaces'
-import { TIcon, TInline } from '@foxy/types'
+import type { IColorProps, ICommonsComponentProps, IDimensionProps, ITagProps, IWindowProps } from '@foxy/interfaces'
+import type { TIcon, TInline } from '@foxy/types'
 
-export interface ICarouselProps extends IWindowProps, IColorProps, ICommonsComponentProps, ITagProps {
-  cycle?: boolean
-  delimiterIcon?: TIcon
-  height?: number | string
-  hideDelimiters?: boolean
-  hideDelimiterBackground?: boolean
-  interval?: number | string
-  progress?: boolean
-  verticalDelimiters?: boolean | TInline
+export interface ICarouselProps extends IWindowProps, IColorProps, ICommonsComponentProps, ITagProps, IDimensionProps {
+    cycle?: boolean
+    delimiterIcon?: TIcon
+    hideDelimiters?: boolean
+    hideDelimiterBackground?: boolean
+    interval?: number | string
+    progress?: boolean
+    verticalDelimiters?: boolean | TInline
 }

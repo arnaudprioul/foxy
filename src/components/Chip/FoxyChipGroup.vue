@@ -1,56 +1,74 @@
 <template>
-  <foxy-slide-group
-      :class="chipGroupClasses"
-      :style="chipGroupStyles"
-      v-bind="{...slideGroupProps}">
-    <slot name="default" v-bind="{isSelected, select, next, prev, selected}"/>
-  </foxy-slide-group>
+	<foxy-slide-group
+			ref="foxySlideGroupRef"
+			:class="chipGroupClasses"
+			:style="chipGroupStyles"
+			v-bind="{...slideGroupProps}"
+	>
+		<slot
+				name="default"
+				v-bind="{isSelected, select, next, prev, selected}"
+		/>
+	</foxy-slide-group>
 </template>
 
-<script lang="ts" setup>
-  import {FoxySlideGroup} from '@foxy/components'
+<script
+		lang="ts"
+		setup
+>
+	import { FoxySlideGroup } from '@foxy/components'
 
-  import {IChipGroupProps} from '@foxy/interfaces'
+	import { useGroup, useProps } from "@foxy/composables"
 
-  import {DIRECTION} from '@foxy/enums'
+	import { FOXY_CHIP_GROUP_KEY } from "@foxy/consts"
 
-  import {FOXY_CHIP_GROUP_KEY, SLIDE_GROUP_PROPS} from "@foxy/consts";
+	import { DIRECTION, MDI_ICONS } from '@foxy/enums'
 
-  import {useGroup} from "@foxy/composables";
+	import type { IChipGroupProps } from '@foxy/interfaces'
 
-  import {keys, omit, pick} from "@foxy/utils";
+	import type { TFoxySlideGroup } from "@foxy/types"
 
-  import {computed, StyleValue} from "vue";
+	import { computed, ref, StyleValue } from "vue";
 
-  const props = withDefaults(defineProps<IChipGroupProps>(), {
-    direction: DIRECTION.HORIZONTAL,
-    nextIcon: '$next',
-    prevIcon: '$prev',
-    selectedClass: 'foxy-chip--selected'
-  })
+	const props = withDefaults(defineProps<IChipGroupProps>(), {
+		direction: DIRECTION.HORIZONTAL,
+		nextIcon: MDI_ICONS.CHEVRON_RIGHT,
+		prevIcon: MDI_ICONS.CHEVRON_LEFT,
+		selectedClass: 'foxy-chip--selected'
+	})
 
-  const emits = defineEmits(['update:modelValue'])
+	defineEmits(['update:modelValue'])
 
-  const {isSelected, select, next, prev, selected} = useGroup(props, FOXY_CHIP_GROUP_KEY)
+	const {filterProps} = useProps<IChipGroupProps>(props)
 
-  const slideGroupProps = computed(() => {
-    return omit(pick(props, keys(SLIDE_GROUP_PROPS)), ['class', 'style'])
-  })
+	const foxySlideGroupRef = ref<TFoxySlideGroup>()
 
-  // CLASS & STYLES
+	const {isSelected, select, next, prev, selected} = useGroup(props, FOXY_CHIP_GROUP_KEY)
 
-  const chipGroupStyles = computed(() => {
-    return [
-      props.style,
-    ] as StyleValue
-  })
-  const chipGroupClasses = computed(() => {
-    return [
-      'foxy-chip-group',
-      {
-        'foxy-chip-group--column': props.column,
-      },
-      props.class,
-    ]
-  })
+	const slideGroupProps = computed(() => {
+		return foxySlideGroupRef.value?.filterProps(props)
+	})
+
+	// CLASS & STYLES
+
+	const chipGroupStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const chipGroupClasses = computed(() => {
+		return [
+			'foxy-chip-group',
+			{
+				'foxy-chip-group--column': props.column
+			},
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

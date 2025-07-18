@@ -1,12 +1,13 @@
-import {
-  IBorderProps,
-  ICommonsComponentProps,
-  IMarginProps,
-  IPaddingProps,
-  IRoundedProps,
-  ITagProps
+import type {
+    IBorderProps,
+    ICommonsComponentProps,
+    IDimensionProps,
+    IMarginProps,
+    IPaddingProps,
+    IRoundedProps,
+    ITagProps
 } from '@foxy/interfaces'
 
-export interface IMainProps extends ITagProps, ICommonsComponentProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps {
-  scrollable?: boolean
+export interface IMainProps extends ITagProps, ICommonsComponentProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IDimensionProps {
+    scrollable?: boolean
 }

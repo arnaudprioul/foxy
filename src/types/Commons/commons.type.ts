@@ -1,8 +1,8 @@
-import { FOCUS_LOCATION } from '@foxy/enums'
-import { ComponentPublicInstance } from "vue"
+import { CLIENT_POSITION, FOCUS_LOCATION } from '@foxy/enums'
+import { ComponentPublicInstance } from 'vue'
 
-export type TNotAUnion <T> = [T] extends [infer U] ? _TNotAUnion <U, U> : never
-export type _TNotAUnion <T, U> = U extends any ? [T] extends [U] ? unknown : never : never
+export type TNotAUnion<T> = [T] extends [infer U] ? _TNotAUnion<U, U> : never
+export type _TNotAUnion<T, U> = U extends any ? [T] extends [U] ? unknown : never : never
 
 export type TEventProp<T extends Array<any> = Array<any>, F = (...args: T) => void> = F
 
@@ -26,3 +26,18 @@ export type TTemplateRef = {
     value: HTMLElement | ComponentPublicInstance | null | undefined
     readonly el: HTMLElement | undefined
 }
+
+export type TClientPosition = `${CLIENT_POSITION}`
+
+export type TIfAny<T, Y, N> = 0 extends (1 & T) ? Y : N
+
+export type TWrapInArrayResult<T> = T extends Readonly<Array<any>>
+    ? TIfAny<T, Array<T>, T>
+    : Array<NonNullable<T>>
+
+export type TValueOf<T> = T[keyof T];
+
+/**
+ * Void function
+ */
+export type TFn = () => void

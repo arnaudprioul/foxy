@@ -1,15 +1,16 @@
-import { IDelayProps } from '@foxy/interfaces'
+import type { IDelayProps } from '@foxy/interfaces'
 
-import { ComponentPublicInstance } from 'vue'
+import type { ComponentPublicInstance } from 'vue'
 
 export interface IActivatorProps extends IDelayProps {
-  target?: 'parent' | 'cursor' | (string & {}) | Element | ComponentPublicInstance | [x: number, y: number] | undefined
-  activator?: 'parent' | (string & {}) | Element | ComponentPublicInstance | undefined
-  activatorProps?: Record<string, any>
+    target?: 'parent' | 'cursor' | (string & {}) | Element | ComponentPublicInstance | [x: number, y: number] | undefined
+    activator?: 'parent' | 'cursor' | (string & {}) | Element | ComponentPublicInstance
+    activatorProps?: any
 
-  openOnClick?: boolean | undefined
-  openOnHover?: boolean
-  openOnFocus?: boolean | undefined
+    openOnClick?: boolean
+    openOnContextMenu?: boolean
+    openOnHover?: boolean
+    openOnFocus?: boolean
 
-  closeOnContentClick?: boolean
+    closeOnContentClick?: boolean
 }

@@ -2,7 +2,7 @@ import { defineSetupVue3 } from '@histoire/plugin-vue'
 
 import FoxyStoryLayout from '@stories/components/wrapper/FoxyStoryLayout.vue'
 
-import { createFoxy } from '../src/foxy'
+import { createFoxy } from '@foxy/foxy'
 
 import '@stories/assets/scss/codetabs.scss'
 

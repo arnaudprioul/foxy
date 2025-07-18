@@ -1,7 +1,7 @@
 import { FOXY_DISPLAY_KEY, IN_BROWSER } from '@foxy/consts'
 
-import { IDisplayInstance, IDisplayOptions, IDisplayProps } from '@foxy/interfaces'
-import { TSSROptions } from '@foxy/types'
+import type { IDisplayInstance, IDisplayOptions, IDisplayProps } from '@foxy/interfaces'
+import type { TSSROptions } from '@foxy/types'
 
 import { getClientHeight, getClientWidth, getCurrentInstanceName, getPlatform, parseDisplayOptions } from '@foxy/utils'
 
@@ -9,92 +9,93 @@ import { computed, inject, reactive, shallowRef, toRefs, watchEffect } from 'vue
 
 export function useDisplay (
     props: IDisplayProps = {},
-    name = getCurrentInstanceName(),
+    name = getCurrentInstanceName()
 ) {
-  const display = inject(FOXY_DISPLAY_KEY)
+    const display = inject(FOXY_DISPLAY_KEY)
 
-  if (!display) throw new Error('Could not find Foxy display injection')
+    if (!display) throw new Error('Could not find Foxy display injection')
 
-  const mobile = computed(() => {
-    if (!props.mobileBreakpoint) return display.mobile.value
+    const mobile = computed(() => {
+        if (!props.mobileBreakpoint) return display.mobile.value
 
-    const breakpointValue = typeof props.mobileBreakpoint === 'number'
-        ? props.mobileBreakpoint
-        : display.thresholds.value[props.mobileBreakpoint]
+        const breakpointValue = typeof props.mobileBreakpoint === 'number'
+            ? props.mobileBreakpoint
+            : display.thresholds.value[props.mobileBreakpoint]
 
-    return display.width.value < breakpointValue
-  })
+        return display.width.value < breakpointValue
+    })
 
-  const displayClasses = computed(() => {
-    if (!name) return {}
+    const displayClasses = computed(() => {
+        if (!name) return {}
 
-    return { [`${name}--mobile`]: mobile.value }
-  })
+        return {[`${name}--mobile`]: mobile.value}
+    })
 
-  return { ...display, displayClasses, mobile }
+    return {...display, displayClasses, mobile}
 }
 
 export function createDisplay (options?: IDisplayOptions, ssr?: TSSROptions): IDisplayInstance {
-  const { thresholds, mobileBreakpoint } = parseDisplayOptions(options)
+    const {thresholds, mobileBreakpoint} = parseDisplayOptions(options)
 
-  const height = shallowRef(getClientHeight(ssr))
-  const platform = shallowRef(getPlatform(ssr))
-  const state = reactive({} as IDisplayInstance)
-  const width = shallowRef(getClientWidth(ssr))
+    const height = shallowRef(getClientHeight(ssr))
+    const platform = shallowRef(getPlatform(ssr))
+    const state = reactive({} as IDisplayInstance)
+    const width = shallowRef(getClientWidth(ssr))
 
-  function updateSize () {
-    height.value = getClientHeight()
-    width.value = getClientWidth()
-  }
-  function update () {
-    updateSize()
-    platform.value = getPlatform()
-  }
+    function updateSize () {
+        height.value = getClientHeight()
+        width.value = getClientWidth()
+    }
 
-  // eslint-disable-next-line max-statements
-  watchEffect(() => {
-    const xs = width.value < thresholds.sm
-    const sm = width.value < thresholds.md && !xs
-    const md = width.value < thresholds.lg && !(sm || xs)
-    const lg = width.value < thresholds.xl && !(md || sm || xs)
-    const xl = width.value < thresholds.xxl && !(lg || md || sm || xs)
-    const xxl = width.value >= thresholds.xxl
-    const name =
-        xs ? 'xs'
-            : sm ? 'sm'
-                : md ? 'md'
-                    : lg ? 'lg'
-                        : xl ? 'xl'
-                            : 'xxl'
-    const breakpointValue = typeof mobileBreakpoint === 'number' ? mobileBreakpoint : thresholds[mobileBreakpoint]
-    const mobile = width.value < breakpointValue
+    function update () {
+        updateSize()
+        platform.value = getPlatform()
+    }
 
-    state.xs = xs
-    state.sm = sm
-    state.md = md
-    state.lg = lg
-    state.xl = xl
-    state.xxl = xxl
-    state.smAndUp = !xs
-    state.mdAndUp = !(xs || sm)
-    state.lgAndUp = !(xs || sm || md)
-    state.xlAndUp = !(xs || sm || md || lg)
-    state.smAndDown = !(md || lg || xl || xxl)
-    state.mdAndDown = !(lg || xl || xxl)
-    state.lgAndDown = !(xl || xxl)
-    state.xlAndDown = !xxl
-    state.name = name
-    state.height = height.value
-    state.width = width.value
-    state.mobile = mobile
-    state.mobileBreakpoint = mobileBreakpoint
-    state.platform = platform.value
-    state.thresholds = thresholds
-  })
 
-  if (IN_BROWSER) {
-    window.addEventListener('resize', updateSize, { passive: true })
-  }
+    watchEffect(() => {
+        const xs = width.value < thresholds.sm
+        const sm = width.value < thresholds.md && !xs
+        const md = width.value < thresholds.lg && !(sm || xs)
+        const lg = width.value < thresholds.xl && !(md || sm || xs)
+        const xl = width.value < thresholds.xxl && !(lg || md || sm || xs)
+        const xxl = width.value >= thresholds.xxl
+        const name =
+            xs ? 'xs'
+                : sm ? 'sm'
+                    : md ? 'md'
+                        : lg ? 'lg'
+                            : xl ? 'xl'
+                                : 'xxl'
+        const breakpointValue = typeof mobileBreakpoint === 'number' ? mobileBreakpoint : thresholds[mobileBreakpoint]
+        const mobile = width.value < breakpointValue
 
-  return { ...toRefs(state), update, ssr: !!ssr }
+        state.xs = xs
+        state.sm = sm
+        state.md = md
+        state.lg = lg
+        state.xl = xl
+        state.xxl = xxl
+        state.smAndUp = !xs
+        state.mdAndUp = !(xs || sm)
+        state.lgAndUp = !(xs || sm || md)
+        state.xlAndUp = !(xs || sm || md || lg)
+        state.smAndDown = !(md || lg || xl || xxl)
+        state.mdAndDown = !(lg || xl || xxl)
+        state.lgAndDown = !(xl || xxl)
+        state.xlAndDown = !xxl
+        state.name = name
+        state.height = height.value
+        state.width = width.value
+        state.mobile = mobile
+        state.mobileBreakpoint = mobileBreakpoint
+        state.platform = platform.value
+        state.thresholds = thresholds
+    })
+
+    if (IN_BROWSER) {
+        window.addEventListener('resize', updateSize, {passive: true})
+    }
+
+    return {...toRefs(state), update, ssr: !!ssr}
 }

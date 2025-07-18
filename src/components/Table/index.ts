@@ -1,0 +1,1 @@
+export { default as FoxyTable } from './FoxyTable.vue'

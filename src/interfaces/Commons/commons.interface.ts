@@ -1,37 +1,57 @@
-import { IDisplayOptions, IGoToOptions } from '@foxy/interfaces'
+import type { IDateOptions, IDisplayOptions, IGoToOptions, ILocaleOptions, IRtlOptions } from '@foxy/interfaces'
 
-import { TIconOptions, TSSROptions } from '@foxy/types'
+import type { TIconOptions, TSSROptions } from '@foxy/types'
+
+import type { ExtractPropTypes, StyleValue } from 'vue'
 
 export interface IFoxyOptions {
-  aliases?: Record<string, any>
-  blueprint?: IBlueprint
-  components?: Record<string, any>
-  directives?: Record<string, any>
-  icons?: TIconOptions
-  display?: IDisplayOptions
-  ssr?: TSSROptions
-  goTo?: IGoToOptions
+    aliases?: any
+    blueprint?: IBlueprint
+    components?: any
+    directives?: any
+    icons?: TIconOptions
+    display?: IDisplayOptions
+    ssr?: TSSROptions
+    goTo?: IGoToOptions
+    date?: IDateOptions
+    locale?: ILocaleOptions & IRtlOptions
 }
 
-export interface IBlueprint extends Omit<IFoxyOptions, 'blueprint'> {}
+export interface IBlueprint extends Omit<IFoxyOptions, 'blueprint'> {
+}
 
 export interface ICommonsComponentProps {
-  id?: string,
-  class?: string | Array<string>,
-  style?: string | Array<string> | Object
+    id?: string,
+    class?: string | Array<string> | object,
+    style?: string | Array<string> | object | StyleValue
 }
 
 export interface ITagProps {
-  tag?: string
+    tag?: string
 }
 
 export interface ISample {
-  t: number
-  d: number
+    t: number
+    d: number
 }
 
 export interface IIntersectionObserverInit {
-  root?: Element | Document | null;
-  rootMargin?: string;
-  threshold?: number | Array<number>;
+    root?: Element | Document | null;
+    rootMargin?: string;
+    threshold?: number | Array<number>;
+}
+
+export interface IFilterPropsOptions<PropsOptions extends {
+    [key: string]: any
+}, Props = ExtractPropTypes<PropsOptions>> {
+    props: PropsOptions
+
+    filterProps<
+        T extends Partial<Props>,
+        U extends Extract<keyof T, string>
+    > (properties: T, excludes?: string[]): Partial<Pick<T, U>>
+}
+
+export interface IConfigurableDocument {
+    document?: Document
 }

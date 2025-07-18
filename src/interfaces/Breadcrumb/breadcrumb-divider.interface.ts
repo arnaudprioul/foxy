@@ -1,16 +1,15 @@
-import {
-  IBorderProps,
-  IColorProps,
-  ICommonsComponentProps,
-  IDensityProps,
-  IMarginProps,
-  IPaddingProps,
-  IRoundedProps, ISizeProps,
-  ITagProps
+import type {
+    IColorProps,
+    ICommonsComponentProps,
+    IDensityProps,
+    IMarginProps,
+    IPaddingProps,
+    ISizeProps,
+    ITagProps
 } from '@foxy/interfaces'
 
-import { TIcon } from '@foxy/types'
+import type { TIcon } from '@foxy/types'
 
-export interface IBreadcrumbDividerProps extends ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IDensityProps, IColorProps, IBorderProps, IRoundedProps, ISizeProps {
-  divider: string | TIcon
+export interface IBreadcrumbDividerProps extends ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IDensityProps, IColorProps, ISizeProps {
+    divider: string | TIcon
 }

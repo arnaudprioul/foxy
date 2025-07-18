@@ -1,0 +1,5 @@
+# FoxyContextualMenu
+
+## Usage
+
+    <FoxyContextualMenu />

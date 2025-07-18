@@ -1,0 +1,1 @@
+export { default as FoxyFileField } from './FoxyFileField.vue'

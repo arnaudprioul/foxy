@@ -1,6 +1,6 @@
-import { ICommonsComponentProps, IDimensionProps, IVirtualProps } from '@foxy/interfaces'
+import type { ICommonsComponentProps, IDimensionProps, IVirtualProps } from '@foxy/interfaces'
 
 export interface IVirtualScrollProps extends ICommonsComponentProps, IDimensionProps, IVirtualProps {
-  items?: Array<any>
-  renderless?: boolean
+    items?: Array<any>
+    renderless?: boolean
 }

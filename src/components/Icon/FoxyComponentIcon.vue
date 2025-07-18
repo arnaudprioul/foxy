@@ -1,36 +1,55 @@
 <template>
-  <component :is="tag" :class="iconClasses" :style="iconStyles">
-    <slot name="default">
-      <component :is="iconComponent" v-if="hasIcon"/>
-    </slot>
-  </component>
+	<component
+			:is="tag"
+			:class="iconClasses"
+			:style="iconStyles"
+	>
+		<slot name="default">
+			<component
+					:is="iconComponent"
+					v-if="hasIcon"
+			/>
+		</slot>
+	</component>
 </template>
 
-<script lang="ts" setup>
-  import type { Component } from 'vue'
-  import { computed, StyleValue } from 'vue'
+<script
+		lang="ts"
+		setup
+>
+	import { useProps } from "@foxy/composables"
 
-  import { IIconComponentProps } from '@foxy/interfaces'
+	import type { IIconComponentProps } from '@foxy/interfaces'
+	import type { Component } from 'vue'
+	import { computed, StyleValue } from 'vue'
 
-  const props = withDefaults(defineProps<IIconComponentProps>(), { tag: 'div' })
+	const props = withDefaults(defineProps<IIconComponentProps>(), {tag: 'div'})
 
-  const hasIcon = computed(() => {
-    return !!props.icon
-  })
-  const iconComponent = computed(() => {
-    return props.icon as Component
-  })
+	const {filterProps} = useProps<IIconComponentProps>(props)
 
-  // CLASS & STYLES
+	const hasIcon = computed(() => {
+		return !!props.icon
+	})
+	const iconComponent = computed(() => {
+		return props.icon as Component
+	})
 
-  const iconStyles = computed(() => {
-    return [
-      props.style
-    ] as StyleValue
-  })
-  const iconClasses = computed(() => {
-    return [
-      props.class
-    ]
-  })
+	// CLASS & STYLES
+
+	const iconStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const iconClasses = computed(() => {
+		return [
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose({
+		filterProps
+	})
 </script>

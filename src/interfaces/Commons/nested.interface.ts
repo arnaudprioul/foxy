@@ -1,9 +1,9 @@
-import { TOpenStrategy, TSelectStrategy } from '@foxy/types'
+import type { TOpenStrategy, TOpenStrategyFns, TSelectStrategy, TSelectStrategyFn } from '@foxy/types'
 
 export interface INestedProps {
-  selectStrategy?: TSelectStrategy
-  openStrategy?: TOpenStrategy
-  selected?: Array<unknown>
-  opened?: Array<unknown>
-  mandatory?: boolean
+    selectStrategy?: TSelectStrategy | TSelectStrategyFn
+    openStrategy?: TOpenStrategy | TOpenStrategyFns
+    selected?: Array<unknown>
+    opened?: Array<unknown>
+    mandatory?: boolean
 }

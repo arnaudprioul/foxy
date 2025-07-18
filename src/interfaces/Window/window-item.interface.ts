@@ -1,6 +1,6 @@
-import { ICommonsComponentProps, IGroupItemProps, ILazyProps, ITransitionComponentProps } from '@foxy/interfaces'
+import type { ICommonsComponentProps, IGroupItemProps, ILazyProps, ITransitionComponentProps } from '@foxy/interfaces'
 
 export interface IWindowItemProps extends ICommonsComponentProps, ILazyProps, IGroupItemProps, ITransitionComponentProps {
-  transition?: boolean | string
-  reverseTransition?: boolean | string
+    transition?: boolean | string
+    reverseTransition?: boolean | string
 }

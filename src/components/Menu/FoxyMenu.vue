@@ -1,222 +1,261 @@
 <template>
-  <foxy-overlay
-      :id="id"
-      ref="overlay"
-      v-model="isActive"
-      :activator-props="activatorProps"
-      :class="menuClasses"
-      :style="menuStyles"
-      absolute
-      role="menu"
-      v-bind="{...overlayProps, ...scopeId}"
-      @keydown="handleKeydown"
-      @click:outside="handleClickOutside">
-    <template #activator="{props}">
-      <slot name="activator" v-bind="{props}"/>
-    </template>
+	<foxy-overlay
+			:id="id"
+			ref="foxyOverlayRef"
+			v-model="isActive"
+			:activator="activator"
+			:activator-props="activatorProps"
+			:class="menuClasses"
+			:open-on-click="openOnClick"
+			:open-on-context-menu="openOnContextMenu"
+			:style="menuStyles"
+			:target="target"
+			absolute
+			role="menu"
+			v-bind="{...overlayProps, ...scopeId}"
+			@keydown="handleKeydown"
+			@click:outside="handleClickOutside"
+	>
+		<template #activator="{props}">
+			<slot
+					name="activator"
+					v-bind="{props}"
+			/>
+		</template>
 
-    <template #default>
-      <slot name="default">
-        <foxy-list class="foxy-menu__list">
-          <foxy-list-subheader v-if="title" class="foxy-menu__title">{{ title }}</foxy-list-subheader>
-          <foxy-list-group class="foxy-menu__items">
-            <template v-for="(item, index) in items" :key="index">
-              <foxy-list-item
-                  v-if="!hasChilds(item)"
-                  class="foxy-menu__item"
-                  v-bind="item"/>
-              <foxy-menu
-                  v-else
-                  v-bind="{...item, ...overlayProps, offset:[8, 8]}"
-              >
-                <template #activator="{props}">
-                  <foxy-list-item
-                      :append-icon="MDI_ICONS.CHEVRON_RIGHT"
-                      class="foxy-menu__item"
-                      v-bind="{...props, ...item}"/>
-                </template>
-              </foxy-menu>
-            </template>
-          </foxy-list-group>
-        </foxy-list>
-      </slot>
-    </template>
-  </foxy-overlay>
+		<template #default>
+			<slot name="default">
+				<foxy-list class="foxy-menu__list">
+					<foxy-list-subheader
+							v-if="title"
+							class="foxy-menu__title"
+					>{{ title }}
+					</foxy-list-subheader>
+					<foxy-list-group class="foxy-menu__items">
+						<template
+								v-for="(item, index) in items"
+								:key="index"
+						>
+							<foxy-list-item
+									v-if="!hasChilds(item)"
+									class="foxy-menu__item"
+									v-bind="item"
+							/>
+							<foxy-menu
+									v-else
+									:offset="[8,8]"
+									:open-on-context-menu="false"
+									open-on-click
+									v-bind="{...item, ...overlayProps}"
+							>
+								<template #activator="{props}">
+									<foxy-list-item
+											:append-icon="MDI_ICONS.CHEVRON_RIGHT"
+											class="foxy-menu__item"
+											v-bind="{...props, ...item}"
+									/>
+								</template>
+							</foxy-menu>
+						</template>
+					</foxy-list-group>
+				</foxy-list>
+			</slot>
+		</template>
+	</foxy-overlay>
 </template>
 
-<script lang="ts" setup>
-  import { FoxyListGroup, FoxyListSubheader, FoxyOverlay, FoxyTranslateScale } from '@foxy/components'
+<script
+		lang="ts"
+		setup
+>
+	import {
+		FoxyList,
+		FoxyListGroup,
+		FoxyListItem,
+		FoxyListSubheader,
+		FoxyOverlay,
+		FoxyTranslateScale
+	} from '@foxy/components'
 
-  import { useScopeId } from '@foxy/composables'
+	import { useProps, useScopeId, useVModel } from '@foxy/composables'
 
-  import { FOXY_MENU_KEY, OVERLAY_PROPS } from '@foxy/consts'
+	import { FOXY_MENU_KEY } from '@foxy/consts'
 
-  import { INLINE, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@foxy/enums'
+	import { INLINE, KEYBOARD_VALUES, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@foxy/enums'
 
-  import { IItemProps, IMenuProps } from '@foxy/interfaces'
+	import type { IItemProps, IMenuProps } from '@foxy/interfaces'
 
-  import { TFoxyOverlay } from '@foxy/types'
+	import type { TFoxyOverlay, TTransitionProps } from '@foxy/types'
 
-  import { focusableChildren, focusChild, getNextElement, getUid, keys, omit, pick, useProxiedModel } from '@foxy/utils'
+	import { focusableChildren, focusChild, forwardRefs, getNextElement, getUid } from '@foxy/utils'
 
-  import { computed, inject, mergeProps, nextTick, provide, ref, shallowRef, StyleValue, watch } from 'vue'
+	import { computed, inject, mergeProps, nextTick, provide, ref, shallowRef, StyleValue, watch } from 'vue'
 
-  const props = withDefaults(defineProps<IMenuProps>(), {
-    closeDelay: 250,
-    closeOnContentClick: true,
-    locationStrategy: LOCATION_STRATEGIES.CONNECTED,
-    openDelay: 300,
-    scrim: false,
-    openOnClick: true,
-    location: INLINE.RIGHT,
-    scrollStrategy: SCROLL_STRATEGIES.REPOSITION,
-    width: 200,
-    offset: 8,
-    transition: { component: FoxyTranslateScale }
-  })
+	const props = withDefaults(defineProps<IMenuProps>(), {
+		closeDelay: 250,
+		closeOnContentClick: true,
+		locationStrategy: LOCATION_STRATEGIES.CONNECTED,
+		openDelay: 300,
+		scrim: false,
+		openOnClick: true,
+		location: INLINE.RIGHT,
+		scrollStrategy: SCROLL_STRATEGIES.REPOSITION,
+		offset: 8,
+		transition: () => ({component: FoxyTranslateScale}) as unknown as TTransitionProps
+	})
 
-  const emits = defineEmits(['update:modelValue'])
+	defineEmits(['update:modelValue', 'contextmenu'])
 
-  const isActive = useProxiedModel(props, 'modelValue')
-  const { scopeId } = useScopeId()
+	const {filterProps} = useProps<IMenuProps>(props)
 
-  const uid = getUid()
-  const id = computed(() => props.id || `foxy-menu--${uid}`)
+	const isActive = useVModel(props, 'modelValue')
+	const {scopeId} = useScopeId()
 
-  const overlay = ref<TFoxyOverlay>()
+	const uid = getUid()
+	const id = computed(() => props.id || `foxy-menu--${uid}`)
 
-  const parent = inject(FOXY_MENU_KEY, null)
-  const openChildren = shallowRef(0)
-  provide(FOXY_MENU_KEY, {
-    register () {
-      ++openChildren.value
-    },
-    unregister () {
-      --openChildren.value
-    },
-    closeParents () {
-      setTimeout(() => {
-        if (!openChildren.value) {
-          isActive.value = false
-          parent?.closeParents()
-        }
-      }, 40)
-    },
-  })
+	const foxyOverlayRef = ref<TFoxyOverlay>()
 
-  const handleFocusIn = async (e: FocusEvent) => {
-    const before = e.relatedTarget as HTMLElement | null
-    const after = e.target as HTMLElement | null
+	const parent = inject(FOXY_MENU_KEY, null)
+	const openChildren = shallowRef(0)
 
-    await nextTick()
+	provide(FOXY_MENU_KEY, {
+		register () {
+			++openChildren.value
+		},
+		unregister () {
+			--openChildren.value
+		},
+		closeParents () {
+			setTimeout(() => {
+				if (!openChildren.value) {
+					isActive.value = false
+					parent?.closeParents()
+				}
+			}, 40)
+		}
+	})
 
-    if (
-        isActive.value &&
-        before !== after &&
-        overlay.value?.contentEl &&
-        // We're the topmost menu
-        overlay.value?.globalTop &&
-        // It isn't the document or the menu body
-        ![document, overlay.value.contentEl].includes(after!) &&
-        // It isn't inside the menu body
-        !overlay.value.contentEl.contains(after)
-    ) {
-      const focusable = focusableChildren(overlay.value.contentEl)
-      focusable[0]?.focus()
-    }
-  }
+	const handleFocusIn = async (e: FocusEvent) => {
+		const before = e.relatedTarget as HTMLElement | null
+		const after = e.target as HTMLElement | null
 
-  watch(isActive, (val) => {
-    if (val) {
-      parent?.register()
-      document.addEventListener('focusin', handleFocusIn, { once: true })
-    } else {
-      parent?.unregister()
-      document.removeEventListener('focusin', handleFocusIn)
-    }
-  })
+		await nextTick()
 
-  const handleClickOutside = () => {
-    parent?.closeParents()
-  }
-  const handleKeydown = (e: KeyboardEvent) => {
-    if (props.disabled) return
+		if (
+				isActive.value &&
+				before !== after &&
+				foxyOverlayRef.value?.contentEl &&
+				// We're the topmost menu
+				foxyOverlayRef.value?.globalTop &&
+				// It isn't the document or the menu body
+				![document, foxyOverlayRef.value.contentEl].includes(after!) &&
+				// It isn't inside the menu body
+				!foxyOverlayRef.value.contentEl.contains(after)
+		) {
+			const focusable = focusableChildren(foxyOverlayRef.value.contentEl)
+			focusable[0]?.focus()
+		}
+	}
 
-    if (e.key === 'Tab') {
-      const nextElement = getNextElement(
-          focusableChildren(overlay.value?.contentEl as Element, false),
-          e.shiftKey ? 'prev' : 'next',
-          (el: HTMLElement) => el.tabIndex >= 0
-      )
-      if (!nextElement) {
-        isActive.value = false
-        overlay.value?.activatorEl?.focus()
-      }
-    }
-  }
-  const handleActivatorKeydown = (e: KeyboardEvent) => {
-    if (props.disabled) return
+	watch(isActive, (val) => {
+		if (val) {
+			parent?.register()
+			document.addEventListener('focusin', handleFocusIn, {once: true})
+		} else {
+			parent?.unregister()
+			document.removeEventListener('focusin', handleFocusIn)
+		}
+	})
 
-    const el = overlay.value?.contentEl
-    if (el && isActive.value) {
-      if (e.key === 'ArrowDown') {
-        e.preventDefault()
-        focusChild(el, 'next')
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault()
-        focusChild(el, 'prev')
-      }
-    } else if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
-      isActive.value = true
-      e.preventDefault()
-      setTimeout(() => setTimeout(() => handleActivatorKeydown(e)))
-    }
-  }
+	const handleClickOutside = () => {
+		parent?.closeParents()
+	}
+	const handleKeydown = (e: KeyboardEvent) => {
+		if (props.disabled) return
 
-  const activatorProps = computed(() => {
-    return mergeProps({
-      'aria-haspopup': 'menu',
-      'aria-expanded': String(isActive.value),
-      'aria-owns': id.value,
-      onKeydown: handleActivatorKeydown,
-    }, props.activatorProps)
-  })
+		if (e.key === KEYBOARD_VALUES.TAB) {
+			const nextElement = getNextElement(
+					focusableChildren(foxyOverlayRef.value?.contentEl as Element, false),
+					e.shiftKey ? 'prev' : 'next',
+					(el: HTMLElement) => el.tabIndex >= 0
+			)
+			if (!nextElement) {
+				isActive.value = false
+				foxyOverlayRef.value?.activatorEl?.focus()
+			}
+		}
+	}
+	const handleActivatorKeydown = (e: KeyboardEvent) => {
+		if (props.disabled) return
 
-  const overlayProps = computed(() => {
-    const overlayProps = pick(props, keys(OVERLAY_PROPS))
+		const el = foxyOverlayRef.value?.contentEl
+		const keyDown = [KEYBOARD_VALUES.DOWN, KEYBOARD_VALUES.UP]
 
-    return omit(overlayProps, ['activatorProps', 'class', 'style', 'modelValue', 'absolute'])
-  })
+		if (el && isActive.value) {
+			if (e.key === KEYBOARD_VALUES.DOWN) {
+				e.preventDefault()
+				focusChild(el, 'next')
+			} else if (e.key === KEYBOARD_VALUES.UP) {
+				e.preventDefault()
+				focusChild(el, 'prev')
+			}
+		} else if (keyDown.includes(e.key as typeof keyDown[number])) {
+			isActive.value = true
+			e.preventDefault()
+			setTimeout(() => setTimeout(() => handleActivatorKeydown(e)))
+		}
+	}
 
-  const hasChilds = (item: IItemProps) => {
-    return item?.items
-  }
+	const activatorProps = computed(() => {
+		return mergeProps({
+			'aria-haspopup': 'menu',
+			'aria-expanded': String(isActive.value),
+			'aria-owns': id.value,
+			onKeydown: handleActivatorKeydown
+		}, props.activatorProps)
+	})
 
-  // CLASS & STYLES
+	const overlayProps = computed(() => {
+		console.log(foxyOverlayRef.value?.filterProps(props, ['activatorProps', 'id', 'class', 'style', 'role', 'modelValue', 'absolute', 'activator', 'target', 'openOnClick', 'openOnContextMenu']))
 
-  const menuStyles = computed(() => {
-    return [
-      props.style
-    ] as StyleValue
-  })
-  const menuClasses = computed(() => {
-    return [
-      'foxy-menu',
-      props.class,
-    ]
-  })
+		return foxyOverlayRef.value?.filterProps(props, ['activatorProps', 'id', 'class', 'style', 'role', 'modelValue', 'absolute', 'activator', 'target', 'openOnClick', 'openOnContextMenu'])
+	})
 
-  defineExpose({openChildren})
+	const hasChilds = (item: IItemProps) => {
+		return item?.items
+	}
+
+	// CLASS & STYLES
+
+	const menuStyles = computed(() => {
+		return [
+			props.style
+		] as StyleValue
+	})
+	const menuClasses = computed(() => {
+		return [
+			'foxy-menu',
+			props.class
+		]
+	})
+
+	// EXPOSE
+
+	defineExpose(forwardRefs({openChildren, filterProps}, foxyOverlayRef))
 </script>
 
-<style lang="scss" scoped>
-  .foxy-menu {
+<style
+		lang="scss"
+		scoped
+>
+	.foxy-menu {
 
-  }
+	}
 </style>
 
 <style>
-  :root {
+	:root {
 
-  }
+	}
 </style>
