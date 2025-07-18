@@ -1,4 +1,3 @@
-import type { AutoPropComponentDefinition, PropDefinition } from '@histoire/shared'
 import { pascalCase } from "change-case"
 import { PropType, VNode } from 'vue'
 
@@ -25,13 +24,13 @@ export function getTagName (vnode: VNode) {
 }
 
 export function scanForAutoProps (vnodes: Array<any>) {
-    const result: Array<AutoPropComponentDefinition> = []
+    const result: Array<any> = []
     let index = 0
 
     for (const vnode of vnodes) {
         if (typeof vnode.type === 'object') {
 
-            const propDefs: Array<PropDefinition> = []
+            const propDefs: Array<any> = []
 
             for (const key in vnode.type.props) {
 
@@ -74,7 +73,7 @@ export function scanForAutoProps (vnodes: Array<any>) {
                 name: getTagName(vnode),
                 index,
                 props: propDefs
-            } as AutoPropComponentDefinition)
+            })
             index++
         }
 
