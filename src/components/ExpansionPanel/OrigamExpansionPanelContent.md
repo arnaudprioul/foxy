@@ -1,0 +1,5 @@
+# Origamexpansionpanelcontent
+
+## Usage
+
+    <OrigamExpansionPanelContent />

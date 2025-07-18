@@ -1,0 +1,5 @@
+# OrigamColorPickerPreview
+
+## Usage
+
+    <OrigamColorPickerPreview />

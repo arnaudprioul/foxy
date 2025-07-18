@@ -1,0 +1,5 @@
+# Origamsliderthumb
+
+## Usage
+
+    <OrigamSliderFieldThumb />

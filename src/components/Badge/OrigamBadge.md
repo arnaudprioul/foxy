@@ -1,0 +1,5 @@
+# Origambadge
+
+## Usage
+
+    <OrigamBadge />

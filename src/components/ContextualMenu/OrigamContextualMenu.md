@@ -1,0 +1,5 @@
+# OrigamContextualMenu
+
+## Usage
+
+    <OrigamContextualMenu />

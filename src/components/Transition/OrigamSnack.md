@@ -1,0 +1,5 @@
+# OrigamFade
+
+## Usage
+
+    <OrigamSnack />

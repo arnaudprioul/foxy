@@ -1,0 +1,5 @@
+# Origamimg
+
+## Usage
+
+    <OrigamImg />

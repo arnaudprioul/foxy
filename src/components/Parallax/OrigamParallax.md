@@ -1,0 +1,5 @@
+# Origamparallax
+
+## Usage
+
+    <OrigamParallax />

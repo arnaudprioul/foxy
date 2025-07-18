@@ -1,0 +1,5 @@
+# Origamdialog
+
+## Usage
+
+    <OrigamDialog />

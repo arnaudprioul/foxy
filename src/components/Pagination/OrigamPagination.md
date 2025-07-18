@@ -1,0 +1,5 @@
+# Origampagination
+
+## Usage
+
+    <OrigamPagination />

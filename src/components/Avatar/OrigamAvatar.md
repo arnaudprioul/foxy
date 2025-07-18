@@ -1,0 +1,5 @@
+# Origamavatar
+
+## Usage
+
+    <OrigamAvatar />

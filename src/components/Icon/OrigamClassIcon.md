@@ -1,0 +1,5 @@
+# Origamclassicon
+
+## Usage
+
+    <OrigamClassIcon />

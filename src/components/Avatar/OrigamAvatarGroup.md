@@ -1,0 +1,5 @@
+# OrigamAvatarGroup
+
+## Usage
+
+    <OrigamAvatarGroup />

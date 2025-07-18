@@ -1,0 +1,5 @@
+# Origaminfinitescrollintersect
+
+## Usage
+
+    <OrigamInfiniteScrollIntersect />

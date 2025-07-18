@@ -1,0 +1,5 @@
+# Origamdialogconfirmation
+
+## Usage
+
+    <OrigamDialogConfirmation />

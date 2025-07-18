@@ -1,0 +1,5 @@
+# Origamdatepicker
+
+## Usage
+
+    <OrigamDatePicker />

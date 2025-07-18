@@ -1,0 +1,5 @@
+# Origamlabel
+
+## Usage
+
+    <OrigamLabel />

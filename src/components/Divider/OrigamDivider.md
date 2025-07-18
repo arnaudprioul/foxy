@@ -1,0 +1,5 @@
+# Origamdivider
+
+## Usage
+
+    <OrigamDivider />

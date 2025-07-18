@@ -1,0 +1,5 @@
+# Origamligatureicon
+
+## Usage
+
+    <OrigamLigatureIcon />

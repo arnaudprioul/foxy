@@ -1,0 +1,5 @@
+# Origamcarousel
+
+## Usage
+
+    <OrigamCarousel />

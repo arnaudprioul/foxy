@@ -1,0 +1,5 @@
+# Origaminfinitescroll
+
+## Usage
+
+    <OrigamInfiniteScroll />

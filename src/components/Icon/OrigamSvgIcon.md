@@ -1,0 +1,5 @@
+# Origamsvgicon
+
+## Usage
+
+    <OrigamSvgIcon />

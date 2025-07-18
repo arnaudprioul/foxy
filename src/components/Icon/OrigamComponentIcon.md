@@ -1,0 +1,5 @@
+# Origamcomponenticon
+
+## Usage
+
+    <OrigamComponentIcon />

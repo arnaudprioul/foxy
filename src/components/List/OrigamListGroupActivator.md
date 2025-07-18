@@ -1,0 +1,5 @@
+# Origamlistgroupactivator
+
+## Usage
+
+    <OrigamListGroupActivator />

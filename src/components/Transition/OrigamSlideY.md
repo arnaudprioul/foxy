@@ -1,0 +1,5 @@
+# OrigamSlideX
+
+## Usage
+
+    <OrigamSlideX />

@@ -1,0 +1,5 @@
+# Origamotpinputfield
+
+## Usage
+
+    <OrigamOtpInputField />
