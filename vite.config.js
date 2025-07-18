@@ -2,7 +2,6 @@ import vue from '@vitejs/plugin-vue';
 import { fileURLToPath } from 'node:url';
 import path from 'path';
 import { defineConfig } from 'vite';
-
 var resolve = function (file) { return path.resolve(__dirname, file); };
 // https://vitejs.dev/config/
 export default defineConfig({
