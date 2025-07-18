@@ -1,3 +1,3 @@
-import { FoxuiBtnToggle } from '@foxui/components'
+import { OrigamBtnToggle } from '@origam/components'
 
-export type TFoxuiBtnToggle = InstanceType<typeof FoxuiBtnToggle>
+export type TOrigamBtnToggle = InstanceType<typeof OrigamBtnToggle>

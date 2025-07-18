@@ -1,4 +1,4 @@
-import { STATUS, STATUS_POSITION } from "@foxui/enums"
+import { STATUS, STATUS_POSITION } from "@origam/enums"
 
 export type TStatus = `${STATUS}`
 

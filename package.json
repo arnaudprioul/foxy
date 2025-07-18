@@ -1,18 +1,18 @@
 {
-  "name": "foxui",
+  "name": "origam",
   "version": "0.1.0",
   "type": "module",
   "exports": {
     ".": {
       "scss": "./dist/assets/scss/main.scss",
       "style": "./dist/assets/css/main.css",
-      "default": "./dist/foxui.mjs"
+      "default": "./dist/origam.mjs"
     },
     "./styles": {
       "scss": "./dist/assets/scss/main.scss",
       "style": "./dist/assets/css/main.css"
     },
-    "./foxui": "./dist/foxui.js",
+    "./origam": "./dist/origam.js",
     "./components": "./dist/components/index.mjs",
     "./components/*": "./dist/components/*/index.mjs",
     "./composables": "./dist/composables/index.mjs",

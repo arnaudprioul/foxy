@@ -6,9 +6,9 @@ import type {
     IMarginProps,
     IPaddingProps,
     ITagProps
-} from "@foxui/interfaces"
+} from "@origam/interfaces"
 
-import type { TIcon } from "@foxui/types"
+import type { TIcon } from "@origam/types"
 
 export interface IPaginationProps extends ICommonsComponentProps, ITagProps, IColorProps, IBorderProps, IPaddingProps, IMarginProps, IElevationProps {
     start?: number

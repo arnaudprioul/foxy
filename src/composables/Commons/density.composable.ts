@@ -1,10 +1,10 @@
-import { PREDIFINED_DENSITY } from '@foxui/consts'
+import { PREDIFINED_DENSITY } from '@origam/consts'
 
-import type { IDensityProps } from '@foxui/interfaces'
+import type { IDensityProps } from '@origam/interfaces'
 
-import type { TDensity } from '@foxui/types'
+import type { TDensity } from '@origam/types'
 
-import { getCurrentInstanceName } from '@foxui/utils'
+import { getCurrentInstanceName } from '@origam/utils'
 import { computed, isRef, Ref } from 'vue'
 
 export function useDensity (props: IDensityProps | Ref<number | string | undefined>, name = getCurrentInstanceName()) {

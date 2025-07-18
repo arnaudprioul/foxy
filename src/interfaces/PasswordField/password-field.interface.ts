@@ -10,9 +10,9 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from "@foxui/interfaces"
+} from "@origam/interfaces"
 
-import type { TIcon } from "@foxui/types"
+import type { TIcon } from "@origam/types"
 
 export interface IPasswordFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IAdjacentInnerProps {
     onIcon?: TIcon

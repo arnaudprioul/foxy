@@ -1,5 +1,0 @@
-# Foxuiexpansionpanelheader
-
-## Usage
-
-    <FoxuiExpansionPanelHeader />

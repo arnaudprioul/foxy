@@ -1,5 +1,0 @@
-# Foxuieditorcssbox
-
-## Usage
-
-    <FoxuiEditorCssBox />

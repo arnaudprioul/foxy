@@ -1,5 +1,0 @@
-# Foxuiselectioncontrolgroup
-
-## Usage
-
-    <FoxuiSelectionControlGroup />

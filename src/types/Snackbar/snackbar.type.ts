@@ -1,3 +1,3 @@
-import { FoxuiSnackbar } from "@foxui/components"
+import { OrigamSnackbar } from "@origam/components"
 
-export type TFoxuiSnackbar = InstanceType<typeof FoxuiSnackbar>
+export type TOrigamSnackbar = InstanceType<typeof OrigamSnackbar>

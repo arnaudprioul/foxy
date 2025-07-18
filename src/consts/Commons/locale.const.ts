@@ -1,7 +1,7 @@
-import type { ILocaleInstance, IRtlInstance } from "@foxui/interfaces"
+import type { ILocaleInstance, IRtlInstance } from "@origam/interfaces"
 import type { InjectionKey } from "vue"
 
-export const FOXUI_LOCALE_KEY: InjectionKey<ILocaleInstance & IRtlInstance> = Symbol.for('foxui:locale')
+export const ORIGAM_LOCALE_KEY: InjectionKey<ILocaleInstance & IRtlInstance> = Symbol.for('origam:locale')
 
 export const LOCALE_RTL_DEFAULT = Object.freeze({
     af: false,

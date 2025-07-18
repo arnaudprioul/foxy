@@ -1,3 +1,3 @@
-import { FOXUI_RIPPLE_STOP_KEY } from '@foxui/consts'
+import { ORIGAM_RIPPLE_STOP_KEY } from '@origam/consts'
 
-export type TRippleEvent = (MouseEvent | TouchEvent | KeyboardEvent) & { [FOXUI_RIPPLE_STOP_KEY]?: boolean }
+export type TRippleEvent = (MouseEvent | TouchEvent | KeyboardEvent) & { [ORIGAM_RIPPLE_STOP_KEY]?: boolean }

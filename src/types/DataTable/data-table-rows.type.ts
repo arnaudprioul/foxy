@@ -1,3 +1,3 @@
-import { FoxuiDataTableRows } from "@foxui/components"
+import { OrigamDataTableRows } from "@origam/components"
 
-export type TFoxuiDataTableRows = InstanceType<typeof FoxuiDataTableRows>
+export type TOrigamDataTableRows = InstanceType<typeof OrigamDataTableRows>

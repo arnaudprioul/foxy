@@ -1,4 +1,4 @@
-import type { ILocationProps, IProgressTypeProps, IRoundedProps } from '@foxui/interfaces'
+import type { ILocationProps, IProgressTypeProps, IRoundedProps } from '@origam/interfaces'
 
 export interface IProgressLinearProps extends IProgressTypeProps, IRoundedProps, ILocationProps {
     bufferValue?: number | string

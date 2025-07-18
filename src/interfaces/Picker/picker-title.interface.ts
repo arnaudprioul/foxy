@@ -1,4 +1,4 @@
-import type { ICommonsComponentProps, ITagProps } from "@foxui/interfaces"
+import type { ICommonsComponentProps, ITagProps } from "@origam/interfaces"
 
 export interface IPickerTitleProps extends ICommonsComponentProps, ITagProps {
     title?: string

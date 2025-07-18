@@ -1,3 +1,3 @@
-import { FoxuiApp } from '@foxui/components'
+import { OrigamApp } from '@origam/components'
 
-export type TFoxuiApp = InstanceType<typeof FoxuiApp>
+export type TOrigamApp = InstanceType<typeof OrigamApp>

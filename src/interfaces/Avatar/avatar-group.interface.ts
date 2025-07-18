@@ -13,7 +13,7 @@ import type {
     IRoundedProps,
     ISizeProps,
     ITagProps
-} from "@foxui/interfaces"
+} from "@origam/interfaces"
 
 export interface IAvatarGroupProps extends ICommonsComponentProps, IDirectionProps, IDensityProps, IRoundedProps, ISizeProps, ITagProps, IColorProps, IPaddingProps, IMarginProps, IBorderProps, IElevationProps, IHoverProps, IActiveProps {
     items?: Array<IAvatarProps>

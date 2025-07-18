@@ -1,10 +1,10 @@
-import type { IRippleElement, IRippleHtmlElement, IRippleOptions } from '@foxui/interfaces'
+import type { IRippleElement, IRippleHtmlElement, IRippleOptions } from '@origam/interfaces'
 
-import type { TRippleEvent } from '@foxui/types'
+import type { TRippleEvent } from '@origam/types'
 
-import { calculate, rippleTransform } from '@foxui/utils'
+import { calculate, rippleTransform } from '@origam/utils'
 
-export const FOXUI_RIPPLE_STOP_KEY = Symbol('foxui:rippleStop')
+export const ORIGAM_RIPPLE_STOP_KEY = Symbol('origam:rippleStop')
 
 export const DELAY_RIPPLE = 80
 
@@ -29,7 +29,7 @@ export const KEYCODES = Object.freeze({
 })
 
 export const RIPPLE_OPTIONS = {
-    class: 'foxui-ripple__element',
+    class: 'origam-ripple__element',
     center: false,
     circle: false,
     duration: 1000,
@@ -54,7 +54,7 @@ export const RIPPLES = {
         const animation = document.createElement('span')
 
         container.appendChild(animation)
-        container.className = 'foxui-ripple__container'
+        container.className = 'origam-ripple__container'
 
         if (value.class) {
             container.className += ` ${value.class}`
@@ -63,7 +63,7 @@ export const RIPPLES = {
         const {radius, scale, x, y, centerX, centerY} = calculate(e, el, value)
 
         const size = `${radius * 2}px`
-        animation.className = 'foxui-ripple__animation'
+        animation.className = 'origam-ripple__animation'
         animation.style.width = size
         animation.style.height = size
 
@@ -75,14 +75,14 @@ export const RIPPLES = {
             el.dataset.previousPosition = 'static'
         }
 
-        animation.classList.add('foxui-ripple__animation--enter')
-        animation.classList.add('foxui-ripple__animation--visible')
+        animation.classList.add('origam-ripple__animation--enter')
+        animation.classList.add('origam-ripple__animation--visible')
         rippleTransform(animation, `translate(${x}, ${y}) scale3d(${scale},${scale},${scale})`)
         animation.dataset.activated = String(performance.now())
 
         setTimeout(() => {
-            animation.classList.remove('foxui-ripple__animation--enter')
-            animation.classList.add('foxui-ripple__animation--in')
+            animation.classList.remove('origam-ripple__animation--enter')
+            animation.classList.add('origam-ripple__animation--in')
             rippleTransform(animation, `translate(${centerX}, ${centerY}) scale3d(1,1,1)`)
         }, 0)
     },
@@ -90,7 +90,7 @@ export const RIPPLES = {
     hide (el: IRippleHtmlElement | null) {
         if (!el?._ripple?.enabled) return
 
-        const ripples = el.getElementsByClassName('foxui-ripple__animation')
+        const ripples = el.getElementsByClassName('origam-ripple__animation')
 
         if (ripples.length === 0) return
         const animation: IRippleElement = ripples[ripples.length - 1]
@@ -102,11 +102,11 @@ export const RIPPLES = {
         const delay = Math.max(250 - diff, 0)
 
         setTimeout(() => {
-            animation.classList.remove('foxui-ripple__animation--in')
-            animation.classList.add('foxui-ripple__animation--out')
+            animation.classList.remove('origam-ripple__animation--in')
+            animation.classList.add('origam-ripple__animation--out')
 
             setTimeout(() => {
-                const ripples = el.getElementsByClassName('foxui-ripple__animation')
+                const ripples = el.getElementsByClassName('origam-ripple__animation')
                 if (ripples.length === 1 && el.dataset.previousPosition) {
                     el.style.position = el.dataset.previousPosition
                     delete el.dataset.previousPosition

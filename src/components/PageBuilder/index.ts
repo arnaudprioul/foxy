@@ -1,3 +1,3 @@
-export { default as FoxuiPageBuilder } from './FoxuiPageBuilder.vue'
-export { default as FoxuiCssBox } from './FoxuiCssBox.vue'
-export { default as FoxuiEditWrapper } from './FoxuiEditWrapper.vue'
+export { default as OrigamPageBuilder } from './OrigamPageBuilder.vue'
+export { default as OrigamCssBox } from './OrigamCssBox.vue'
+export { default as OrigamEditWrapper } from './OrigamEditWrapper.vue'

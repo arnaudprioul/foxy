@@ -7,9 +7,9 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TIcon } from '@foxui/types'
+import type { TIcon } from '@origam/types'
 
 export interface IListGroupProps extends ITagProps, ICommonsComponentProps, IColorProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IAdjacentProps {
     collapseIcon?: TIcon

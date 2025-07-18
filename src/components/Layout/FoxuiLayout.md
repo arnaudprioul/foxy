@@ -1,5 +1,0 @@
-# Foxuilayout
-
-## Usage
-
-    <FoxuiLayout />

@@ -1,3 +1,3 @@
-import { FoxuiCounter } from "@foxui/components"
+import { OrigamCounter } from "@origam/components"
 
-export type TFoxuiCounter = InstanceType<typeof FoxuiCounter>
+export type TOrigamCounter = InstanceType<typeof OrigamCounter>

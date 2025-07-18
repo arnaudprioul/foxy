@@ -6,29 +6,29 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container>
-		      <foxui-row
+	      <origam-container>
+		      <origam-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col cols="12">
-				      <foxui-carousel v-bind="state">
-					      <foxui-carousel-item
+			      <origam-col cols="12">
+				      <origam-carousel v-bind="state">
+					      <origam-carousel-item
                     cover
                     src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
                 />
-					      <foxui-carousel-item
+					      <origam-carousel-item
                     cover
                     src="https://cdn.vuetifyjs.com/images/cards/hotel.jpg"
                 />
-					      <foxui-carousel-item
+					      <origam-carousel-item
                     cover
                     src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
                 />
-				      </foxui-carousel>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+				      </origam-carousel>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
 
       <template #controls>
@@ -84,11 +84,11 @@
     lang="ts"
     setup
 >
-	import { FoxuiCarousel, FoxuiCarouselItem, FoxuiCol, FoxuiContainer, FoxuiRow } from '@foxui/components'
+	import { OrigamCarousel, OrigamCarouselItem, OrigamCol, OrigamContainer, OrigamRow } from '@origam/components'
 
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
 
-	import type { ICarouselProps } from '@foxui/interfaces'
+	import type { ICarouselProps } from '@origam/interfaces'
 
 	import { HstIcon } from '@stories/components/controls'
 

@@ -1,7 +1,7 @@
-import { FoxuiCard } from '@foxui/components'
+import { OrigamCard } from '@origam/components'
 
-import { CARD_TYPE } from '@foxui/enums'
+import { CARD_TYPE } from '@origam/enums'
 
 export type TCardType = `${CARD_TYPE}`
 
-export type TFoxuiCard = InstanceType<typeof FoxuiCard>
+export type TOrigamCard = InstanceType<typeof OrigamCard>

@@ -1,5 +1,0 @@
-# Foxuibtn
-
-## Usage
-
-    <FoxuiBtn />

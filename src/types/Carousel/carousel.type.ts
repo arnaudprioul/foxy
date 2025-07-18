@@ -1,3 +1,3 @@
-import { FoxuiCarousel } from "@foxui/components"
+import { OrigamCarousel } from "@origam/components"
 
-export type TFoxuiCarousel = InstanceType<typeof FoxuiCarousel>
+export type TOrigamCarousel = InstanceType<typeof OrigamCarousel>

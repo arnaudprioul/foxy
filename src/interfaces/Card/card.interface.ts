@@ -14,9 +14,9 @@ import type {
     IRippleProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TCardType } from '@foxui/types'
+import type { TCardType } from '@origam/types'
 
 export interface ICardProps extends ICommonsComponentProps, ITagProps, IBorderProps, IDensityProps, IDimensionProps, IElevationProps, ILoaderProps, ILocationProps, IPositionProps, IRoundedProps, IMarginProps, IPaddingProps, ILinkProps, IRippleProps, IAdjacentProps {
     disabled?: boolean

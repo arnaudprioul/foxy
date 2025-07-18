@@ -1,3 +1,3 @@
-import { FoxuiCardText } from '@foxui/components'
+import { OrigamCardText } from '@origam/components'
 
-export type TFoxuiCardText = InstanceType<typeof FoxuiCardText>
+export type TOrigamCardText = InstanceType<typeof OrigamCardText>

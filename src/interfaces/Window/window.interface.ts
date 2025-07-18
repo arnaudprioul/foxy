@@ -8,9 +8,9 @@ import type {
     IRoundedProps,
     ITagProps,
     ITouchHandlers
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TIcon } from '@foxui/types'
+import type { TIcon } from '@origam/types'
 
 import type { ComputedRef, Ref } from 'vue'
 

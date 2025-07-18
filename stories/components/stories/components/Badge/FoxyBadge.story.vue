@@ -7,47 +7,47 @@
 	>
 		<Variant title="Default">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row
+				<origam-container>
+					<origam-row
 							:align-content="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col>
-							<foxui-badge
+						<origam-col>
+							<origam-badge
 									:content="20"
 									v-bind="state"
 							>
-								<foxui-icon
+								<origam-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxui-badge>
-						</foxui-col>
-						<foxui-col>
-							<foxui-badge
+							</origam-badge>
+						</origam-col>
+						<origam-col>
+							<origam-badge
 									:content="20"
 									:max="10"
 									v-bind="state"
 							>
-								<foxui-icon
+								<origam-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxui-badge>
-						</foxui-col>
-						<foxui-col>
-							<foxui-badge
+							</origam-badge>
+						</origam-col>
+						<origam-col>
+							<origam-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxui-icon
+								<origam-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxui-badge>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-badge>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 			<template #controls="{state}">
 				<hst-checkbox
@@ -69,21 +69,21 @@
 
 		<Variant title="Location">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-badge
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxui-icon
+								<origam-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxui-badge>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-badge>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -96,21 +96,21 @@
 
 		<Variant title="Status">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-badge
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxui-icon
+								<origam-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxui-badge>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-badge>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -123,21 +123,21 @@
 
 		<Variant title="Color">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-badge
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxui-icon
+								<origam-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxui-badge>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-badge>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -153,21 +153,21 @@
 
 		<Variant title="Border">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-badge
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxui-icon
+								<origam-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxui-badge>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-badge>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -177,21 +177,21 @@
 
 		<Variant title="Elevation">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-badge
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxui-icon
+								<origam-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxui-badge>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-badge>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -201,21 +201,21 @@
 
 		<Variant title="Rounded">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-badge
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-badge
 									content="A+"
 									v-bind="state"
 							>
-								<foxui-icon
+								<origam-icon
 										:icon="MDI_ICONS.ACCOUNT"
 										size="x-large"
 								/>
-							</foxui-badge>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-badge>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -229,10 +229,10 @@
 		lang="ts"
 		setup
 >
-	import { FoxuiBadge, FoxuiCol, FoxuiContainer, FoxuiIcon, FoxuiRow } from '@foxui/components'
+	import { OrigamBadge, OrigamCol, OrigamContainer, OrigamIcon, OrigamRow } from '@origam/components'
 
-	import { ALIGN, BLOCK, INLINE, JUSTIFY, MDI_ICONS } from '@foxui/enums'
-	import type { IBadgeProps } from "@foxui/interfaces"
+	import { ALIGN, BLOCK, INLINE, JUSTIFY, MDI_ICONS } from '@origam/enums'
+	import type { IBadgeProps } from "@origam/interfaces"
 
 	import { HstBorder, HstColor, HstElevation, HstLocation, HstRounded, HstStatus } from '@stories/components/controls'
 

@@ -9,7 +9,7 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 export interface ITableProps extends ICommonsComponentProps, IBorderProps, IRoundedProps, IElevationProps, IPaddingProps, IMarginProps, IHoverProps, IDimensionProps, IDensityProps, ITagProps {
     fixedHeader?: boolean

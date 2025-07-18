@@ -1,5 +1,5 @@
-import { useDisplay } from '@foxui/composables'
-import { IN_BROWSER } from '@foxui/consts'
+import { useDisplay } from '@origam/composables'
+import { IN_BROWSER } from '@origam/consts'
 
 import { onMounted, shallowRef } from 'vue'
 

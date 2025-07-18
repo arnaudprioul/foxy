@@ -1,12 +1,12 @@
-import { FOXUI_SLIDER_FIELD_KEY } from '@foxui/consts'
+import { ORIGAM_SLIDER_FIELD_KEY } from '@origam/consts'
 
-import { BLOCK, CLIENT_POSITION, DIMENSIONS, DIRECTION, INLINE } from '@foxui/enums'
+import { BLOCK, CLIENT_POSITION, DIMENSIONS, DIRECTION, INLINE } from '@origam/enums'
 
-import type { ISliderField, ISliderFieldProps, ISliderFieldProvide } from '@foxui/interfaces'
+import type { ISliderField, ISliderFieldProps, ISliderFieldProvide } from '@origam/interfaces'
 
-import type { TTick } from '@foxui/types'
+import type { TTick } from '@origam/types'
 
-import { clamp, createRange, getDecimals, getPosition, getSliderFieldOffset, int } from '@foxui/utils'
+import { clamp, createRange, getDecimals, getPosition, getSliderFieldOffset, int } from '@origam/utils'
 
 import { computed, provide, ref, shallowRef, toRef } from 'vue'
 
@@ -42,10 +42,10 @@ export function useSteps (props: ISliderFieldProps) {
 }
 
 export function useSlider ({
-                               foxuiSliderFieldTrackRef,
-                               foxuiSliderFieldThumbRef,
-                               foxuiSliderFieldStartThumbRef,
-                               foxuiSliderFieldStopThumbRef,
+                               origamSliderFieldTrackRef,
+                               origamSliderFieldThumbRef,
+                               origamSliderFieldStartThumbRef,
+                               origamSliderFieldStopThumbRef,
                                props,
                                steps,
                                onSliderStart,
@@ -140,12 +140,12 @@ export function useSlider ({
         const length = isVertical.value ? DIMENSIONS.HEIGHT : DIMENSIONS.WIDTH
         const position = isVertical.value ? CLIENT_POSITION.Y : CLIENT_POSITION.X
 
-        if (!foxuiSliderFieldTrackRef.value) return 0
+        if (!origamSliderFieldTrackRef.value) return 0
 
         const {
             [start]: trackStart,
             [length]: trackLength
-        } = foxuiSliderFieldTrackRef.value.$el.getBoundingClientRect()
+        } = origamSliderFieldTrackRef.value.$el.getBoundingClientRect()
         const clickOffset = getPosition(e, position)
 
         // It is possible for left to be NaN, force to number
@@ -260,14 +260,14 @@ export function useSlider ({
         step,
         ticks,
         tickSize,
-        foxuiSliderFieldTrackRef,
-        foxuiSliderFieldThumbRef,
-        foxuiSliderFieldStartThumbRef,
-        foxuiSliderFieldStopThumbRef,
+        origamSliderFieldTrackRef,
+        origamSliderFieldThumbRef,
+        origamSliderFieldStartThumbRef,
+        origamSliderFieldStopThumbRef,
         isVertical
     }
 
-    provide(FOXUI_SLIDER_FIELD_KEY, data)
+    provide(ORIGAM_SLIDER_FIELD_KEY, data)
 
     return data
 }

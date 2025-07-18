@@ -1,1 +1,1 @@
-export { default as FoxuiPagination } from './FoxuiPagination.vue'
+export { default as OrigamPagination } from './OrigamPagination.vue'

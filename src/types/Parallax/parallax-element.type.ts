@@ -1,6 +1,6 @@
-import { FoxuiParallaxElement } from "@foxui/components"
-import { PARALLAX_ELEMENT_TYPE } from '@foxui/enums'
+import { OrigamParallaxElement } from "@origam/components"
+import { PARALLAX_ELEMENT_TYPE } from '@origam/enums'
 
 export type TParallaxElementType = `${PARALLAX_ELEMENT_TYPE}`
 
-export type TFoxuiParallaxElement = InstanceType<typeof FoxuiParallaxElement>
+export type TOrigamParallaxElement = InstanceType<typeof OrigamParallaxElement>

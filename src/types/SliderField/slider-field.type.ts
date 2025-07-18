@@ -1,4 +1,4 @@
-import { FoxuiSliderField } from '@foxui/components'
+import { OrigamSliderField } from '@origam/components'
 
 export type TAlways = boolean | 'always'
 
@@ -12,4 +12,4 @@ export type TTick = {
     label?: string
 }
 
-export type TFoxuiSliderField = InstanceType<typeof FoxuiSliderField>
+export type TOrigamSliderField = InstanceType<typeof OrigamSliderField>

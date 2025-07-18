@@ -1,3 +1,3 @@
-import { FoxuiLoader } from "@foxui/components"
+import { OrigamLoader } from "@origam/components"
 
-export type TFoxuiLoader = InstanceType<typeof FoxuiLoader>
+export type TOrigamLoader = InstanceType<typeof OrigamLoader>

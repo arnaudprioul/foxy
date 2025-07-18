@@ -1,7 +1,7 @@
-import { useVModel } from '@foxui/composables'
-import type { IFocusProps } from '@foxui/interfaces'
+import { useVModel } from '@origam/composables'
+import type { IFocusProps } from '@origam/interfaces'
 
-import { getCurrentInstanceName } from '@foxui/utils'
+import { getCurrentInstanceName } from '@origam/utils'
 
 import { computed } from 'vue'
 

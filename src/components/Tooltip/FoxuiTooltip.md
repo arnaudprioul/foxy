@@ -1,5 +1,0 @@
-# Foxuitooltip
-
-## Usage
-
-    <FoxuiTooltip />

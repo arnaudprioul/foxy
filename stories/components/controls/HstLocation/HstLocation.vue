@@ -10,9 +10,9 @@
     lang="ts"
     setup
 >
-	import { useVModel } from "@foxui/composables"
-	import { BLOCK } from "@foxui/enums"
-	import type { ILocationProps } from "@foxui/interfaces"
+	import { useVModel } from "@origam/composables"
+	import { BLOCK } from "@origam/enums"
+	import type { ILocationProps } from "@origam/interfaces"
 	import useTitle from '@stories/composables/title.composable'
 
 	import { locationList, multipleLocationList } from '@stories/const/location.const'

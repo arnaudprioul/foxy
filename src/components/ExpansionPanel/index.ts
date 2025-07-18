@@ -1,4 +1,4 @@
-export { default as FoxuiExpansionPanels } from './FoxuiExpansionPanels.vue'
-export { default as FoxuiExpansionPanel } from './FoxuiExpansionPanel.vue'
-export { default as FoxuiExpansionPanelContent } from './FoxuiExpansionPanelContent.vue'
-export { default as FoxuiExpansionPanelHeader } from './FoxuiExpansionPanelHeader.vue'
+export { default as OrigamExpansionPanels } from './OrigamExpansionPanels.vue'
+export { default as OrigamExpansionPanel } from './OrigamExpansionPanel.vue'
+export { default as OrigamExpansionPanelContent } from './OrigamExpansionPanelContent.vue'
+export { default as OrigamExpansionPanelHeader } from './OrigamExpansionPanelHeader.vue'

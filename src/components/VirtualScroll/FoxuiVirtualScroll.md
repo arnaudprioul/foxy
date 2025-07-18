@@ -1,5 +1,0 @@
-# Foxuivirtualscroll
-
-## Usage
-
-    <FoxuiVirtualScroll />

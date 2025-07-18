@@ -1,3 +1,3 @@
-import { FoxuiTranslateBottom } from "@foxui/components"
+import { OrigamTranslateBottom } from "@origam/components"
 
-export type TFoxuiTranslateBottom = InstanceType<typeof FoxuiTranslateBottom>
+export type TOrigamTranslateBottom = InstanceType<typeof OrigamTranslateBottom>

@@ -1,1 +1,1 @@
-export { default as FoxuiMessages } from './FoxuiMessages.vue'
+export { default as OrigamMessages } from './OrigamMessages.vue'

@@ -1,5 +1,5 @@
-import { FoxuiTransition } from "@foxui/components"
-import { TRANSITION_MODE } from '@foxui/enums'
+import { OrigamTransition } from "@origam/components"
+import { TRANSITION_MODE } from '@origam/enums'
 
 import { Component, TransitionProps } from 'vue'
 
@@ -9,4 +9,4 @@ export type TTransitionProps = TransitionProps & {
     component?: Component
 }
 
-export type TFoxuiTransition = InstanceType<typeof FoxuiTransition>
+export type TOrigamTransition = InstanceType<typeof OrigamTransition>

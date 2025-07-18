@@ -1,6 +1,6 @@
-import type { ILoaderProps } from '@foxui/interfaces'
+import type { ILoaderProps } from '@origam/interfaces'
 
-import { getCurrentInstanceName } from '@foxui/utils'
+import { getCurrentInstanceName } from '@origam/utils'
 
 import { computed } from 'vue'
 

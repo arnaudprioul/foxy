@@ -5,7 +5,7 @@ import type {
     IDensityProps,
     IFocusProps,
     ILoaderProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 export interface IFieldProps extends ICommonsComponentProps, ILoaderProps, IColorProps, IAdjacentInnerProps, IFocusProps, IDensityProps {
     active?: boolean

@@ -1,5 +1,0 @@
-# Foxuiradiobtn
-
-## Usage
-
-    <FoxuiRadioBtn />

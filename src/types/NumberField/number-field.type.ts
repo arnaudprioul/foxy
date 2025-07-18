@@ -1,3 +1,3 @@
-import { FoxuiNumberField } from '@foxui/components'
+import { OrigamNumberField } from '@origam/components'
 
-export type TFoxuiNumberField = InstanceType<typeof FoxuiNumberField>
+export type TOrigamNumberField = InstanceType<typeof OrigamNumberField>

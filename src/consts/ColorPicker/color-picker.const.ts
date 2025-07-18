@@ -1,8 +1,8 @@
-import type { IColorPickerMode } from "@foxui/interfaces"
+import type { IColorPickerMode } from "@origam/interfaces"
 
-import type { THSLA, TRGBA } from "@foxui/types"
+import type { THSLA, TRGBA } from "@origam/types"
 
-import { HexToHSV, HSLtoHSV, HSVtoHex, HSVtoHSL, HSVtoRGB, RGBtoHSV } from "@foxui/utils"
+import { HexToHSV, HSLtoHSV, HSVtoHex, HSVtoHSL, HSVtoRGB, RGBtoHSV } from "@origam/utils"
 
 export const COLOR_NULL = {h: 0, s: 0, v: 0, a: 1}
 

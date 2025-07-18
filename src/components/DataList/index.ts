@@ -1,3 +1,3 @@
-export { default as FoxuiDataList } from './FoxuiDataList.vue'
-export { default as FoxuiDataTitle } from './FoxuiDataTitle.vue'
-export { default as FoxuiDataText } from './FoxuiDataText.vue'
+export { default as OrigamDataList } from './OrigamDataList.vue'
+export { default as OrigamDataTitle } from './OrigamDataTitle.vue'
+export { default as OrigamDataText } from './OrigamDataText.vue'

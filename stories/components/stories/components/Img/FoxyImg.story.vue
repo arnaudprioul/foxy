@@ -5,20 +5,20 @@
 	>
 		<Variant title="default">
 			<template #default="{ state }">
-				<foxui-img v-bind="state.props"/>
+				<origam-img v-bind="state.props"/>
 			</template>
 		</Variant>
 
 		<Variant title="cover">
 			<template #default>
-				<foxui-img
+				<origam-img
 						:cover="true"
 						:width="300"
 						alt="image example"
 						aspect-ratio="1"
 						src="https://picsum.photos/350/165?random"
 				/>
-				<foxui-img
+				<origam-img
 						:cover="false"
 						:width="300"
 						alt="image example"
@@ -30,24 +30,24 @@
 
 		<Variant title="height">
 			<template #default>
-				<foxui-img
+				<origam-img
 						alt="image example"
 						cover
 						height="125"
 						src="https://picsum.photos/350/165?random"
 				/>
-				<foxui-img
+				<origam-img
 						alt="image example"
 						height="125"
 						src="https://picsum.photos/350/165?random"
 				/>
-				<foxui-img
+				<origam-img
 						alt="image example"
 						cover
 						max-height="125"
 						src="https://picsum.photos/350/165?random"
 				/>
-				<foxui-img
+				<origam-img
 						alt="image example"
 						max-height="125"
 						src="https://picsum.photos/350/165?random"
@@ -57,21 +57,21 @@
 
 		<Variant title="Slots / Placeholder">
 			<template #default>
-				<foxui-img
+				<origam-img
 						height="300"
 						lazy-src="https://picsum.photos/id/11/100/60"
 						max-width="500"
 						src="https://bad.src/not/valid"
 				>
 					<template #placeholder>
-						<foxui-progress
+						<origam-progress
 								bg-color="#fff"
 								color="#7d6fa1"
 								indeterminate
 								type="circular"
 						/>
 					</template>
-				</foxui-img>
+				</origam-img>
 			</template>
 		</Variant>
 	</Story>
@@ -81,8 +81,8 @@
 		lang="ts"
 		setup
 >
-	import { FoxuiImg, FoxuiProgress } from '@foxui/components'
-	import type { IImgProps } from "@foxui/interfaces"
+	import { OrigamImg, OrigamProgress } from '@origam/components'
+	import type { IImgProps } from "@origam/interfaces"
 
 	import { reactive } from 'vue'
 

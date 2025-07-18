@@ -1,6 +1,6 @@
-import type { ICommonsComponentProps, IDimensionProps, IFieldProps, IFocusProps, ILabelProps } from "@foxui/interfaces"
+import type { ICommonsComponentProps, IDimensionProps, IFieldProps, IFocusProps, ILabelProps } from "@origam/interfaces"
 
-import type { TOtpInputFieldType } from "@foxui/types"
+import type { TOtpInputFieldType } from "@origam/types"
 
 export interface IOtpInputFieldProps extends ICommonsComponentProps, IDimensionProps, IFocusProps, IFieldProps, ILabelProps {
     autofocus?: boolean

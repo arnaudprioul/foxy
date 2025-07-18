@@ -1,4 +1,4 @@
-import type { ISample } from "@foxui/interfaces"
+import type { ISample } from "@origam/interfaces"
 
 export function calculateImpulseVelocity (samples: Array<ISample>) {
     // The input should be in reversed time order (most recent sample at index i=0)

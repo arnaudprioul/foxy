@@ -1,5 +1,0 @@
-# Foxuidialogconfirmation
-
-## Usage
-
-    <FoxuiDialogConfirmation />

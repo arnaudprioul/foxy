@@ -6,23 +6,23 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container>
-		      <foxui-row
+	      <origam-container>
+		      <origam-row
               :align-content="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col cols="auto">
-				      <foxui-menu v-bind="state">
+			      <origam-col cols="auto">
+				      <origam-menu v-bind="state">
                 <template #activator="{ props }">
-	                <foxui-btn
+	                <origam-btn
                       :icon="MDI_ICONS.MENU"
                       v-bind="props"
                   />
                 </template>
-				      </foxui-menu>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+				      </origam-menu>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
       <template #controls>
         <hst-location
@@ -43,16 +43,16 @@
     </Variant>
 	  <Variant title="Contextual">
 		  <template #default>
-			  <foxui-container>
-				  <foxui-row
+			  <origam-container>
+				  <origam-row
 						  :align-content="ALIGN.CENTER"
 						  :justify="JUSTIFY.CENTER"
 				  >
-					  <foxui-col cols="auto">
-						  <foxui-contextual-menu v-bind="state"/>
-					  </foxui-col>
-				  </foxui-row>
-			  </foxui-container>
+					  <origam-col cols="auto">
+						  <origam-contextual-menu v-bind="state"/>
+					  </origam-col>
+				  </origam-row>
+			  </origam-container>
 		  </template>
 		  <template #controls>
 			  <hst-location
@@ -68,11 +68,18 @@
     lang="ts"
     setup
 >
-	import { FoxuiBtn, FoxuiCol, FoxuiContainer, FoxuiContextualMenu, FoxuiMenu, FoxuiRow } from '@foxui/components'
+	import {
+		OrigamBtn,
+		OrigamCol,
+		OrigamContainer,
+		OrigamContextualMenu,
+		OrigamMenu,
+		OrigamRow
+	} from '@origam/components'
 
-	import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxui/enums'
+	import { ALIGN, JUSTIFY, MDI_ICONS } from '@origam/enums'
 
-	import type { IMenuProps } from '@foxui/interfaces'
+	import type { IMenuProps } from '@origam/interfaces'
 
 	import { HstLocation } from '@stories/components/controls'
 

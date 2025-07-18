@@ -1,5 +1,0 @@
-# Foxuitextfield
-
-## Usage
-
-    <FoxuiTextField />

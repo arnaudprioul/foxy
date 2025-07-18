@@ -1,3 +1,3 @@
-import { FoxuiSliderFieldTrack } from '@foxui/components'
+import { OrigamSliderFieldTrack } from '@origam/components'
 
-export type TFoxuiSliderFieldTrack = InstanceType<typeof FoxuiSliderFieldTrack>
+export type TOrigamSliderFieldTrack = InstanceType<typeof OrigamSliderFieldTrack>

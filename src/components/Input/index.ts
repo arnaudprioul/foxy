@@ -1,1 +1,1 @@
-export { default as FoxuiInput } from './FoxuiInput.vue'
+export { default as OrigamInput } from './OrigamInput.vue'

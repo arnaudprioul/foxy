@@ -1,1 +1,1 @@
-export { default as FoxuiLoader } from './FoxuiLoader.vue'
+export { default as OrigamLoader } from './OrigamLoader.vue'

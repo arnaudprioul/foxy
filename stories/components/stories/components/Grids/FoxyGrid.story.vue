@@ -5,305 +5,305 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container>
-		      <foxui-row>
-			      <foxui-col
+	      <origam-container>
+		      <origam-row>
+			      <origam-col
                 v-for="n in 3"
                 :key="n"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 One of three columns
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
     </Variant>
     <Variant title="Align">
       <template #default>
-	      <foxui-container>
-		      <foxui-row
+	      <origam-container>
+		      <origam-row
               align="start"
               style="height: 150px;"
           >
-			      <foxui-col
+			      <origam-col
                 v-for="n in 3"
                 :key="n"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Align start
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-		      <foxui-row
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+		      <origam-row
               align="center"
               style="height: 150px;"
           >
-			      <foxui-col
+			      <origam-col
                 v-for="n in 3"
                 :key="n"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Align center
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-		      <foxui-row
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+		      <origam-row
               align="end"
               style="height: 150px;"
           >
-			      <foxui-col
+			      <origam-col
                 v-for="n in 3"
                 :key="n"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Align end
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-		      <foxui-row
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+		      <origam-row
               align="baseline"
               style="height: 150px;"
           >
-			      <foxui-col
+			      <origam-col
                 v-for="n in 3"
                 :key="n"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Align baseline
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-		      <foxui-row style="height: 150px;">
-			      <foxui-col
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+		      <origam-row style="height: 150px;">
+			      <origam-col
                 v-for="n in 3"
                 :key="n"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Align stretch
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-		      <foxui-row style="height: 150px;">
-			      <foxui-col
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+		      <origam-row style="height: 150px;">
+			      <origam-col
                 align="start"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Align self start
-				      </foxui-sheet>
-			      </foxui-col>
-			      <foxui-col
+				      </origam-sheet>
+			      </origam-col>
+			      <origam-col
                 align="center"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Align self center
-				      </foxui-sheet>
-			      </foxui-col>
-			      <foxui-col
+				      </origam-sheet>
+			      </origam-col>
+			      <origam-col
                 align="end"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Align self end
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
     </Variant>
     <Variant title="Justify">
       <template #default>
-	      <foxui-container>
-		      <foxui-row style="height: 150px;">
-			      <foxui-col
+	      <origam-container>
+		      <origam-row style="height: 150px;">
+			      <origam-col
                 v-for="n in 2"
                 :key="n"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Justify start (default)
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-		      <foxui-row
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+		      <origam-row
               justify="center"
               style="height: 150px;"
           >
-			      <foxui-col
+			      <origam-col
                 v-for="n in 2"
                 :key="n"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Justify center
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-		      <foxui-row
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+		      <origam-row
               justify="end"
               style="height: 150px;"
           >
-			      <foxui-col
+			      <origam-col
                 v-for="n in 2"
                 :key="n"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Justify end
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-		      <foxui-row
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+		      <origam-row
               justify="space-around"
               style="height: 150px;"
           >
-			      <foxui-col
+			      <origam-col
                 v-for="n in 2"
                 :key="n"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Justify space around
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-		      <foxui-row
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+		      <origam-row
               justify="space-between"
               style="height: 150px;"
           >
-			      <foxui-col
+			      <origam-col
                 v-for="n in 2"
                 :key="n"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Justify space between
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-		      <foxui-row
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+		      <origam-row
               justify="space-evenly"
               style="height: 150px;"
           >
-			      <foxui-col
+			      <origam-col
                 v-for="n in 2"
                 :key="n"
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 Justify space between
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
     </Variant>
     <Variant title="Spacer">
       <template #default>
-	      <foxui-container>
-		      <foxui-row>
-			      <foxui-col
+	      <origam-container>
+		      <origam-row>
+			      <origam-col
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 One of two columns
-				      </foxui-sheet>
-			      </foxui-col>
+				      </origam-sheet>
+			      </origam-col>
 
-			      <foxui-spacer/>
+			      <origam-spacer/>
 
-			      <foxui-col
+			      <origam-col
                 cols="12"
                 sm="4"
             >
-				      <foxui-sheet
+				      <origam-sheet
                   bg-color="#7d6fa1"
                   color="#fff"
               >
                 One of two columns
-				      </foxui-sheet>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+				      </origam-sheet>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
     </Variant>
   </Story>
 </template>
 
 <script setup>
-	import { FoxuiCol, FoxuiContainer, FoxuiRow, FoxuiSheet, FoxuiSpacer } from '@foxui/components'
+	import { OrigamCol, OrigamContainer, OrigamRow, OrigamSheet, OrigamSpacer } from '@origam/components'
 </script>
 
 <docs lang="md">

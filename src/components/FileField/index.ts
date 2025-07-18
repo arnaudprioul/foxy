@@ -1,1 +1,1 @@
-export { default as FoxuiFileField } from './FoxuiFileField.vue'
+export { default as OrigamFileField } from './OrigamFileField.vue'

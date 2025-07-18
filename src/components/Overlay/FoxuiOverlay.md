@@ -1,5 +1,0 @@
-# Foxuioverlay
-
-## Usage
-
-    <FoxuiOverlay />

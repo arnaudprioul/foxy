@@ -4,9 +4,9 @@ import type {
     IDataTableItem,
     IDisplayProps,
     ILoaderProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TDataTableCell, TDataTableRow } from '@foxui/types'
+import type { TDataTableCell, TDataTableRow } from '@origam/types'
 
 export interface IDataTableRowsProps extends ICommonsComponentProps, ILoaderProps, IDisplayProps {
     hideNoData?: boolean

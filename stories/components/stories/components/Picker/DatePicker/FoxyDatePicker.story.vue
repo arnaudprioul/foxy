@@ -6,19 +6,19 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container fluid>
-		      <foxui-row>
-			      <foxui-col cols="12">
-				      <foxui-date-picker
+	      <origam-container fluid>
+		      <origam-row>
+			      <origam-col cols="12">
+				      <origam-date-picker
                   v-bind="state"
                   @update:model-value="logEvent('update model value', $event)"
                   @update:month="logEvent('update month', $event)"
                   @update:year="logEvent('update year', $event)"
                   @update:view-mode="logEvent('update view mode', $event)"
               />
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
 
       <template #controls>
@@ -40,7 +40,7 @@
     setup
 >
 
-	import { FoxuiCol, FoxuiContainer, FoxuiDatePicker, FoxuiRow } from '@foxui/components'
+	import { OrigamCol, OrigamContainer, OrigamDatePicker, OrigamRow } from '@origam/components'
 	import { logEvent } from "histoire/client"
 
 	import { reactive } from 'vue'

@@ -1,6 +1,6 @@
-import type { IPoint } from "@foxui/interfaces"
+import type { IPoint } from "@origam/interfaces"
 
-import { int } from "@foxui/utils"
+import { int } from "@origam/utils"
 
 /**
  * From https://github.com/unsplash/react-trend/blob/master/src/helpers/DOM.helpers.js#L18

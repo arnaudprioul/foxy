@@ -7,13 +7,13 @@
 	>
 		<Variant title="Default">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-avatar-group v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-avatar-group v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 			<template #controls="{state}">
 				<hst-checkbox
@@ -37,13 +37,13 @@
 
 		<Variant title="Status">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-avatar-group v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-avatar-group v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -56,13 +56,13 @@
 
 		<Variant title="Color">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-avatar-group v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-avatar-group v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -78,13 +78,13 @@
 
 		<Variant title="Border">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-avatar-group v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-avatar-group v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -94,13 +94,13 @@
 
 		<Variant title="Padding">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-avatar-group v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-avatar-group v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -110,13 +110,13 @@
 
 		<Variant title="Margin">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-avatar-group v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-avatar-group v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -126,13 +126,13 @@
 
 		<Variant title="Dimension">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-avatar-group v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-avatar-group v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -145,13 +145,13 @@
 
 		<Variant title="Density">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-avatar-group v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-avatar-group v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -161,13 +161,13 @@
 
 		<Variant title="Elevation">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-avatar-group v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-avatar-group v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -177,13 +177,13 @@
 
 		<Variant title="Rounded">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-avatar-group v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-avatar-group v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -193,13 +193,13 @@
 
 		<Variant title="Direction">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-avatar-group v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+				<origam-container>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-avatar-group v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -213,9 +213,9 @@
 		lang="ts"
 		setup
 >
-	import { FoxuiAvatarGroup, FoxuiCol, FoxuiContainer, FoxuiRow } from '@foxui/components'
-	import { JUSTIFY, MDI_ICONS } from "@foxui/enums"
-	import type { IAvatarGroupProps } from "@foxui/interfaces"
+	import { OrigamAvatarGroup, OrigamCol, OrigamContainer, OrigamRow } from '@origam/components'
+	import { JUSTIFY, MDI_ICONS } from "@origam/enums"
+	import type { IAvatarGroupProps } from "@origam/interfaces"
 	import {
 		HstBorder,
 		HstColor,

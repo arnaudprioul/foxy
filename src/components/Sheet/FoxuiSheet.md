@@ -1,5 +1,0 @@
-# Foxuisheet
-
-## Usage
-
-    <FoxuiSheet />

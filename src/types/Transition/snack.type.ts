@@ -1,3 +1,3 @@
-import { FoxuiSnack } from "@foxui/components"
+import { OrigamSnack } from "@origam/components"
 
-export type TFoxuiSnack = InstanceType<typeof FoxuiSnack>
+export type TOrigamSnack = InstanceType<typeof OrigamSnack>

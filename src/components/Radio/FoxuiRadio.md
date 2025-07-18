@@ -1,5 +1,0 @@
-# Foxuiradio
-
-## Usage
-
-    <FoxuiRadio />

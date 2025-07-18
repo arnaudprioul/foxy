@@ -6,7 +6,7 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 export interface IListSubheader extends ICommonsComponentProps, ITagProps, IColorProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps {
     inset?: boolean,

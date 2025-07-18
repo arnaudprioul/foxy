@@ -1,1 +1,1 @@
-export { default as FoxuiSnackbar } from './FoxuiSnackbar.vue'
+export { default as OrigamSnackbar } from './OrigamSnackbar.vue'

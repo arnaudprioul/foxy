@@ -1,3 +1,3 @@
-import { FoxuiBadge } from '@foxui/components'
+import { OrigamBadge } from '@origam/components'
 
-export type TFoxuiBadge = InstanceType<typeof FoxuiBadge>
+export type TOrigamBadge = InstanceType<typeof OrigamBadge>

@@ -10,8 +10,8 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxui/composables"
-	import type { IMarginProps } from "@foxui/interfaces"
+	import { useVModel } from "@origam/composables"
+	import type { IMarginProps } from "@origam/interfaces"
 
 	import { marginList } from "@stories/const/margin.const"
 

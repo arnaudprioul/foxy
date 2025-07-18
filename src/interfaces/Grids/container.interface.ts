@@ -7,7 +7,7 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 export interface IContainerProps extends ICommonsComponentProps, ITagProps, IDimensionProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IColorProps {
     fluid?: boolean

@@ -1,34 +1,34 @@
-import * as foxuiComponents from '@foxui/components'
+import * as origamComponents from '@origam/components'
 
-import { createDate, createDisplay, createGoTo, createIcons, createLocale } from '@foxui/composables'
+import { createDate, createDisplay, createGoTo, createIcons, createLocale } from '@origam/composables'
 
 import {
-    FOXUI_DATE_ADAPTER_KEY,
-    FOXUI_DATE_OPTIONS_KEY,
-    FOXUI_DISPLAY_KEY,
-    FOXUI_GO_TO_KEY,
-    FOXUI_ICONS_KEY,
-    FOXUI_LOCALE_KEY,
-    IN_BROWSER
-} from '@foxui/consts'
+    IN_BROWSER,
+    ORIGAM_DATE_ADAPTER_KEY,
+    ORIGAM_DATE_OPTIONS_KEY,
+    ORIGAM_DISPLAY_KEY,
+    ORIGAM_GO_TO_KEY,
+    ORIGAM_ICONS_KEY,
+    ORIGAM_LOCALE_KEY
+} from '@origam/consts'
 
-import * as foxuiDirectives from '@foxui/directives'
+import * as origamDirectives from '@origam/directives'
 
-import type { IFoxuiOptions } from '@foxui/interfaces'
-import type { TIconOptions } from '@foxui/types'
-import { getUid, mergeDeep } from '@foxui/utils'
+import type { IOrigamOptions } from '@origam/interfaces'
+import type { TIconOptions } from '@origam/types'
+import { getUid, mergeDeep } from '@origam/utils'
 
 import '@mdi/font/css/materialdesignicons.css'
 
 import { App, ComponentPublicInstance, defineComponent, effectScope, InjectionKey, nextTick, reactive } from 'vue'
 
-export function createFoxui (foxui: IFoxuiOptions = {}) {
-    const {blueprint, ...rest} = foxui
-    const options: IFoxuiOptions = mergeDeep(blueprint, rest)
+export function createOrigam (origam: IOrigamOptions = {}) {
+    const {blueprint, ...rest} = origam
+    const options: IOrigamOptions = mergeDeep(blueprint, rest)
     const {
         aliases = {},
-        components = foxuiComponents,
-        directives = foxuiDirectives
+        components = origamComponents,
+        directives = origamDirectives
     } = options
 
     const scope = effectScope()
@@ -60,12 +60,12 @@ export function createFoxui (foxui: IFoxuiOptions = {}) {
             const appScope = effectScope()
             app.onUnmount(() => appScope.stop())
 
-            app.provide(FOXUI_ICONS_KEY, icons as Required<TIconOptions>)
-            app.provide(FOXUI_DISPLAY_KEY, display)
-            app.provide(FOXUI_LOCALE_KEY, locale)
-            app.provide(FOXUI_DATE_OPTIONS_KEY, date.options)
-            app.provide(FOXUI_DATE_ADAPTER_KEY, date.instance)
-            app.provide(FOXUI_GO_TO_KEY, goTo)
+            app.provide(ORIGAM_ICONS_KEY, icons as Required<TIconOptions>)
+            app.provide(ORIGAM_DISPLAY_KEY, display)
+            app.provide(ORIGAM_LOCALE_KEY, locale)
+            app.provide(ORIGAM_DATE_OPTIONS_KEY, date.options)
+            app.provide(ORIGAM_DATE_ADAPTER_KEY, date.instance)
+            app.provide(ORIGAM_GO_TO_KEY, goTo)
 
             if (IN_BROWSER && options.ssr) {
                 if (app.$nuxt) {
@@ -88,12 +88,12 @@ export function createFoxui (foxui: IFoxuiOptions = {}) {
             if (typeof __VUE_OPTIONS_API__ !== 'boolean' || __VUE_OPTIONS_API__) {
                 app.mixin({
                     computed: {
-                        $foxui () {
+                        $origam () {
                             return reactive({
-                                display: inject.call(this as unknown as ComponentPublicInstance, FOXUI_DISPLAY_KEY),
-                                icons: inject.call(this as unknown as ComponentPublicInstance, FOXUI_ICONS_KEY),
-                                locale: inject.call(this as unknown as ComponentPublicInstance, FOXUI_LOCALE_KEY),
-                                date: inject.call(this as unknown as ComponentPublicInstance, FOXUI_DATE_ADAPTER_KEY)
+                                display: inject.call(this as unknown as ComponentPublicInstance, ORIGAM_DISPLAY_KEY),
+                                icons: inject.call(this as unknown as ComponentPublicInstance, ORIGAM_ICONS_KEY),
+                                locale: inject.call(this as unknown as ComponentPublicInstance, ORIGAM_LOCALE_KEY),
+                                date: inject.call(this as unknown as ComponentPublicInstance, ORIGAM_DATE_ADAPTER_KEY)
                             })
                         }
                     }

@@ -1,6 +1,6 @@
-import type { IHoverProps } from "@foxui/interfaces"
+import type { IHoverProps } from "@origam/interfaces"
 
-import { getCurrentInstanceName } from "@foxui/utils"
+import { getCurrentInstanceName } from "@origam/utils"
 
 import { computed, ref, watch } from "vue"
 

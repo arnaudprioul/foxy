@@ -1,5 +1,0 @@
-# Foxuicheckboxbtn
-
-## Usage
-
-    <FoxuiCheckboxBtn />

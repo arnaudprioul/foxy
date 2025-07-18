@@ -6,19 +6,19 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container fullscreen>
-		      <foxui-row
+	      <origam-container fullscreen>
+		      <origam-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col cols="auto">
-				      <foxui-rating-field
+			      <origam-col cols="auto">
+				      <origam-rating-field
                   v-bind="state"
                   @update:model-value="logEvent('update modelValue', $event)"
               />
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
       <template #controls>
         <hst-checkbox
@@ -54,9 +54,9 @@
     lang="ts"
     setup
 >
-	import { FoxuiCol, FoxuiContainer, FoxuiRatingField, FoxuiRow } from '@foxui/components'
+	import { OrigamCol, OrigamContainer, OrigamRatingField, OrigamRow } from '@origam/components'
 
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
 
 	import { logEvent } from 'histoire/client'
 

@@ -10,9 +10,9 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from "@foxui/interfaces"
+} from "@origam/interfaces"
 
-import type { TFile, TFileSize } from "@foxui/types"
+import type { TFile, TFileSize } from "@origam/types"
 
 export interface IFileFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps {
     chips?: boolean

@@ -1,8 +1,8 @@
-import type { IInternalItem } from '@foxui/interfaces'
+import type { IInternalItem } from '@origam/interfaces'
 
-import type { TFilterFunction, TFilterKeyFunctions, TFilterKeys, TFilterMatch, TFilterMode } from '@foxui/types'
+import type { TFilterFunction, TFilterKeyFunctions, TFilterKeys, TFilterMatch, TFilterMode } from '@origam/types'
 
-import { getPropertyFromItem, wrapInArray } from '@foxui/utils'
+import { getPropertyFromItem, wrapInArray } from '@origam/utils'
 
 export function defaultFilter (value: string | number, query: string | number) {
     if (value == null || query == null) return -1

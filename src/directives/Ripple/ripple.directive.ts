@@ -1,6 +1,6 @@
-import type { IRippleDirectiveBinding, IRippleHtmlElement } from '@foxui/interfaces'
+import type { IRippleDirectiveBinding, IRippleHtmlElement } from '@origam/interfaces'
 
-import { isRippleEnabled, rippleRemoveListeners, updateRipple } from '@foxui/utils'
+import { isRippleEnabled, rippleRemoveListeners, updateRipple } from '@origam/utils'
 
 export const Ripple = {
     mounted: (el: IRippleHtmlElement, binding: IRippleDirectiveBinding) => {

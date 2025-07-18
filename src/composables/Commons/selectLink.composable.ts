@@ -1,4 +1,4 @@
-import type { IUseLink } from '@foxui/interfaces'
+import type { IUseLink } from '@origam/interfaces'
 
 import { nextTick, watch } from 'vue'
 

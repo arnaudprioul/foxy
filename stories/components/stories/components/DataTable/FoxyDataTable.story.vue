@@ -6,19 +6,19 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container fullscreen>
-		      <foxui-row
+	      <origam-container fullscreen>
+		      <origam-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col cols="auto">
-				      <foxui-data-table
+			      <origam-col cols="auto">
+				      <origam-data-table
                   v-bind="state"
                   @update:options="loadItems"
               />
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
       <template #controls>
 
@@ -32,9 +32,9 @@
     lang="ts"
     setup
 >
-	import { FoxuiCol, FoxuiContainer, FoxuiDataTable, FoxuiRow } from '@foxui/components'
+	import { OrigamCol, OrigamContainer, OrigamDataTable, OrigamRow } from '@origam/components'
 
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
 
 	import { reactive } from 'vue'
 

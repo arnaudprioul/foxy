@@ -1,12 +1,12 @@
-import { useLocale } from "@foxui/composables"
+import { useLocale } from "@origam/composables"
 
-import { FOXUI_DATE_OPTIONS_KEY } from "@foxui/consts"
+import { ORIGAM_DATE_OPTIONS_KEY } from "@origam/consts"
 
-import type { IDateOptions, ILocaleInstance } from "@foxui/interfaces"
+import type { IDateOptions, ILocaleInstance } from "@origam/interfaces"
 
-import { DateAdapter } from "@foxui/services"
+import { DateAdapter } from "@origam/services"
 
-import { createInstance, mergeDeep } from "@foxui/utils"
+import { createInstance, mergeDeep } from "@origam/utils"
 import { inject } from "vue"
 
 export function createDate (options: IDateOptions | undefined, locale: ILocaleInstance) {
@@ -64,9 +64,9 @@ export function createDate (options: IDateOptions | undefined, locale: ILocaleIn
 }
 
 export function useDate () {
-    const options = inject(FOXUI_DATE_OPTIONS_KEY)
+    const options = inject(ORIGAM_DATE_OPTIONS_KEY)
 
-    if (!options) throw new Error('[Foxui] Could not find injected date options')
+    if (!options) throw new Error('[Origam] Could not find injected date options')
 
     const locale = useLocale()
 

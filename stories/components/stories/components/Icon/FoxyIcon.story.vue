@@ -5,7 +5,7 @@
   >
     <Variant title="MDI Icons">
       <template #default>
-	      <foxui-icon v-bind="state"/>
+	      <origam-icon v-bind="state"/>
       </template>
     </Variant>
   </Story>
@@ -15,9 +15,9 @@
     lang="ts"
     setup
 >
-	import { FoxuiIcon } from '@foxui/components'
+	import { OrigamIcon } from '@origam/components'
 
-	import { MDI_ICONS } from '@foxui/enums'
+	import { MDI_ICONS } from '@origam/enums'
 
 	import { reactive } from 'vue'
 

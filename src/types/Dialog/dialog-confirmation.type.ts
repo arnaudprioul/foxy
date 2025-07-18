@@ -1,3 +1,3 @@
-import { FoxuiDialogConfirmation } from '@foxui/components'
+import { OrigamDialogConfirmation } from '@origam/components'
 
-export type TFoxuiDialogConfirmation = InstanceType<typeof FoxuiDialogConfirmation>
+export type TOrigamDialogConfirmation = InstanceType<typeof OrigamDialogConfirmation>

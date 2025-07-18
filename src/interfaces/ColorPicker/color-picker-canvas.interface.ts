@@ -1,6 +1,6 @@
-import type { ICommonsComponentProps, IDimensionProps } from "@foxui/interfaces"
+import type { ICommonsComponentProps, IDimensionProps } from "@origam/interfaces"
 
-import type { THSVA } from "@foxui/types"
+import type { THSVA } from "@origam/types"
 
 export interface IColorPickerCanvasProps extends ICommonsComponentProps, IDimensionProps {
     colorHsv?: THSVA | null

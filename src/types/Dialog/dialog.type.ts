@@ -1,3 +1,3 @@
-import { FoxuiDialog } from '@foxui/components'
+import { OrigamDialog } from '@origam/components'
 
-export type TFoxuiDialog = InstanceType<typeof FoxuiDialog>
+export type TOrigamDialog = InstanceType<typeof OrigamDialog>

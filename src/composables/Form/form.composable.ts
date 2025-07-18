@@ -1,9 +1,9 @@
-import { useVModel } from '@foxui/composables'
-import { FOXUI_FORM_KEY } from '@foxui/consts'
+import { useVModel } from '@origam/composables'
+import { ORIGAM_FORM_KEY } from '@origam/consts'
 
-import type { IFormField, IFormProps, IValidationFieldResult } from '@foxui/interfaces'
+import type { IFormField, IFormProps, IValidationFieldResult } from '@origam/interfaces'
 
-import { consoleWarn } from '@foxui/utils'
+import { consoleWarn } from '@origam/utils'
 
 import { computed, markRaw, provide, ref, shallowRef, toRef, watch } from 'vue'
 
@@ -78,7 +78,7 @@ export function useForm (props: IFormProps) {
                     : null
     }, {deep: true, flush: 'post'})
 
-    provide(FOXUI_FORM_KEY, {
+    provide(ORIGAM_FORM_KEY, {
         register: ({id, vm, validate, reset, resetValidation}) => {
             if (items.value.some((item) => item.id === id)) {
                 consoleWarn(`Duplicate input name "${id}"`)

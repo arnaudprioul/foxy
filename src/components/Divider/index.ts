@@ -1,1 +1,1 @@
-export { default as FoxuiDivider } from './FoxuiDivider.vue'
+export { default as OrigamDivider } from './OrigamDivider.vue'

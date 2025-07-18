@@ -1,5 +1,5 @@
-import { FoxuiListItem } from "@foxui/components"
-import { LIST_ITEM_TYPE } from '@foxui/enums'
+import { OrigamListItem } from "@origam/components"
+import { LIST_ITEM_TYPE } from '@origam/enums'
 
 export type TListItemType = `${LIST_ITEM_TYPE}`
 
@@ -10,4 +10,4 @@ export type TListItemSlot = {
     select: (value: boolean) => void
 }
 
-export type TFoxuiListItem = InstanceType<typeof FoxuiListItem>
+export type TOrigamListItem = InstanceType<typeof OrigamListItem>

@@ -1,4 +1,4 @@
-import type { IListItemProps, IListProps, IOverlayProps } from '@foxui/interfaces'
+import type { IListItemProps, IListProps, IOverlayProps } from '@origam/interfaces'
 
 export interface IMenuProvide {
     register (): void

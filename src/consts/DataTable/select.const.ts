@@ -1,9 +1,9 @@
-import { provideSelection } from '@foxui/composables'
-import type { IDataTableSelectStrategy } from '@foxui/interfaces'
+import { provideSelection } from '@origam/composables'
+import type { IDataTableSelectStrategy } from '@origam/interfaces'
 
 import type { InjectionKey } from 'vue'
 
-export const FOXUI_DATA_TABLE_SELECT_KEY: InjectionKey<ReturnType<typeof provideSelection>> = Symbol.for('foxui:data-table-selection')
+export const ORIGAM_DATA_TABLE_SELECT_KEY: InjectionKey<ReturnType<typeof provideSelection>> = Symbol.for('origam:data-table-selection')
 
 export const singleSelectStrategy: IDataTableSelectStrategy = {
     showSelectAll: false,

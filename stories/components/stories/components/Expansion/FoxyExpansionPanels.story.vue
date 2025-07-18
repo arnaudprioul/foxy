@@ -6,16 +6,16 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container fullscreen>
-		      <foxui-row
+	      <origam-container fullscreen>
+		      <origam-row
               :align-content="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col cols="9">
-				      <foxui-expansion-panels v-bind="state"/>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      <origam-col cols="9">
+				      <origam-expansion-panels v-bind="state"/>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
       <template #controls>
         <hst-checkbox
@@ -53,9 +53,9 @@
     lang="ts"
     setup
 >
-	import { FoxuiCol, FoxuiContainer, FoxuiExpansionPanels, FoxuiRow } from '@foxui/components'
+	import { OrigamCol, OrigamContainer, OrigamExpansionPanels, OrigamRow } from '@origam/components'
 
-	import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxui/enums'
+	import { ALIGN, JUSTIFY, MDI_ICONS } from '@origam/enums'
 
 	import { HstIcon } from '@stories/components/controls'
 

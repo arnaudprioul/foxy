@@ -19,9 +19,9 @@ import type {
     IRoundedProps,
     ITextFieldProps,
     ITransitionComponentProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TIcon } from '@foxui/types'
+import type { TIcon } from '@origam/types'
 
 export interface ISelectProps extends ICommonsComponentProps, IColorProps, ITextFieldProps, IDensityProps, IAdjacentProps, IAdjacentInnerProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IItemProps, ITransitionComponentProps, IFiltersProps, ILazyProps {
     chips?: boolean

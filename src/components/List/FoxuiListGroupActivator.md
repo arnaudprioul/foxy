@@ -1,5 +1,0 @@
-# Foxuilistgroupactivator
-
-## Usage
-
-    <FoxuiListGroupActivator />

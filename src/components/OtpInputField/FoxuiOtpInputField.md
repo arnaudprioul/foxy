@@ -1,5 +1,0 @@
-# Foxuiotpinputfield
-
-## Usage
-
-    <FoxuiOtpInputField />

@@ -1,5 +1,5 @@
-import type { IGoToInstance } from "@foxui/interfaces"
+import type { IGoToInstance } from "@origam/interfaces"
 
 import type { InjectionKey } from "vue"
 
-export const FOXUI_GO_TO_KEY: InjectionKey<IGoToInstance> = Symbol.for('foxui:goto')
+export const ORIGAM_GO_TO_KEY: InjectionKey<IGoToInstance> = Symbol.for('origam:goto')

@@ -1,6 +1,6 @@
-import type { IDataTableItem, IDataTableItemsProps, IInternalDataTableHeader } from '@foxui/interfaces'
+import type { IDataTableItem, IDataTableItemsProps, IInternalDataTableHeader } from '@origam/interfaces'
 
-import { getPropertyFromItem } from '@foxui/utils'
+import { getPropertyFromItem } from '@origam/utils'
 
 export function transformDataTableItems (
     props: Omit<IDataTableItemsProps, 'items'>,

@@ -1,4 +1,4 @@
-import { IConfigurableDocument } from "@foxui/interfaces"
+import { IConfigurableDocument } from "@origam/interfaces"
 
 export interface IStyleTagOptions extends IConfigurableDocument {
     /**

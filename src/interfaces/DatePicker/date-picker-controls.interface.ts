@@ -1,6 +1,6 @@
-import type { ICommonsComponentProps } from "@foxui/interfaces"
+import type { ICommonsComponentProps } from "@origam/interfaces"
 
-import type { TDateMode, TIcon } from "@foxui/types"
+import type { TDateMode, TIcon } from "@origam/types"
 
 export interface IDatePickerControlsProps extends ICommonsComponentProps {
     active?: string | Array<string>

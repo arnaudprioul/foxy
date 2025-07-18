@@ -1,3 +1,3 @@
-import { CALENDAR_STRATEGY } from "@foxui/enums"
+import { CALENDAR_STRATEGY } from "@origam/enums"
 
 export type TCalendarStrategy = `${CALENDAR_STRATEGY}`

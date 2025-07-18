@@ -1,4 +1,4 @@
-import type { TColor } from "@foxui/types"
+import type { TColor } from "@origam/types"
 
 export interface IColorProps {
     color?: TColor

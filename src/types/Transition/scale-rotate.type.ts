@@ -1,3 +1,3 @@
-import { FoxuiScaleRotate } from "@foxui/components"
+import { OrigamScaleRotate } from "@origam/components"
 
-export type TFoxuiScaleRotate = InstanceType<typeof FoxuiScaleRotate>
+export type TOrigamScaleRotate = InstanceType<typeof OrigamScaleRotate>

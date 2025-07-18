@@ -1,7 +1,7 @@
-import { FoxuiDatePicker } from "@foxui/components"
+import { OrigamDatePicker } from "@origam/components"
 
-import { DATE_MODE } from "@foxui/enums"
+import { DATE_MODE } from "@origam/enums"
 
 export type TDateMode = `${DATE_MODE}`
 
-export type TFoxuiDatePicker = InstanceType<typeof FoxuiDatePicker>
+export type TOrigamDatePicker = InstanceType<typeof OrigamDatePicker>

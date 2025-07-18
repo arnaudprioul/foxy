@@ -1,5 +1,0 @@
-# Foxuiexpand
-
-## Usage
-
-    <FoxuiExpand />

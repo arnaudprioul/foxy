@@ -1,3 +1,3 @@
-import { DENSITY } from '@foxui/enums'
+import { DENSITY } from '@origam/enums'
 
 export type TDensity = `${DENSITY}`

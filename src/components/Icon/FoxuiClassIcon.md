@@ -1,5 +1,0 @@
-# Foxuiclassicon
-
-## Usage
-
-    <FoxuiClassIcon />

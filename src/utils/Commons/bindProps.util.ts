@@ -1,6 +1,6 @@
-import { HANDLERS } from '@foxui/consts'
+import { HANDLERS } from '@origam/consts'
 
-import { eventName, isOn } from '@foxui/utils'
+import { eventName, isOn } from '@origam/utils'
 
 export function bindProps (el: HTMLElement, props: Record<string, any>) {
     Object.keys(props).forEach(k => {

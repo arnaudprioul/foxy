@@ -1,9 +1,9 @@
-import { IN_BROWSER, SCROLL_STRATEGIES } from '@foxui/consts'
+import { IN_BROWSER, SCROLL_STRATEGIES } from '@origam/consts'
 
-import type { IScrollArguments, IScrollProps, IScrollStrategyData, IScrollStrategyProps } from '@foxui/interfaces'
-import type { TFoxuiList, TFoxuiTextField } from '@foxui/types'
+import type { IScrollArguments, IScrollProps, IScrollStrategyData, IScrollStrategyProps } from '@origam/interfaces'
+import type { TOrigamList, TOrigamTextField } from '@origam/types'
 
-import { clamp, consoleWarn } from '@foxui/utils'
+import { clamp, consoleWarn } from '@origam/utils'
 
 import {
     computed,
@@ -127,7 +127,7 @@ export function useScrollStrategies (
     })
 }
 
-export function useScrolling (listRef: Ref<TFoxuiList | undefined>, textFieldRef: Ref<TFoxuiTextField | undefined>) {
+export function useScrolling (listRef: Ref<TOrigamList | undefined>, textFieldRef: Ref<TOrigamTextField | undefined>) {
     const isScrolling = shallowRef(false)
     let scrollTimeout: number
 
@@ -171,7 +171,7 @@ export function useScrolling (listRef: Ref<TFoxuiList | undefined>, textFieldRef
 
         await finishScrolling()
 
-        const children = el.querySelectorAll(':scope > :not(.foxui-virtual-scroll__spacer)')
+        const children = el.querySelectorAll(':scope > :not(.origam-virtual-scroll__spacer)')
 
         if (e.key === 'PageDown' || e.key === 'Home') {
             const top = el.getBoundingClientRect().top

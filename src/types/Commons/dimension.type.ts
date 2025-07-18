@@ -1,3 +1,3 @@
-import { DIMENSIONS } from '@foxui/enums'
+import { DIMENSIONS } from '@origam/enums'
 
 export type TDimensions = `${DIMENSIONS}`

@@ -1,3 +1,3 @@
-import { FoxuiExpansionPanelContent } from "@foxui/components"
+import { OrigamExpansionPanelContent } from "@origam/components"
 
-export type TFoxuiExpansionPanelContent = InstanceType<typeof FoxuiExpansionPanelContent>
+export type TOrigamExpansionPanelContent = InstanceType<typeof OrigamExpansionPanelContent>

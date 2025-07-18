@@ -5,7 +5,7 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 export interface ILabelProps extends ICommonsComponentProps, IMarginProps, IPaddingProps, IBorderProps, IRoundedProps, IColorProps {
     text?: string

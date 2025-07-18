@@ -1,3 +1,3 @@
-import { FoxuiSwitch } from "@foxui/components"
+import { OrigamSwitch } from "@origam/components"
 
-export type TFoxuiSwitch = InstanceType<typeof FoxuiSwitch>
+export type TOrigamSwitch = InstanceType<typeof OrigamSwitch>

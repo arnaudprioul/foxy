@@ -1,5 +1,5 @@
-import type { IBox } from '@foxui/interfaces'
-import { Box } from '@foxui/services'
+import type { IBox } from '@origam/interfaces'
+import { Box } from '@origam/services'
 
 export function getOverflow (a: IBox, b: IBox) {
     return {

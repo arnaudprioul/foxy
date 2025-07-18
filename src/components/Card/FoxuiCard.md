@@ -1,5 +1,0 @@
-# Foxuicard
-
-## Usage
-
-    <FoxuiCard />

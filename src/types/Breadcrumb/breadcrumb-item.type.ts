@@ -1,3 +1,3 @@
-import { FoxuiBreadcrumbItem } from '@foxui/components'
+import { OrigamBreadcrumbItem } from '@origam/components'
 
-export type TFoxuiBreadcrumbItem = InstanceType<typeof FoxuiBreadcrumbItem>
+export type TOrigamBreadcrumbItem = InstanceType<typeof OrigamBreadcrumbItem>

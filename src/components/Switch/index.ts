@@ -1,1 +1,1 @@
-export { default as FoxuiSwitch } from './FoxuiSwitch.vue'
+export { default as OrigamSwitch } from './OrigamSwitch.vue'

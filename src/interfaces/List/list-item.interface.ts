@@ -12,9 +12,9 @@ import type {
     IRippleProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TLines } from '@foxui/types'
+import type { TLines } from '@origam/types'
 
 export interface IListItemProps extends IBorderProps, ICommonsComponentProps, IDensityProps, IDimensionProps, IElevationProps, IRoundedProps, ITagProps, ILinkProps, IColorProps, IRippleProps, IPaddingProps, IMarginProps, IAdjacentProps {
     active?: boolean

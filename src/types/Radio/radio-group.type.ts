@@ -1,3 +1,3 @@
-import { FoxuiRadioGroup } from "@foxui/components"
+import { OrigamRadioGroup } from "@origam/components"
 
-export type TFoxuiRadioGroup = InstanceType<typeof FoxuiRadioGroup>
+export type TOrigamRadioGroup = InstanceType<typeof OrigamRadioGroup>

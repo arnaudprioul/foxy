@@ -1,1 +1,1 @@
-export const FOXUI_CHIP_GROUP_KEY = Symbol.for('foxui:chip-group')
+export const ORIGAM_CHIP_GROUP_KEY = Symbol.for('origam:chip-group')

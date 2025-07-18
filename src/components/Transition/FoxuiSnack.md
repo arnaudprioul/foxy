@@ -1,5 +1,0 @@
-# FoxuiFade
-
-## Usage
-
-    <FoxuiSnack />

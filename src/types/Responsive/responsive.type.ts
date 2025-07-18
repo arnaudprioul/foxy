@@ -1,3 +1,3 @@
-import { FoxuiResponsive } from "@foxui/components"
+import { OrigamResponsive } from "@origam/components"
 
-export type TFoxuiResponsive = InstanceType<typeof FoxuiResponsive>
+export type TOrigamResponsive = InstanceType<typeof OrigamResponsive>

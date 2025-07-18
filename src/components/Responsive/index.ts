@@ -1,1 +1,1 @@
-export { default as FoxuiResponsive } from './FoxuiResponsive.vue'
+export { default as OrigamResponsive } from './OrigamResponsive.vue'

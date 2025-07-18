@@ -1,4 +1,4 @@
-import { ALIGN } from '@foxui/enums'
+import { ALIGN } from '@origam/enums'
 
 export const alignList = [
     { value: ALIGN.START, label: 'Start' },

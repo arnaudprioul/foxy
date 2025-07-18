@@ -1,5 +1,0 @@
-# Foxuiresponsive
-
-## Usage
-
-    <FoxuiResponsive />

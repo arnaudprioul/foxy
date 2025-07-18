@@ -9,7 +9,7 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 export interface IBtnGroupProps extends ITagProps, ICommonsComponentProps, IRoundedProps, IBorderProps, IDensityProps, IElevationProps, IColorProps, IMarginProps, IPaddingProps {
     divided?: boolean

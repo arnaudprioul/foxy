@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "paths": {
-      "@foxui": [
+      "@origam": [
         "../src/"
       ],
-      "@foxui/*": [
+      "@origam/*": [
         "../src/*"
       ],
       "@stories": [

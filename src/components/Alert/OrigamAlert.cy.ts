@@ -1,17 +1,17 @@
 import { h } from 'vue'
 
-import FoxuiAlert from './FoxuiAlert.vue'
+import OrigamAlert from './OrigamAlert.vue'
 
-describe('<FoxuiAlert />', () => {
+describe('<OrigamAlert />', () => {
     it('props: text - title', () => {
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Test'
         }))
     })
 
     it('props: text - title - prominent', () => {
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Test'
         }))
@@ -21,7 +21,7 @@ describe('<FoxuiAlert />', () => {
         const onCloseSpy = cy.spy().as('onCloseSpy')
         const onModelValueChangeSpy = cy.spy().as('onModelValueChangeSpy')
 
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Test',
             closable: true,
@@ -35,7 +35,7 @@ describe('<FoxuiAlert />', () => {
     })
 
     it('props: text - title - border', () => {
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Test',
             border: '1px solid #000'
@@ -43,7 +43,7 @@ describe('<FoxuiAlert />', () => {
     })
 
     it('props: text - title - padding', () => {
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Test',
             padding: '8px'
@@ -51,7 +51,7 @@ describe('<FoxuiAlert />', () => {
     })
 
     it('props: text - title - margin', () => {
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Test',
             margin: '16px'
@@ -59,7 +59,7 @@ describe('<FoxuiAlert />', () => {
     })
 
     it('props: text - title - elevation', () => {
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Test',
             elevation: 2
@@ -67,7 +67,7 @@ describe('<FoxuiAlert />', () => {
     })
 
     it('props: text - title - rounded - bgColor', () => {
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Test',
             rounded: true,
@@ -77,7 +77,7 @@ describe('<FoxuiAlert />', () => {
     })
 
     it('props: text - title - status(warning)', () => {
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Warning',
             status: 'warning'
@@ -86,7 +86,7 @@ describe('<FoxuiAlert />', () => {
 
     it('props: text - title - status(success)', () => {
         // see: https://on.cypress.io/mounting-vue
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Success',
             status: 'success'
@@ -95,7 +95,7 @@ describe('<FoxuiAlert />', () => {
 
     it('props: text - title - status(info)', () => {
         // see: https://on.cypress.io/mounting-vue
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Info',
             status: 'info'
@@ -104,7 +104,7 @@ describe('<FoxuiAlert />', () => {
 
     it('props: text - title - status(error)', () => {
         // see: https://on.cypress.io/mounting-vue
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Error',
             status: 'error'
@@ -114,7 +114,7 @@ describe('<FoxuiAlert />', () => {
     it('event: onClose', () => {
         const onCloseSpy = cy.spy().as('onCloseSpy')
 
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Test',
             closable: true,
@@ -128,7 +128,7 @@ describe('<FoxuiAlert />', () => {
     it('event: onUpdate:modelValue', () => {
         const onModelValueChangeSpy = cy.spy().as('onModelValueChangeSpy')
 
-        cy.mount(h(FoxuiAlert, {
+        cy.mount(h(OrigamAlert, {
             text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!',
             title: 'Test',
             closable: true,

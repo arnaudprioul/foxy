@@ -1,8 +1,8 @@
-import type { IFiltersProps, IInternalItem } from '@foxui/interfaces'
+import type { IFiltersProps, IInternalItem } from '@origam/interfaces'
 
-import type { TFilterKeyFunctions, TFilterMatch } from '@foxui/types'
+import type { TFilterKeyFunctions, TFilterMatch } from '@origam/types'
 
-import { filterItems } from '@foxui/utils'
+import { filterItems } from '@origam/utils'
 
 import { computed, MaybeRef, ref, Ref, unref, watchEffect } from 'vue'
 

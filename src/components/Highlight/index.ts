@@ -1,1 +1,1 @@
-export { default as FoxuiHighlight } from './FoxuiHighlight.vue'
+export { default as OrigamHighlight } from './OrigamHighlight.vue'

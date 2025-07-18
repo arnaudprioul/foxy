@@ -1,3 +1,3 @@
-import { FoxuiBreadcrumbDivider } from '@foxui/components'
+import { OrigamBreadcrumbDivider } from '@origam/components'
 
-export type TFoxuiBreadcrumbDivider = InstanceType<typeof FoxuiBreadcrumbDivider>
+export type TOrigamBreadcrumbDivider = InstanceType<typeof OrigamBreadcrumbDivider>

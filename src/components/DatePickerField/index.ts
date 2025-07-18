@@ -1,1 +1,1 @@
-export { default as FoxuiDatePickerField } from './FoxuiDatePickerField.vue'
+export { default as OrigamDatePickerField } from './OrigamDatePickerField.vue'

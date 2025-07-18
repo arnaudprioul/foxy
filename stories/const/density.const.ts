@@ -1,4 +1,4 @@
-import { DENSITY } from '@foxui/enums'
+import { DENSITY } from '@origam/enums'
 
 export const densityList = [
     {

@@ -1,10 +1,10 @@
-import { DEFAULT_DISPLAY_OPTIONS, IN_BROWSER, SUPPORTS_TOUCH } from '@foxui/consts'
+import { DEFAULT_DISPLAY_OPTIONS, IN_BROWSER, SUPPORTS_TOUCH } from '@origam/consts'
 
-import type { IDisplayOptions, IDisplayPlatform, IInternalDisplayOptions } from '@foxui/interfaces'
+import type { IDisplayOptions, IDisplayPlatform, IInternalDisplayOptions } from '@origam/interfaces'
 
-import type { TSSROptions } from '@foxui/types'
+import type { TSSROptions } from '@origam/types'
 
-import { mergeDeep } from '@foxui/utils'
+import { mergeDeep } from '@origam/utils'
 
 export function parseDisplayOptions (options: IDisplayOptions = DEFAULT_DISPLAY_OPTIONS): IInternalDisplayOptions {
     return mergeDeep(

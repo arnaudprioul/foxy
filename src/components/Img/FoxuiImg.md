@@ -1,5 +1,0 @@
-# Foxuiimg
-
-## Usage
-
-    <FoxuiImg />

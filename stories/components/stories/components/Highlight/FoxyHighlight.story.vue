@@ -6,16 +6,16 @@
 	>
 		<Variant title="Default">
 			<template #default>
-				<foxui-container fullscreen>
-					<foxui-row
+				<origam-container fullscreen>
+					<origam-row
 							:align-content="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-highlight v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+						<origam-col cols="auto">
+							<origam-highlight v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 			<template #controls>
 				<hst-text
@@ -35,9 +35,9 @@
 		lang="ts"
 		setup
 >
-	import { FoxuiCol, FoxuiContainer, FoxuiHighlight, FoxuiRow } from '@foxui/components'
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
-	import type { IHighlightProps } from '@foxui/interfaces'
+	import { OrigamCol, OrigamContainer, OrigamHighlight, OrigamRow } from '@origam/components'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
+	import type { IHighlightProps } from '@origam/interfaces'
 
 	import { HstRounded } from '@stories/components/controls'
 	import { reactive } from 'vue'

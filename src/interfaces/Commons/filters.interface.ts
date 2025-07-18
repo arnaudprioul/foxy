@@ -1,4 +1,4 @@
-import type { TFilterFunction, TFilterKeyFunctions, TFilterKeys, TFilterMode } from '@foxui/types'
+import type { TFilterFunction, TFilterKeyFunctions, TFilterKeys, TFilterMode } from '@origam/types'
 
 export interface IFiltersProps {
     customFilter?: TFilterFunction

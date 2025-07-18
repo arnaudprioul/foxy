@@ -5,16 +5,16 @@
 	>
 		<Variant title="Default">
 			<template #default>
-				<foxui-system-bar
+				<origam-system-bar
 						order="0"
 						v-bind="state"
 				>
-					<foxui-icon :icon="MDI_ICONS.WIFI_STRENGTH_4"/>
-					<foxui-icon :icon="MDI_ICONS.SIGNAL"/>
-					<foxui-icon :icon="MDI_ICONS.BATTERY"/>
+					<origam-icon :icon="MDI_ICONS.WIFI_STRENGTH_4"/>
+					<origam-icon :icon="MDI_ICONS.SIGNAL"/>
+					<origam-icon :icon="MDI_ICONS.BATTERY"/>
 
 					<span>3:13PM</span>
-				</foxui-system-bar>
+				</origam-system-bar>
 			</template>
 		</Variant>
 	</Story>
@@ -24,8 +24,8 @@
 		lang="ts"
 		setup
 >
-	import { FoxuiIcon, FoxuiSystemBar } from '@foxui/components'
-	import { MDI_ICONS } from "@foxui/enums"
+	import { OrigamIcon, OrigamSystemBar } from '@origam/components'
+	import { MDI_ICONS } from "@origam/enums"
 	import { reactive } from "vue"
 
 	const state: Partial<ISystemBarProps> = reactive({})

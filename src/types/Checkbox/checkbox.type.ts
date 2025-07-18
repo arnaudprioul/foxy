@@ -1,3 +1,3 @@
-import { FoxuiCheckbox } from "@foxui/components"
+import { OrigamCheckbox } from "@origam/components"
 
-export type TFoxuiCheckbox = InstanceType<typeof FoxuiCheckbox>
+export type TOrigamCheckbox = InstanceType<typeof OrigamCheckbox>

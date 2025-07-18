@@ -1,3 +1,3 @@
-import { FoxuiMenu } from '@foxui/components'
+import { OrigamMenu } from '@origam/components'
 
-export type TFoxuiMenu = InstanceType<typeof FoxuiMenu>
+export type TOrigamMenu = InstanceType<typeof OrigamMenu>

@@ -6,22 +6,22 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container>
-		      <foxui-row
+	      <origam-container>
+		      <origam-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col cols="auto">
-				      <foxui-tooltip v-bind="state">
+			      <origam-col cols="auto">
+				      <origam-tooltip v-bind="state">
                 <template #activator="{ props }">
-	                <foxui-btn v-bind="props">
+	                <origam-btn v-bind="props">
                     Hover me
-	                </foxui-btn>
+	                </origam-btn>
                 </template>
-				      </foxui-tooltip>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+				      </origam-tooltip>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
       <template #controls>
 
@@ -34,11 +34,11 @@
     lang="ts"
     setup
 >
-	import { FoxuiBtn, FoxuiCol, FoxuiContainer, FoxuiRow, FoxuiTooltip } from '@foxui/components'
+	import { OrigamBtn, OrigamCol, OrigamContainer, OrigamRow, OrigamTooltip } from '@origam/components'
 
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
 
-	import type { ITooltipProps } from '@foxui/interfaces'
+	import type { ITooltipProps } from '@origam/interfaces'
 
 	import { reactive } from 'vue'
 

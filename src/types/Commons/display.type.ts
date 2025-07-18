@@ -1,4 +1,4 @@
-import { BREAKPOINTS } from '@foxui/enums'
+import { BREAKPOINTS } from '@origam/enums'
 
 export type TBreakpoint = `${BREAKPOINTS}`
 

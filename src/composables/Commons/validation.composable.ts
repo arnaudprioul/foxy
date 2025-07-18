@@ -1,10 +1,10 @@
-import { useToggleScope, useVModel } from '@foxui/composables'
+import { useToggleScope, useVModel } from '@origam/composables'
 
-import { FOXUI_FORM_KEY } from '@foxui/consts'
+import { ORIGAM_FORM_KEY } from '@origam/consts'
 
-import type { IValidationProps } from '@foxui/interfaces'
+import type { IValidationProps } from '@origam/interfaces'
 
-import { getCurrentInstance, getCurrentInstanceName, getUid, wrapInArray } from '@foxui/utils'
+import { getCurrentInstance, getCurrentInstanceName, getUid, wrapInArray } from '@origam/utils'
 
 import {
     computed,
@@ -25,7 +25,7 @@ export function useValidation (props: IValidationProps, name = getCurrentInstanc
     const validationModel = computed(() => {
         return props.validationValue === undefined ? model.value : props.validationValue
     })
-    const form = inject(FOXUI_FORM_KEY, null)
+    const form = inject(ORIGAM_FORM_KEY, null)
     const internalErrorMessages = ref<Array<string>>([])
     const isPristine = shallowRef(true)
     const isDirty = computed(() => {

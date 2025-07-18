@@ -4,9 +4,9 @@ import type {
     ILazyProps,
     IResponsiveProps,
     ITransitionComponentProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TCrossOrigin, TReferrerPolicy } from '@foxui/types'
+import type { TCrossOrigin, TReferrerPolicy } from '@origam/types'
 
 export interface IImgProps extends IColorProps, IResponsiveProps, ITransitionComponentProps, ILazyProps {
     alt?: string

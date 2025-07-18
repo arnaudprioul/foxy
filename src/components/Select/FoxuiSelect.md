@@ -1,5 +1,0 @@
-# Foxuiselect
-
-## Usage
-
-    <FoxuiSelect />

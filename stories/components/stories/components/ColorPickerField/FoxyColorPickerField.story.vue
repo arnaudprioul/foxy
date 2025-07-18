@@ -6,19 +6,19 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container fullscreen>
-		      <foxui-row
+	      <origam-container fullscreen>
+		      <origam-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col>
-				      <foxui-color-picker-field
+			      <origam-col>
+				      <origam-color-picker-field
                   v-bind="state"
                   @update:model-value="logEvent('update modelValue', {$event})"
               />
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
 
       <template #controls>
@@ -32,9 +32,9 @@
     lang="ts"
     setup
 >
-	import { FoxuiCol, FoxuiColorPickerField, FoxuiContainer, FoxuiRow } from '@foxui/components'
+	import { OrigamCol, OrigamColorPickerField, OrigamContainer, OrigamRow } from '@origam/components'
 
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
 	import { logEvent } from "histoire/client"
 
 	import { reactive } from 'vue'

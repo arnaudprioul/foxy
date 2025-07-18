@@ -1,5 +1,0 @@
-# Foxuidatepickerfield
-
-## Usage
-
-    <FoxuiDatePickerField />

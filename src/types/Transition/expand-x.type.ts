@@ -1,3 +1,3 @@
-import { FoxuiExpandX } from "@foxui/components"
+import { OrigamExpandX } from "@origam/components"
 
-export type TFoxuiExpandX = InstanceType<typeof FoxuiExpandX>
+export type TOrigamExpandX = InstanceType<typeof OrigamExpandX>

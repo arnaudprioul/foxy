@@ -1,5 +1,0 @@
-# Foxuilazy
-
-## Usage
-
-    <FoxuiLazy />

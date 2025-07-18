@@ -1,4 +1,4 @@
-import type { IAudioProps } from '@foxui/interfaces'
+import type { IAudioProps } from '@origam/interfaces'
 
 import { ref, shallowRef, watch } from 'vue'
 

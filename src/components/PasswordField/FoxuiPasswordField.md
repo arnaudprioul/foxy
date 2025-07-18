@@ -1,5 +1,0 @@
-# Foxuipasswordfield
-
-## Usage
-
-    <FoxuiPasswordField />

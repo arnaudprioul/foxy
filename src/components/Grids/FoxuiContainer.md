@@ -1,5 +1,0 @@
-# Foxuicontainer
-
-## Usage
-
-    <FoxuiContainer />

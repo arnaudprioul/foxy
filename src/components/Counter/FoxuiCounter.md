@@ -1,5 +1,0 @@
-# Foxuicounter
-
-## Usage
-
-    <FoxuiCounter />

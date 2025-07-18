@@ -1,5 +1,0 @@
-# Foxuidatatableheaders
-
-## Usage
-
-    <FoxuiDataTableHeaders />

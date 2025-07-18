@@ -1,4 +1,4 @@
-import type { TCalendarStrategy } from "@foxui/types"
+import type { TCalendarStrategy } from "@origam/types"
 
 export interface ICalendarProps {
     allowedDates?: Array<unknown> | ((date: unknown) => boolean)

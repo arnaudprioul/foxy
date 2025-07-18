@@ -1,3 +1,3 @@
-import { FoxuiSpacer } from "@foxui/components"
+import { OrigamSpacer } from "@origam/components"
 
-export type TFoxuiSpacer = InstanceType<typeof FoxuiSpacer>
+export type TOrigamSpacer = InstanceType<typeof OrigamSpacer>

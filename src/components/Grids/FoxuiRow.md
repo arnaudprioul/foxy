@@ -1,5 +1,0 @@
-# Foxuirow
-
-## Usage
-
-    <FoxuiRow />

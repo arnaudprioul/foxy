@@ -9,9 +9,9 @@ import type {
     IRippleProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TIcon } from '@foxui/types'
+import type { TIcon } from '@origam/types'
 
 export interface IExpansionPanelHeaderProps extends IColorProps, ITagProps, ICommonsComponentProps, IDensityProps, IRoundedProps, IBorderProps, IPaddingProps, IMarginProps, IAdjacentProps, IRippleProps {
     expandIcon?: TIcon

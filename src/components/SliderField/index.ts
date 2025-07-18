@@ -1,3 +1,3 @@
-export { default as FoxuiSliderField } from './FoxuiSliderField.vue'
-export { default as FoxuiSliderFieldTrack } from './FoxuiSliderFieldTrack.vue'
-export { default as FoxuiSliderFieldThumb } from './FoxuiSliderFieldThumb.vue'
+export { default as OrigamSliderField } from './OrigamSliderField.vue'
+export { default as OrigamSliderFieldTrack } from './OrigamSliderFieldTrack.vue'
+export { default as OrigamSliderFieldThumb } from './OrigamSliderFieldThumb.vue'

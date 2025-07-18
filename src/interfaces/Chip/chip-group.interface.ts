@@ -8,7 +8,7 @@ import type {
     IRoundedProps,
     ISlideGroupProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 export interface IChipGroupProps extends ICommonsComponentProps, ITagProps, IGroupProps, IColorProps, IMarginProps, IPaddingProps, IBorderProps, IRoundedProps, ISlideGroupProps {
     column?: boolean

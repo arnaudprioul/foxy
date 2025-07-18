@@ -1,6 +1,6 @@
-import type { IHoverDirectiveBinding, IHoverHtmlElement } from '@foxui/interfaces'
+import type { IHoverDirectiveBinding, IHoverHtmlElement } from '@origam/interfaces'
 
-import { getCurrentInstanceName, hoverRemoveListeners, isHoverEnabled, updateHover } from '@foxui/utils'
+import { getCurrentInstanceName, hoverRemoveListeners, isHoverEnabled, updateHover } from '@origam/utils'
 
 export const Hover = {
     mounted: (el: IHoverHtmlElement, binding: IHoverDirectiveBinding, name = getCurrentInstanceName()) => {

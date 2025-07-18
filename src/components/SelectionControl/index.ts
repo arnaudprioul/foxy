@@ -1,2 +1,2 @@
-export { default as FoxuiSelectionControl } from './FoxuiSelectionControl.vue'
-export { default as FoxuiSelectionControlGroup } from './FoxuiSelectionControlGroup.vue'
+export { default as OrigamSelectionControl } from './OrigamSelectionControl.vue'
+export { default as OrigamSelectionControlGroup } from './OrigamSelectionControlGroup.vue'

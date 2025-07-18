@@ -6,13 +6,13 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-dialog-confirmation
+	      <origam-dialog-confirmation
             v-model="state.modelValue"
             v-bind="state"
             @update:model-value="logEvent('update:model-value', $event)"
             @is-read="logEvent('is-read', $event)"
         >
-	      </foxui-dialog-confirmation>
+	      </origam-dialog-confirmation>
       </template>
 
       <template #controls>
@@ -66,9 +66,9 @@
     lang="ts"
     setup
 >
-	import { FoxuiDialogConfirmation } from '@foxui/components'
+	import { OrigamDialogConfirmation } from '@origam/components'
 
-	import type { IDialogConfirmationProps } from '@foxui/interfaces'
+	import type { IDialogConfirmationProps } from '@origam/interfaces'
 
 	import { logEvent } from 'histoire/client'
 	import { reactive } from 'vue'

@@ -1,8 +1,8 @@
-import { getTargetBox, nullifyTransforms } from '@foxui/utils'
+import { getTargetBox, nullifyTransforms } from '@origam/utils'
 
 /** Animatable children (card, sheet, list) */
 export function getChildren (el: Element) {
-    const els = el.querySelector(':scope > .foxui-card, :scope > .foxui-sheet, :scope > .foxui-list')?.children
+    const els = el.querySelector(':scope > .origam-card, :scope > .origam-sheet, :scope > .origam-list')?.children
     return els && [...els]
 }
 
@@ -11,7 +11,7 @@ export function getDimensions (target: HTMLElement | [x: number, y: number], el:
     const elBox = nullifyTransforms(el)
     const [originX, originY] = getComputedStyle(el).transformOrigin.split(' ').map(v => parseFloat(v))
 
-    const [anchorSide, anchorOffset] = getComputedStyle(el).getPropertyValue('--foxui-overlay-anchor-origin').split(' ')
+    const [anchorSide, anchorOffset] = getComputedStyle(el).getPropertyValue('--origam-overlay-anchor-origin').split(' ')
 
     let offsetX = targetBox.left + targetBox.width / 2
     if (anchorSide === 'left' || anchorOffset === 'left') {

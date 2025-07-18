@@ -1,1 +1,1 @@
-export { default as FoxuiTextareaField } from './FoxuiTextareaField.vue'
+export { default as OrigamTextareaField } from './OrigamTextareaField.vue'

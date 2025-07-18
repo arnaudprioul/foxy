@@ -1,3 +1,3 @@
-import { FoxuiSheet } from "@foxui/components"
+import { OrigamSheet } from "@origam/components"
 
-export type TFoxuiSheet = InstanceType<typeof FoxuiSheet>
+export type TOrigamSheet = InstanceType<typeof OrigamSheet>

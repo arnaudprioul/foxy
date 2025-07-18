@@ -1,3 +1,3 @@
-import { FoxuiLazy } from "@foxui/components"
+import { OrigamLazy } from "@origam/components"
 
-export type TFoxuiLazy = InstanceType<typeof FoxuiLazy>
+export type TOrigamLazy = InstanceType<typeof OrigamLazy>

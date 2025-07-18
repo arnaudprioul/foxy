@@ -1,17 +1,17 @@
-import { FoxuiClassIcon, FoxuiSvgIcon } from '@foxui/components/Icon'
+import { OrigamClassIcon, OrigamSvgIcon } from '@origam/components/Icon'
 
-import type { IIconSet } from '@foxui/interfaces'
+import type { IIconSet } from '@origam/interfaces'
 
-import type { TIconOptions } from '@foxui/types'
+import type { TIconOptions } from '@origam/types'
 import type { InjectionKey } from 'vue'
 
-export const FOXUI_ICONS_KEY: InjectionKey<Required<TIconOptions>> = Symbol.for('foxui:icons')
+export const ORIGAM_ICONS_KEY: InjectionKey<Required<TIconOptions>> = Symbol.for('origam:icons')
 
 export const DEFAULT_SETS: Record<string, IIconSet> = {
     svg: {
-        component: FoxuiSvgIcon
+        component: OrigamSvgIcon
     },
     class: {
-        component: FoxuiClassIcon
+        component: OrigamClassIcon
     }
 }

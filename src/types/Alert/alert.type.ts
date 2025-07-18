@@ -1,3 +1,3 @@
-import { FoxuiAlert } from '@foxui/components'
+import { OrigamAlert } from '@origam/components'
 
-export type TFoxuiAlert = InstanceType<typeof FoxuiAlert>
+export type TOrigamAlert = InstanceType<typeof OrigamAlert>

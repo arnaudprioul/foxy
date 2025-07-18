@@ -1,5 +1,0 @@
-# Foxuibadge
-
-## Usage
-
-    <FoxuiBadge />

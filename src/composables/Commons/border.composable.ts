@@ -1,9 +1,9 @@
-import { BORDER_REGEX, DIRECTION_ARRAY } from '@foxui/consts'
+import { BORDER_REGEX, DIRECTION_ARRAY } from '@origam/consts'
 
-import type { IBorderProps } from '@foxui/interfaces'
-import { TDirectionBoth } from "@foxui/types"
+import type { IBorderProps } from '@origam/interfaces'
+import { TDirectionBoth } from "@origam/types"
 
-import { convertToUnit, formatBorderStylesVar, getCurrentInstanceName, isEmpty } from '@foxui/utils'
+import { convertToUnit, formatBorderStylesVar, getCurrentInstanceName, isEmpty } from '@origam/utils'
 import { computed, isRef, Ref } from 'vue'
 
 // TODO Create composable for border position

@@ -1,2 +1,2 @@
-export { default as FoxuiWindow } from './FoxuiWindow.vue'
-export { default as FoxuiWindowItem } from './FoxuiWindowItem.vue'
+export { default as OrigamWindow } from './OrigamWindow.vue'
+export { default as OrigamWindowItem } from './OrigamWindowItem.vue'

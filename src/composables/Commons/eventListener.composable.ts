@@ -1,4 +1,4 @@
-import { noop, resolveUnref, tryOnScopeDispose, unrefElement } from '@foxui/utils'
+import { noop, resolveUnref, tryOnScopeDispose, unrefElement } from '@origam/utils'
 
 import { watch } from 'vue'
 

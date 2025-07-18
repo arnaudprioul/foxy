@@ -6,34 +6,34 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container>
-		      <foxui-row
+	      <origam-container>
+		      <origam-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col cols="6">
-				      <foxui-window v-bind="state">
-					      <foxui-window-item
+			      <origam-col cols="6">
+				      <origam-window v-bind="state">
+					      <origam-window-item
                     v-for="n in 3"
                     :key="n"
                 >
-						      <foxui-sheet height="200px">
-							      <foxui-container fullscreen>
-								      <foxui-row
+						      <origam-sheet height="200px">
+							      <origam-container fullscreen>
+								      <origam-row
                           :align="ALIGN.CENTER"
                           :justify="JUSTIFY.CENTER"
                       >
-									      <foxui-col cols="12">
-										      <foxui-title tag="h3">Card {{ n }}</foxui-title>
-									      </foxui-col>
-								      </foxui-row>
-							      </foxui-container>
-						      </foxui-sheet>
-					      </foxui-window-item>
-				      </foxui-window>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+									      <origam-col cols="12">
+										      <origam-title tag="h3">Card {{ n }}</origam-title>
+									      </origam-col>
+								      </origam-row>
+							      </origam-container>
+						      </origam-sheet>
+					      </origam-window-item>
+				      </origam-window>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
       <template #controls>
 
@@ -47,18 +47,18 @@
     setup
 >
 	import {
-		FoxuiCol,
-		FoxuiContainer,
-		FoxuiRow,
-		FoxuiSheet,
-		FoxuiTitle,
-		FoxuiWindow,
-		FoxuiWindowItem
-	} from '@foxui/components'
+		OrigamCol,
+		OrigamContainer,
+		OrigamRow,
+		OrigamSheet,
+		OrigamTitle,
+		OrigamWindow,
+		OrigamWindowItem
+	} from '@origam/components'
 
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
 
-	import type { IWindowProps } from '@foxui/interfaces'
+	import type { IWindowProps } from '@origam/interfaces'
 
 	import { reactive } from 'vue'
 

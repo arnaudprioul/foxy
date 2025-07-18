@@ -1,5 +1,0 @@
-# Foxuibtngroup
-
-## Usage
-
-    <FoxuiBtnGroup />

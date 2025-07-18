@@ -1,4 +1,4 @@
-import { CHART_TYPE } from "@foxui/enums"
+import { CHART_TYPE } from "@origam/enums"
 
 export type TChartType = `${CHART_TYPE}`
 

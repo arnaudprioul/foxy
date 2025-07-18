@@ -31,10 +31,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@foxui": [
+      "@origam": [
         "src"
       ],
-      "@foxui/*": [
+      "@origam/*": [
         "src/*"
       ]
     },

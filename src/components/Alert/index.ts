@@ -1,1 +1,1 @@
-export { default as FoxuiAlert } from './FoxuiAlert.vue'
+export { default as OrigamAlert } from './OrigamAlert.vue'

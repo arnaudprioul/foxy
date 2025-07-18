@@ -5,7 +5,7 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 export interface IResponsiveProps extends IDimensionProps, ICommonsComponentProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps {
     aspectRatio?: string | number

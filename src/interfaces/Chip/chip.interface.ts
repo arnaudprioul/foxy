@@ -13,9 +13,9 @@ import type {
     IRoundedProps,
     ISizeProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TIcon } from '@foxui/types'
+import type { TIcon } from '@origam/types'
 
 export interface IChipProps extends ICommonsComponentProps, IAdjacentProps, ITagProps, IColorProps, IRippleProps, IBorderProps, IRoundedProps, IPaddingProps, IMarginProps, IDensityProps, IGroupItemProps, ILinkProps, ISizeProps, IElevationProps {
     activeClass?: string

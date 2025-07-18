@@ -1,2 +1,2 @@
-export { default as FoxuiOverlay } from './FoxuiOverlay.vue'
-export { default as FoxuiOverlayScrim } from './FoxuiOverlayScrim.vue'
+export { default as OrigamOverlay } from './OrigamOverlay.vue'
+export { default as OrigamOverlayScrim } from './OrigamOverlayScrim.vue'

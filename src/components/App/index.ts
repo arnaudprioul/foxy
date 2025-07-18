@@ -1,2 +1,2 @@
-export { default as FoxuiApp } from './FoxuiApp.vue'
-export { default as FoxuiAppBar } from './FoxuiAppBar.vue'
+export { default as OrigamApp } from './OrigamApp.vue'
+export { default as OrigamAppBar } from './OrigamAppBar.vue'

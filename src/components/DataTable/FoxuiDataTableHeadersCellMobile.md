@@ -1,5 +1,0 @@
-# Foxuidatatableheaderscellmobile
-
-## Usage
-
-    <FoxuiDataTableHeadersCellMobile />

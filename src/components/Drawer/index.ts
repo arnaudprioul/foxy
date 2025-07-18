@@ -1,1 +1,1 @@
-export { default as FoxuiDrawer } from './FoxuiDrawer.vue'
+export { default as OrigamDrawer } from './OrigamDrawer.vue'

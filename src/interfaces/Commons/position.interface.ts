@@ -1,4 +1,4 @@
-import type { TPosition } from '@foxui/types'
+import type { TPosition } from '@origam/types'
 
 export interface IPositionProps {
     position?: TPosition

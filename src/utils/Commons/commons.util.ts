@@ -1,6 +1,6 @@
-import { IN_BROWSER, ON_REGEX } from '@foxui/consts'
+import { IN_BROWSER, ON_REGEX } from '@origam/consts'
 
-import { FOCUS_LOCATION } from '@foxui/enums'
+import { FOCUS_LOCATION } from '@origam/enums'
 
 import {
     TClientPosition,
@@ -10,8 +10,8 @@ import {
     TSelectItemKey,
     TTemplateRef,
     TWrapInArrayResult
-} from '@foxui/types'
-import { getLifeCycleTarget } from "@foxui/utils"
+} from '@origam/types'
+import { getLifeCycleTarget } from "@origam/utils"
 
 import {
     capitalize,

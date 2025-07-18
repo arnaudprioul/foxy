@@ -1,6 +1,6 @@
-import { FORWARD_REFS } from '@foxui/consts'
+import { FORWARD_REFS } from '@origam/consts'
 
-import type { TOmitPrefix, TOmitProps, TUnionToIntersection } from '@foxui/types'
+import type { TOmitPrefix, TOmitProps, TUnionToIntersection } from '@origam/types'
 
 import { ComponentPublicInstance, Ref, UnwrapRef } from 'vue'
 

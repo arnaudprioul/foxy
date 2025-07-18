@@ -10,9 +10,9 @@
     lang="ts"
     setup
 >
-	import { useVModel } from "@foxui/composables"
-	import { ALIGN } from "@foxui/enums"
-	import type { IAlignProps } from "@foxui/interfaces"
+	import { useVModel } from "@origam/composables"
+	import { ALIGN } from "@origam/enums"
+	import type { IAlignProps } from "@origam/interfaces"
 
 	import useTitle from '@stories/composables/title.composable'
 	import { alignList } from '@stories/const/align.const'

@@ -9,9 +9,9 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TParallaxEvent, TPoint } from '@foxui/types'
+import type { TParallaxEvent, TPoint } from '@origam/types'
 
 import type { Ref } from 'vue'
 

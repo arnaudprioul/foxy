@@ -18,8 +18,8 @@ const VERSIONS = [
 export default defineConfig({
     appearance: undefined,
 
-    title: "Foxui",
-    description: "Foxui is a site builder and design system developed in VueJs 3, composition api and typescript",
+    title: "Origam",
+    description: "Origam is a site builder and design system developed in VueJs 3, composition api and typescript",
 
     vite: {
         plugins: [
@@ -75,7 +75,7 @@ export default defineConfig({
                 text: 'Getting Started',
                 items: [
                     {
-                        text: 'About Foxui',
+                        text: 'About Origam',
                         link: '/getting-started/about',
                     },
                     {

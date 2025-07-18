@@ -1,6 +1,6 @@
-import { FoxuiIcon } from "@foxui/components"
+import { OrigamIcon } from "@origam/components"
 
-import type { IIconAliases, IIconProps, IIconSet } from '@foxui/interfaces'
+import type { IIconAliases, IIconProps, IIconSet } from '@origam/interfaces'
 import type { Component } from 'vue'
 
 export type TIcon =
@@ -21,4 +21,4 @@ export type TIconInstance = {
 
 export type TIconComponent = Component<IIconProps>
 
-export type TFoxuiIcon = InstanceType<typeof FoxuiIcon>
+export type TOrigamIcon = InstanceType<typeof OrigamIcon>

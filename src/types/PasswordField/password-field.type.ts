@@ -1,3 +1,3 @@
-import { FoxuiPasswordField } from "@foxui/components"
+import { OrigamPasswordField } from "@origam/components"
 
-export type TFoxuiPasswordField = InstanceType<typeof FoxuiPasswordField>
+export type TOrigamPasswordField = InstanceType<typeof OrigamPasswordField>

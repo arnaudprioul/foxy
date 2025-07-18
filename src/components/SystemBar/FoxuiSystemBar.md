@@ -1,5 +1,0 @@
-# Foxuisystembar
-
-## Usage
-
-    <FoxuiSystemBar />

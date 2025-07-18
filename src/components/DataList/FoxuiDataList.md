@@ -1,5 +1,0 @@
-# Foxuidatalist
-
-## Usage
-
-    <FoxuiDataList />

@@ -1,6 +1,6 @@
-import { SUPPORTS_INTERSECTION } from '@foxui/consts'
-import type { IIntersectDirectiveBinding, IIntersectHtmlElement } from '@foxui/interfaces'
-import { unmountIntersect } from '@foxui/utils'
+import { SUPPORTS_INTERSECTION } from '@origam/consts'
+import type { IIntersectDirectiveBinding, IIntersectHtmlElement } from '@origam/interfaces'
+import { unmountIntersect } from '@origam/utils'
 
 export const Intersect = {
     mounted (el: IIntersectHtmlElement, binding: IIntersectDirectiveBinding) {

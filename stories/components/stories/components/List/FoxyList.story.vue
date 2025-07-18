@@ -6,31 +6,31 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container fullscreen>
-		      <foxui-row
+	      <origam-container fullscreen>
+		      <origam-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col cols="auto">
-				      <foxui-list
+			      <origam-col cols="auto">
+				      <origam-list
                   v-bind="state"
                   @update:selected="logEvent('update:selected', $event)"
                   @update:opened="logEvent('update:opened', $event)"
                   @click:open="logEvent('click:open', $event)"
                   @click:select="logEvent('click:select', $event)"
               >
-					      <foxui-list-item
+					      <origam-list-item
                     prepend-icon="mdi-home"
                     title="Home"
                 />
 
-					      <foxui-list-group
+					      <origam-list-group
                     value="Users"
                     @click:activator="logEvent('click:activator - Users', $event)"
                 >
 
                   <template #activator="{isOpen, props, events, toggleIcon}">
-	                  <foxui-list-item
+	                  <origam-list-item
                         :active="isOpen"
                         :append-icon="toggleIcon"
                         prepend-icon="mdi-account-circle"
@@ -42,13 +42,13 @@
                   </template>
 
                   <template #items>
-	                  <foxui-list-group
+	                  <origam-list-group
                         value="Admin"
                         @click:activator="logEvent('click:activator - Admin', $event)"
                     >
 
                       <template #activator="{isOpen, props, events,  toggleIcon}">
-	                      <foxui-list-item
+	                      <origam-list-item
                             :active="isOpen"
                             :append-icon="toggleIcon"
                             title="Admin"
@@ -59,7 +59,7 @@
                       </template>
 
                       <template #items>
-	                      <foxui-list-item
+	                      <origam-list-item
                             v-for="([title, icon], i) in admins"
                             :key="i"
                             :prepend-icon="icon"
@@ -67,16 +67,16 @@
                             :value="title"
                         />
                       </template>
-	                  </foxui-list-group>
+	                  </origam-list-group>
 
-	                  <foxui-list-group
+	                  <origam-list-group
                         title="Actions"
                         value="Actions"
                         @click:activator="logEvent('click:activator - Actions', $event)"
                     >
 
                       <template #activator="{isOpen, props, events,  toggleIcon}">
-	                      <foxui-list-item
+	                      <origam-list-item
                             :active="isOpen"
                             :append-icon="toggleIcon"
                             title="Actions"
@@ -87,7 +87,7 @@
                       </template>
 
                       <template #items>
-	                      <foxui-list-item
+	                      <origam-list-item
                             v-for="([title, icon], i) in cruds"
                             :key="i"
                             :prepend-icon="icon"
@@ -95,13 +95,13 @@
                             :value="title"
                         />
                       </template>
-	                  </foxui-list-group>
+	                  </origam-list-group>
                   </template>
-					      </foxui-list-group>
-				      </foxui-list>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+					      </origam-list-group>
+				      </origam-list>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
       <template #controls>
         <hst-checkbox
@@ -125,9 +125,16 @@
     lang="ts"
     setup
 >
-	import { FoxuiCol, FoxuiContainer, FoxuiList, FoxuiListGroup, FoxuiListItem, FoxuiRow } from '@foxui/components'
+	import {
+		OrigamCol,
+		OrigamContainer,
+		OrigamList,
+		OrigamListGroup,
+		OrigamListItem,
+		OrigamRow
+	} from '@origam/components'
 
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
 
 	import { HstElevation, HstRounded } from '@stories/components/controls'
 

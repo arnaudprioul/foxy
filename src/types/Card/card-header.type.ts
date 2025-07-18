@@ -1,3 +1,3 @@
-import { FoxuiCardHeader } from '@foxui/components'
+import { OrigamCardHeader } from '@origam/components'
 
-export type TFoxuiCardHeader = InstanceType<typeof FoxuiCardHeader>
+export type TOrigamCardHeader = InstanceType<typeof OrigamCardHeader>

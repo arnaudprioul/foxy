@@ -12,9 +12,9 @@ import type {
     IRoundedProps,
     ISizeProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TBlock, TIcon } from '@foxui/types'
+import type { TBlock, TIcon } from '@origam/types'
 
 export interface IRatingFieldProps extends ICommonsComponentProps, IRippleProps, IDensityProps, IPaddingProps, IBorderProps, IMarginProps, IRoundedProps, IElevationProps, IColorProps, ISizeProps, ITagProps, IInputProps, ILabelProps {
     name?: string

@@ -1,6 +1,6 @@
-import { DEFAULT_DOCUMENT } from "@foxui/consts"
-import type { IStyleTagOptions } from "@foxui/interfaces"
-import { getCurrentInstanceName, getUid, tryOnMounted, tryOnScopeDispose } from "@foxui/utils"
+import { DEFAULT_DOCUMENT } from "@origam/consts"
+import type { IStyleTagOptions } from "@origam/interfaces"
+import { getCurrentInstanceName, getUid, tryOnMounted, tryOnScopeDispose } from "@origam/utils"
 
 import { computed, ComputedRef, MaybeRef, onMounted, readonly, shallowRef, watch } from 'vue'
 
@@ -24,7 +24,7 @@ export function useStyleTag (
         document = DEFAULT_DOCUMENT,
         immediate = true,
         manual = false,
-        id = `foxui_styletag_${++_id}`
+        id = `origam_styletag_${++_id}`
     } = options
 
     const cssRef = shallowRef(css)

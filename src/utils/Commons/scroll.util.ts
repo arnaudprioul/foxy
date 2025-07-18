@@ -1,6 +1,6 @@
-import type { IScrollStrategyData, IScrollStrategyProps } from '@foxui/interfaces'
+import type { IScrollStrategyData, IScrollStrategyProps } from '@origam/interfaces'
 
-import { convertToUnit, requestNewFrame } from '@foxui/utils'
+import { convertToUnit, requestNewFrame } from '@origam/utils'
 
 import { EffectScope, onScopeDispose } from 'vue'
 
@@ -54,37 +54,37 @@ export function blockScrollStrategy (data: IScrollStrategyData, props: IScrollSt
     const scrollElements = [...new Set([
         ...getScrollParents(data.targetEl.value, props.contained ? offsetParent : undefined),
         ...getScrollParents(data.contentEl.value, props.contained ? offsetParent : undefined)
-    ])].filter(el => !el.classList.contains('foxui-overlay--scroll-blocked'))
+    ])].filter(el => !el.classList.contains('origam-overlay--scroll-blocked'))
     const scrollbarWidth = window.innerWidth - document.documentElement.offsetWidth
 
     const scrollableParent = offsetParent || document.documentElement
     if (hasScrollbar(scrollableParent)) {
-        data.root.value!.classList.add('foxui-overlay--scroll-blocked')
+        data.root.value!.classList.add('origam-overlay--scroll-blocked')
     }
 
     scrollElements.forEach((el) => {
-        el.style.setProperty('--foxui-body-scroll-x', convertToUnit(-el.scrollLeft))
-        el.style.setProperty('--foxui-body-scroll-y', convertToUnit(-el.scrollTop))
+        el.style.setProperty('--origam-body-scroll-x', convertToUnit(-el.scrollLeft))
+        el.style.setProperty('--origam-body-scroll-y', convertToUnit(-el.scrollTop))
 
         if (el !== document.documentElement) {
-            el.style.setProperty('--foxui-scrollbar-offset', convertToUnit(scrollbarWidth))
+            el.style.setProperty('--origam-scrollbar-offset', convertToUnit(scrollbarWidth))
         }
 
-        el.classList.add('foxui-overlay--scroll-blocked')
+        el.classList.add('origam-overlay--scroll-blocked')
     })
 
     onScopeDispose(() => {
         scrollElements.forEach((el) => {
-            const x = parseFloat(el.style.getPropertyValue('--foxui-body-scroll-x'))
-            const y = parseFloat(el.style.getPropertyValue('--foxui-body-scroll-y'))
+            const x = parseFloat(el.style.getPropertyValue('--origam-body-scroll-x'))
+            const y = parseFloat(el.style.getPropertyValue('--origam-body-scroll-y'))
 
             const scrollBehavior = el.style.scrollBehavior
 
             el.style.scrollBehavior = 'auto'
-            el.style.removeProperty('--foxui-body-scroll-x')
-            el.style.removeProperty('--foxui-body-scroll-y')
-            el.style.removeProperty('--foxui-scrollbar-offset')
-            el.classList.remove('foxui-overlay--scroll-blocked')
+            el.style.removeProperty('--origam-body-scroll-x')
+            el.style.removeProperty('--origam-body-scroll-y')
+            el.style.removeProperty('--origam-scrollbar-offset')
+            el.classList.remove('origam-overlay--scroll-blocked')
 
             el.scrollLeft = -x
             el.scrollTop = -y
@@ -92,7 +92,7 @@ export function blockScrollStrategy (data: IScrollStrategyData, props: IScrollSt
             el.style.scrollBehavior = scrollBehavior
         })
         if (hasScrollbar(scrollableParent)) {
-            data.root.value!.classList.remove('foxui-overlay--scroll-blocked')
+            data.root.value!.classList.remove('origam-overlay--scroll-blocked')
         }
     })
 }

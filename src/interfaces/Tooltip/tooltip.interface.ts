@@ -8,7 +8,7 @@ import type {
     IScrimProps,
     IScrollStrategyProps,
     ITransitionComponentProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 export interface ITooltipProps extends ICommonsComponentProps, IOverlayProps, IDimensionProps, IActivatorProps, ILocationStrategyProps, IScrollStrategyProps, ILazyProps, ITransitionComponentProps, IScrimProps {
     id?: string

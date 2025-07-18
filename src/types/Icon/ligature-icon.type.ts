@@ -1,3 +1,3 @@
-import { FoxuiLigatureIcon } from "@foxui/components"
+import { OrigamLigatureIcon } from "@origam/components"
 
-export type TFoxuiLigatureIcon = InstanceType<typeof FoxuiLigatureIcon>
+export type TOrigamLigatureIcon = InstanceType<typeof OrigamLigatureIcon>

@@ -1,2 +1,2 @@
-export { default as FoxuiChip } from './FoxuiChip.vue';
-export { default as FoxuiChipGroup } from './FoxuiChipGroup.vue';
+export { default as OrigamChip } from './OrigamChip.vue';
+export { default as OrigamChipGroup } from './OrigamChipGroup.vue';

@@ -96,7 +96,7 @@ declare global {
 
     function parseFloat (string: string | number): number
 
-    export const __FOXUI_VERSION__: string
+    export const __ORIGAM_VERSION__: string
     export const __REQUIRED_VUE__: string
     export const __VUE_OPTIONS_API__: boolean | undefined
 }

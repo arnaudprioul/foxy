@@ -1,3 +1,3 @@
-import { FoxuiBtnGroup } from '@foxui/components'
+import { OrigamBtnGroup } from '@origam/components'
 
-export type TFoxuiBtnGroup = InstanceType<typeof FoxuiBtnGroup>
+export type TOrigamBtnGroup = InstanceType<typeof OrigamBtnGroup>

@@ -1,2 +1,2 @@
-export { default as FoxuiCheckbox } from './FoxuiCheckbox.vue'
-export { default as FoxuiCheckboxBtn } from './FoxuiCheckboxBtn.vue'
+export { default as OrigamCheckbox } from './OrigamCheckbox.vue'
+export { default as OrigamCheckboxBtn } from './OrigamCheckboxBtn.vue'

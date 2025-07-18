@@ -1,1 +1,1 @@
-export { default as FoxuiLabel } from './FoxuiLabel.vue'
+export { default as OrigamLabel } from './OrigamLabel.vue'

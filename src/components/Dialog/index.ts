@@ -1,2 +1,2 @@
-export { default as FoxuiDialog } from './FoxuiDialog.vue'
-export { default as FoxuiDialogConfirmation } from './FoxuiDialogConfirmation.vue'
+export { default as OrigamDialog } from './OrigamDialog.vue'
+export { default as OrigamDialogConfirmation } from './OrigamDialogConfirmation.vue'

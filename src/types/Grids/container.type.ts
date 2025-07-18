@@ -1,3 +1,3 @@
-import { FoxuiContainer } from "@foxui/components"
+import { OrigamContainer } from "@origam/components"
 
-export type TFoxuiContainer = InstanceType<typeof FoxuiContainer>
+export type TOrigamContainer = InstanceType<typeof OrigamContainer>

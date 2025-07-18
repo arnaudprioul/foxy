@@ -1,3 +1,3 @@
-import { FoxuiSlideY } from "@foxui/components"
+import { OrigamSlideY } from "@origam/components"
 
-export type TFoxuiSlideY = InstanceType<typeof FoxuiSlideY>
+export type TOrigamSlideY = InstanceType<typeof OrigamSlideY>

@@ -9,8 +9,8 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from "@foxui/interfaces"
-import type { TIcon } from "@foxui/types"
+} from "@origam/interfaces"
+import type { TIcon } from "@origam/types"
 
 export interface INumberFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps {
     autofocus?: boolean

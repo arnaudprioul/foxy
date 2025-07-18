@@ -1,3 +1,3 @@
-import { FoxuiProgressLinear } from "@foxui/components"
+import { OrigamProgressLinear } from "@origam/components"
 
-export type TFoxuiProgressLinear = InstanceType<typeof FoxuiProgressLinear>
+export type TOrigamProgressLinear = InstanceType<typeof OrigamProgressLinear>

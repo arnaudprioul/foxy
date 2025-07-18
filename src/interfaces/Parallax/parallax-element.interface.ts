@@ -7,9 +7,9 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TAnchor, TAxis, TParallaxElementType, TParallaxEvent, TPoint } from '@foxui/types'
+import type { TAnchor, TAxis, TParallaxElementType, TParallaxEvent, TPoint } from '@origam/types'
 
 export interface IParallaxElementTypeProps {
     type?: TParallaxElementType

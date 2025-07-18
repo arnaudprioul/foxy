@@ -1,5 +1,0 @@
-# Foxuititle
-
-## Usage
-
-    <foxuiTitle />

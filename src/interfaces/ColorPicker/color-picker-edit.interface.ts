@@ -1,6 +1,6 @@
-import type { ICommonsComponentProps } from "@foxui/interfaces"
+import type { ICommonsComponentProps } from "@origam/interfaces"
 
-import type { TColorModes, THSVA } from "@foxui/types"
+import type { TColorModes, THSVA } from "@origam/types"
 
 export interface IColorPickerEditProps extends ICommonsComponentProps {
     colorHsv?: THSVA | null

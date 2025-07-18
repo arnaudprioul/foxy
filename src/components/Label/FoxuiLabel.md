@@ -1,5 +1,0 @@
-# Foxuilabel
-
-## Usage
-
-    <FoxuiLabel />

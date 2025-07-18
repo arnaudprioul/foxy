@@ -1,3 +1,3 @@
-import { FoxuiForm } from "@foxui/components"
+import { OrigamForm } from "@origam/components"
 
-export type TFoxuiForm = InstanceType<typeof FoxuiForm>
+export type TOrigamForm = InstanceType<typeof OrigamForm>

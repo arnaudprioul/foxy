@@ -6,13 +6,13 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container fullscreen>
-		      <foxui-row
+	      <origam-container fullscreen>
+		      <origam-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col>
-				      <foxui-slider-field
+			      <origam-col>
+				      <origam-slider-field
                   v-bind="state"
                   @end="logEvent('update end', {$event})"
                   @start="logEvent('update start', {$event})"
@@ -22,9 +22,9 @@
                   @click:append-inner="logEvent('click append inner', $event)"
                   @click:prepend-inner="logEvent('click prepend inner', $event)"
               />
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
       <template #controls>
         <hst-checkbox
@@ -84,9 +84,9 @@
     lang="ts"
     setup
 >
-	import { FoxuiCol, FoxuiContainer, FoxuiRow, FoxuiSliderField } from '@foxui/components'
+	import { OrigamCol, OrigamContainer, OrigamRow, OrigamSliderField } from '@origam/components'
 
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
 	import { logEvent } from 'histoire/client'
 
 	import { reactive } from 'vue'

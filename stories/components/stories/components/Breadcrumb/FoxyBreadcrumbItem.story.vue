@@ -7,13 +7,13 @@
 	>
 		<Variant title="Default">
 			<template #default="{state}">
-				<foxui-container fluid>
-					<foxui-row :justify="JUSTIFY.CENTER">
-						<foxui-col cols="auto">
-							<foxui-breadcrumb-item v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+				<origam-container fluid>
+					<origam-row :justify="JUSTIFY.CENTER">
+						<origam-col cols="auto">
+							<origam-breadcrumb-item v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 			<template #controls="{state}">
 				<hst-checkbox
@@ -25,15 +25,15 @@
 
 		<Variant title="Color">
 			<template #default="{state}">
-				<foxui-container fluid>
-					<foxui-row
+				<origam-container fluid>
+					<origam-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-breadcrumb-item v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+						<origam-col cols="auto">
+							<origam-breadcrumb-item v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -52,15 +52,15 @@
 
 		<Variant title="Border">
 			<template #default="{state}">
-				<foxui-container fluid>
-					<foxui-row
+				<origam-container fluid>
+					<origam-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-breadcrumb-item v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+						<origam-col cols="auto">
+							<origam-breadcrumb-item v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -70,15 +70,15 @@
 
 		<Variant title="Padding">
 			<template #default="{state}">
-				<foxui-container fluid>
-					<foxui-row
+				<origam-container fluid>
+					<origam-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-breadcrumb-item v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+						<origam-col cols="auto">
+							<origam-breadcrumb-item v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -88,15 +88,15 @@
 
 		<Variant title="Margin">
 			<template #default="{state}">
-				<foxui-container fluid>
-					<foxui-row
+				<origam-container fluid>
+					<origam-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-breadcrumb-item v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+						<origam-col cols="auto">
+							<origam-breadcrumb-item v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -106,15 +106,15 @@
 
 		<Variant title="Density">
 			<template #default="{state}">
-				<foxui-container fluid>
-					<foxui-row
+				<origam-container fluid>
+					<origam-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-breadcrumb-item v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+						<origam-col cols="auto">
+							<origam-breadcrumb-item v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -124,15 +124,15 @@
 
 		<Variant title="Rounded">
 			<template #default="{state}">
-				<foxui-container fluid>
-					<foxui-row
+				<origam-container fluid>
+					<origam-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-breadcrumb-item v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+						<origam-col cols="auto">
+							<origam-breadcrumb-item v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -142,15 +142,15 @@
 
 		<Variant title="Adjacent">
 			<template #default="{state}">
-				<foxui-container fluid>
-					<foxui-row
+				<origam-container fluid>
+					<origam-row
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-breadcrumb-item v-bind="state"/>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+						<origam-col cols="auto">
+							<origam-breadcrumb-item v-bind="state"/>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -169,9 +169,9 @@
 		lang="ts"
 		setup
 >
-	import { FoxuiBreadcrumbItem, FoxuiCol, FoxuiContainer, FoxuiRow } from '@foxui/components'
-	import { JUSTIFY } from '@foxui/enums'
-	import type { IBreadcrumbItemProps } from "@foxui/interfaces"
+	import { OrigamBreadcrumbItem, OrigamCol, OrigamContainer, OrigamRow } from '@origam/components'
+	import { JUSTIFY } from '@origam/enums'
+	import type { IBreadcrumbItemProps } from "@origam/interfaces"
 
 	import { HstBorder, HstColor, HstDensity, HstMargin, HstPadding, HstRounded } from "@stories/components/controls"
 	import HstAdjacent from "@stories/components/controls/HstAdjacent/HstAdjacent.vue"

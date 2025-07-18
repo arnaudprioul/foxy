@@ -1,6 +1,6 @@
-import type { IClickOutsideDirectiveBinding } from '@foxui/interfaces'
+import type { IClickOutsideDirectiveBinding } from '@origam/interfaces'
 
-import { attachedRoot } from '@foxui/utils'
+import { attachedRoot } from '@origam/utils'
 
 function defaultConditional (): boolean {
     return true

@@ -1,1 +1,1 @@
-export { default as FoxuiTable } from './FoxuiTable.vue'
+export { default as OrigamTable } from './OrigamTable.vue'

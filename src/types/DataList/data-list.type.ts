@@ -1,3 +1,3 @@
-import { FoxuiDataList } from "@foxui/components"
+import { OrigamDataList } from "@origam/components"
 
-export type TFoxuiDataList = InstanceType<typeof FoxuiDataList>
+export type TOrigamDataList = InstanceType<typeof OrigamDataList>

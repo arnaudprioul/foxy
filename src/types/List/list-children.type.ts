@@ -1,3 +1,3 @@
-import { FoxuiListChildren } from "@foxui/components"
+import { OrigamListChildren } from "@origam/components"
 
-export type TFoxuiListChildren = InstanceType<typeof FoxuiListChildren>
+export type TOrigamListChildren = InstanceType<typeof OrigamListChildren>

@@ -1,3 +1,3 @@
-import { AXIS } from '@foxui/enums'
+import { AXIS } from '@origam/enums'
 
 export type TAxis = `${AXIS}`

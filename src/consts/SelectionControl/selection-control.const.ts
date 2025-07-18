@@ -1,4 +1,4 @@
-import type { ISelectionGroupContext } from "@foxui/interfaces"
+import type { ISelectionGroupContext } from "@origam/interfaces"
 import type { InjectionKey } from 'vue'
 
-export const FOXUI_SELECTION_CONTROL_GROUP_KEY: InjectionKey<ISelectionGroupContext> = Symbol.for('foxui:selection-control-group')
+export const ORIGAM_SELECTION_CONTROL_GROUP_KEY: InjectionKey<ISelectionGroupContext> = Symbol.for('origam:selection-control-group')

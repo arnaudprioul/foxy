@@ -7,27 +7,27 @@
   >
     <Variant title="Default">
 	    <template #default="{state}">
-		    <foxui-container>
-			    <foxui-row
+		    <origam-container>
+			    <origam-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-				    <foxui-col cols="auto">
-					    <foxui-btn-toggle
+				    <origam-col cols="auto">
+					    <origam-btn-toggle
                   v-model="state.modelValue"
                   v-bind="state"
                   @update:model-value="logEvent('update:modelValue', $event)"
               >
                 <template #item="{item}">
-	                <foxui-btn
+	                <origam-btn
                       v-bind="item"
                       @group:selected="logEvent('group:selected', $event)"
                   />
                 </template>
-					    </foxui-btn-toggle>
-				    </foxui-col>
-			    </foxui-row>
-		    </foxui-container>
+					    </origam-btn-toggle>
+				    </origam-col>
+			    </origam-row>
+		    </origam-container>
       </template>
 
 	    <template #controls="{state}">
@@ -55,27 +55,27 @@
 
 	  <Variant title="Color">
 		  <template #default="{state}">
-			  <foxui-container>
-				  <foxui-row
+			  <origam-container>
+				  <origam-row
 						  :align="ALIGN.CENTER"
 						  :justify="JUSTIFY.CENTER"
 				  >
-					  <foxui-col cols="auto">
-						  <foxui-btn-toggle
+					  <origam-col cols="auto">
+						  <origam-btn-toggle
 								  v-model="state.modelValue"
 								  v-bind="state"
 								  @update:model-value="logEvent('update:modelValue', $event)"
 						  >
 							  <template #item="{item}">
-								  <foxui-btn
+								  <origam-btn
 										  v-bind="item"
 										  @group:selected="logEvent('group:selected', $event)"
 								  />
 							  </template>
-						  </foxui-btn-toggle>
-					  </foxui-col>
-				  </foxui-row>
-			  </foxui-container>
+						  </origam-btn-toggle>
+					  </origam-col>
+				  </origam-row>
+			  </origam-container>
 		  </template>
 
 		  <template #controls="{state}">
@@ -94,27 +94,27 @@
 
 	  <Variant title="Border">
 		  <template #default="{state}">
-			  <foxui-container>
-				  <foxui-row
+			  <origam-container>
+				  <origam-row
 						  :align="ALIGN.CENTER"
 						  :justify="JUSTIFY.CENTER"
 				  >
-					  <foxui-col cols="auto">
-						  <foxui-btn-toggle
+					  <origam-col cols="auto">
+						  <origam-btn-toggle
 								  v-model="state.modelValue"
 								  v-bind="state"
 								  @update:model-value="logEvent('update:modelValue', $event)"
 						  >
 							  <template #item="{item}">
-								  <foxui-btn
+								  <origam-btn
 										  v-bind="item"
 										  @group:selected="logEvent('group:selected', $event)"
 								  />
 							  </template>
-						  </foxui-btn-toggle>
-					  </foxui-col>
-				  </foxui-row>
-			  </foxui-container>
+						  </origam-btn-toggle>
+					  </origam-col>
+				  </origam-row>
+			  </origam-container>
 		  </template>
 
 		  <template #controls="{state}">
@@ -124,27 +124,27 @@
 
 	  <Variant title="Padding">
 		  <template #default="{state}">
-			  <foxui-container>
-				  <foxui-row
+			  <origam-container>
+				  <origam-row
 						  :align="ALIGN.CENTER"
 						  :justify="JUSTIFY.CENTER"
 				  >
-					  <foxui-col cols="auto">
-						  <foxui-btn-toggle
+					  <origam-col cols="auto">
+						  <origam-btn-toggle
 								  v-model="state.modelValue"
 								  v-bind="state"
 								  @update:model-value="logEvent('update:modelValue', $event)"
 						  >
 							  <template #item="{item}">
-								  <foxui-btn
+								  <origam-btn
 										  v-bind="item"
 										  @group:selected="logEvent('group:selected', $event)"
 								  />
 							  </template>
-						  </foxui-btn-toggle>
-					  </foxui-col>
-				  </foxui-row>
-			  </foxui-container>
+						  </origam-btn-toggle>
+					  </origam-col>
+				  </origam-row>
+			  </origam-container>
 		  </template>
 
 		  <template #controls="{state}">
@@ -154,27 +154,27 @@
 
 	  <Variant title="Margin">
 		  <template #default="{state}">
-			  <foxui-container>
-				  <foxui-row
+			  <origam-container>
+				  <origam-row
 						  :align="ALIGN.CENTER"
 						  :justify="JUSTIFY.CENTER"
 				  >
-					  <foxui-col cols="auto">
-						  <foxui-btn-toggle
+					  <origam-col cols="auto">
+						  <origam-btn-toggle
 								  v-model="state.modelValue"
 								  v-bind="state"
 								  @update:model-value="logEvent('update:modelValue', $event)"
 						  >
 							  <template #item="{item}">
-								  <foxui-btn
+								  <origam-btn
 										  v-bind="item"
 										  @group:selected="logEvent('group:selected', $event)"
 								  />
 							  </template>
-						  </foxui-btn-toggle>
-					  </foxui-col>
-				  </foxui-row>
-			  </foxui-container>
+						  </origam-btn-toggle>
+					  </origam-col>
+				  </origam-row>
+			  </origam-container>
 		  </template>
 
 		  <template #controls="{state}">
@@ -184,27 +184,27 @@
 
 	  <Variant title="Density">
 		  <template #default="{state}">
-			  <foxui-container>
-				  <foxui-row
+			  <origam-container>
+				  <origam-row
 						  :align="ALIGN.CENTER"
 						  :justify="JUSTIFY.CENTER"
 				  >
-					  <foxui-col cols="auto">
-						  <foxui-btn-toggle
+					  <origam-col cols="auto">
+						  <origam-btn-toggle
 								  v-model="state.modelValue"
 								  v-bind="state"
 								  @update:model-value="logEvent('update:modelValue', $event)"
 						  >
 							  <template #item="{item}">
-								  <foxui-btn
+								  <origam-btn
 										  v-bind="item"
 										  @group:selected="logEvent('group:selected', $event)"
 								  />
 							  </template>
-						  </foxui-btn-toggle>
-					  </foxui-col>
-				  </foxui-row>
-			  </foxui-container>
+						  </origam-btn-toggle>
+					  </origam-col>
+				  </origam-row>
+			  </origam-container>
 		  </template>
 
 		  <template #controls="{state}">
@@ -214,27 +214,27 @@
 
 	  <Variant title="Elevation">
 		  <template #default="{state}">
-			  <foxui-container>
-				  <foxui-row
+			  <origam-container>
+				  <origam-row
 						  :align="ALIGN.CENTER"
 						  :justify="JUSTIFY.CENTER"
 				  >
-					  <foxui-col cols="auto">
-						  <foxui-btn-toggle
+					  <origam-col cols="auto">
+						  <origam-btn-toggle
 								  v-model="state.modelValue"
 								  v-bind="state"
 								  @update:model-value="logEvent('update:modelValue', $event)"
 						  >
 							  <template #item="{item}">
-								  <foxui-btn
+								  <origam-btn
 										  v-bind="item"
 										  @group:selected="logEvent('group:selected', $event)"
 								  />
 							  </template>
-						  </foxui-btn-toggle>
-					  </foxui-col>
-				  </foxui-row>
-			  </foxui-container>
+						  </origam-btn-toggle>
+					  </origam-col>
+				  </origam-row>
+			  </origam-container>
 		  </template>
 
 		  <template #controls="{state}">
@@ -244,27 +244,27 @@
 
 	  <Variant title="Rounded">
 		  <template #default="{state}">
-			  <foxui-container>
-				  <foxui-row
+			  <origam-container>
+				  <origam-row
 						  :align="ALIGN.CENTER"
 						  :justify="JUSTIFY.CENTER"
 				  >
-					  <foxui-col cols="auto">
-						  <foxui-btn-toggle
+					  <origam-col cols="auto">
+						  <origam-btn-toggle
 								  v-model="state.modelValue"
 								  v-bind="state"
 								  @update:model-value="logEvent('update:modelValue', $event)"
 						  >
 							  <template #item="{item}">
-								  <foxui-btn
+								  <origam-btn
 										  v-bind="item"
 										  @group:selected="logEvent('group:selected', $event)"
 								  />
 							  </template>
-						  </foxui-btn-toggle>
-					  </foxui-col>
-				  </foxui-row>
-			  </foxui-container>
+						  </origam-btn-toggle>
+					  </origam-col>
+				  </origam-row>
+			  </origam-container>
 		  </template>
 
 		  <template #controls="{state}">
@@ -278,10 +278,10 @@
     lang="ts"
     setup
 >
-	import { FoxuiBtn, FoxuiBtnToggle, FoxuiCol, FoxuiContainer, FoxuiRow } from '@foxui/components'
+	import { OrigamBtn, OrigamBtnToggle, OrigamCol, OrigamContainer, OrigamRow } from '@origam/components'
 
-	import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxui/enums'
-	import { IBtnToggleProps } from "@foxui/interfaces"
+	import { ALIGN, JUSTIFY, MDI_ICONS } from '@origam/enums'
+	import { IBtnToggleProps } from "@origam/interfaces"
 	import {
 		HstBorder,
 		HstColor,

@@ -4,9 +4,9 @@ import type {
     IDimensionProps,
     IDirectionProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TInfiniteScrollMode, TInfiniteScrollSide } from '@foxui/types'
+import type { TInfiniteScrollMode, TInfiniteScrollSide } from '@origam/types'
 
 export interface IInfiniteScrollProps extends ICommonsComponentProps, IColorProps, IDimensionProps, ITagProps, IDirectionProps {
     side?: TInfiniteScrollSide

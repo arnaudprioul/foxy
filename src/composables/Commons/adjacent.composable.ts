@@ -1,11 +1,11 @@
-import type { IAdjacentInnerProps, IAdjacentProps } from '@foxui/interfaces'
+import type { IAdjacentInnerProps, IAdjacentProps } from '@origam/interfaces'
 
-import { getCurrentInstance } from "@foxui/utils"
+import { getCurrentInstance } from "@origam/utils"
 
 import { computed, ComputedRef, Ref, useSlots } from 'vue'
 
 export function useAdjacent (props: IAdjacentProps, prependIcon: Ref | ComputedRef, appendIcon: Ref | ComputedRef) {
-    const vm = getCurrentInstance('FoxuiAdjacent')
+    const vm = getCurrentInstance('OrigamAdjacent')
 
     const slots = useSlots()
 
@@ -40,7 +40,7 @@ export function useAdjacent (props: IAdjacentProps, prependIcon: Ref | ComputedR
 }
 
 export function useAdjacentInner (props: IAdjacentInnerProps) {
-    const vm = getCurrentInstance('FoxuiAdjacentInner')
+    const vm = getCurrentInstance('OrigamAdjacentInner')
 
     const slots = useSlots()
 

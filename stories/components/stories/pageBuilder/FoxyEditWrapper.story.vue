@@ -4,11 +4,11 @@
       title="Edit Wrapper"
   >
     <template #default>
-	    <foxui-main>
-		    <foxui-edit-wrapper>
-			    <foxui-btn text="test"/>
-		    </foxui-edit-wrapper>
-	    </foxui-main>
+	    <origam-main>
+		    <origam-edit-wrapper>
+			    <origam-btn text="test"/>
+		    </origam-edit-wrapper>
+	    </origam-main>
     </template>
   </Story>
 </template>
@@ -17,7 +17,7 @@
     lang="ts"
     setup
 >
-	import { FoxuiBtn, FoxuiEditWrapper } from '@foxui/components'
+	import { OrigamBtn, OrigamEditWrapper } from '@origam/components'
 </script>
 <docs lang="md">
 Css Box Documentation

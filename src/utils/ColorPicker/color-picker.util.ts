@@ -1,6 +1,6 @@
-import type { THSVA } from "@foxui/types"
+import type { THSVA } from "@origam/types"
 
-import { has, HSVtoHex, HSVtoHSL, HSVtoRGB } from "@foxui/utils"
+import { has, HSVtoHex, HSVtoHSL, HSVtoRGB } from "@origam/utils"
 
 export function stripAlpha (color: any, stripAlpha: boolean) {
     if (stripAlpha) {

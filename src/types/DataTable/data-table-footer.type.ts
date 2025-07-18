@@ -1,3 +1,3 @@
-import FoxuiDataTableFooter from "@foxui/components/DataTable/FoxuiDataTableFooter.vue"
+import OrigamDataTableFooter from "@origam/components/DataTable/OrigamDataTableFooter.vue"
 
-export type TFoxuiDataTableFooter = InstanceType<typeof FoxuiDataTableFooter>
+export type TOrigamDataTableFooter = InstanceType<typeof OrigamDataTableFooter>

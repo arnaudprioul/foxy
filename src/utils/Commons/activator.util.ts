@@ -1,6 +1,6 @@
-import { useActivator } from '@foxui/composables'
-import type { IActivatorProps } from '@foxui/interfaces'
-import { bindProps, unbindProps } from '@foxui/utils'
+import { useActivator } from '@origam/composables'
+import type { IActivatorProps } from '@origam/interfaces'
+import { bindProps, unbindProps } from '@origam/utils'
 
 import { ComponentInternalInstance, ComponentPublicInstance, mergeProps, nextTick, onScopeDispose, watch } from 'vue'
 

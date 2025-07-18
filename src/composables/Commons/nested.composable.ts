@@ -1,16 +1,16 @@
-import { useVModel } from '@foxui/composables'
+import { useVModel } from '@origam/composables'
 import {
     EMPTY_NESTED,
-    FOXUI_NESTED_KEY,
     LIST_OPEN_STRATEGY,
     MULTIPLE_OPEN_STRATEGY,
+    ORIGAM_NESTED_KEY,
     SINGLE_OPEN_STRATEGY
-} from '@foxui/consts'
-import { OPEN_STRATEGY, SELECT_STRATEGY } from '@foxui/enums'
+} from '@origam/consts'
+import { OPEN_STRATEGY, SELECT_STRATEGY } from '@origam/enums'
 
-import type { INestedProps } from '@foxui/interfaces'
+import type { INestedProps } from '@origam/interfaces'
 
-import type { TNestedProvide } from '@foxui/types'
+import type { TNestedProvide } from '@origam/types'
 
 import {
     classicSelectStrategy,
@@ -20,7 +20,7 @@ import {
     independentSingleSelectStrategy,
     leafSelectStrategy,
     leafSingleSelectStrategy
-} from '@foxui/utils'
+} from '@origam/utils'
 
 import { computed, inject, onBeforeUnmount, provide, Ref, ref, shallowRef, toRaw } from 'vue'
 
@@ -188,13 +188,13 @@ export const useNested = (props: INestedProps) => {
         }
     }
 
-    provide(FOXUI_NESTED_KEY, nested)
+    provide(ORIGAM_NESTED_KEY, nested)
 
     return nested.root
 }
 
 export function useNestedItem (id: Ref<unknown>, isGroup: boolean) {
-    const parent = inject(FOXUI_NESTED_KEY, EMPTY_NESTED)
+    const parent = inject(ORIGAM_NESTED_KEY, EMPTY_NESTED)
 
     const uidSymbol = Symbol(getUid())
     const computedId = computed(() => id.value !== undefined ? id.value : uidSymbol)
@@ -240,19 +240,19 @@ export function useNestedItem (id: Ref<unknown>, isGroup: boolean) {
     })
 
     if (isGroup) {
-        provide(FOXUI_NESTED_KEY, item)
+        provide(ORIGAM_NESTED_KEY, item)
     }
 
     return item
 }
 
 export function useNestedGroupActivator () {
-    const parent = inject(FOXUI_NESTED_KEY, EMPTY_NESTED)
+    const parent = inject(ORIGAM_NESTED_KEY, EMPTY_NESTED)
 
     const item = {
         ...parent,
         isGroupActivator: true
     }
 
-    provide(FOXUI_NESTED_KEY, item)
+    provide(ORIGAM_NESTED_KEY, item)
 }

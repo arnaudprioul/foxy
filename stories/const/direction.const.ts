@@ -1,4 +1,4 @@
-import { DIRECTION } from '@foxui/enums'
+import { DIRECTION } from '@origam/enums'
 
 export const directionList = [
     {value: DIRECTION.HORIZONTAL, label: 'Horizontal'},

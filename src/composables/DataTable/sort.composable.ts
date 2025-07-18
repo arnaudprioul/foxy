@@ -1,7 +1,7 @@
-import { useVModel } from '@foxui/composables'
+import { useVModel } from '@origam/composables'
 
-import { FOXUI_DATA_TABLE_SORT_KEY } from '@foxui/consts'
-import { SORT_DIRECTION } from '@foxui/enums'
+import { ORIGAM_DATA_TABLE_SORT_KEY } from '@origam/consts'
+import { SORT_DIRECTION } from '@origam/enums'
 
 import type {
     IDataTableProvideSort,
@@ -9,9 +9,9 @@ import type {
     IDataTableSortProps,
     IInternalDataTableHeader,
     IInternalItem
-} from '@foxui/interfaces'
-import type { TDataTableCompareFunction } from '@foxui/types'
-import { sortItems } from '@foxui/utils'
+} from '@origam/interfaces'
+import type { TDataTableCompareFunction } from '@origam/types'
+import { sortItems } from '@origam/utils'
 
 import { computed, inject, provide, Ref, toRef } from 'vue'
 
@@ -60,13 +60,13 @@ export function provideSort (options: {
 
     const data: IDataTableProvideSort = {sortBy, toggleSort, isSorted}
 
-    provide(FOXUI_DATA_TABLE_SORT_KEY, data)
+    provide(ORIGAM_DATA_TABLE_SORT_KEY, data)
 
     return data
 }
 
 export function useSort () {
-    const data = inject(FOXUI_DATA_TABLE_SORT_KEY)
+    const data = inject(ORIGAM_DATA_TABLE_SORT_KEY)
 
     if (!data) throw new Error('Missing sort!')
 

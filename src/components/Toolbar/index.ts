@@ -1,1 +1,1 @@
-export { default as FoxuiToolbar } from './FoxuiToolbar.vue'
+export { default as OrigamToolbar } from './OrigamToolbar.vue'

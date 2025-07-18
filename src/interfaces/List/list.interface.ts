@@ -10,11 +10,11 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TLines, TSelectItemKey } from '@foxui/types'
+import type { TLines, TSelectItemKey } from '@origam/types'
 
-import { deepEqual } from '@foxui/utils'
+import { deepEqual } from '@origam/utils'
 
 export interface IListProps extends ITagProps, ICommonsComponentProps, IElevationProps, IBorderProps, IDensityProps, IRoundedProps, IDimensionProps, INestedProps, IItemProps, IColorProps, IPaddingProps, IMarginProps {
     activeClass?: string

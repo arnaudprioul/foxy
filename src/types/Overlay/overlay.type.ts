@@ -1,3 +1,3 @@
-import { FoxuiOverlay } from '@foxui/components'
+import { OrigamOverlay } from '@origam/components'
 
-export type TFoxuiOverlay = InstanceType<typeof FoxuiOverlay>
+export type TOrigamOverlay = InstanceType<typeof OrigamOverlay>

@@ -6,16 +6,16 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container fluid>
-		      <foxui-row>
-			      <foxui-col cols="12">
-				      <foxui-color-picker
+	      <origam-container fluid>
+		      <origam-row>
+			      <origam-col cols="12">
+				      <origam-color-picker
                   v-bind="state"
                   @update:model-value="logEvent('update model value', $event)"
               />
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
 
       <template #controls>
@@ -33,7 +33,7 @@
     setup
 >
 
-	import { FoxuiCol, FoxuiColorPicker, FoxuiContainer, FoxuiRow } from '@foxui/components'
+	import { OrigamCol, OrigamColorPicker, OrigamContainer, OrigamRow } from '@origam/components'
 	import { logEvent } from "histoire/client"
 
 	import { reactive } from 'vue'

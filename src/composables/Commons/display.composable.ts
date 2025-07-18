@@ -1,9 +1,15 @@
-import { FOXUI_DISPLAY_KEY, IN_BROWSER } from '@foxui/consts'
+import { IN_BROWSER, ORIGAM_DISPLAY_KEY } from '@origam/consts'
 
-import type { IDisplayInstance, IDisplayOptions, IDisplayProps } from '@foxui/interfaces'
-import type { TSSROptions } from '@foxui/types'
+import type { IDisplayInstance, IDisplayOptions, IDisplayProps } from '@origam/interfaces'
+import type { TSSROptions } from '@origam/types'
 
-import { getClientHeight, getClientWidth, getCurrentInstanceName, getPlatform, parseDisplayOptions } from '@foxui/utils'
+import {
+    getClientHeight,
+    getClientWidth,
+    getCurrentInstanceName,
+    getPlatform,
+    parseDisplayOptions
+} from '@origam/utils'
 
 import { computed, inject, reactive, shallowRef, toRefs, watchEffect } from 'vue'
 
@@ -11,9 +17,9 @@ export function useDisplay (
     props: IDisplayProps = {},
     name = getCurrentInstanceName()
 ) {
-    const display = inject(FOXUI_DISPLAY_KEY)
+    const display = inject(ORIGAM_DISPLAY_KEY)
 
-    if (!display) throw new Error('Could not find Foxui display injection')
+    if (!display) throw new Error('Could not find Origam display injection')
 
     const mobile = computed(() => {
         if (!props.mobileBreakpoint) return display.mobile.value

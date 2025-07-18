@@ -1,5 +1,5 @@
-import type { IClickOutsideDirectiveBinding } from '@foxui/interfaces'
-import { checkEvent, directive, handleShadow } from '@foxui/utils'
+import type { IClickOutsideDirectiveBinding } from '@origam/interfaces'
+import { checkEvent, directive, handleShadow } from '@origam/utils'
 
 export const ClickOutside = {
     // [data-app] may not be found

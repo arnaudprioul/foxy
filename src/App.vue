@@ -2,29 +2,29 @@
 		lang="ts"
 		setup
 >
-	import { FoxuiDrawer, FoxuiList, FoxuiListItem, FoxuiMain, FoxuiPageBuilder, FoxuiToolbar } from './components'
+	import { OrigamDrawer, OrigamList, OrigamListItem, OrigamMain, OrigamPageBuilder, OrigamToolbar } from './components'
 </script>
 
 <template>
-	<foxui-page-builder>
-		<foxui-toolbar
+	<origam-page-builder>
+		<origam-toolbar
 				:order="1"
 				title="Application bar"
-		></foxui-toolbar>
+		></origam-toolbar>
 
-		<foxui-drawer :order="2">
-			<foxui-list>
-				<foxui-list-item title="Navigation drawer"/>
-			</foxui-list>
-		</foxui-drawer>
+		<origam-drawer :order="2">
+			<origam-list>
+				<origam-list-item title="Navigation drawer"/>
+			</origam-list>
+		</origam-drawer>
 
-		<foxui-main
+		<origam-main
 				:order="3"
 				style="min-height: 300px;"
 		>
 
-		</foxui-main>
-	</foxui-page-builder>
+		</origam-main>
+	</origam-page-builder>
 </template>
 
 <style scoped>

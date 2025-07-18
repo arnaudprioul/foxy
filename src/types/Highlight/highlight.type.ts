@@ -1,3 +1,3 @@
-import { FoxuiHighlight } from '@foxui/components'
+import { OrigamHighlight } from '@origam/components'
 
-export type TFoxuiHighlight = InstanceType<typeof FoxuiHighlight>
+export type TOrigamHighlight = InstanceType<typeof OrigamHighlight>

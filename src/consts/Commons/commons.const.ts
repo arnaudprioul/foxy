@@ -1,4 +1,4 @@
-import type { TEventProp } from '@foxui/types'
+import type { TEventProp } from '@origam/types'
 
 import { PropType } from 'vue'
 

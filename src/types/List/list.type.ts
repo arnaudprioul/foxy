@@ -1,7 +1,7 @@
-import { FoxuiList } from '@foxui/components'
+import { OrigamList } from '@origam/components'
 
-import { LINES } from '@foxui/enums'
+import { LINES } from '@origam/enums'
 
 export type TLines = `${LINES}`
 
-export type TFoxuiList = InstanceType<typeof FoxuiList>
+export type TOrigamList = InstanceType<typeof OrigamList>

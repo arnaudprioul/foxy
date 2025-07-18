@@ -8,9 +8,9 @@ import type {
     IMarginProps,
     IPaddingProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TFlexDirection } from '@foxui/types'
+import type { TFlexDirection } from '@origam/types'
 
 export interface IRowProps extends ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IBorderProps, IColorProps, IDensityProps, IAlignProps, IJustifyProps {
     gutters?: string | number

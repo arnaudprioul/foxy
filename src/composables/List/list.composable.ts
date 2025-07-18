@@ -1,9 +1,9 @@
-import { FOXUI_LIST_KEY } from '@foxui/consts'
+import { ORIGAM_LIST_KEY } from '@origam/consts'
 
 import { ComputedRef, inject, provide, shallowRef } from 'vue'
 
 export function useCreateList () {
-    const parent = inject(FOXUI_LIST_KEY, {
+    const parent = inject(ORIGAM_LIST_KEY, {
         hasPrepend: shallowRef(false),
         updateHasPrepend: () => null,
         hasAppend: shallowRef(false),
@@ -21,11 +21,11 @@ export function useCreateList () {
         }
     }
 
-    provide(FOXUI_LIST_KEY, data)
+    provide(ORIGAM_LIST_KEY, data)
 
     return parent
 }
 
 export function useList () {
-    return inject(FOXUI_LIST_KEY, null)
+    return inject(ORIGAM_LIST_KEY, null)
 }

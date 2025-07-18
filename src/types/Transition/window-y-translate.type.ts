@@ -1,3 +1,3 @@
-import { FoxuiWindowYTranslate } from "@foxui/components"
+import { OrigamWindowYTranslate } from "@origam/components"
 
-export type TFoxuiWindowYTranslate = InstanceType<typeof FoxuiWindowYTranslate>
+export type TOrigamWindowYTranslate = InstanceType<typeof OrigamWindowYTranslate>

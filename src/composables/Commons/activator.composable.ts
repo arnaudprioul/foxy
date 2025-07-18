@@ -1,10 +1,10 @@
-import { useDelay } from '@foxui/composables'
+import { useDelay } from '@origam/composables'
 
-import { FOXUI_MENU_KEY, IN_BROWSER } from '@foxui/consts'
+import { IN_BROWSER, ORIGAM_MENU_KEY } from '@origam/consts'
 
-import type { IActivatorProps } from '@foxui/interfaces'
+import type { IActivatorProps } from '@origam/interfaces'
 
-import { activator, getCurrentInstance, getTargetActivator, matchesSelector, refElement } from '@foxui/utils'
+import { activator, getCurrentInstance, getTargetActivator, matchesSelector, refElement } from '@origam/utils'
 
 import { computed, effectScope, EffectScope, inject, nextTick, onScopeDispose, ref, Ref, watch, watchEffect } from 'vue'
 
@@ -152,7 +152,7 @@ export function useActivator (props: IActivatorProps, {isActive, isTop}: {
         }
 
         if (props.closeOnContentClick) {
-            const menu = inject(FOXUI_MENU_KEY, null)
+            const menu = inject(ORIGAM_MENU_KEY, null)
             events.onClick = () => {
                 isActive.value = false
                 menu?.closeParents()

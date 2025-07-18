@@ -9,16 +9,16 @@
         title="Circle"
     >
       <template #default>
-	      <foxui-container>
-		      <foxui-row
+	      <origam-container>
+		      <origam-row
               :align-content="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col cols="auto">
-				      <foxui-progress v-bind="stateCircle"/>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      <origam-col cols="auto">
+				      <origam-progress v-bind="stateCircle"/>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
     </Variant>
     <Variant
@@ -26,16 +26,16 @@
         title="Line"
     >
       <template #default>
-	      <foxui-container>
-		      <foxui-row
+	      <origam-container>
+		      <origam-row
               :align-content="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col cols="12">
-				      <foxui-progress v-bind="stateLinear"/>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      <origam-col cols="12">
+				      <origam-progress v-bind="stateLinear"/>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
     </Variant>
 
@@ -57,11 +57,11 @@
     lang="ts"
     setup
 >
-	import { FoxuiCol, FoxuiContainer, FoxuiProgress, FoxuiRow } from '@foxui/components'
+	import { OrigamCol, OrigamContainer, OrigamProgress, OrigamRow } from '@origam/components'
 
-	import { ALIGN, JUSTIFY, PROGRESS_TYPE } from '@foxui/enums'
+	import { ALIGN, JUSTIFY, PROGRESS_TYPE } from '@origam/enums'
 
-	import type { IProgressCircularProps, IProgressLinearProps } from '@foxui/interfaces'
+	import type { IProgressCircularProps, IProgressLinearProps } from '@origam/interfaces'
 
 	import { computed, reactive } from 'vue'
 

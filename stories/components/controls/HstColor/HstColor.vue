@@ -48,8 +48,8 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxui/composables"
-	import type { IActiveProps, IColorProps, IHoverProps } from "@foxui/interfaces"
+	import { useVModel } from "@origam/composables"
+	import type { IActiveProps, IColorProps, IHoverProps } from "@origam/interfaces"
 
 	const props = defineProps<IColorProps & IHoverProps & IActiveProps>()
 

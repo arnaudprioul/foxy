@@ -10,9 +10,9 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxui/composables"
-	import { DENSITY } from "@foxui/enums"
-	import type { IDensityProps } from "@foxui/interfaces"
+	import { useVModel } from "@origam/composables"
+	import { DENSITY } from "@origam/enums"
+	import type { IDensityProps } from "@origam/interfaces"
 
 	import useTitle from '@stories/composables/title.composable'
 	import { densityList } from '@stories/const/density.const'

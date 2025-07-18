@@ -1,5 +1,0 @@
-# Foxuiprogresslinear
-
-## Usage
-
-    <FoxuiProgressLinear />

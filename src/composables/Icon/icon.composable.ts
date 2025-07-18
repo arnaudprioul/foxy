@@ -1,21 +1,21 @@
-import { FoxuiComponentIcon, FoxuiSvgIcon } from '@foxui/components'
+import { OrigamComponentIcon, OrigamSvgIcon } from '@origam/components'
 
-import { DEFAULT_SETS, FOXUI_ICONS_KEY, MDI, MDI_ALIASES } from '@foxui/consts'
+import { DEFAULT_SETS, MDI, MDI_ALIASES, ORIGAM_ICONS_KEY } from '@origam/consts'
 
-import type { TIcon, TIconInstance, TIconOptions } from '@foxui/types'
+import type { TIcon, TIconInstance, TIconOptions } from '@origam/types'
 
-import { mergeDeep } from '@foxui/utils'
+import { mergeDeep } from '@origam/utils'
 import { computed, inject, Ref, unref } from 'vue'
 
 export const useIcon = (props: Ref<TIcon | undefined>) => {
-    const icons = inject(FOXUI_ICONS_KEY)
+    const icons = inject(ORIGAM_ICONS_KEY)
 
-    if (!icons) throw new Error('Missing Foxui Icons provide!')
+    if (!icons) throw new Error('Missing Origam Icons provide!')
 
     const iconData = computed<TIconInstance>(() => {
         const iconAlias = unref(props)
 
-        if (!iconAlias) return {component: FoxuiComponentIcon}
+        if (!iconAlias) return {component: OrigamComponentIcon}
 
         let icon: TIcon | undefined = iconAlias
 
@@ -31,12 +31,12 @@ export const useIcon = (props: Ref<TIcon | undefined>) => {
 
         if (Array.isArray(icon)) {
             return {
-                component: FoxuiSvgIcon,
+                component: OrigamSvgIcon,
                 icon
             }
         } else if (typeof icon !== 'string') {
             return {
-                component: FoxuiComponentIcon,
+                component: OrigamComponentIcon,
                 icon
             }
         }

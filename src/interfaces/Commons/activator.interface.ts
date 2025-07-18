@@ -1,4 +1,4 @@
-import type { IDelayProps } from '@foxui/interfaces'
+import type { IDelayProps } from '@origam/interfaces'
 
 import type { ComponentPublicInstance } from 'vue'
 

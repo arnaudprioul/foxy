@@ -1,6 +1,6 @@
-import type { IDataTableItemsProps, IInternalDataTableHeader } from '@foxui/interfaces'
+import type { IDataTableItemsProps, IInternalDataTableHeader } from '@origam/interfaces'
 
-import { transformDataTableItems } from '@foxui/utils'
+import { transformDataTableItems } from '@origam/utils'
 
 import { computed, Ref } from 'vue'
 

@@ -1,5 +1,5 @@
-import { useVModel } from '@foxui/composables'
-import { FOXUI_DATA_TABLE_GROUP_KEY } from '@foxui/consts'
+import { useVModel } from '@origam/composables'
+import { ORIGAM_DATA_TABLE_GROUP_KEY } from '@origam/consts'
 
 import type {
     IDataTableGroup,
@@ -7,8 +7,8 @@ import type {
     IDataTableGroupProps,
     IDataTableProvideGroup,
     IDataTableSortItem
-} from '@foxui/interfaces'
-import { flattenItems, groupItems } from '@foxui/utils'
+} from '@origam/interfaces'
+import { flattenItems, groupItems } from '@origam/utils'
 
 import { computed, ComputedRef, inject, provide, ref, Ref } from 'vue'
 
@@ -62,7 +62,7 @@ export function provideGroupBy (options: {
 
     const data = {sortByWithGroups, toggleGroup, opened, groupBy, extractRows, isGroupOpen}
 
-    provide(FOXUI_DATA_TABLE_GROUP_KEY, data)
+    provide(ORIGAM_DATA_TABLE_GROUP_KEY, data)
 
     return data
 }
@@ -84,7 +84,7 @@ export function useGroupedItems<T extends IDataTableGroupableItem> (
 }
 
 export function useGroupBy () {
-    const data = inject(FOXUI_DATA_TABLE_GROUP_KEY)
+    const data = inject(ORIGAM_DATA_TABLE_GROUP_KEY)
 
     if (!data) throw new Error('Missing group!')
 

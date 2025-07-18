@@ -1,5 +1,0 @@
-# FoxuiTranslatePicker
-
-## Usage
-
-    <FoxuiTranslatePicker />

@@ -1,5 +1,0 @@
-# Foxuicardheader
-
-## Usage
-
-    <FoxuiCardHeader />

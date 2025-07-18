@@ -12,7 +12,7 @@ import type {
     IStatusProps,
     ITagProps,
     ITransitionComponentProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 export interface ISnackbarProps extends ICommonsComponentProps, ITagProps, IStatusProps, IColorProps, IOverlayProps, IPositionProps, ILocationProps, IRoundedProps, IBorderProps, IPaddingProps, IMarginProps, IElevationProps, ITransitionComponentProps {
     multiLine?: boolean

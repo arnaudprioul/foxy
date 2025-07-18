@@ -1,3 +1,3 @@
-import { FoxuiProgressCircular } from "@foxui/components"
+import { OrigamProgressCircular } from "@origam/components"
 
-export type TFoxuiProgressCircular = InstanceType<typeof FoxuiProgressCircular>
+export type TOrigamProgressCircular = InstanceType<typeof OrigamProgressCircular>

@@ -6,9 +6,9 @@ import type {
     IProgressCircularProps,
     IProgressLinearProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TProgressType } from '@foxui/types'
+import type { TProgressType } from '@origam/types'
 
 export interface IProgressProps extends IProgressLinearProps, IProgressCircularProps {
     type?: TProgressType

@@ -1,4 +1,4 @@
-import { OPEN_STRATEGY, SELECT_STRATEGY, SELECTED } from '@foxui/enums'
+import { OPEN_STRATEGY, SELECT_STRATEGY, SELECTED } from '@origam/enums'
 
 import { Ref } from 'vue'
 

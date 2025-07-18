@@ -1,5 +1,0 @@
-# Foxuiprogress
-
-## Usage
-
-    <FoxuiProgress />

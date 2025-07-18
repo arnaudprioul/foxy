@@ -1,3 +1,3 @@
-import { FoxuiChip } from "@foxui/components"
+import { OrigamChip } from "@origam/components"
 
-export type TFoxuiChip = InstanceType<typeof FoxuiChip>
+export type TOrigamChip = InstanceType<typeof OrigamChip>

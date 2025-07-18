@@ -1,3 +1,3 @@
-import { FoxuiDrawer } from "@foxui/components"
+import { OrigamDrawer } from "@origam/components"
 
-export type TFoxuiDrawer = InstanceType<typeof FoxuiDrawer>
+export type TOrigamDrawer = InstanceType<typeof OrigamDrawer>

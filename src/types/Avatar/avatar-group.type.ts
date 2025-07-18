@@ -1,3 +1,3 @@
-import { FoxuiAvatarGroup } from '@foxui/components'
+import { OrigamAvatarGroup } from '@origam/components'
 
-export type TFoxuiAvatarGroup = InstanceType<typeof FoxuiAvatarGroup>
+export type TOrigamAvatarGroup = InstanceType<typeof OrigamAvatarGroup>

@@ -1,3 +1,3 @@
-import { FoxuiRatingField } from "@foxui/components"
+import { OrigamRatingField } from "@origam/components"
 
-export type TFoxuiRatingField = InstanceType<typeof FoxuiRatingField>
+export type TOrigamRatingField = InstanceType<typeof OrigamRatingField>

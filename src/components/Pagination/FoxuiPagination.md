@@ -1,5 +1,0 @@
-# Foxuipagination
-
-## Usage
-
-    <FoxuiPagination />

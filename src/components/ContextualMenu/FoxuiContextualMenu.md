@@ -1,5 +1,0 @@
-# FoxuiContextualMenu
-
-## Usage
-
-    <FoxuiContextualMenu />

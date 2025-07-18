@@ -9,8 +9,8 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxui/composables"
-	import { ILoaderProps } from "@foxui/interfaces"
+	import { useVModel } from "@origam/composables"
+	import { ILoaderProps } from "@origam/interfaces"
 
 	const props = defineProps<ILoaderProps>()
 

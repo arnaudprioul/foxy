@@ -1,3 +1,3 @@
-import { FoxuiInfiniteScrollIntersect } from "@foxui/components"
+import { OrigamInfiniteScrollIntersect } from "@origam/components"
 
-export type TFoxuiInfiniteScrollIntersect = InstanceType<typeof FoxuiInfiniteScrollIntersect>
+export type TOrigamInfiniteScrollIntersect = InstanceType<typeof OrigamInfiniteScrollIntersect>

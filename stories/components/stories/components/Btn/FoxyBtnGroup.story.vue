@@ -7,27 +7,27 @@
 	>
 		<Variant title="Default">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row
+				<origam-container>
+					<origam-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-btn-group
+						<origam-col cols="auto">
+							<origam-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxui-btn
+									<origam-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxui-btn-group>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-btn-group>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -40,27 +40,27 @@
 
 		<Variant title="Color">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row
+				<origam-container>
+					<origam-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-btn-group
+						<origam-col cols="auto">
+							<origam-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxui-btn
+									<origam-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxui-btn-group>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-btn-group>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -79,27 +79,27 @@
 
 		<Variant title="Border">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row
+				<origam-container>
+					<origam-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-btn-group
+						<origam-col cols="auto">
+							<origam-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxui-btn
+									<origam-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxui-btn-group>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-btn-group>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -109,27 +109,27 @@
 
 		<Variant title="Padding">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row
+				<origam-container>
+					<origam-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-btn-group
+						<origam-col cols="auto">
+							<origam-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxui-btn
+									<origam-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxui-btn-group>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-btn-group>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -139,27 +139,27 @@
 
 		<Variant title="Margin">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row
+				<origam-container>
+					<origam-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-btn-group
+						<origam-col cols="auto">
+							<origam-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxui-btn
+									<origam-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxui-btn-group>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-btn-group>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -169,27 +169,27 @@
 
 		<Variant title="Density">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row
+				<origam-container>
+					<origam-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-btn-group
+						<origam-col cols="auto">
+							<origam-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxui-btn
+									<origam-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxui-btn-group>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-btn-group>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -199,27 +199,27 @@
 
 		<Variant title="Elevation">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row
+				<origam-container>
+					<origam-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-btn-group
+						<origam-col cols="auto">
+							<origam-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxui-btn
+									<origam-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxui-btn-group>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-btn-group>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -229,27 +229,27 @@
 
 		<Variant title="Rounded">
 			<template #default="{state}">
-				<foxui-container>
-					<foxui-row
+				<origam-container>
+					<origam-row
 							:align="ALIGN.CENTER"
 							:justify="JUSTIFY.CENTER"
 					>
-						<foxui-col cols="auto">
-							<foxui-btn-group
+						<origam-col cols="auto">
+							<origam-btn-group
 									v-model="state.modelValue"
 									v-bind="state"
 									@update:model-value="logEvent('update:modelValue', $event)"
 							>
 								<template #item="{item}">
-									<foxui-btn
+									<origam-btn
 											v-bind="item"
 											@group:selected="logEvent('group:selected', $event)"
 									/>
 								</template>
-							</foxui-btn-group>
-						</foxui-col>
-					</foxui-row>
-				</foxui-container>
+							</origam-btn-group>
+						</origam-col>
+					</origam-row>
+				</origam-container>
 			</template>
 
 			<template #controls="{state}">
@@ -263,10 +263,10 @@
 		lang="ts"
 		setup
 >
-	import { FoxuiBtn, FoxuiBtnGroup, FoxuiCol, FoxuiContainer, FoxuiRow } from '@foxui/components'
+	import { OrigamBtn, OrigamBtnGroup, OrigamCol, OrigamContainer, OrigamRow } from '@origam/components'
 
-	import { ALIGN, JUSTIFY, MDI_ICONS } from '@foxui/enums'
-	import { IBtnGroupProps } from "@foxui/interfaces"
+	import { ALIGN, JUSTIFY, MDI_ICONS } from '@origam/enums'
+	import { IBtnGroupProps } from "@origam/interfaces"
 	import {
 		HstBorder,
 		HstColor,

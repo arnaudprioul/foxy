@@ -1,8 +1,8 @@
-import { DIMENSIONS_ARRAY } from '@foxui/consts'
+import { DIMENSIONS_ARRAY } from '@origam/consts'
 
-import type { IDimensionProps } from '@foxui/interfaces'
+import type { IDimensionProps } from '@origam/interfaces'
 
-import { convertToUnit, toKebabCase } from '@foxui/utils'
+import { convertToUnit, toKebabCase } from '@origam/utils'
 
 import { computed } from 'vue'
 

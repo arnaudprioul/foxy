@@ -1,5 +1,0 @@
-# Foxuiparallax
-
-## Usage
-
-    <FoxuiParallax />

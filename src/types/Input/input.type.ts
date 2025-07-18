@@ -1,3 +1,3 @@
-import { FoxuiInput } from '@foxui/components'
+import { OrigamInput } from '@origam/components'
 
-export type TFoxuiInput = InstanceType<typeof FoxuiInput>
+export type TOrigamInput = InstanceType<typeof OrigamInput>

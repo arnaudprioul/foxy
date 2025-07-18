@@ -1,8 +1,8 @@
-import type { ILayer } from '@foxui/interfaces'
+import type { ILayer } from '@origam/interfaces'
 
-import type { TDirectionBoth } from '@foxui/types'
+import type { TDirectionBoth } from '@origam/types'
 
-import { int } from "@foxui/utils"
+import { int } from "@origam/utils"
 
 import type { Ref } from 'vue'
 

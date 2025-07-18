@@ -1,8 +1,8 @@
-import { FoxuiDataTable } from "@foxui/components"
+import { OrigamDataTable } from "@origam/components"
 
-import { DATATABLE_SELECT_STRATEGY } from '@foxui/enums'
+import { DATATABLE_SELECT_STRATEGY } from '@origam/enums'
 
-import type { IDataTableItemKey } from '@foxui/interfaces'
+import type { IDataTableItemKey } from '@origam/interfaces'
 
 export type TDataTableCompareFunction<T = any> = (a: T, b: T) => number | null
 
@@ -20,4 +20,4 @@ export type TDataTableCell<T> =
 
 export type TDataTableSelectStrategy = `${DATATABLE_SELECT_STRATEGY}`
 
-export type TFoxuiDataTable = InstanceType<typeof FoxuiDataTable>
+export type TOrigamDataTable = InstanceType<typeof OrigamDataTable>

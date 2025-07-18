@@ -1,5 +1,0 @@
-# Foxuilistchildren
-
-## Usage
-
-    <FoxuiListChildren />

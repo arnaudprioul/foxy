@@ -1,6 +1,6 @@
-import { FoxuiToolbar } from "@foxui/components"
-import { SCROLL_BEHAVIOR } from '@foxui/enums'
+import { OrigamToolbar } from "@origam/components"
+import { SCROLL_BEHAVIOR } from '@origam/enums'
 
 export type TScrollBehavior = `${SCROLL_BEHAVIOR}`
 
-export type TFoxuiToolbar = InstanceType<typeof FoxuiToolbar>
+export type TOrigamToolbar = InstanceType<typeof OrigamToolbar>

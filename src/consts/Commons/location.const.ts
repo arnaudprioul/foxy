@@ -1,4 +1,4 @@
-import { connectedLocationStrategy, staticLocationStrategy } from '@foxui/utils'
+import { connectedLocationStrategy, staticLocationStrategy } from '@origam/utils'
 
 export const OPPOSITE_MAP = {
     center: 'center',

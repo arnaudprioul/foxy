@@ -1,5 +1,0 @@
-# Foxuidatepickeryears
-
-## Usage
-
-    <FoxuiDatePickerYears />

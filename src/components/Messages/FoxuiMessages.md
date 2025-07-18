@@ -1,5 +1,0 @@
-# Foxuimessages
-
-## Usage
-
-    <FoxuiMessages />

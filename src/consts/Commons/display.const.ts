@@ -1,12 +1,12 @@
-import { BREAKPOINTS } from '@foxui/enums'
+import { BREAKPOINTS } from '@origam/enums'
 
-import type { IDisplayInstance, IDisplayOptions } from '@foxui/interfaces'
+import type { IDisplayInstance, IDisplayOptions } from '@origam/interfaces'
 
-import type { TBreakpoint } from '@foxui/types'
+import type { TBreakpoint } from '@origam/types'
 
 import type { InjectionKey } from 'vue'
 
-export const FOXUI_DISPLAY_KEY: InjectionKey<IDisplayInstance> = Symbol.for('foxui:display')
+export const ORIGAM_DISPLAY_KEY: InjectionKey<IDisplayInstance> = Symbol.for('origam:display')
 
 export const DEFAULT_DISPLAY_OPTIONS: IDisplayOptions = {
     mobileBreakpoint: 'lg',

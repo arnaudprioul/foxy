@@ -1,8 +1,8 @@
-import { useVModel } from '@foxui/composables'
-import { FOXUI_DATA_TABLE_PAGINATION_KEY } from '@foxui/consts'
+import { useVModel } from '@origam/composables'
+import { ORIGAM_DATA_TABLE_PAGINATION_KEY } from '@origam/consts'
 
-import type { IDataTableGroup, IDataTablePaginationProps, IDataTableProvidePagination } from '@foxui/interfaces'
-import { clamp, getCurrentInstance } from '@foxui/utils'
+import type { IDataTableGroup, IDataTablePaginationProps, IDataTableProvidePagination } from '@origam/interfaces'
+import { clamp, getCurrentInstance } from '@origam/utils'
 import { computed, inject, provide, Ref, watch, watchEffect } from 'vue'
 
 export function createPagination (props: IDataTablePaginationProps) {
@@ -68,13 +68,13 @@ export function providePagination (options: {
         setItemsPerPage
     }
 
-    provide(FOXUI_DATA_TABLE_PAGINATION_KEY, data)
+    provide(ORIGAM_DATA_TABLE_PAGINATION_KEY, data)
 
     return data
 }
 
 export function usePagination () {
-    const data = inject(FOXUI_DATA_TABLE_PAGINATION_KEY)
+    const data = inject(ORIGAM_DATA_TABLE_PAGINATION_KEY)
 
     if (!data) throw new Error('Missing pagination!')
 

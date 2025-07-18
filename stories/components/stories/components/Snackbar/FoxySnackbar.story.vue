@@ -6,7 +6,7 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-snackbar
+	      <origam-snackbar
             v-model="state.modelValue"
             v-bind="state"
             @update:model-value="logEvent('update:model-value', $event)"
@@ -64,7 +64,7 @@
     lang="ts"
     setup
 >
-	import { FoxuiSnackbar } from '@foxui/components'
+	import { OrigamSnackbar } from '@origam/components'
 
 	import { logEvent } from 'histoire/client'
 	import { reactive } from 'vue'

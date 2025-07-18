@@ -1,3 +1,3 @@
-import { FoxuiSelectionControl } from "@foxui/components"
+import { OrigamSelectionControl } from "@origam/components"
 
-export type TFoxuiSelectionControl = InstanceType<typeof FoxuiSelectionControl>
+export type TOrigamSelectionControl = InstanceType<typeof OrigamSelectionControl>

@@ -1,3 +1,3 @@
-import { FoxuiSystemBar } from '@foxui/components'
+import { OrigamSystemBar } from '@origam/components'
 
-export type TFoxuiSystemBar = InstanceType<typeof FoxuiSystemBar>
+export type TOrigamSystemBar = InstanceType<typeof OrigamSystemBar>

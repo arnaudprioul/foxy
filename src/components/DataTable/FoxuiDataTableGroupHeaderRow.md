@@ -1,5 +1,0 @@
-# Foxuidatatablegroupheaderrow
-
-## Usage
-
-    <FoxuiDataTableGroupHeaderRow />

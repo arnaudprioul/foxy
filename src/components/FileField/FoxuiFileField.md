@@ -1,5 +1,0 @@
-# Foxuifilefield
-
-## Usage
-
-    <FoxuiFileField />

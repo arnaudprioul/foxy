@@ -24,11 +24,11 @@ import {
     SRGB_FORWARD_TRANSFORM,
     SRGB_REVERSE_MATRIX,
     SRGB_REVERSE_TRANSFORM
-} from '@foxui/consts'
+} from '@origam/consts'
 
-import type { TColorType, THex, THSLA, THSVA, TLAB, TRGBA, TXYZ } from '@foxui/types'
+import type { TColorType, THex, THSLA, THSVA, TLAB, TRGBA, TXYZ } from '@origam/types'
 
-import { chunk, clamp, consoleWarn, has, int, padEnd } from '@foxui/utils'
+import { chunk, clamp, consoleWarn, has, int, padEnd } from '@origam/utils'
 
 export function isCssColor (color?: string | null | false): boolean {
     return !!color && /^(#|var\(--|(rgb|hsl)a?\()/.test(color)

@@ -1,3 +1,3 @@
-import { FoxuiTranslateScale } from "@foxui/components"
+import { OrigamTranslateScale } from "@origam/components"
 
-export type TFoxuiTranslateScale = InstanceType<typeof FoxuiTranslateScale>
+export type TOrigamTranslateScale = InstanceType<typeof OrigamTranslateScale>

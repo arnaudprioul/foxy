@@ -1,3 +1,3 @@
-import { FoxuiListSubheader } from "@foxui/components"
+import { OrigamListSubheader } from "@origam/components"
 
-export type TFoxuiListSubheader = InstanceType<typeof FoxuiListSubheader>
+export type TOrigamListSubheader = InstanceType<typeof OrigamListSubheader>

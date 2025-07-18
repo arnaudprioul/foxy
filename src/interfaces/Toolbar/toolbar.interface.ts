@@ -10,7 +10,7 @@ import type {
     IPositionProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 
 export interface IToolbarProps extends ITagProps, ICommonsComponentProps, IBorderProps, IRoundedProps, IElevationProps, IDensityProps, IColorProps, IPaddingProps, IMarginProps, IPositionProps, IDimensionProps {

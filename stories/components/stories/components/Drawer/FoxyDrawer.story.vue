@@ -6,32 +6,32 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-app id="test">
-		      <foxui-drawer
+	      <origam-app id="test">
+		      <origam-drawer
               v-model:model-value="state.modelValue"
               v-bind="state"
           >
             <template #default>
-	            <foxui-list>
-		            <foxui-list-item
+	            <origam-list>
+		            <origam-list-item
                     prepend-icon="mdi-home"
                     title="Home"
                 />
 
-		            <foxui-list-item
+		            <origam-list-item
                     prepend-icon="mdi-account-circle"
                     title="Users"
                     value="Users"
                 />
 
-		            <foxui-list-item
+		            <origam-list-item
                     title="Admin"
                     value="Admin"
                 />
-	            </foxui-list>
+	            </origam-list>
             </template>
-		      </foxui-drawer>
-	      </foxui-app>
+		      </origam-drawer>
+	      </origam-app>
       </template>
 
       <template #controls>
@@ -48,8 +48,8 @@
     lang="ts"
     setup
 >
-	import { FoxuiApp, FoxuiDrawer, FoxuiList, FoxuiListItem } from "@foxui/components"
-	import type { IDrawerProps } from '@foxui/interfaces'
+	import { OrigamApp, OrigamDrawer, OrigamList, OrigamListItem } from "@origam/components"
+	import type { IDrawerProps } from '@origam/interfaces'
 
 	import { reactive } from 'vue'
 

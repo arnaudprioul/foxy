@@ -7,7 +7,7 @@
 	>
 		<Variant title="Default">
 			<template #default="{state}">
-				<foxui-bottom-nav
+				<origam-bottom-nav
 						order="0"
 						v-bind="state"
 				/>
@@ -32,7 +32,7 @@
 
 		<Variant title="Color">
 			<template #default="{state}">
-				<foxui-bottom-nav
+				<origam-bottom-nav
 						order="0"
 						v-bind="state"
 				/>
@@ -54,7 +54,7 @@
 
 		<Variant title="Border">
 			<template #default="{state}">
-				<foxui-bottom-nav
+				<origam-bottom-nav
 						order="0"
 						v-bind="state"
 				/>
@@ -67,7 +67,7 @@
 
 		<Variant title="Padding">
 			<template #default="{state}">
-				<foxui-bottom-nav
+				<origam-bottom-nav
 						order="0"
 						v-bind="state"
 				/>
@@ -80,7 +80,7 @@
 
 		<Variant title="Margin">
 			<template #default="{state}">
-				<foxui-bottom-nav
+				<origam-bottom-nav
 						order="0"
 						v-bind="state"
 				/>
@@ -93,7 +93,7 @@
 
 		<Variant title="Dimension">
 			<template #default="{state}">
-				<foxui-bottom-nav
+				<origam-bottom-nav
 						order="0"
 						v-bind="state"
 				/>
@@ -114,7 +114,7 @@
 
 		<Variant title="Density">
 			<template #default="{state}">
-				<foxui-bottom-nav
+				<origam-bottom-nav
 						order="0"
 						v-bind="state"
 				/>
@@ -127,7 +127,7 @@
 
 		<Variant title="Elevation">
 			<template #default="{state}">
-				<foxui-bottom-nav
+				<origam-bottom-nav
 						order="0"
 						v-bind="state"
 				/>
@@ -140,7 +140,7 @@
 
 		<Variant title="Rounded">
 			<template #default="{state}">
-				<foxui-bottom-nav
+				<origam-bottom-nav
 						order="0"
 						v-bind="state"
 				/>
@@ -157,9 +157,9 @@
 		lang="ts"
 		setup
 >
-	import { FoxuiBottomNav } from '@foxui/components'
-	import { MDI_ICONS } from '@foxui/enums'
-	import type { IBottomNavProps } from "@foxui/interfaces"
+	import { OrigamBottomNav } from '@origam/components'
+	import { MDI_ICONS } from '@origam/enums'
+	import type { IBottomNavProps } from "@origam/interfaces"
 
 	import {
 		HstBorder,

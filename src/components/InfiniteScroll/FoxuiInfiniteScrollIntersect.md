@@ -1,5 +1,0 @@
-# Foxuiinfinitescrollintersect
-
-## Usage
-
-    <FoxuiInfiniteScrollIntersect />

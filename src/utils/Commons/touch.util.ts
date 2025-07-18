@@ -1,6 +1,6 @@
-import type { ITouchHandlers, ITouchStoredHandlers } from '@foxui/interfaces'
+import type { ITouchHandlers, ITouchStoredHandlers } from '@origam/interfaces'
 
-import type { TTouchWrapper } from '@foxui/types'
+import type { TTouchWrapper } from '@origam/types'
 
 export function handleGesture (wrapper: TTouchWrapper) {
     const {touchstartX, touchendX, touchstartY, touchendY} = wrapper

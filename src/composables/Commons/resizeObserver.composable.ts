@@ -1,8 +1,8 @@
-import { IN_BROWSER } from '@foxui/consts'
+import { IN_BROWSER } from '@origam/consts'
 
-import type { IResizeState } from '@foxui/interfaces'
+import type { IResizeState } from '@origam/interfaces'
 
-import { refElement } from '@foxui/utils'
+import { refElement } from '@origam/utils'
 import { onBeforeUnmount, readonly, ref, watch } from 'vue'
 
 export function useResizeObserver (callback?: ResizeObserverCallback, box: 'content' | 'border' = 'content'): IResizeState {

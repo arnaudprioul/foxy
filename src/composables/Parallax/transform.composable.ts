@@ -1,6 +1,6 @@
-import { AXIS, PARALLAX_ELEMENT_TYPE } from '@foxui/enums'
+import { AXIS, PARALLAX_ELEMENT_TYPE } from '@origam/enums'
 
-import type { IParallaxElementProps } from '@foxui/interfaces'
+import type { IParallaxElementProps } from '@origam/interfaces'
 
 import { computed } from 'vue'
 

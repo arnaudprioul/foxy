@@ -1,5 +1,5 @@
-import type { IParallaxProvide } from '@foxui/interfaces'
+import type { IParallaxProvide } from '@origam/interfaces'
 
 import type { InjectionKey } from 'vue'
 
-export const FOXUI_PARALLAX_KEY: InjectionKey<IParallaxProvide> = Symbol.for('foxui:parallax')
+export const ORIGAM_PARALLAX_KEY: InjectionKey<IParallaxProvide> = Symbol.for('origam:parallax')

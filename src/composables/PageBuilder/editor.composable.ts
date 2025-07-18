@@ -1,9 +1,9 @@
-import { useVModel } from '@foxui/composables'
-import { EMPTY_EDIT, FOXUI_EDIT_KEY } from '@foxui/consts'
+import { useVModel } from '@origam/composables'
+import { EMPTY_EDIT, ORIGAM_EDIT_KEY } from '@origam/consts'
 
-import type { TEditorProvide } from '@foxui/types'
+import type { TEditorProvide } from '@origam/types'
 
-import { getCurrentInstanceName, getUid } from '@foxui/utils'
+import { getCurrentInstanceName, getUid } from '@origam/utils'
 
 import { computed, inject, provide, ref } from 'vue'
 
@@ -25,13 +25,13 @@ export function createEditor (props: any, name = getCurrentInstanceName()) {
         }
     }
 
-    provide(FOXUI_EDIT_KEY, editor)
+    provide(ORIGAM_EDIT_KEY, editor)
 
     return editor.root
 }
 
 export function useEditor (props: any) {
-    const parent = inject(FOXUI_EDIT_KEY, EMPTY_EDIT)
+    const parent = inject(ORIGAM_EDIT_KEY, EMPTY_EDIT)
 
     const uidSymbol = Symbol(getUid())
     const computedId = computed(() => uidSymbol)

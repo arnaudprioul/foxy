@@ -16,8 +16,8 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxui/composables"
-	import type { IStatusProps } from "@foxui/interfaces"
+	import { useVModel } from "@origam/composables"
+	import type { IStatusProps } from "@origam/interfaces"
 	import { statusList, statusPositionList } from '@stories/const/status.const'
 
 	const props = defineProps<IStatusProps>()

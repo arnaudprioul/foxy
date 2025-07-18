@@ -1,5 +1,5 @@
-import type { IDataTableSortItem } from '@foxui/interfaces'
-import { deepEqual, getCurrentInstance } from '@foxui/utils'
+import type { IDataTableSortItem } from '@origam/interfaces'
+import { deepEqual, getCurrentInstance } from '@origam/utils'
 import { computed, Ref, watch } from 'vue'
 
 export function useOptions ({
@@ -15,7 +15,7 @@ export function useOptions ({
     groupBy: Ref<Array<IDataTableSortItem>>
     search: Ref<string | undefined>
 }) {
-    const vm = getCurrentInstance('FoxuiDataTable')
+    const vm = getCurrentInstance('OrigamDataTable')
 
     const options = computed(() => ({
         page: page.value,

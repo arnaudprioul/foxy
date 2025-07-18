@@ -1,3 +1,3 @@
-import { FoxuiPickerTitle } from "@foxui/components"
+import { OrigamPickerTitle } from "@origam/components"
 
-export type TFoxuiPickerTitle = InstanceType<typeof FoxuiPickerTitle>
+export type TOrigamPickerTitle = InstanceType<typeof OrigamPickerTitle>

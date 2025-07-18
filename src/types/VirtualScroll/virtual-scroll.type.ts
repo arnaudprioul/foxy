@@ -1,3 +1,3 @@
-import { FoxuiVirtualScroll } from '@foxui/components'
+import { OrigamVirtualScroll } from '@origam/components'
 
-export type TFoxuiVirtualScroll = InstanceType<typeof FoxuiVirtualScroll>
+export type TOrigamVirtualScroll = InstanceType<typeof OrigamVirtualScroll>

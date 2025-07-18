@@ -1,8 +1,8 @@
-import type { IHoverHtmlElement, IHoverOptions } from '@foxui/interfaces'
+import type { IHoverHtmlElement, IHoverOptions } from '@origam/interfaces'
 
-import type { THoverEvent } from '@foxui/types'
+import type { THoverEvent } from '@origam/types'
 
-export const FOXUI_HOVER_STOP_KEY = Symbol('foxui:hoverStop')
+export const ORIGAM_HOVER_STOP_KEY = Symbol('origam:hoverStop')
 
 export const HOVER = {
     show (

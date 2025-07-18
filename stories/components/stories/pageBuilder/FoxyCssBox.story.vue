@@ -5,7 +5,7 @@
       title="CssBox"
   >
     <template #default="{ state }">
-	    <foxui-css-box v-bind="state.props"/>
+	    <origam-css-box v-bind="state.props"/>
     </template>
   </Story>
 </template>
@@ -14,7 +14,7 @@
     lang="ts"
     setup
 >
-	import { FoxuiCssBox } from '@foxui/components'
+	import { OrigamCssBox } from '@origam/components'
 
 	function initState () {
     return {

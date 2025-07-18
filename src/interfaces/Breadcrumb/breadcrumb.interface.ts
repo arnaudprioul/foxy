@@ -8,9 +8,9 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TBreadcrumbItem, TIcon } from '@foxui/types'
+import type { TBreadcrumbItem, TIcon } from '@origam/types'
 
 export interface IBreadcrumbProps extends IColorProps, ITagProps, ICommonsComponentProps, IDensityProps, IRoundedProps, IPaddingProps, IMarginProps, IBorderProps, IElevationProps {
     activeClass?: string

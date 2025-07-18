@@ -1,5 +1,0 @@
-# FoxuiColorpickerfield
-
-## Usage
-
-    <FoxuiColorPickerField />

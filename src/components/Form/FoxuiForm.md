@@ -1,5 +1,0 @@
-# Foxuiform
-
-## Usage
-
-    <FoxuiForm />

@@ -1,1 +1,1 @@
-export { default as FoxuiContextualMenu } from './FoxuiContextualMenu.vue'
+export { default as OrigamContextualMenu } from './OrigamContextualMenu.vue'

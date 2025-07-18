@@ -1,6 +1,6 @@
-import type { IAlignProps, IColorProps, ICommonsComponentProps, IPaddingProps } from "@foxui/interfaces"
+import type { IAlignProps, IColorProps, ICommonsComponentProps, IPaddingProps } from "@origam/interfaces"
 
-import type { TIcon } from "@foxui/types"
+import type { TIcon } from "@origam/types"
 
 export interface IDataTableFooterProps extends ICommonsComponentProps, IColorProps, IPaddingProps, IAlignProps {
     prevIcon?: TIcon

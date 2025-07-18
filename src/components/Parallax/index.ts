@@ -1,2 +1,2 @@
-export { default as FoxuiParallaxElement } from './FoxuiParallaxElement.vue'
-export { default as FoxuiParallax } from './FoxuiParallax.vue'
+export { default as OrigamParallaxElement } from './OrigamParallaxElement.vue'
+export { default as OrigamParallax } from './OrigamParallax.vue'

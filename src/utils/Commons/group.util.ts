@@ -1,6 +1,6 @@
-import type { IGroupItem } from '@foxui/interfaces'
+import type { IGroupItem } from '@origam/interfaces'
 
-import { deepEqual } from '@foxui/utils'
+import { deepEqual } from '@origam/utils'
 
 import { UnwrapRef } from 'vue'
 

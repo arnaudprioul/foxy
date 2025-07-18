@@ -1,4 +1,4 @@
-import type { IInternalDataTableHeader } from "@foxui/interfaces"
+import type { IInternalDataTableHeader } from "@origam/interfaces"
 
 export function useCell () {
     const getPadding = (column: IInternalDataTableHeader) => {

@@ -6,20 +6,20 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container fullscreen>
-		      <foxui-row
+	      <origam-container fullscreen>
+		      <origam-row
               :align-content="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col cols="auto">
-				      <foxui-radio
+			      <origam-col cols="auto">
+				      <origam-radio
                   v-bind="state"
                   @update:model-value="logEvent('update:model-value', $event)"
                   @click:label="logEvent('click:label', $event)"
               />
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
       <template #controls>
         <hst-checkbox
@@ -49,9 +49,9 @@
     lang="ts"
     setup
 >
-	import { FoxuiCol, FoxuiContainer, FoxuiRadio, FoxuiRow } from '@foxui/components'
+	import { OrigamCol, OrigamContainer, OrigamRadio, OrigamRow } from '@origam/components'
 
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
 
 	import { HstIcon } from '@stories/components/controls'
 	import { logEvent } from 'histoire/client'

@@ -1,1 +1,1 @@
-export { default as FoxuiSheet } from './FoxuiSheet.vue'
+export { default as OrigamSheet } from './OrigamSheet.vue'

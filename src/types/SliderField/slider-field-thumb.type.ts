@@ -1,3 +1,3 @@
-import { FoxuiSliderFieldThumb } from '@foxui/components'
+import { OrigamSliderFieldThumb } from '@origam/components'
 
-export type TFoxuiSliderFieldThumb = InstanceType<typeof FoxuiSliderFieldThumb>
+export type TOrigamSliderFieldThumb = InstanceType<typeof OrigamSliderFieldThumb>

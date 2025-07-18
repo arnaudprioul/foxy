@@ -1,5 +1,0 @@
-# Foxuidatepickermonth
-
-## Usage
-
-    <FoxuiDatePickerMonth />

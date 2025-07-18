@@ -1,5 +1,0 @@
-# Foxuiwindowitem
-
-## Usage
-
-    <FoxuiWindowItem />

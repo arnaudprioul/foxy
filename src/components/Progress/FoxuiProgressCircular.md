@@ -1,5 +1,0 @@
-# Foxuiprogresscircular
-
-## Usage
-
-    <FoxuiProgressCircular />

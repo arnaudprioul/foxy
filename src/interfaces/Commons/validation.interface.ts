@@ -1,6 +1,6 @@
-import type { IFocusProps } from '@foxui/interfaces'
+import type { IFocusProps } from '@origam/interfaces'
 
-import type { TValidateOn } from '@foxui/types'
+import type { TValidateOn } from '@origam/types'
 
 export interface IValidationProps extends IFocusProps {
     disabled?: boolean

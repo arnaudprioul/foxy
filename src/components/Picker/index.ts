@@ -1,2 +1,2 @@
-export { default as FoxuiPicker } from './FoxuiPicker.vue'
-export { default as FoxuiPickerTitle } from './FoxuiPickerTitle.vue'
+export { default as OrigamPicker } from './OrigamPicker.vue'
+export { default as OrigamPickerTitle } from './OrigamPickerTitle.vue'

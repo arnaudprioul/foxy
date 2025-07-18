@@ -1,6 +1,6 @@
-import { FoxuiCol } from "@foxui/components"
-import { COLS } from '@foxui/enums'
+import { OrigamCol } from "@origam/components"
+import { COLS } from '@origam/enums'
 
 export type TCols = `${COLS}` | true | 'auto'
 
-export type TFoxuiCol = InstanceType<typeof FoxuiCol>
+export type TOrigamCol = InstanceType<typeof OrigamCol>

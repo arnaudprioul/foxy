@@ -1,5 +1,0 @@
-# Foxuidatatablecolumn
-
-## Usage
-
-    <FoxuiDataTableColumn />

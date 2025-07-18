@@ -1,5 +1,0 @@
-# Foxuidatatablefooter
-
-## Usage
-
-    <FoxuiDataTableFooter />

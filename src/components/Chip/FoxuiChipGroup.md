@@ -1,5 +1,0 @@
-# Foxuichipgroup
-
-## Usage
-
-    <FoxuiChipGroup />

@@ -1,2 +1,2 @@
-export { default as FoxuiAvatar } from './FoxuiAvatar.vue'
-export { default as FoxuiAvatarGroup } from './FoxuiAvatarGroup.vue'
+export { default as OrigamAvatar } from './OrigamAvatar.vue'
+export { default as OrigamAvatarGroup } from './OrigamAvatarGroup.vue'

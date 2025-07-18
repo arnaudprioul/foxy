@@ -1,3 +1,3 @@
-import { FoxuiDatePickerYears } from "@foxui/components"
+import { OrigamDatePickerYears } from "@origam/components"
 
-export type TFoxuiDatePickerYears = InstanceType<typeof FoxuiDatePickerYears>
+export type TOrigamDatePickerYears = InstanceType<typeof OrigamDatePickerYears>

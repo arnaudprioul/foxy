@@ -1,15 +1,15 @@
-import { useSort } from '@foxui/composables'
-import { FOXUI_DATA_TABLE_HEADERS_KEY } from '@foxui/consts'
-import { SORT_DIRECTION } from '@foxui/enums'
+import { useSort } from '@origam/composables'
+import { ORIGAM_DATA_TABLE_HEADERS_KEY } from '@origam/consts'
+import { SORT_DIRECTION } from '@origam/enums'
 import type {
     IDataTableHeader,
     IDataTableHeaderProps,
     IDataTableSortItem,
     IHeaderCellProps,
     IInternalDataTableHeader
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
-import type { TDataTableCompareFunction, TFilterKeyFunctions } from '@foxui/types'
+import type { TDataTableCompareFunction, TFilterKeyFunctions } from '@origam/types'
 
 import {
     convertToInternalHeaders,
@@ -17,7 +17,7 @@ import {
     getHeaderDepth,
     parseFixedColumns,
     parseHeaderItems
-} from '@foxui/utils'
+} from '@origam/utils'
 
 import { capitalize, inject, provide, ref, Ref, watchEffect } from 'vue'
 
@@ -87,13 +87,13 @@ export function createHeaders (
 
     const data = {headers, columns, sortFunctions, sortRawFunctions, filterFunctions}
 
-    provide(FOXUI_DATA_TABLE_HEADERS_KEY, data)
+    provide(ORIGAM_DATA_TABLE_HEADERS_KEY, data)
 
     return data
 }
 
 export function useHeaders () {
-    const data = inject(FOXUI_DATA_TABLE_HEADERS_KEY)
+    const data = inject(ORIGAM_DATA_TABLE_HEADERS_KEY)
 
     if (!data) throw new Error('Missing headers!')
 

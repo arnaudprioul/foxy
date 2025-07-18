@@ -11,7 +11,7 @@ import type {
     IPaddingProps,
     IRoundedProps,
     IValidationProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 export interface IInputProps extends ICommonsComponentProps, IDensityProps, IPaddingProps, IMarginProps, IRoundedProps, IColorProps, IBorderProps, IElevationProps, IDimensionProps, IDirectionProps, IValidationProps, IAdjacentProps {
     centerAffix?: boolean

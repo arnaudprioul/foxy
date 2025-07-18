@@ -1,5 +1,0 @@
-# Foxuilist
-
-## Usage
-
-    <FoxuiList />

@@ -1,1 +1,1 @@
-export { default as FoxuiLazy } from './FoxuiLazy.vue'
+export { default as OrigamLazy } from './OrigamLazy.vue'

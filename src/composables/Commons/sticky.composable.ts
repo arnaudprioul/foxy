@@ -1,5 +1,5 @@
-import type { ISticky } from "@foxui/interfaces"
-import { convertToUnit } from '@foxui/utils'
+import type { ISticky } from "@origam/interfaces"
+import { convertToUnit } from '@origam/utils'
 
 import { computed, onBeforeUnmount, onMounted, shallowRef, watch } from 'vue'
 

@@ -1,3 +1,3 @@
-import { FoxuiWindow } from '@foxui/components'
+import { OrigamWindow } from '@origam/components'
 
-export type TFoxuiWindow = InstanceType<typeof FoxuiWindow>
+export type TOrigamWindow = InstanceType<typeof OrigamWindow>

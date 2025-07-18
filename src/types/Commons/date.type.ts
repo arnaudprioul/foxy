@@ -1,4 +1,4 @@
-import type { IDateAdapter } from "@foxui/interfaces"
+import type { IDateAdapter } from "@origam/interfaces"
 
 export type TCustomDateFormat =
     Intl.DateTimeFormatOptions

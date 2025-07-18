@@ -1,3 +1,3 @@
-import { FoxuiColorPickerCanvas } from "@foxui/components"
+import { OrigamColorPickerCanvas } from "@origam/components"
 
-export type TFoxuiColorPickerCanvas = InstanceType<typeof FoxuiColorPickerCanvas>
+export type TOrigamColorPickerCanvas = InstanceType<typeof OrigamColorPickerCanvas>

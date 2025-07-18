@@ -1,3 +1,3 @@
-import { FoxuiTooltip } from "@foxui/components"
+import { OrigamTooltip } from "@origam/components"
 
-export type TFoxuiTooltip = InstanceType<typeof FoxuiTooltip>
+export type TOrigamTooltip = InstanceType<typeof OrigamTooltip>

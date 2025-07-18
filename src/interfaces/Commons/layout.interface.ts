@@ -1,6 +1,6 @@
-import type { ICommonsComponentProps } from '@foxui/interfaces'
+import type { ICommonsComponentProps } from '@origam/interfaces'
 
-import type { TDirectionBoth } from '@foxui/types'
+import type { TDirectionBoth } from '@origam/types'
 
 import type { ComponentInternalInstance, ComputedRef, CSSProperties, Ref } from 'vue'
 

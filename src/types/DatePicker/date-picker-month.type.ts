@@ -1,3 +1,3 @@
-import { FoxuiDatePickerMonth } from "@foxui/components"
+import { OrigamDatePickerMonth } from "@origam/components"
 
-export type TFoxuiDatePickerMonth = InstanceType<typeof FoxuiDatePickerMonth>
+export type TOrigamDatePickerMonth = InstanceType<typeof OrigamDatePickerMonth>

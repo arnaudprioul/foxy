@@ -11,9 +11,9 @@ import type {
     IPaddingProps,
     IPickerProps,
     IRoundedProps
-} from "@foxui/interfaces"
+} from "@origam/interfaces"
 
-import type { THSVA } from "@foxui/types"
+import type { THSVA } from "@origam/types"
 
 export interface IColorPickerProps extends ICommonsComponentProps, IBorderProps, IRoundedProps, IElevationProps, IPaddingProps, IMarginProps, IPickerProps, IColorProps, IColorPickerCanvasProps, IColorPickerPreviewProps, IColorPickerEditProps, IColorPickerSwatchesProps {
     canvasHeight?: string | number

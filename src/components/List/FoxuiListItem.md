@@ -1,5 +1,0 @@
-# Foxuilistitem
-
-## Usage
-
-    <FoxuiListItem />

@@ -1,5 +1,0 @@
-# Foxuiradiogroup
-
-## Usage
-
-    <FoxuiRadioGroup />

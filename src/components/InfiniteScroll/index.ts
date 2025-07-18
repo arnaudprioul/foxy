@@ -1,2 +1,2 @@
-export { default as FoxuiInfiniteScroll } from './FoxuiInfiniteScroll.vue'
-export { default as FoxuiInfiniteScrollIntersect } from './FoxuiInfiniteScrollIntersect.vue'
+export { default as OrigamInfiniteScroll } from './OrigamInfiniteScroll.vue'
+export { default as OrigamInfiniteScrollIntersect } from './OrigamInfiniteScrollIntersect.vue'

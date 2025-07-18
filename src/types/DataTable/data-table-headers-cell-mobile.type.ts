@@ -1,3 +1,3 @@
-import { FoxuiDataTableHeadersCellMobile } from "@foxui/components"
+import { OrigamDataTableHeadersCellMobile } from "@origam/components"
 
-export type TFoxuiDataTableHeadersCellMobile = InstanceType<typeof FoxuiDataTableHeadersCellMobile>
+export type TOrigamDataTableHeadersCellMobile = InstanceType<typeof OrigamDataTableHeadersCellMobile>

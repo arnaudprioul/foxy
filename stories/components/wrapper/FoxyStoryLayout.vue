@@ -2,11 +2,11 @@
     lang="ts"
     setup
 >
-	import { FoxuiApp } from '@foxui/components'
+	import { OrigamApp } from '@origam/components'
 </script>
 
 <template>
-	<foxui-app style="min-height: 300px; width: 100%;">
+	<origam-app style="min-height: 300px; width: 100%;">
     <slot/>
-	</foxui-app>
+	</origam-app>
 </template>

@@ -1,6 +1,6 @@
-import type { IBox } from '@foxui/interfaces'
+import type { IBox } from '@origam/interfaces'
 
-import type { TElementPoint, TOffset, TParsedAnchor, TPoint, TViewportPoint } from '@foxui/types'
+import type { TElementPoint, TOffset, TParsedAnchor, TPoint, TViewportPoint } from '@origam/types'
 
 export function elementToViewport (point: TElementPoint, offset: TOffset | IBox) {
     return {

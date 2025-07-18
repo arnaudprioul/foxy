@@ -8,7 +8,7 @@ import type {
     IPickerTitleProps,
     IRoundedProps,
     ISheetProps
-} from "@foxui/interfaces"
+} from "@origam/interfaces"
 
 export interface IPickerProps extends ICommonsComponentProps, IColorProps, ISheetProps, IBorderProps, IPaddingProps, IMarginProps, IElevationProps, IRoundedProps, IPickerTitleProps {
     landscape?: boolean

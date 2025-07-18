@@ -1,7 +1,7 @@
-import { FoxuiTextField } from '@foxui/components'
+import { OrigamTextField } from '@origam/components'
 
-import { TEXT_FIELD_TYPE } from "@foxui/enums"
+import { TEXT_FIELD_TYPE } from "@origam/enums"
 
 export type TTextFieldType = `${TEXT_FIELD_TYPE}`
 
-export type TFoxuiTextField = InstanceType<typeof FoxuiTextField>
+export type TOrigamTextField = InstanceType<typeof OrigamTextField>

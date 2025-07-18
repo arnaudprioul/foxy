@@ -7,57 +7,57 @@
     <Variant title="Default">
       <template #default>
         <div style="height: 1500px;">
-	        <foxui-container fullscreen>
-		        <foxui-row
+	        <origam-container fullscreen>
+		        <origam-row
                 :align="ALIGN.CENTER"
                 :justify="JUSTIFY.CENTER"
             >
-			        <foxui-col cols>
-				        <foxui-parallax v-bind="state">
-					        <foxui-container fullscreen>
-						        <foxui-row
+			        <origam-col cols>
+				        <origam-parallax v-bind="state">
+					        <origam-container fullscreen>
+						        <origam-row
                         :align="ALIGN.CENTER"
                         :justify="JUSTIFY.CENTER"
                     >
-							        <foxui-col cols="auto">
-								        <foxui-title tag="h2">Parallax</foxui-title>
-							        </foxui-col>
-						        </foxui-row>
-					        </foxui-container>
-					        <foxui-parallax-element
+							        <origam-col cols="auto">
+								        <origam-title tag="h2">Parallax</origam-title>
+							        </origam-col>
+						        </origam-row>
+					        </origam-container>
+					        <origam-parallax-element
                       :strength="-20"
                       :type="stateElement.type"
                       class="circle circle-blue"
                   />
-					        <foxui-parallax-element
+					        <origam-parallax-element
                       :strength="10"
                       :type="stateElement.type"
                       class="circle circle-purple"
                   />
-					        <foxui-parallax-element
+					        <origam-parallax-element
                       :strength="25"
                       :type="stateElement.type"
                       class="circle circle-yellow"
                   />
-					        <foxui-parallax-element
+					        <origam-parallax-element
                       :strength="30"
                       :type="stateElement.type"
                       class="circle circle-green"
                   />
-					        <foxui-parallax-element
+					        <origam-parallax-element
                       :strength="15"
                       :type="stateElement.type"
                       class="circle circle-orange"
                   />
-					        <foxui-parallax-element
+					        <origam-parallax-element
                       :strength="-15"
                       :type="stateElement.type"
                       class="circle circle-red"
                   />
-				        </foxui-parallax>
-			        </foxui-col>
-		        </foxui-row>
-	        </foxui-container>
+				        </origam-parallax>
+			        </origam-col>
+		        </origam-row>
+	        </origam-container>
         </div>
       </template>
       <template #controls>
@@ -106,15 +106,15 @@
     setup
 >
 	import {
-		FoxuiCol,
-		FoxuiContainer,
-		FoxuiParallax,
-		FoxuiParallaxElement,
-		FoxuiRow,
-		FoxuiTitle
-	} from '@foxui/components'
+		OrigamCol,
+		OrigamContainer,
+		OrigamParallax,
+		OrigamParallaxElement,
+		OrigamRow,
+		OrigamTitle
+	} from '@origam/components'
 
-	import { ALIGN, JUSTIFY, PARALLAX_ELEMENT_TYPE, PARALLAX_EVENT } from '@foxui/enums'
+	import { ALIGN, JUSTIFY, PARALLAX_ELEMENT_TYPE, PARALLAX_EVENT } from '@origam/enums'
 
 	import { reactive } from 'vue'
 
@@ -186,7 +186,7 @@
   }
 }
 
-.foxui-title {
+.origam-title {
   z-index: 99;
   position: relative;
 }

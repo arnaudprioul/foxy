@@ -2,10 +2,10 @@
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "paths": {
-      "@foxui": [
+      "@origam": [
         "../src/"
       ],
-      "@foxui/*": [
+      "@origam/*": [
         "../src/*"
       ],
       "@cy": [

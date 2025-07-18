@@ -1,3 +1,3 @@
-export { default as FoxuiRadio } from './FoxuiRadio.vue'
-export { default as FoxuiRadioBtn } from './FoxuiRadioBtn.vue'
-export { default as FoxuiRadioGroup } from './FoxuiRadioGroup.vue'
+export { default as OrigamRadio } from './OrigamRadio.vue'
+export { default as OrigamRadioBtn } from './OrigamRadioBtn.vue'
+export { default as OrigamRadioGroup } from './OrigamRadioGroup.vue'

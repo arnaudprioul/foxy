@@ -1,3 +1,3 @@
-import { SORT_DIRECTION } from '@foxui/enums'
+import { SORT_DIRECTION } from '@origam/enums'
 
 export type TSortDirection = `${SORT_DIRECTION}`

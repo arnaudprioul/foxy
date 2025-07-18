@@ -1,1 +1,1 @@
-export { default as FoxuiBadge } from './FoxuiBadge.vue'
+export { default as OrigamBadge } from './OrigamBadge.vue'

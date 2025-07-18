@@ -1,1 +1,1 @@
-export { default as FoxuiOtpInputField } from './FoxuiOtpInputField.vue'
+export { default as OrigamOtpInputField } from './OrigamOtpInputField.vue'

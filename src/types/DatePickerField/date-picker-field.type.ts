@@ -1,3 +1,3 @@
-import { FoxuiDatePickerField } from "@foxui/components"
+import { OrigamDatePickerField } from "@origam/components"
 
-export type TFoxuiDatePickerField = InstanceType<typeof FoxuiDatePickerField>
+export type TOrigamDatePickerField = InstanceType<typeof OrigamDatePickerField>

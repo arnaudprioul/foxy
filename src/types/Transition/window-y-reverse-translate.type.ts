@@ -1,3 +1,3 @@
-import { FoxuiWindowYReverseTranslate } from "@foxui/components"
+import { OrigamWindowYReverseTranslate } from "@origam/components"
 
-export type TFoxuiWindowYReverseTranslate = InstanceType<typeof FoxuiWindowYReverseTranslate>
+export type TOrigamWindowYReverseTranslate = InstanceType<typeof OrigamWindowYReverseTranslate>

@@ -1,4 +1,4 @@
-export { default as FoxuiCol } from './FoxuiCol.vue'
-export { default as FoxuiContainer } from './FoxuiContainer.vue'
-export { default as FoxuiRow } from './FoxuiRow.vue'
-export { default as FoxuiSpacer } from './FoxuiSpacer.vue'
+export { default as OrigamCol } from './OrigamCol.vue'
+export { default as OrigamContainer } from './OrigamContainer.vue'
+export { default as OrigamRow } from './OrigamRow.vue'
+export { default as OrigamSpacer } from './OrigamSpacer.vue'

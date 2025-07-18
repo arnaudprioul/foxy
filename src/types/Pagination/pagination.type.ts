@@ -1,3 +1,3 @@
-import { FoxuiPagination } from '@foxui/components'
+import { OrigamPagination } from '@origam/components'
 
-export type TFoxuiPagination = InstanceType<typeof FoxuiPagination>
+export type TOrigamPagination = InstanceType<typeof OrigamPagination>

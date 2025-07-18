@@ -1,2 +1,2 @@
-export { default as FoxuiVirtualScroll } from './FoxuiVirtualScroll.vue'
-export { default as FoxuiVirtualScrollItem } from './FoxuiVirtualScrollItem.vue'
+export { default as OrigamVirtualScroll } from './OrigamVirtualScroll.vue'
+export { default as OrigamVirtualScrollItem } from './OrigamVirtualScrollItem.vue'

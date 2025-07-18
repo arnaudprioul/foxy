@@ -1,6 +1,6 @@
-import { TEXT_FIELD_TYPE } from "@foxui/enums"
+import { TEXT_FIELD_TYPE } from "@origam/enums"
 
-import type { TTextFieldType } from "@foxui/types"
+import type { TTextFieldType } from "@origam/types"
 
 export const ACTIVE_TEXT_FIELD_TYPE: Partial<Array<TTextFieldType>> = [
     TEXT_FIELD_TYPE.COLOR,

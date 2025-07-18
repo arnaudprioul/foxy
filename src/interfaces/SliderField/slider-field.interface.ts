@@ -1,4 +1,4 @@
-import { useSteps } from '@foxui/composables'
+import { useSteps } from '@origam/composables'
 
 import type {
     IBorderProps,
@@ -15,18 +15,18 @@ import type {
     IRoundedProps,
     ISliderFieldThumbProps,
     ISliderFieldTrackProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 import type {
     TAlways,
     TColor,
     TDirectionBoth,
-    TFoxuiSliderFieldThumb,
-    TFoxuiSliderFieldTrack,
+    TOrigamSliderFieldThumb,
+    TOrigamSliderFieldTrack,
     TSize,
     TSliderData,
     TTick
-} from '@foxui/types'
+} from '@origam/types'
 
 import { Ref } from 'vue'
 
@@ -81,10 +81,10 @@ export interface ISliderFieldProvide {
     step: Ref<number>
     ticks: Ref<number[] | string | undefined>
     tickSize: Ref<number>
-    foxuiSliderFieldTrackRef: Ref<TFoxuiSliderFieldTrack | null | undefined>
-    foxuiSliderFieldThumbRef: Ref<TFoxuiSliderFieldThumb | null | undefined>
-    foxuiSliderFieldStartThumbRef: Ref<TFoxuiSliderFieldThumb | null | undefined>
-    foxuiSliderFieldStopThumbRef: Ref<TFoxuiSliderFieldThumb | null | undefined>
+    origamSliderFieldTrackRef: Ref<TOrigamSliderFieldTrack | null | undefined>
+    origamSliderFieldThumbRef: Ref<TOrigamSliderFieldThumb | null | undefined>
+    origamSliderFieldStartThumbRef: Ref<TOrigamSliderFieldThumb | null | undefined>
+    origamSliderFieldStopThumbRef: Ref<TOrigamSliderFieldThumb | null | undefined>
     isVertical: Ref<boolean>
     parsedTicks: Ref<Array<TTick>>
     hasLabels: Ref<boolean>
@@ -93,10 +93,10 @@ export interface ISliderFieldProvide {
 }
 
 export interface ISliderField {
-    foxuiSliderFieldTrackRef: Ref<TFoxuiSliderFieldTrack | null | undefined>
-    foxuiSliderFieldThumbRef: Ref<TFoxuiSliderFieldThumb | null | undefined>
-    foxuiSliderFieldStartThumbRef: Ref<TFoxuiSliderFieldThumb | null | undefined>
-    foxuiSliderFieldStopThumbRef: Ref<TFoxuiSliderFieldThumb | null | undefined>
+    origamSliderFieldTrackRef: Ref<TOrigamSliderFieldTrack | null | undefined>
+    origamSliderFieldThumbRef: Ref<TOrigamSliderFieldThumb | null | undefined>
+    origamSliderFieldStartThumbRef: Ref<TOrigamSliderFieldThumb | null | undefined>
+    origamSliderFieldStopThumbRef: Ref<TOrigamSliderFieldThumb | null | undefined>
     props: ISliderFieldProps
     steps: ReturnType<typeof useSteps>
     onSliderEnd: (data: TSliderData) => void

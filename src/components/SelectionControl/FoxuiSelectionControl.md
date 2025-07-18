@@ -1,5 +1,0 @@
-# Foxuiselectioncontrol
-
-## Usage
-
-    <FoxuiSelectionControl />

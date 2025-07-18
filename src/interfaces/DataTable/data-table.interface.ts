@@ -19,7 +19,7 @@ import type {
     IFiltersProps,
     IInternalDataTableHeader,
     ITableProps
-} from '@foxui/interfaces'
+} from '@origam/interfaces'
 
 import type { UnwrapRef } from 'vue'
 

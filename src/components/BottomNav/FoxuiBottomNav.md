@@ -1,5 +1,0 @@
-# Foxuibottomnav
-
-## Usage
-
-    <FoxuiBottomNav />

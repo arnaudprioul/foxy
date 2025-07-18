@@ -1,5 +1,5 @@
-import type { TEventHandler } from '@foxui/types'
-import { isOn } from '@foxui/utils'
+import type { TEventHandler } from '@origam/types'
+import { isOn } from '@origam/utils'
 
 export function getPrefixedEventHandlers<T extends `:${string}`> (
     attrs: Record<string, any>,

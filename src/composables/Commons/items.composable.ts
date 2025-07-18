@@ -1,6 +1,6 @@
-import type { IInternalListItem, IItemProps } from '@foxui/interfaces'
+import type { IInternalListItem, IItemProps } from '@origam/interfaces'
 
-import { deepEqual, transformListItem, transformListItems } from '@foxui/utils'
+import { deepEqual, transformListItem, transformListItems } from '@origam/utils'
 
 import { computed } from 'vue'
 

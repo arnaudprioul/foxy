@@ -1,3 +1,3 @@
-import { FoxuiDivider } from "@foxui/components"
+import { OrigamDivider } from "@origam/components"
 
-export type TFoxuiDivider = InstanceType<typeof FoxuiDivider>
+export type TOrigamDivider = InstanceType<typeof OrigamDivider>

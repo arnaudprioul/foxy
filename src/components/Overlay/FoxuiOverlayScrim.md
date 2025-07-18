@@ -1,5 +1,0 @@
-# Foxuioverlayscrim
-
-## Usage
-
-    <FoxuiOverlayScrim />

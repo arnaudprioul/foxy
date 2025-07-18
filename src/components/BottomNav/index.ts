@@ -1,1 +1,1 @@
-export { default as FoxuiBottomNav } from './FoxuiBottomNav.vue'
+export { default as OrigamBottomNav } from './OrigamBottomNav.vue'

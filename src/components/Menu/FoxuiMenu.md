@@ -1,5 +1,0 @@
-# Foxuimenu
-
-## Usage
-
-    <FoxuiMenu />

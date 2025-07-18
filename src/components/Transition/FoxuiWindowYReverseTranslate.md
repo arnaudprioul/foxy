@@ -1,5 +1,0 @@
-# Foxuiwindowyreversetranslate
-
-## Usage
-
-    <FoxuiWindowYReverseTranslate />

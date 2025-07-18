@@ -1,9 +1,9 @@
-import { useRtl } from "@foxui/composables"
-import { FOXUI_GO_TO_KEY } from "@foxui/consts"
+import { useRtl } from "@origam/composables"
+import { ORIGAM_GO_TO_KEY } from "@origam/consts"
 
-import type { IGoToInstance, IGoToOptions, ILocaleInstance, IRtlInstance } from "@foxui/interfaces"
+import type { IGoToInstance, IGoToOptions, ILocaleInstance, IRtlInstance } from "@origam/interfaces"
 
-import { genDefaults, mergeDeep, scrollTo } from "@foxui/utils"
+import { genDefaults, mergeDeep, scrollTo } from "@origam/utils"
 
 import { ComponentPublicInstance, computed, inject } from "vue"
 
@@ -18,11 +18,11 @@ export function createGoTo (
 }
 
 export function useGoTo (_options: Partial<IGoToOptions> = {}) {
-    const goToInstance = inject(FOXUI_GO_TO_KEY)
+    const goToInstance = inject(ORIGAM_GO_TO_KEY)
 
     const {isRtl} = useRtl()
 
-    if (!goToInstance) throw new Error('[Foxui] Could not find injected goto instance')
+    if (!goToInstance) throw new Error('[Origam] Could not find injected goto instance')
 
     const goTo = {
         ...goToInstance,

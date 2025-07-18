@@ -6,16 +6,16 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container fullscreen>
-		      <foxui-row
+	      <origam-container fullscreen>
+		      <origam-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col>
-				      <foxui-card v-bind="state"/>
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      <origam-col>
+				      <origam-card v-bind="state"/>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
 
       <template #controls>
@@ -74,9 +74,9 @@
     setup
 >
 
-	import { FoxuiCard, FoxuiCol, FoxuiContainer, FoxuiRow } from '@foxui/components'
+	import { OrigamCard, OrigamCol, OrigamContainer, OrigamRow } from '@origam/components'
 
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
 	import { HstElevation, HstIcon, HstRounded } from '@stories/components/controls'
 	import { reactive } from 'vue'
 

@@ -1,1 +1,1 @@
-export { default as FoxuiNumberField } from './FoxuiNumberField.vue'
+export { default as OrigamNumberField } from './OrigamNumberField.vue'

@@ -1,1 +1,1 @@
-export { default as FoxuiMain } from './FoxuiMain.vue'
+export { default as OrigamMain } from './OrigamMain.vue'

@@ -1,4 +1,4 @@
-import type { TIfAny } from '@foxui/types'
+import type { TIfAny } from '@origam/types'
 import { ComponentObjectPropsOptions, Prop, PropType } from 'vue'
 
 export type TPartialKeys<T> = { [P in keyof T]?: unknown }

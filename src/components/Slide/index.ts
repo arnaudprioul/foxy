@@ -1,1 +1,1 @@
-export { default as FoxuiSlideGroup } from './FoxuiSlideGroup.vue'
+export { default as OrigamSlideGroup } from './OrigamSlideGroup.vue'

@@ -1,6 +1,6 @@
-import { STATUS_POSITION } from "@foxui/enums"
-import type { IAdjacentProps, IStatusProps } from "@foxui/interfaces"
-import { getCurrentInstanceName } from '@foxui/utils'
+import { STATUS_POSITION } from "@origam/enums"
+import type { IAdjacentProps, IStatusProps } from "@origam/interfaces"
+import { getCurrentInstanceName } from '@origam/utils'
 import { computed } from 'vue'
 
 export function useStatus (props: IStatusProps & IAdjacentProps, name = getCurrentInstanceName()) {

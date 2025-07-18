@@ -1,7 +1,7 @@
-import { FoxuiProgress } from '@foxui/components'
+import { OrigamProgress } from '@origam/components'
 
-import { PROGRESS_TYPE } from '@foxui/enums'
+import { PROGRESS_TYPE } from '@origam/enums'
 
 export type TProgressType = `${PROGRESS_TYPE}`
 
-export type TFoxuiProgress = InstanceType<typeof FoxuiProgress>
+export type TOrigamProgress = InstanceType<typeof OrigamProgress>

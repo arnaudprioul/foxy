@@ -1,3 +1,3 @@
-import { FoxuiMessages } from "@foxui/components"
+import { OrigamMessages } from "@origam/components"
 
-export type TFoxuiMessages = InstanceType<typeof FoxuiMessages>
+export type TOrigamMessages = InstanceType<typeof OrigamMessages>

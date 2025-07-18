@@ -1,3 +1,3 @@
-import { FoxuiTextareaField } from "@foxui/components"
+import { OrigamTextareaField } from "@origam/components"
 
-export type TFoxuiTextareaField = InstanceType<typeof FoxuiTextareaField>
+export type TOrigamTextareaField = InstanceType<typeof OrigamTextareaField>

@@ -1,8 +1,8 @@
-import { useIntersectionObserver, useMargin, usePadding, useVModel } from '@foxui/composables'
+import { useIntersectionObserver, useMargin, usePadding, useVModel } from '@origam/composables'
 
-import type { IProgressTypeProps } from '@foxui/interfaces'
+import type { IProgressTypeProps } from '@origam/interfaces'
 
-import { int } from "@foxui/utils"
+import { int } from "@origam/utils"
 
 import { computed, useSlots } from 'vue'
 
@@ -26,13 +26,13 @@ export function useProgress (props: IProgressTypeProps) {
 
     const progressClasses = computed(() => {
         return [
-            'foxui-progress',
+            'origam-progress',
             {
-                'foxui-progress--indeterminate': props.indeterminate,
-                'foxui-progress--visible': isIntersecting.value,
-                'foxui-progress--active': props.active,
-                'foxui-progress--striped': props.striped,
-                'foxui-progress--absolute': props.absolute
+                'origam-progress--indeterminate': props.indeterminate,
+                'origam-progress--visible': isIntersecting.value,
+                'origam-progress--active': props.active,
+                'origam-progress--striped': props.striped,
+                'origam-progress--absolute': props.absolute
             },
             paddingClasses.value,
             marginClasses.value

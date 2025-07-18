@@ -1,5 +1,0 @@
-# Foxuieditorwrapper
-
-## Usage
-
-    <FoxuiEditorWrapper />

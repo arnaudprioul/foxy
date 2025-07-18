@@ -1,5 +1,0 @@
-# Foxuilistsubheader
-
-## Usage
-
-    <FoxuiListSubheader />

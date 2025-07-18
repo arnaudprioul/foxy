@@ -1,3 +1,3 @@
-import { FoxuiRadio } from "@foxui/components"
+import { OrigamRadio } from "@origam/components"
 
-export type TFoxuiRadio = InstanceType<typeof FoxuiRadio>
+export type TOrigamRadio = InstanceType<typeof OrigamRadio>

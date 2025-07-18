@@ -1,3 +1,3 @@
-import { FoxuiFade } from "@foxui/components"
+import { OrigamFade } from "@origam/components"
 
-export type TFoxuiFade = InstanceType<typeof FoxuiFade>
+export type TOrigamFade = InstanceType<typeof OrigamFade>

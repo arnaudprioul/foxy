@@ -1,6 +1,6 @@
-import type { IInternalDataTableHeader } from '@foxui/interfaces'
+import type { IInternalDataTableHeader } from '@origam/interfaces'
 
-import type { TDataTableCompareFunction, TSortDirection } from '@foxui/types'
+import type { TDataTableCompareFunction, TSortDirection } from '@origam/types'
 
 import type { Ref } from 'vue'
 

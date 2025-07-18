@@ -1,5 +1,5 @@
-import { IN_BROWSER } from '@foxui/consts'
-import { consoleWarn } from '@foxui/utils'
+import { IN_BROWSER } from '@origam/consts'
+import { consoleWarn } from '@origam/utils'
 
 import { computed, Ref } from 'vue'
 
@@ -20,11 +20,11 @@ export function useTeleport (target: Ref<boolean | string | Element>) {
             return undefined
         }
 
-        let container = targetElement.querySelector(':scope > .foxui-overlay-container')
+        let container = targetElement.querySelector(':scope > .origam-overlay-container')
 
         if (!container) {
             container = document.createElement('div')
-            container.className = 'foxui-overlay-container'
+            container.className = 'origam-overlay-container'
             targetElement.appendChild(container)
         }
 

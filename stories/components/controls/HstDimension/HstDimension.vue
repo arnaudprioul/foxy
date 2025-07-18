@@ -39,9 +39,9 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxui/composables"
-	import { SIZES } from "@foxui/enums"
-	import type { IDimensionProps, ISizeProps } from "@foxui/interfaces"
+	import { useVModel } from "@origam/composables"
+	import { SIZES } from "@origam/enums"
+	import type { IDimensionProps, ISizeProps } from "@origam/interfaces"
 	import { sizeList } from "@stories/const/size.const"
 
 	const props = defineProps<{

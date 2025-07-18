@@ -1,7 +1,7 @@
-import type { ITouchDirectiveBinding } from '@foxui/interfaces'
-import type { TTouchEvent } from '@foxui/types'
+import type { ITouchDirectiveBinding } from '@origam/interfaces'
+import type { TTouchEvent } from '@origam/types'
 
-import { createHandlers } from '@foxui/utils'
+import { createHandlers } from '@origam/utils'
 
 export const Touch = {
     mounted: (el: HTMLElement, binding: ITouchDirectiveBinding) => {

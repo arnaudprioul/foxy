@@ -1,4 +1,4 @@
-import { BLOCK, INLINE, START_END } from '@foxui/enums'
+import { BLOCK, INLINE, START_END } from '@origam/enums'
 
 export type TStartEnd = `${START_END}`
 

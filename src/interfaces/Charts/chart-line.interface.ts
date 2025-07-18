@@ -1,4 +1,4 @@
-import type { IChartCommonProps } from "@foxui/interfaces"
+import type { IChartCommonProps } from "@origam/interfaces"
 
 export interface IChartLineProps extends IChartCommonProps {
     fill?: boolean

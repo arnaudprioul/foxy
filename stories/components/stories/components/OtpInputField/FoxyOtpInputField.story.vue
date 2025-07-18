@@ -6,21 +6,21 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container fullscreen>
-		      <foxui-row
+	      <origam-container fullscreen>
+		      <origam-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col>
-				      <foxui-otp-input-field
+			      <origam-col>
+				      <origam-otp-input-field
                   v-bind="state"
                   @finish="logEvent('finish', $event)"
                   @update:focused="logEvent('update focused', $event)"
                   @update:model-value="logEvent('update modelValue', $event)"
               />
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
 
       <template #controls>
@@ -66,11 +66,11 @@
     lang="ts"
     setup
 >
-	import { FoxuiCol, FoxuiContainer, FoxuiOtpInputField, FoxuiRow } from '@foxui/components'
+	import { OrigamCol, OrigamContainer, OrigamOtpInputField, OrigamRow } from '@origam/components'
 
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
 
-	import type { IOtpInputFieldProps } from "@foxui/interfaces"
+	import type { IOtpInputFieldProps } from "@origam/interfaces"
 	import { HstRounded } from "@stories/components/controls"
 
 	import { logEvent } from 'histoire/client'

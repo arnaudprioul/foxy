@@ -1,3 +1,3 @@
-import { FoxuiListGroupActivator } from "@foxui/components"
+import { OrigamListGroupActivator } from "@origam/components"
 
-export type TFoxuiListGroupActivator = InstanceType<typeof FoxuiListGroupActivator>
+export type TOrigamListGroupActivator = InstanceType<typeof OrigamListGroupActivator>

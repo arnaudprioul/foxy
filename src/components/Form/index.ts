@@ -1,1 +1,1 @@
-export { default as FoxuiForm } from './FoxuiForm.vue'
+export { default as OrigamForm } from './OrigamForm.vue'

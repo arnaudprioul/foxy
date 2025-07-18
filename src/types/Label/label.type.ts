@@ -1,3 +1,3 @@
-import { FoxuiLabel } from "@foxui/components"
+import { OrigamLabel } from "@origam/components"
 
-export type TFoxuiLabel = InstanceType<typeof FoxuiLabel>
+export type TOrigamLabel = InstanceType<typeof OrigamLabel>

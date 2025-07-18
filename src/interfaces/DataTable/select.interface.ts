@@ -1,4 +1,4 @@
-import type { TDataTableSelectStrategy } from '@foxui/types'
+import type { TDataTableSelectStrategy } from '@origam/types'
 import type { ComputedRef } from 'vue'
 
 export interface IDataTableSelectableItem {

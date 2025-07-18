@@ -1,5 +1,5 @@
-import type { IGroupProvide } from "@foxui/interfaces";
+import type { IGroupProvide } from "@origam/interfaces";
 
 import type { InjectionKey } from "vue"
 
-export const FOXUI_SLIDE_GROUP_KEY: InjectionKey<IGroupProvide> = Symbol.for('foxui:slide-group')
+export const ORIGAM_SLIDE_GROUP_KEY: InjectionKey<IGroupProvide> = Symbol.for('origam:slide-group')

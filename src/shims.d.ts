@@ -15,7 +15,7 @@ declare global {
 }
 
 declare module 'vue' {
-    interface Foxui {
+    interface Origam {
         display: UnwrapNestedRefs<IDisplayInstance>
         icons: TIconOptions
         locale: UnwrapNestedRefs<ILocaleInstance & IRtlInstance>
@@ -23,7 +23,7 @@ declare module 'vue' {
     }
 
     export interface ComponentCustomProperties {
-        $vuetify: Foxui
+        $vuetify: Origam
     }
 
     export interface HTMLAttributes {

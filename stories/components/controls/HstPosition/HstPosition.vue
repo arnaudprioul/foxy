@@ -29,10 +29,10 @@
 		lang="ts"
 		setup
 >
-	import { useVModel } from "@foxui/composables"
-	import { POSITION } from "@foxui/enums"
-	import type { IPositionProps } from "@foxui/interfaces"
-	import type { TPosition } from "@foxui/types"
+	import { useVModel } from "@origam/composables"
+	import { POSITION } from "@origam/enums"
+	import type { IPositionProps } from "@origam/interfaces"
+	import type { TPosition } from "@origam/types"
 
 	import { positionList } from "@stories/const/position.const"
 	import { computed, shallowRef, ShallowRef, watchEffect } from "vue"

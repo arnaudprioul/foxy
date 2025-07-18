@@ -6,13 +6,13 @@
   >
     <Variant title="Default">
       <template #default>
-	      <foxui-container fullscreen>
-		      <foxui-row
+	      <origam-container fullscreen>
+		      <origam-row
               :align="ALIGN.CENTER"
               :justify="JUSTIFY.CENTER"
           >
-			      <foxui-col>
-				      <foxui-select
+			      <origam-col>
+				      <origam-select
                   v-bind="state"
                   @click:control="logEvent('click control', $event)"
                   @mousedown:control="logEvent('mousedown control', $event)"
@@ -25,9 +25,9 @@
                   @click:append-inner="logEvent('click append inner', $event)"
                   @click:prepend-inner="logEvent('click prepend inner', $event)"
               />
-			      </foxui-col>
-		      </foxui-row>
-	      </foxui-container>
+			      </origam-col>
+		      </origam-row>
+	      </origam-container>
       </template>
       <template #controls>
         <hst-icon
@@ -93,9 +93,9 @@
     lang="ts"
     setup
 >
-	import { FoxuiCol, FoxuiContainer, FoxuiRow, FoxuiSelect } from '@foxui/components'
+	import { OrigamCol, OrigamContainer, OrigamRow, OrigamSelect } from '@origam/components'
 
-	import { ALIGN, JUSTIFY } from '@foxui/enums'
+	import { ALIGN, JUSTIFY } from '@origam/enums'
 
 	import { HstIcon } from '@stories/components/controls'
 	import { logEvent } from 'histoire/client'

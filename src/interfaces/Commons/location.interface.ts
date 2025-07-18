@@ -1,6 +1,6 @@
-import type { IDimensionProps } from '@foxui/interfaces'
+import type { IDimensionProps } from '@origam/interfaces'
 
-import type { TAnchor, TLocationStrategy, TLocationStrategyFn } from '@foxui/types'
+import type { TAnchor, TLocationStrategy, TLocationStrategyFn } from '@origam/types'
 import type { Ref } from 'vue'
 
 export interface ILocationProps {

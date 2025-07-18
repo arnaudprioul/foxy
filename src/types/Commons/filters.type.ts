@@ -1,6 +1,6 @@
-import { FILTERS_MODE } from '@foxui/enums'
+import { FILTERS_MODE } from '@origam/enums'
 
-import type { IInternalItem } from '@foxui/interfaces'
+import type { IInternalItem } from '@origam/interfaces'
 
 export type TFilterMatch = boolean | number | [number, number] | [number, number][]
 export type TFilterFunction = (value: string, query: string, item?: IInternalItem) => TFilterMatch

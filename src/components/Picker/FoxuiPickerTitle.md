@@ -1,5 +1,0 @@
-# Foxuipickertitle
-
-## Usage
-
-    <FoxuiPickerTitle />

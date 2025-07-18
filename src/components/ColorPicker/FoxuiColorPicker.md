@@ -1,5 +1,0 @@
-# FoxuiColorPicker
-
-## Usage
-
-    <FoxuiColorPicker />
