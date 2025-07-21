@@ -17,12 +17,10 @@ import {
 export function useRoute (): Ref<RouteLocationNormalizedLoaded | undefined> {
     const vm = getCurrentInstance('useRoute')
 
-    // @ts-expect-error TODO
     return computed(() => vm?.proxy?.$route)
 }
 
 export function useRouter (): Router | undefined {
-    // @ts-expect-error TODO
     return getCurrentInstance('useRouter')?.proxy?.$router
 }
 

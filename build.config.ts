@@ -39,7 +39,7 @@ export default defineBuildConfig({
 
     hooks: {
         'build:done': () => {
-            fs.cpSync('./src/assets', './dist/assets',{recursive: true})
+            fs.cpSync('./src/assets', './dist/src/assets', {recursive: true})
         }
     },
 

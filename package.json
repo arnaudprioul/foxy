@@ -1,37 +1,37 @@
 {
   "name": "origam",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "exports": {
     ".": {
-      "scss": "./dist/assets/scss/main.scss",
-      "style": "./dist/assets/css/main.css",
-      "default": "./dist/origam.mjs"
+      "scss": "./dist/src/assets/scss/main.scss",
+      "style": "./dist/src/assets/css/main.css",
+      "default": "./dist/src/origam.js"
     },
     "./styles": {
-      "scss": "./dist/assets/scss/main.scss",
-      "style": "./dist/assets/css/main.css"
+      "scss": "./dist/src/assets/scss/main.scss",
+      "style": "./dist/src/assets/css/main.css"
     },
-    "./origam": "./dist/origam.js",
-    "./components": "./dist/components/index.mjs",
-    "./components/*": "./dist/components/*/index.mjs",
-    "./composables": "./dist/composables/index.mjs",
-    "./directives": "./dist/directives/index.mjs",
-    "./enums": "./dist/enums/index.mjs",
-    "./consts": "./dist/consts/index.mjs",
-    "./types": "./dist/types/index.d.ts",
-    "./interfaces": "./dist/interfaces/index.d.ts",
-    "./services": "./dist/services/index.mjs",
-    "./utils": "./dist/utils/index.mjs",
-    "./*": "./dist/*"
+    "./origam": "./dist/src/origam.js",
+    "./components": "./dist/src/components/index.js",
+    "./components/*": "./dist/src/components/*/index.js",
+    "./composables": "./dist/src/composables/index.js",
+    "./directives": "./dist/src/directives/index.js",
+    "./enums": "./dist/src/enums/index.js",
+    "./consts": "./dist/src/consts/index.js",
+    "./types": "./dist/src/types/index.d.ts",
+    "./interfaces": "./dist/src/interfaces/index.d.ts",
+    "./services": "./dist/src/services/index.js",
+    "./utils": "./dist/src/utils/index.js",
+    "./*": "./dist/src/*"
   },
   "files": [
     "dist/"
   ],
   "scripts": {
-    "dev": "npm run story:dev && npm run server:dev",
-    "build": "npm run server:build && npm run story:build",
-    "preview": "npm run story:preview && npm run server:preview",
+    "dev": "npm run server:dev && npm run story:dev && npm run docs:dev",
+    "build": "npm run server:build && npm run story:build && npm run docs:build",
+    "preview": "npm run server:preview && npm run story:preview && npm run docs:preview",
     "story:dev": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview",
@@ -79,9 +79,11 @@
     "unbuild": "^3.5.0",
     "unplugin-vue-components": "^28.8.0",
     "vite": "^7.0.5",
+    "vite-plugin-commonjs": "^0.10.4",
     "vite-tsconfig-paths": "^5.1.4",
     "vitepress": "^1.6.3",
     "vitest": "^3.2.4",
+    "vue-sfc-transformer": "^0.1.16",
     "vue-tsc": "^3.0.2"
   }
 }

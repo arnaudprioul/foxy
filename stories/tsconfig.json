@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "module": "esnext",
     "paths": {
       "@origam": [
         "../src/"
@@ -13,7 +14,7 @@
       "@stories/*": [
         "../stories/*"
       ]
-    },
+    }
   },
   "references": [
     {
