@@ -1,12 +1,12 @@
-import { useLocale } from "@origam/composables"
+import { useLocale } from "@/composables"
 
-import { ORIGAM_DATE_OPTIONS_KEY } from "@origam/consts"
+import { ORIGAM_DATE_OPTIONS_KEY } from "@/consts"
 
-import type { IDateOptions, ILocaleInstance } from "@origam/interfaces"
+import type { IDateOptions, ILocaleInstance } from "@/interfaces"
 
-import { DateAdapter } from "@origam/services"
+import { DateAdapter } from "@/services"
 
-import { createInstance, mergeDeep } from "@origam/utils"
+import { createInstance, mergeDeep } from "@/utils"
 import { inject } from "vue"
 
 export function createDate (options: IDateOptions | undefined, locale: ILocaleInstance) {

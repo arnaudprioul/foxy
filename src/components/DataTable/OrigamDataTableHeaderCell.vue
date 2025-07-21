@@ -60,13 +60,13 @@
 		lang="ts"
 		setup
 >
-	import { OrigamCheckboxBtn, OrigamDataTableColumnCell, OrigamIcon } from '@origam/components'
+	import { OrigamCheckboxBtn, OrigamDataTableColumnCell, OrigamIcon } from '@/components'
 
-	import { useBothColor, useCell, useHeadersCell, useProps, useSelection, useSort } from '@origam/composables'
+	import { useBothColor, useCell, useHeadersCell, useProps, useSelection, useSort } from '@/composables'
 
-	import type { IDataTableHeaderCellProps, IDataTableSortItem, IInternalDataTableHeader } from '@origam/interfaces'
+	import type { IDataTableHeaderCellProps, IDataTableSortItem, IInternalDataTableHeader } from '@/interfaces'
 
-	import { convertToUnit } from '@origam/utils'
+	import { convertToUnit } from '@/utils'
 
 	import { computed, CSSProperties, mergeProps, toRef } from 'vue'
 

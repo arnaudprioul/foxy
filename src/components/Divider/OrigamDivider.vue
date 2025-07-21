@@ -11,12 +11,12 @@
 		lang="ts"
 		setup
 >
-	import { useMargin, useProps } from '@origam/composables'
-	import { DIRECTION } from '@origam/enums'
+	import { useMargin, useProps } from '@/composables'
+	import { DIRECTION } from '@/enums'
 
-	import type { IDividerProps } from '@origam/interfaces'
+	import type { IDividerProps } from '@/interfaces'
 
-	import { convertToUnit } from '@origam/utils'
+	import { convertToUnit } from '@/utils'
 
 	import { computed, StyleValue, useAttrs } from 'vue'
 

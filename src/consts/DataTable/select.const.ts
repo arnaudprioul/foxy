@@ -1,5 +1,5 @@
-import { provideSelection } from '@origam/composables'
-import type { IDataTableSelectStrategy } from '@origam/interfaces'
+import { provideSelection } from '@/composables'
+import type { IDataTableSelectStrategy } from '@/interfaces'
 
 import type { InjectionKey } from 'vue'
 

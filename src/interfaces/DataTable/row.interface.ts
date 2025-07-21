@@ -1,12 +1,6 @@
-import type {
-    ICommonsComponentProps,
-    IDataTableGroup,
-    IDataTableItem,
-    IDisplayProps,
-    ILoaderProps
-} from '@origam/interfaces'
+import type { ICommonsComponentProps, IDataTableGroup, IDataTableItem, IDisplayProps, ILoaderProps } from '@/interfaces'
 
-import type { TDataTableCell, TDataTableRow } from '@origam/types'
+import type { TDataTableCell, TDataTableRow } from '@/types'
 
 export interface IDataTableRowsProps extends ICommonsComponentProps, ILoaderProps, IDisplayProps {
     hideNoData?: boolean

@@ -130,19 +130,19 @@
 		lang="ts"
 		setup
 >
-	import { OrigamColorPicker, OrigamMenu, OrigamSheet, OrigamTextField, OrigamTranslateScale } from "@origam/components"
+	import { OrigamColorPicker, OrigamMenu, OrigamSheet, OrigamTextField, OrigamTranslateScale } from "@/components"
 
-	import { useLocale, useProps, useVModel } from "@origam/composables"
+	import { useLocale, useProps, useVModel } from "@/composables"
 
-	import { COLOR_NULL, ORIGAM_FORM_KEY } from "@origam/consts"
+	import { COLOR_NULL, ORIGAM_FORM_KEY } from "@/consts"
 
-	import { BLOCK, DENSITY, DIRECTION, TEXT_FIELD_TYPE } from "@origam/enums"
+	import { BLOCK, DENSITY, DIRECTION, TEXT_FIELD_TYPE } from "@/enums"
 
-	import type { IColorPickerFieldProps } from "@origam/interfaces"
+	import type { IColorPickerFieldProps } from "@/interfaces"
 
-	import type { TColor, TOrigamColorPicker, TOrigamMenu, TOrigamTextField, TTransitionProps } from "@origam/types"
+	import type { TColor, TOrigamColorPicker, TOrigamMenu, TOrigamTextField, TTransitionProps } from "@/types"
 
-	import { forwardRefs, HSVtoCSS, matchesSelector } from "@origam/utils"
+	import { forwardRefs, HSVtoCSS, matchesSelector } from "@/utils"
 
 	import { computed, inject, nextTick, ref, shallowRef, StyleValue, useSlots, watch } from "vue"
 

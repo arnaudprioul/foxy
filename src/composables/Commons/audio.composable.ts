@@ -1,4 +1,4 @@
-import type { IAudioProps } from '@origam/interfaces'
+import type { IAudioProps } from '@/interfaces'
 
 import { ref, shallowRef, watch } from 'vue'
 

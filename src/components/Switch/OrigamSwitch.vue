@@ -104,23 +104,17 @@
 		lang="ts"
 		setup
 >
-	import {
-		OrigamIcon,
-		OrigamInput,
-		OrigamProgress,
-		OrigamSelectionControl,
-		OrigamTranslateScale
-	} from '@origam/components'
+	import { OrigamIcon, OrigamInput, OrigamProgress, OrigamSelectionControl, OrigamTranslateScale } from '@/components'
 
-	import { useFocus, useLoader, useProps, useVModel } from '@origam/composables'
+	import { useFocus, useLoader, useProps, useVModel } from '@/composables'
 
-	import { DENSITY, PROGRESS_TYPE, SIZES } from '@origam/enums'
+	import { DENSITY, PROGRESS_TYPE, SIZES } from '@/enums'
 
-	import type { ISwitchProps } from "@origam/interfaces"
+	import type { ISwitchProps } from "@/interfaces"
 
-	import type { TOrigamInput, TOrigamSelectionControl } from "@origam/types"
+	import type { TOrigamInput, TOrigamSelectionControl } from "@/types"
 
-	import { filterInputAttrs, getUid } from '@origam/utils'
+	import { filterInputAttrs, getUid } from '@/utils'
 
 	import { computed, ref, StyleValue, useAttrs, useSlots } from 'vue'
 

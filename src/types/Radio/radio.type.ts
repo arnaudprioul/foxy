@@ -1,3 +1,3 @@
-import { OrigamRadio } from "@origam/components"
+import { OrigamRadio } from "@/components"
 
 export type TOrigamRadio = InstanceType<typeof OrigamRadio>

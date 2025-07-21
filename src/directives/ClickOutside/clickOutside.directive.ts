@@ -1,5 +1,5 @@
-import type { IClickOutsideDirectiveBinding } from '@origam/interfaces'
-import { checkEvent, directive, handleShadow } from '@origam/utils'
+import type { IClickOutsideDirectiveBinding } from '@/interfaces'
+import { checkEvent, directive, handleShadow } from '@/utils'
 
 export const ClickOutside = {
     // [data-app] may not be found

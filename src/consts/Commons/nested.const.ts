@@ -1,4 +1,4 @@
-import type { TNestedProvide, TStrategyOpen } from '@origam/types'
+import type { TNestedProvide, TStrategyOpen } from '@/types'
 
 import type { InjectionKey } from 'vue'
 import { ref, shallowRef } from 'vue'

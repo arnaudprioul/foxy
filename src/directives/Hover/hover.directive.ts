@@ -1,6 +1,6 @@
-import type { IHoverDirectiveBinding, IHoverHtmlElement } from '@origam/interfaces'
+import type { IHoverDirectiveBinding, IHoverHtmlElement } from '@/interfaces'
 
-import { getCurrentInstanceName, hoverRemoveListeners, isHoverEnabled, updateHover } from '@origam/utils'
+import { getCurrentInstanceName, hoverRemoveListeners, isHoverEnabled, updateHover } from '@/utils'
 
 export const Hover = {
     mounted: (el: IHoverHtmlElement, binding: IHoverDirectiveBinding, name = getCurrentInstanceName()) => {

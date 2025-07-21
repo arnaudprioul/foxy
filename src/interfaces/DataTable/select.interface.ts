@@ -1,4 +1,4 @@
-import type { TDataTableSelectStrategy } from '@origam/types'
+import type { TDataTableSelectStrategy } from '@/types'
 import type { ComputedRef } from 'vue'
 
 export interface IDataTableSelectableItem {

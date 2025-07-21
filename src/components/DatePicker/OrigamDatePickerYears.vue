@@ -20,11 +20,11 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn } from "@origam/components"
-	import { useDate, useProps, useVModel } from "@origam/composables"
+	import { OrigamBtn } from "@/components"
+	import { useDate, useProps, useVModel } from "@/composables"
 
-	import type { IDatePickerYearsProps } from "@origam/interfaces"
-	import { convertToUnit, createRange, int, templateRef } from "@origam/utils"
+	import type { IDatePickerYearsProps } from "@/interfaces"
+	import { convertToUnit, createRange, int, templateRef } from "@/utils"
 
 	import { computed, nextTick, onMounted, StyleValue, watchEffect } from "vue"
 

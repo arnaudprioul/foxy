@@ -1,8 +1,8 @@
-import { BORDER_RADIUS_REGEX } from '@origam/consts'
+import { BORDER_RADIUS_REGEX } from '@/consts'
 
-import type { IRoundedProps } from '@origam/interfaces'
+import type { IRoundedProps } from '@/interfaces'
 
-import { convertToUnit, formatRoundedStylesVar, getCurrentInstanceName } from '@origam/utils'
+import { convertToUnit, formatRoundedStylesVar, getCurrentInstanceName } from '@/utils'
 
 import { computed, isRef, Ref } from 'vue'
 

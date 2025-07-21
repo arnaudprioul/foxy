@@ -1,4 +1,4 @@
-import type { IDataTableItem } from '@origam/interfaces'
+import type { IDataTableItem } from '@/interfaces'
 import type { InjectionKey, Ref } from 'vue'
 
 export const ORIGAM_DATA_TABLE_EXPAND_KEY: InjectionKey<{

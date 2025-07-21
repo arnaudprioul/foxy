@@ -59,17 +59,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn, OrigamSpacer } from '@origam/components'
+	import { OrigamBtn, OrigamSpacer } from '@/components'
 
-	import { useGroup, useLocale, useProps } from '@origam/composables'
+	import { useGroup, useLocale, useProps } from '@/composables'
 
-	import { ORIGAM_WINDOW_GROUP_KEY, ORIGAM_WINDOW_KEY } from '@origam/consts'
+	import { ORIGAM_WINDOW_GROUP_KEY, ORIGAM_WINDOW_KEY } from '@/consts'
 
-	import { vTouch } from '@origam/directives'
+	import { vTouch } from '@/directives'
 
-	import { AXIS, DIRECTION, MDI_ICONS } from '@origam/enums'
+	import { AXIS, DIRECTION, MDI_ICONS } from '@/enums'
 
-	import type { ITouchHandlers, IWindowProps } from '@origam/interfaces'
+	import type { ITouchHandlers, IWindowProps } from '@/interfaces'
 
 	import { computed, provide, ref, shallowRef, StyleValue, watch } from 'vue'
 

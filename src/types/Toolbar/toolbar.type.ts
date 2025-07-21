@@ -1,5 +1,5 @@
-import { OrigamToolbar } from "@origam/components"
-import { SCROLL_BEHAVIOR } from '@origam/enums'
+import { OrigamToolbar } from "@/components"
+import { SCROLL_BEHAVIOR } from '@/enums'
 
 export type TScrollBehavior = `${SCROLL_BEHAVIOR}`
 

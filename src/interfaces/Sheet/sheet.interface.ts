@@ -10,7 +10,7 @@ import type {
     IPositionProps,
     IRoundedProps,
     ITagProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
 export interface ISheetProps extends ITagProps, ICommonsComponentProps, IPaddingProps, IMarginProps, IColorProps, IBorderProps, IRoundedProps, IElevationProps, IDimensionProps, ILocationProps, IPositionProps {
 

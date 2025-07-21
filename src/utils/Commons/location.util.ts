@@ -1,10 +1,10 @@
-import { AXIS } from '@origam/enums'
+import { AXIS } from '@/enums'
 
-import type { IBox, ILocationStrategyData, ILocationStrategyProps } from '@origam/interfaces'
+import type { IBox, ILocationStrategyData, ILocationStrategyProps } from '@/interfaces'
 
-import { Box } from '@origam/services'
+import { Box } from '@/services'
 
-import type { TAnchor } from '@origam/types'
+import type { TAnchor } from '@/types'
 
 import {
     anchorToPoint,
@@ -22,7 +22,7 @@ import {
     getTargetBox,
     nullifyTransforms,
     parseAnchor
-} from '@origam/utils'
+} from '@/utils'
 
 import { computed, nextTick, onScopeDispose, Ref, watch } from 'vue'
 

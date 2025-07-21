@@ -1,4 +1,4 @@
-import type { TBreakpoint, TDisplayThresholds } from '@origam/types'
+import type { TBreakpoint, TDisplayThresholds } from '@/types'
 
 import type { Ref } from 'vue'
 

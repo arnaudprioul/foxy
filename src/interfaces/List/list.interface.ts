@@ -10,11 +10,11 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TLines, TSelectItemKey } from '@origam/types'
+import type { TLines, TSelectItemKey } from '@/types'
 
-import { deepEqual } from '@origam/utils'
+import { deepEqual } from '@/utils'
 
 export interface IListProps extends ITagProps, ICommonsComponentProps, IElevationProps, IBorderProps, IDensityProps, IRoundedProps, IDimensionProps, INestedProps, IItemProps, IColorProps, IPaddingProps, IMarginProps {
     activeClass?: string

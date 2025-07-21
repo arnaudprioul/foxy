@@ -1,8 +1,8 @@
-import { PADDING_REGEX } from '@origam/consts'
+import { PADDING_REGEX } from '@/consts'
 
-import type { IPaddingProps } from '@origam/interfaces'
+import type { IPaddingProps } from '@/interfaces'
 
-import { convertToUnit, formatPaddingStylesVar, getCurrentInstanceName } from '@origam/utils'
+import { convertToUnit, formatPaddingStylesVar, getCurrentInstanceName } from '@/utils'
 
 import { computed } from 'vue'
 

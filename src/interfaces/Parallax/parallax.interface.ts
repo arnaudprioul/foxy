@@ -9,9 +9,9 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TParallaxEvent, TPoint } from '@origam/types'
+import type { TParallaxEvent, TPoint } from '@/types'
 
 import type { Ref } from 'vue'
 

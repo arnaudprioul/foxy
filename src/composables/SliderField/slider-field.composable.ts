@@ -1,12 +1,12 @@
-import { ORIGAM_SLIDER_FIELD_KEY } from '@origam/consts'
+import { ORIGAM_SLIDER_FIELD_KEY } from '@/consts'
 
-import { BLOCK, CLIENT_POSITION, DIMENSIONS, DIRECTION, INLINE } from '@origam/enums'
+import { BLOCK, CLIENT_POSITION, DIMENSIONS, DIRECTION, INLINE } from '@/enums'
 
-import type { ISliderField, ISliderFieldProps, ISliderFieldProvide } from '@origam/interfaces'
+import type { ISliderField, ISliderFieldProps, ISliderFieldProvide } from '@/interfaces'
 
-import type { TTick } from '@origam/types'
+import type { TTick } from '@/types'
 
-import { clamp, createRange, getDecimals, getPosition, getSliderFieldOffset, int } from '@origam/utils'
+import { clamp, createRange, getDecimals, getPosition, getSliderFieldOffset, int } from '@/utils'
 
 import { computed, provide, ref, shallowRef, toRef } from 'vue'
 

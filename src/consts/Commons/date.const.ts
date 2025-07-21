@@ -1,4 +1,4 @@
-import type { IDateInstance, IDateOptions } from "@origam/interfaces"
+import type { IDateInstance, IDateOptions } from "@/interfaces"
 
 import type { InjectionKey } from "vue"
 

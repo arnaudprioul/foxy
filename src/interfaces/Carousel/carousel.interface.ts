@@ -1,5 +1,5 @@
-import type { IColorProps, ICommonsComponentProps, IDimensionProps, ITagProps, IWindowProps } from '@origam/interfaces'
-import type { TIcon, TInline } from '@origam/types'
+import type { IColorProps, ICommonsComponentProps, IDimensionProps, ITagProps, IWindowProps } from '@/interfaces'
+import type { TIcon, TInline } from '@/types'
 
 export interface ICarouselProps extends IWindowProps, IColorProps, ICommonsComponentProps, ITagProps, IDimensionProps {
     cycle?: boolean

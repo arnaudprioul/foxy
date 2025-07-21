@@ -1,6 +1,6 @@
-import type { IDateAdapter } from "@origam/interfaces"
+import type { IDateAdapter } from "@/interfaces"
 
-import type { TCustomDateFormat } from "@origam/types"
+import type { TCustomDateFormat } from "@/types"
 
 import {
     addDays,
@@ -43,7 +43,7 @@ import {
     startOfWeek,
     startOfYear,
     toISO
-} from '@origam/utils'
+} from '@/utils'
 
 export class DateAdapter implements IDateAdapter<Date> {
     locale: string

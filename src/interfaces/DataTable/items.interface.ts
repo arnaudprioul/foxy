@@ -4,9 +4,9 @@ import type {
     IDataTableSortItem,
     IInternalDataTableHeader,
     IInternalItem
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TDataTableCell, TDataTableRow, TIcon, TSelectItemKey } from '@origam/types'
+import type { TDataTableCell, TDataTableRow, TIcon, TSelectItemKey } from '@/types'
 import type { ComputedRef, Ref } from 'vue'
 
 export interface IDataTableItemsProps {

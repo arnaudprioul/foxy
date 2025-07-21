@@ -11,12 +11,12 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from "@origam/composables"
-	import { EASING, TRANSITION_MODE } from '@origam/enums'
+	import { useProps } from "@/composables"
+	import { EASING, TRANSITION_MODE } from '@/enums'
 
-	import type { ITranslateScaleProps } from '@origam/interfaces'
+	import type { ITranslateScaleProps } from '@/interfaces'
 
-	import { animate, getChildren, getDimensions } from '@origam/utils'
+	import { animate, getChildren, getDimensions } from '@/utils'
 
 	import { computed } from 'vue'
 

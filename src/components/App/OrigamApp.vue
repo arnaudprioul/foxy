@@ -15,13 +15,13 @@
 		lang="ts"
 		setup
 >
-	import { OrigamLayout } from '@origam/components'
+	import { OrigamLayout } from '@/components'
 
-	import { useProps, useRtl } from "@origam/composables"
+	import { useProps, useRtl } from "@/composables"
 
-	import type { ILayoutProps } from '@origam/interfaces'
+	import type { ILayoutProps } from '@/interfaces'
 
-	import type { TOrigamApp } from "@origam/types"
+	import type { TOrigamApp } from "@/types"
 
 	import { computed, ref, StyleValue } from 'vue'
 

@@ -1,4 +1,4 @@
-import type { TEditorProvide } from '@origam/types'
+import type { TEditorProvide } from '@/types'
 
 import type { InjectionKey } from 'vue'
 import { ref, shallowRef } from 'vue'

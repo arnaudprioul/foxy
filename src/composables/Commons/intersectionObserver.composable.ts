@@ -1,4 +1,4 @@
-import { SUPPORTS_INTERSECTION } from '@origam/consts'
+import { SUPPORTS_INTERSECTION } from '@/consts'
 
 import { onBeforeUnmount, ref, shallowRef, watch } from 'vue'
 

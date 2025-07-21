@@ -1,3 +1,3 @@
-import { OrigamRatingFieldItem } from "@origam/components"
+import { OrigamRatingFieldItem } from "@/components"
 
 export type TOrigamRatingFieldItem = InstanceType<typeof OrigamRatingFieldItem>

@@ -12,9 +12,9 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from "@origam/composables"
+	import { useProps } from "@/composables"
 
-	import type { ISpacerProps } from "@origam/interfaces"
+	import type { ISpacerProps } from "@/interfaces"
 
 	import { computed, StyleValue } from 'vue'
 

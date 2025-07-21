@@ -1,8 +1,8 @@
-import { BLOCK_ARRAY, INLINE_ARRAY } from '@origam/consts'
+import { BLOCK_ARRAY, INLINE_ARRAY } from '@/consts'
 
-import { AXIS } from '@origam/enums'
+import { AXIS } from '@/enums'
 
-import type { TAnchor, TBlock, TInline, TParsedAnchor } from '@origam/types'
+import type { TAnchor, TBlock, TInline, TParsedAnchor } from '@/types'
 
 export function parseAnchor (anchor: TAnchor) {
     const [side, initialAlign] = anchor.split(' ') as [TBlock | TInline | 'center', TBlock | TInline | 'center' | undefined]

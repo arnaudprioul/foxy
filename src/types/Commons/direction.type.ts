@@ -1,3 +1,3 @@
-import { DIRECTION } from '@origam/enums'
+import { DIRECTION } from '@/enums'
 
 export type TDirection = `${DIRECTION}`

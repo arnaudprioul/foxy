@@ -1,7 +1,7 @@
-import { useVModel } from "@origam/composables"
-import { IActiveProps } from "@origam/interfaces"
+import { useVModel } from "@/composables"
+import { IActiveProps } from "@/interfaces"
 
-import { getCurrentInstanceName } from "@origam/utils"
+import { getCurrentInstanceName } from "@/utils"
 
 import { computed } from "vue"
 

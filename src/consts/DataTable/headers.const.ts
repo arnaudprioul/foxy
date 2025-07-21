@@ -1,4 +1,4 @@
-import type { IInternalDataTableHeader } from '@origam/interfaces'
+import type { IInternalDataTableHeader } from '@/interfaces'
 
 import type { InjectionKey, Ref } from 'vue'
 

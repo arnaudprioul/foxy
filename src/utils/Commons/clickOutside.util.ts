@@ -1,6 +1,6 @@
-import type { IClickOutsideDirectiveBinding } from '@origam/interfaces'
+import type { IClickOutsideDirectiveBinding } from '@/interfaces'
 
-import { attachedRoot } from '@origam/utils'
+import { attachedRoot } from '@/utils'
 
 function defaultConditional (): boolean {
     return true

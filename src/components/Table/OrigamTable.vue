@@ -34,11 +34,11 @@
 		usePadding,
 		useProps,
 		useRounded
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { DENSITY } from '@origam/enums'
+	import { DENSITY } from '@/enums'
 
-	import type { ITableProps } from '@origam/interfaces'
+	import type { ITableProps } from '@/interfaces'
 
 	import { computed, StyleValue, useSlots } from 'vue'
 

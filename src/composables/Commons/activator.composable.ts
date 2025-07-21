@@ -1,10 +1,10 @@
-import { useDelay } from '@origam/composables'
+import { useDelay } from '@/composables'
 
-import { IN_BROWSER, ORIGAM_MENU_KEY } from '@origam/consts'
+import { IN_BROWSER, ORIGAM_MENU_KEY } from '@/consts'
 
-import type { IActivatorProps } from '@origam/interfaces'
+import type { IActivatorProps } from '@/interfaces'
 
-import { activator, getCurrentInstance, getTargetActivator, matchesSelector, refElement } from '@origam/utils'
+import { activator, getCurrentInstance, getTargetActivator, matchesSelector, refElement } from '@/utils'
 
 import { computed, effectScope, EffectScope, inject, nextTick, onScopeDispose, ref, Ref, watch, watchEffect } from 'vue'
 

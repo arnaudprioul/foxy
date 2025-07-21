@@ -17,9 +17,9 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '@origam/composables'
+	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '@/composables'
 
-	import type { ILabelProps } from '@origam/interfaces'
+	import type { ILabelProps } from '@/interfaces'
 
 	import { computed, StyleValue, toRef } from 'vue'
 

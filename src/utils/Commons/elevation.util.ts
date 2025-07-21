@@ -1,5 +1,5 @@
-import type { TColor, THSLA } from "@origam/types"
-import { convertToUnit, HSVtoHSL, isParsableColor, normalize, parseColor, RGBtoHSV, roundTo } from "@origam/utils"
+import type { TColor, THSLA } from "@/types"
+import { convertToUnit, HSVtoHSL, isParsableColor, normalize, parseColor, RGBtoHSV, roundTo } from "@/utils"
 
 export function formatElevationStyle (elevation: number = 0, bgColor?: TColor) {
     const blurRadius = roundTo(normalize(elevation * .04, 0, 1, 0, 16), 1);

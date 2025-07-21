@@ -52,7 +52,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBreadcrumbDivider, OrigamBreadcrumbItem } from '@origam/components'
+	import { OrigamBreadcrumbDivider, OrigamBreadcrumbItem } from '@/components'
 
 	import {
 		useBorder,
@@ -64,13 +64,13 @@
 		useProps,
 		useRounded,
 		useStyle
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { DENSITY } from '@origam/enums'
+	import { DENSITY } from '@/enums'
 
-	import type { IBreadcrumbItemProps, IBreadcrumbProps } from '@origam/interfaces'
+	import type { IBreadcrumbItemProps, IBreadcrumbProps } from '@/interfaces'
 
-	import type { TBreadcrumbItem } from '@origam/types'
+	import type { TBreadcrumbItem } from '@/types'
 
 	import { computed, StyleValue, useSlots } from 'vue'
 

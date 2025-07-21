@@ -117,21 +117,15 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn, OrigamInfiniteScrollIntersect, OrigamProgress } from '@origam/components'
+	import { OrigamBtn, OrigamInfiniteScrollIntersect, OrigamProgress } from '@/components'
 
-	import { useBothColor, useDimension, useLocale, useProps } from '@origam/composables'
+	import { useBothColor, useDimension, useLocale, useProps } from '@/composables'
 
-	import {
-		DIRECTION,
-		INFINITE_SCROLL_MODE,
-		INFINITE_SCROLL_SIDE,
-		INFINITE_SCROLL_STATUS,
-		PROGRESS_TYPE
-	} from '@origam/enums'
+	import { DIRECTION, INFINITE_SCROLL_MODE, INFINITE_SCROLL_SIDE, INFINITE_SCROLL_STATUS, PROGRESS_TYPE } from '@/enums'
 
-	import type { IInfiniteScrollProps } from '@origam/interfaces'
+	import type { IInfiniteScrollProps } from '@/interfaces'
 
-	import type { TInfiniteScrollSide, TInfiniteScrollStatus } from '@origam/types'
+	import type { TInfiniteScrollSide, TInfiniteScrollStatus } from '@/types'
 
 	import { computed, nextTick, onMounted, ref, shallowRef, StyleValue, toRef } from 'vue'
 

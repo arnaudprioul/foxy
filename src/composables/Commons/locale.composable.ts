@@ -1,17 +1,10 @@
-import * as origamMessages from "@origam/assets/locales"
+import * as origamMessages from "@/assets/locales"
 
-import { LOCALE_RTL_DEFAULT, ORIGAM_LOCALE_KEY } from "@origam/consts"
+import { LOCALE_RTL_DEFAULT, ORIGAM_LOCALE_KEY } from "@/consts"
 
-import type {
-    ILocaleInstance,
-    ILocaleOptions,
-    ILocaleProps,
-    IRtlInstance,
-    IRtlOptions,
-    IRtlProps
-} from "@origam/interfaces"
+import type { ILocaleInstance, ILocaleOptions, ILocaleProps, IRtlInstance, IRtlOptions, IRtlProps } from "@/interfaces"
 
-import { createVueI18nAdapter, getCurrentInstanceName, mergeDeep } from "@origam/utils"
+import { createVueI18nAdapter, getCurrentInstanceName, mergeDeep } from "@/utils"
 
 import { computed, inject, provide, ref } from "vue"
 import { createI18n, I18n, useI18n } from "vue-i18n"

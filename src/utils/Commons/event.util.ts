@@ -1,5 +1,5 @@
-import type { TEventHandler } from '@origam/types'
-import { isOn } from '@origam/utils'
+import type { TEventHandler } from '@/types'
+import { isOn } from '@/utils'
 
 export function getPrefixedEventHandlers<T extends `:${string}`> (
     attrs: Record<string, any>,

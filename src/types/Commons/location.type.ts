@@ -1,6 +1,6 @@
-import { LOCATION_STRATEGIES } from '@origam/enums'
+import { LOCATION_STRATEGIES } from '@/enums'
 
-import type { ILocationStrategyData, ILocationStrategyProps } from '@origam/interfaces'
+import type { ILocationStrategyData, ILocationStrategyProps } from '@/interfaces'
 
 import { Ref } from 'vue'
 

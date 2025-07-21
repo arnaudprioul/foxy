@@ -1,5 +1,5 @@
-import { OrigamBreadcrumb } from "@origam/components"
-import type { IBreadcrumbItemProps } from '@origam/interfaces'
+import { OrigamBreadcrumb } from "@/components"
+import type { IBreadcrumbItemProps } from '@/interfaces'
 
 export type TBreadcrumbItem = string | Partial<IBreadcrumbItemProps> | never
 

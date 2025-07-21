@@ -1,6 +1,6 @@
-import { HANDLERS } from '@origam/consts'
+import { HANDLERS } from '@/consts'
 
-import { eventName, isOn } from '@origam/utils'
+import { eventName, isOn } from '@/utils'
 
 export function bindProps (el: HTMLElement, props: Record<string, any>) {
     Object.keys(props).forEach(k => {

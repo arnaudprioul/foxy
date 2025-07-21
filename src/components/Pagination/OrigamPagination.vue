@@ -87,15 +87,15 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn } from "@origam/components"
+	import { OrigamBtn } from "@/components"
 
-	import { useDisplay, useLocale, useProps, useRefs, useResizeObserver, useVModel } from "@origam/composables"
+	import { useDisplay, useLocale, useProps, useRefs, useResizeObserver, useVModel } from "@/composables"
 
-	import { KEYBOARD_VALUES, MDI_ICONS } from "@origam/enums"
+	import { KEYBOARD_VALUES, MDI_ICONS } from "@/enums"
 
-	import type { IPaginationProps } from "@origam/interfaces"
+	import type { IPaginationProps } from "@/interfaces"
 
-	import { createRange, int } from "@origam/utils"
+	import { createRange, int } from "@/utils"
 
 	import { ComponentPublicInstance, computed, nextTick, shallowRef, StyleValue } from "vue"
 

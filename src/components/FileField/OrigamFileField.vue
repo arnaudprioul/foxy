@@ -220,17 +220,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamChip, OrigamCounter, OrigamField, OrigamInput } from '@origam/components'
+	import { OrigamChip, OrigamCounter, OrigamField, OrigamInput } from '@/components'
 
-	import { useAdjacent, useAdjacentInner, useFocus, useLocale, useProps, useVModel } from '@origam/composables'
+	import { useAdjacent, useAdjacentInner, useFocus, useLocale, useProps, useVModel } from '@/composables'
 
-	import { DENSITY, MDI_ICONS } from '@origam/enums'
+	import { DENSITY, MDI_ICONS } from '@/enums'
 
-	import type { IFileFieldProps } from '@origam/interfaces'
+	import type { IFileFieldProps } from '@/interfaces'
 
-	import type { TOrigamInput } from '@origam/types'
+	import type { TOrigamInput } from '@/types'
 
-	import { filterInputAttrs, forwardRefs, humanReadableFileSize, wrapInArray } from '@origam/utils'
+	import { filterInputAttrs, forwardRefs, humanReadableFileSize, wrapInArray } from '@/utils'
 
 	import { computed, nextTick, ref, StyleValue, toRef, useAttrs, useSlots, watch } from 'vue'
 

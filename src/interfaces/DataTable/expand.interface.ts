@@ -1,5 +1,5 @@
-import type { IDataTableItem } from '@origam/interfaces'
-import type { TVModel } from '@origam/types'
+import type { IDataTableItem } from '@/interfaces'
+import type { TVModel } from '@/types'
 import type { Ref } from 'vue'
 
 export interface IDataTableExpandProps {

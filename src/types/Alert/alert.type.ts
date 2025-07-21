@@ -1,3 +1,3 @@
-import { OrigamAlert } from '@origam/components'
+import { OrigamAlert } from '@/components'
 
 export type TOrigamAlert = InstanceType<typeof OrigamAlert>

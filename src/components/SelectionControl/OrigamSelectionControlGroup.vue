@@ -30,15 +30,15 @@
 		lang="ts"
 		setup
 >
-	import { useProps, useVModel } from '@origam/composables'
+	import { useProps, useVModel } from '@/composables'
 
-	import { ORIGAM_SELECTION_CONTROL_GROUP_KEY } from '@origam/consts'
+	import { ORIGAM_SELECTION_CONTROL_GROUP_KEY } from '@/consts'
 
-	import { DENSITY } from '@origam/enums'
+	import { DENSITY } from '@/enums'
 
-	import type { ISelectionControlGroupProps } from "@origam/interfaces"
+	import type { ISelectionControlGroupProps } from "@/interfaces"
 
-	import { getUid } from '@origam/utils'
+	import { getUid } from '@/utils'
 
 	import { computed, onScopeDispose, provide, StyleValue } from 'vue'
 

@@ -1,4 +1,4 @@
-import type { ICommonsComponentProps, IMenuProps } from "@origam/interfaces"
+import type { ICommonsComponentProps, IMenuProps } from "@/interfaces"
 
 export interface IContextualMenuProps extends ICommonsComponentProps, IMenuProps {
 

@@ -1,6 +1,6 @@
-import type { ITouchHandlers, ITouchStoredHandlers } from '@origam/interfaces'
+import type { ITouchHandlers, ITouchStoredHandlers } from '@/interfaces'
 
-import type { TTouchWrapper } from '@origam/types'
+import type { TTouchWrapper } from '@/types'
 
 export function handleGesture (wrapper: TTouchWrapper) {
     const {touchstartX, touchendX, touchstartY, touchendY} = wrapper

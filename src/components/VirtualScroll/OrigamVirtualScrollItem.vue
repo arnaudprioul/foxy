@@ -21,9 +21,9 @@
 		lang="ts"
 		setup
 >
-	import { useProps, useResizeObserver } from '@origam/composables'
+	import { useProps, useResizeObserver } from '@/composables'
 
-	import type { IVirtualScrollItemProps } from '@origam/interfaces'
+	import type { IVirtualScrollItemProps } from '@/interfaces'
 
 	import { computed, StyleValue, useAttrs, watch } from 'vue'
 

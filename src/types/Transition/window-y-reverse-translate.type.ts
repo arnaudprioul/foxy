@@ -1,3 +1,3 @@
-import { OrigamWindowYReverseTranslate } from "@origam/components"
+import { OrigamWindowYReverseTranslate } from "@/components"
 
 export type TOrigamWindowYReverseTranslate = InstanceType<typeof OrigamWindowYReverseTranslate>

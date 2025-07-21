@@ -18,10 +18,10 @@
 		lang="ts"
 		setup
 >
-	import { useForm, useProps } from '@origam/composables'
+	import { useForm, useProps } from '@/composables'
 
-	import type { IFormProps, ISubmitEventPromise } from '@origam/interfaces'
-	import { forwardRefs } from '@origam/utils'
+	import type { IFormProps, ISubmitEventPromise } from '@/interfaces'
+	import { forwardRefs } from '@/utils'
 
 	import { computed, ref, StyleValue } from 'vue'
 

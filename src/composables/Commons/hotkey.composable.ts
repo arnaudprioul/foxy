@@ -1,8 +1,8 @@
-import { IN_BROWSER } from "@origam/consts"
-import { KEYBOARD_MODIFIERS } from "@origam/consts/Commons/hotkey.const.ts"
-import { IHotkeyOptions } from "@origam/interfaces"
-import { TKeyboardModifiers } from "@origam/types"
-import { consoleWarn, getCurrentInstance, splitKeyCombination, splitKeySequence } from "@origam/utils"
+import { IN_BROWSER } from "@/consts"
+import { KEYBOARD_MODIFIERS } from "@/consts/Commons/hotkey.const.ts"
+import { IHotkeyOptions } from "@/interfaces"
+import { TKeyboardModifiers } from "@/types"
+import { consoleWarn, getCurrentInstance, splitKeyCombination, splitKeySequence } from "@/utils"
 
 import { MaybeRef, onBeforeUnmount, toValue, watch } from "vue"
 

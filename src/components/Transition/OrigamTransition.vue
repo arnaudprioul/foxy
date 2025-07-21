@@ -11,12 +11,12 @@
 		lang="ts"
 		setup
 >
-	import { OrigamFade } from '@origam/components'
-	import { useProps, useTransition } from '@origam/composables'
-	import type { ITransitionComponentProps } from '@origam/interfaces'
-	import type { TTransitionProps } from '@origam/types'
+	import { OrigamFade } from '@/components'
+	import { useProps, useTransition } from '@/composables'
+	import type { ITransitionComponentProps } from '@/interfaces'
+	import type { TTransitionProps } from '@/types'
 
-	import { omit } from '@origam/utils'
+	import { omit } from '@/utils'
 
 	import { computed, mergeProps, Transition, useAttrs } from 'vue'
 

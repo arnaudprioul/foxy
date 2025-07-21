@@ -1,6 +1,8 @@
-import type { IDateOptions, IDisplayOptions, IGoToOptions, ILocaleOptions, IRtlOptions } from '@origam/interfaces'
+import type * as Components from "@/components"
+import type * as Directives from "@/directives"
+import type { IDateOptions, IDisplayOptions, IGoToOptions, ILocaleOptions, IRtlOptions } from '@/interfaces'
 
-import type { TIconOptions, TSSROptions } from '@origam/types'
+import { TIconOptions, TOrigamPluginOptionsImport, TSSROptions } from '@/types'
 
 import type { ExtractPropTypes, StyleValue } from 'vue'
 
@@ -15,6 +17,14 @@ export interface IOrigamOptions {
     goTo?: IGoToOptions
     date?: IDateOptions
     locale?: ILocaleOptions & IRtlOptions
+}
+
+export interface IOrigamPluginOptions {
+    autoImport?: TOrigamPluginOptionsImport
+}
+
+export interface IOrigamPluginOptionsObject {
+    ignore?: (keyof typeof Components | keyof typeof Directives)[]
 }
 
 export interface IBlueprint extends Omit<IOrigamOptions, 'blueprint'> {

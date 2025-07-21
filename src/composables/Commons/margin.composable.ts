@@ -1,8 +1,8 @@
-import { MARGIN_REGEX } from '@origam/consts'
+import { MARGIN_REGEX } from '@/consts'
 
-import type { IMarginProps } from '@origam/interfaces'
+import type { IMarginProps } from '@/interfaces'
 
-import { convertToUnit, formatMarginStylesVar, getCurrentInstanceName } from '@origam/utils'
+import { convertToUnit, formatMarginStylesVar, getCurrentInstanceName } from '@/utils'
 
 import { computed } from 'vue'
 

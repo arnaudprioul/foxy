@@ -78,7 +78,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamIcon, OrigamOverlay, OrigamProgress, OrigamSnack } from '@origam/components'
+	import { OrigamIcon, OrigamOverlay, OrigamProgress, OrigamSnack } from '@/components'
 
 	import {
 		useBorder,
@@ -95,17 +95,17 @@
 		useStatus,
 		useToggleScope,
 		useVModel
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { ORIGAM_LAYOUT_KEY } from '@origam/consts'
+	import { ORIGAM_LAYOUT_KEY } from '@/consts'
 
-	import { PROGRESS_TYPE, SCROLL_STRATEGIES } from '@origam/enums'
+	import { PROGRESS_TYPE, SCROLL_STRATEGIES } from '@/enums'
 
-	import type { ISnackbarProps } from "@origam/interfaces"
+	import type { ISnackbarProps } from "@/interfaces"
 
-	import type { TIcon, TOrigamOverlay, TOrigamProgress, TTransitionProps } from '@origam/types'
+	import type { TIcon, TOrigamOverlay, TOrigamProgress, TTransitionProps } from '@/types'
 
-	import { forwardRefs, refElement } from '@origam/utils'
+	import { forwardRefs, refElement } from '@/utils'
 
 	import {
 		computed,

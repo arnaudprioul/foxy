@@ -182,19 +182,19 @@
 		OrigamMenu,
 		OrigamTextField,
 		OrigamTranslateScale
-	} from "@origam/components"
+	} from "@/components"
 
-	import { useDate, useLocale, useProps, useTextColor, useVModel } from "@origam/composables"
+	import { useDate, useLocale, useProps, useTextColor, useVModel } from "@/composables"
 
-	import { ORIGAM_FORM_KEY } from "@origam/consts"
+	import { ORIGAM_FORM_KEY } from "@/consts"
 
-	import { BLOCK, DENSITY, DIRECTION, KEYBOARD_VALUES, MDI_ICONS, TEXT_FIELD_TYPE } from "@origam/enums"
+	import { BLOCK, DENSITY, DIRECTION, KEYBOARD_VALUES, MDI_ICONS, TEXT_FIELD_TYPE } from "@/enums"
 
-	import type { IDatePickerFieldProps } from "@origam/interfaces"
+	import type { IDatePickerFieldProps } from "@/interfaces"
 
-	import type { TOrigamDatePicker, TOrigamMenu, TOrigamTextField, TTransitionProps } from "@origam/types"
+	import type { TOrigamDatePicker, TOrigamMenu, TOrigamTextField, TTransitionProps } from "@/types"
 
-	import { forwardRefs, isEmpty, matchesSelector, wrapInArray } from "@origam/utils"
+	import { forwardRefs, isEmpty, matchesSelector, wrapInArray } from "@/utils"
 
 	import { computed, inject, nextTick, ref, shallowRef, StyleValue, toRef, useSlots, watch } from "vue"
 

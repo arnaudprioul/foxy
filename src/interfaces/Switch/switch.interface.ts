@@ -11,7 +11,7 @@ import type {
     IRoundedProps,
     ISelectionControlProps,
     ITagProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
 export interface ISwitchProps extends ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IInputProps, ISelectionControlProps, ILoaderProps, IColorProps, IDensityProps, IElevationProps {
     indeterminate?: boolean

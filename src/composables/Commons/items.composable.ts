@@ -1,6 +1,6 @@
-import type { IInternalListItem, IItemProps } from '@origam/interfaces'
+import type { IInternalListItem, IItemProps } from '@/interfaces'
 
-import { deepEqual, transformListItem, transformListItems } from '@origam/utils'
+import { deepEqual, transformListItem, transformListItems } from '@/utils'
 
 import { computed } from 'vue'
 

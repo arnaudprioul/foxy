@@ -12,9 +12,9 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded, useRtl } from '@origam/composables'
+	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded, useRtl } from '@/composables'
 
-	import type { IContainerProps } from '@origam/interfaces'
+	import type { IContainerProps } from '@/interfaces'
 
 	import { computed, StyleValue, toRef } from 'vue'
 

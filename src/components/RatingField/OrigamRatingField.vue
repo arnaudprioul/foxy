@@ -130,17 +130,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamInput, OrigamLabel, OrigamRatingFieldItem } from '@origam/components'
+	import { OrigamInput, OrigamLabel, OrigamRatingFieldItem } from '@/components'
 
-	import { useProps, useVModel } from '@origam/composables'
+	import { useProps, useVModel } from '@/composables'
 
-	import { BLOCK, DENSITY, SIZES } from '@origam/enums'
+	import { BLOCK, DENSITY, SIZES } from '@/enums'
 
-	import type { IRatingFieldProps } from '@origam/interfaces'
+	import type { IRatingFieldProps } from '@/interfaces'
 
-	import type { TOrigamInput, TOrigamRatingFieldItem } from "@origam/types"
+	import type { TOrigamInput, TOrigamRatingFieldItem } from "@/types"
 
-	import { clamp, createRange, filterInputAttrs, getUid } from '@origam/utils'
+	import { clamp, createRange, filterInputAttrs, getUid } from '@/utils'
 
 	import { computed, ref, shallowRef, StyleValue, useAttrs, useSlots } from 'vue'
 

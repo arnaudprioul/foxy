@@ -1,23 +1,17 @@
-import { useSort } from '@origam/composables'
-import { ORIGAM_DATA_TABLE_HEADERS_KEY } from '@origam/consts'
-import { SORT_DIRECTION } from '@origam/enums'
+import { useSort } from '@/composables'
+import { ORIGAM_DATA_TABLE_HEADERS_KEY } from '@/consts'
+import { SORT_DIRECTION } from '@/enums'
 import type {
     IDataTableHeader,
     IDataTableHeaderProps,
     IDataTableSortItem,
     IHeaderCellProps,
     IInternalDataTableHeader
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TDataTableCompareFunction, TFilterKeyFunctions } from '@origam/types'
+import type { TDataTableCompareFunction, TFilterKeyFunctions } from '@/types'
 
-import {
-    convertToInternalHeaders,
-    extractKeys,
-    getHeaderDepth,
-    parseFixedColumns,
-    parseHeaderItems
-} from '@origam/utils'
+import { convertToInternalHeaders, extractKeys, getHeaderDepth, parseFixedColumns, parseHeaderItems } from '@/utils'
 
 import { capitalize, inject, provide, ref, Ref, watchEffect } from 'vue'
 

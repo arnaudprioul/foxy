@@ -1,3 +1,3 @@
-import { OrigamDialog } from '@origam/components'
+import { OrigamDialog } from '@/components'
 
 export type TOrigamDialog = InstanceType<typeof OrigamDialog>

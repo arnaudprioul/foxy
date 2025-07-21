@@ -19,7 +19,7 @@ import type {
     IFiltersProps,
     IInternalDataTableHeader,
     ITableProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
 import type { UnwrapRef } from 'vue'
 

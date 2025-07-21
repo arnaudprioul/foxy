@@ -1,10 +1,10 @@
-import { OrigamComponentIcon, OrigamSvgIcon } from '@origam/components'
+import { OrigamComponentIcon, OrigamSvgIcon } from '@/components'
 
-import { DEFAULT_SETS, MDI, MDI_ALIASES, ORIGAM_ICONS_KEY } from '@origam/consts'
+import { DEFAULT_SETS, MDI, MDI_ALIASES, ORIGAM_ICONS_KEY } from '@/consts'
 
-import type { TIcon, TIconInstance, TIconOptions } from '@origam/types'
+import type { TIcon, TIconInstance, TIconOptions } from '@/types'
 
-import { mergeDeep } from '@origam/utils'
+import { mergeDeep } from '@/utils'
 import { computed, inject, Ref, unref } from 'vue'
 
 export const useIcon = (props: Ref<TIcon | undefined>) => {

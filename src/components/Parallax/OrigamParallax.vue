@@ -35,15 +35,15 @@
 		useProps,
 		useRounded,
 		useThrottleFn
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { ORIGAM_PARALLAX_KEY } from '@origam/consts'
+	import { ORIGAM_PARALLAX_KEY } from '@/consts'
 
-	import { PARALLAX_EVENT } from '@origam/enums'
+	import { PARALLAX_EVENT } from '@/enums'
 
-	import type { IBox, IParallaxProps } from '@origam/interfaces'
+	import type { IBox, IParallaxProps } from '@/interfaces'
 
-	import { getCenter, getTargetBox, inViewport } from '@origam/utils'
+	import { getCenter, getTargetBox, inViewport } from '@/utils'
 
 	import { computed, onBeforeUnmount, onMounted, provide, ref, StyleValue, toRef } from 'vue'
 

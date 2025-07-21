@@ -1,4 +1,4 @@
-import { OrigamSliderField } from '@origam/components'
+import { OrigamSliderField } from '@/components'
 
 export type TAlways = boolean | 'always'
 

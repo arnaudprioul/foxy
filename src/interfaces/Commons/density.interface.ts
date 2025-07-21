@@ -1,4 +1,4 @@
-import type { TDensity } from '@origam/types'
+import type { TDensity } from '@/types'
 
 export interface IDensityProps {
     density?: TDensity

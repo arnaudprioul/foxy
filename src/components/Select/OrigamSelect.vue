@@ -272,11 +272,11 @@
 		OrigamTextField,
 		OrigamTranslateScale,
 		OrigamVirtualScroll
-	} from '@origam/components'
+	} from '@/components'
 
-	import { useFilter, useItems, useLocale, useProps, useScrolling, useTextColor, useVModel } from '@origam/composables'
+	import { useFilter, useItems, useLocale, useProps, useScrolling, useTextColor, useVModel } from '@/composables'
 
-	import { IN_BROWSER, ORIGAM_FORM_KEY } from '@origam/consts'
+	import { IN_BROWSER, ORIGAM_FORM_KEY } from '@/consts'
 
 	import {
 		BLOCK,
@@ -287,9 +287,9 @@
 		MDI_ICONS,
 		SELECT_STRATEGY,
 		TEXT_FIELD_TYPE
-	} from '@origam/enums'
+	} from '@/enums'
 
-	import type { IInternalListItem, IItemProps, ISelectProps } from '@origam/interfaces'
+	import type { IInternalListItem, IItemProps, ISelectProps } from '@/interfaces'
 
 	import type {
 		TOrigamChip,
@@ -298,9 +298,9 @@
 		TOrigamTextField,
 		TOrigamVirtualScroll,
 		TTransitionProps
-	} from '@origam/types'
+	} from '@/types'
 
-	import { deepEqual, forwardRefs, matchesSelector, noop, wrapInArray } from '@origam/utils'
+	import { deepEqual, forwardRefs, matchesSelector, noop, wrapInArray } from '@/utils'
 
 	import {
 		computed,

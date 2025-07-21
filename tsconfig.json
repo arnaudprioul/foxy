@@ -31,10 +31,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@origam": [
+      "@": [
         "src"
       ],
-      "@origam/*": [
+      "@/*": [
         "src/*"
       ]
     },

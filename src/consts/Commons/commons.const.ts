@@ -1,4 +1,4 @@
-import type { TEventProp } from '@origam/types'
+import type { TEventProp } from '@/types'
 
 import { PropType } from 'vue'
 

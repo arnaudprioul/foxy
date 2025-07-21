@@ -1,8 +1,8 @@
-import { DEFAULT_ACTION_HEADER, DEFAULT_HEADER } from '@origam/consts'
+import { DEFAULT_ACTION_HEADER, DEFAULT_HEADER } from '@/consts'
 
-import type { IDataTableHeader, IInternalDataTableHeader } from '@origam/interfaces'
+import type { IDataTableHeader, IInternalDataTableHeader } from '@/interfaces'
 
-import { consoleError } from '@origam/utils'
+import { consoleError } from '@/utils'
 
 export function extractKeys (headers: Array<IDataTableHeader>, keys = new Set<string>()) {
     for (const item of headers) {

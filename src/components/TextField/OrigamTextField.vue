@@ -182,21 +182,21 @@
 		lang="ts"
 		setup
 >
-	import { OrigamCounter, OrigamField, OrigamInput } from '@origam/components'
+	import { OrigamCounter, OrigamField, OrigamInput } from '@/components'
 
-	import { useAdjacentInner, useFocus, useProps, useVModel } from '@origam/composables'
+	import { useAdjacentInner, useFocus, useProps, useVModel } from '@/composables'
 
-	import { ACTIVE_TEXT_FIELD_TYPE, INPUT_TEXT_FIELD_TYPE } from '@origam/consts'
+	import { ACTIVE_TEXT_FIELD_TYPE, INPUT_TEXT_FIELD_TYPE } from '@/consts'
 
-	import { vIntersect } from '@origam/directives'
+	import { vIntersect } from '@/directives'
 
-	import { DENSITY, DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from '@origam/enums'
+	import { DENSITY, DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from '@/enums'
 
-	import type { ITextFieldProps } from '@origam/interfaces'
+	import type { ITextFieldProps } from '@/interfaces'
 
-	import type { TOrigamField, TOrigamInput } from "@origam/types"
+	import type { TOrigamField, TOrigamInput } from "@/types"
 
-	import { filterInputAttrs, forwardRefs } from '@origam/utils'
+	import { filterInputAttrs, forwardRefs } from '@/utils'
 
 	import { computed, nextTick, ref, StyleValue, useAttrs, useSlots } from 'vue'
 

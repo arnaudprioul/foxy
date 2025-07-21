@@ -54,22 +54,14 @@
 		lang="ts"
 		setup
 >
-	import { OrigamDataTableHeadersCell, OrigamDataTableHeadersCellMobile, OrigamProgress } from '@origam/components'
+	import { OrigamDataTableHeadersCell, OrigamDataTableHeadersCellMobile, OrigamProgress } from '@/components'
 
-	import {
-		useDisplay,
-		useHeaders,
-		useHeadersCell,
-		useLoader,
-		useProps,
-		useSelection,
-		useSort
-	} from '@origam/composables'
+	import { useDisplay, useHeaders, useHeadersCell, useLoader, useProps, useSelection, useSort } from '@/composables'
 
-	import { PROGRESS_TYPE } from '@origam/enums'
+	import { PROGRESS_TYPE } from '@/enums'
 
-	import type { IDataTableHeadersProps, IDataTableHeadersSlotProps } from '@origam/interfaces'
-	import type { TOrigamDataTableHeadersCell, TOrigamDataTableHeadersCellMobile } from "@origam/types"
+	import type { IDataTableHeadersProps, IDataTableHeadersSlotProps } from '@/interfaces'
+	import type { TOrigamDataTableHeadersCell, TOrigamDataTableHeadersCellMobile } from "@/types"
 
 	import { computed, ref, StyleValue } from 'vue'
 

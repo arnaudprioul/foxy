@@ -48,7 +48,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamIcon, OrigamImg } from '@origam/components'
+	import { OrigamIcon, OrigamImg } from '@/components'
 
 	import {
 		useActive,
@@ -64,10 +64,10 @@
 		useSize,
 		useStatus,
 		useStyle
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import type { IAvatarProps, ISrcObject } from '@origam/interfaces'
-	import { isEmpty } from "@origam/utils"
+	import type { IAvatarProps, ISrcObject } from '@/interfaces'
+	import { isEmpty } from "@/utils"
 
 	import type { ComputedRef, StyleValue } from 'vue'
 	import { computed, ref, useSlots } from 'vue'

@@ -1,9 +1,9 @@
-import { BORDER_REGEX, DIRECTION_ARRAY } from '@origam/consts'
+import { BORDER_REGEX, DIRECTION_ARRAY } from '@/consts'
 
-import type { IBorderProps } from '@origam/interfaces'
-import { TDirectionBoth } from "@origam/types"
+import type { IBorderProps } from '@/interfaces'
+import { TDirectionBoth } from "@/types"
 
-import { convertToUnit, formatBorderStylesVar, getCurrentInstanceName, isEmpty } from '@origam/utils'
+import { convertToUnit, formatBorderStylesVar, getCurrentInstanceName, isEmpty } from '@/utils'
 import { computed, isRef, Ref } from 'vue'
 
 // TODO Create composable for border position

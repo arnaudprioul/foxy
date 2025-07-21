@@ -1,3 +1,3 @@
-import { OrigamCounter } from "@origam/components"
+import { OrigamCounter } from "@/components"
 
 export type TOrigamCounter = InstanceType<typeof OrigamCounter>

@@ -21,17 +21,9 @@
 		lang="ts"
 		setup
 >
-	import {
-		useAspectRatio,
-		useBorder,
-		useDimension,
-		useMargin,
-		usePadding,
-		useProps,
-		useRounded
-	} from '@origam/composables'
+	import { useAspectRatio, useBorder, useDimension, useMargin, usePadding, useProps, useRounded } from '@/composables'
 
-	import type { IResponsiveProps } from '@origam/interfaces'
+	import type { IResponsiveProps } from '@/interfaces'
 
 	import { computed, StyleValue, useSlots } from 'vue'
 

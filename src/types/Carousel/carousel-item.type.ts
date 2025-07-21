@@ -1,3 +1,3 @@
-import { OrigamCarouselItem } from "@origam/components"
+import { OrigamCarouselItem } from "@/components"
 
 export type TOrigamCarouselItem = InstanceType<typeof OrigamCarouselItem>

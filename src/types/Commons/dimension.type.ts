@@ -1,3 +1,3 @@
-import { DIMENSIONS } from '@origam/enums'
+import { DIMENSIONS } from '@/enums'
 
 export type TDimensions = `${DIMENSIONS}`

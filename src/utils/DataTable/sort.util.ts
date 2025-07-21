@@ -1,7 +1,7 @@
-import { SORT_DIRECTION } from '@origam/enums'
-import type { IDataTableSortItem, IInternalItem } from '@origam/interfaces'
-import type { TDataTableCompareFunction } from '@origam/types'
-import { isEmpty } from '@origam/utils'
+import { SORT_DIRECTION } from '@/enums'
+import type { IDataTableSortItem, IInternalItem } from '@/interfaces'
+import type { TDataTableCompareFunction } from '@/types'
+import { isEmpty } from '@/utils'
 
 export function sortItems<T extends IInternalItem> (
     items: T[],

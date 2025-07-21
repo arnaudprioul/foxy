@@ -46,13 +46,13 @@
 		lang="ts"
 		setup
 >
-	import { OrigamPickerTitle, OrigamSheet } from "@origam/components"
+	import { OrigamPickerTitle, OrigamSheet } from "@/components"
 
-	import { useBackgroundColor, useProps } from "@origam/composables"
+	import { useBackgroundColor, useProps } from "@/composables"
 
-	import type { IPickerProps } from "@origam/interfaces"
+	import type { IPickerProps } from "@/interfaces"
 
-	import type { TOrigamSheet } from "@origam/types"
+	import type { TOrigamSheet } from "@/types"
 
 	import { computed, ref, StyleValue, toRef, useSlots } from "vue"
 

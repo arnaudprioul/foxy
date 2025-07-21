@@ -1,3 +1,3 @@
-import { OrigamChip } from "@origam/components"
+import { OrigamChip } from "@/components"
 
 export type TOrigamChip = InstanceType<typeof OrigamChip>

@@ -1,4 +1,4 @@
-import type { ILayoutProvide } from '@origam/interfaces'
+import type { ILayoutProvide } from '@/interfaces'
 
 import type { InjectionKey, ShallowRef } from 'vue'
 

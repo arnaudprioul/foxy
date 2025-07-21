@@ -1,4 +1,4 @@
-import { BREAKPOINTS } from '@origam/enums'
+import { BREAKPOINTS } from '@/enums'
 
 export type TBreakpoint = `${BREAKPOINTS}`
 

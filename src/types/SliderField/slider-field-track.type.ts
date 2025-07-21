@@ -1,3 +1,3 @@
-import { OrigamSliderFieldTrack } from '@origam/components'
+import { OrigamSliderFieldTrack } from '@/components'
 
 export type TOrigamSliderFieldTrack = InstanceType<typeof OrigamSliderFieldTrack>

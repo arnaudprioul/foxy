@@ -43,7 +43,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamExpandY, OrigamListGroupActivator, OrigamListItem, OrigamTransition } from '@origam/components'
+	import { OrigamExpandY, OrigamListGroupActivator, OrigamListItem, OrigamTransition } from '@/components'
 
 	import {
 		useBorder,
@@ -55,11 +55,11 @@
 		useProps,
 		useRounded,
 		useSsrBoot
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { MDI_ICONS } from "@origam/enums"
+	import { MDI_ICONS } from "@/enums"
 
-	import type { IListActivatorProps, IListGroupProps } from '@origam/interfaces'
+	import type { IListActivatorProps, IListGroupProps } from '@/interfaces'
 
 	import { computed, ref, StyleValue, toRef } from 'vue'
 

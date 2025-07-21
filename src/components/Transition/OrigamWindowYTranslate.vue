@@ -12,9 +12,9 @@
 		lang="ts"
 		setup
 >
-	import { useProps, useWindowTransition } from '@origam/composables'
+	import { useProps, useWindowTransition } from '@/composables'
 
-	import type { ITransitionProps } from '@origam/interfaces'
+	import type { ITransitionProps } from '@/interfaces'
 
 	const props = withDefaults(defineProps<ITransitionProps>(), {
 		name: 'origam-transition--window-y-translate'

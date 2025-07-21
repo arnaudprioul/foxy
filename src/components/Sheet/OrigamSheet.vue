@@ -23,9 +23,9 @@
 		usePosition,
 		useProps,
 		useRounded
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import type { ISheetProps } from "@origam/interfaces"
+	import type { ISheetProps } from "@/interfaces"
 
 	import { computed, StyleValue, toRef } from 'vue'
 

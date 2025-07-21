@@ -1,9 +1,9 @@
-import { useVModel } from '@origam/composables'
-import { ORIGAM_FORM_KEY } from '@origam/consts'
+import { useVModel } from '@/composables'
+import { ORIGAM_FORM_KEY } from '@/consts'
 
-import type { IFormField, IFormProps, IValidationFieldResult } from '@origam/interfaces'
+import type { IFormField, IFormProps, IValidationFieldResult } from '@/interfaces'
 
-import { consoleWarn } from '@origam/utils'
+import { consoleWarn } from '@/utils'
 
 import { computed, markRaw, provide, ref, shallowRef, toRef, watch } from 'vue'
 

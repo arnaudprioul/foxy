@@ -1,8 +1,8 @@
 // Composables
-import { useBorder } from '@origam/composables'
+import { useBorder } from '@/composables'
 
 // Utilities
-import type { IBorderProps } from '@origam/interfaces'
+import type { IBorderProps } from '@/interfaces'
 
 describe('border.ts', () => {
     it.each([

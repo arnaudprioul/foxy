@@ -1,6 +1,6 @@
-import type { IInternalDataTableHeader } from '@origam/interfaces'
+import type { IInternalDataTableHeader } from '@/interfaces'
 
-import type { TDataTableCompareFunction, TSortDirection } from '@origam/types'
+import type { TDataTableCompareFunction, TSortDirection } from '@/types'
 
 import type { Ref } from 'vue'
 

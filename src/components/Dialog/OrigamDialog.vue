@@ -126,14 +126,14 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn, OrigamCard, OrigamIcon, OrigamOverlay, OrigamTranslateScale } from '@origam/components'
-	import { useProps, useScopeId, useStatus, useVModel } from '@origam/composables'
-	import { IN_BROWSER } from '@origam/consts'
-	import { vIntersect } from '@origam/directives'
-	import { MDI_ICONS } from '@origam/enums'
-	import type { IDialogProps } from '@origam/interfaces'
-	import type { TIcon, TOrigamCard, TOrigamOverlay, TTransitionProps } from '@origam/types'
-	import { focusableChildren, forwardRefs } from '@origam/utils'
+	import { OrigamBtn, OrigamCard, OrigamIcon, OrigamOverlay, OrigamTranslateScale } from '@/components'
+	import { useProps, useScopeId, useStatus, useVModel } from '@/composables'
+	import { IN_BROWSER } from '@/consts'
+	import { vIntersect } from '@/directives'
+	import { MDI_ICONS } from '@/enums'
+	import type { IDialogProps } from '@/interfaces'
+	import type { TIcon, TOrigamCard, TOrigamOverlay, TTransitionProps } from '@/types'
+	import { focusableChildren, forwardRefs } from '@/utils'
 
 	import { computed, mergeProps, nextTick, ref, StyleValue, useSlots, watch } from 'vue'
 

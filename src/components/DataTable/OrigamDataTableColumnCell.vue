@@ -12,13 +12,13 @@
 		lang="ts"
 		setup
 >
-	import { useDimension, usePadding, useProps } from '@origam/composables'
+	import { useDimension, usePadding, useProps } from '@/composables'
 
-	import { ALIGN } from '@origam/enums'
+	import { ALIGN } from '@/enums'
 
-	import type { IDataTableColumnProps } from '@origam/interfaces'
+	import type { IDataTableColumnProps } from '@/interfaces'
 
-	import { convertToUnit } from '@origam/utils'
+	import { convertToUnit } from '@/utils'
 
 	import { computed, StyleValue } from 'vue'
 

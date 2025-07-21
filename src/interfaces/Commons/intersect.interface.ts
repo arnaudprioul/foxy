@@ -1,4 +1,4 @@
-import type { TObserveHandler } from '@origam/types'
+import type { TObserveHandler } from '@/types'
 
 import type { DirectiveBinding } from 'vue'
 

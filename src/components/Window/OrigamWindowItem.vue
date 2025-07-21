@@ -21,17 +21,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamTransition } from '@origam/components'
+	import { OrigamTransition } from '@/components'
 
-	import { useGroupItem, useLazy, useProps, useSsrBoot } from '@origam/composables'
+	import { useGroupItem, useLazy, useProps, useSsrBoot } from '@/composables'
 
-	import { ORIGAM_WINDOW_GROUP_KEY, ORIGAM_WINDOW_KEY } from '@origam/consts'
+	import { ORIGAM_WINDOW_GROUP_KEY, ORIGAM_WINDOW_KEY } from '@/consts'
 
-	import { vTouch } from '@origam/directives'
+	import { vTouch } from '@/directives'
 
-	import type { IWindowItemProps } from '@origam/interfaces'
+	import type { IWindowItemProps } from '@/interfaces'
 
-	import { convertToUnit } from '@origam/utils'
+	import { convertToUnit } from '@/utils'
 
 	import { computed, inject, nextTick, shallowRef, StyleValue } from 'vue'
 

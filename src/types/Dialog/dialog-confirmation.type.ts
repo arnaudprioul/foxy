@@ -1,3 +1,3 @@
-import { OrigamDialogConfirmation } from '@origam/components'
+import { OrigamDialogConfirmation } from '@/components'
 
 export type TOrigamDialogConfirmation = InstanceType<typeof OrigamDialogConfirmation>

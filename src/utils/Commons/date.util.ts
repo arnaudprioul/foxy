@@ -1,10 +1,10 @@
-import { DATE_2000_JUNARY_SUNDAY, FIRST_DAY, REGEX_DATE_YYYY_MM_DD } from "@origam/consts"
+import { DATE_2000_JUNARY_SUNDAY, FIRST_DAY, REGEX_DATE_YYYY_MM_DD } from "@/consts"
 
-import type { IDateAdapter, IDateOptions, ILocaleInstance } from "@origam/interfaces"
-import { DateAdapter } from "@origam/services"
-import type { TCustomDateFormat } from "@origam/types"
+import type { IDateAdapter, IDateOptions, ILocaleInstance } from "@/interfaces"
+import { DateAdapter } from "@/services"
+import type { TCustomDateFormat } from "@/types"
 
-import { createRange, padStart } from "@origam/utils"
+import { createRange, padStart } from "@/utils"
 
 import { reactive, watch } from "vue"
 

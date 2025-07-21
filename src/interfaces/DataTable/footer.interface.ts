@@ -1,6 +1,6 @@
-import type { IAlignProps, IColorProps, ICommonsComponentProps, IPaddingProps } from "@origam/interfaces"
+import type { IAlignProps, IColorProps, ICommonsComponentProps, IPaddingProps } from "@/interfaces"
 
-import type { TIcon } from "@origam/types"
+import type { TIcon } from "@/types"
 
 export interface IDataTableFooterProps extends ICommonsComponentProps, IColorProps, IPaddingProps, IAlignProps {
     prevIcon?: TIcon

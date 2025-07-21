@@ -1,6 +1,6 @@
-import type { IScrollStrategyData, IScrollStrategyProps } from '@origam/interfaces'
+import type { IScrollStrategyData, IScrollStrategyProps } from '@/interfaces'
 
-import { convertToUnit, requestNewFrame } from '@origam/utils'
+import { convertToUnit, requestNewFrame } from '@/utils'
 
 import { EffectScope, onScopeDispose } from 'vue'
 

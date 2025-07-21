@@ -1,4 +1,4 @@
-import type { TColor } from "@origam/types"
+import type { TColor } from "@/types"
 
 export interface IColorProps {
     color?: TColor

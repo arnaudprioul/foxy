@@ -1,6 +1,6 @@
-import type { IPositionProps } from '@origam/interfaces'
+import type { IPositionProps } from '@/interfaces'
 
-import { getCurrentInstanceName } from '@origam/utils'
+import { getCurrentInstanceName } from '@/utils'
 import { computed } from 'vue'
 
 export function usePosition (props: IPositionProps, name = getCurrentInstanceName()) {

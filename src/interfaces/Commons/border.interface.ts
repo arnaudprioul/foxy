@@ -1,4 +1,4 @@
-import { TDirectionBoth } from "@origam/types"
+import { TDirectionBoth } from "@/types"
 
 export interface IBorderProps {
     border?: boolean | number | string | TDirectionBoth | Array<TDirectionBoth>

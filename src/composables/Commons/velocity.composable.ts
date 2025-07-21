@@ -1,9 +1,9 @@
-import { HISTORY, HORIZON } from '@origam/consts'
-import type { ISample } from "@origam/interfaces"
+import { HISTORY, HORIZON } from '@/consts'
+import type { ISample } from "@/interfaces"
 
-import { CircularBuffer } from '@origam/services'
+import { CircularBuffer } from '@/services'
 
-import { calculateImpulseVelocity, oops } from '@origam/utils'
+import { calculateImpulseVelocity, oops } from '@/utils'
 
 export function useVelocity () {
     const touches: Record<number, CircularBuffer<[number, Touch]> | undefined> = {}

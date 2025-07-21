@@ -8,9 +8,9 @@ import type {
     IRoundedProps,
     ITagProps,
     ITouchHandlers
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TIcon } from '@origam/types'
+import type { TIcon } from '@/types'
 
 import type { ComputedRef, Ref } from 'vue'
 

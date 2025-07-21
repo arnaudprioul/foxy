@@ -1,6 +1,6 @@
-import type { ICommonsComponentProps } from '@origam/interfaces'
+import type { ICommonsComponentProps } from '@/interfaces'
 
-import type { TDirectionBoth } from '@origam/types'
+import type { TDirectionBoth } from '@/types'
 
 import type { ComponentInternalInstance, ComputedRef, CSSProperties, Ref } from 'vue'
 

@@ -133,17 +133,17 @@
 		setup
 >
 
-	import { OrigamField, OrigamOverlay, OrigamProgress } from "@origam/components"
+	import { OrigamField, OrigamOverlay, OrigamProgress } from "@/components"
 
-	import { useDimension, useFocus, useLocale, useProps, useVModel } from "@origam/composables"
+	import { useDimension, useFocus, useLocale, useProps, useVModel } from "@/composables"
 
-	import { OTP_INPUT_FIELD_TYPE, PROGRESS_TYPE } from "@origam/enums"
+	import { OTP_INPUT_FIELD_TYPE, PROGRESS_TYPE } from "@/enums"
 
-	import type { IOtpInputFieldProps } from "@origam/interfaces"
+	import type { IOtpInputFieldProps } from "@/interfaces"
 
-	import type { TOrigamField } from "@origam/types"
+	import type { TOrigamField } from "@/types"
 
-	import { filterInputAttrs, focusChild } from "@origam/utils"
+	import { filterInputAttrs, focusChild } from "@/utils"
 
 	import { computed, nextTick, ref, StyleValue, useAttrs, useSlots, watch } from "vue"
 

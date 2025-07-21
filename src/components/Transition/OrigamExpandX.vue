@@ -18,10 +18,10 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from "@origam/composables"
-	import { TRANSITION_MODE } from '@origam/enums'
+	import { useProps } from "@/composables"
+	import { TRANSITION_MODE } from '@/enums'
 
-	import type { IHTMLExpandElement, ITransitionProps } from '@origam/interfaces'
+	import type { IHTMLExpandElement, ITransitionProps } from '@/interfaces'
 
 	import { camelize } from 'vue'
 

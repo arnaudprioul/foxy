@@ -51,7 +51,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamOverlayScrim } from '@origam/components'
+	import { OrigamOverlayScrim } from '@/components'
 
 	import {
 		useBackgroundColor,
@@ -70,13 +70,13 @@
 		useToggleScope,
 		useTouch,
 		useVModel
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { INLINE } from '@origam/enums'
+	import { INLINE } from '@/enums'
 
-	import type { IDrawerProps } from '@origam/interfaces'
+	import type { IDrawerProps } from '@/interfaces'
 
-	import { getUid, int } from "@origam/utils"
+	import { getUid, int } from "@/utils"
 
 	import {
 		computed,

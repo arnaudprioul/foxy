@@ -16,10 +16,10 @@
 		lang="ts"
 		setup
 >
-	import { OrigamFade, OrigamTransition } from '@origam/components'
-	import { useBackgroundColor, useProps } from '@origam/composables'
-	import type { IOverlayScrimProps } from '@origam/interfaces'
-	import type { TTransitionProps } from "@origam/types"
+	import { OrigamFade, OrigamTransition } from '@/components'
+	import { useBackgroundColor, useProps } from '@/composables'
+	import type { IOverlayScrimProps } from '@/interfaces'
+	import type { TTransitionProps } from "@/types"
 
 	import { computed, StyleValue } from 'vue'
 

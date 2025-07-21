@@ -1,6 +1,6 @@
-import type { IColorProps } from "@origam/interfaces"
-import type { TColor } from '@origam/types'
-import { getForeground, isCssColor, isParsableColor, parseColor } from '@origam/utils'
+import type { IColorProps } from "@/interfaces"
+import type { TColor } from '@/types'
+import { getForeground, isCssColor, isParsableColor, parseColor } from '@/utils'
 
 import type { ComputedRef, Ref } from 'vue'
 import { computed, isRef, ref } from 'vue'

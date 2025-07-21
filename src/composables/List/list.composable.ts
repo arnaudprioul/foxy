@@ -1,4 +1,4 @@
-import { ORIGAM_LIST_KEY } from '@origam/consts'
+import { ORIGAM_LIST_KEY } from '@/consts'
 
 import { ComputedRef, inject, provide, shallowRef } from 'vue'
 

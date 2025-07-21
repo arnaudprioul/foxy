@@ -1,3 +1,3 @@
-import { OrigamDatePickerMonth } from "@origam/components"
+import { OrigamDatePickerMonth } from "@/components"
 
 export type TOrigamDatePickerMonth = InstanceType<typeof OrigamDatePickerMonth>

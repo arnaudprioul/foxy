@@ -1,10 +1,10 @@
-import { useEventListener } from '@origam/composables'
+import { useEventListener } from '@/composables'
 
-import { AXIS, CLIENT_POSITION } from '@origam/enums'
+import { AXIS, CLIENT_POSITION } from '@/enums'
 
-import type { TAxis } from '@origam/types'
+import type { TAxis } from '@/types'
 
-import { addWindowListener, clamp, getPosition } from '@origam/utils'
+import { addWindowListener, clamp, getPosition } from '@/utils'
 
 import { computed, onUnmounted, Ref, ref } from 'vue'
 

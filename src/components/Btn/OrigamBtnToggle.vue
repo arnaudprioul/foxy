@@ -31,17 +31,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtnGroup } from '@origam/components'
+	import { OrigamBtnGroup } from '@/components'
 
-	import { useGroup, useProps } from '@origam/composables'
+	import { useGroup, useProps } from '@/composables'
 
-	import { ORIGAM_BTN_TOGGLE_KEY } from '@origam/consts'
+	import { ORIGAM_BTN_TOGGLE_KEY } from '@/consts'
 
-	import { DENSITY } from '@origam/enums'
+	import { DENSITY } from '@/enums'
 
-	import type { IBtnToggleProps } from '@origam/interfaces'
+	import type { IBtnToggleProps } from '@/interfaces'
 
-	import type { TOrigamBtnGroup } from "@origam/types"
+	import type { TOrigamBtnGroup } from "@/types"
 
 	import { computed, ref, StyleValue, useSlots } from 'vue'
 

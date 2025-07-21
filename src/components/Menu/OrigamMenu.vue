@@ -75,19 +75,19 @@
 		OrigamListSubheader,
 		OrigamOverlay,
 		OrigamTranslateScale
-	} from '@origam/components'
+	} from '@/components'
 
-	import { useProps, useScopeId, useVModel } from '@origam/composables'
+	import { useProps, useScopeId, useVModel } from '@/composables'
 
-	import { ORIGAM_MENU_KEY } from '@origam/consts'
+	import { ORIGAM_MENU_KEY } from '@/consts'
 
-	import { INLINE, KEYBOARD_VALUES, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@origam/enums'
+	import { INLINE, KEYBOARD_VALUES, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@/enums'
 
-	import type { IItemProps, IMenuProps } from '@origam/interfaces'
+	import type { IItemProps, IMenuProps } from '@/interfaces'
 
-	import type { TOrigamOverlay, TTransitionProps } from '@origam/types'
+	import type { TOrigamOverlay, TTransitionProps } from '@/types'
 
-	import { focusableChildren, focusChild, forwardRefs, getNextElement, getUid } from '@origam/utils'
+	import { focusableChildren, focusChild, forwardRefs, getNextElement, getUid } from '@/utils'
 
 	import { computed, inject, mergeProps, nextTick, provide, ref, shallowRef, StyleValue, watch } from 'vue'
 

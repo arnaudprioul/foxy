@@ -1,3 +1,3 @@
-import { OrigamDrawer } from "@origam/components"
+import { OrigamDrawer } from "@/components"
 
 export type TOrigamDrawer = InstanceType<typeof OrigamDrawer>

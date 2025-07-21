@@ -159,25 +159,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamAvatar, OrigamExpandX, OrigamIcon, OrigamLabel, OrigamProgress } from '@origam/components'
+	import { OrigamAvatar, OrigamExpandX, OrigamIcon, OrigamLabel, OrigamProgress } from '@/components'
 
-	import {
-		useAdjacentInner,
-		useBothColor,
-		useDensity,
-		useFocus,
-		useLoader,
-		useProps,
-		useRtl
-	} from '@origam/composables'
+	import { useAdjacentInner, useBothColor, useDensity, useFocus, useLoader, useProps, useRtl } from '@/composables'
 
-	import { EASING, KEYBOARD_VALUES, PROGRESS_TYPE } from '@origam/enums'
+	import { EASING, KEYBOARD_VALUES, PROGRESS_TYPE } from '@/enums'
 
-	import type { IFieldProps } from '@origam/interfaces'
+	import type { IFieldProps } from '@/interfaces'
 
-	import type { TOrigamLabel } from "@origam/types"
+	import type { TOrigamLabel } from "@/types"
 
-	import { animate, convertToUnit, getUid, nullifyTransforms } from '@origam/utils'
+	import { animate, convertToUnit, getUid, nullifyTransforms } from '@/utils'
 
 	import { computed, ref, StyleValue, useSlots, watch } from 'vue'
 

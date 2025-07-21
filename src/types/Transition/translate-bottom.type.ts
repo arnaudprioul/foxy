@@ -1,3 +1,3 @@
-import { OrigamTranslateBottom } from "@origam/components"
+import { OrigamTranslateBottom } from "@/components"
 
 export type TOrigamTranslateBottom = InstanceType<typeof OrigamTranslateBottom>

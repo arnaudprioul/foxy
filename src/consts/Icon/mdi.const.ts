@@ -1,8 +1,8 @@
-import { OrigamClassIcon } from '@origam/components'
+import { OrigamClassIcon } from '@/components'
 
-import { MDI_ICONS } from '@origam/enums'
+import { MDI_ICONS } from '@/enums'
 
-import type { IIconAliases, IIconSet } from '@origam/interfaces'
+import type { IIconAliases, IIconSet } from '@/interfaces'
 import { h } from 'vue'
 
 export const MDI: IIconSet = {

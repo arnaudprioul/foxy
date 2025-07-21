@@ -1,6 +1,6 @@
-import type { IHoverProps } from "@origam/interfaces"
+import type { IHoverProps } from "@/interfaces"
 
-import { getCurrentInstanceName } from "@origam/utils"
+import { getCurrentInstanceName } from "@/utils"
 
 import { computed, ref, watch } from "vue"
 

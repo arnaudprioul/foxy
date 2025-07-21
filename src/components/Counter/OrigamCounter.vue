@@ -23,12 +23,12 @@
 		lang="ts"
 		setup
 >
-	import { OrigamSlideY, OrigamTransition } from "@origam/components"
+	import { OrigamSlideY, OrigamTransition } from "@/components"
 
-	import { useProps, useSsrBoot } from "@origam/composables"
+	import { useProps, useSsrBoot } from "@/composables"
 
-	import type { ICounterProps } from "@origam/interfaces"
-	import type { TTransitionProps } from "@origam/types"
+	import type { ICounterProps } from "@/interfaces"
+	import type { TTransitionProps } from "@/types"
 
 	import { computed, StyleValue } from "vue"
 

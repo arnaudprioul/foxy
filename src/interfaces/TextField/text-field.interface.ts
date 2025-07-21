@@ -9,9 +9,9 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TTextFieldType } from '@origam/types'
+import type { TTextFieldType } from '@/types'
 
 export interface ITextFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps {
     autofocus?: boolean

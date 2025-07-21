@@ -1,8 +1,8 @@
-import type { IFiltersProps, IInternalItem } from '@origam/interfaces'
+import type { IFiltersProps, IInternalItem } from '@/interfaces'
 
-import type { TFilterKeyFunctions, TFilterMatch } from '@origam/types'
+import type { TFilterKeyFunctions, TFilterMatch } from '@/types'
 
-import { filterItems } from '@origam/utils'
+import { filterItems } from '@/utils'
 
 import { computed, MaybeRef, ref, Ref, unref, watchEffect } from 'vue'
 

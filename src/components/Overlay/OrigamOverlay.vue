@@ -50,7 +50,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamFade, OrigamOverlayScrim, OrigamTransition } from '@origam/components'
+	import { OrigamFade, OrigamOverlayScrim, OrigamTransition } from '@/components'
 
 	import {
 		useActivator,
@@ -69,19 +69,19 @@
 		useTeleport,
 		useToggleScope,
 		useVModel
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { IN_BROWSER } from '@origam/consts'
+	import { IN_BROWSER } from '@/consts'
 
-	import { vClickOutside } from '@origam/directives'
+	import { vClickOutside } from '@/directives'
 
-	import { BLOCK, EASING, KEYBOARD_VALUES, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@origam/enums'
+	import { BLOCK, EASING, KEYBOARD_VALUES, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@/enums'
 
-	import type { IOverlayProps } from '@origam/interfaces'
+	import type { IOverlayProps } from '@/interfaces'
 
-	import type { TOrigamOverlayScrim, TTransitionProps } from "@origam/types"
+	import type { TOrigamOverlayScrim, TTransitionProps } from "@/types"
 
-	import { animate, convertToUnit, getScrollParent } from '@origam/utils'
+	import { animate, convertToUnit, getScrollParent } from '@/utils'
 
 	import { computed, mergeProps, onBeforeUnmount, ref, StyleValue, toRef, watch } from 'vue'
 

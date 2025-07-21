@@ -1,6 +1,6 @@
-import type { IDataTableItemsProps, IInternalDataTableHeader } from '@origam/interfaces'
+import type { IDataTableItemsProps, IInternalDataTableHeader } from '@/interfaces'
 
-import { transformDataTableItems } from '@origam/utils'
+import { transformDataTableItems } from '@/utils'
 
 import { computed, Ref } from 'vue'
 

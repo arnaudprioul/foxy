@@ -8,7 +8,7 @@ import type {
     IScrimProps,
     IScrollStrategyProps,
     ITransitionComponentProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
 export interface ITooltipProps extends ICommonsComponentProps, IOverlayProps, IDimensionProps, IActivatorProps, ILocationStrategyProps, IScrollStrategyProps, ILazyProps, ITransitionComponentProps, IScrimProps {
     id?: string

@@ -112,7 +112,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamAvatar, OrigamIcon, OrigamLoader, OrigamProgressCircular } from '@origam/components'
+	import { OrigamAvatar, OrigamIcon, OrigamLoader, OrigamProgressCircular } from '@/components'
 
 	import {
 		useActive,
@@ -136,17 +136,17 @@
 		useSize,
 		useStatus,
 		useStyle
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { ORIGAM_BTN_TOGGLE_KEY } from '@origam/consts'
+	import { ORIGAM_BTN_TOGGLE_KEY } from '@/consts'
 
-	import { vRipple } from '@origam/directives'
+	import { vRipple } from '@/directives'
 
-	import { DENSITY, SIZES } from '@origam/enums'
+	import { DENSITY, SIZES } from '@/enums'
 
-	import type { IBtnProps } from '@origam/interfaces'
+	import type { IBtnProps } from '@/interfaces'
 
-	import type { TIcon, TOrigamProgressCircular } from "@origam/types"
+	import type { TIcon, TOrigamProgressCircular } from "@/types"
 
 	import { computed, ref, StyleValue, toRef, useAttrs, useSlots } from 'vue'
 

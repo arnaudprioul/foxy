@@ -113,7 +113,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamAvatar, OrigamBtn, OrigamIcon } from '@origam/components'
+	import { OrigamAvatar, OrigamBtn, OrigamIcon } from '@/components'
 
 	import {
 		useActive,
@@ -132,13 +132,13 @@
 		useProps,
 		useRounded,
 		useStatus
-	} from '@origam/composables'
-	import { useStyle } from "@origam/composables/Commons/style.composable.ts"
+	} from '@/composables'
+	import { useStyle } from "@/composables/Commons/style.composable.ts"
 
-	import { DENSITY, MDI_ICONS } from '@origam/enums'
+	import { DENSITY, MDI_ICONS } from '@/enums'
 
-	import type { IAlertProps } from '@origam/interfaces'
-	import type { TIcon } from "@origam/types"
+	import type { IAlertProps } from '@/interfaces'
+	import type { TIcon } from "@/types"
 
 	import type { ComputedRef, StyleValue } from 'vue'
 	import { computed, ref, useSlots } from 'vue'

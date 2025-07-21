@@ -23,10 +23,10 @@
 		useProps,
 		useRounded,
 		useVModel
-	} from "@origam/composables"
-	import type { IHighlightProps } from "@origam/interfaces"
-	import type { TColorType } from "@origam/types"
-	import { getContrast } from "@origam/utils"
+	} from "@/composables"
+	import type { IHighlightProps } from "@/interfaces"
+	import type { TColorType } from "@/types"
+	import { getContrast } from "@/utils"
 	import { computed, StyleValue, toRef } from "vue"
 
 	const props = withDefaults(defineProps<IHighlightProps>(), {

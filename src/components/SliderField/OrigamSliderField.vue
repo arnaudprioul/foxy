@@ -184,17 +184,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamInput, OrigamLabel, OrigamSliderFieldThumb, OrigamSliderFieldTrack } from '@origam/components'
+	import { OrigamInput, OrigamLabel, OrigamSliderFieldThumb, OrigamSliderFieldTrack } from '@/components'
 
-	import { useFocus, useProps, useRtl, useSlider, useSteps, useVModel } from '@origam/composables'
+	import { useFocus, useProps, useRtl, useSlider, useSteps, useVModel } from '@/composables'
 
-	import { DENSITY, DIRECTION } from '@origam/enums'
+	import { DENSITY, DIRECTION } from '@/enums'
 
-	import type { ISliderFieldProps } from "@origam/interfaces"
+	import type { ISliderFieldProps } from "@/interfaces"
 
-	import type { TOrigamInput, TOrigamSliderFieldThumb, TOrigamSliderFieldTrack } from '@origam/types'
+	import type { TOrigamInput, TOrigamSliderFieldThumb, TOrigamSliderFieldTrack } from '@/types'
 
-	import { getSliderFieldOffset, omit } from '@origam/utils'
+	import { getSliderFieldOffset, omit } from '@/utils'
 
 	import { computed, ref, StyleValue, useSlots, WritableComputedRef } from 'vue'
 

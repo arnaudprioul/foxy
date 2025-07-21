@@ -93,11 +93,11 @@
 		lang="ts"
 		setup
 >
-	import { OrigamAvatar, OrigamIcon } from '@origam/components'
+	import { OrigamAvatar, OrigamIcon } from '@/components'
 
-	import { useAdjacent, useDensity, useProps } from '@origam/composables'
+	import { useAdjacent, useDensity, useProps } from '@/composables'
 
-	import type { ICardHeaderProps } from '@origam/interfaces'
+	import type { ICardHeaderProps } from '@/interfaces'
 
 	import { computed, StyleValue, toRef, useSlots } from 'vue'
 

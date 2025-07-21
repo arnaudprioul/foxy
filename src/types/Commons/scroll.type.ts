@@ -1,5 +1,5 @@
-import { SCROLL_STRATEGIES } from '@origam/enums'
-import type { IScrollStrategyData, IScrollStrategyProps } from '@origam/interfaces'
+import { SCROLL_STRATEGIES } from '@/enums'
+import type { IScrollStrategyData, IScrollStrategyProps } from '@/interfaces'
 
 import { EffectScope } from 'vue'
 

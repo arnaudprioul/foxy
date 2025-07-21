@@ -1,12 +1,12 @@
-import { useToggleScope } from '@origam/composables'
+import { useToggleScope } from '@/composables'
 
-import { IN_BROWSER, LOCATION_STRATEGIES, OPPOSITE_MAP } from '@origam/consts'
+import { IN_BROWSER, LOCATION_STRATEGIES, OPPOSITE_MAP } from '@/consts'
 
-import type { ILocationProps, ILocationStrategyData, ILocationStrategyProps } from '@origam/interfaces'
+import type { ILocationProps, ILocationStrategyData, ILocationStrategyProps } from '@/interfaces'
 
-import type { TAnchor } from '@origam/types'
+import type { TAnchor } from '@/types'
 
-import { parseAnchor } from '@origam/utils'
+import { parseAnchor } from '@/utils'
 
 import { computed, onScopeDispose, ref, watch } from 'vue'
 

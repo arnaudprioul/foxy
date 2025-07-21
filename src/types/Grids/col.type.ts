@@ -1,5 +1,5 @@
-import { OrigamCol } from "@origam/components"
-import { COLS } from '@origam/enums'
+import { OrigamCol } from "@/components"
+import { COLS } from '@/enums'
 
 export type TCols = `${COLS}` | true | 'auto'
 

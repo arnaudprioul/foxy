@@ -1,8 +1,8 @@
-import { useVModel } from '@origam/composables'
-import { ORIGAM_DATA_TABLE_PAGINATION_KEY } from '@origam/consts'
+import { useVModel } from '@/composables'
+import { ORIGAM_DATA_TABLE_PAGINATION_KEY } from '@/consts'
 
-import type { IDataTableGroup, IDataTablePaginationProps, IDataTableProvidePagination } from '@origam/interfaces'
-import { clamp, getCurrentInstance } from '@origam/utils'
+import type { IDataTableGroup, IDataTablePaginationProps, IDataTableProvidePagination } from '@/interfaces'
+import { clamp, getCurrentInstance } from '@/utils'
 import { computed, inject, provide, Ref, watch, watchEffect } from 'vue'
 
 export function createPagination (props: IDataTablePaginationProps) {

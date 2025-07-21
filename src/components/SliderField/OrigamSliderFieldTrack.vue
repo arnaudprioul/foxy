@@ -51,15 +51,15 @@
 		lang="ts"
 		setup
 >
-	import { useBackgroundColor, useProps, useRounded } from '@origam/composables'
+	import { useBackgroundColor, useProps, useRounded } from '@/composables'
 
-	import { ORIGAM_SLIDER_FIELD_KEY } from '@origam/consts'
+	import { ORIGAM_SLIDER_FIELD_KEY } from '@/consts'
 
-	import type { ISliderFieldTrackProps } from "@origam/interfaces"
+	import type { ISliderFieldTrackProps } from "@/interfaces"
 
-	import type { TTick } from '@origam/types'
+	import type { TTick } from '@/types'
 
-	import { convertToUnit, int } from '@origam/utils'
+	import { convertToUnit, int } from '@/utils'
 
 	import { computed, inject, StyleValue, useSlots } from 'vue'
 

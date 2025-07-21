@@ -14,7 +14,7 @@ import type {
     IRoundedProps,
     ITextFieldProps,
     ITransitionComponentProps
-} from "@origam/interfaces"
+} from "@/interfaces"
 
 export interface IColorPickerFieldProps extends ICommonsComponentProps, IColorProps, ITextFieldProps, IDensityProps, IAdjacentProps, IAdjacentInnerProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, ITransitionComponentProps {
     menu?: boolean,

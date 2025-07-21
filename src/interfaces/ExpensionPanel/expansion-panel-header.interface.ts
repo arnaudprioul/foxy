@@ -9,9 +9,9 @@ import type {
     IRippleProps,
     IRoundedProps,
     ITagProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TIcon } from '@origam/types'
+import type { TIcon } from '@/types'
 
 export interface IExpansionPanelHeaderProps extends IColorProps, ITagProps, ICommonsComponentProps, IDensityProps, IRoundedProps, IBorderProps, IPaddingProps, IMarginProps, IAdjacentProps, IRippleProps {
     expandIcon?: TIcon

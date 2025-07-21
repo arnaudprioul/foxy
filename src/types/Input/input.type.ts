@@ -1,3 +1,3 @@
-import { OrigamInput } from '@origam/components'
+import { OrigamInput } from '@/components'
 
 export type TOrigamInput = InstanceType<typeof OrigamInput>

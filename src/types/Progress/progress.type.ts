@@ -1,6 +1,6 @@
-import { OrigamProgress } from '@origam/components'
+import { OrigamProgress } from '@/components'
 
-import { PROGRESS_TYPE } from '@origam/enums'
+import { PROGRESS_TYPE } from '@/enums'
 
 export type TProgressType = `${PROGRESS_TYPE}`
 

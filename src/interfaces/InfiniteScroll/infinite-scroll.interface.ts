@@ -1,12 +1,6 @@
-import type {
-    IColorProps,
-    ICommonsComponentProps,
-    IDimensionProps,
-    IDirectionProps,
-    ITagProps
-} from '@origam/interfaces'
+import type { IColorProps, ICommonsComponentProps, IDimensionProps, IDirectionProps, ITagProps } from '@/interfaces'
 
-import type { TInfiniteScrollMode, TInfiniteScrollSide } from '@origam/types'
+import type { TInfiniteScrollMode, TInfiniteScrollSide } from '@/types'
 
 export interface IInfiniteScrollProps extends ICommonsComponentProps, IColorProps, IDimensionProps, ITagProps, IDirectionProps {
     side?: TInfiniteScrollSide

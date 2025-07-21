@@ -1,3 +1,3 @@
-import { OrigamExpansionPanel } from "@origam/components"
+import { OrigamExpansionPanel } from "@/components"
 
 export type TOrigamExpansionPanel = InstanceType<typeof OrigamExpansionPanel>

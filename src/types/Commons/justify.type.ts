@@ -1,3 +1,3 @@
-import { JUSTIFY } from '@origam/enums'
+import { JUSTIFY } from '@/enums'
 
 export type TJustify = `${JUSTIFY}`

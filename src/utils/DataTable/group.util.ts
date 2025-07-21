@@ -1,6 +1,6 @@
-import type { IDataTableGroup, IDataTableGroupableItem } from '@origam/interfaces'
+import type { IDataTableGroup, IDataTableGroupableItem } from '@/interfaces'
 
-import { getObjectValueByPath } from '@origam/utils'
+import { getObjectValueByPath } from '@/utils'
 
 export function groupItemsByProperty<T extends IDataTableGroupableItem> (items: Array<T>, groupBy: string) {
     if (!items.length) return []

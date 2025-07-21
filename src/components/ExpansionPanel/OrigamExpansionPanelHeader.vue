@@ -86,7 +86,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamAvatar, OrigamIcon } from '@origam/components'
+	import { OrigamAvatar, OrigamIcon } from '@/components'
 
 	import {
 		useAdjacent,
@@ -97,15 +97,15 @@
 		usePadding,
 		useProps,
 		useRounded
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { ORIGAM_EXPANSION_PANEL_KEY } from '@origam/consts'
+	import { ORIGAM_EXPANSION_PANEL_KEY } from '@/consts'
 
-	import { vRipple } from '@origam/directives'
+	import { vRipple } from '@/directives'
 
-	import { MDI_ICONS } from "@origam/enums"
+	import { MDI_ICONS } from "@/enums"
 
-	import type { IExpansionPanelHeaderProps } from '@origam/interfaces'
+	import type { IExpansionPanelHeaderProps } from '@/interfaces'
 
 	import { computed, inject, StyleValue, toRef, useSlots } from 'vue'
 

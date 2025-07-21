@@ -9,7 +9,7 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
 export interface ICheckboxProps extends ICommonsComponentProps, IInputProps, ICheckboxBtnProps, IDensityProps, IPaddingProps, IMarginProps, IRoundedProps, IColorProps, IBorderProps, IElevationProps {
 

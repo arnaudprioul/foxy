@@ -1,4 +1,5 @@
-import { CLIENT_POSITION, FOCUS_LOCATION } from '@origam/enums'
+import { CLIENT_POSITION, FOCUS_LOCATION } from '@/enums'
+import { IOrigamPluginOptionsObject } from "@/interfaces"
 import { ComponentPublicInstance } from 'vue'
 
 export type TNotAUnion<T> = [T] extends [infer U] ? _TNotAUnion<U, U> : never
@@ -41,3 +42,7 @@ export type TValueOf<T> = T[keyof T];
  * Void function
  */
 export type TFn = () => void
+
+export type TOrigamPluginOptionsImport =
+    | boolean
+    | IOrigamPluginOptionsObject

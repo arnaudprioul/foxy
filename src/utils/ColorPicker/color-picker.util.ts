@@ -1,6 +1,6 @@
-import type { THSVA } from "@origam/types"
+import type { THSVA } from "@/types"
 
-import { has, HSVtoHex, HSVtoHSL, HSVtoRGB } from "@origam/utils"
+import { has, HSVtoHex, HSVtoHSL, HSVtoRGB } from "@/utils"
 
 export function stripAlpha (color: any, stripAlpha: boolean) {
     if (stripAlpha) {

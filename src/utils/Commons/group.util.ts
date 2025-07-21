@@ -1,6 +1,6 @@
-import type { IGroupItem } from '@origam/interfaces'
+import type { IGroupItem } from '@/interfaces'
 
-import { deepEqual } from '@origam/utils'
+import { deepEqual } from '@/utils'
 
 import { UnwrapRef } from 'vue'
 

@@ -1,4 +1,4 @@
-import type { IDateAdapter } from "@origam/interfaces"
+import type { IDateAdapter } from "@/interfaces"
 
 export type TCustomDateFormat =
     Intl.DateTimeFormatOptions

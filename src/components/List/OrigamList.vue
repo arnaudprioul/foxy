@@ -85,7 +85,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamListChildren } from '@origam/components'
+	import { OrigamListChildren } from '@/components'
 
 	import {
 		useBorder,
@@ -100,15 +100,15 @@
 		usePadding,
 		useProps,
 		useRounded
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { DENSITY, KEYBOARD_VALUES, LINES, OPEN_STRATEGY, SELECT_STRATEGY } from '@origam/enums'
+	import { DENSITY, KEYBOARD_VALUES, LINES, OPEN_STRATEGY, SELECT_STRATEGY } from '@/enums'
 
-	import type { IListProps } from '@origam/interfaces'
+	import type { IListProps } from '@/interfaces'
 
-	import type { TFocusLocation } from '@origam/types'
+	import type { TFocusLocation } from '@/types'
 
-	import { deepEqual, focusChild } from '@origam/utils'
+	import { deepEqual, focusChild } from '@/utils'
 
 	import { computed, ref, shallowRef, StyleValue, toRef, useSlots } from 'vue'
 

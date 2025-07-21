@@ -1,4 +1,4 @@
-import type { ICommonsComponentProps, ISelectionControlProps } from '@origam/interfaces'
+import type { ICommonsComponentProps, ISelectionControlProps } from '@/interfaces'
 
 export interface IRadioBtnProps extends ICommonsComponentProps, ISelectionControlProps {
 

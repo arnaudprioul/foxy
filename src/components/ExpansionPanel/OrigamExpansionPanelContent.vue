@@ -27,7 +27,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamExpandY } from '@origam/components'
+	import { OrigamExpandY } from '@/components'
 
 	import {
 		useBorder,
@@ -38,11 +38,11 @@
 		usePadding,
 		useProps,
 		useRounded
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { ORIGAM_EXPANSION_PANEL_KEY } from '@origam/consts'
+	import { ORIGAM_EXPANSION_PANEL_KEY } from '@/consts'
 
-	import type { IExpansionPanelContentProps } from '@origam/interfaces'
+	import type { IExpansionPanelContentProps } from '@/interfaces'
 
 	import { computed, inject, StyleValue, toRef } from 'vue'
 

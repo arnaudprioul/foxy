@@ -1,3 +1,3 @@
-import { OrigamDataTableHeaderCell } from "@origam/components"
+import { OrigamDataTableHeaderCell } from "@/components"
 
 export type TOrigamDataTableHeaderCell = InstanceType<typeof OrigamDataTableHeaderCell>

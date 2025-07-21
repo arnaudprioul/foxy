@@ -16,12 +16,12 @@
 		lang="ts"
 		setup
 >
-	import { OrigamMenu, OrigamTranslateScale } from "@origam/components"
-	import { useProps, useVModel } from "@origam/composables"
-	import { INLINE, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from "@origam/enums"
-	import type { IContextualMenuProps } from "@origam/interfaces"
-	import type { TOrigamMenu, TTransitionProps } from "@origam/types"
-	import { forwardRefs } from "@origam/utils"
+	import { OrigamMenu, OrigamTranslateScale } from "@/components"
+	import { useProps, useVModel } from "@/composables"
+	import { INLINE, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from "@/enums"
+	import type { IContextualMenuProps } from "@/interfaces"
+	import type { TOrigamMenu, TTransitionProps } from "@/types"
+	import { forwardRefs } from "@/utils"
 
 	import { computed, ref, StyleValue } from "vue"
 

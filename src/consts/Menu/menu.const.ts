@@ -1,4 +1,4 @@
-import type { IMenuProvide } from '@origam/interfaces'
+import type { IMenuProvide } from '@/interfaces'
 
 import type { InjectionKey } from 'vue'
 

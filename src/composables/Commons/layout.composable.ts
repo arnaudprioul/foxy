@@ -1,10 +1,10 @@
-import { useResizeObserver } from '@origam/composables'
+import { useResizeObserver } from '@/composables'
 
-import { ORIGAM_LAYOUT_ITEM_KEY, ORIGAM_LAYOUT_KEY, ROOT_ZINDEX } from '@origam/consts'
+import { ORIGAM_LAYOUT_ITEM_KEY, ORIGAM_LAYOUT_KEY, ROOT_ZINDEX } from '@/consts'
 
-import type { TDirectionBoth } from "@origam/types"
+import type { TDirectionBoth } from "@/types"
 
-import { convertToUnit, findChildrenWithProvide, generateLayers, getCurrentInstance, getUid, int } from '@origam/utils'
+import { convertToUnit, findChildrenWithProvide, generateLayers, getCurrentInstance, getUid, int } from '@/utils'
 
 import type { ComponentInternalInstance, ComputedRef, CSSProperties, Ref, StyleValue } from 'vue'
 import {

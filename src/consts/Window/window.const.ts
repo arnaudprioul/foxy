@@ -1,4 +1,4 @@
-import type { IGroupItemProvide, IWindowProvide } from '@origam/interfaces'
+import type { IGroupItemProvide, IWindowProvide } from '@/interfaces'
 
 import type { InjectionKey } from 'vue'
 

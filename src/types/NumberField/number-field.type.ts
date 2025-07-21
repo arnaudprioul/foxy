@@ -1,3 +1,3 @@
-import { OrigamNumberField } from '@origam/components'
+import { OrigamNumberField } from '@/components'
 
 export type TOrigamNumberField = InstanceType<typeof OrigamNumberField>

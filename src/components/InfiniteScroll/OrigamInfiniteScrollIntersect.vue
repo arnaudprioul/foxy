@@ -10,9 +10,9 @@
 		lang="ts"
 		setup
 >
-	import { useIntersectionObserver, useProps } from '@origam/composables'
+	import { useIntersectionObserver, useProps } from '@/composables'
 
-	import type { IInfiniteScrollIntersectProps } from '@origam/interfaces'
+	import type { IInfiniteScrollIntersectProps } from '@/interfaces'
 
 	import { watch } from 'vue'
 

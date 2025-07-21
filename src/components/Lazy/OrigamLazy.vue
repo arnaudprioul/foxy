@@ -20,15 +20,15 @@
 		lang="ts"
 		setup
 >
-	import { OrigamFade, OrigamTransition } from '@origam/components'
+	import { OrigamFade, OrigamTransition } from '@/components'
 
-	import { useDimension, useProps, useVModel } from '@origam/composables'
+	import { useDimension, useProps, useVModel } from '@/composables'
 
-	import { vIntersect } from '@origam/directives'
+	import { vIntersect } from '@/directives'
 
-	import type { ILazyComponentProps } from '@origam/interfaces'
+	import type { ILazyComponentProps } from '@/interfaces'
 
-	import type { TTransitionProps } from "@origam/types"
+	import type { TTransitionProps } from "@/types"
 
 	import { computed, StyleValue } from 'vue'
 

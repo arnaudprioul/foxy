@@ -1,3 +1,3 @@
-import { MODE } from '@origam/enums'
+import { MODE } from '@/enums'
 
 export type TMode = `${MODE}`

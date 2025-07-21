@@ -94,8 +94,8 @@
 		lang="ts"
 		setup
 >
-	import { OrigamAvatar, OrigamIcon } from '@origam/components'
-	import { OrigamMessages } from '@origam/components/Messages'
+	import { OrigamAvatar, OrigamIcon } from '@/components'
+	import { OrigamMessages } from '@/components/Messages'
 
 	import {
 		useAdjacent,
@@ -110,13 +110,13 @@
 		useRounded,
 		useRtl,
 		useValidation
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { DENSITY, DIRECTION } from '@origam/enums'
+	import { DENSITY, DIRECTION } from '@/enums'
 
-	import type { IInputProps } from '@origam/interfaces'
+	import type { IInputProps } from '@/interfaces'
 
-	import { getUid } from '@origam/utils'
+	import { getUid } from '@/utils'
 
 	import { computed, StyleValue, toRef, useSlots } from 'vue'
 

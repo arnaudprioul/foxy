@@ -34,7 +34,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamSlideY, OrigamTransition } from '@origam/components'
+	import { OrigamSlideY, OrigamTransition } from '@/components'
 
 	import {
 		useBorder,
@@ -45,14 +45,14 @@
 		useRounded,
 		useSsrBoot,
 		useTextColor
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { DENSITY } from '@origam/enums'
+	import { DENSITY } from '@/enums'
 
-	import type { IMessagesProps } from '@origam/interfaces'
-	import type { TTransitionProps } from "@origam/types"
+	import type { IMessagesProps } from '@/interfaces'
+	import type { TTransitionProps } from "@/types"
 
-	import { wrapInArray } from '@origam/utils'
+	import { wrapInArray } from '@/utils'
 
 	import { computed, StyleValue, toRef } from 'vue'
 

@@ -44,19 +44,19 @@
 		lang="ts"
 		setup
 >
-	import { OrigamTranslateScale } from '@origam/components'
+	import { OrigamTranslateScale } from '@/components'
 
-	import { useBorder, useElevation, useProps, useRounded, useTextColor } from '@origam/composables'
+	import { useBorder, useElevation, useProps, useRounded, useTextColor } from '@/composables'
 
-	import { ORIGAM_SLIDER_FIELD_KEY } from '@origam/consts'
+	import { ORIGAM_SLIDER_FIELD_KEY } from '@/consts'
 
-	import { vRipple } from '@origam/directives'
+	import { vRipple } from '@/directives'
 
-	import { KEYBOARD_VALUES } from '@origam/enums'
+	import { KEYBOARD_VALUES } from '@/enums'
 
-	import type { ISliderFieldThumbProps } from "@origam/interfaces"
+	import type { ISliderFieldThumbProps } from "@/interfaces"
 
-	import { clamp, convertToUnit, int } from '@origam/utils'
+	import { clamp, convertToUnit, int } from '@/utils'
 
 	import { computed, inject, StyleValue } from 'vue'
 

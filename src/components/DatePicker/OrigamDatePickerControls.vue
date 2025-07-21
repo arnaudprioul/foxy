@@ -56,13 +56,13 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn, OrigamBtnGroup, OrigamSpacer } from "@origam/components"
+	import { OrigamBtn, OrigamBtnGroup, OrigamSpacer } from "@/components"
 
-	import { useProps } from "@origam/composables"
+	import { useProps } from "@/composables"
 
-	import { DATE_MODE, MDI_ICONS } from "@origam/enums"
+	import { DATE_MODE, MDI_ICONS } from "@/enums"
 
-	import type { IDatePickerControlsProps } from "@origam/interfaces"
+	import type { IDatePickerControlsProps } from "@/interfaces"
 
 	import { computed, StyleValue } from "vue"
 

@@ -1,3 +1,3 @@
-import { OrigamDatePickerControls } from "@origam/components"
+import { OrigamDatePickerControls } from "@/components"
 
 export type TOrigamDatePickerControls = InstanceType<typeof OrigamDatePickerControls>

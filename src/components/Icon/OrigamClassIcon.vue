@@ -10,10 +10,10 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from "@origam/composables"
-	import type { IIconComponentProps } from '@origam/interfaces'
+	import { useProps } from "@/composables"
+	import type { IIconComponentProps } from '@/interfaces'
 
-	import { convertToUnit } from '@origam/utils'
+	import { convertToUnit } from '@/utils'
 
 	import { computed, StyleValue } from 'vue'
 

@@ -7,7 +7,7 @@ import type {
     IDataTableSortItem,
     IInternalDataTableHeader,
     IPaddingProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 import type { ComputedRef, Ref } from 'vue'
 
 export interface IDataTableGroupProps {

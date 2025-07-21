@@ -6,9 +6,9 @@ import type {
     IMarginProps,
     IPaddingProps,
     ITagProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TCols } from '@origam/types'
+import type { TCols } from '@/types'
 
 export interface IColProps extends IColorProps, ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IBorderProps, IAlignProps {
     cols?: TCols,

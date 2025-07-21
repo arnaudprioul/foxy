@@ -1,4 +1,4 @@
-import type { ICommonsComponentProps, ITagProps, ITransitionComponentProps } from '@origam/interfaces'
+import type { ICommonsComponentProps, ITagProps, ITransitionComponentProps } from '@/interfaces'
 
 export interface IOverlayScrimProps extends ICommonsComponentProps, ITagProps, ITransitionComponentProps, IScrimProps {
     active?: boolean

@@ -4,9 +4,9 @@ import type {
     ILazyProps,
     IResponsiveProps,
     ITransitionComponentProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TCrossOrigin, TReferrerPolicy } from '@origam/types'
+import type { TCrossOrigin, TReferrerPolicy } from '@/types'
 
 export interface IImgProps extends IColorProps, IResponsiveProps, ITransitionComponentProps, ILazyProps {
     alt?: string

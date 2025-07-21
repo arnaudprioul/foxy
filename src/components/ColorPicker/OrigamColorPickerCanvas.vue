@@ -25,11 +25,11 @@
 		lang="ts"
 		setup
 >
-	import { useProps, useResizeObserver } from "@origam/composables"
+	import { useProps, useResizeObserver } from "@/composables"
 
-	import type { IColorPickerCanvasProps } from "@origam/interfaces"
+	import type { IColorPickerCanvasProps } from "@/interfaces"
 
-	import { clamp, convertToUnit, getEventCoordinates, int } from "@origam/utils"
+	import { clamp, convertToUnit, getEventCoordinates, int } from "@/utils"
 
 	import { computed, onMounted, ref, shallowRef, StyleValue, watch } from "vue"
 

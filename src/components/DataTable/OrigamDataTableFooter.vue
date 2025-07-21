@@ -44,14 +44,14 @@
 		lang="ts"
 		setup
 >
-	import { OrigamPagination, OrigamRow, OrigamSelect } from "@origam/components"
+	import { OrigamPagination, OrigamRow, OrigamSelect } from "@/components"
 
-	import { useLocale, usePagination, useProps } from "@origam/composables"
+	import { useLocale, usePagination, useProps } from "@/composables"
 
-	import { DENSITY } from "@origam/enums"
+	import { DENSITY } from "@/enums"
 
-	import type { IDataTableFooterProps } from "@origam/interfaces"
-	import type { TOrigamPagination } from "@origam/types"
+	import type { IDataTableFooterProps } from "@/interfaces"
+	import type { TOrigamPagination } from "@/types"
 
 	import { computed, ref, StyleValue } from "vue"
 

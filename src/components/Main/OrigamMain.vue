@@ -17,9 +17,9 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useLayout, useMargin, usePadding, useProps, useRounded, useSsrBoot } from '@origam/composables'
+	import { useBorder, useLayout, useMargin, usePadding, useProps, useRounded, useSsrBoot } from '@/composables'
 
-	import type { IMainProps } from '@origam/interfaces'
+	import type { IMainProps } from '@/interfaces'
 
 	import { computed, StyleValue } from 'vue'
 

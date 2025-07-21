@@ -1,9 +1,9 @@
-import { useRtl } from "@origam/composables"
-import { ORIGAM_GO_TO_KEY } from "@origam/consts"
+import { useRtl } from "@/composables"
+import { ORIGAM_GO_TO_KEY } from "@/consts"
 
-import type { IGoToInstance, IGoToOptions, ILocaleInstance, IRtlInstance } from "@origam/interfaces"
+import type { IGoToInstance, IGoToOptions, ILocaleInstance, IRtlInstance } from "@/interfaces"
 
-import { genDefaults, mergeDeep, scrollTo } from "@origam/utils"
+import { genDefaults, mergeDeep, scrollTo } from "@/utils"
 
 import { ComponentPublicInstance, computed, inject } from "vue"
 

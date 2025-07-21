@@ -1,9 +1,9 @@
-import { SIZES_ARRAY } from '@origam/consts'
-import type { ISizeProps } from "@origam/interfaces"
+import { SIZES_ARRAY } from '@/consts'
+import type { ISizeProps } from "@/interfaces"
 
-import type { TSize } from '@origam/types'
+import type { TSize } from '@/types'
 
-import { convertToUnit, getCurrentInstanceName } from '@origam/utils'
+import { convertToUnit, getCurrentInstanceName } from '@/utils'
 import { computed, isRef } from 'vue'
 
 export function useSize (props: ISizeProps, name = getCurrentInstanceName()) {

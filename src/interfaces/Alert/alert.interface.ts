@@ -14,9 +14,9 @@ import type {
     IRoundedProps,
     IStatusProps,
     ITagProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TIcon } from '@origam/types'
+import type { TIcon } from '@/types'
 
 export interface IAlertProps extends ICommonsComponentProps, ITagProps, IColorProps, IBorderProps, IDimensionProps, IPaddingProps, IMarginProps, IDensityProps, IElevationProps, ILocationProps, IPositionProps, IRoundedProps, IStatusProps, IHoverProps, IAdjacentProps {
     closable?: boolean

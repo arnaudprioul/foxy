@@ -12,12 +12,12 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useBothColor, useDensity, useMargin, usePadding, useProps } from '@origam/composables'
-	import { DENSITY } from '@origam/enums'
+	import { useBorder, useBothColor, useDensity, useMargin, usePadding, useProps } from '@/composables'
+	import { DENSITY } from '@/enums'
 
-	import type { IRowProps } from '@origam/interfaces'
+	import type { IRowProps } from '@/interfaces'
 
-	import { toKebabCase } from '@origam/utils'
+	import { toKebabCase } from '@/utils'
 
 	import { computed, StyleValue, toRef } from 'vue'
 

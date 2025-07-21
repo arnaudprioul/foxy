@@ -1,3 +1,3 @@
-import { OrigamAppBar } from '@origam/components'
+import { OrigamAppBar } from '@/components'
 
 export type TOrigamAppBar = InstanceType<typeof OrigamAppBar>

@@ -1,4 +1,4 @@
-import type { TDirection } from '@origam/types'
+import type { TDirection } from '@/types'
 
 export interface IDirectionProps {
     direction?: TDirection

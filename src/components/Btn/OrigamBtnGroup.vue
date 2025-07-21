@@ -26,7 +26,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn } from '@origam/components'
+	import { OrigamBtn } from '@/components'
 	import {
 		useBorder,
 		useColorEffect,
@@ -37,11 +37,11 @@
 		useProps,
 		useRounded,
 		useStyle
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { DENSITY } from '@origam/enums'
+	import { DENSITY } from '@/enums'
 
-	import type { IBtnGroupProps, IBtnProps } from '@origam/interfaces'
+	import type { IBtnGroupProps, IBtnProps } from '@/interfaces'
 
 	import { computed, ref, StyleValue, useSlots } from 'vue'
 

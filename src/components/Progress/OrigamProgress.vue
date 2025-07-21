@@ -24,15 +24,15 @@
 		lang="ts"
 		setup
 >
-	import { OrigamProgressCircular, OrigamProgressLinear } from '@origam/components'
+	import { OrigamProgressCircular, OrigamProgressLinear } from '@/components'
 
-	import { useProgress, useProps, useSize } from '@origam/composables'
+	import { useProgress, useProps, useSize } from '@/composables'
 
-	import { PROGRESS_TYPE, SIZES } from '@origam/enums'
+	import { PROGRESS_TYPE, SIZES } from '@/enums'
 
-	import type { IProgressProps } from '@origam/interfaces'
+	import type { IProgressProps } from '@/interfaces'
 
-	import type { TOrigamProgressCircular, TOrigamProgressLinear } from "@origam/types"
+	import type { TOrigamProgressCircular, TOrigamProgressLinear } from "@/types"
 
 	import { computed, ref, StyleValue } from 'vue'
 

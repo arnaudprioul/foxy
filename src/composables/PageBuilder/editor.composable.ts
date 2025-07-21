@@ -1,9 +1,9 @@
-import { useVModel } from '@origam/composables'
-import { EMPTY_EDIT, ORIGAM_EDIT_KEY } from '@origam/consts'
+import { useVModel } from '@/composables'
+import { EMPTY_EDIT, ORIGAM_EDIT_KEY } from '@/consts'
 
-import type { TEditorProvide } from '@origam/types'
+import type { TEditorProvide } from '@/types'
 
-import { getCurrentInstanceName, getUid } from '@origam/utils'
+import { getCurrentInstanceName, getUid } from '@/utils'
 
 import { computed, inject, provide, ref } from 'vue'
 

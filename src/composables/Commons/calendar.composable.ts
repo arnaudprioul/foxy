@@ -1,7 +1,7 @@
-import { useDate, useVModel } from "@origam/composables"
-import type { ICalendarProps, IDay } from "@origam/interfaces"
-import { DateAdapter } from "@origam/services"
-import { getWeek, wrapInArray } from "@origam/utils"
+import { useDate, useVModel } from "@/composables"
+import type { ICalendarProps, IDay } from "@/interfaces"
+import { DateAdapter } from "@/services"
+import { getWeek, wrapInArray } from "@/utils"
 import { computed } from "vue"
 
 export function useCalendar (props: ICalendarProps) {

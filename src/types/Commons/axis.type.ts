@@ -1,3 +1,3 @@
-import { AXIS } from '@origam/enums'
+import { AXIS } from '@/enums'
 
 export type TAxis = `${AXIS}`

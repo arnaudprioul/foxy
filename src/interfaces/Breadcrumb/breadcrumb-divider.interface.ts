@@ -6,9 +6,9 @@ import type {
     IPaddingProps,
     ISizeProps,
     ITagProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TIcon } from '@origam/types'
+import type { TIcon } from '@/types'
 
 export interface IBreadcrumbDividerProps extends ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IDensityProps, IColorProps, ISizeProps {
     divider: string | TIcon

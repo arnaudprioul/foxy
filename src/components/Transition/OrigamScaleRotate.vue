@@ -12,9 +12,9 @@
 		lang="ts"
 		setup
 >
-	import { useCssTransition, useProps } from '@origam/composables'
+	import { useCssTransition, useProps } from '@/composables'
 
-	import type { ITransitionProps } from '@origam/interfaces'
+	import type { ITransitionProps } from '@/interfaces'
 
 	const props = withDefaults(defineProps<ITransitionProps>(), {
 		name: 'origam-transition--scale-rotate'

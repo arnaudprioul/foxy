@@ -1,4 +1,4 @@
-import type { TIcon } from '@origam/types'
+import type { TIcon } from '@/types'
 
 export interface IControlProps {
     icon: TIcon

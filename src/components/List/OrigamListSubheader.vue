@@ -22,9 +22,9 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '@origam/composables'
+	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '@/composables'
 
-	import type { IListSubheader } from '@origam/interfaces'
+	import type { IListSubheader } from '@/interfaces'
 
 	import { computed, StyleValue, toRef, useSlots } from 'vue'
 

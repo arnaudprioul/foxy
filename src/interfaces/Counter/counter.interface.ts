@@ -9,7 +9,7 @@ import type {
     IRoundedProps,
     ITagProps,
     ITransitionComponentProps
-} from "@origam/interfaces"
+} from "@/interfaces"
 
 export interface ICounterProps extends ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IColorProps, IElevationProps, IDensityProps, ITransitionComponentProps {
     active?: boolean

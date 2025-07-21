@@ -38,7 +38,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamTitle } from "@origam/components"
+	import { OrigamTitle } from "@/components"
 	import {
 		useBorder,
 		useBothColor,
@@ -52,11 +52,11 @@
 		useRounded,
 		useRtl,
 		useStyle
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { DENSITY } from '@origam/enums'
+	import { DENSITY } from '@/enums'
 
-	import type { IToolbarProps } from '@origam/interfaces'
+	import type { IToolbarProps } from '@/interfaces'
 
 	import { computed, toRef, useSlots } from 'vue'
 

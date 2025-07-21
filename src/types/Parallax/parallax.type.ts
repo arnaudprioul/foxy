@@ -1,5 +1,5 @@
-import { OrigamParallax } from "@origam/components"
-import { PARALLAX_EVENT } from '@origam/enums'
+import { OrigamParallax } from "@/components"
+import { PARALLAX_EVENT } from '@/enums'
 
 export type TParallaxEvent = `${PARALLAX_EVENT}`
 

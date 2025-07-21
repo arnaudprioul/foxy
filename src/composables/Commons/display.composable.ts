@@ -1,15 +1,9 @@
-import { IN_BROWSER, ORIGAM_DISPLAY_KEY } from '@origam/consts'
+import { IN_BROWSER, ORIGAM_DISPLAY_KEY } from '@/consts'
 
-import type { IDisplayInstance, IDisplayOptions, IDisplayProps } from '@origam/interfaces'
-import type { TSSROptions } from '@origam/types'
+import type { IDisplayInstance, IDisplayOptions, IDisplayProps } from '@/interfaces'
+import type { TSSROptions } from '@/types'
 
-import {
-    getClientHeight,
-    getClientWidth,
-    getCurrentInstanceName,
-    getPlatform,
-    parseDisplayOptions
-} from '@origam/utils'
+import { getClientHeight, getClientWidth, getCurrentInstanceName, getPlatform, parseDisplayOptions } from '@/utils'
 
 import { computed, inject, reactive, shallowRef, toRefs, watchEffect } from 'vue'
 

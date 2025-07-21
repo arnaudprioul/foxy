@@ -61,16 +61,16 @@
 		lang="ts"
 		setup
 >
-	import { OrigamInput, OrigamLabel, OrigamRadio, OrigamSelectionControlGroup } from '@origam/components'
+	import { OrigamInput, OrigamLabel, OrigamRadio, OrigamSelectionControlGroup } from '@/components'
 
-	import { useProps, useVModel } from '@origam/composables'
+	import { useProps, useVModel } from '@/composables'
 
-	import { DENSITY } from '@origam/enums'
+	import { DENSITY } from '@/enums'
 
-	import type { IRadioGroupProps } from '@origam/interfaces'
-	import type { TOrigamInput, TOrigamRadio, TOrigamSelectionControlGroup } from "@origam/types"
+	import type { IRadioGroupProps } from '@/interfaces'
+	import type { TOrigamInput, TOrigamRadio, TOrigamSelectionControlGroup } from "@/types"
 
-	import { filterInputAttrs, getUid } from '@origam/utils'
+	import { filterInputAttrs, getUid } from '@/utils'
 
 	import { computed, ref, StyleValue, useAttrs } from 'vue'
 

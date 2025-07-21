@@ -1,3 +1,3 @@
-import { OrigamMain } from "@origam/components"
+import { OrigamMain } from "@/components"
 
 export type TOrigamMain = InstanceType<typeof OrigamMain>

@@ -11,9 +11,9 @@ import type {
     IPaddingProps,
     IPickerProps,
     IRoundedProps
-} from "@origam/interfaces"
+} from "@/interfaces"
 
-import type { THSVA } from "@origam/types"
+import type { THSVA } from "@/types"
 
 export interface IColorPickerProps extends ICommonsComponentProps, IBorderProps, IRoundedProps, IElevationProps, IPaddingProps, IMarginProps, IPickerProps, IColorProps, IColorPickerCanvasProps, IColorPickerPreviewProps, IColorPickerEditProps, IColorPickerSwatchesProps {
     canvasHeight?: string | number

@@ -62,7 +62,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamFade, OrigamIcon } from "@origam/components"
+	import { OrigamFade, OrigamIcon } from "@/components"
 	import {
 		useBorder,
 		useDisplay,
@@ -74,13 +74,13 @@
 		useResizeObserver,
 		useRounded,
 		useRtl
-	} from "@origam/composables"
+	} from "@/composables"
 
-	import { IN_BROWSER, ORIGAM_SLIDE_GROUP_KEY } from "@origam/consts"
+	import { IN_BROWSER, ORIGAM_SLIDE_GROUP_KEY } from "@/consts"
 
-	import { DIRECTION, MDI_ICONS } from "@origam/enums"
+	import { DIRECTION, MDI_ICONS } from "@/enums"
 
-	import type { IGoToOptions, ISlideGroupProps } from "@origam/interfaces"
+	import type { IGoToOptions, ISlideGroupProps } from "@/interfaces"
 	import {
 		calculateCenteredTarget,
 		calculateUpdatedTarget,
@@ -89,7 +89,7 @@
 		getOffsetSize,
 		getScrollPosition,
 		getScrollSize
-	} from "@origam/utils"
+	} from "@/utils"
 
 	import { computed, shallowRef, StyleValue, watch } from "vue"
 

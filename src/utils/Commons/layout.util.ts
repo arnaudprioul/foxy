@@ -1,8 +1,8 @@
-import type { ILayer } from '@origam/interfaces'
+import type { ILayer } from '@/interfaces'
 
-import type { TDirectionBoth } from '@origam/types'
+import type { TDirectionBoth } from '@/types'
 
-import { int } from "@origam/utils"
+import { int } from "@/utils"
 
 import type { Ref } from 'vue'
 

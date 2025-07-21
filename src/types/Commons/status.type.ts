@@ -1,4 +1,4 @@
-import { STATUS, STATUS_POSITION } from "@origam/enums"
+import { STATUS, STATUS_POSITION } from "@/enums"
 
 export type TStatus = `${STATUS}`
 

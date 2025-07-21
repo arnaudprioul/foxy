@@ -1,4 +1,4 @@
-import type { IGoToInstance } from "@origam/interfaces"
+import type { IGoToInstance } from "@/interfaces"
 
 import type { InjectionKey } from "vue"
 

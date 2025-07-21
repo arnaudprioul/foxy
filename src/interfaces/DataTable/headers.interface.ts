@@ -1,4 +1,4 @@
-import { ALIGN } from '@origam/enums'
+import { ALIGN } from '@/enums'
 import type {
     IColorProps,
     ICommonsComponentProps,
@@ -6,7 +6,7 @@ import type {
     IDataTableSortItem,
     IDisplayProps,
     ILoaderProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
 import type {
     TAlign,
@@ -15,7 +15,7 @@ import type {
     TFilterFunction,
     TIcon,
     TSelectItemKey
-} from '@origam/types'
+} from '@/types'
 import type { ComputedRef, Ref, UnwrapRef } from 'vue'
 
 export interface IHeaderCellProps extends ICommonsComponentProps, IColorProps {

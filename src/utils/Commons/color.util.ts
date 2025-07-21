@@ -24,11 +24,11 @@ import {
     SRGB_FORWARD_TRANSFORM,
     SRGB_REVERSE_MATRIX,
     SRGB_REVERSE_TRANSFORM
-} from '@origam/consts'
+} from '@/consts'
 
-import type { TColorType, THex, THSLA, THSVA, TLAB, TRGBA, TXYZ } from '@origam/types'
+import type { TColorType, THex, THSLA, THSVA, TLAB, TRGBA, TXYZ } from '@/types'
 
-import { chunk, clamp, consoleWarn, has, int, padEnd } from '@origam/utils'
+import { chunk, clamp, consoleWarn, has, int, padEnd } from '@/utils'
 
 export function isCssColor (color?: string | null | false): boolean {
     return !!color && /^(#|var\(--|(rgb|hsl)a?\()/.test(color)

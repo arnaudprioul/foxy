@@ -65,15 +65,15 @@
 		lang="ts"
 		setup
 >
-	import { OrigamIcon, OrigamLabel } from '@origam/components'
+	import { OrigamIcon, OrigamLabel } from '@/components'
 
-	import { useProps, useSelectionControl } from '@origam/composables'
+	import { useProps, useSelectionControl } from '@/composables'
 
-	import { vRipple } from '@origam/directives'
+	import { vRipple } from '@/directives'
 
-	import type { ISelectionControlProps } from "@origam/interfaces"
+	import type { ISelectionControlProps } from "@/interfaces"
 
-	import { filterInputAttrs, forwardRefs, getUid, matchesSelector } from '@origam/utils'
+	import { filterInputAttrs, forwardRefs, getUid, matchesSelector } from '@/utils'
 
 	import { computed, nextTick, ref, shallowRef, StyleValue, useAttrs } from 'vue'
 

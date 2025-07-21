@@ -14,9 +14,9 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from "@origam/composables"
+	import { useProps } from "@/composables"
 
-	import type { IPickerTitleProps } from "@origam/interfaces"
+	import type { IPickerTitleProps } from "@/interfaces"
 
 	import { computed, StyleValue } from "vue"
 

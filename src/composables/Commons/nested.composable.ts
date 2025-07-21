@@ -1,16 +1,16 @@
-import { useVModel } from '@origam/composables'
+import { useVModel } from '@/composables'
 import {
     EMPTY_NESTED,
     LIST_OPEN_STRATEGY,
     MULTIPLE_OPEN_STRATEGY,
     ORIGAM_NESTED_KEY,
     SINGLE_OPEN_STRATEGY
-} from '@origam/consts'
-import { OPEN_STRATEGY, SELECT_STRATEGY } from '@origam/enums'
+} from '@/consts'
+import { OPEN_STRATEGY, SELECT_STRATEGY } from '@/enums'
 
-import type { INestedProps } from '@origam/interfaces'
+import type { INestedProps } from '@/interfaces'
 
-import type { TNestedProvide } from '@origam/types'
+import type { TNestedProvide } from '@/types'
 
 import {
     classicSelectStrategy,
@@ -20,7 +20,7 @@ import {
     independentSingleSelectStrategy,
     leafSelectStrategy,
     leafSingleSelectStrategy
-} from '@origam/utils'
+} from '@/utils'
 
 import { computed, inject, onBeforeUnmount, provide, Ref, ref, shallowRef, toRaw } from 'vue'
 

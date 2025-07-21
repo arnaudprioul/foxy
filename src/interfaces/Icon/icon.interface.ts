@@ -6,9 +6,9 @@ import type {
     IPaddingProps,
     ISizeProps,
     ITagProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TIcon, TIconComponent } from '@origam/types'
+import type { TIcon, TIconComponent } from '@/types'
 
 export interface IIconProps {
     icon?: TIcon

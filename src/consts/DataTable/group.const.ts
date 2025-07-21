@@ -1,4 +1,4 @@
-import type { IDataTableGroup, IDataTableItem, IDataTableSortItem } from '@origam/interfaces'
+import type { IDataTableGroup, IDataTableItem, IDataTableSortItem } from '@/interfaces'
 
 import type { InjectionKey, Ref } from 'vue'
 

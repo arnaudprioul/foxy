@@ -1,4 +1,4 @@
-import { KEYBOARD_VALUES } from '@origam/enums'
+import { KEYBOARD_VALUES } from '@/enums'
 
 export const COMPOSITION_IGNORE_KEYS = [
     KEYBOARD_VALUES.UP,

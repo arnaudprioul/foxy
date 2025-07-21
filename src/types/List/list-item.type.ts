@@ -1,5 +1,5 @@
-import { OrigamListItem } from "@origam/components"
-import { LIST_ITEM_TYPE } from '@origam/enums'
+import { OrigamListItem } from "@/components"
+import { LIST_ITEM_TYPE } from '@/enums'
 
 export type TListItemType = `${LIST_ITEM_TYPE}`
 

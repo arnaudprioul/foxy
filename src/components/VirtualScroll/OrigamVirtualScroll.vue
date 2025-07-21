@@ -81,13 +81,13 @@
 		lang="ts"
 		setup
 >
-	import { OrigamVirtualScrollItem } from '@origam/components'
+	import { OrigamVirtualScrollItem } from '@/components'
 
-	import { useDimension, useProps, useToggleScope, useVirtual } from '@origam/composables'
+	import { useDimension, useProps, useToggleScope, useVirtual } from '@/composables'
 
-	import type { IVirtualScrollProps } from '@origam/interfaces'
+	import type { IVirtualScrollProps } from '@/interfaces'
 
-	import { convertToUnit, getCurrentInstance, getScrollParent } from '@origam/utils'
+	import { convertToUnit, getCurrentInstance, getScrollParent } from '@/utils'
 
 	import { computed, onMounted, onScopeDispose, Ref, StyleValue, toRef } from 'vue'
 

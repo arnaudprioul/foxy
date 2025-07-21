@@ -1,6 +1,6 @@
-import { FORWARD_REFS } from '@origam/consts'
+import { FORWARD_REFS } from '@/consts'
 
-import type { TOmitPrefix, TOmitProps, TUnionToIntersection } from '@origam/types'
+import type { TOmitPrefix, TOmitProps, TUnionToIntersection } from '@/types'
 
 import { ComponentPublicInstance, Ref, UnwrapRef } from 'vue'
 

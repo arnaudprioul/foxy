@@ -10,9 +10,9 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from "@origam/interfaces"
+} from "@/interfaces"
 
-import type { TFile, TFileSize } from "@origam/types"
+import type { TFile, TFileSize } from "@/types"
 
 export interface IFileFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps {
     chips?: boolean

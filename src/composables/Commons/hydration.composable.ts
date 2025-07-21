@@ -1,5 +1,5 @@
-import { useDisplay } from '@origam/composables'
-import { IN_BROWSER } from '@origam/consts'
+import { useDisplay } from '@/composables'
+import { IN_BROWSER } from '@/consts'
 
 import { onMounted, shallowRef } from 'vue'
 

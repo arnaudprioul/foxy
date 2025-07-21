@@ -40,15 +40,15 @@
 		lang="ts"
 		setup
 >
-	import { OrigamSelectionControl } from '@origam/components'
+	import { OrigamSelectionControl } from '@/components'
 
-	import { useProps, useVModel } from '@origam/composables'
+	import { useProps, useVModel } from '@/composables'
 
-	import { DENSITY, MDI_ICONS } from '@origam/enums'
+	import { DENSITY, MDI_ICONS } from '@/enums'
 
-	import type { IRadioBtnProps } from '@origam/interfaces'
+	import type { IRadioBtnProps } from '@/interfaces'
 
-	import type { TOrigamSelectionControl } from "@origam/types"
+	import type { TOrigamSelectionControl } from "@/types"
 
 	import { computed, ref, StyleValue, useSlots } from 'vue'
 

@@ -9,7 +9,7 @@ import type {
     IPaddingProps,
     IRadioBtnProps,
     IRoundedProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
 export interface IRadioProps extends ICommonsComponentProps, IInputProps, IRadioBtnProps, IDensityProps, IPaddingProps, IMarginProps, IRoundedProps, IColorProps, IBorderProps, IElevationProps {
 

@@ -1,8 +1,8 @@
-import { useVModel } from '@origam/composables'
+import { useVModel } from '@/composables'
 
-import { ORIGAM_DATA_TABLE_EXPAND_KEY } from '@origam/consts'
+import { ORIGAM_DATA_TABLE_EXPAND_KEY } from '@/consts'
 
-import type { IDataTableExpandProps, IDataTableItem, IDataTableProvideExpanded } from '@origam/interfaces'
+import type { IDataTableExpandProps, IDataTableItem, IDataTableProvideExpanded } from '@/interfaces'
 
 import { inject, provide, toRef } from 'vue'
 

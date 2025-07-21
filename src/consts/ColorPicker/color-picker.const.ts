@@ -1,8 +1,8 @@
-import type { IColorPickerMode } from "@origam/interfaces"
+import type { IColorPickerMode } from "@/interfaces"
 
-import type { THSLA, TRGBA } from "@origam/types"
+import type { THSLA, TRGBA } from "@/types"
 
-import { HexToHSV, HSLtoHSV, HSVtoHex, HSVtoHSL, HSVtoRGB, RGBtoHSV } from "@origam/utils"
+import { HexToHSV, HSLtoHSV, HSVtoHex, HSVtoHSL, HSVtoRGB, RGBtoHSV } from "@/utils"
 
 export const COLOR_NULL = {h: 0, s: 0, v: 0, a: 1}
 

@@ -6,9 +6,9 @@ import type {
     IProgressCircularProps,
     IProgressLinearProps,
     ITagProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
-import type { TProgressType } from '@origam/types'
+import type { TProgressType } from '@/types'
 
 export interface IProgressProps extends IProgressLinearProps, IProgressCircularProps {
     type?: TProgressType

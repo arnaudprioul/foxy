@@ -91,17 +91,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn, OrigamProgressLinear, OrigamWindow } from '@origam/components'
+	import { OrigamBtn, OrigamProgressLinear, OrigamWindow } from '@/components'
 
-	import { useLocale, useProps, useVModel } from '@origam/composables'
+	import { useLocale, useProps, useVModel } from '@/composables'
 
-	import { DENSITY, MDI_ICONS, SIZES } from '@origam/enums'
+	import { DENSITY, MDI_ICONS, SIZES } from '@/enums'
 
-	import type { ICarouselProps, IGroupProvide } from '@origam/interfaces'
+	import type { ICarouselProps, IGroupProvide } from '@/interfaces'
 
-	import type { TOrigamWindow } from "@origam/types"
+	import type { TOrigamWindow } from "@/types"
 
-	import { convertToUnit } from '@origam/utils'
+	import { convertToUnit } from '@/utils'
 
 	import { computed, onMounted, ref, StyleValue, useSlots, watch } from 'vue'
 

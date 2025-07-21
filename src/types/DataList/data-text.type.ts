@@ -1,3 +1,3 @@
-import { OrigamDataText } from "@origam/components"
+import { OrigamDataText } from "@/components"
 
 export type TOrigamDataText = InstanceType<typeof OrigamDataText>

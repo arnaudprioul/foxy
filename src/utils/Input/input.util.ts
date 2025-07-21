@@ -1,5 +1,5 @@
-import { BUBBLING_EVENTS, ON_REGEX } from '@origam/consts'
-import { omit, pickWithRest } from '@origam/utils'
+import { BUBBLING_EVENTS, ON_REGEX } from '@/consts'
+import { omit, pickWithRest } from '@/utils'
 
 /**
  * Filter attributes that should be applied to

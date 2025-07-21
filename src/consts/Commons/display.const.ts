@@ -1,8 +1,8 @@
-import { BREAKPOINTS } from '@origam/enums'
+import { BREAKPOINTS } from '@/enums'
 
-import type { IDisplayInstance, IDisplayOptions } from '@origam/interfaces'
+import type { IDisplayInstance, IDisplayOptions } from '@/interfaces'
 
-import type { TBreakpoint } from '@origam/types'
+import type { TBreakpoint } from '@/types'
 
 import type { InjectionKey } from 'vue'
 

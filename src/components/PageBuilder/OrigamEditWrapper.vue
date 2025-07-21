@@ -13,9 +13,9 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from '@origam/composables'
-	import type { IAutoPropComponentDefinition, IEditWrapperProps } from '@origam/interfaces'
-	import { scanForAutoProps } from '@origam/utils'
+	import { useProps } from '@/composables'
+	import type { IAutoPropComponentDefinition, IEditWrapperProps } from '@/interfaces'
+	import { scanForAutoProps } from '@/utils'
 
 	import { computed, ref, StyleValue, useSlots, watch } from 'vue'
 

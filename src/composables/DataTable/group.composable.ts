@@ -1,5 +1,5 @@
-import { useVModel } from '@origam/composables'
-import { ORIGAM_DATA_TABLE_GROUP_KEY } from '@origam/consts'
+import { useVModel } from '@/composables'
+import { ORIGAM_DATA_TABLE_GROUP_KEY } from '@/consts'
 
 import type {
     IDataTableGroup,
@@ -7,8 +7,8 @@ import type {
     IDataTableGroupProps,
     IDataTableProvideGroup,
     IDataTableSortItem
-} from '@origam/interfaces'
-import { flattenItems, groupItems } from '@origam/utils'
+} from '@/interfaces'
+import { flattenItems, groupItems } from '@/utils'
 
 import { computed, ComputedRef, inject, provide, ref, Ref } from 'vue'
 

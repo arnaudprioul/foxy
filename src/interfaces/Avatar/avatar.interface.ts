@@ -13,7 +13,7 @@ import type {
     ISrcObject,
     IStatusProps,
     ITagProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
 export interface IAvatarProps extends ICommonsComponentProps, IDensityProps, IRoundedProps, ISizeProps, ITagProps, IColorProps, IPaddingProps, IMarginProps, IBorderProps, IStatusProps, IElevationProps, IHoverProps, IActiveProps {
     start?: boolean,

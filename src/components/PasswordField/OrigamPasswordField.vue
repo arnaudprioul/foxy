@@ -192,13 +192,13 @@
 		lang="ts"
 		setup
 >
-	import { OrigamCounter, OrigamField, OrigamIcon, OrigamInput } from '@origam/components'
-	import { useAdjacentInner, useFocus, useProps, useVModel } from '@origam/composables'
-	import { vIntersect } from '@origam/directives'
-	import { DENSITY, DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from '@origam/enums'
-	import type { IPasswordFieldProps } from '@origam/interfaces'
-	import type { TOrigamField, TOrigamInput } from "@origam/types"
-	import { filterInputAttrs, forwardRefs } from '@origam/utils'
+	import { OrigamCounter, OrigamField, OrigamIcon, OrigamInput } from '@/components'
+	import { useAdjacentInner, useFocus, useProps, useVModel } from '@/composables'
+	import { vIntersect } from '@/directives'
+	import { DENSITY, DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from '@/enums'
+	import type { IPasswordFieldProps } from '@/interfaces'
+	import type { TOrigamField, TOrigamInput } from "@/types"
+	import { filterInputAttrs, forwardRefs } from '@/utils'
 
 	import { computed, nextTick, ref, StyleValue, useAttrs, useSlots } from 'vue'
 

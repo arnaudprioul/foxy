@@ -1,5 +1,5 @@
-import type { IBox } from '@origam/interfaces'
-import { Box } from '@origam/services'
+import type { IBox } from '@/interfaces'
+import { Box } from '@/services'
 
 export function nullifyTransforms (el: HTMLElement): IBox {
     const rect = el.getBoundingClientRect()

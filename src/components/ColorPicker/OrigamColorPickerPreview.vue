@@ -64,17 +64,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn, OrigamSliderField } from "@origam/components"
+	import { OrigamBtn, OrigamSliderField } from "@/components"
 
-	import { useProps, useVModel } from "@origam/composables"
+	import { useProps, useVModel } from "@/composables"
 
-	import { COLOR_NULL, SUPPORTS_EYE_DROPPER } from "@origam/consts"
+	import { COLOR_NULL, SUPPORTS_EYE_DROPPER } from "@/consts"
 
-	import { DENSITY, MDI_ICONS } from "@origam/enums"
+	import { DENSITY, MDI_ICONS } from "@/enums"
 
-	import type { IColorPickerPreviewProps } from "@origam/interfaces"
+	import type { IColorPickerPreviewProps } from "@/interfaces"
 
-	import { consoleWarn, HSVtoCSS, parseColor, RGBtoHSV } from "@origam/utils"
+	import { consoleWarn, HSVtoCSS, parseColor, RGBtoHSV } from "@/utils"
 
 	import { computed, onUnmounted, StyleValue } from "vue"
 

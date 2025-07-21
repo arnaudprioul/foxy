@@ -1,4 +1,4 @@
-import { IConfigurableDocument } from "@origam/interfaces"
+import { IConfigurableDocument } from "@/interfaces"
 
 export interface IStyleTagOptions extends IConfigurableDocument {
     /**

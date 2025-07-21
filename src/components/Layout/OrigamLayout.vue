@@ -18,9 +18,9 @@
 		lang="ts"
 		setup
 >
-	import { useCreateLayout, useProps } from '@origam/composables'
+	import { useCreateLayout, useProps } from '@/composables'
 
-	import type { ILayoutProps } from '@origam/interfaces'
+	import type { ILayoutProps } from '@/interfaces'
 	import { computed, StyleValue } from 'vue'
 
 	const props = withDefaults(defineProps<ILayoutProps>(), {})

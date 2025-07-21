@@ -1,6 +1,6 @@
-import type { IWindowProvide } from '@origam/interfaces'
+import type { IWindowProvide } from '@/interfaces'
 
-import type { TTransitionMode, TTransitionProps } from '@origam/types'
+import type { TTransitionMode, TTransitionProps } from '@/types'
 
 export interface ITransitionComponentProps {
     transition?: boolean | string | TTransitionProps

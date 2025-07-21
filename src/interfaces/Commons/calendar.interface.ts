@@ -1,4 +1,4 @@
-import type { TCalendarStrategy } from "@origam/types"
+import type { TCalendarStrategy } from "@/types"
 
 export interface ICalendarProps {
     allowedDates?: Array<unknown> | ((date: unknown) => boolean)

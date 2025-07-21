@@ -1,6 +1,6 @@
-import type { ILoaderProps } from '@origam/interfaces'
+import type { ILoaderProps } from '@/interfaces'
 
-import { getCurrentInstanceName } from '@origam/utils'
+import { getCurrentInstanceName } from '@/utils'
 
 import { computed } from 'vue'
 

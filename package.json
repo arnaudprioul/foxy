@@ -1,6 +1,6 @@
 {
   "name": "origam",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "type": "module",
   "exports": {
     ".": {
@@ -13,6 +13,7 @@
       "style": "./dist/src/assets/css/main.css"
     },
     "./origam": "./dist/src/origam.js",
+    "./plugin": "./dist/src/plugin.js",
     "./components": "./dist/src/components/index.js",
     "./components/*": "./dist/src/components/*/index.js",
     "./composables": "./dist/src/composables/index.js",

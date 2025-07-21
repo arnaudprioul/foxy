@@ -1,4 +1,4 @@
-import type { IStackProvide } from '@origam/interfaces'
+import type { IStackProvide } from '@/interfaces'
 
 import type { InjectionKey } from 'vue'
 import { reactive } from 'vue'

@@ -1,4 +1,4 @@
-import { toKebabCase } from '@origam/utils'
+import { toKebabCase } from '@/utils'
 import type { ComponentInternalInstance } from 'vue'
 import { getCurrentInstance as _getCurrentInstance } from 'vue'
 

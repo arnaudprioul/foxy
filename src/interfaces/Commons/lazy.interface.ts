@@ -1,4 +1,4 @@
-import type { ICommonsComponentProps, IDimensionProps, ITagProps, ITransitionComponentProps } from '@origam/interfaces'
+import type { ICommonsComponentProps, IDimensionProps, ITagProps, ITransitionComponentProps } from '@/interfaces'
 
 export interface ILazyProps {
     eager?: boolean

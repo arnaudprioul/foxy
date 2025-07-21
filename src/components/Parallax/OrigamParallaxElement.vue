@@ -12,15 +12,15 @@
 		lang="ts"
 		setup
 >
-	import { useParallaxTransform, useProps } from '@origam/composables'
+	import { useParallaxTransform, useProps } from '@/composables'
 
-	import { ORIGAM_PARALLAX_KEY } from '@origam/consts'
+	import { ORIGAM_PARALLAX_KEY } from '@/consts'
 
-	import { AXIS, PARALLAX_ELEMENT_TYPE } from '@origam/enums'
+	import { AXIS, PARALLAX_ELEMENT_TYPE } from '@/enums'
 
-	import type { IParallaxElementProps } from '@origam/interfaces'
+	import type { IParallaxElementProps } from '@/interfaces'
 
-	import { cyclicMovement, elementMovement } from '@origam/utils'
+	import { cyclicMovement, elementMovement } from '@/utils'
 
 	import { computed, inject, StyleValue } from 'vue'
 

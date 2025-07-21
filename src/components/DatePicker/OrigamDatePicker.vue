@@ -108,13 +108,13 @@
 		OrigamPicker,
 		OrigamReverseTranslatePicker,
 		OrigamTranslatePicker
-	} from "@origam/components"
+	} from "@/components"
 
-	import { useDate, useLocale, useProps, useVModel } from "@origam/composables"
+	import { useDate, useLocale, useProps, useVModel } from "@/composables"
 
-	import { CALENDAR_STRATEGY, DATE_MODE } from "@origam/enums"
+	import { CALENDAR_STRATEGY, DATE_MODE } from "@/enums"
 
-	import type { IDatePickerProps } from "@origam/interfaces"
+	import type { IDatePickerProps } from "@/interfaces"
 
 	import type {
 		TOrigamDatePickerControls,
@@ -123,9 +123,9 @@
 		TOrigamDatePickerMonths,
 		TOrigamDatePickerYears,
 		TOrigamPicker
-	} from "@origam/types"
+	} from "@/types"
 
-	import { wrapInArray } from "@origam/utils"
+	import { wrapInArray } from "@/utils"
 
 	import { computed, ref, shallowRef, StyleValue, useSlots, watch } from "vue"
 

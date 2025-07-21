@@ -1,10 +1,10 @@
-import { useToggleScope, useVModel } from '@origam/composables'
+import { useToggleScope, useVModel } from '@/composables'
 
-import { ORIGAM_FORM_KEY } from '@origam/consts'
+import { ORIGAM_FORM_KEY } from '@/consts'
 
-import type { IValidationProps } from '@origam/interfaces'
+import type { IValidationProps } from '@/interfaces'
 
-import { getCurrentInstance, getCurrentInstanceName, getUid, wrapInArray } from '@origam/utils'
+import { getCurrentInstance, getCurrentInstanceName, getUid, wrapInArray } from '@/utils'
 
 import {
     computed,

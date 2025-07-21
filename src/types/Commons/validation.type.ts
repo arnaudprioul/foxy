@@ -1,3 +1,3 @@
-import { VALIDATE_ON } from '@origam/enums'
+import { VALIDATE_ON } from '@/enums'
 
 export type TValidateOn = `${VALIDATE_ON}`

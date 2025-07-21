@@ -199,19 +199,19 @@
 		lang="ts"
 		setup
 >
-	import { OrigamCounter, OrigamField, OrigamInput } from '@origam/components'
+	import { OrigamCounter, OrigamField, OrigamInput } from '@/components'
 
-	import { useAdjacentInner, useDragResizer, useFocus, useProps, useVModel } from '@origam/composables'
+	import { useAdjacentInner, useDragResizer, useFocus, useProps, useVModel } from '@/composables'
 
-	import { vIntersect } from '@origam/directives'
+	import { vIntersect } from '@/directives'
 
-	import { AXIS, DENSITY, MDI_ICONS } from '@origam/enums'
+	import { AXIS, DENSITY, MDI_ICONS } from '@/enums'
 
-	import type { ITextareaFieldProps } from '@origam/interfaces'
+	import type { ITextareaFieldProps } from '@/interfaces'
 
-	import type { TOrigamField, TOrigamInput } from '@origam/types'
+	import type { TOrigamField, TOrigamInput } from '@/types'
 
-	import { clamp, convertToUnit, filterInputAttrs } from '@origam/utils'
+	import { clamp, convertToUnit, filterInputAttrs } from '@/utils'
 
 	import {
 		computed,

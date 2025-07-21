@@ -53,7 +53,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamFade, OrigamSlideX, OrigamTransition } from '@origam/components'
+	import { OrigamFade, OrigamSlideX, OrigamTransition } from '@/components'
 
 	import {
 		useBackgroundColor,
@@ -63,11 +63,11 @@
 		useProps,
 		useRounded,
 		useRtl
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import type { IProgressLinearProps } from '@origam/interfaces'
+	import type { IProgressLinearProps } from '@/interfaces'
 
-	import { convertToUnit } from '@origam/utils'
+	import { convertToUnit } from '@/utils'
 
 	import { computed, StyleValue, toRef } from 'vue'
 

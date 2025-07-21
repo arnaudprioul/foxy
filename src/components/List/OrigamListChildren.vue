@@ -79,13 +79,13 @@
 		lang="ts"
 		setup
 >
-	import { OrigamDivider, OrigamListGroup, OrigamListItem, OrigamListSubheader } from '@origam/components'
+	import { OrigamDivider, OrigamListGroup, OrigamListItem, OrigamListSubheader } from '@/components'
 
-	import { useCreateList, useProps } from '@origam/composables'
+	import { useCreateList, useProps } from '@/composables'
 
-	import { LIST_ITEM_TYPE } from '@origam/enums'
+	import { LIST_ITEM_TYPE } from '@/enums'
 
-	import type { IInternalListItemChildren, IListItemChildren } from '@origam/interfaces'
+	import type { IInternalListItemChildren, IListItemChildren } from '@/interfaces'
 
 	import { computed, useSlots } from 'vue'
 

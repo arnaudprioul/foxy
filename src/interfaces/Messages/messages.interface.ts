@@ -9,7 +9,7 @@ import type {
     IRoundedProps,
     ITagProps,
     ITransitionComponentProps
-} from '@origam/interfaces'
+} from '@/interfaces'
 
 export interface IMessagesProps extends ICommonsComponentProps, ITagProps, ITransitionComponentProps, IColorProps, IBorderProps, IPaddingProps, IMarginProps, IRoundedProps, IDensityProps, IElevationProps {
     active?: boolean

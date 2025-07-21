@@ -1,5 +1,5 @@
-import { useVModel } from '@origam/composables'
-import type { IGroupItem, IGroupItemProps, IGroupItemProvide, IGroupProps, IGroupProvide } from '@origam/interfaces'
+import { useVModel } from '@/composables'
+import type { IGroupItem, IGroupItemProps, IGroupItemProvide, IGroupProps, IGroupProvide } from '@/interfaces'
 
 import {
     consoleWarn,
@@ -10,7 +10,7 @@ import {
     getUid,
     getValues,
     wrapInArray
-} from '@origam/utils'
+} from '@/utils'
 
 import {
     ComponentInternalInstance,

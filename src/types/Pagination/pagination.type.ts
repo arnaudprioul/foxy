@@ -1,3 +1,3 @@
-import { OrigamPagination } from '@origam/components'
+import { OrigamPagination } from '@/components'
 
 export type TOrigamPagination = InstanceType<typeof OrigamPagination>

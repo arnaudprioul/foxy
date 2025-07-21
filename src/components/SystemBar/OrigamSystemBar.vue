@@ -21,9 +21,9 @@
 		useProps,
 		useRounded,
 		useSsrBoot
-	} from "@origam/composables"
+	} from "@/composables"
 
-	import type { ISystemBarProps } from "@origam/interfaces"
+	import type { ISystemBarProps } from "@/interfaces"
 
 	import { computed, shallowRef, StyleValue, toRef } from "vue"
 

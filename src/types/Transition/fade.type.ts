@@ -1,3 +1,3 @@
-import { OrigamFade } from "@origam/components"
+import { OrigamFade } from "@/components"
 
 export type TOrigamFade = InstanceType<typeof OrigamFade>

@@ -12,9 +12,9 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from "@origam/composables"
+	import { useProps } from "@/composables"
 
-	import type { IIconComponentProps } from '@origam/interfaces'
+	import type { IIconComponentProps } from '@/interfaces'
 	import { computed, StyleValue } from 'vue'
 
 	const props = withDefaults(defineProps<IIconComponentProps>(), {tag: 'div'})

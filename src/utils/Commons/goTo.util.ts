@@ -1,6 +1,6 @@
-import type { IGoToInstance, IGoToOptions, IGoToOptionsPatterns } from '@origam/interfaces'
+import type { IGoToInstance, IGoToOptions, IGoToOptionsPatterns } from '@/interfaces'
 
-import { clamp, consoleWarn, int, mergeDeep, refElement } from '@origam/utils'
+import { clamp, consoleWarn, int, mergeDeep, refElement } from '@/utils'
 
 import { ComponentPublicInstance } from 'vue'
 

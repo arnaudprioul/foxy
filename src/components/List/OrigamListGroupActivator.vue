@@ -12,9 +12,9 @@
 		lang="ts"
 		setup
 >
-	import { useNestedGroupActivator, useProps } from '@origam/composables'
+	import { useNestedGroupActivator, useProps } from '@/composables'
 
-	import type { IListActivatorProps } from '@origam/interfaces'
+	import type { IListActivatorProps } from '@/interfaces'
 
 	import { computed, StyleValue } from 'vue'
 

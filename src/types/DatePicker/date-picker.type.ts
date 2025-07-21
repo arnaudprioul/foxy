@@ -1,6 +1,6 @@
-import { OrigamDatePicker } from "@origam/components"
+import { OrigamDatePicker } from "@/components"
 
-import { DATE_MODE } from "@origam/enums"
+import { DATE_MODE } from "@/enums"
 
 export type TDateMode = `${DATE_MODE}`
 

@@ -39,15 +39,15 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn } from '@origam/components'
+	import { OrigamBtn } from '@/components'
 
-	import { useLocale, useProps } from "@origam/composables"
+	import { useLocale, useProps } from "@/composables"
 
-	import { MDI_ICONS } from "@origam/enums"
+	import { MDI_ICONS } from "@/enums"
 
-	import type { IRatingFieldItemProps } from '@origam/interfaces'
+	import type { IRatingFieldItemProps } from '@/interfaces'
 
-	import type { TOrigamBtn } from "@origam/types"
+	import type { TOrigamBtn } from "@/types"
 
 	import { computed, ref, StyleValue } from 'vue'
 

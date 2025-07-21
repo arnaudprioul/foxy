@@ -58,13 +58,13 @@
 		useResizeObserver,
 		useSize,
 		useTextColor
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { CIRCUMFERENCE, MAGIC_RADIUS } from '@origam/consts'
+	import { CIRCUMFERENCE, MAGIC_RADIUS } from '@/consts'
 
-	import type { IProgressCircularProps } from '@origam/interfaces'
+	import type { IProgressCircularProps } from '@/interfaces'
 
-	import { convertToUnit } from '@origam/utils'
+	import { convertToUnit } from '@/utils'
 
 	import { computed, ref, StyleValue, toRef, watchEffect } from 'vue'
 

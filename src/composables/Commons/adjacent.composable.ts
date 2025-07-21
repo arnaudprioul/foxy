@@ -1,6 +1,6 @@
-import type { IAdjacentInnerProps, IAdjacentProps } from '@origam/interfaces'
+import type { IAdjacentInnerProps, IAdjacentProps } from '@/interfaces'
 
-import { getCurrentInstance } from "@origam/utils"
+import { getCurrentInstance } from "@/utils"
 
 import { computed, ComputedRef, Ref, useSlots } from 'vue'
 

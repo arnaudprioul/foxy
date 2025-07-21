@@ -1,6 +1,6 @@
-import { useVModel } from "@origam/composables"
+import { useVModel } from "@/composables"
 
-import type { ILocaleI18n, ILocaleInstance, ILocaleMessages, ILocaleProps } from "@origam/interfaces"
+import type { ILocaleI18n, ILocaleInstance, ILocaleMessages, ILocaleProps } from "@/interfaces"
 
 import { ComputedRef, Ref, watch } from "vue"
 

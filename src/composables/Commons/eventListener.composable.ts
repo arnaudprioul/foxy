@@ -1,4 +1,4 @@
-import { noop, resolveUnref, tryOnScopeDispose, unrefElement } from '@origam/utils'
+import { noop, resolveUnref, tryOnScopeDispose, unrefElement } from '@/utils'
 
 import { watch } from 'vue'
 

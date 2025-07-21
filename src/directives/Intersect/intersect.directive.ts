@@ -1,6 +1,6 @@
-import { SUPPORTS_INTERSECTION } from '@origam/consts'
-import type { IIntersectDirectiveBinding, IIntersectHtmlElement } from '@origam/interfaces'
-import { unmountIntersect } from '@origam/utils'
+import { SUPPORTS_INTERSECTION } from '@/consts'
+import type { IIntersectDirectiveBinding, IIntersectHtmlElement } from '@/interfaces'
+import { unmountIntersect } from '@/utils'
 
 export const Intersect = {
     mounted (el: IIntersectHtmlElement, binding: IIntersectDirectiveBinding) {

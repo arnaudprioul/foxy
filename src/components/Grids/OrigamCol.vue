@@ -12,11 +12,11 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useBothColor, useMargin, usePadding, useProps } from '@origam/composables'
+	import { useBorder, useBothColor, useMargin, usePadding, useProps } from '@/composables'
 
-	import type { IColProps } from '@origam/interfaces'
+	import type { IColProps } from '@/interfaces'
 
-	import { toKebabCase } from '@origam/utils'
+	import { toKebabCase } from '@/utils'
 
 	import { computed, StyleValue, toRef } from 'vue'
 

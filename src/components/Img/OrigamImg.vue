@@ -83,21 +83,21 @@
 		lang="ts"
 		setup
 >
-	import { OrigamResponsive, OrigamTransition } from '@origam/components'
+	import { OrigamResponsive, OrigamTransition } from '@/components'
 
-	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '@origam/composables'
+	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '@/composables'
 
-	import { SUPPORTS_INTERSECTION } from '@origam/consts'
+	import { SUPPORTS_INTERSECTION } from '@/consts'
 
-	import { vIntersect } from '@origam/directives'
+	import { vIntersect } from '@/directives'
 
-	import { IMG_STATE } from '@origam/enums'
+	import { IMG_STATE } from '@/enums'
 
-	import type { IImgProps, ISrcObject } from '@origam/interfaces'
+	import type { IImgProps, ISrcObject } from '@/interfaces'
 
-	import type { TImgState } from '@origam/types'
+	import type { TImgState } from '@/types'
 
-	import { convertToUnit, getCurrentInstance, pick } from '@origam/utils'
+	import { convertToUnit, getCurrentInstance, pick } from '@/utils'
 
 	import {
 		computed,

@@ -1,4 +1,4 @@
-import type { IInternalDataTableHeader } from "@origam/interfaces"
+import type { IInternalDataTableHeader } from "@/interfaces"
 
 export function useCell () {
     const getPadding = (column: IInternalDataTableHeader) => {

@@ -131,7 +131,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamCardHeader, OrigamCardText, OrigamImg, OrigamProgress } from '@origam/components'
+	import { OrigamCardHeader, OrigamCardText, OrigamImg, OrigamProgress } from '@/components'
 
 	import {
 		useAdjacent,
@@ -147,13 +147,13 @@
 		usePosition,
 		useProps,
 		useRounded
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { vRipple } from '@origam/directives'
+	import { vRipple } from '@/directives'
 
-	import { DENSITY, PROGRESS_TYPE } from '@origam/enums'
+	import { DENSITY, PROGRESS_TYPE } from '@/enums'
 
-	import type { ICardProps } from '@origam/interfaces'
+	import type { ICardProps } from '@/interfaces'
 
 	import { computed, StyleValue, toRef, useAttrs, useSlots } from 'vue'
 

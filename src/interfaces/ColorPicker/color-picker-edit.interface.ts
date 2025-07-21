@@ -1,6 +1,6 @@
-import type { ICommonsComponentProps } from "@origam/interfaces"
+import type { ICommonsComponentProps } from "@/interfaces"
 
-import type { TColorModes, THSVA } from "@origam/types"
+import type { TColorModes, THSVA } from "@/types"
 
 export interface IColorPickerEditProps extends ICommonsComponentProps {
     colorHsv?: THSVA | null

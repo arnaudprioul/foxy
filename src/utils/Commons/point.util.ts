@@ -1,6 +1,6 @@
-import type { IBox } from '@origam/interfaces'
+import type { IBox } from '@/interfaces'
 
-import type { TElementPoint, TOffset, TParsedAnchor, TPoint, TViewportPoint } from '@origam/types'
+import type { TElementPoint, TOffset, TParsedAnchor, TPoint, TViewportPoint } from '@/types'
 
 export function elementToViewport (point: TElementPoint, offset: TOffset | IBox) {
     return {

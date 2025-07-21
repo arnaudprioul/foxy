@@ -1,8 +1,8 @@
-import { DIMENSIONS_ARRAY } from '@origam/consts'
+import { DIMENSIONS_ARRAY } from '@/consts'
 
-import type { IDimensionProps } from '@origam/interfaces'
+import type { IDimensionProps } from '@/interfaces'
 
-import { convertToUnit, toKebabCase } from '@origam/utils'
+import { convertToUnit, toKebabCase } from '@/utils'
 
 import { computed } from 'vue'
 

@@ -1,4 +1,4 @@
-import type { IListItemProps, IListProps, IOverlayProps } from '@origam/interfaces'
+import type { IListItemProps, IListProps, IOverlayProps } from '@/interfaces'
 
 export interface IMenuProvide {
     register (): void

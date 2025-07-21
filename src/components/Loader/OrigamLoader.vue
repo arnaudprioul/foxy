@@ -25,12 +25,12 @@
 		lang="ts"
 		setup
 >
-	import { OrigamProgress } from '@origam/components'
-	import { useProps } from "@origam/composables"
+	import { OrigamProgress } from '@/components'
+	import { useProps } from "@/composables"
 
-	import { PROGRESS_TYPE } from '@origam/enums'
+	import { PROGRESS_TYPE } from '@/enums'
 
-	import type { ILoaderProps } from '@origam/interfaces'
+	import type { ILoaderProps } from '@/interfaces'
 
 	import { computed, StyleValue } from 'vue'
 

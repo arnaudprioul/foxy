@@ -122,15 +122,15 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn, OrigamCol, OrigamContainer, OrigamDialog, OrigamRow } from '@origam/components'
+	import { OrigamBtn, OrigamCol, OrigamContainer, OrigamDialog, OrigamRow } from '@/components'
 
-	import { useProps, useVModel } from '@origam/composables'
+	import { useProps, useVModel } from '@/composables'
 
-	import { JUSTIFY } from '@origam/enums'
+	import { JUSTIFY } from '@/enums'
 
-	import type { IDialogConfirmationProps } from '@origam/interfaces'
+	import type { IDialogConfirmationProps } from '@/interfaces'
 
-	import type { TOrigamDialog } from "@origam/types"
+	import type { TOrigamDialog } from "@/types"
 
 	import { computed, ref, useSlots } from 'vue'
 

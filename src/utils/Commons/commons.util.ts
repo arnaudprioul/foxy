@@ -1,6 +1,6 @@
-import { IN_BROWSER, ON_REGEX } from '@origam/consts'
+import { IN_BROWSER, ON_REGEX } from '@/consts'
 
-import { FOCUS_LOCATION } from '@origam/enums'
+import { FOCUS_LOCATION } from '@/enums'
 
 import {
     TClientPosition,
@@ -10,8 +10,8 @@ import {
     TSelectItemKey,
     TTemplateRef,
     TWrapInArrayResult
-} from '@origam/types'
-import { getLifeCycleTarget } from "@origam/utils"
+} from '@/types'
+import { getLifeCycleTarget } from "@/utils"
 
 import {
     capitalize,

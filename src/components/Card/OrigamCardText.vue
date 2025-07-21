@@ -14,8 +14,8 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from "@origam/composables"
-	import type { ICardTextProps } from '@origam/interfaces'
+	import { useProps } from "@/composables"
+	import type { ICardTextProps } from '@/interfaces'
 
 	import { computed, StyleValue } from 'vue'
 

@@ -119,7 +119,7 @@
 		OrigamDataTableRows,
 		OrigamDivider,
 		OrigamTable
-	} from '@origam/components'
+	} from '@/components'
 
 	import {
 		createGroupBy,
@@ -138,9 +138,9 @@
 		usePaginatedItems,
 		useProps,
 		useSortedItems
-	} from '@origam/composables'
+	} from '@/composables'
 
-	import { DENSITY } from '@origam/enums'
+	import { DENSITY } from '@/enums'
 
 	import type {
 		IDataTableGroup,
@@ -148,14 +148,9 @@
 		IDataTableProps,
 		IDataTableSelectableItem,
 		IDataTableSortItem
-	} from '@origam/interfaces'
+	} from '@/interfaces'
 
-	import type {
-		TOrigamDataTableFooter,
-		TOrigamDataTableHeaders,
-		TOrigamDataTableRows,
-		TOrigamTable
-	} from "@origam/types"
+	import type { TOrigamDataTableFooter, TOrigamDataTableHeaders, TOrigamDataTableRows, TOrigamTable } from "@/types"
 
 	import { computed, Ref, ref, StyleValue, toRef, useAttrs, useSlots } from 'vue'
 

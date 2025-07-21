@@ -72,11 +72,11 @@
 		lang="ts"
 		setup
 >
-	import { OrigamAvatar, OrigamIcon, OrigamTransition } from "@origam/components"
+	import { OrigamAvatar, OrigamIcon, OrigamTransition } from "@/components"
 
-	import { useAdjacent, useDensity, useProps } from "@origam/composables"
+	import { useAdjacent, useDensity, useProps } from "@/composables"
 
-	import type { IDatePickerHeaderProps } from "@origam/interfaces"
+	import type { IDatePickerHeaderProps } from "@/interfaces"
 
 	import { computed, StyleValue, toRef, useSlots } from "vue"
 

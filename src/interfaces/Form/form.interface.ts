@@ -1,5 +1,5 @@
-import type { ICommonsComponentProps } from '@origam/interfaces'
-import type { TValidateOn } from '@origam/types'
+import type { ICommonsComponentProps } from '@/interfaces'
+import type { TValidateOn } from '@/types'
 
 import type { ComponentInternalInstance, ComputedRef, Raw, Ref } from 'vue'
 

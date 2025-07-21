@@ -1,4 +1,4 @@
-import type { IBorderProps, IMarginProps, IPaddingProps } from '@origam/interfaces'
+import type { IBorderProps, IMarginProps, IPaddingProps } from '@/interfaces'
 
 export interface ICssBoxProps extends IPaddingProps, IMarginProps, IBorderProps {
 

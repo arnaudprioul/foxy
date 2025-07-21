@@ -1,4 +1,4 @@
-import { getTargetBox, nullifyTransforms } from '@origam/utils'
+import { getTargetBox, nullifyTransforms } from '@/utils'
 
 /** Animatable children (card, sheet, list) */
 export function getChildren (el: Element) {

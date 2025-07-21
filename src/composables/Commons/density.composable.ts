@@ -1,10 +1,10 @@
-import { PREDIFINED_DENSITY } from '@origam/consts'
+import { PREDIFINED_DENSITY } from '@/consts'
 
-import type { IDensityProps } from '@origam/interfaces'
+import type { IDensityProps } from '@/interfaces'
 
-import type { TDensity } from '@origam/types'
+import type { TDensity } from '@/types'
 
-import { getCurrentInstanceName } from '@origam/utils'
+import { getCurrentInstanceName } from '@/utils'
 import { computed, isRef, Ref } from 'vue'
 
 export function useDensity (props: IDensityProps | Ref<number | string | undefined>, name = getCurrentInstanceName()) {

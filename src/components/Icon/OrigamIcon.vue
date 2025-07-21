@@ -17,11 +17,11 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useBothColor, useIcon, useMargin, usePadding, useProps, useSize } from '@origam/composables'
+	import { useBorder, useBothColor, useIcon, useMargin, usePadding, useProps, useSize } from '@/composables'
 
-	import type { IIconComponentProps } from '@origam/interfaces'
+	import type { IIconComponentProps } from '@/interfaces'
 
-	import { flattenFragments } from '@origam/utils'
+	import { flattenFragments } from '@/utils'
 
 	import { computed, ref, StyleValue, toRef, useAttrs, useSlots } from 'vue'
 

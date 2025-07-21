@@ -1,3 +1,3 @@
-import { OrigamOverlayScrim } from "@origam/components"
+import { OrigamOverlayScrim } from "@/components"
 
 export type TOrigamOverlayScrim = InstanceType<typeof OrigamOverlayScrim>

@@ -1,6 +1,6 @@
-import { OrigamTextField } from '@origam/components'
+import { OrigamTextField } from '@/components'
 
-import { TEXT_FIELD_TYPE } from "@origam/enums"
+import { TEXT_FIELD_TYPE } from "@/enums"
 
 export type TTextFieldType = `${TEXT_FIELD_TYPE}`
 
