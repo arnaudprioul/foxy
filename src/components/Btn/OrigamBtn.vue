@@ -72,7 +72,7 @@
               <template v-if="hasIcon">
                 <origam-icon
 		                key="content-icon"
-		                :icon="icon as TIcon"
+		                :icon="icon"
                 />
               </template>
               <template v-else>
@@ -112,6 +112,7 @@
 		lang="ts"
 		setup
 >
+	import { computed, ref, StyleValue, toRef, useAttrs, useSlots } from 'vue'
 	import { OrigamAvatar, OrigamIcon, OrigamLoader, OrigamProgressCircular } from '../../components'
 
 	import {
@@ -146,9 +147,7 @@
 
 	import type { IBtnProps } from '../../interfaces'
 
-	import type { TIcon, TOrigamProgressCircular } from "../../types"
-
-	import { computed, ref, StyleValue, toRef, useAttrs, useSlots } from 'vue'
+	import type { TOrigamProgressCircular } from "../../types"
 
 	const attrs = useAttrs()
 

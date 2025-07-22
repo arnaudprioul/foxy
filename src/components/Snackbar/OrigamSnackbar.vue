@@ -46,7 +46,7 @@
 							<origam-icon
 									v-if="hasIcon"
 									key="prepend-icon"
-									:icon="icon as TIcon"
+									:icon="icon"
 									:size="28"
 							/>
 						</slot>
@@ -116,7 +116,7 @@
 
 	import type { ISnackbarProps } from "../../interfaces"
 
-	import type { TIcon, TOrigamOverlay, TOrigamProgress, TTransitionProps } from '../../types'
+	import type { TOrigamOverlay, TOrigamProgress, TTransitionProps } from '../../types'
 
 	import { forwardRefs, refElement } from '../../utils'
 

@@ -46,7 +46,7 @@
 					<template v-if="hasIcon">
 						<origam-icon
 								key="content-icon"
-								:icon="icon as TIcon"
+								:icon="icon"
 								:size="size"
 						/>
 					</template>
@@ -113,6 +113,8 @@
 		lang="ts"
 		setup
 >
+	import type { ComputedRef, StyleValue } from 'vue'
+	import { computed, ref, useSlots } from 'vue'
 	import { OrigamAvatar, OrigamBtn, OrigamIcon } from '../../components'
 
 	import {
@@ -138,10 +140,6 @@
 	import { DENSITY, MDI_ICONS } from '../../enums'
 
 	import type { IAlertProps } from '../../interfaces'
-	import type { TIcon } from "../../types"
-
-	import type { ComputedRef, StyleValue } from 'vue'
-	import { computed, ref, useSlots } from 'vue'
 
 	const props = withDefaults(defineProps<IAlertProps>(), {
 		tag: 'div',

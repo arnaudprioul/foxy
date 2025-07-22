@@ -9,7 +9,7 @@
 					v-bind="{items}"
 			>
 				<template
-						v-for="(item, index) in items as Array<IDataItem>"
+						v-for="(item, index) in items"
 						:key="index"
 				>
 					<slot
@@ -67,7 +67,7 @@
 
 							<template v-if="item.text">
 								<template
-										v-for="(data, i) in item.text as Array<IDataTextProps>"
+										v-for="(data, i) in item.text"
 										:key="i"
 								>
 									<origam-data-text
@@ -114,6 +114,7 @@
 		lang="ts"
 		setup
 >
+	import { computed, StyleValue, toRef, useSlots } from "vue"
 	import { OrigamDataText, OrigamDataTitle } from "../../components"
 
 	import {
@@ -127,11 +128,9 @@
 		useProps,
 		useRounded
 	} from "../../composables"
-	import type { IDataItem, IDataListProps, IDataTextProps } from "../../interfaces"
+	import type { IDataListProps } from "../../interfaces"
 
 	import { isEmpty } from "../../utils"
-
-	import { computed, StyleValue, toRef, useSlots } from "vue"
 
 	const props = withDefaults(defineProps<IDataListProps>(), {})
 

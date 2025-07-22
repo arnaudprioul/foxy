@@ -61,7 +61,7 @@
 							<origam-icon
 									v-if="hasIcon"
 									key="prepend-icon"
-									:icon="icon as TIcon"
+									:icon="icon"
 									:size="28"
 							/>
 						</slot>
@@ -133,7 +133,7 @@
 	import { vIntersect } from '../../directives'
 	import { MDI_ICONS } from '../../enums'
 	import type { IDialogProps } from '../../interfaces'
-	import type { TIcon, TOrigamCard, TOrigamOverlay, TTransitionProps } from '../../types'
+	import type { TOrigamCard, TOrigamOverlay, TTransitionProps } from '../../types'
 	import { focusableChildren, forwardRefs } from '../../utils'
 
 	const props = withDefaults(defineProps<IDialogProps>(), {
