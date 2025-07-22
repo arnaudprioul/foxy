@@ -14,11 +14,10 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from "@/composables"
-
-	import type { IPickerTitleProps } from "@/interfaces"
-
 	import { computed, StyleValue } from "vue"
+	import { useProps } from "../../composables"
+
+	import type { IPickerTitleProps } from "../../interfaces"
 
 	const props = withDefaults(defineProps<IPickerTitleProps>(), {
 		tag: 'div'

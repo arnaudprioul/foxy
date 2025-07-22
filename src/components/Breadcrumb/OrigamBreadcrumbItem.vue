@@ -65,7 +65,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamAvatar, OrigamIcon } from '@/components'
+	import { OrigamAvatar, OrigamIcon } from '../../components'
 
 	import {
 		useActive,
@@ -80,11 +80,11 @@
 		useProps,
 		useRounded,
 		useStyle
-	} from '@/composables'
+	} from '../../composables'
 
-	import { DENSITY } from '@/enums'
+	import { DENSITY } from '../../enums'
 
-	import type { IBreadcrumbItemProps } from '@/interfaces'
+	import type { IBreadcrumbItemProps } from '../../interfaces'
 
 	import { computed, ComputedRef, StyleValue, toRef, useAttrs } from 'vue'
 

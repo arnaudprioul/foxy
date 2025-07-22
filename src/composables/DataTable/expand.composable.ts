@@ -1,10 +1,9 @@
-import { useVModel } from '@/composables'
-
-import { ORIGAM_DATA_TABLE_EXPAND_KEY } from '@/consts'
-
-import type { IDataTableExpandProps, IDataTableItem, IDataTableProvideExpanded } from '@/interfaces'
-
 import { inject, provide, toRef } from 'vue'
+import { useVModel } from '../../composables'
+
+import { ORIGAM_DATA_TABLE_EXPAND_KEY } from '../../consts'
+
+import type { IDataTableExpandProps, IDataTableItem, IDataTableProvideExpanded } from '../../interfaces'
 
 export function provideExpanded (props: IDataTableExpandProps): IDataTableProvideExpanded {
     const expandOnClick = toRef(props, 'expandOnClick')

@@ -1,10 +1,9 @@
-import { IN_BROWSER } from "@/consts"
-import { KEYBOARD_MODIFIERS } from "@/consts/Commons/hotkey.const.ts"
-import { IHotkeyOptions } from "@/interfaces"
-import { TKeyboardModifiers } from "@/types"
-import { consoleWarn, getCurrentInstance, splitKeyCombination, splitKeySequence } from "@/utils"
-
 import { MaybeRef, onBeforeUnmount, toValue, watch } from "vue"
+import { IN_BROWSER } from "../../consts"
+import { KEYBOARD_MODIFIERS } from "../../consts/Commons/hotkey.const.ts"
+import { IHotkeyOptions } from "../../interfaces"
+import { TKeyboardModifiers } from "../../types"
+import { consoleWarn, getCurrentInstance, splitKeyCombination, splitKeySequence } from "../../utils"
 
 export function useHotkey (
     keys: MaybeRef<string | undefined>,

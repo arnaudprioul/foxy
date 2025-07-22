@@ -1,8 +1,7 @@
-import type { IAdjacentInnerProps, IAdjacentProps } from '@/interfaces'
-
-import { getCurrentInstance } from "@/utils"
-
 import { computed, ComputedRef, Ref, useSlots } from 'vue'
+import type { IAdjacentInnerProps, IAdjacentProps } from '../../interfaces'
+
+import { getCurrentInstance } from "../../utils"
 
 export function useAdjacent (props: IAdjacentProps, prependIcon: Ref | ComputedRef, appendIcon: Ref | ComputedRef) {
     const vm = getCurrentInstance('OrigamAdjacent')

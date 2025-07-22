@@ -1,3 +1,3 @@
-import { OrigamColorPickerEdit } from "@/components"
+import { OrigamColorPickerEdit } from "../../components"
 
 export type TOrigamColorPickerEdit = InstanceType<typeof OrigamColorPickerEdit>

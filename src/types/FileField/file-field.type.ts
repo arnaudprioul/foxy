@@ -1,4 +1,4 @@
-import { OrigamFileField } from "@/components"
+import { OrigamFileField } from "../../components"
 
 export type TFileSize = boolean | 1000 | 1024
 

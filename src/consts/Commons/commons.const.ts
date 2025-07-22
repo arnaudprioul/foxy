@@ -1,6 +1,5 @@
-import type { TEventProp } from '@/types'
-
 import { PropType } from 'vue'
+import type { TEventProp } from '../../types'
 
 export const IN_BROWSER = typeof window !== 'undefined' && typeof document !== 'undefined'
 

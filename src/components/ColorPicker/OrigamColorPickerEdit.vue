@@ -32,15 +32,15 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn } from "@/components"
+	import { OrigamBtn } from "../../components"
 
-	import { useProps } from "@/composables"
+	import { useProps } from "../../composables"
 
-	import { COLOR_NULL, COLOR_PICKER_MODES } from "@/consts"
+	import { COLOR_NULL, COLOR_PICKER_MODES } from "../../consts"
 
-	import { COLOR_MODES_NAMES, MDI_ICONS } from "@/enums"
+	import { COLOR_MODES_NAMES, MDI_ICONS } from "../../enums"
 
-	import type { IColorPickerEditProps } from "@/interfaces"
+	import type { IColorPickerEditProps } from "../../interfaces"
 
 	import { computed, StyleValue } from "vue"
 

@@ -14,9 +14,9 @@ import type {
     IRippleProps,
     IRoundedProps,
     ITagProps
-} from '@/interfaces'
+} from '../../interfaces'
 
-import type { TCardType } from '@/types'
+import type { TCardType } from '../../types'
 
 export interface ICardProps extends ICommonsComponentProps, ITagProps, IBorderProps, IDensityProps, IDimensionProps, IElevationProps, ILoaderProps, ILocationProps, IPositionProps, IRoundedProps, IMarginProps, IPaddingProps, ILinkProps, IRippleProps, IAdjacentProps {
     disabled?: boolean

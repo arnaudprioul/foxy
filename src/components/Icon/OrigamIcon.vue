@@ -17,13 +17,12 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useBothColor, useIcon, useMargin, usePadding, useProps, useSize } from '@/composables'
-
-	import type { IIconComponentProps } from '@/interfaces'
-
-	import { flattenFragments } from '@/utils'
-
 	import { computed, ref, StyleValue, toRef, useAttrs, useSlots } from 'vue'
+	import { useBorder, useBothColor, useIcon, useMargin, usePadding, useProps, useSize } from '../../composables'
+
+	import type { IIconComponentProps } from '../../interfaces'
+
+	import { flattenFragments } from '../../utils'
 
 	const attrs = useAttrs()
 

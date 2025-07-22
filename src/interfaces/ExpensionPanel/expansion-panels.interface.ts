@@ -12,9 +12,9 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@/interfaces'
+} from '../../interfaces'
 
-import type { TIcon } from '@/types'
+import type { TIcon } from '../../types'
 
 export interface IExpansionPanelsProps extends IColorProps, ITagProps, ICommonsComponentProps, IGroupProps, IDensityProps, IRoundedProps, IBorderProps, IPaddingProps, IMarginProps, ILazyProps, ILoaderProps, IElevationProps {
     flat?: boolean

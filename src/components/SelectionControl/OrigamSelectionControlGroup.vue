@@ -30,17 +30,16 @@
 		lang="ts"
 		setup
 >
-	import { useProps, useVModel } from '@/composables'
-
-	import { ORIGAM_SELECTION_CONTROL_GROUP_KEY } from '@/consts'
-
-	import { DENSITY } from '@/enums'
-
-	import type { ISelectionControlGroupProps } from "@/interfaces"
-
-	import { getUid } from '@/utils'
-
 	import { computed, onScopeDispose, provide, StyleValue } from 'vue'
+	import { useProps, useVModel } from '../../composables'
+
+	import { ORIGAM_SELECTION_CONTROL_GROUP_KEY } from '../../consts'
+
+	import { DENSITY } from '../../enums'
+
+	import type { ISelectionControlGroupProps } from "../../interfaces"
+
+	import { getUid } from '../../utils'
 
 	const props = withDefaults(defineProps<ISelectionControlGroupProps>(), {
 		tag: 'div',

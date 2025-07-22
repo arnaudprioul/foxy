@@ -1,4 +1,4 @@
-import type { IParallaxProvide } from '@/interfaces'
+import type { IParallaxProvide } from '../../interfaces'
 
 import type { InjectionKey } from 'vue'
 

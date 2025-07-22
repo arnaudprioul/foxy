@@ -12,11 +12,10 @@
 		lang="ts"
 		setup
 >
-	import { useNestedGroupActivator, useProps } from '@/composables'
-
-	import type { IListActivatorProps } from '@/interfaces'
-
 	import { computed, StyleValue } from 'vue'
+	import { useNestedGroupActivator, useProps } from '../../composables'
+
+	import type { IListActivatorProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<IListActivatorProps>(), {tag: 'div'})
 

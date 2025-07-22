@@ -19,9 +19,9 @@ import type {
     ISizeProps,
     IStatusProps,
     ITagProps
-} from '@/interfaces'
+} from '../../interfaces'
 
-import type { TIcon } from '@/types'
+import type { TIcon } from '../../types'
 
 export interface IBtnProps extends ICommonsComponentProps, IColorProps, IBorderProps, IDensityProps, IDimensionProps, IElevationProps, IRoundedProps, ITagProps, ISizeProps, ILinkProps, IRippleProps, ILoaderProps, IPositionProps, ILocationProps, IGroupItemProps, IPaddingProps, IMarginProps, IAdjacentProps, IStatusProps, IHoverProps {
     active?: boolean

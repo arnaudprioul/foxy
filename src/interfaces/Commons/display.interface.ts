@@ -1,6 +1,5 @@
-import type { TBreakpoint, TDisplayThresholds } from '@/types'
-
 import type { Ref } from 'vue'
+import type { TBreakpoint, TDisplayThresholds } from '../../types'
 
 export interface IDisplayProps {
     mobileBreakpoint?: number | TBreakpoint

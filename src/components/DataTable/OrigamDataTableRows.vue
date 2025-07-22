@@ -69,9 +69,9 @@
 		lang="ts"
 		setup
 >
-	import { OrigamDataTableGroupHeaderRow, OrigamDataTableRow } from '@/components'
+	import { OrigamDataTableGroupHeaderRow, OrigamDataTableRow } from '../../components'
 
-	import { useDisplay, useExpanded, useGroupBy, useHeaders, useLocale, useProps, useSelection } from '@/composables'
+	import { useDisplay, useExpanded, useGroupBy, useHeaders, useLocale, useProps, useSelection } from '../../composables'
 
 	import type {
 		IDataTableGroup,
@@ -79,9 +79,9 @@
 		IDataTableItemBaseSlot,
 		IDataTableItemSlot,
 		IDataTableRowsProps
-	} from '@/interfaces'
+	} from '../../interfaces'
 
-	import { getPrefixedEventHandlers } from '@/utils'
+	import { getPrefixedEventHandlers } from '../../utils'
 
 	import { mergeProps, useAttrs } from 'vue'
 

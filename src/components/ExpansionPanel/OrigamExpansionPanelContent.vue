@@ -27,7 +27,8 @@
 		lang="ts"
 		setup
 >
-	import { OrigamExpandY } from '@/components'
+	import { computed, inject, StyleValue, toRef } from 'vue'
+	import { OrigamExpandY } from '../../components'
 
 	import {
 		useBorder,
@@ -38,13 +39,11 @@
 		usePadding,
 		useProps,
 		useRounded
-	} from '@/composables'
+	} from '../../composables'
 
-	import { ORIGAM_EXPANSION_PANEL_KEY } from '@/consts'
+	import { ORIGAM_EXPANSION_PANEL_KEY } from '../../consts'
 
-	import type { IExpansionPanelContentProps } from '@/interfaces'
-
-	import { computed, inject, StyleValue, toRef } from 'vue'
+	import type { IExpansionPanelContentProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<IExpansionPanelContentProps>(), {
 		tag: 'div'

@@ -121,7 +121,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamAvatar, OrigamExpandX, OrigamIcon } from '@/components'
+	import { OrigamAvatar, OrigamExpandX, OrigamIcon } from '../../components'
 
 	import {
 		useAdjacent,
@@ -138,15 +138,15 @@
 		useRounded,
 		useSize,
 		useVModel
-	} from '@/composables'
+	} from '../../composables'
 
-	import { ORIGAM_CHIP_GROUP_KEY } from '@/consts'
+	import { ORIGAM_CHIP_GROUP_KEY } from '../../consts'
 
-	import { vRipple } from '@/directives'
+	import { vRipple } from '../../directives'
 
-	import { KEYBOARD_VALUES, MDI_ICONS } from '@/enums'
+	import { KEYBOARD_VALUES, MDI_ICONS } from '../../enums'
 
-	import type { IChipProps } from '@/interfaces'
+	import type { IChipProps } from '../../interfaces'
 
 	import { computed, StyleValue, toRef, useAttrs, useSlots } from 'vue'
 

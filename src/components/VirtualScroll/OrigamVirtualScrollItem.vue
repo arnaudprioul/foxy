@@ -21,11 +21,10 @@
 		lang="ts"
 		setup
 >
-	import { useProps, useResizeObserver } from '@/composables'
-
-	import type { IVirtualScrollItemProps } from '@/interfaces'
-
 	import { computed, StyleValue, useAttrs, watch } from 'vue'
+	import { useProps, useResizeObserver } from '../../composables'
+
+	import type { IVirtualScrollItemProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<IVirtualScrollItemProps>(), {})
 

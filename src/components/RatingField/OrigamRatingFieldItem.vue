@@ -39,17 +39,16 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn } from '@/components'
-
-	import { useLocale, useProps } from "@/composables"
-
-	import { MDI_ICONS } from "@/enums"
-
-	import type { IRatingFieldItemProps } from '@/interfaces'
-
-	import type { TOrigamBtn } from "@/types"
-
 	import { computed, ref, StyleValue } from 'vue'
+	import { OrigamBtn } from '../../components'
+
+	import { useLocale, useProps } from "../../composables"
+
+	import { MDI_ICONS } from "../../enums"
+
+	import type { IRatingFieldItemProps } from '../../interfaces'
+
+	import type { TOrigamBtn } from "../../types"
 
 	const props = withDefaults(defineProps<IRatingFieldItemProps>(), {
 		index: -1,

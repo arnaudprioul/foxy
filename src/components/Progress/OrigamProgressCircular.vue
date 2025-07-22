@@ -51,6 +51,7 @@
 		lang="ts"
 		setup
 >
+	import { computed, ref, StyleValue, toRef, watchEffect } from 'vue'
 	import {
 		useIntersectionObserver,
 		useProgress,
@@ -58,15 +59,13 @@
 		useResizeObserver,
 		useSize,
 		useTextColor
-	} from '@/composables'
+	} from '../../composables'
 
-	import { CIRCUMFERENCE, MAGIC_RADIUS } from '@/consts'
+	import { CIRCUMFERENCE, MAGIC_RADIUS } from '../../consts'
 
-	import type { IProgressCircularProps } from '@/interfaces'
+	import type { IProgressCircularProps } from '../../interfaces'
 
-	import { convertToUnit } from '@/utils'
-
-	import { computed, ref, StyleValue, toRef, watchEffect } from 'vue'
+	import { convertToUnit } from '../../utils'
 
 	const props = withDefaults(defineProps<IProgressCircularProps>(), {
 		tag: 'div',

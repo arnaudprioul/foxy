@@ -1,5 +1,5 @@
-import type { IDelayProps } from '@/interfaces'
-import { defer } from '@/utils'
+import type { IDelayProps } from '../../interfaces'
+import { defer } from '../../utils'
 
 export function useDelay (props: IDelayProps, cb?: (value: boolean) => void) {
     let clearDelay: (() => void) = () => {

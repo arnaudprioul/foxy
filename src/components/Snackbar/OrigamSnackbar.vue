@@ -78,7 +78,20 @@
 		lang="ts"
 		setup
 >
-	import { OrigamIcon, OrigamOverlay, OrigamProgress, OrigamSnack } from '@/components'
+	import {
+		computed,
+		inject,
+		mergeProps,
+		onMounted,
+		ref,
+		shallowRef,
+		StyleValue,
+		toRef,
+		useSlots,
+		watch,
+		watchEffect
+	} from 'vue'
+	import { OrigamIcon, OrigamOverlay, OrigamProgress, OrigamSnack } from '../../components'
 
 	import {
 		useBorder,
@@ -95,31 +108,17 @@
 		useStatus,
 		useToggleScope,
 		useVModel
-	} from '@/composables'
+	} from '../../composables'
 
-	import { ORIGAM_LAYOUT_KEY } from '@/consts'
+	import { ORIGAM_LAYOUT_KEY } from '../../consts'
 
-	import { PROGRESS_TYPE, SCROLL_STRATEGIES } from '@/enums'
+	import { PROGRESS_TYPE, SCROLL_STRATEGIES } from '../../enums'
 
-	import type { ISnackbarProps } from "@/interfaces"
+	import type { ISnackbarProps } from "../../interfaces"
 
-	import type { TIcon, TOrigamOverlay, TOrigamProgress, TTransitionProps } from '@/types'
+	import type { TIcon, TOrigamOverlay, TOrigamProgress, TTransitionProps } from '../../types'
 
-	import { forwardRefs, refElement } from '@/utils'
-
-	import {
-		computed,
-		inject,
-		mergeProps,
-		onMounted,
-		ref,
-		shallowRef,
-		StyleValue,
-		toRef,
-		useSlots,
-		watch,
-		watchEffect
-	} from 'vue'
+	import { forwardRefs, refElement } from '../../utils'
 
 	const props = withDefaults(defineProps<ISnackbarProps>(), {
 		timeout: 5000,

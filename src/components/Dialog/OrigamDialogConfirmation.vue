@@ -122,17 +122,16 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn, OrigamCol, OrigamContainer, OrigamDialog, OrigamRow } from '@/components'
-
-	import { useProps, useVModel } from '@/composables'
-
-	import { JUSTIFY } from '@/enums'
-
-	import type { IDialogConfirmationProps } from '@/interfaces'
-
-	import type { TOrigamDialog } from "@/types"
-
 	import { computed, ref, useSlots } from 'vue'
+	import { OrigamBtn, OrigamCol, OrigamContainer, OrigamDialog, OrigamRow } from '../../components'
+
+	import { useProps, useVModel } from '../../composables'
+
+	import { JUSTIFY } from '../../enums'
+
+	import type { IDialogConfirmationProps } from '../../interfaces'
+
+	import type { TOrigamDialog } from "../../types"
 
 	const props = withDefaults(defineProps<IDialogConfirmationProps>(), {
 		cancellable: true

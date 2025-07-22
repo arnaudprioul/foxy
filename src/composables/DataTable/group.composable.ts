@@ -1,5 +1,6 @@
-import { useVModel } from '@/composables'
-import { ORIGAM_DATA_TABLE_GROUP_KEY } from '@/consts'
+import { computed, ComputedRef, inject, provide, ref, Ref } from 'vue'
+import { useVModel } from '../../composables'
+import { ORIGAM_DATA_TABLE_GROUP_KEY } from '../../consts'
 
 import type {
     IDataTableGroup,
@@ -7,10 +8,8 @@ import type {
     IDataTableGroupProps,
     IDataTableProvideGroup,
     IDataTableSortItem
-} from '@/interfaces'
-import { flattenItems, groupItems } from '@/utils'
-
-import { computed, ComputedRef, inject, provide, ref, Ref } from 'vue'
+} from '../../interfaces'
+import { flattenItems, groupItems } from '../../utils'
 
 export function createGroupBy (props: IDataTableGroupProps) {
     const groupBy = useVModel(props, 'groupBy', [])

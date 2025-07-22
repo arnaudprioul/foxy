@@ -1,5 +1,5 @@
-import type { TIfAny } from '@/types'
 import { ComponentObjectPropsOptions, Prop, PropType } from 'vue'
+import type { TIfAny } from '../../types'
 
 export type TPartialKeys<T> = { [P in keyof T]?: unknown }
 

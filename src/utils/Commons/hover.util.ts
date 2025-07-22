@@ -1,10 +1,10 @@
-import { HOVER, ORIGAM_HOVER_STOP_KEY } from '@/consts'
+import { HOVER, ORIGAM_HOVER_STOP_KEY } from '../../consts'
 
-import type { IHoverDirectiveBinding, IHoverHtmlElement, IHoverOptions } from '@/interfaces'
+import type { IHoverDirectiveBinding, IHoverHtmlElement, IHoverOptions } from '../../interfaces'
 
-import type { THoverEvent } from '@/types'
+import type { THoverEvent } from '../../types'
 
-import { isObject, isTouchEvent } from '@/utils'
+import { isObject, isTouchEvent } from '../../utils'
 
 export function updateHover (el: IHoverHtmlElement, binding: IHoverDirectiveBinding, wasEnabled: boolean, name: string) {
     const {value, modifiers} = binding

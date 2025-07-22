@@ -1,8 +1,8 @@
-import { IN_BROWSER } from '@/consts'
+import { IN_BROWSER } from '../../consts'
 
-import type { ILink, ILinkProps, ITagProps } from '@/interfaces'
+import type { ILink, ILinkProps, ITagProps } from '../../interfaces'
 
-import { deepEqual, getCurrentInstance, hasEvent } from '@/utils'
+import { deepEqual, getCurrentInstance, hasEvent } from '../../utils'
 
 import { computed, nextTick, onScopeDispose, Ref, resolveDynamicComponent, SetupContext, toRef } from 'vue'
 import {

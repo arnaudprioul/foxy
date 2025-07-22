@@ -9,8 +9,8 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from "@/interfaces"
-import type { TIcon } from "@/types"
+} from "../../interfaces"
+import type { TIcon } from "../../types"
 
 export interface INumberFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps {
     autofocus?: boolean

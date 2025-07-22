@@ -18,12 +18,11 @@
 		lang="ts"
 		setup
 >
-	import { useForm, useProps } from '@/composables'
-
-	import type { IFormProps, ISubmitEventPromise } from '@/interfaces'
-	import { forwardRefs } from '@/utils'
-
 	import { computed, ref, StyleValue } from 'vue'
+	import { useForm, useProps } from '../../composables'
+
+	import type { IFormProps, ISubmitEventPromise } from '../../interfaces'
+	import { forwardRefs } from '../../utils'
 
 	const props = withDefaults(defineProps<IFormProps>(), {})
 

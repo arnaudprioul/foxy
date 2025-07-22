@@ -1,9 +1,9 @@
-import { IN_BROWSER, SCROLL_STRATEGIES } from '@/consts'
+import { IN_BROWSER, SCROLL_STRATEGIES } from '../../consts'
 
-import type { IScrollArguments, IScrollProps, IScrollStrategyData, IScrollStrategyProps } from '@/interfaces'
-import type { TOrigamList, TOrigamTextField } from '@/types'
+import type { IScrollArguments, IScrollProps, IScrollStrategyData, IScrollStrategyProps } from '../../interfaces'
+import type { TOrigamList, TOrigamTextField } from '../../types'
 
-import { clamp, consoleWarn } from '@/utils'
+import { clamp, consoleWarn } from '../../utils'
 
 import {
     computed,

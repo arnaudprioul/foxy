@@ -1,4 +1,4 @@
-import type { IChartCommonProps } from "@/interfaces"
+import type { IChartCommonProps } from "../../interfaces"
 
 export interface IChartLineProps extends IChartCommonProps {
     fill?: boolean

@@ -1,7 +1,6 @@
-import { useDisplay } from '@/composables'
-import { IN_BROWSER } from '@/consts'
-
 import { onMounted, shallowRef } from 'vue'
+import { useDisplay } from '../../composables'
+import { IN_BROWSER } from '../../consts'
 
 export function useHydration () {
     if (!IN_BROWSER) return shallowRef(false)

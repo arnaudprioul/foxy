@@ -1,3 +1,3 @@
-import { OrigamSheet } from "@/components"
+import { OrigamSheet } from "../../components"
 
 export type TOrigamSheet = InstanceType<typeof OrigamSheet>

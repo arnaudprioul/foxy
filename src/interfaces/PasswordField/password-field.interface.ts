@@ -10,9 +10,9 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from "@/interfaces"
+} from "../../interfaces"
 
-import type { TIcon } from "@/types"
+import type { TIcon } from "../../types"
 
 export interface IPasswordFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IAdjacentInnerProps {
     onIcon?: TIcon

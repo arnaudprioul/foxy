@@ -13,11 +13,10 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from '@/composables'
-	import type { IAutoPropComponentDefinition, IEditWrapperProps } from '@/interfaces'
-	import { scanForAutoProps } from '@/utils'
-
 	import { computed, ref, StyleValue, useSlots, watch } from 'vue'
+	import { useProps } from '../../composables'
+	import type { IAutoPropComponentDefinition, IEditWrapperProps } from '../../interfaces'
+	import { scanForAutoProps } from '../../utils'
 
 	// TODO - WIP
 

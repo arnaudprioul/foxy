@@ -1,3 +1,3 @@
-import { OrigamSnackbar } from "@/components"
+import { OrigamSnackbar } from "../../components"
 
 export type TOrigamSnackbar = InstanceType<typeof OrigamSnackbar>

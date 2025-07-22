@@ -25,6 +25,7 @@
 		lang="ts"
 		setup
 >
+	import { computed, StyleValue, useSlots } from 'vue'
 	import {
 		useBorder,
 		useDensity,
@@ -34,13 +35,11 @@
 		usePadding,
 		useProps,
 		useRounded
-	} from '@/composables'
+	} from '../../composables'
 
-	import { DENSITY } from '@/enums'
+	import { DENSITY } from '../../enums'
 
-	import type { ITableProps } from '@/interfaces'
-
-	import { computed, StyleValue, useSlots } from 'vue'
+	import type { ITableProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<ITableProps>(), {
 		tag: 'div',

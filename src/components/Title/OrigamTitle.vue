@@ -17,10 +17,10 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useBothColor, useDensity, useMargin, usePadding, useProps } from '@/composables'
-
-	import type { ITitleProps } from '@/interfaces'
 	import { computed, StyleValue, toRef, useSlots } from 'vue'
+	import { useBorder, useBothColor, useDensity, useMargin, usePadding, useProps } from '../../composables'
+
+	import type { ITitleProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<ITitleProps>(), {tag: 'h1'})
 

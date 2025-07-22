@@ -1,8 +1,7 @@
-import type { IGroupItem } from '@/interfaces'
-
-import { deepEqual } from '@/utils'
-
 import { UnwrapRef } from 'vue'
+import type { IGroupItem } from '../../interfaces'
+
+import { deepEqual } from '../../utils'
 
 export function getItemIndex (items: UnwrapRef<Array<IGroupItem>>, value: unknown) {
     const ids = getIds(items, [value])

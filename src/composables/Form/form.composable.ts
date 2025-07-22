@@ -1,11 +1,10 @@
-import { useVModel } from '@/composables'
-import { ORIGAM_FORM_KEY } from '@/consts'
-
-import type { IFormField, IFormProps, IValidationFieldResult } from '@/interfaces'
-
-import { consoleWarn } from '@/utils'
-
 import { computed, markRaw, provide, ref, shallowRef, toRef, watch } from 'vue'
+import { useVModel } from '../../composables'
+import { ORIGAM_FORM_KEY } from '../../consts'
+
+import type { IFormField, IFormProps, IValidationFieldResult } from '../../interfaces'
+
+import { consoleWarn } from '../../utils'
 
 export function useForm (props: IFormProps) {
     const model = useVModel(props, 'modelValue')

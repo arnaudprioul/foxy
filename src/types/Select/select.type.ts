@@ -1,3 +1,3 @@
-import { OrigamSelect } from "@/components"
+import { OrigamSelect } from "../../components"
 
 export type TOrigamSelect = InstanceType<typeof OrigamSelect>

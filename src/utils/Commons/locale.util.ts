@@ -1,10 +1,9 @@
-import { useVModel } from "@/composables"
-
-import type { ILocaleI18n, ILocaleInstance, ILocaleMessages, ILocaleProps } from "@/interfaces"
-
 import { ComputedRef, Ref, watch } from "vue"
 
 import { useI18n } from "vue-i18n"
+import { useVModel } from "../../composables"
+
+import type { ILocaleI18n, ILocaleInstance, ILocaleMessages, ILocaleProps } from "../../interfaces"
 
 export function createVueI18nAdapter ({i18n, useI18n}: ILocaleI18n): ILocaleInstance {
     const current = i18n.global.locale

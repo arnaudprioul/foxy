@@ -130,19 +130,18 @@
 		lang="ts"
 		setup
 >
-	import { OrigamInput, OrigamLabel, OrigamRatingFieldItem } from '@/components'
-
-	import { useProps, useVModel } from '@/composables'
-
-	import { BLOCK, DENSITY, SIZES } from '@/enums'
-
-	import type { IRatingFieldProps } from '@/interfaces'
-
-	import type { TOrigamInput, TOrigamRatingFieldItem } from "@/types"
-
-	import { clamp, createRange, filterInputAttrs, getUid } from '@/utils'
-
 	import { computed, ref, shallowRef, StyleValue, useAttrs, useSlots } from 'vue'
+	import { OrigamInput, OrigamLabel, OrigamRatingFieldItem } from '../../components'
+
+	import { useProps, useVModel } from '../../composables'
+
+	import { BLOCK, DENSITY, SIZES } from '../../enums'
+
+	import type { IRatingFieldProps } from '../../interfaces'
+
+	import type { TOrigamInput, TOrigamRatingFieldItem } from "../../types"
+
+	import { clamp, createRange, filterInputAttrs, getUid } from '../../utils'
 
 	const props = withDefaults(defineProps<IRatingFieldProps>(), {
 		length: 5,

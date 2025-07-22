@@ -1,8 +1,7 @@
-import type { IGoToInstance, IGoToOptions, IGoToOptionsPatterns } from '@/interfaces'
-
-import { clamp, consoleWarn, int, mergeDeep, refElement } from '@/utils'
-
 import { ComponentPublicInstance } from 'vue'
+import type { IGoToInstance, IGoToOptions, IGoToOptionsPatterns } from '../../interfaces'
+
+import { clamp, consoleWarn, int, mergeDeep, refElement } from '../../utils'
 
 export function genDefaults (): Partial<IGoToOptions> {
     return {

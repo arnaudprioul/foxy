@@ -51,17 +51,16 @@
 		lang="ts"
 		setup
 >
-	import { useBackgroundColor, useProps, useRounded } from '@/composables'
-
-	import { ORIGAM_SLIDER_FIELD_KEY } from '@/consts'
-
-	import type { ISliderFieldTrackProps } from "@/interfaces"
-
-	import type { TTick } from '@/types'
-
-	import { convertToUnit, int } from '@/utils'
-
 	import { computed, inject, StyleValue, useSlots } from 'vue'
+	import { useBackgroundColor, useProps, useRounded } from '../../composables'
+
+	import { ORIGAM_SLIDER_FIELD_KEY } from '../../consts'
+
+	import type { ISliderFieldTrackProps } from "../../interfaces"
+
+	import type { TTick } from '../../types'
+
+	import { convertToUnit, int } from '../../utils'
 
 	const props = withDefaults(defineProps<ISliderFieldTrackProps>(), {
 		start: 0,

@@ -95,17 +95,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn, OrigamReverseTranslatePicker, OrigamTransition, OrigamTranslatePicker } from "@/components"
+	import { OrigamBtn, OrigamReverseTranslatePicker, OrigamTransition, OrigamTranslatePicker } from "../../components"
 
-	import { useCalendar, useDate, useProps } from "@/composables"
+	import { useCalendar, useDate, useProps } from "../../composables"
 
-	import { CALENDAR_STRATEGY, DENSITY } from "@/enums"
+	import { CALENDAR_STRATEGY, DENSITY } from "../../enums"
 
-	import type { IDatePickerMonthProps, IDay } from "@/interfaces"
+	import type { IDatePickerMonthProps, IDay } from "../../interfaces"
 
-	import type { TOrigamBtn, TTransitionProps } from "@/types"
+	import type { TOrigamBtn, TTransitionProps } from "../../types"
 
-	import { wrapInArray } from "@/utils"
+	import { wrapInArray } from "../../utils"
 
 	import { computed, ref, shallowRef, StyleValue, watch } from "vue"
 

@@ -12,14 +12,13 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useBothColor, useDensity, useMargin, usePadding, useProps } from '@/composables'
-	import { DENSITY } from '@/enums'
-
-	import type { IRowProps } from '@/interfaces'
-
-	import { toKebabCase } from '@/utils'
-
 	import { computed, StyleValue, toRef } from 'vue'
+	import { useBorder, useBothColor, useDensity, useMargin, usePadding, useProps } from '../../composables'
+	import { DENSITY } from '../../enums'
+
+	import type { IRowProps } from '../../interfaces'
+
+	import { toKebabCase } from '../../utils'
 
 	const props = withDefaults(defineProps<IRowProps>(), {tag: 'div', density: DENSITY.DEFAULT})
 

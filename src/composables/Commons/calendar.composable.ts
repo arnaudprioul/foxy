@@ -1,8 +1,8 @@
-import { useDate, useVModel } from "@/composables"
-import type { ICalendarProps, IDay } from "@/interfaces"
-import { DateAdapter } from "@/services"
-import { getWeek, wrapInArray } from "@/utils"
 import { computed } from "vue"
+import { useDate, useVModel } from "../../composables"
+import type { ICalendarProps, IDay } from "../../interfaces"
+import { DateAdapter } from "../../services"
+import { getWeek, wrapInArray } from "../../utils"
 
 export function useCalendar (props: ICalendarProps) {
     const adapter = useDate()

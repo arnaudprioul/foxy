@@ -1,3 +1,3 @@
-import { OrigamListChildren } from "@/components"
+import { OrigamListChildren } from "../../components"
 
 export type TOrigamListChildren = InstanceType<typeof OrigamListChildren>

@@ -1,3 +1,3 @@
-import { OrigamChipGroup } from "@/components"
+import { OrigamChipGroup } from "../../components"
 
 export type TOrigamChipGroup = InstanceType<typeof OrigamChipGroup>

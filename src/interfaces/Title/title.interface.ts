@@ -6,7 +6,7 @@ import type {
     IMarginProps,
     IPaddingProps,
     ITagProps
-} from '@/interfaces'
+} from '../../interfaces'
 
 export interface ITitleProps extends ITagProps, ICommonsComponentProps, IColorProps, IDensityProps, IPaddingProps, IMarginProps, IBorderProps {
     text?: string

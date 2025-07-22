@@ -46,15 +46,14 @@
 		lang="ts"
 		setup
 >
-	import { OrigamPickerTitle, OrigamSheet } from "@/components"
-
-	import { useBackgroundColor, useProps } from "@/composables"
-
-	import type { IPickerProps } from "@/interfaces"
-
-	import type { TOrigamSheet } from "@/types"
-
 	import { computed, ref, StyleValue, toRef, useSlots } from "vue"
+	import { OrigamPickerTitle, OrigamSheet } from "../../components"
+
+	import { useBackgroundColor, useProps } from "../../composables"
+
+	import type { IPickerProps } from "../../interfaces"
+
+	import type { TOrigamSheet } from "../../types"
 
 	const props = withDefaults(defineProps<IPickerProps>(), {})
 

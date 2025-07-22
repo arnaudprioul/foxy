@@ -1,6 +1,6 @@
-import type { IPoint } from "@/interfaces"
+import type { IPoint } from "../../interfaces"
 
-import { int } from "@/utils"
+import { int } from "../../utils"
 
 /**
  * From https://github.com/unsplash/react-trend/blob/master/src/helpers/DOM.helpers.js#L18

@@ -11,7 +11,7 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@/interfaces'
+} from '../../interfaces'
 
 export interface IBreadcrumbItemProps extends ICommonsComponentProps, ITagProps, IBorderProps, IPaddingProps, IMarginProps, IRoundedProps, ILinkProps, IColorProps, IDensityProps, IAdjacentProps, IHoverProps, IActiveProps {
     title: string

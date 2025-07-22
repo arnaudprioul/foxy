@@ -1,10 +1,9 @@
-import { PADDING_REGEX } from '@/consts'
-
-import type { IPaddingProps } from '@/interfaces'
-
-import { convertToUnit, formatPaddingStylesVar, getCurrentInstanceName } from '@/utils'
-
 import { computed } from 'vue'
+import { PADDING_REGEX } from '../../consts'
+
+import type { IPaddingProps } from '../../interfaces'
+
+import { convertToUnit, formatPaddingStylesVar, getCurrentInstanceName } from '../../utils'
 
 export function usePadding (props: IPaddingProps, name = getCurrentInstanceName()) {
 

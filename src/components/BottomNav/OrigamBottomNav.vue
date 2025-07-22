@@ -37,7 +37,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn } from "@/components"
+	import { OrigamBtn } from "../../components"
 	import {
 		useActive,
 		useBorder,
@@ -53,15 +53,15 @@
 		useRounded,
 		useSsrBoot,
 		useStyle
-	} from '@/composables'
+	} from '../../composables'
 
-	import { ORIGAM_BTN_TOGGLE_KEY } from '@/consts'
-	import { MODE } from "@/enums"
+	import { ORIGAM_BTN_TOGGLE_KEY } from '../../consts'
+	import { MODE } from "../../enums"
 
-	import type { IBottomNavProps, IBreadcrumbItemProps } from '@/interfaces'
-	import type { TOrigamBtn } from "@/types"
+	import type { IBottomNavProps, IBreadcrumbItemProps } from '../../interfaces'
+	import type { TOrigamBtn } from "../../types"
 
-	import { convertToUnit, int } from '@/utils'
+	import { convertToUnit, int } from '../../utils'
 
 	import { computed, ComputedRef, Ref, StyleValue, toRef } from 'vue'
 

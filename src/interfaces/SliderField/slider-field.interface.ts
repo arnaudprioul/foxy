@@ -1,4 +1,4 @@
-import { useSteps } from '@/composables'
+import { useSteps } from '../../composables'
 
 import type {
     IBorderProps,
@@ -15,7 +15,7 @@ import type {
     IRoundedProps,
     ISliderFieldThumbProps,
     ISliderFieldTrackProps
-} from '@/interfaces'
+} from '../../interfaces'
 
 import type {
     TAlways,
@@ -26,7 +26,7 @@ import type {
     TSize,
     TSliderData,
     TTick
-} from '@/types'
+} from '../../types'
 
 import { Ref } from 'vue'
 

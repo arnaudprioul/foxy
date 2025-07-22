@@ -22,11 +22,10 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '@/composables'
-
-	import type { IListSubheader } from '@/interfaces'
-
 	import { computed, StyleValue, toRef, useSlots } from 'vue'
+	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '../../composables'
+
+	import type { IListSubheader } from '../../interfaces'
 
 	const props = withDefaults(defineProps<IListSubheader>(), {tag: 'div'})
 

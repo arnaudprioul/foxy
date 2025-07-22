@@ -8,9 +8,9 @@ import type {
     IMarginProps,
     IPaddingProps,
     ITagProps
-} from '@/interfaces'
+} from '../../interfaces'
 
-import type { TFlexDirection } from '@/types'
+import type { TFlexDirection } from '../../types'
 
 export interface IRowProps extends ICommonsComponentProps, ITagProps, IPaddingProps, IMarginProps, IBorderProps, IColorProps, IDensityProps, IAlignProps, IJustifyProps {
     gutters?: string | number

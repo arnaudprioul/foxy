@@ -199,20 +199,6 @@
 		lang="ts"
 		setup
 >
-	import { OrigamCounter, OrigamField, OrigamInput } from '@/components'
-
-	import { useAdjacentInner, useDragResizer, useFocus, useProps, useVModel } from '@/composables'
-
-	import { vIntersect } from '@/directives'
-
-	import { AXIS, DENSITY, MDI_ICONS } from '@/enums'
-
-	import type { ITextareaFieldProps } from '@/interfaces'
-
-	import type { TOrigamField, TOrigamInput } from '@/types'
-
-	import { clamp, convertToUnit, filterInputAttrs } from '@/utils'
-
 	import {
 		computed,
 		nextTick,
@@ -225,6 +211,19 @@
 		watch,
 		watchEffect
 	} from 'vue'
+	import { OrigamCounter, OrigamField, OrigamInput } from '../../components'
+
+	import { useAdjacentInner, useDragResizer, useFocus, useProps, useVModel } from '../../composables'
+
+	import { vIntersect } from '../../directives'
+
+	import { AXIS, DENSITY, MDI_ICONS } from '../../enums'
+
+	import type { ITextareaFieldProps } from '../../interfaces'
+
+	import type { TOrigamField, TOrigamInput } from '../../types'
+
+	import { clamp, convertToUnit, filterInputAttrs } from '../../utils'
 
 	const props = withDefaults(defineProps<ITextareaFieldProps>(), {
 		density: DENSITY.DEFAULT,

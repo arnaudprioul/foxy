@@ -20,17 +20,16 @@
 		lang="ts"
 		setup
 >
-	import { OrigamFade, OrigamTransition } from '@/components'
-
-	import { useDimension, useProps, useVModel } from '@/composables'
-
-	import { vIntersect } from '@/directives'
-
-	import type { ILazyComponentProps } from '@/interfaces'
-
-	import type { TTransitionProps } from "@/types"
-
 	import { computed, StyleValue } from 'vue'
+	import { OrigamFade, OrigamTransition } from '../../components'
+
+	import { useDimension, useProps, useVModel } from '../../composables'
+
+	import { vIntersect } from '../../directives'
+
+	import type { ILazyComponentProps } from '../../interfaces'
+
+	import type { TTransitionProps } from "../../types"
 
 	const props = withDefaults(defineProps<ILazyComponentProps>(), {
 		tag: 'div',

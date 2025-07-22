@@ -49,17 +49,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamImg, OrigamToolbar } from '@/components'
+	import { OrigamImg, OrigamToolbar } from '../../components'
 
-	import { useActive, useLayoutItem, useProps, useScroll, useSsrBoot, useToggleScope } from '@/composables'
+	import { useActive, useLayoutItem, useProps, useScroll, useSsrBoot, useToggleScope } from '../../composables'
 
-	import { BLOCK, DENSITY } from '@/enums'
+	import { BLOCK, DENSITY } from '../../enums'
 
-	import type { IAppBarProps } from '@/interfaces'
+	import type { IAppBarProps } from '../../interfaces'
 
-	import type { TOrigamToolbar } from "@/types"
+	import type { TOrigamToolbar } from "../../types"
 
-	import { forwardRefs, int } from "@/utils"
+	import { forwardRefs, int } from "../../utils"
 
 	import { computed, ComputedRef, ref, shallowRef, StyleValue, toRef, useSlots, watchEffect } from 'vue'
 

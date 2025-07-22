@@ -1,10 +1,10 @@
-import { useBackgroundColor, useDensity, useTextColor, useVModel } from '@/composables'
+import { useBackgroundColor, useDensity, useTextColor, useVModel } from '../../composables'
 
-import { ORIGAM_SELECTION_CONTROL_GROUP_KEY } from '@/consts'
+import { ORIGAM_SELECTION_CONTROL_GROUP_KEY } from '../../consts'
 
-import type { ISelectionControlProps } from "@/interfaces"
+import type { ISelectionControlProps } from "../../interfaces"
 
-import { deepEqual, wrapInArray } from '@/utils'
+import { deepEqual, wrapInArray } from '../../utils'
 
 import { computed, inject } from 'vue'
 

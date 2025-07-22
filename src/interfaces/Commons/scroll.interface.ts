@@ -1,4 +1,4 @@
-import type { TScrollBehavior, TScrollStrategy, TScrollStrategyFn } from '@/types'
+import type { TScrollBehavior, TScrollStrategy, TScrollStrategyFn } from '../../types'
 import type { Ref } from 'vue'
 
 export interface IScrollProps {

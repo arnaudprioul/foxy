@@ -62,7 +62,8 @@
 		lang="ts"
 		setup
 >
-	import { OrigamFade, OrigamIcon } from "@/components"
+	import { computed, shallowRef, StyleValue, watch } from "vue"
+	import { OrigamFade, OrigamIcon } from "../../components"
 	import {
 		useBorder,
 		useDisplay,
@@ -74,13 +75,13 @@
 		useResizeObserver,
 		useRounded,
 		useRtl
-	} from "@/composables"
+	} from "../../composables"
 
-	import { IN_BROWSER, ORIGAM_SLIDE_GROUP_KEY } from "@/consts"
+	import { IN_BROWSER, ORIGAM_SLIDE_GROUP_KEY } from "../../consts"
 
-	import { DIRECTION, MDI_ICONS } from "@/enums"
+	import { DIRECTION, MDI_ICONS } from "../../enums"
 
-	import type { IGoToOptions, ISlideGroupProps } from "@/interfaces"
+	import type { IGoToOptions, ISlideGroupProps } from "../../interfaces"
 	import {
 		calculateCenteredTarget,
 		calculateUpdatedTarget,
@@ -89,9 +90,7 @@
 		getOffsetSize,
 		getScrollPosition,
 		getScrollSize
-	} from "@/utils"
-
-	import { computed, shallowRef, StyleValue, watch } from "vue"
+	} from "../../utils"
 
 	const props = withDefaults(defineProps<ISlideGroupProps>(), {
 		direction: DIRECTION.HORIZONTAL,

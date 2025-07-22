@@ -82,15 +82,15 @@
 		setup
 >
 
-	import { OrigamBtn, OrigamCheckboxBtn, OrigamDataTableColumnCell } from '@/components'
+	import { OrigamBtn, OrigamCheckboxBtn, OrigamDataTableColumnCell } from '../../components'
 
-	import { useCell, useDisplay, useExpanded, useHeaders, useProps, useSelection, useSort } from '@/composables'
+	import { useCell, useDisplay, useExpanded, useHeaders, useProps, useSelection, useSort } from '../../composables'
 
-	import { MDI_ICONS, SIZES } from '@/enums'
+	import { MDI_ICONS, SIZES } from '../../enums'
 
-	import type { IDataTableHeaderCellColumnSlot, IDataTableItemKey, IDataTableRowProps } from '@/interfaces'
+	import type { IDataTableHeaderCellColumnSlot, IDataTableItemKey, IDataTableRowProps } from '../../interfaces'
 
-	import { getCurrentInstance, getObjectValueByPath } from '@/utils'
+	import { getCurrentInstance, getObjectValueByPath } from '../../utils'
 
 	import { computed, StyleValue, toDisplayString, withModifiers } from 'vue'
 

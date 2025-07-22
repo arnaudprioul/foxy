@@ -1,4 +1,4 @@
-import type { TStrategySelect } from '@/types'
+import type { TStrategySelect } from '../../types'
 import { toRaw } from 'vue'
 
 export function independentSelectStrategy (mandatory?: boolean): TStrategySelect {

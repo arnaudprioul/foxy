@@ -21,19 +21,18 @@
 		lang="ts"
 		setup
 >
-	import { OrigamTransition } from '@/components'
-
-	import { useGroupItem, useLazy, useProps, useSsrBoot } from '@/composables'
-
-	import { ORIGAM_WINDOW_GROUP_KEY, ORIGAM_WINDOW_KEY } from '@/consts'
-
-	import { vTouch } from '@/directives'
-
-	import type { IWindowItemProps } from '@/interfaces'
-
-	import { convertToUnit } from '@/utils'
-
 	import { computed, inject, nextTick, shallowRef, StyleValue } from 'vue'
+	import { OrigamTransition } from '../../components'
+
+	import { useGroupItem, useLazy, useProps, useSsrBoot } from '../../composables'
+
+	import { ORIGAM_WINDOW_GROUP_KEY, ORIGAM_WINDOW_KEY } from '../../consts'
+
+	import { vTouch } from '../../directives'
+
+	import type { IWindowItemProps } from '../../interfaces'
+
+	import { convertToUnit } from '../../utils'
 
 	const props = withDefaults(defineProps<IWindowItemProps>(), {
 		transition: undefined,

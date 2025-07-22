@@ -1,4 +1,4 @@
-import { HSLtoRGB, HSVtoRGB } from '@/utils'
+import { HSLtoRGB, HSVtoRGB } from '../../utils'
 
 export const CSS_COLOR_REGEX = /^(?<fn>(?:rgb|hsl)a?)\((?<values>.+)\)/
 

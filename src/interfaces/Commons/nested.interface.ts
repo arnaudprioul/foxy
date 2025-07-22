@@ -1,4 +1,4 @@
-import type { TOpenStrategy, TOpenStrategyFns, TSelectStrategy, TSelectStrategyFn } from '@/types'
+import type { TOpenStrategy, TOpenStrategyFns, TSelectStrategy, TSelectStrategyFn } from '../../types'
 
 export interface INestedProps {
     selectStrategy?: TSelectStrategy | TSelectStrategyFn

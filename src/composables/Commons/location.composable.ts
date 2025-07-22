@@ -1,14 +1,13 @@
-import { useToggleScope } from '@/composables'
-
-import { IN_BROWSER, LOCATION_STRATEGIES, OPPOSITE_MAP } from '@/consts'
-
-import type { ILocationProps, ILocationStrategyData, ILocationStrategyProps } from '@/interfaces'
-
-import type { TAnchor } from '@/types'
-
-import { parseAnchor } from '@/utils'
-
 import { computed, onScopeDispose, ref, watch } from 'vue'
+import { useToggleScope } from '../../composables'
+
+import { IN_BROWSER, LOCATION_STRATEGIES, OPPOSITE_MAP } from '../../consts'
+
+import type { ILocationProps, ILocationStrategyData, ILocationStrategyProps } from '../../interfaces'
+
+import type { TAnchor } from '../../types'
+
+import { parseAnchor } from '../../utils'
 
 export function useLocation (props: ILocationProps, opposite = false, offset?: (side: string) => number) {
 

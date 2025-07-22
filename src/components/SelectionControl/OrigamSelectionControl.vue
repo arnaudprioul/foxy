@@ -65,17 +65,16 @@
 		lang="ts"
 		setup
 >
-	import { OrigamIcon, OrigamLabel } from '@/components'
-
-	import { useProps, useSelectionControl } from '@/composables'
-
-	import { vRipple } from '@/directives'
-
-	import type { ISelectionControlProps } from "@/interfaces"
-
-	import { filterInputAttrs, forwardRefs, getUid, matchesSelector } from '@/utils'
-
 	import { computed, nextTick, ref, shallowRef, StyleValue, useAttrs } from 'vue'
+	import { OrigamIcon, OrigamLabel } from '../../components'
+
+	import { useProps, useSelectionControl } from '../../composables'
+
+	import { vRipple } from '../../directives'
+
+	import type { ISelectionControlProps } from "../../interfaces"
+
+	import { filterInputAttrs, forwardRefs, getUid, matchesSelector } from '../../utils'
 
 	const props = withDefaults(defineProps<ISelectionControlProps>(), {})
 

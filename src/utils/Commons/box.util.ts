@@ -1,5 +1,5 @@
-import type { IBox } from '@/interfaces'
-import { Box } from '@/services'
+import type { IBox } from '../../interfaces'
+import { Box } from '../../services'
 
 export function getOverflow (a: IBox, b: IBox) {
     return {

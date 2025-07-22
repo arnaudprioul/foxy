@@ -1,7 +1,6 @@
-import type { ICommonsComponentProps } from '@/interfaces'
-import type { TValidateOn } from '@/types'
-
 import type { ComponentInternalInstance, ComputedRef, Raw, Ref } from 'vue'
+import type { ICommonsComponentProps } from '../../interfaces'
+import type { TValidateOn } from '../../types'
 
 export interface IFormProvide {
     register: (item: {

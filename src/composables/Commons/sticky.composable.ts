@@ -1,5 +1,5 @@
-import type { ISticky } from "@/interfaces"
-import { convertToUnit } from '@/utils'
+import type { ISticky } from "../../interfaces"
+import { convertToUnit } from '../../utils'
 
 import { computed, onBeforeUnmount, onMounted, shallowRef, watch } from 'vue'
 

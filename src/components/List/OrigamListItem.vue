@@ -111,7 +111,8 @@
 		lang="ts"
 		setup
 >
-	import { OrigamAvatar, OrigamIcon } from '@/components'
+	import { computed, onBeforeMount, StyleValue, toRef, useAttrs, useSlots, watch } from 'vue'
+	import { OrigamAvatar, OrigamIcon } from '../../components'
 
 	import {
 		useAdjacent,
@@ -127,17 +128,15 @@
 		usePadding,
 		useProps,
 		useRounded
-	} from '@/composables'
+	} from '../../composables'
 
-	import { vRipple } from '@/directives'
+	import { vRipple } from '../../directives'
 
-	import { KEYBOARD_VALUES } from '@/enums'
+	import { KEYBOARD_VALUES } from '../../enums'
 
-	import type { IListItemProps } from '@/interfaces'
+	import type { IListItemProps } from '../../interfaces'
 
-	import type { TListItemSlot } from '@/types'
-
-	import { computed, onBeforeMount, StyleValue, toRef, useAttrs, useSlots, watch } from 'vue'
+	import type { TListItemSlot } from '../../types'
 
 	const attrs = useAttrs()
 

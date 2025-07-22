@@ -113,7 +113,8 @@
 		lang="ts"
 		setup
 >
-	import { OrigamExpansionPanel } from '@/components'
+	import { computed, StyleValue, toRef, useSlots } from 'vue'
+	import { OrigamExpansionPanel } from '../../components'
 
 	import {
 		useBorder,
@@ -125,13 +126,11 @@
 		usePadding,
 		useProps,
 		useRounded
-	} from '@/composables'
+	} from '../../composables'
 
-	import { ORIGAM_EXPANSION_PANEL_KEY } from '@/consts'
+	import { ORIGAM_EXPANSION_PANEL_KEY } from '../../consts'
 
-	import type { IExpansionPanelsProps } from '@/interfaces'
-
-	import { computed, StyleValue, toRef, useSlots } from 'vue'
+	import type { IExpansionPanelsProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<IExpansionPanelsProps>(), {
 		tag: 'div'

@@ -1,12 +1,11 @@
-import { useDelay } from '@/composables'
-
-import { IN_BROWSER, ORIGAM_MENU_KEY } from '@/consts'
-
-import type { IActivatorProps } from '@/interfaces'
-
-import { activator, getCurrentInstance, getTargetActivator, matchesSelector, refElement } from '@/utils'
-
 import { computed, effectScope, EffectScope, inject, nextTick, onScopeDispose, ref, Ref, watch, watchEffect } from 'vue'
+import { useDelay } from '../../composables'
+
+import { IN_BROWSER, ORIGAM_MENU_KEY } from '../../consts'
+
+import type { IActivatorProps } from '../../interfaces'
+
+import { activator, getCurrentInstance, getTargetActivator, matchesSelector, refElement } from '../../utils'
 
 export function useActivator (props: IActivatorProps, {isActive, isTop}: {
     isActive: Ref<boolean>,

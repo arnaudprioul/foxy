@@ -1,3 +1,3 @@
-import { OrigamVirtualScroll } from '@/components'
+import { OrigamVirtualScroll } from '../../components'
 
 export type TOrigamVirtualScroll = InstanceType<typeof OrigamVirtualScroll>

@@ -1,6 +1,6 @@
-import { OrigamList } from '@/components'
+import { OrigamList } from '../../components'
 
-import { LINES } from '@/enums'
+import { LINES } from '../../enums'
 
 export type TLines = `${LINES}`
 

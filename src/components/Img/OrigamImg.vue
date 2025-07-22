@@ -83,22 +83,6 @@
 		lang="ts"
 		setup
 >
-	import { OrigamResponsive, OrigamTransition } from '@/components'
-
-	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '@/composables'
-
-	import { SUPPORTS_INTERSECTION } from '@/consts'
-
-	import { vIntersect } from '@/directives'
-
-	import { IMG_STATE } from '@/enums'
-
-	import type { IImgProps, ISrcObject } from '@/interfaces'
-
-	import type { TImgState } from '@/types'
-
-	import { convertToUnit, getCurrentInstance, pick } from '@/utils'
-
 	import {
 		computed,
 		nextTick,
@@ -111,6 +95,21 @@
 		useSlots,
 		watch
 	} from 'vue'
+	import { OrigamResponsive, OrigamTransition } from '../../components'
+
+	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '../../composables'
+
+	import { SUPPORTS_INTERSECTION } from '../../consts'
+
+	import { vIntersect } from '../../directives'
+
+	import { IMG_STATE } from '../../enums'
+
+	import type { IImgProps, ISrcObject } from '../../interfaces'
+
+	import type { TImgState } from '../../types'
+
+	import { convertToUnit, getCurrentInstance, pick } from '../../utils'
 
 	const props = withDefaults(defineProps<IImgProps>(), {})
 

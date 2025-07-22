@@ -38,7 +38,8 @@
 		lang="ts"
 		setup
 >
-	import { OrigamTitle } from "@/components"
+	import { computed, toRef, useSlots } from 'vue'
+	import { OrigamTitle } from "../../components"
 	import {
 		useBorder,
 		useBothColor,
@@ -52,13 +53,11 @@
 		useRounded,
 		useRtl,
 		useStyle
-	} from '@/composables'
+	} from '../../composables'
 
-	import { DENSITY } from '@/enums'
+	import { DENSITY } from '../../enums'
 
-	import type { IToolbarProps } from '@/interfaces'
-
-	import { computed, toRef, useSlots } from 'vue'
+	import type { IToolbarProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<IToolbarProps>(), {
 		tag: 'header',

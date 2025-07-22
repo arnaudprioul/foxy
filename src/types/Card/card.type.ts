@@ -1,6 +1,6 @@
-import { OrigamCard } from '@/components'
+import { OrigamCard } from '../../components'
 
-import { CARD_TYPE } from '@/enums'
+import { CARD_TYPE } from '../../enums'
 
 export type TCardType = `${CARD_TYPE}`
 

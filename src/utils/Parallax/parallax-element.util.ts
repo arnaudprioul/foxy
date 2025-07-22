@@ -1,6 +1,6 @@
-import type { IParallaxElementCicle, IParallaxElementMovement } from '@/interfaces'
+import type { IParallaxElementCicle, IParallaxElementMovement } from '../../interfaces'
 
-import type { TPoint } from '@/types'
+import type { TPoint } from '../../types'
 
 export function elementMovement (action: IParallaxElementMovement) {
     const {y, x, target, strength = 10, event = null, minX, minY, maxX, maxY} = action

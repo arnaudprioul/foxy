@@ -11,14 +11,13 @@
 		lang="ts"
 		setup
 >
-	import { useMargin, useProps } from '@/composables'
-	import { DIRECTION } from '@/enums'
-
-	import type { IDividerProps } from '@/interfaces'
-
-	import { convertToUnit } from '@/utils'
-
 	import { computed, StyleValue, useAttrs } from 'vue'
+	import { useMargin, useProps } from '../../composables'
+	import { DIRECTION } from '../../enums'
+
+	import type { IDividerProps } from '../../interfaces'
+
+	import { convertToUnit } from '../../utils'
 
 	const attrs = useAttrs()
 

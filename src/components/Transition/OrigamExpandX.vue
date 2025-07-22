@@ -18,12 +18,11 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from "@/composables"
-	import { TRANSITION_MODE } from '@/enums'
-
-	import type { IHTMLExpandElement, ITransitionProps } from '@/interfaces'
-
 	import { camelize } from 'vue'
+	import { useProps } from "../../composables"
+	import { TRANSITION_MODE } from '../../enums'
+
+	import type { IHTMLExpandElement, ITransitionProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<ITransitionProps>(), {
 		name: 'origam-transition--expand-x',

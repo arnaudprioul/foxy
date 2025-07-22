@@ -1,4 +1,4 @@
-import type { TListItemType } from '@/types'
+import type { TListItemType } from '../../types'
 
 export interface IListItemChildren {
     items: Array<IInternalListItemChildren>

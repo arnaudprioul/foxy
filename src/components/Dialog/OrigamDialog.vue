@@ -126,16 +126,15 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn, OrigamCard, OrigamIcon, OrigamOverlay, OrigamTranslateScale } from '@/components'
-	import { useProps, useScopeId, useStatus, useVModel } from '@/composables'
-	import { IN_BROWSER } from '@/consts'
-	import { vIntersect } from '@/directives'
-	import { MDI_ICONS } from '@/enums'
-	import type { IDialogProps } from '@/interfaces'
-	import type { TIcon, TOrigamCard, TOrigamOverlay, TTransitionProps } from '@/types'
-	import { focusableChildren, forwardRefs } from '@/utils'
-
 	import { computed, mergeProps, nextTick, ref, StyleValue, useSlots, watch } from 'vue'
+	import { OrigamBtn, OrigamCard, OrigamIcon, OrigamOverlay, OrigamTranslateScale } from '../../components'
+	import { useProps, useScopeId, useStatus, useVModel } from '../../composables'
+	import { IN_BROWSER } from '../../consts'
+	import { vIntersect } from '../../directives'
+	import { MDI_ICONS } from '../../enums'
+	import type { IDialogProps } from '../../interfaces'
+	import type { TIcon, TOrigamCard, TOrigamOverlay, TTransitionProps } from '../../types'
+	import { focusableChildren, forwardRefs } from '../../utils'
 
 	const props = withDefaults(defineProps<IDialogProps>(), {
 		retainFocus: true,

@@ -1,13 +1,13 @@
+import type { ComputedRef, Ref } from 'vue'
 import type {
     IDataTableGroupableItem,
     IDataTableSelectableItem,
     IDataTableSortItem,
     IInternalDataTableHeader,
     IInternalItem
-} from '@/interfaces'
+} from '../../interfaces'
 
-import type { TDataTableCell, TDataTableRow, TIcon, TSelectItemKey } from '@/types'
-import type { ComputedRef, Ref } from 'vue'
+import type { TDataTableCell, TDataTableRow, TIcon, TSelectItemKey } from '../../types'
 
 export interface IDataTableItemsProps {
     items?: Array<IDataTableItem>

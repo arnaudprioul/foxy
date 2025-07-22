@@ -1,3 +1,3 @@
-import { OrigamCheckbox } from "@/components"
+import { OrigamCheckbox } from "../../components"
 
 export type TOrigamCheckbox = InstanceType<typeof OrigamCheckbox>

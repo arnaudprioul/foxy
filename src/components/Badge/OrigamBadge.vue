@@ -41,7 +41,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamIcon, OrigamScaleRotate, OrigamTransition } from '@/components'
+	import { OrigamIcon, OrigamScaleRotate, OrigamTransition } from '../../components'
 
 	import {
 		useActive,
@@ -55,12 +55,12 @@
 		useRounded,
 		useStatus,
 		useStyle
-	} from '@/composables'
+	} from '../../composables'
 
-	import type { IBadgeProps } from '@/interfaces'
-	import type { TTransitionProps } from "@/types"
+	import type { IBadgeProps } from '../../interfaces'
+	import type { TTransitionProps } from "../../types"
 
-	import { omit, pick } from '@/utils'
+	import { omit, pick } from '../../utils'
 
 	import { computed, ComputedRef, ref, StyleValue, useAttrs } from 'vue'
 

@@ -1,5 +1,5 @@
-import { IN_BROWSER } from '@/consts'
-import { consoleWarn } from '@/utils'
+import { IN_BROWSER } from '../../consts'
+import { consoleWarn } from '../../utils'
 
 import { computed, Ref } from 'vue'
 

@@ -1,6 +1,5 @@
-import type { IInternalDataTableHeader } from '@/interfaces'
-
 import type { InjectionKey, Ref } from 'vue'
+import type { IInternalDataTableHeader } from '../../interfaces'
 
 export const ORIGAM_DATA_TABLE_HEADERS_KEY: InjectionKey<{
     headers: Ref<Array<Array<IInternalDataTableHeader>>>

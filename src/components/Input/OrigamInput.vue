@@ -94,8 +94,9 @@
 		lang="ts"
 		setup
 >
-	import { OrigamAvatar, OrigamIcon } from '@/components'
-	import { OrigamMessages } from '@/components/Messages'
+	import { computed, StyleValue, toRef, useSlots } from 'vue'
+	import { OrigamAvatar, OrigamIcon } from '../../components'
+	import { OrigamMessages } from '../../components/Messages'
 
 	import {
 		useAdjacent,
@@ -110,15 +111,13 @@
 		useRounded,
 		useRtl,
 		useValidation
-	} from '@/composables'
+	} from '../../composables'
 
-	import { DENSITY, DIRECTION } from '@/enums'
+	import { DENSITY, DIRECTION } from '../../enums'
 
-	import type { IInputProps } from '@/interfaces'
+	import type { IInputProps } from '../../interfaces'
 
-	import { getUid } from '@/utils'
-
-	import { computed, StyleValue, toRef, useSlots } from 'vue'
+	import { getUid } from '../../utils'
 
 	const props = withDefaults(defineProps<IInputProps>(), {
 		direction: DIRECTION.HORIZONTAL,

@@ -11,7 +11,7 @@ import type {
     IScrimProps,
     ITagProps,
     ITransitionComponentProps
-} from '@/interfaces'
+} from '../../interfaces'
 
 
 export interface IDrawerProps extends ITagProps, ICommonsComponentProps, IBorderProps, IElevationProps, ILayoutItemProps, IRoundedProps, IColorProps, IDensityProps, IPaddingProps, IMarginProps, ITransitionComponentProps, IScrimProps {

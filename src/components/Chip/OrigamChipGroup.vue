@@ -16,17 +16,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamSlideGroup } from '@/components'
+	import { OrigamSlideGroup } from '../../components'
 
-	import { useGroup, useProps } from "@/composables"
+	import { useGroup, useProps } from "../../composables"
 
-	import { ORIGAM_CHIP_GROUP_KEY } from "@/consts"
+	import { ORIGAM_CHIP_GROUP_KEY } from "../../consts"
 
-	import { DIRECTION, MDI_ICONS } from '@/enums'
+	import { DIRECTION, MDI_ICONS } from '../../enums'
 
-	import type { IChipGroupProps } from '@/interfaces'
+	import type { IChipGroupProps } from '../../interfaces'
 
-	import type { TOrigamSlideGroup } from "@/types"
+	import type { TOrigamSlideGroup } from "../../types"
 
 	import { computed, ref, StyleValue } from "vue";
 

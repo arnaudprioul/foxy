@@ -12,17 +12,16 @@
 		lang="ts"
 		setup
 >
-	import { useParallaxTransform, useProps } from '@/composables'
-
-	import { ORIGAM_PARALLAX_KEY } from '@/consts'
-
-	import { AXIS, PARALLAX_ELEMENT_TYPE } from '@/enums'
-
-	import type { IParallaxElementProps } from '@/interfaces'
-
-	import { cyclicMovement, elementMovement } from '@/utils'
-
 	import { computed, inject, StyleValue } from 'vue'
+	import { useParallaxTransform, useProps } from '../../composables'
+
+	import { ORIGAM_PARALLAX_KEY } from '../../consts'
+
+	import { AXIS, PARALLAX_ELEMENT_TYPE } from '../../enums'
+
+	import type { IParallaxElementProps } from '../../interfaces'
+
+	import { cyclicMovement, elementMovement } from '../../utils'
 
 	const props = withDefaults(defineProps<IParallaxElementProps>(), {
 		tag: 'div',

@@ -1,8 +1,8 @@
-import { useIntersectionObserver, useMargin, usePadding, useVModel } from '@/composables'
+import { useIntersectionObserver, useMargin, usePadding, useVModel } from '../../composables'
 
-import type { IProgressTypeProps } from '@/interfaces'
+import type { IProgressTypeProps } from '../../interfaces'
 
-import { int } from "@/utils"
+import { int } from "../../utils"
 
 import { computed, useSlots } from 'vue'
 

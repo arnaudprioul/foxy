@@ -18,10 +18,10 @@
 		lang="ts"
 		setup
 >
-	import { useCreateLayout, useProps } from '@/composables'
-
-	import type { ILayoutProps } from '@/interfaces'
 	import { computed, StyleValue } from 'vue'
+	import { useCreateLayout, useProps } from '../../composables'
+
+	import type { ILayoutProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<ILayoutProps>(), {})
 

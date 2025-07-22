@@ -24,17 +24,16 @@
 		lang="ts"
 		setup
 >
-	import { OrigamProgressCircular, OrigamProgressLinear } from '@/components'
-
-	import { useProgress, useProps, useSize } from '@/composables'
-
-	import { PROGRESS_TYPE, SIZES } from '@/enums'
-
-	import type { IProgressProps } from '@/interfaces'
-
-	import type { TOrigamProgressCircular, TOrigamProgressLinear } from "@/types"
-
 	import { computed, ref, StyleValue } from 'vue'
+	import { OrigamProgressCircular, OrigamProgressLinear } from '../../components'
+
+	import { useProgress, useProps, useSize } from '../../composables'
+
+	import { PROGRESS_TYPE, SIZES } from '../../enums'
+
+	import type { IProgressProps } from '../../interfaces'
+
+	import type { TOrigamProgressCircular, TOrigamProgressLinear } from "../../types"
 
 	const props = withDefaults(defineProps<IProgressProps>(), {
 		tag: 'div',

@@ -1,4 +1,4 @@
-import { getCurrentInstance } from '@/utils'
+import { getCurrentInstance } from '../../utils'
 
 export function useScopeId () {
     const vm = getCurrentInstance('useScopeId')

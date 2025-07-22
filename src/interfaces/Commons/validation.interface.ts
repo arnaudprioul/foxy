@@ -1,6 +1,6 @@
-import type { IFocusProps } from '@/interfaces'
+import type { IFocusProps } from '../../interfaces'
 
-import type { TValidateOn } from '@/types'
+import type { TValidateOn } from '../../types'
 
 export interface IValidationProps extends IFocusProps {
     disabled?: boolean

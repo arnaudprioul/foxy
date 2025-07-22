@@ -5,7 +5,7 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from '@/interfaces'
+} from '../../interfaces'
 
 export interface ILabelProps extends ICommonsComponentProps, IMarginProps, IPaddingProps, IBorderProps, IRoundedProps, IColorProps {
     text?: string

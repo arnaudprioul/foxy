@@ -1,10 +1,9 @@
-import type * as Components from "@/components"
-import type * as Directives from "@/directives"
-import type { IDateOptions, IDisplayOptions, IGoToOptions, ILocaleOptions, IRtlOptions } from '@/interfaces'
-
-import { TIconOptions, TOrigamPluginOptionsImport, TSSROptions } from '@/types'
-
 import type { ExtractPropTypes, StyleValue } from 'vue'
+import type * as Components from "../../components"
+import type * as Directives from "../../directives"
+import type { IDateOptions, IDisplayOptions, IGoToOptions, ILocaleOptions, IRtlOptions } from '../../interfaces'
+
+import { TIconOptions, TOrigamPluginOptionsImport, TSSROptions } from '../../types'
 
 export interface IOrigamOptions {
     aliases?: any

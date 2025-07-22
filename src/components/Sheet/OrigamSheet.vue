@@ -12,6 +12,7 @@
 		lang="ts"
 		setup
 >
+	import { computed, StyleValue, toRef } from 'vue'
 	import {
 		useBorder,
 		useBothColor,
@@ -23,11 +24,9 @@
 		usePosition,
 		useProps,
 		useRounded
-	} from '@/composables'
+	} from '../../composables'
 
-	import type { ISheetProps } from "@/interfaces"
-
-	import { computed, StyleValue, toRef } from 'vue'
+	import type { ISheetProps } from "../../interfaces"
 
 	const props = withDefaults(defineProps<ISheetProps>(), {tag: 'div'})
 

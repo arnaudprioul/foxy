@@ -133,19 +133,18 @@
 		setup
 >
 
-	import { OrigamField, OrigamOverlay, OrigamProgress } from "@/components"
-
-	import { useDimension, useFocus, useLocale, useProps, useVModel } from "@/composables"
-
-	import { OTP_INPUT_FIELD_TYPE, PROGRESS_TYPE } from "@/enums"
-
-	import type { IOtpInputFieldProps } from "@/interfaces"
-
-	import type { TOrigamField } from "@/types"
-
-	import { filterInputAttrs, focusChild } from "@/utils"
-
 	import { computed, nextTick, ref, StyleValue, useAttrs, useSlots, watch } from "vue"
+	import { OrigamField, OrigamOverlay, OrigamProgress } from "../../components"
+
+	import { useDimension, useFocus, useLocale, useProps, useVModel } from "../../composables"
+
+	import { OTP_INPUT_FIELD_TYPE, PROGRESS_TYPE } from "../../enums"
+
+	import type { IOtpInputFieldProps } from "../../interfaces"
+
+	import type { TOrigamField } from "../../types"
+
+	import { filterInputAttrs, focusChild } from "../../utils"
 
 	const props = withDefaults(defineProps<IOtpInputFieldProps>(), {
 		type: OTP_INPUT_FIELD_TYPE.NUMBER,

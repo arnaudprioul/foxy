@@ -1,5 +1,5 @@
-import type { IColorProps, ICommonsComponentProps, IDensityProps, IRippleProps } from '@/interfaces'
-import type { TIcon } from '@/types'
+import type { IColorProps, ICommonsComponentProps, IDensityProps, IRippleProps } from '../../interfaces'
+import type { TIcon } from '../../types'
 
 import { Ref } from 'vue'
 

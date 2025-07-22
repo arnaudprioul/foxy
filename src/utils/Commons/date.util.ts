@@ -1,12 +1,11 @@
-import { DATE_2000_JUNARY_SUNDAY, FIRST_DAY, REGEX_DATE_YYYY_MM_DD } from "@/consts"
-
-import type { IDateAdapter, IDateOptions, ILocaleInstance } from "@/interfaces"
-import { DateAdapter } from "@/services"
-import type { TCustomDateFormat } from "@/types"
-
-import { createRange, padStart } from "@/utils"
-
 import { reactive, watch } from "vue"
+import { DATE_2000_JUNARY_SUNDAY, FIRST_DAY, REGEX_DATE_YYYY_MM_DD } from "../../consts"
+
+import type { IDateAdapter, IDateOptions, ILocaleInstance } from "../../interfaces"
+import { DateAdapter } from "../../services"
+import type { TCustomDateFormat } from "../../types"
+
+import { createRange, padStart } from "../../utils"
 
 export function createInstance (options: IDateOptions, locale: ILocaleInstance) {
     const instance = reactive(

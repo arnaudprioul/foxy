@@ -34,19 +34,18 @@
 		lang="ts"
 		setup
 >
-	import { OrigamFade, OrigamOverlay, OrigamTranslateScale } from '@/components'
-
-	import { useProps, useScopeId, useVModel } from '@/composables'
-
-	import { INLINE, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@/enums'
-
-	import type { ITooltipProps } from '@/interfaces'
-
-	import type { TAnchor, TOrigamOverlay } from '@/types'
-
-	import { forwardRefs, getUid } from '@/utils'
-
 	import { computed, mergeProps, ref, StyleValue } from 'vue'
+	import { OrigamFade, OrigamOverlay, OrigamTranslateScale } from '../../components'
+
+	import { useProps, useScopeId, useVModel } from '../../composables'
+
+	import { INLINE, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '../../enums'
+
+	import type { ITooltipProps } from '../../interfaces'
+
+	import type { TAnchor, TOrigamOverlay } from '../../types'
+
+	import { forwardRefs, getUid } from '../../utils'
 
 	const props = withDefaults(defineProps<ITooltipProps>(), {
 		closeOnBack: false,

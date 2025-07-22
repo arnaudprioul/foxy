@@ -1,3 +1,3 @@
-import { OrigamTextareaField } from "@/components"
+import { OrigamTextareaField } from "../../components"
 
 export type TOrigamTextareaField = InstanceType<typeof OrigamTextareaField>

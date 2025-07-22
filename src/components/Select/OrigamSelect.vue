@@ -262,47 +262,6 @@
 		setup
 >
 	import {
-		OrigamAvatar,
-		OrigamCheckboxBtn,
-		OrigamChip,
-		OrigamIcon,
-		OrigamList,
-		OrigamListItem,
-		OrigamMenu,
-		OrigamTextField,
-		OrigamTranslateScale,
-		OrigamVirtualScroll
-	} from '@/components'
-
-	import { useFilter, useItems, useLocale, useProps, useScrolling, useTextColor, useVModel } from '@/composables'
-
-	import { IN_BROWSER, ORIGAM_FORM_KEY } from '@/consts'
-
-	import {
-		BLOCK,
-		DENSITY,
-		DIRECTION,
-		FILTERS_MODE,
-		KEYBOARD_VALUES,
-		MDI_ICONS,
-		SELECT_STRATEGY,
-		TEXT_FIELD_TYPE
-	} from '@/enums'
-
-	import type { IInternalListItem, IItemProps, ISelectProps } from '@/interfaces'
-
-	import type {
-		TOrigamChip,
-		TOrigamList,
-		TOrigamMenu,
-		TOrigamTextField,
-		TOrigamVirtualScroll,
-		TTransitionProps
-	} from '@/types'
-
-	import { deepEqual, forwardRefs, matchesSelector, noop, wrapInArray } from '@/utils'
-
-	import {
 		computed,
 		inject,
 		mergeProps,
@@ -315,6 +274,46 @@
 		VNodeRef,
 		watch
 	} from 'vue'
+	import {
+		OrigamAvatar,
+		OrigamCheckboxBtn,
+		OrigamChip,
+		OrigamIcon,
+		OrigamList,
+		OrigamListItem,
+		OrigamMenu,
+		OrigamTextField,
+		OrigamTranslateScale,
+		OrigamVirtualScroll
+	} from '../../components'
+
+	import { useFilter, useItems, useLocale, useProps, useScrolling, useTextColor, useVModel } from '../../composables'
+
+	import { IN_BROWSER, ORIGAM_FORM_KEY } from '../../consts'
+
+	import {
+		BLOCK,
+		DENSITY,
+		DIRECTION,
+		FILTERS_MODE,
+		KEYBOARD_VALUES,
+		MDI_ICONS,
+		SELECT_STRATEGY,
+		TEXT_FIELD_TYPE
+	} from '../../enums'
+
+	import type { IInternalListItem, IItemProps, ISelectProps } from '../../interfaces'
+
+	import type {
+		TOrigamChip,
+		TOrigamList,
+		TOrigamMenu,
+		TOrigamTextField,
+		TOrigamVirtualScroll,
+		TTransitionProps
+	} from '../../types'
+
+	import { deepEqual, forwardRefs, matchesSelector, noop, wrapInArray } from '../../utils'
 
 	const props = withDefaults(defineProps<ISelectProps>(), {
 		type: TEXT_FIELD_TYPE.TEXT,

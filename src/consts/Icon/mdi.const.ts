@@ -1,9 +1,9 @@
-import { OrigamClassIcon } from '@/components'
-
-import { MDI_ICONS } from '@/enums'
-
-import type { IIconAliases, IIconSet } from '@/interfaces'
 import { h } from 'vue'
+import { OrigamClassIcon } from '../../components'
+
+import { MDI_ICONS } from '../../enums'
+
+import type { IIconAliases, IIconSet } from '../../interfaces'
 
 export const MDI: IIconSet = {
     // Not using mergeProps here, functional components merge props by default (?)

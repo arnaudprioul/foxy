@@ -36,16 +36,16 @@
 		lang="ts"
 		setup
 >
-	import { OrigamIcon } from "@/components"
+	import { OrigamIcon } from "../../components"
 
-	import { useProps } from "@/composables"
+	import { useProps } from "../../composables"
 
-	import { MDI_ICONS } from "@/enums"
+	import { MDI_ICONS } from "../../enums"
 
-	import type { IColorPickerSwatchesProps } from "@/interfaces"
-	import type { TRGBA } from "@/types"
+	import type { IColorPickerSwatchesProps } from "../../interfaces"
+	import type { TRGBA } from "../../types"
 
-	import { convertToUnit, deepEqual, getContrast, parseColor, RGBtoCSS, RGBtoHSV } from "@/utils"
+	import { convertToUnit, deepEqual, getContrast, parseColor, RGBtoCSS, RGBtoHSV } from "../../utils"
 
 	import { computed, StyleValue } from "vue"
 

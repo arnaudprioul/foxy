@@ -17,11 +17,10 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '@/composables'
-
-	import type { ILabelProps } from '@/interfaces'
-
 	import { computed, StyleValue, toRef } from 'vue'
+	import { useBorder, useBothColor, useMargin, usePadding, useProps, useRounded } from '../../composables'
+
+	import type { ILabelProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<ILabelProps>(), {})
 

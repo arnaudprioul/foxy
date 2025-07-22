@@ -96,13 +96,13 @@
 		OrigamColorPickerPreview,
 		OrigamColorPickerSwatches,
 		OrigamPicker
-	} from "@/components"
+	} from "../../components"
 
-	import { useProps, useRtl, useVModel } from "@/composables"
+	import { useProps, useRtl, useVModel } from "../../composables"
 
-	import { COLOR_MODES_NAMES } from "@/enums"
+	import { COLOR_MODES_NAMES } from "../../enums"
 
-	import type { IColorPickerProps } from "@/interfaces"
+	import type { IColorPickerProps } from "../../interfaces"
 
 	import type {
 		TColorModes,
@@ -112,9 +112,9 @@
 		TOrigamColorPickerPreview,
 		TOrigamColorPickerSwatches,
 		TOrigamPicker
-	} from "@/types"
+	} from "../../types"
 
-	import { consoleWarn, extractColor, HSVtoCSS, parseColor, RGBtoHSV } from "@/utils"
+	import { consoleWarn, extractColor, HSVtoCSS, parseColor, RGBtoHSV } from "../../utils"
 
 	import { computed, onBeforeMount, ref, StyleValue, useSlots, watch } from "vue"
 

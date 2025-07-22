@@ -19,14 +19,14 @@
 		lang="ts"
 		setup
 >
-	import { OrigamIcon } from '@/components'
+	import { OrigamIcon } from '../../components'
 
-	import { useBothColor, useDensity, useMargin, usePadding, useProps, useSize, useStyle } from '@/composables'
+	import { useBothColor, useDensity, useMargin, usePadding, useProps, useSize, useStyle } from '../../composables'
 
-	import { MDI_ICONS } from '@/enums'
+	import { MDI_ICONS } from '../../enums'
 
-	import type { IBreadcrumbDividerProps } from '@/interfaces'
-	import type { TValueOf } from "@/types"
+	import type { IBreadcrumbDividerProps } from '../../interfaces'
+	import type { TValueOf } from "../../types"
 
 	import { computed, StyleValue, toRef } from 'vue'
 

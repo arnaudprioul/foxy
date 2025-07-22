@@ -1,10 +1,9 @@
-import { DIMENSIONS_ARRAY } from '@/consts'
-
-import type { IDimensionProps } from '@/interfaces'
-
-import { convertToUnit, toKebabCase } from '@/utils'
-
 import { computed } from 'vue'
+import { DIMENSIONS_ARRAY } from '../../consts'
+
+import type { IDimensionProps } from '../../interfaces'
+
+import { convertToUnit, toKebabCase } from '../../utils'
 
 export function useDimension (props: IDimensionProps) {
     const dimensionStyles = computed(() => {

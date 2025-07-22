@@ -1,5 +1,5 @@
-import { TOUCH_EVENTS } from '@/enums'
-import type { ITouchData, ITouchHandlers } from '@/interfaces'
+import { TOUCH_EVENTS } from '../../enums'
+import type { ITouchData, ITouchHandlers } from '../../interfaces'
 
 export type TTouchWrapper = ITouchHandlers & ITouchData
 

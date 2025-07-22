@@ -5,7 +5,7 @@ import type {
     IDensityProps,
     IFocusProps,
     ILoaderProps
-} from '@/interfaces'
+} from '../../interfaces'
 
 export interface IFieldProps extends ICommonsComponentProps, ILoaderProps, IColorProps, IAdjacentInnerProps, IFocusProps, IDensityProps {
     active?: boolean

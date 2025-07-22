@@ -1,9 +1,9 @@
-import { useVModel } from '@/composables'
-import { ORIGAM_DATA_TABLE_PAGINATION_KEY } from '@/consts'
-
-import type { IDataTableGroup, IDataTablePaginationProps, IDataTableProvidePagination } from '@/interfaces'
-import { clamp, getCurrentInstance } from '@/utils'
 import { computed, inject, provide, Ref, watch, watchEffect } from 'vue'
+import { useVModel } from '../../composables'
+import { ORIGAM_DATA_TABLE_PAGINATION_KEY } from '../../consts'
+
+import type { IDataTableGroup, IDataTablePaginationProps, IDataTableProvidePagination } from '../../interfaces'
+import { clamp, getCurrentInstance } from '../../utils'
 
 export function createPagination (props: IDataTablePaginationProps) {
     const page = useVModel(props, 'page', undefined, value => +(value ?? 1))

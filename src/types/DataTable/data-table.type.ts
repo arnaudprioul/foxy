@@ -1,8 +1,8 @@
-import { OrigamDataTable } from "@/components"
+import { OrigamDataTable } from "../../components"
 
-import { DATATABLE_SELECT_STRATEGY } from '@/enums'
+import { DATATABLE_SELECT_STRATEGY } from '../../enums'
 
-import type { IDataTableItemKey } from '@/interfaces'
+import type { IDataTableItemKey } from '../../interfaces'
 
 export type TDataTableCompareFunction<T = any> = (a: T, b: T) => number | null
 

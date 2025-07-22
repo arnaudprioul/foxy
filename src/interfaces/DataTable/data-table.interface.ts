@@ -1,3 +1,4 @@
+import type { UnwrapRef } from 'vue'
 import type {
     IDataTableExpandProps,
     IDataTableFooterProps,
@@ -19,9 +20,7 @@ import type {
     IFiltersProps,
     IInternalDataTableHeader,
     ITableProps
-} from '@/interfaces'
-
-import type { UnwrapRef } from 'vue'
+} from '../../interfaces'
 
 export interface IDataTableProps extends ITableProps, IDataTableRowProps, IDataTableExpandProps, IDataTableGroupProps, IDataTableHeaderProps, IDataTableItemsProps, IDataTableSelectProps, IDataTableSortProps, IDataTableHeadersProps, IDataTablePaginationProps, IFiltersProps, IDataTableFooterProps {
     hideDefaultBody?: boolean

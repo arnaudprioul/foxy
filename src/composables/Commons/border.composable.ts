@@ -1,10 +1,10 @@
-import { BORDER_REGEX, DIRECTION_ARRAY } from '@/consts'
-
-import type { IBorderProps } from '@/interfaces'
-import { TDirectionBoth } from "@/types"
-
-import { convertToUnit, formatBorderStylesVar, getCurrentInstanceName, isEmpty } from '@/utils'
 import { computed, isRef, Ref } from 'vue'
+import { BORDER_REGEX, DIRECTION_ARRAY } from '../../consts'
+
+import type { IBorderProps } from '../../interfaces'
+import { TDirectionBoth } from "../../types"
+
+import { convertToUnit, formatBorderStylesVar, getCurrentInstanceName, isEmpty } from '../../utils'
 
 // TODO Create composable for border position
 export function useBorder (props: IBorderProps | Ref<boolean | number | string | TDirectionBoth | Array<TDirectionBoth> | null | undefined>, name = getCurrentInstanceName()) {

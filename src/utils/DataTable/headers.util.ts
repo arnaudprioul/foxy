@@ -1,8 +1,8 @@
-import { DEFAULT_ACTION_HEADER, DEFAULT_HEADER } from '@/consts'
+import { DEFAULT_ACTION_HEADER, DEFAULT_HEADER } from '../../consts'
 
-import type { IDataTableHeader, IInternalDataTableHeader } from '@/interfaces'
+import type { IDataTableHeader, IInternalDataTableHeader } from '../../interfaces'
 
-import { consoleError } from '@/utils'
+import { consoleError } from '../../utils'
 
 export function extractKeys (headers: Array<IDataTableHeader>, keys = new Set<string>()) {
     for (const item of headers) {

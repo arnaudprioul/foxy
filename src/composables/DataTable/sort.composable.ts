@@ -1,7 +1,7 @@
-import { useVModel } from '@/composables'
+import { useVModel } from '../../composables'
 
-import { ORIGAM_DATA_TABLE_SORT_KEY } from '@/consts'
-import { SORT_DIRECTION } from '@/enums'
+import { ORIGAM_DATA_TABLE_SORT_KEY } from '../../consts'
+import { SORT_DIRECTION } from '../../enums'
 
 import type {
     IDataTableProvideSort,
@@ -9,9 +9,9 @@ import type {
     IDataTableSortProps,
     IInternalDataTableHeader,
     IInternalItem
-} from '@/interfaces'
-import type { TDataTableCompareFunction } from '@/types'
-import { sortItems } from '@/utils'
+} from '../../interfaces'
+import type { TDataTableCompareFunction } from '../../types'
+import { sortItems } from '../../utils'
 
 import { computed, inject, provide, Ref, toRef } from 'vue'
 

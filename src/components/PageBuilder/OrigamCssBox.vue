@@ -119,10 +119,10 @@
 		lang="ts"
 		setup
 >
-	import { OrigamLabel, OrigamTitle } from '@/components'
-	import { useProps } from "@/composables"
+	import { OrigamLabel, OrigamTitle } from '../../components'
+	import { useProps } from "../../composables"
 
-	import type { ICssBoxProps } from '@/interfaces'
+	import type { ICssBoxProps } from '../../interfaces'
 
 	import { shallowRef, watch } from 'vue'
 

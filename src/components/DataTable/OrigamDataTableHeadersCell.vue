@@ -26,12 +26,12 @@
 		lang="ts"
 		setup
 >
-	import { OrigamDataTableHeaderCell } from '@/components'
+	import { OrigamDataTableHeaderCell } from '../../components'
 
-	import { useProps } from "@/composables"
+	import { useProps } from "../../composables"
 
-	import type { IDataTableHeadersCellProps } from '@/interfaces'
-	import type { TOrigamDataTableHeaderCell } from "@/types"
+	import type { IDataTableHeadersCellProps } from '../../interfaces'
+	import type { TOrigamDataTableHeaderCell } from "../../types"
 
 	import { computed, ref, StyleValue } from 'vue'
 

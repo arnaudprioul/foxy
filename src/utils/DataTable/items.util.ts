@@ -1,6 +1,6 @@
-import type { IDataTableItem, IDataTableItemsProps, IInternalDataTableHeader } from '@/interfaces'
+import type { IDataTableItem, IDataTableItemsProps, IInternalDataTableHeader } from '../../interfaces'
 
-import { getPropertyFromItem } from '@/utils'
+import { getPropertyFromItem } from '../../utils'
 
 export function transformDataTableItems (
     props: Omit<IDataTableItemsProps, 'items'>,

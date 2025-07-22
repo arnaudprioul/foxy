@@ -51,7 +51,20 @@
 		lang="ts"
 		setup
 >
-	import { OrigamOverlayScrim } from '@/components'
+	import {
+		computed,
+		ComputedRef,
+		nextTick,
+		onBeforeMount,
+		Ref,
+		ref,
+		shallowRef,
+		StyleValue,
+		toRef,
+		useSlots,
+		watch
+	} from 'vue'
+	import { OrigamOverlayScrim } from '../../components'
 
 	import {
 		useBackgroundColor,
@@ -70,27 +83,13 @@
 		useToggleScope,
 		useTouch,
 		useVModel
-	} from '@/composables'
+	} from '../../composables'
 
-	import { INLINE } from '@/enums'
+	import { INLINE } from '../../enums'
 
-	import type { IDrawerProps } from '@/interfaces'
+	import type { IDrawerProps } from '../../interfaces'
 
-	import { getUid, int } from "@/utils"
-
-	import {
-		computed,
-		ComputedRef,
-		nextTick,
-		onBeforeMount,
-		Ref,
-		ref,
-		shallowRef,
-		StyleValue,
-		toRef,
-		useSlots,
-		watch
-	} from 'vue'
+	import { getUid, int } from "../../utils"
 
 	const props = withDefaults(defineProps<IDrawerProps>(), {
 		tag: 'nav',

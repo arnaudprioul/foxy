@@ -6,7 +6,7 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@/interfaces'
+} from '../../interfaces'
 
 export interface IMainProps extends ITagProps, ICommonsComponentProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IDimensionProps {
     scrollable?: boolean

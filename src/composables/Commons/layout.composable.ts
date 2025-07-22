@@ -1,11 +1,3 @@
-import { useResizeObserver } from '@/composables'
-
-import { ORIGAM_LAYOUT_ITEM_KEY, ORIGAM_LAYOUT_KEY, ROOT_ZINDEX } from '@/consts'
-
-import type { TDirectionBoth } from "@/types"
-
-import { convertToUnit, findChildrenWithProvide, generateLayers, getCurrentInstance, getUid, int } from '@/utils'
-
 import type { ComponentInternalInstance, ComputedRef, CSSProperties, Ref, StyleValue } from 'vue'
 import {
     computed,
@@ -19,6 +11,13 @@ import {
     ref,
     shallowRef
 } from 'vue'
+import { useResizeObserver } from '../../composables'
+
+import { ORIGAM_LAYOUT_ITEM_KEY, ORIGAM_LAYOUT_KEY, ROOT_ZINDEX } from '../../consts'
+
+import type { TDirectionBoth } from "../../types"
+
+import { convertToUnit, findChildrenWithProvide, generateLayers, getCurrentInstance, getUid, int } from '../../utils'
 
 export function useLayout () {
     const layout = inject(ORIGAM_LAYOUT_KEY)

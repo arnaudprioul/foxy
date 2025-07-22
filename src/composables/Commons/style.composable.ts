@@ -1,6 +1,6 @@
-import { DEFAULT_DOCUMENT } from "@/consts"
-import type { IStyleTagOptions } from "@/interfaces"
-import { getCurrentInstanceName, getUid, tryOnMounted, tryOnScopeDispose } from "@/utils"
+import { DEFAULT_DOCUMENT } from "../../consts"
+import type { IStyleTagOptions } from "../../interfaces"
+import { getCurrentInstanceName, getUid, tryOnMounted, tryOnScopeDispose } from "../../utils"
 
 import { computed, ComputedRef, MaybeRef, onMounted, readonly, shallowRef, watch } from 'vue'
 

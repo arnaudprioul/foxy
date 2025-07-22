@@ -1,18 +1,3 @@
-import { IN_BROWSER, ON_REGEX } from '@/consts'
-
-import { FOCUS_LOCATION } from '@/enums'
-
-import {
-    TClientPosition,
-    TFn,
-    TFocusLocation,
-    TNotAUnion,
-    TSelectItemKey,
-    TTemplateRef,
-    TWrapInArrayResult
-} from '@/types'
-import { getLifeCycleTarget } from "@/utils"
-
 import {
     capitalize,
     ComponentInternalInstance,
@@ -35,6 +20,20 @@ import {
     VNodeChild,
     watchEffect
 } from 'vue'
+import { IN_BROWSER, ON_REGEX } from '../../consts'
+
+import { FOCUS_LOCATION } from '../../enums'
+
+import {
+    TClientPosition,
+    TFn,
+    TFocusLocation,
+    TNotAUnion,
+    TSelectItemKey,
+    TTemplateRef,
+    TWrapInArrayResult
+} from '../../types'
+import { getLifeCycleTarget } from "../../utils"
 
 export function convertToUnit (str: number, unit?: string): string
 export function convertToUnit (str: string | number | null | undefined, unit?: string): string | undefined

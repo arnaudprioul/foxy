@@ -17,11 +17,10 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useLayout, useMargin, usePadding, useProps, useRounded, useSsrBoot } from '@/composables'
-
-	import type { IMainProps } from '@/interfaces'
-
 	import { computed, StyleValue } from 'vue'
+	import { useBorder, useLayout, useMargin, usePadding, useProps, useRounded, useSsrBoot } from '../../composables'
+
+	import type { IMainProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<IMainProps>(), {tag: 'main'})
 

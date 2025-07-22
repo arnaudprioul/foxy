@@ -1,8 +1,7 @@
-import type { ICommonsComponentProps } from '@/interfaces'
-
-import type { TDirectionBoth } from '@/types'
-
 import type { ComponentInternalInstance, ComputedRef, CSSProperties, Ref } from 'vue'
+import type { ICommonsComponentProps } from '../../interfaces'
+
+import type { TDirectionBoth } from '../../types'
 
 export interface ILayoutProvide {
     register: (

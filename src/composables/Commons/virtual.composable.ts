@@ -1,7 +1,7 @@
-import { useDisplay, useResizeObserver } from '@/composables'
-import { BUFFER_PX, DOWN, IN_BROWSER, UP } from '@/consts'
-import type { IVirtualProps } from '@/interfaces'
-import { binaryClosest, clamp, debounce, int } from '@/utils'
+import { useDisplay, useResizeObserver } from '../../composables'
+import { BUFFER_PX, DOWN, IN_BROWSER, UP } from '../../consts'
+import type { IVirtualProps } from '../../interfaces'
+import { binaryClosest, clamp, debounce, int } from '../../utils'
 
 import { computed, nextTick, onScopeDispose, ref, Ref, shallowRef, watch, watchEffect } from 'vue'
 

@@ -1,3 +1,3 @@
-import { OrigamMessages } from "@/components"
+import { OrigamMessages } from "../../components"
 
 export type TOrigamMessages = InstanceType<typeof OrigamMessages>

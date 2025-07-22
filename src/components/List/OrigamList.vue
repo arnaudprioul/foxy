@@ -85,7 +85,8 @@
 		lang="ts"
 		setup
 >
-	import { OrigamListChildren } from '@/components'
+	import { computed, ref, shallowRef, StyleValue, toRef, useSlots } from 'vue'
+	import { OrigamListChildren } from '../../components'
 
 	import {
 		useBorder,
@@ -100,17 +101,15 @@
 		usePadding,
 		useProps,
 		useRounded
-	} from '@/composables'
+	} from '../../composables'
 
-	import { DENSITY, KEYBOARD_VALUES, LINES, OPEN_STRATEGY, SELECT_STRATEGY } from '@/enums'
+	import { DENSITY, KEYBOARD_VALUES, LINES, OPEN_STRATEGY, SELECT_STRATEGY } from '../../enums'
 
-	import type { IListProps } from '@/interfaces'
+	import type { IListProps } from '../../interfaces'
 
-	import type { TFocusLocation } from '@/types'
+	import type { TFocusLocation } from '../../types'
 
-	import { deepEqual, focusChild } from '@/utils'
-
-	import { computed, ref, shallowRef, StyleValue, toRef, useSlots } from 'vue'
+	import { deepEqual, focusChild } from '../../utils'
 
 	const props = withDefaults(defineProps<IListProps>(), {
 		tag: 'div',

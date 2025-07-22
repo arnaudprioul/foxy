@@ -1,6 +1,6 @@
-import { STATUS_POSITION } from "@/enums"
-import type { IAdjacentProps, IStatusProps } from "@/interfaces"
-import { getCurrentInstanceName } from '@/utils'
+import { STATUS_POSITION } from "../../enums"
+import type { IAdjacentProps, IStatusProps } from "../../interfaces"
+import { getCurrentInstanceName } from '../../utils'
 import { computed } from 'vue'
 
 export function useStatus (props: IStatusProps & IAdjacentProps, name = getCurrentInstanceName()) {

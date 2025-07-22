@@ -1,6 +1,5 @@
-import type { IAudioProps } from '@/interfaces'
-
 import { ref, shallowRef, watch } from 'vue'
+import type { IAudioProps } from '../../interfaces'
 
 export function useAudio (props: IAudioProps) {
     const analyser = ref<AnalyserNode | null>(null)

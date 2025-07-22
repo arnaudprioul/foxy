@@ -11,14 +11,13 @@
 		lang="ts"
 		setup
 >
-	import { OrigamFade } from '@/components'
-	import { useProps, useTransition } from '@/composables'
-	import type { ITransitionComponentProps } from '@/interfaces'
-	import type { TTransitionProps } from '@/types'
-
-	import { omit } from '@/utils'
-
 	import { computed, mergeProps, Transition, useAttrs } from 'vue'
+	import { OrigamFade } from '../../components'
+	import { useProps, useTransition } from '../../composables'
+	import type { ITransitionComponentProps } from '../../interfaces'
+	import type { TTransitionProps } from '../../types'
+
+	import { omit } from '../../utils'
 
 	const props = withDefaults(defineProps<ITransitionComponentProps>(), {
 		transition: () => ({component: OrigamFade}) as unknown as TTransitionProps

@@ -40,17 +40,16 @@
 		lang="ts"
 		setup
 >
-	import { OrigamSelectionControl } from '@/components'
-
-	import { useProps, useVModel } from '@/composables'
-
-	import { DENSITY, MDI_ICONS } from '@/enums'
-
-	import type { IRadioBtnProps } from '@/interfaces'
-
-	import type { TOrigamSelectionControl } from "@/types"
-
 	import { computed, ref, StyleValue, useSlots } from 'vue'
+	import { OrigamSelectionControl } from '../../components'
+
+	import { useProps, useVModel } from '../../composables'
+
+	import { DENSITY, MDI_ICONS } from '../../enums'
+
+	import type { IRadioBtnProps } from '../../interfaces'
+
+	import type { TOrigamSelectionControl } from "../../types"
 
 	const props = withDefaults(defineProps<IRadioBtnProps>(), {
 		density: DENSITY.DEFAULT,

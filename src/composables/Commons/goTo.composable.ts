@@ -1,11 +1,10 @@
-import { useRtl } from "@/composables"
-import { ORIGAM_GO_TO_KEY } from "@/consts"
-
-import type { IGoToInstance, IGoToOptions, ILocaleInstance, IRtlInstance } from "@/interfaces"
-
-import { genDefaults, mergeDeep, scrollTo } from "@/utils"
-
 import { ComponentPublicInstance, computed, inject } from "vue"
+import { useRtl } from "../../composables"
+import { ORIGAM_GO_TO_KEY } from "../../consts"
+
+import type { IGoToInstance, IGoToOptions, ILocaleInstance, IRtlInstance } from "../../interfaces"
+
+import { genDefaults, mergeDeep, scrollTo } from "../../utils"
 
 export function createGoTo (
     options: IGoToOptions | undefined,

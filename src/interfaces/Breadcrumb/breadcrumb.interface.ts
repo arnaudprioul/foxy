@@ -8,9 +8,9 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@/interfaces'
+} from '../../interfaces'
 
-import type { TBreadcrumbItem, TIcon } from '@/types'
+import type { TBreadcrumbItem, TIcon } from '../../types'
 
 export interface IBreadcrumbProps extends IColorProps, ITagProps, ICommonsComponentProps, IDensityProps, IRoundedProps, IPaddingProps, IMarginProps, IBorderProps, IElevationProps {
     activeClass?: string

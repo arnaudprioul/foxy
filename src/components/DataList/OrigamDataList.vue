@@ -114,7 +114,7 @@
 		lang="ts"
 		setup
 >
-	import { OrigamDataText, OrigamDataTitle } from "@/components"
+	import { OrigamDataText, OrigamDataTitle } from "../../components"
 
 	import {
 		useBorder,
@@ -126,10 +126,10 @@
 		usePadding,
 		useProps,
 		useRounded
-	} from "@/composables"
-	import type { IDataItem, IDataListProps, IDataTextProps } from "@/interfaces"
+	} from "../../composables"
+	import type { IDataItem, IDataListProps, IDataTextProps } from "../../interfaces"
 
-	import { isEmpty } from "@/utils"
+	import { isEmpty } from "../../utils"
 
 	import { computed, StyleValue, toRef, useSlots } from "vue"
 

@@ -14,12 +14,11 @@
 		lang="ts"
 		setup
 >
-	import { OrigamLayout } from '@/components'
-	import { useProps } from "@/composables"
-
-	import type { ILayoutProps } from '@/interfaces'
-
 	import { computed, StyleValue } from 'vue'
+	import { OrigamLayout } from '../../components'
+	import { useProps } from "../../composables"
+
+	import type { ILayoutProps } from '../../interfaces'
 
 	// TODO - WIP
 

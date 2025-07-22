@@ -1,9 +1,8 @@
-import { useVModel } from '@/composables'
-import type { IFocusProps } from '@/interfaces'
-
-import { getCurrentInstanceName } from '@/utils'
-
 import { computed } from 'vue'
+import { useVModel } from '../../composables'
+import type { IFocusProps } from '../../interfaces'
+
+import { getCurrentInstanceName } from '../../utils'
 
 export function useFocus (props: IFocusProps, name = getCurrentInstanceName()) {
     const isFocused = useVModel(props, 'focused')

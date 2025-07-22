@@ -7,9 +7,9 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@/interfaces'
+} from '../../interfaces'
 
-import type { TAnchor, TAxis, TParallaxElementType, TParallaxEvent, TPoint } from '@/types'
+import type { TAnchor, TAxis, TParallaxElementType, TParallaxEvent, TPoint } from '../../types'
 
 export interface IParallaxElementTypeProps {
     type?: TParallaxElementType

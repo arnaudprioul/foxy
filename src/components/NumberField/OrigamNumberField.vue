@@ -214,19 +214,18 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn, OrigamDivider, OrigamTextField } from "@/components"
-
-	import { useAdjacentInner, useFocus, useForm, useHold, useProps, useVModel } from "@/composables"
-
-	import { DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from "@/enums"
-
-	import type { INumberFieldProps } from "@/interfaces"
-
-	import type { TOrigamTextField } from "@/types"
-
-	import { clamp, forwardRefs, omit } from "@/utils"
-
 	import { computed, nextTick, onMounted, ref, shallowRef, StyleValue, useSlots, watch, watchEffect } from "vue"
+	import { OrigamBtn, OrigamDivider, OrigamTextField } from "../../components"
+
+	import { useAdjacentInner, useFocus, useForm, useHold, useProps, useVModel } from "../../composables"
+
+	import { DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from "../../enums"
+
+	import type { INumberFieldProps } from "../../interfaces"
+
+	import type { TOrigamTextField } from "../../types"
+
+	import { clamp, forwardRefs, omit } from "../../utils"
 
 	const props = withDefaults(defineProps<INumberFieldProps>(), {
 		modelValue: null,

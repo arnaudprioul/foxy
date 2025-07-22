@@ -1,8 +1,8 @@
-import type { IInternalItem } from '@/interfaces'
+import type { IInternalItem } from '../../interfaces'
 
-import type { TFilterFunction, TFilterKeyFunctions, TFilterKeys, TFilterMatch, TFilterMode } from '@/types'
+import type { TFilterFunction, TFilterKeyFunctions, TFilterKeys, TFilterMatch, TFilterMode } from '../../types'
 
-import { getPropertyFromItem, wrapInArray } from '@/utils'
+import { getPropertyFromItem, wrapInArray } from '../../utils'
 
 export function defaultFilter (value: string | number, query: string | number) {
     if (value == null || query == null) return -1

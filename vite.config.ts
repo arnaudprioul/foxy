@@ -1,5 +1,4 @@
 import vue from '@vitejs/plugin-vue'
-import { fileURLToPath } from 'node:url'
 import path from 'path'
 import { defineConfig } from 'vite'
 import commonjs from "vite-plugin-commonjs"
@@ -13,9 +12,10 @@ export default defineConfig({
     resolve: {
         alias: [
             {find: /^origam$/, replacement: resolve('./src/origam.ts')},
-            {find: /^origam\/(.*)/, replacement: resolve('./$1')},
-            {find: /^@\/(.*)/, replacement: resolve('./src/$1')},
-            {find: /^@stories\/(.*)/, replacement: fileURLToPath(new URL("./stories", import.meta.url))}
+            {find: /^@origam\/(.*)/, replacement: resolve('./src/$1')},
+            {find: /^@stories\/(.*)/, replacement: resolve('./stories/$1')},
+            {find: /^@docs\/(.*)/, replacement: resolve('./docs/$1')},
+            {find: /^@cypress\/(.*)/, replacement: resolve('./cypress/$1')}
         ],
         extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
     }

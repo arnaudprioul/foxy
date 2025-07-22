@@ -1,17 +1,3 @@
-import { useVModel } from '@/composables'
-import type { IGroupItem, IGroupItemProps, IGroupItemProvide, IGroupProps, IGroupProvide } from '@/interfaces'
-
-import {
-    consoleWarn,
-    findChildrenWithProvide,
-    getCurrentInstance,
-    getIds,
-    getItemIndex,
-    getUid,
-    getValues,
-    wrapInArray
-} from '@/utils'
-
 import {
     ComponentInternalInstance,
     computed,
@@ -26,6 +12,19 @@ import {
     UnwrapRef,
     watch
 } from 'vue'
+import { useVModel } from '../../composables'
+import type { IGroupItem, IGroupItemProps, IGroupItemProvide, IGroupProps, IGroupProvide } from '../../interfaces'
+
+import {
+    consoleWarn,
+    findChildrenWithProvide,
+    getCurrentInstance,
+    getIds,
+    getItemIndex,
+    getUid,
+    getValues,
+    wrapInArray
+} from '../../utils'
 
 export function useGroupItem (
     props: IGroupItemProps,

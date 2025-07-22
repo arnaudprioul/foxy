@@ -44,21 +44,20 @@
 		lang="ts"
 		setup
 >
-	import { OrigamTranslateScale } from '@/components'
-
-	import { useBorder, useElevation, useProps, useRounded, useTextColor } from '@/composables'
-
-	import { ORIGAM_SLIDER_FIELD_KEY } from '@/consts'
-
-	import { vRipple } from '@/directives'
-
-	import { KEYBOARD_VALUES } from '@/enums'
-
-	import type { ISliderFieldThumbProps } from "@/interfaces"
-
-	import { clamp, convertToUnit, int } from '@/utils'
-
 	import { computed, inject, StyleValue } from 'vue'
+	import { OrigamTranslateScale } from '../../components'
+
+	import { useBorder, useElevation, useProps, useRounded, useTextColor } from '../../composables'
+
+	import { ORIGAM_SLIDER_FIELD_KEY } from '../../consts'
+
+	import { vRipple } from '../../directives'
+
+	import { KEYBOARD_VALUES } from '../../enums'
+
+	import type { ISliderFieldThumbProps } from "../../interfaces"
+
+	import { clamp, convertToUnit, int } from '../../utils'
 
 	const props = withDefaults(defineProps<ISliderFieldThumbProps>(), {
 		ripple: true,

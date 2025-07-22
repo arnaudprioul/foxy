@@ -1,5 +1,5 @@
-import type { IDataTableItem } from '@/interfaces'
 import type { InjectionKey, Ref } from 'vue'
+import type { IDataTableItem } from '../../interfaces'
 
 export const ORIGAM_DATA_TABLE_EXPAND_KEY: InjectionKey<{
     expand: (item: IDataTableItem, value: boolean) => void

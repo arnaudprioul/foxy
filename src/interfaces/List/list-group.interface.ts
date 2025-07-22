@@ -7,9 +7,9 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@/interfaces'
+} from '../../interfaces'
 
-import type { TIcon } from '@/types'
+import type { TIcon } from '../../types'
 
 export interface IListGroupProps extends ITagProps, ICommonsComponentProps, IColorProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IAdjacentProps {
     collapseIcon?: TIcon

@@ -1,6 +1,6 @@
-import type { ICommonsComponentProps } from "@/interfaces"
+import type { ICommonsComponentProps } from "../../interfaces"
 
-import type { TDateMode, TIcon } from "@/types"
+import type { TDateMode, TIcon } from "../../types"
 
 export interface IDatePickerControlsProps extends ICommonsComponentProps {
     active?: string | Array<string>

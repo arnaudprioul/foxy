@@ -51,11 +51,11 @@
 		setup
 >
 
-	import { OrigamAvatar } from "@/components"
-	import { useActive, useDensity, useHover, useMargin, usePadding, useProps, useRtl, useStyle } from "@/composables"
-	import { DIRECTION } from "@/enums"
-	import type { IAvatarGroupProps, IAvatarProps } from "@/interfaces"
-	import type { TOrigamAvatar } from '@/types'
+	import { OrigamAvatar } from "../../components"
+	import { useActive, useDensity, useHover, useMargin, usePadding, useProps, useRtl, useStyle } from "../../composables"
+	import { DIRECTION } from "../../enums"
+	import type { IAvatarGroupProps, IAvatarProps } from "../../interfaces"
+	import type { TOrigamAvatar } from '../../types'
 
 	import type { StyleValue, VNodeProps } from 'vue'
 	import { computed, mergeProps, ref } from "vue"

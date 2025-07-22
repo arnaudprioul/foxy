@@ -12,13 +12,13 @@
 		lang="ts"
 		setup
 >
-	import { useDimension, usePadding, useProps } from '@/composables'
+	import { useDimension, usePadding, useProps } from '../../composables'
 
-	import { ALIGN } from '@/enums'
+	import { ALIGN } from '../../enums'
 
-	import type { IDataTableColumnProps } from '@/interfaces'
+	import type { IDataTableColumnProps } from '../../interfaces'
 
-	import { convertToUnit } from '@/utils'
+	import { convertToUnit } from '../../utils'
 
 	import { computed, StyleValue } from 'vue'
 

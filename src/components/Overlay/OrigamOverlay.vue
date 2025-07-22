@@ -50,7 +50,8 @@
 		lang="ts"
 		setup
 >
-	import { OrigamFade, OrigamOverlayScrim, OrigamTransition } from '@/components'
+	import { computed, mergeProps, onBeforeUnmount, ref, StyleValue, toRef, watch } from 'vue'
+	import { OrigamFade, OrigamOverlayScrim, OrigamTransition } from '../../components'
 
 	import {
 		useActivator,
@@ -69,21 +70,19 @@
 		useTeleport,
 		useToggleScope,
 		useVModel
-	} from '@/composables'
+	} from '../../composables'
 
-	import { IN_BROWSER } from '@/consts'
+	import { IN_BROWSER } from '../../consts'
 
-	import { vClickOutside } from '@/directives'
+	import { vClickOutside } from '../../directives'
 
-	import { BLOCK, EASING, KEYBOARD_VALUES, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '@/enums'
+	import { BLOCK, EASING, KEYBOARD_VALUES, LOCATION_STRATEGIES, SCROLL_STRATEGIES } from '../../enums'
 
-	import type { IOverlayProps } from '@/interfaces'
+	import type { IOverlayProps } from '../../interfaces'
 
-	import type { TOrigamOverlayScrim, TTransitionProps } from "@/types"
+	import type { TOrigamOverlayScrim, TTransitionProps } from "../../types"
 
-	import { animate, convertToUnit, getScrollParent } from '@/utils'
-
-	import { computed, mergeProps, onBeforeUnmount, ref, StyleValue, toRef, watch } from 'vue'
+	import { animate, convertToUnit, getScrollParent } from '../../utils'
 
 	const props = withDefaults(defineProps<IOverlayProps>(), {
 		scrim: true,

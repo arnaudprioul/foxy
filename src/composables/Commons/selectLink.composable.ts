@@ -1,4 +1,4 @@
-import type { IUseLink } from '@/interfaces'
+import type { IUseLink } from '../../interfaces'
 
 import { nextTick, watch } from 'vue'
 

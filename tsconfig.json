@@ -30,11 +30,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
     "types": [
       "vitest/globals"
     ]

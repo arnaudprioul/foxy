@@ -1,6 +1,5 @@
-import type { IDelayProps } from '@/interfaces'
-
 import type { ComponentPublicInstance } from 'vue'
+import type { IDelayProps } from '../../interfaces'
 
 export interface IActivatorProps extends IDelayProps {
     target?: 'parent' | 'cursor' | (string & {}) | Element | ComponentPublicInstance | [x: number, y: number] | undefined

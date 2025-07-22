@@ -1,4 +1,5 @@
-import { ALIGN } from '@/enums'
+import type { ComputedRef, Ref, UnwrapRef } from 'vue'
+import { ALIGN } from '../../enums'
 import type {
     IColorProps,
     ICommonsComponentProps,
@@ -6,7 +7,7 @@ import type {
     IDataTableSortItem,
     IDisplayProps,
     ILoaderProps
-} from '@/interfaces'
+} from '../../interfaces'
 
 import type {
     TAlign,
@@ -15,8 +16,7 @@ import type {
     TFilterFunction,
     TIcon,
     TSelectItemKey
-} from '@/types'
-import type { ComputedRef, Ref, UnwrapRef } from 'vue'
+} from '../../types'
 
 export interface IHeaderCellProps extends ICommonsComponentProps, IColorProps {
     disableSort?: boolean

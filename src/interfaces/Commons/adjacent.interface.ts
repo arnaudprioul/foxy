@@ -1,4 +1,4 @@
-import type { TIcon } from '@/types'
+import type { TIcon } from '../../types'
 
 export interface IAdjacentProps {
     appendAvatar?: string

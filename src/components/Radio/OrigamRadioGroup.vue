@@ -61,18 +61,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamInput, OrigamLabel, OrigamRadio, OrigamSelectionControlGroup } from '@/components'
-
-	import { useProps, useVModel } from '@/composables'
-
-	import { DENSITY } from '@/enums'
-
-	import type { IRadioGroupProps } from '@/interfaces'
-	import type { TOrigamInput, TOrigamRadio, TOrigamSelectionControlGroup } from "@/types"
-
-	import { filterInputAttrs, getUid } from '@/utils'
-
 	import { computed, ref, StyleValue, useAttrs } from 'vue'
+	import { OrigamInput, OrigamLabel, OrigamRadio, OrigamSelectionControlGroup } from '../../components'
+
+	import { useProps, useVModel } from '../../composables'
+
+	import { DENSITY } from '../../enums'
+
+	import type { IRadioGroupProps } from '../../interfaces'
+	import type { TOrigamInput, TOrigamRadio, TOrigamSelectionControlGroup } from "../../types"
+
+	import { filterInputAttrs, getUid } from '../../utils'
 
 	const props = withDefaults(defineProps<IRadioGroupProps>(), {
 		density: DENSITY.DEFAULT

@@ -1,6 +1,6 @@
-import type { IFilterPropsOptions } from "@/interfaces"
+import type { IFilterPropsOptions } from "../../interfaces"
 
-import { pick } from "@/utils"
+import { pick } from "../../utils"
 
 import { ExtractPropTypes } from "vue"
 

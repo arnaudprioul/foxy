@@ -103,19 +103,18 @@
 		lang="ts"
 		setup
 >
-	import { OrigamInput, OrigamRadioBtn } from '@/components'
-
-	import { useFocus, useProps, useVModel } from '@/composables'
-
-	import { DENSITY } from '@/enums'
-
-	import type { IRadioProps } from '@/interfaces'
-
-	import type { TOrigamInput, TOrigamRadioBtn } from "@/types"
-
-	import { filterInputAttrs, getUid } from '@/utils'
-
 	import { computed, ref, StyleValue, useAttrs, useSlots } from 'vue'
+	import { OrigamInput, OrigamRadioBtn } from '../../components'
+
+	import { useFocus, useProps, useVModel } from '../../composables'
+
+	import { DENSITY } from '../../enums'
+
+	import type { IRadioProps } from '../../interfaces'
+
+	import type { TOrigamInput, TOrigamRadioBtn } from "../../types"
+
+	import { filterInputAttrs, getUid } from '../../utils'
 
 	const props = withDefaults(defineProps<IRadioProps>(), {
 		density: DENSITY.DEFAULT

@@ -8,8 +8,8 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@/interfaces'
-import type { TIcon } from '@/types'
+} from '../../interfaces'
+import type { TIcon } from '../../types'
 
 export interface ISlideGroupProps extends ICommonsComponentProps, ITagProps, IDirectionProps, IGroupProps, IPaddingProps, IMarginProps, IRoundedProps, IBorderProps, IDisplayProps {
     centerActive?: boolean

@@ -220,19 +220,18 @@
 		lang="ts"
 		setup
 >
-	import { OrigamChip, OrigamCounter, OrigamField, OrigamInput } from '@/components'
-
-	import { useAdjacent, useAdjacentInner, useFocus, useLocale, useProps, useVModel } from '@/composables'
-
-	import { DENSITY, MDI_ICONS } from '@/enums'
-
-	import type { IFileFieldProps } from '@/interfaces'
-
-	import type { TOrigamInput } from '@/types'
-
-	import { filterInputAttrs, forwardRefs, humanReadableFileSize, wrapInArray } from '@/utils'
-
 	import { computed, nextTick, ref, StyleValue, toRef, useAttrs, useSlots, watch } from 'vue'
+	import { OrigamChip, OrigamCounter, OrigamField, OrigamInput } from '../../components'
+
+	import { useAdjacent, useAdjacentInner, useFocus, useLocale, useProps, useVModel } from '../../composables'
+
+	import { DENSITY, MDI_ICONS } from '../../enums'
+
+	import type { IFileFieldProps } from '../../interfaces'
+
+	import type { TOrigamInput } from '../../types'
+
+	import { filterInputAttrs, forwardRefs, humanReadableFileSize, wrapInArray } from '../../utils'
 
 	const props = withDefaults(defineProps<IFileFieldProps>(), {
 		prependInnerIcon: MDI_ICONS.PAPERCLIP,

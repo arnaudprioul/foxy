@@ -1,8 +1,7 @@
-import type { IHoverProps } from "@/interfaces"
-
-import { getCurrentInstanceName } from "@/utils"
-
 import { computed, ref, watch } from "vue"
+import type { IHoverProps } from "../../interfaces"
+
+import { getCurrentInstanceName } from "../../utils"
 
 export function useHover (props: IHoverProps, name = getCurrentInstanceName()) {
     const hoverable = ref(false)

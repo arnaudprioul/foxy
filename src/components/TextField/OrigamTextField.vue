@@ -182,23 +182,22 @@
 		lang="ts"
 		setup
 >
-	import { OrigamCounter, OrigamField, OrigamInput } from '@/components'
-
-	import { useAdjacentInner, useFocus, useProps, useVModel } from '@/composables'
-
-	import { ACTIVE_TEXT_FIELD_TYPE, INPUT_TEXT_FIELD_TYPE } from '@/consts'
-
-	import { vIntersect } from '@/directives'
-
-	import { DENSITY, DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from '@/enums'
-
-	import type { ITextFieldProps } from '@/interfaces'
-
-	import type { TOrigamField, TOrigamInput } from "@/types"
-
-	import { filterInputAttrs, forwardRefs } from '@/utils'
-
 	import { computed, nextTick, ref, StyleValue, useAttrs, useSlots } from 'vue'
+	import { OrigamCounter, OrigamField, OrigamInput } from '../../components'
+
+	import { useAdjacentInner, useFocus, useProps, useVModel } from '../../composables'
+
+	import { ACTIVE_TEXT_FIELD_TYPE, INPUT_TEXT_FIELD_TYPE } from '../../consts'
+
+	import { vIntersect } from '../../directives'
+
+	import { DENSITY, DIRECTION, MDI_ICONS, TEXT_FIELD_TYPE } from '../../enums'
+
+	import type { ITextFieldProps } from '../../interfaces'
+
+	import type { TOrigamField, TOrigamInput } from "../../types"
+
+	import { filterInputAttrs, forwardRefs } from '../../utils'
 
 	const props = withDefaults(defineProps<ITextFieldProps>(), {
 		type: TEXT_FIELD_TYPE.TEXT,

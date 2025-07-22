@@ -12,9 +12,9 @@ import type {
     IRoundedProps,
     ISizeProps,
     ITagProps
-} from '@/interfaces'
+} from '../../interfaces'
 
-import type { TBlock, TIcon } from '@/types'
+import type { TBlock, TIcon } from '../../types'
 
 export interface IRatingFieldProps extends ICommonsComponentProps, IRippleProps, IDensityProps, IPaddingProps, IBorderProps, IMarginProps, IRoundedProps, IElevationProps, IColorProps, ISizeProps, ITagProps, IInputProps, ILabelProps {
     name?: string

@@ -11,8 +11,9 @@ export default defineConfig({
     resolve: {
         alias: [
             { find: /^origam$/, replacement: resolve('./src/origam.ts') },
-            { find: /^@/, replacement: fileURLToPath(new URL("./src", import.meta.url)) },
-            { find: /^@stories/, replacement: fileURLToPath(new URL("./stories", import.meta.url)) }
+            { find: /^origam\/(.*)/, replacement: resolve('./$1') },
+            { find: /^@\/(.*)/, replacement: resolve('./src/$1') },
+            { find: /^@stories\/(.*)/, replacement: fileURLToPath(new URL("./stories", import.meta.url)) }
         ],
         extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
     }

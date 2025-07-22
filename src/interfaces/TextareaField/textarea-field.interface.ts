@@ -10,7 +10,7 @@ import type {
     IMarginProps,
     IPaddingProps,
     IRoundedProps
-} from '@/interfaces'
+} from '../../interfaces'
 
 export interface ITextareaFieldProps extends ICommonsComponentProps, IColorProps, IDensityProps, IFieldProps, IInputProps, IPaddingProps, IMarginProps, IBorderProps, IRoundedProps, IElevationProps, IAdjacentInnerProps {
     autoGrow?: boolean

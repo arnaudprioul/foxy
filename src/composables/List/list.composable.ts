@@ -1,6 +1,5 @@
-import { ORIGAM_LIST_KEY } from '@/consts'
-
 import { ComputedRef, inject, provide, shallowRef } from 'vue'
+import { ORIGAM_LIST_KEY } from '../../consts'
 
 export function useCreateList () {
     const parent = inject(ORIGAM_LIST_KEY, {

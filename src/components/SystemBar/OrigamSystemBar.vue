@@ -12,6 +12,7 @@
 		lang="ts"
 		setup
 >
+	import { computed, shallowRef, StyleValue, toRef } from "vue"
 	import {
 		useBorder,
 		useBothColor,
@@ -21,11 +22,9 @@
 		useProps,
 		useRounded,
 		useSsrBoot
-	} from "@/composables"
+	} from "../../composables"
 
-	import type { ISystemBarProps } from "@/interfaces"
-
-	import { computed, shallowRef, StyleValue, toRef } from "vue"
+	import type { ISystemBarProps } from "../../interfaces"
 
 	const props = withDefaults(defineProps<ISystemBarProps>(), {
 		tag: 'div'

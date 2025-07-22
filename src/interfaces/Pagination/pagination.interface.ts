@@ -6,9 +6,9 @@ import type {
     IMarginProps,
     IPaddingProps,
     ITagProps
-} from "@/interfaces"
+} from "../../interfaces"
 
-import type { TIcon } from "@/types"
+import type { TIcon } from "../../types"
 
 export interface IPaginationProps extends ICommonsComponentProps, ITagProps, IColorProps, IBorderProps, IPaddingProps, IMarginProps, IElevationProps {
     start?: number

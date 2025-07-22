@@ -5,9 +5,9 @@ import type {
     ICommonsComponentProps,
     IDimensionProps,
     IPaddingProps
-} from "@/interfaces"
+} from "../../interfaces"
 
-import type { TChartItem, TChartType, TDirectionBoth } from "@/types"
+import type { TChartItem, TChartType, TDirectionBoth } from "../../types"
 
 export interface IChartProps extends ICommonsComponentProps, IChartLineProps, IChartBarProps {
     type?: TChartType

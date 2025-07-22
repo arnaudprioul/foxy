@@ -1,6 +1,6 @@
-import { OrigamColorPicker } from "@/components"
+import { OrigamColorPicker } from "../../components"
 
-import { COLOR_MODES_NAMES } from "@/enums"
+import { COLOR_MODES_NAMES } from "../../enums"
 
 export type TColorModes = `${COLOR_MODES_NAMES}`
 

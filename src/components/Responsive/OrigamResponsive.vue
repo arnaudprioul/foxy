@@ -21,11 +21,18 @@
 		lang="ts"
 		setup
 >
-	import { useAspectRatio, useBorder, useDimension, useMargin, usePadding, useProps, useRounded } from '@/composables'
-
-	import type { IResponsiveProps } from '@/interfaces'
-
 	import { computed, StyleValue, useSlots } from 'vue'
+	import {
+		useAspectRatio,
+		useBorder,
+		useDimension,
+		useMargin,
+		usePadding,
+		useProps,
+		useRounded
+	} from '../../composables'
+
+	import type { IResponsiveProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<IResponsiveProps>(), {})
 

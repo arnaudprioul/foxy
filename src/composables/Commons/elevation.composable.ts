@@ -1,7 +1,7 @@
-import type { IElevationProps } from '@/interfaces'
-import { TColor } from "@/types"
-import { formatElevationStyle, getCurrentInstanceName } from "@/utils"
 import { computed, isRef, ref, Ref } from 'vue'
+import type { IElevationProps } from '../../interfaces'
+import { TColor } from "../../types"
+import { formatElevationStyle, getCurrentInstanceName } from "../../utils"
 
 export function useElevation (props: IElevationProps | Ref<number | string | undefined>, flat: Ref<boolean> = ref(false), bgColor: Ref<TColor> = ref('rgb(0,0,0)'), name = getCurrentInstanceName()) {
     const elevationClasses = computed(() => {

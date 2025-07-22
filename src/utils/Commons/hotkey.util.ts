@@ -1,5 +1,5 @@
-import { KEYBOARD_ALIASES } from "@/consts/Commons/hotkey.const.ts"
-import { consoleWarn } from "@/utils"
+import { KEYBOARD_ALIASES } from "../../consts/Commons/hotkey.const.ts"
+import { consoleWarn } from "../../utils"
 
 /**
  * Splits a single combination string into individual key parts.

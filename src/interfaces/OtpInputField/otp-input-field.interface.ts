@@ -1,6 +1,6 @@
-import type { ICommonsComponentProps, IDimensionProps, IFieldProps, IFocusProps, ILabelProps } from "@/interfaces"
+import type { ICommonsComponentProps, IDimensionProps, IFieldProps, IFocusProps, ILabelProps } from "../../interfaces"
 
-import type { TOtpInputFieldType } from "@/types"
+import type { TOtpInputFieldType } from "../../types"
 
 export interface IOtpInputFieldProps extends ICommonsComponentProps, IDimensionProps, IFocusProps, IFieldProps, ILabelProps {
     autofocus?: boolean

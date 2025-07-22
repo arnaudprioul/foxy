@@ -188,13 +188,13 @@
 		lang="ts"
 		setup
 >
-	import { OrigamChip, OrigamDataTableColumnCell, OrigamSelect } from '@/components'
+	import { OrigamChip, OrigamDataTableColumnCell, OrigamSelect } from '../../components'
 
-	import { useHeadersCell, useLocale, useProps, useSelection, useSort } from '@/composables'
+	import { useHeadersCell, useLocale, useProps, useSelection, useSort } from '../../composables'
 
-	import { DENSITY, MDI_ICONS } from '@/enums'
+	import { DENSITY, MDI_ICONS } from '../../enums'
 
-	import type { IDataTableHeadersCellMobileProps, IInternalListItem } from '@/interfaces'
+	import type { IDataTableHeadersCellMobileProps, IInternalListItem } from '../../interfaces'
 
 	import { computed, mergeProps, useSlots } from 'vue'
 

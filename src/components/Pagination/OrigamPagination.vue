@@ -87,17 +87,16 @@
 		lang="ts"
 		setup
 >
-	import { OrigamBtn } from "@/components"
-
-	import { useDisplay, useLocale, useProps, useRefs, useResizeObserver, useVModel } from "@/composables"
-
-	import { KEYBOARD_VALUES, MDI_ICONS } from "@/enums"
-
-	import type { IPaginationProps } from "@/interfaces"
-
-	import { createRange, int } from "@/utils"
-
 	import { ComponentPublicInstance, computed, nextTick, shallowRef, StyleValue } from "vue"
+	import { OrigamBtn } from "../../components"
+
+	import { useDisplay, useLocale, useProps, useRefs, useResizeObserver, useVModel } from "../../composables"
+
+	import { KEYBOARD_VALUES, MDI_ICONS } from "../../enums"
+
+	import type { IPaginationProps } from "../../interfaces"
+
+	import { createRange, int } from "../../utils"
 
 	const props = withDefaults(defineProps<IPaginationProps>(), {
 		prevIcon: MDI_ICONS.CHEVRON_LEFT,

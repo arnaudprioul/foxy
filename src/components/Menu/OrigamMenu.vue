@@ -68,6 +68,7 @@
 		lang="ts"
 		setup
 >
+	import { computed, inject, mergeProps, nextTick, provide, ref, shallowRef, StyleValue, watch } from 'vue'
 	import {
 		OrigamList,
 		OrigamListGroup,
@@ -75,21 +76,19 @@
 		OrigamListSubheader,
 		OrigamOverlay,
 		OrigamTranslateScale
-	} from '@/components'
+	} from '../../components'
 
-	import { useProps, useScopeId, useVModel } from '@/composables'
+	import { useProps, useScopeId, useVModel } from '../../composables'
 
-	import { ORIGAM_MENU_KEY } from '@/consts'
+	import { ORIGAM_MENU_KEY } from '../../consts'
 
-	import { INLINE, KEYBOARD_VALUES, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '@/enums'
+	import { INLINE, KEYBOARD_VALUES, LOCATION_STRATEGIES, MDI_ICONS, SCROLL_STRATEGIES } from '../../enums'
 
-	import type { IItemProps, IMenuProps } from '@/interfaces'
+	import type { IItemProps, IMenuProps } from '../../interfaces'
 
-	import type { TOrigamOverlay, TTransitionProps } from '@/types'
+	import type { TOrigamOverlay, TTransitionProps } from '../../types'
 
-	import { focusableChildren, focusChild, forwardRefs, getNextElement, getUid } from '@/utils'
-
-	import { computed, inject, mergeProps, nextTick, provide, ref, shallowRef, StyleValue, watch } from 'vue'
+	import { focusableChildren, focusChild, forwardRefs, getNextElement, getUid } from '../../utils'
 
 	const props = withDefaults(defineProps<IMenuProps>(), {
 		closeDelay: 250,

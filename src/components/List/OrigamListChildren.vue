@@ -79,15 +79,14 @@
 		lang="ts"
 		setup
 >
-	import { OrigamDivider, OrigamListGroup, OrigamListItem, OrigamListSubheader } from '@/components'
-
-	import { useCreateList, useProps } from '@/composables'
-
-	import { LIST_ITEM_TYPE } from '@/enums'
-
-	import type { IInternalListItemChildren, IListItemChildren } from '@/interfaces'
-
 	import { computed, useSlots } from 'vue'
+	import { OrigamDivider, OrigamListGroup, OrigamListItem, OrigamListSubheader } from '../../components'
+
+	import { useCreateList, useProps } from '../../composables'
+
+	import { LIST_ITEM_TYPE } from '../../enums'
+
+	import type { IInternalListItemChildren, IListItemChildren } from '../../interfaces'
 
 	const props = withDefaults(defineProps<IListItemChildren>(), {})
 

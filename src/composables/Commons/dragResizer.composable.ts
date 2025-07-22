@@ -1,12 +1,11 @@
-import { useEventListener } from '@/composables'
-
-import { AXIS, CLIENT_POSITION } from '@/enums'
-
-import type { TAxis } from '@/types'
-
-import { addWindowListener, clamp, getPosition } from '@/utils'
-
 import { computed, onUnmounted, Ref, ref } from 'vue'
+import { useEventListener } from '../../composables'
+
+import { AXIS, CLIENT_POSITION } from '../../enums'
+
+import type { TAxis } from '../../types'
+
+import { addWindowListener, clamp, getPosition } from '../../utils'
 
 export function useDragResizer (el: HTMLElement | undefined, value: Ref<number>, min: number, max: number, axis: TAxis) {
     const resizing = ref(false)

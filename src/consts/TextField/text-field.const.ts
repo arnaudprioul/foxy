@@ -1,6 +1,6 @@
-import { TEXT_FIELD_TYPE } from "@/enums"
+import { TEXT_FIELD_TYPE } from "../../enums"
 
-import type { TTextFieldType } from "@/types"
+import type { TTextFieldType } from "../../types"
 
 export const ACTIVE_TEXT_FIELD_TYPE: Partial<Array<TTextFieldType>> = [
     TEXT_FIELD_TYPE.COLOR,

@@ -1,6 +1,6 @@
-import type { IInternalListItem, IInternalListItemChildren, IItemProps } from '@/interfaces'
+import type { IInternalListItem, IInternalListItemChildren, IItemProps } from '../../interfaces'
 
-import { getPropertyFromItem, omit } from '@/utils'
+import { getPropertyFromItem, omit } from '../../utils'
 
 export function transformListItems (props: IItemProps & { itemType?: string }, items: Array<(string | object)>) {
     const array: Array<IInternalListItemChildren> = []

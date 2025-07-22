@@ -1,3 +1,3 @@
-import { OrigamCardText } from '@/components'
+import { OrigamCardText } from '../../components'
 
 export type TOrigamCardText = InstanceType<typeof OrigamCardText>

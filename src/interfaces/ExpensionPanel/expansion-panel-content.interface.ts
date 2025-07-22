@@ -1,3 +1,4 @@
+import { Component } from 'vue'
 import type {
     IBorderProps,
     IColorProps,
@@ -9,9 +10,7 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from '@/interfaces'
-
-import { Component } from 'vue'
+} from '../../interfaces'
 
 export interface IExpansionPanelContentProps extends IColorProps, ITagProps, ICommonsComponentProps, IDensityProps, IRoundedProps, IBorderProps, IPaddingProps, IMarginProps, ILazyProps, ILoaderProps {
     content?: string | Component

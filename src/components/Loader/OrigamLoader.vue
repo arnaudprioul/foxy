@@ -25,14 +25,13 @@
 		lang="ts"
 		setup
 >
-	import { OrigamProgress } from '@/components'
-	import { useProps } from "@/composables"
-
-	import { PROGRESS_TYPE } from '@/enums'
-
-	import type { ILoaderProps } from '@/interfaces'
-
 	import { computed, StyleValue } from 'vue'
+	import { OrigamProgress } from '../../components'
+	import { useProps } from "../../composables"
+
+	import { PROGRESS_TYPE } from '../../enums'
+
+	import type { ILoaderProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<ILoaderProps>(), {tag: 'span'})
 

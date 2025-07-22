@@ -24,6 +24,7 @@
 		lang="ts"
 		setup
 >
+	import { computed, onBeforeUnmount, onMounted, provide, ref, StyleValue, toRef } from 'vue'
 	import {
 		useAudio,
 		useBorder,
@@ -35,17 +36,15 @@
 		useProps,
 		useRounded,
 		useThrottleFn
-	} from '@/composables'
+	} from '../../composables'
 
-	import { ORIGAM_PARALLAX_KEY } from '@/consts'
+	import { ORIGAM_PARALLAX_KEY } from '../../consts'
 
-	import { PARALLAX_EVENT } from '@/enums'
+	import { PARALLAX_EVENT } from '../../enums'
 
-	import type { IBox, IParallaxProps } from '@/interfaces'
+	import type { IBox, IParallaxProps } from '../../interfaces'
 
-	import { getCenter, getTargetBox, inViewport } from '@/utils'
-
-	import { computed, onBeforeUnmount, onMounted, provide, ref, StyleValue, toRef } from 'vue'
+	import { getCenter, getTargetBox, inViewport } from '../../utils'
 
 	const props = withDefaults(defineProps<IParallaxProps>(), {
 		duration: 1000,

@@ -1,10 +1,10 @@
-import { DELAY_RIPPLE, KEYCODES, ORIGAM_RIPPLE_STOP_KEY, RIPPLES } from '@/consts'
+import { DELAY_RIPPLE, KEYCODES, ORIGAM_RIPPLE_STOP_KEY, RIPPLES } from '../../consts'
 
-import type { IRippleDirectiveBinding, IRippleHtmlElement, IRippleOptions } from '@/interfaces'
+import type { IRippleDirectiveBinding, IRippleHtmlElement, IRippleOptions } from '../../interfaces'
 
-import type { TRippleEvent } from '@/types'
+import type { TRippleEvent } from '../../types'
 
-import { isObject } from '@/utils'
+import { isObject } from '../../utils'
 
 export function updateRipple (el: IRippleHtmlElement, binding: IRippleDirectiveBinding, wasEnabled: boolean) {
     const {value, modifiers} = binding

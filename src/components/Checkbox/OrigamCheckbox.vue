@@ -59,17 +59,17 @@
 		lang="ts"
 		setup
 >
-	import { OrigamCheckboxBtn, OrigamInput } from '@/components'
+	import { OrigamCheckboxBtn, OrigamInput } from '../../components'
 
-	import { useFocus, useProps, useVModel } from '@/composables'
+	import { useFocus, useProps, useVModel } from '../../composables'
 
-	import { DENSITY } from '@/enums'
+	import { DENSITY } from '../../enums'
 
-	import type { ICheckboxProps } from '@/interfaces'
+	import type { ICheckboxProps } from '../../interfaces'
 
-	import type { TOrigamCheckboxBtn, TOrigamInput } from "@/types"
+	import type { TOrigamCheckboxBtn, TOrigamInput } from "../../types"
 
-	import { filterInputAttrs, getUid } from '@/utils'
+	import { filterInputAttrs, getUid } from '../../utils'
 
 	import { computed, ref, StyleValue, useAttrs, useSlots } from 'vue'
 

@@ -12,11 +12,10 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from "@/composables"
-
-	import type { ISpacerProps } from "@/interfaces"
-
 	import { computed, StyleValue } from 'vue'
+	import { useProps } from "../../composables"
+
+	import type { ISpacerProps } from "../../interfaces"
 
 	const props = withDefaults(defineProps<ISpacerProps>(), {tag: 'div'})
 

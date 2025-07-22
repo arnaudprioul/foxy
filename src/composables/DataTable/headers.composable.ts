@@ -1,19 +1,18 @@
-import { useSort } from '@/composables'
-import { ORIGAM_DATA_TABLE_HEADERS_KEY } from '@/consts'
-import { SORT_DIRECTION } from '@/enums'
+import { capitalize, inject, provide, ref, Ref, watchEffect } from 'vue'
+import { useSort } from '../../composables'
+import { ORIGAM_DATA_TABLE_HEADERS_KEY } from '../../consts'
+import { SORT_DIRECTION } from '../../enums'
 import type {
     IDataTableHeader,
     IDataTableHeaderProps,
     IDataTableSortItem,
     IHeaderCellProps,
     IInternalDataTableHeader
-} from '@/interfaces'
+} from '../../interfaces'
 
-import type { TDataTableCompareFunction, TFilterKeyFunctions } from '@/types'
+import type { TDataTableCompareFunction, TFilterKeyFunctions } from '../../types'
 
-import { convertToInternalHeaders, extractKeys, getHeaderDepth, parseFixedColumns, parseHeaderItems } from '@/utils'
-
-import { capitalize, inject, provide, ref, Ref, watchEffect } from 'vue'
+import { convertToInternalHeaders, extractKeys, getHeaderDepth, parseFixedColumns, parseHeaderItems } from '../../utils'
 
 export function createHeaders (
     props: IDataTableHeaderProps,

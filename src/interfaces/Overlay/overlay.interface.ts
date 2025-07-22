@@ -7,7 +7,7 @@ import type {
     IScrimProps,
     IScrollStrategyProps,
     ITransitionComponentProps
-} from '@/interfaces'
+} from '../../interfaces'
 
 export interface IOverlayProps extends ICommonsComponentProps, IDimensionProps, IActivatorProps, ILocationStrategyProps, IScrollStrategyProps, ILazyProps, ITransitionComponentProps, IScrimProps {
     absolute?: boolean

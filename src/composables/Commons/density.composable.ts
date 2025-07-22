@@ -1,11 +1,11 @@
-import { PREDIFINED_DENSITY } from '@/consts'
-
-import type { IDensityProps } from '@/interfaces'
-
-import type { TDensity } from '@/types'
-
-import { getCurrentInstanceName } from '@/utils'
 import { computed, isRef, Ref } from 'vue'
+import { PREDIFINED_DENSITY } from '../../consts'
+
+import type { IDensityProps } from '../../interfaces'
+
+import type { TDensity } from '../../types'
+
+import { getCurrentInstanceName } from '../../utils'
 
 export function useDensity (props: IDensityProps | Ref<number | string | undefined>, name = getCurrentInstanceName()) {
     const densityClasses = computed(() => {

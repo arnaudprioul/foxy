@@ -1,4 +1,4 @@
-import { IConfigurableDocument } from "@/interfaces"
+import { IConfigurableDocument } from "../../interfaces"
 
 export interface IStyleTagOptions extends IConfigurableDocument {
     /**

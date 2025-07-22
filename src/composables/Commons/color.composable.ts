@@ -1,9 +1,8 @@
-import type { IColorProps } from "@/interfaces"
-import type { TColor } from '@/types'
-import { getForeground, isCssColor, isParsableColor, parseColor } from '@/utils'
-
 import type { ComputedRef, Ref } from 'vue'
 import { computed, isRef, ref } from 'vue'
+import type { IColorProps } from "../../interfaces"
+import type { TColor } from '../../types'
+import { getForeground, isCssColor, isParsableColor, parseColor } from '../../utils'
 
 export function useColor (colors: ComputedRef<{ background?: TColor, text?: TColor }>) {
     const colorStyles = computed(() => {

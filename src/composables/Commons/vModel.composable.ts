@@ -1,8 +1,8 @@
-import { useToggleScope } from '@/composables'
+import { useToggleScope } from '../../composables'
 
-import type { TEventProp, TInnerVal, TVModel } from '@/types'
+import type { TEventProp, TInnerVal, TVModel } from '../../types'
 
-import { getCurrentInstance, toKebabCase } from '@/utils'
+import { getCurrentInstance, toKebabCase } from '../../utils'
 
 import { computed, ref, Ref, toRaw, watch } from 'vue'
 

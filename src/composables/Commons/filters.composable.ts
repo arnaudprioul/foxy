@@ -1,10 +1,9 @@
-import type { IFiltersProps, IInternalItem } from '@/interfaces'
-
-import type { TFilterKeyFunctions, TFilterMatch } from '@/types'
-
-import { filterItems } from '@/utils'
-
 import { computed, MaybeRef, ref, Ref, unref, watchEffect } from 'vue'
+import type { IFiltersProps, IInternalItem } from '../../interfaces'
+
+import type { TFilterKeyFunctions, TFilterMatch } from '../../types'
+
+import { filterItems } from '../../utils'
 
 export function useFilter<T extends IInternalItem> (
     props: IFiltersProps,

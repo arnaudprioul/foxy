@@ -1,10 +1,9 @@
-import { MARGIN_REGEX } from '@/consts'
-
-import type { IMarginProps } from '@/interfaces'
-
-import { convertToUnit, formatMarginStylesVar, getCurrentInstanceName } from '@/utils'
-
 import { computed } from 'vue'
+import { MARGIN_REGEX } from '../../consts'
+
+import type { IMarginProps } from '../../interfaces'
+
+import { convertToUnit, formatMarginStylesVar, getCurrentInstanceName } from '../../utils'
 
 export function useMargin (props: IMarginProps, name = getCurrentInstanceName()) {
 

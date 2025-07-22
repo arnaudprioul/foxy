@@ -1,10 +1,10 @@
-import { DEFAULT_DISPLAY_OPTIONS, IN_BROWSER, SUPPORTS_TOUCH } from '@/consts'
+import { DEFAULT_DISPLAY_OPTIONS, IN_BROWSER, SUPPORTS_TOUCH } from '../../consts'
 
-import type { IDisplayOptions, IDisplayPlatform, IInternalDisplayOptions } from '@/interfaces'
+import type { IDisplayOptions, IDisplayPlatform, IInternalDisplayOptions } from '../../interfaces'
 
-import type { TSSROptions } from '@/types'
+import type { TSSROptions } from '../../types'
 
-import { mergeDeep } from '@/utils'
+import { mergeDeep } from '../../utils'
 
 export function parseDisplayOptions (options: IDisplayOptions = DEFAULT_DISPLAY_OPTIONS): IInternalDisplayOptions {
     return mergeDeep(

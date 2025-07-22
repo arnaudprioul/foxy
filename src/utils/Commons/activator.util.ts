@@ -1,8 +1,7 @@
-import { useActivator } from '@/composables'
-import type { IActivatorProps } from '@/interfaces'
-import { bindProps, unbindProps } from '@/utils'
-
 import { ComponentInternalInstance, ComponentPublicInstance, mergeProps, nextTick, onScopeDispose, watch } from 'vue'
+import { useActivator } from '../../composables'
+import type { IActivatorProps } from '../../interfaces'
+import { bindProps, unbindProps } from '../../utils'
 
 export function activator (
     props: IActivatorProps,

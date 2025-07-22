@@ -1,5 +1,5 @@
-import type { IDataTableSortItem } from '@/interfaces'
-import { deepEqual, getCurrentInstance } from '@/utils'
+import type { IDataTableSortItem } from '../../interfaces'
+import { deepEqual, getCurrentInstance } from '../../utils'
 import { computed, Ref, watch } from 'vue'
 
 export function useOptions ({

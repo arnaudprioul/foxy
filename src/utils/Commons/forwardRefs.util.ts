@@ -1,8 +1,7 @@
-import { FORWARD_REFS } from '@/consts'
-
-import type { TOmitPrefix, TOmitProps, TUnionToIntersection } from '@/types'
-
 import { ComponentPublicInstance, Ref, UnwrapRef } from 'vue'
+import { FORWARD_REFS } from '../../consts'
+
+import type { TOmitPrefix, TOmitProps, TUnionToIntersection } from '../../types'
 
 export function forwardRefs<T extends Record<string, unknown>, U extends Ref<HTMLElement | Omit<ComponentPublicInstance, '$emit' | '$slots'> | undefined>[]> (
     target: T,

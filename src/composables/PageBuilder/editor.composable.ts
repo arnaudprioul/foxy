@@ -1,11 +1,10 @@
-import { useVModel } from '@/composables'
-import { EMPTY_EDIT, ORIGAM_EDIT_KEY } from '@/consts'
-
-import type { TEditorProvide } from '@/types'
-
-import { getCurrentInstanceName, getUid } from '@/utils'
-
 import { computed, inject, provide, ref } from 'vue'
+import { useVModel } from '../../composables'
+import { EMPTY_EDIT, ORIGAM_EDIT_KEY } from '../../consts'
+
+import type { TEditorProvide } from '../../types'
+
+import { getCurrentInstanceName, getUid } from '../../utils'
 
 export function createEditor (props: any, name = getCurrentInstanceName()) {
 

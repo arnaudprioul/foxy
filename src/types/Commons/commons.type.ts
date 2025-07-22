@@ -1,6 +1,6 @@
-import { CLIENT_POSITION, FOCUS_LOCATION } from '@/enums'
-import { IOrigamPluginOptionsObject } from "@/interfaces"
 import { ComponentPublicInstance } from 'vue'
+import { CLIENT_POSITION, FOCUS_LOCATION } from '../../enums'
+import { IOrigamPluginOptionsObject } from "../../interfaces"
 
 export type TNotAUnion<T> = [T] extends [infer U] ? _TNotAUnion<U, U> : never
 export type _TNotAUnion<T, U> = U extends any ? [T] extends [U] ? unknown : never : never

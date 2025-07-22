@@ -1,3 +1,3 @@
-import { OrigamWindowYTranslate } from "@/components"
+import { OrigamWindowYTranslate } from "../../components"
 
 export type TOrigamWindowYTranslate = InstanceType<typeof OrigamWindowYTranslate>

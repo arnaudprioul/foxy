@@ -1,8 +1,7 @@
-import { LOCATION_STRATEGIES } from '@/enums'
-
-import type { ILocationStrategyData, ILocationStrategyProps } from '@/interfaces'
-
 import { Ref } from 'vue'
+import { LOCATION_STRATEGIES } from '../../enums'
+
+import type { ILocationStrategyData, ILocationStrategyProps } from '../../interfaces'
 
 export type TLocationStrategyFn = (
     data: ILocationStrategyData,

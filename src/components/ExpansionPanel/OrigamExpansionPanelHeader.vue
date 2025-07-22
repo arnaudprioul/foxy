@@ -86,7 +86,8 @@
 		lang="ts"
 		setup
 >
-	import { OrigamAvatar, OrigamIcon } from '@/components'
+	import { computed, inject, StyleValue, toRef, useSlots } from 'vue'
+	import { OrigamAvatar, OrigamIcon } from '../../components'
 
 	import {
 		useAdjacent,
@@ -97,17 +98,15 @@
 		usePadding,
 		useProps,
 		useRounded
-	} from '@/composables'
+	} from '../../composables'
 
-	import { ORIGAM_EXPANSION_PANEL_KEY } from '@/consts'
+	import { ORIGAM_EXPANSION_PANEL_KEY } from '../../consts'
 
-	import { vRipple } from '@/directives'
+	import { vRipple } from '../../directives'
 
-	import { MDI_ICONS } from "@/enums"
+	import { MDI_ICONS } from "../../enums"
 
-	import type { IExpansionPanelHeaderProps } from '@/interfaces'
-
-	import { computed, inject, StyleValue, toRef, useSlots } from 'vue'
+	import type { IExpansionPanelHeaderProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<IExpansionPanelHeaderProps>(), {
 		tag: 'button',

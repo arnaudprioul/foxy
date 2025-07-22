@@ -1,6 +1,6 @@
-import { ORIGAM_WINDOW_KEY } from '@/consts'
-import type { ITransitionProps } from '@/interfaces'
-import { convertToUnit } from '@/utils'
+import { ORIGAM_WINDOW_KEY } from '../../consts'
+import type { ITransitionProps } from '../../interfaces'
+import { convertToUnit } from '../../utils'
 
 import { Component, computed, inject, nextTick, ShallowRef, shallowRef, Transition, TransitionGroup } from 'vue'
 

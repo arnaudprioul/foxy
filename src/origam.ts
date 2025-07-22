@@ -1,6 +1,6 @@
-import * as origamComponents from '@/components'
+import * as origamComponents from './components'
 
-import { createDate, createDisplay, createGoTo, createIcons, createLocale } from '@/composables'
+import { createDate, createDisplay, createGoTo, createIcons, createLocale } from './composables'
 
 import {
     IN_BROWSER,
@@ -10,13 +10,13 @@ import {
     ORIGAM_GO_TO_KEY,
     ORIGAM_ICONS_KEY,
     ORIGAM_LOCALE_KEY
-} from '@/consts'
+} from './consts'
 
-import * as origamDirectives from '@/directives'
+import * as origamDirectives from './directives'
 
-import type { IOrigamOptions } from '@/interfaces'
-import type { TIconOptions } from '@/types'
-import { getUid, mergeDeep } from '@/utils'
+import type { IOrigamOptions } from './interfaces'
+import type { TIconOptions } from './types'
+import { getUid, mergeDeep } from './utils'
 
 import '@mdi/font/css/materialdesignicons.css'
 

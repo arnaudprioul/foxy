@@ -1,10 +1,11 @@
-import { AXIS } from '@/enums'
+import { computed, nextTick, onScopeDispose, Ref, watch } from 'vue'
+import { AXIS } from '../../enums'
 
-import type { IBox, ILocationStrategyData, ILocationStrategyProps } from '@/interfaces'
+import type { IBox, ILocationStrategyData, ILocationStrategyProps } from '../../interfaces'
 
-import { Box } from '@/services'
+import { Box } from '../../services'
 
-import type { TAnchor } from '@/types'
+import type { TAnchor } from '../../types'
 
 import {
     anchorToPoint,
@@ -22,9 +23,7 @@ import {
     getTargetBox,
     nullifyTransforms,
     parseAnchor
-} from '@/utils'
-
-import { computed, nextTick, onScopeDispose, Ref, watch } from 'vue'
+} from '../../utils'
 
 export function staticLocationStrategy () {
     // TODO

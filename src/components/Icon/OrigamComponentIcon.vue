@@ -17,9 +17,9 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from "@/composables"
+	import { useProps } from "../../composables"
 
-	import type { IIconComponentProps } from '@/interfaces'
+	import type { IIconComponentProps } from '../../interfaces'
 	import type { Component } from 'vue'
 	import { computed, StyleValue } from 'vue'
 

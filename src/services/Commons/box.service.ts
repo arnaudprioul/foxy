@@ -1,4 +1,4 @@
-import type { IBox } from '@/interfaces'
+import type { IBox } from '../../interfaces'
 
 export class Box implements IBox {
     x: number

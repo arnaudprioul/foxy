@@ -1,3 +1,3 @@
-import { ALIGN } from '@/enums'
+import { ALIGN } from '../../enums'
 
 export type TAlign = `${ALIGN}`

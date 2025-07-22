@@ -1,4 +1,4 @@
-import { CHART_TYPE } from "@/enums"
+import { CHART_TYPE } from "../../enums"
 
 export type TChartType = `${CHART_TYPE}`
 

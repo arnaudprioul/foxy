@@ -1,10 +1,9 @@
-import type { ILayer } from '@/interfaces'
-
-import type { TDirectionBoth } from '@/types'
-
-import { int } from "@/utils"
-
 import type { Ref } from 'vue'
+import type { ILayer } from '../../interfaces'
+
+import type { TDirectionBoth } from '../../types'
+
+import { int } from "../../utils"
 
 export function generateLayers (
     layout: Array<string>,

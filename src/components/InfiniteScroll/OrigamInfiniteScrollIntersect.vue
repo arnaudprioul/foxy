@@ -10,11 +10,10 @@
 		lang="ts"
 		setup
 >
-	import { useIntersectionObserver, useProps } from '@/composables'
-
-	import type { IInfiniteScrollIntersectProps } from '@/interfaces'
-
 	import { watch } from 'vue'
+	import { useIntersectionObserver, useProps } from '../../composables'
+
+	import type { IInfiniteScrollIntersectProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<IInfiniteScrollIntersectProps>(), {})
 

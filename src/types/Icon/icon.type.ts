@@ -1,7 +1,7 @@
-import { OrigamIcon } from "@/components"
-
-import type { IIconAliases, IIconProps, IIconSet } from '@/interfaces'
 import type { Component } from 'vue'
+import { OrigamIcon } from "../../components"
+
+import type { IIconAliases, IIconProps, IIconSet } from '../../interfaces'
 
 export type TIcon =
     | string

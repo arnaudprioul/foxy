@@ -1,3 +1,4 @@
+import type { ComputedRef, Ref } from 'vue'
 import type {
     IColorProps,
     ICommonsComponentProps,
@@ -7,8 +8,7 @@ import type {
     IDataTableSortItem,
     IInternalDataTableHeader,
     IPaddingProps
-} from '@/interfaces'
-import type { ComputedRef, Ref } from 'vue'
+} from '../../interfaces'
 
 export interface IDataTableGroupProps {
     groupBy?: Array<IDataTableSortItem>

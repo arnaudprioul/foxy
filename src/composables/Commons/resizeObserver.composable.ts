@@ -1,8 +1,8 @@
-import { IN_BROWSER } from '@/consts'
+import { IN_BROWSER } from '../../consts'
 
-import type { IResizeState } from '@/interfaces'
+import type { IResizeState } from '../../interfaces'
 
-import { refElement } from '@/utils'
+import { refElement } from '../../utils'
 import { onBeforeUnmount, readonly, ref, watch } from 'vue'
 
 export function useResizeObserver (callback?: ResizeObserverCallback, box: 'content' | 'border' = 'content'): IResizeState {

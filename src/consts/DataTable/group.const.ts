@@ -1,6 +1,5 @@
-import type { IDataTableGroup, IDataTableItem, IDataTableSortItem } from '@/interfaces'
-
 import type { InjectionKey, Ref } from 'vue'
+import type { IDataTableGroup, IDataTableItem, IDataTableSortItem } from '../../interfaces'
 
 export const ORIGAM_DATA_TABLE_GROUP_KEY: InjectionKey<{
     opened: Ref<Set<string>>

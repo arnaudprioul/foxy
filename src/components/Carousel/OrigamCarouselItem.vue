@@ -41,13 +41,13 @@
 		lang="ts"
 		setup
 >
-	import { OrigamImg, OrigamWindowItem } from '@/components'
+	import { OrigamImg, OrigamWindowItem } from '../../components'
 
-	import { useProps } from '@/composables'
+	import { useProps } from '../../composables'
 
-	import type { ICarouselItemProps } from '@/interfaces'
+	import type { ICarouselItemProps } from '../../interfaces'
 
-	import type { TOrigamImg, TOrigamWindowItem } from "@/types"
+	import type { TOrigamImg, TOrigamWindowItem } from "../../types"
 
 	import { computed, ref, StyleValue, useAttrs, useSlots } from 'vue'
 

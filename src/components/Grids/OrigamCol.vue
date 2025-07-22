@@ -12,11 +12,11 @@
 		lang="ts"
 		setup
 >
-	import { useBorder, useBothColor, useMargin, usePadding, useProps } from '@/composables'
+	import { useBorder, useBothColor, useMargin, usePadding, useProps } from '../../composables'
 
-	import type { IColProps } from '@/interfaces'
+	import type { IColProps } from '../../interfaces'
 
-	import { toKebabCase } from '@/utils'
+	import { toKebabCase } from '../../utils'
 
 	import { computed, StyleValue, toRef } from 'vue'
 

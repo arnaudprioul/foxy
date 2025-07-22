@@ -12,10 +12,10 @@
 		lang="ts"
 		setup
 >
-	import { useProps } from "@/composables"
-
-	import type { IIconComponentProps } from '@/interfaces'
 	import { computed, StyleValue } from 'vue'
+	import { useProps } from "../../composables"
+
+	import type { IIconComponentProps } from '../../interfaces'
 
 	const props = withDefaults(defineProps<IIconComponentProps>(), {tag: 'div'})
 

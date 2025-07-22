@@ -104,19 +104,24 @@
 		lang="ts"
 		setup
 >
-	import { OrigamIcon, OrigamInput, OrigamProgress, OrigamSelectionControl, OrigamTranslateScale } from '@/components'
-
-	import { useFocus, useLoader, useProps, useVModel } from '@/composables'
-
-	import { DENSITY, PROGRESS_TYPE, SIZES } from '@/enums'
-
-	import type { ISwitchProps } from "@/interfaces"
-
-	import type { TOrigamInput, TOrigamSelectionControl } from "@/types"
-
-	import { filterInputAttrs, getUid } from '@/utils'
-
 	import { computed, ref, StyleValue, useAttrs, useSlots } from 'vue'
+	import {
+		OrigamIcon,
+		OrigamInput,
+		OrigamProgress,
+		OrigamSelectionControl,
+		OrigamTranslateScale
+	} from '../../components'
+
+	import { useFocus, useLoader, useProps, useVModel } from '../../composables'
+
+	import { DENSITY, PROGRESS_TYPE, SIZES } from '../../enums'
+
+	import type { ISwitchProps } from "../../interfaces"
+
+	import type { TOrigamInput, TOrigamSelectionControl } from "../../types"
+
+	import { filterInputAttrs, getUid } from '../../utils'
 
 	const props = withDefaults(defineProps<ISwitchProps>(), {
 		density: DENSITY.DEFAULT,

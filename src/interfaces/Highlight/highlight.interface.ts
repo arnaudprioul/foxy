@@ -7,7 +7,7 @@ import type {
     IPaddingProps,
     IRoundedProps,
     ITagProps
-} from "@/interfaces"
+} from "../../interfaces"
 
 export interface IHighlightProps extends ICommonsComponentProps, ITagProps, IBorderProps, IRoundedProps, IPaddingProps, IMarginProps, IElevationProps, IColorProps {
     autoEscape?: boolean

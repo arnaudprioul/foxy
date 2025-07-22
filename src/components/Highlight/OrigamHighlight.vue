@@ -14,6 +14,7 @@
 		lang="ts"
 		setup
 >
+	import { computed, StyleValue, toRef } from "vue"
 	import {
 		useBorder,
 		useBothColor,
@@ -23,11 +24,10 @@
 		useProps,
 		useRounded,
 		useVModel
-	} from "@/composables"
-	import type { IHighlightProps } from "@/interfaces"
-	import type { TColorType } from "@/types"
-	import { getContrast } from "@/utils"
-	import { computed, StyleValue, toRef } from "vue"
+	} from "../../composables"
+	import type { IHighlightProps } from "../../interfaces"
+	import type { TColorType } from "../../types"
+	import { getContrast } from "../../utils"
 
 	const props = withDefaults(defineProps<IHighlightProps>(), {
 		tag: 'mark',

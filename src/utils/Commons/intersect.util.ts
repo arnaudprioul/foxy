@@ -1,4 +1,4 @@
-import type { IIntersectDirectiveBinding, IIntersectHtmlElement } from '@/interfaces'
+import type { IIntersectDirectiveBinding, IIntersectHtmlElement } from '../../interfaces'
 
 export function unmountIntersect (el: IIntersectHtmlElement, binding: IIntersectDirectiveBinding) {
     const observe = el._observe?.[binding.instance!.$.uid]

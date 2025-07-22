@@ -1,13 +1,19 @@
-import * as origamMessages from "@/assets/locales"
-
-import { LOCALE_RTL_DEFAULT, ORIGAM_LOCALE_KEY } from "@/consts"
-
-import type { ILocaleInstance, ILocaleOptions, ILocaleProps, IRtlInstance, IRtlOptions, IRtlProps } from "@/interfaces"
-
-import { createVueI18nAdapter, getCurrentInstanceName, mergeDeep } from "@/utils"
-
 import { computed, inject, provide, ref } from "vue"
 import { createI18n, I18n, useI18n } from "vue-i18n"
+import * as origamMessages from "../../assets/locales"
+
+import { LOCALE_RTL_DEFAULT, ORIGAM_LOCALE_KEY } from "../../consts"
+
+import type {
+    ILocaleInstance,
+    ILocaleOptions,
+    ILocaleProps,
+    IRtlInstance,
+    IRtlOptions,
+    IRtlProps
+} from "../../interfaces"
+
+import { createVueI18nAdapter, getCurrentInstanceName, mergeDeep } from "../../utils"
 
 export function createLocale (options?: ILocaleOptions & IRtlOptions) {
     const i18nOptions = mergeDeep({

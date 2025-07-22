@@ -34,7 +34,8 @@
 		lang="ts"
 		setup
 >
-	import { OrigamSlideY, OrigamTransition } from '@/components'
+	import { computed, StyleValue, toRef } from 'vue'
+	import { OrigamSlideY, OrigamTransition } from '../../components'
 
 	import {
 		useBorder,
@@ -45,16 +46,14 @@
 		useRounded,
 		useSsrBoot,
 		useTextColor
-	} from '@/composables'
+	} from '../../composables'
 
-	import { DENSITY } from '@/enums'
+	import { DENSITY } from '../../enums'
 
-	import type { IMessagesProps } from '@/interfaces'
-	import type { TTransitionProps } from "@/types"
+	import type { IMessagesProps } from '../../interfaces'
+	import type { TTransitionProps } from "../../types"
 
-	import { wrapInArray } from '@/utils'
-
-	import { computed, StyleValue, toRef } from 'vue'
+	import { wrapInArray } from '../../utils'
 
 	const props = withDefaults(defineProps<IMessagesProps>(), {
 		tag: 'div',

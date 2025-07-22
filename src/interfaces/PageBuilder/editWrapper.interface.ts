@@ -1,4 +1,4 @@
-import type { ICommonsComponentProps } from '@/interfaces'
+import type { ICommonsComponentProps } from '../../interfaces'
 
 export interface IEditWrapperProps extends ICommonsComponentProps {
     slotName?: string
