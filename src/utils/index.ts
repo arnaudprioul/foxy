@@ -44,8 +44,6 @@ export * from './Input/input.util'
 
 export * from './List/list-item.util'
 
-export * from './PageBuilder/editor.util'
-
 export * from './Transition/transition.util'
 
 export * from './Slide/slide-group.util'

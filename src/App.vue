@@ -2,11 +2,11 @@
 		lang="ts"
 		setup
 >
-	import { OrigamDrawer, OrigamList, OrigamListItem, OrigamMain, OrigamPageBuilder, OrigamToolbar } from './components'
+	import { OrigamApp, OrigamDrawer, OrigamList, OrigamListItem, OrigamMain, OrigamToolbar } from './components'
 </script>
 
 <template>
-	<origam-page-builder>
+	<origam-app>
 		<origam-toolbar
 				:order="1"
 				title="Application bar"
@@ -24,7 +24,7 @@
 		>
 
 		</origam-main>
-	</origam-page-builder>
+	</origam-app>
 </template>
 
 <style scoped>

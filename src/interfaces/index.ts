@@ -177,9 +177,6 @@ export * from './OtpInputField/otp-input-field.interface'
 export * from './Overlay/overlay.interface'
 export * from './Overlay/overlay-scrim.interface'
 
-export * from './PageBuilder/cssBox.interface'
-export * from './PageBuilder/editWrapper.interface'
-
 export * from './Pagination/pagination.interface'
 
 export * from './Parallax/parallax.interface'

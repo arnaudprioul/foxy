@@ -86,8 +86,6 @@ export * from './OtpInputField'
 
 export * from './Overlay'
 
-export * from './PageBuilder'
-
 export * from './Pagination'
 
 export * from './Parallax'

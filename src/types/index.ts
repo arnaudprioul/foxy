@@ -167,8 +167,6 @@ export * from './OtpInputField/otp-input-field.type'
 export * from './Overlay/overlay.type'
 export * from './Overlay/overlay-scrim.type'
 
-export * from './PageBuilder/editor.type'
-
 export * from './Pagination/pagination.type'
 
 export * from './Parallax/parallax.type'

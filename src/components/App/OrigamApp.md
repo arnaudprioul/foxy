@@ -2,4 +2,4 @@
 
 ## Usage
 
-    <OrigamPageBuilder />
+    <OrigamApp />
