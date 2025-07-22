@@ -1,6 +1,6 @@
 {
   "name": "origam",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "type": "module",
   "exports": {
     ".": {
@@ -47,8 +47,7 @@
     "test:unit": "vitest",
     "test:e2e": "cypress",
     "test:open": "cypress open",
-    "clean": "rm -rf dist node_modules package-lock.json",
-    "alias": "tsc-alias"
+    "clean": "rm -rf dist node_modules package-lock.json"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
