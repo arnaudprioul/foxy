@@ -1,4 +1,4 @@
-import { KEYBOARD_ALIASES } from "../../consts/Commons/hotkey.const.ts"
+import { KEYBOARD_ALIASES } from "../../consts"
 import { consoleWarn } from "../../utils"
 
 /**

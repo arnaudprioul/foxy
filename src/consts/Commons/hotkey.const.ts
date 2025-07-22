@@ -28,7 +28,6 @@ export const KEYBOARD_ALIASES: Record<string, string> = {
     return: 'enter',
     del: 'delete',
 
-    // Symbol aliases (existing from hotkey-parsing.ts)
     minus: '-',
     hyphen: '-'
 }
